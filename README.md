@@ -2,7 +2,7 @@
 
 This repository contains the first public seed set for the Practice of Clarity.
 
-It is designed to be copied, adapted, and extended as a lightweight practice for making reasoning, boundaries, and uncertainty visible.
+It is designed to be copied, adapted, and extended as a lightweight practice (short traces, minimal overhead) for making reasoning, boundaries, and uncertainty visible.
 
 ## Quick start
 
