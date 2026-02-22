@@ -1,5 +1,13 @@
 # Translation Policy
-## How this practice handles language
+## How This Practice Handles Language
+
+**Author:** Mikey Sebastian Drozd  
+**Pronouns:** he/him · they/them  
+**Website:** https://www.mikeysebastiandrozd.eu  
+
+---
+
+## What This Is
 
 This practice begins in English as a practical initiation layer, not as a preference and not as a claim of authority.
 
@@ -9,12 +17,11 @@ English is the launch language, not the home.
 
 Translations are not a secondary copy. Each locale is treated as an accountable edition.
 
-Status note: initial signal release.
 Planned locales are direction, not a promise.
 
 ---
 
-## What "translated" means here
+## What "Translated" Means Here
 
 Translations, when produced, are AI-assisted and human-reviewed. They are culturally adapted, not converted word for word.
 
@@ -56,7 +63,7 @@ Structural definitions live in the seeds:
 
 ---
 
-## Two phases: English initiation, multilingual resonance
+## Two Phases: English Initiation, Multilingual Resonance
 
 ### Phase one: English as initiation
 
@@ -78,7 +85,7 @@ This is not simplification. It is ethical adaptation.
 
 ---
 
-## Locales (initial release + planned)
+## Locales (Initial Release + Planned)
 
 Initial release: `en-us` only.
 
@@ -100,7 +107,7 @@ Planned locales (accountable editions, not “secondary copies”):
 
 ---
 
-## Translation principles (non-negotiable)
+## Translation Principles (Non-Negotiable)
 
 1. Cultural adaptation, not literal translation. Sentence structure, idiom, and rhythm must follow the target language's natural patterns.
 2. Register must match the locale. Honor what reads as warm, direct, and credible in that culture.
@@ -110,7 +117,7 @@ Planned locales (accountable editions, not “secondary copies”):
 
 ---
 
-## Locale-specific notes
+## Locale-Specific Notes
 
 ### de-de (German)
 
@@ -176,7 +183,7 @@ Planned locales (accountable editions, not “secondary copies”):
 
 ---
 
-## Operational guidance for AI-assisted translation
+## Operational Guidance for AI-Assisted Translation
 
 When translating:
 
@@ -189,7 +196,7 @@ When translating:
 
 ---
 
-## Quality check
+## Quality Check
 
 Before publishing any translation, ask:
 
@@ -201,7 +208,7 @@ If any answer is no, rewrite.
 
 ---
 
-## Why this matters
+## Why This Matters
 
 Clarity across languages is also about power. If only the English version is treated as real and everything else as a copy, translation becomes subordination. This practice refuses that.
 

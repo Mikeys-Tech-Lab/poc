@@ -1,5 +1,5 @@
 # A Living Practice of Clarity
-## Root Seed, Snapshot 2026-02-21
+## The Root Seed
 
 **Author:** Mikey Sebastian Drozd  
 **Pronouns:** he/him · they/them  
@@ -11,7 +11,6 @@
 
 This is not a protocol, a software standard, a product, or a belief system. It is a living practice of clarity designed for federation.
 
-Status note: initial signal release.
 Today there is one canonical node: this repository.
 Federation describes the shape this practice can take if others adopt it.
 It is not a claim that a community exists yet.
@@ -166,7 +165,7 @@ Everything beyond that is optional.
 
 ---
 
-## Core seed set
+## Core Seed Set
 
 This practice is held by a small set of seeds:
 
@@ -198,7 +197,7 @@ It may remain small. It may scale.
 
 Nothing here is finished. Everything evolves through participation, but evolution must be marked.
 
-This snapshot marks a beginning, not a conclusion.
+This marks a beginning, not a conclusion.
 
 ---
 

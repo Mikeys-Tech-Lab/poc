@@ -1,5 +1,13 @@
 # A Bridge Between Conflicting Nodes
-## How contradiction stays connected without forced consensus
+## How Contradiction Stays Connected Without Forced Consensus
+
+**Author:** Mikey Sebastian Drozd  
+**Pronouns:** he/him · they/them  
+**Website:** https://www.mikeysebastiandrozd.eu  
+
+---
+
+## What This Is
 
 This seed demonstrates how differing claims can maintain connection without forced agreement.
 
@@ -8,15 +16,11 @@ It shows how contradiction becomes data.
 It describes a federated system where any participant can initiate a bridge.
 No central authority is required.
 
-Status note: initial signal release.
 This is a model, not a running community.
-
-**Website:** https://www.mikeysebastiandrozd.eu  
-**Practice of Clarity (PoC):** https://www.mikeys-tech.eu
 
 ---
 
-## Two nodes in conflict
+## Two Nodes in Conflict
 
 ### Node A
 
@@ -46,7 +50,7 @@ This is a model, not a running community.
 
 ---
 
-## Who builds the bridge
+## Who Builds the Bridge
 
 In a federated system, anyone can initiate a bridge.
 
@@ -81,7 +85,7 @@ It must be time-boxed and acknowledged as work.
 
 ---
 
-## Bridge construction protocol
+## Bridge Construction Protocol
 
 1. Place both traces side by side.
 2. Identify shared assumptions.
@@ -94,7 +98,7 @@ If steps 1 through 4 are skipped, the bridge collapses into compromise theater.
 
 ---
 
-## Integrated output
+## Integrated Output
 
 A bridge does not merge claims.
 
@@ -110,7 +114,7 @@ Action proceeds with declared boundaries.
 
 ---
 
-## Anti-filibuster constraint
+## Anti-Filibuster Constraint
 
 Federation does not permit endless escalation.
 
@@ -126,7 +130,7 @@ Revision is mandatory.
 
 ---
 
-## Multi-node scaling
+## Multi-Node Scaling
 
 When more than two nodes diverge:
 
@@ -139,7 +143,7 @@ Federation allows multiple bridges to coexist.
 
 ---
 
-## Network-defense boundary
+## Network-Defense Boundary
 
 Federation is voluntary.
 Engagement is selective.
@@ -173,7 +177,7 @@ Refusal to engage is permitted.
 
 ---
 
-## Anti-erasure safeguard
+## Anti-Erasure Safeguard
 
 Network defense must not be used to dismiss reports of harm or abuse.
 
@@ -198,7 +202,7 @@ Bandwidth protection is for bad faith escalation, not for silencing accountabili
 
 ---
 
-## Bad faith fuse
+## Bad Faith Fuse
 
 If a report is verified as fabricated, coordinated flooding, or harassment disguised as harm reporting, the network-defense boundary applies immediately.
 
@@ -250,7 +254,7 @@ All verification traces must remain compliant with applicable privacy law.
 
 ---
 
-## Revision pathway constraint
+## Revision Pathway Constraint
 
 A revision pathway exists for cases where genuinely new information emerges.
 
@@ -277,7 +281,7 @@ The fuse remains active unless new trace materially alters the verification basi
 
 ---
 
-## What this demonstrates
+## What This Demonstrates
 
 Federation does not require consensus.
 

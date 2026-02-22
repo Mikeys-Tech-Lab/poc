@@ -1,7 +1,13 @@
 # Beginner’s Mind
-## The posture that makes trace possible
+## The Posture That Makes Trace Possible
 
-### What this page is
+**Author:** Mikey Sebastian Drozd  
+**Pronouns:** he/him · they/them  
+**Website:** https://www.mikeysebastiandrozd.eu  
+
+---
+
+## What This Is
 
 This page defines the internal posture that makes the practice work under pressure.
 
@@ -13,7 +19,7 @@ It is a practical stance that protects clarity from performance, certainty theat
 
 ---
 
-## Plain language summary
+## Plain Language Summary
 
 Beginner’s mind means:
 
@@ -42,7 +48,7 @@ It is a refusal to confuse confidence with correctness.
 
 ---
 
-## Why it matters here
+## Why It Matters Here
 
 This practice is built on a core discipline:
 
@@ -61,7 +67,7 @@ Beginner’s mind breaks that pattern.
 
 ---
 
-## Not knowing yet is not passivity
+## Not Knowing Yet Is Not Passivity
 
 “I don’t know yet” is not permission to stop.
 
@@ -76,7 +82,7 @@ Beginner’s mind protects action from delusion.
 
 ---
 
-## What it looks like in work
+## What It Looks Like in Work
 
 Beginner’s mind shows up as behaviors:
 
@@ -91,7 +97,7 @@ It is rigor without ego armor.
 
 ---
 
-## Beginner’s mind with AI
+## Beginner’s Mind with AI
 
 AI increases output speed.
 Beginner’s mind increases integration speed.
@@ -109,7 +115,7 @@ A common loop:
 
 ---
 
-## Seeding an AI context
+## Seeding an AI Context
 
 If you are using an AI assistant, you can seed the conversation with the current seed set for this practice.
 This does not make the assistant correct.
@@ -138,7 +144,7 @@ What it does not replace:
 
 ---
 
-## Power boundary
+## Power Boundary
 
 Beginner’s mind is not obedience.
 
@@ -157,7 +163,7 @@ Beginner’s mind is how teams resist that pressure without stalling.
 
 ---
 
-## Minimal practice prompt
+## Minimal Practice Prompt
 
 Use these questions in two ways:
 

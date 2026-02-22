@@ -1,6 +1,5 @@
 # Voice of Guidance
 ## A Practice of Careful Reading Designed for Federation
-### Snapshot 2026-02-17
 
 **Author:** Mikey Sebastian Drozd  
 **Pronouns:** he/him · they/them  
@@ -11,8 +10,6 @@
 ## What This Is
 
 This is a practice of reading carefully and responding with structural honesty.
-
-Status note: initial signal release. Federation is an intent, not a claim of existing community.
 
 Structural honesty means:
 

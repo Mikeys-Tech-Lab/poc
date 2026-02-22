@@ -1,7 +1,13 @@
 # Practice Foundations
 ## Discipline, Boundaries, and Interpretation
 
-### What This Page Is
+**Author:** Mikey Sebastian Drozd  
+**Pronouns:** he/him · they/them  
+**Website:** https://www.mikeysebastiandrozd.eu  
+
+---
+
+## What This Is
 
 This page defines how this practice stays intact as it moves through other people, teams, and public discussion.
 It is written early so the meaning stays intact if the practice travels.
@@ -213,7 +219,7 @@ This is not legal enforcement. It is interpretability under stress.
 
 ---
 
-## Related seeds
+## Related Seeds
 
 Practice Foundations defines boundaries and interpretation discipline.
 Two other seeds support it directly:
