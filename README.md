@@ -2,7 +2,7 @@
 
 This repository contains the first public seed set for the Practice of Clarity.
 
-It is designed to be copied, adapted, and extended as a lightweight discipline for making reasoning, boundaries, and uncertainty visible.
+It is designed to be copied, adapted, and extended as a lightweight practice for making reasoning, boundaries, and uncertainty visible.
 
 ## Quick start
 
@@ -18,15 +18,21 @@ This repository is the whole thing right now. There is no platform behind it, no
 
 It will evolve through use, critique, and repair. The goal is not perfection. The goal is shared clarity under real conditions.
 
-At the moment, maintenance is solo. Feedback, contribution, and federation paths will be added later, once the initial challenges are solved and the release proves useful in real use.
+If this becomes a checklist, it has failed. The practice is only valid when it reduces uncertainty and makes reasoning inspectable.
+
+If it is used for compliance scoring, surveillance, or performance management, it is not this practice.
 
 If you want to stress test it, fork the repo and adapt it privately.
+
+For now, federation is fork-first. Your fork is your node. Keep your adaptations, and add short notes on what you changed and why.
+
+Feedback, contribution, and federation paths may be added later, once the initial challenges are solved and the release proves useful in real use.
 
 ## Reading support
 
 - Short sections and explicit headings are intentional.
 - If you want the minimal path, follow the three links in Quick start.
-- If any wording is unclear or overloaded, make a note for yourself.
+- If any wording is unclear or overloaded, simplify it in your local copy and add a short note about what you changed and why.
 
 ## Licensing
 
@@ -60,5 +66,5 @@ If you reuse or adapt the seed texts, give credit, link to the license, and indi
 - Seed texts: `seeds/*.md`
 - Core orientation: `seeds/A Living Practice of Clarity.md`
 - Disagreement protocol: `seeds/A Bridge Between Conflicting Nodes.md`
-- Boot instructions (lens preflight): `Sensible Defaults Bootstrap.md`
+- Boot instructions (lens preflight, what to check before acting): `Sensible Defaults Bootstrap.md`
 - Lens definition: `Sensible Defaults.md`
