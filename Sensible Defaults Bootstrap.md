@@ -118,3 +118,25 @@ If it adds pressure instead of releasing it, it has drifted.
 ## Cross-lens conflict
 
 If another Outside Trace lens conflicts, prefer the lens closer to the mandate's dominant risk profile and record the conflict explicitly under Risk concentrations.
+
+## Short Form Notice (for Publications)
+
+The following short notice may be placed at the beginning or end of individual publications:
+
+---
+
+This work is part of the Practice of Clarity by  
+Mikey Sebastian Drozd, Dipl.-Ing. (FH).
+
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).  
+Commercial use and adaptation are permitted with proper attribution.
+
+Canonical source and full license terms:  
+../LICENCE_CONTENT
+
+Official reference:  
+https://creativecommons.org/licenses/by/4.0/
+
+---
+
+This short notice references the full license text and does not replace the complete license terms.

@@ -203,6 +203,9 @@ Commercial use and adaptation are permitted with proper attribution.
 Canonical source and full license terms:  
 ../LICENCE_CONTENT
 
+Official reference:  
+https://creativecommons.org/licenses/by/4.0/
+
 ---
 
 This short notice references the full license text and does not replace the complete license terms.

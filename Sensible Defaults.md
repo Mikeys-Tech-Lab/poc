@@ -341,7 +341,7 @@ Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
 Commercial use and adaptation are permitted with proper attribution.
 
 Canonical source and full license terms:  
-LICENCE_CONTENT
+../LICENCE_CONTENT
 
 Official reference:  
 https://creativecommons.org/licenses/by/4.0/

@@ -12,7 +12,10 @@
 
 This practice begins in English as a practical initiation layer, not as a preference and not as a claim of authority.
 
+
 English dominates global knowledge systems through colonial residue, academic gatekeeping, and publishing monopolies. Its reach is structural, not neutral. This work starts here to trace and transform that dominance, not to endorse it.
+
+This matters because language choices shape who can participate and whose knowledge becomes the default.
 
 English is the launch language, not the home.
 
@@ -197,13 +200,16 @@ When translating:
 
 ---
 
-## Quality Check
+## Quality checks
 
 Before publishing any translation, ask:
 
 1. Would a native speaker of this language read this and think "this was written for me"?
 2. Are there any phrases that only make sense if you know the English original?
 3. Does the emotional register match the culture, not just the words?
+4. Structural fidelity: do headings, lists, and trace prompts stay in the same order unless an adaptation note says otherwise?
+5. Terminology stability: are core terms either preserved or mapped once in a glossary note (trace, assumption, interpretation, misuse, federation)?
+6. Back check: can you translate a short excerpt back into English and confirm the meaning did not drift?
 
 If any answer is no, rewrite.
 
@@ -231,6 +237,9 @@ Commercial use and adaptation are permitted with proper attribution.
 
 Canonical source and full license terms:  
 ../LICENCE_CONTENT
+
+Official reference:  
+https://creativecommons.org/licenses/by/4.0/
 
 ---
 
