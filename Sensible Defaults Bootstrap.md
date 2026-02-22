@@ -1,4 +1,9 @@
-# Sensible Defaults — Delivery Realism Lens
+# Sensible Defaults: Delivery Realism Lens
+
+**Author:** Mikey Sebastian Drozd  
+**Website:** https://mikeys-tech.eu  
+**License:** CC BY 4.0. See LICENCE_CONTENT.  
+**Official license reference:** https://creativecommons.org/licenses/by/4.0/
 
 ## Preflight
 
@@ -12,6 +17,7 @@ Trace type: Outside trace
 Source organization: ThoughtWorks
 Official source: https://www.thoughtworks.com/insights/topic/sensible-defaults
 This is a derived operational extraction, not a reproduction of the original.
+Not affiliated with ThoughtWorks. Names and trademarks remain with their respective owners.
 
 ## Core discipline (from seeds)
 
@@ -43,15 +49,15 @@ Delivery exists to create measurable value: an explicit change in user outcomes,
 
 All initiatives implicitly require activity across these domains. These are delivery forces, not job titles. Each has "often unplanned work" that must be made visible:
 
-1. **Business analysis** — problem framing, outcome clarification, stakeholder questioning, requirement negotiation
-2. **Data and AI** — ethical data usage, observability, bias validation, monitoring, capacity planning
-3. **Experience design** — usability, accessibility, research cycles, prototype testing, design alignment
-4. **Infrastructure** — automation, environment reliability, IaC, pipeline creation, deployment safety
-5. **Product** — value definition, roadmap evolution, opportunity discovery, success measurement
-6. **Project management** — coordination, transparency, alignment conversations, expectation management
-7. **Quality analysis** — early validation, risk discovery, exploratory testing, automation strategy
-8. **Security** — risk reduction, access control, threat modeling, secrets management, vulnerability remediation
-9. **Software development** — sustainable implementation, CI/CD, test design, refactoring, build stabilization
+1. **Business analysis**: problem framing, outcome clarification, stakeholder questioning, requirement negotiation
+2. **Data and AI**: ethical data usage, observability, bias validation, monitoring, capacity planning
+3. **Experience design**: usability, accessibility, research cycles, prototype testing, design alignment
+4. **Infrastructure**: automation, environment reliability, IaC, pipeline creation, deployment safety
+5. **Product**: value definition, roadmap evolution, opportunity discovery, success measurement
+6. **Project management**: coordination, transparency, alignment conversations, expectation management
+7. **Quality analysis**: early validation, risk discovery, exploratory testing, automation strategy
+8. **Security**: risk reduction, access control, threat modeling, secrets management, vulnerability remediation
+9. **Software development**: sustainable implementation, CI/CD, test design, refactoring, build stabilization
 
 ## Minimal trace intervention
 

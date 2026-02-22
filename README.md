@@ -1,9 +1,64 @@
-# poc
-Practice of Clarity
+# Practice of Clarity (PoC)
+
+This repository contains the first public seed set for the Practice of Clarity.
+
+It is designed to be copied, adapted, and extended as a lightweight discipline for making reasoning, boundaries, and uncertainty visible.
+
+## Quick start
+
+- Start here: `seeds/A Living Practice of Clarity.md`
+- If you are under time pressure: `Sensible Defaults.md`
+- If you are dealing with disagreement: `seeds/A Bridge Between Conflicting Nodes.md`
+
+## Status
+
+**This is a proof of concept and a living practice.**
+
+This repository is the whole thing right now. There is no platform behind it, no federation layer, and no contribution workflow yet. What you see here is the first public seed set.
+
+It will evolve through use, critique, and repair. The goal is not perfection. The goal is shared clarity under real conditions.
+
+At the moment, maintenance is solo. Feedback, contribution, and federation paths will be added later, once the initial challenges are solved and the release proves useful in real use.
+
+If you want to stress test it, fork the repo and adapt it privately.
+
+## Reading support
+
+- Short sections and explicit headings are intentional.
+- If you want the minimal path, follow the three links in Quick start.
+- If any wording is unclear or overloaded, make a note for yourself.
 
 ## Licensing
 
-This project uses dual licensing:
+This repository uses dual licensing.
 
-- **MIT** (`LICENSE`) — software.
-- **CC BY 4.0** (`LICENCE_CONTENT.md`) — authored content.
+### Software
+
+All software, scripts, and tooling are licensed under MIT.
+
+- See `LICENSE`.
+
+### Authored content
+
+All authored content (the written seed texts) is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+
+- See `LICENCE_CONTENT`.
+- Official reference: https://creativecommons.org/licenses/by/4.0/
+
+### Scope and precedence
+
+- If a file includes an explicit license notice, that notice governs that file.
+- Otherwise, MIT applies to code and CC BY 4.0 applies to written content.
+- When in doubt, treat seed texts as CC BY 4.0 and code as MIT.
+
+### Attribution (CC BY 4.0)
+
+If you reuse or adapt the seed texts, give credit, link to the license, and indicate if changes were made.
+
+## Contents
+
+- Seed texts: `seeds/*.md`
+- Core orientation: `seeds/A Living Practice of Clarity.md`
+- Disagreement protocol: `seeds/A Bridge Between Conflicting Nodes.md`
+- Boot instructions (lens preflight): `Sensible Defaults Bootstrap.md`
+- Lens definition: `Sensible Defaults.md`

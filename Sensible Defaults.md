@@ -16,6 +16,11 @@ If you cannot read files, ask the user to paste the seed texts before claiming y
 
 ---
 
+**Author:** Mikey Sebastian Drozd  
+**Website:** https://mikeys-tech.eu  
+**License:** CC BY 4.0. See LICENCE_CONTENT.  
+**Official license reference:** https://creativecommons.org/licenses/by/4.0/
+
 # Sensible Defaults
 ## A Mandate Lens for Delivery Realism (Developer)
 
@@ -312,15 +317,14 @@ If another Outside Trace lens conflicts, prefer the lens closer to the mandate's
 
 ---
 
-## Attribution
+## Provenance and acknowledgement
 
-Derived from:
+This lens is informed by public ThoughtWorks material on delivery defaults, including:
 
-ThoughtWorks  
-*Sensible Defaults*  
+ThoughtWorks, *Sensible Defaults*  
 https://www.thoughtworks.com/insights/topic/sensible-defaults
 
-All original intellectual property remains with ThoughtWorks.
+This repository is not affiliated with ThoughtWorks. Names, trademarks, and referenced titles remain with their respective owners.
 
 ---
 
@@ -337,8 +341,10 @@ Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
 Commercial use and adaptation are permitted with proper attribution.
 
 Canonical source and full license terms:  
-https://mikeysebastiandrozd.eu  
-https://mikeys-tech.eu
+LICENCE_CONTENT
+
+Official reference:  
+https://creativecommons.org/licenses/by/4.0/
 
 ---
 

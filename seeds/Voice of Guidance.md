@@ -4,6 +4,7 @@
 **Author:** Mikey Sebastian Drozd  
 **Pronouns:** he/him · they/them  
 **Website:** https://mikeys-tech.eu  
+**License:** CC BY 4.0. See ../LICENCE_CONTENT.
 
 ---
 
@@ -200,9 +201,10 @@ Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
 Commercial use and adaptation are permitted with proper attribution.
 
 Canonical source and full license terms:  
-https://mikeysebastiandrozd.eu  
-https://mikeys-tech.eu
+../LICENCE_CONTENT
 
 ---
 
 This short notice references the full license text and does not replace the complete license terms.
+
+Project context and updates live in this repository. Personal websites may mirror releases, but the license text referenced above is the source for terms.
