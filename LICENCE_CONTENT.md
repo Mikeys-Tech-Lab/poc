@@ -22,8 +22,8 @@ Required attribution must include:
 
 Author: Mikey Sebastian Drozd, Dipl.-Ing. (FH)  
 Pronouns: he/him · they/them  
-Website: https://www.mikeysebastiandrozd.eu  
-Practice of Clarity (PoC), a conceptual framework: https://www.mikeys-tech.eu
+Website: https://mikeysebastiandrozd.eu  
+Practice of Clarity (PoC), a conceptual framework: https://mikeys-tech.eu
 
 Attribution must not imply endorsement.
 
@@ -40,8 +40,8 @@ Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
 Commercial use and adaptation are permitted with proper attribution.
 
 Canonical source and full license terms:  
-https://www.mikeysebastiandrozd.eu  
-https://www.mikeys-tech.eu
+https://mikeysebastiandrozd.eu  
+https://mikeys-tech.eu
 
 ---
 
@@ -51,8 +51,8 @@ This short notice references the full license text and does not replace the comp
 
 This repository and the official publications at:
 
-https://www.mikeysebastiandrozd.eu  
-https://www.mikeys-tech.eu
+https://mikeysebastiandrozd.eu  
+https://mikeys-tech.eu
 
 constitute the canonical source of truth for the original text.
 

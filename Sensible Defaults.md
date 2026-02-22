@@ -1,23 +1,23 @@
-## Preflight: seed loading (required)
+## Preflight: Seed Loading (Required)
 
 Before applying this lens, preload the full Practice of Clarity seed set.
 Fail fast if any seed is unavailable.
 
 Required seeds (repo paths):
 
-- `../../seeds/a-living-practice-of-clarity/en-us.md`
-- `../../seeds/practice-foundations/en-us.md`
-- `../../seeds/beginners-mind/en-us.md`
-- `../../seeds/a-bridge-between-conflicting-nodes/en-us.md`
-- `../../seeds/voice-of-guidance/en-us.md`
-- `../../seeds/translation-policy/en-us.md`
+- `seeds/A Living Practice of Clarity.md`
+- `seeds/Practice Foundations.md`
+- `seeds/Beginner's Mind.md`
+- `seeds/A Bridge Between Conflicting Nodes.md`
+- `seeds/Voice of Guidance.md`
+- `seeds/Translation Policy.md`
 
 If you cannot read files, ask the user to paste the seed texts before claiming you are following them.
 
 ---
 
 # Sensible Defaults
-## A mandate lens for delivery realism (developer)
+## A Mandate Lens for Delivery Realism (Developer)
 
 **Trace type:** Outside trace  
 **Source organization:** ThoughtWorks  
@@ -31,7 +31,7 @@ If the original work changes, this lens may drift. The official source remains c
 
 ---
 
-## 1. Lens purpose (domain name: delivery)
+## Lens Purpose (Domain: Delivery)
 
 Modern software delivery fails when planning treats delivery like implementation only.
 
@@ -45,7 +45,7 @@ Real work here means activities that change delivery outcomes, risk, or decision
 
 ---
 
-## 2. Primary pressure map
+## Primary Pressure Map
 
 Where acceleration creates stress in delivery:
 
@@ -57,7 +57,7 @@ Where acceleration creates stress in delivery:
 
 ---
 
-## 3. Common failure pattern
+## Common Failure Pattern
 
 Typical failure modes this lens flags:
 
@@ -70,7 +70,7 @@ Typical failure modes this lens flags:
 
 ---
 
-## 4. Minimal trace intervention
+## Minimal Trace
 
 Use this lens to force a minimal delivery trace before committing to scope, sequencing, or dates.
 
@@ -82,7 +82,7 @@ Minimal intervention questions:
 
 ---
 
-## 5. Delivery principles baseline
+## Delivery Principles Baseline
 
 Agents operating under this lens assume:
 
@@ -102,7 +102,7 @@ Measurable value here means an explicit change in user outcomes, risk exposure, 
 
 ---
 
-## 6. Delivery capability domains (inventory)
+## Delivery Capability Domains (Inventory)
 
 All initiatives implicitly require activity across these domains.
 These are delivery forces, not job titles.
@@ -233,7 +233,7 @@ These are delivery forces, not job titles.
 
 ---
 
-## 7. Delivery reality assumption
+## Delivery Reality Assumption
 
 Implementation effort is only one component of delivery effort.
 Every feature tends to introduce work across multiple capability domains, sometimes in parallel, sometimes sequentially.
@@ -242,7 +242,7 @@ Ignoring these domains increases delivery risk, cost escalation, quality debt, a
 
 ---
 
-## 8. Interpretation rule
+## Interpretation Rule
 
 When evaluating mandates, plans, or estimates, verify:
 
@@ -260,7 +260,7 @@ Use severity tiers:
 
 ---
 
-## 9. Required output shape when this lens is applied
+## Required Output Shape
 
 When this lens is invoked, output:
 
@@ -280,7 +280,7 @@ It is minimum visibility to prevent delivery theater.
 
 ---
 
-## 10. Misuse risk in this domain
+## Misuse Risk
 
 This lens is being misused if it becomes:
 
@@ -293,7 +293,7 @@ If it adds pressure instead of releasing it, it has drifted.
 
 ---
 
-## 11. Pressure release outcome
+## Pressure Release Outcome
 
 When this lens is used well:
 
@@ -304,7 +304,7 @@ When this lens is used well:
 
 ---
 
-## 12. Cross-lens conflict rule
+## Cross-Lens Conflict Rule
 
 This lens may be combined with additional Outside Trace sources.
 
@@ -312,7 +312,7 @@ If another Outside Trace lens conflicts, prefer the lens closer to the mandate's
 
 ---
 
-## 13. Attribution
+## Attribution
 
 Derived from:
 
@@ -337,8 +337,8 @@ Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
 Commercial use and adaptation are permitted with proper attribution.
 
 Canonical source and full license terms:  
-https://www.mikeysebastiandrozd.eu  
-https://www.mikeys-tech.eu
+https://mikeysebastiandrozd.eu  
+https://mikeys-tech.eu
 
 ---
 

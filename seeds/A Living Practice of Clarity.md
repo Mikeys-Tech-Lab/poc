@@ -3,7 +3,7 @@
 
 **Author:** Mikey Sebastian Drozd  
 **Pronouns:** he/him · they/them  
-**Website:** https://www.mikeysebastiandrozd.eu  
+**Website:** https://mikeys-tech.eu  
 
 ---
 
@@ -226,8 +226,8 @@ Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
 Commercial use and adaptation are permitted with proper attribution.
 
 Canonical source and full license terms:  
-https://www.mikeysebastiandrozd.eu  
-https://www.mikeys-tech.eu
+https://mikeysebastiandrozd.eu  
+https://mikeys-tech.eu
 
 ---
 
