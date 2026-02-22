@@ -80,16 +80,16 @@ When evaluating mandates, plans, or estimates:
 Treat missing domain acknowledgement as a delivery risk signal, not a neutral omission.
 
 Severity tiers:
-- **Green**: domain acknowledged and addressed
-- **Yellow**: domain acknowledged but deferred or unclear
-- **Red**: domain likely required but absent
+- **Routine**: domain acknowledged and addressed
+- **Elevated**: domain acknowledged but deferred or unclear
+- **Critical**: domain likely required but absent
 
 ## Required output shape (when lens is explicitly invoked)
 
 When asked to apply Sensible Defaults to a plan, estimate, or mandate, output:
 
 1. **Active domains**: domains explicitly covered
-2. **Missing domains**: domains likely required but not planned (Green / Yellow / Red)
+2. **Missing domains**: domains likely required but not planned (Routine / Elevated / Critical)
 3. **Often unplanned work**: concrete activities that will still happen
 4. **Risk concentrations**: where reality will punish optimism
 5. **Timeline pressure points**: where sequencing or dependencies will bite
