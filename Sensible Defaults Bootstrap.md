@@ -13,11 +13,14 @@ If you cannot read files, ask the user to paste the seed texts before claiming y
 
 ## Source
 
-Trace type: Outside trace
-Source organization: ThoughtWorks
-Official source: https://www.thoughtworks.com/insights/topic/sensible-defaults
-This is a derived operational extraction, not a reproduction of the original.
-Not affiliated with ThoughtWorks. Names and trademarks remain with their respective owners.
+**Trace type:** Outside trace  
+**Lineage:** Public delivery realism practice across industry  
+**Referenced source (one example):** ThoughtWorks, *Sensible Defaults*  
+https://www.thoughtworks.com/insights/topic/sensible-defaults
+
+This is an independent operational lens. It is not a reproduction of any single publication.
+
+Not affiliated with any organization mentioned. Names and trademarks remain with their respective owners.
 
 ## Core discipline (from seeds)
 
@@ -108,7 +111,7 @@ Scaling: for small changes, keep each point to one short paragraph. If a domain 
 
 This lens is being misused if it becomes:
 
-- performance scoring for individuals
+- compliance scoring or performance scoring for individuals
 - exhaustive documentation for low-stakes work
 - a blame tool instead of a planning visibility tool
 - a way to convert uncertainty into narrative instead of a next check

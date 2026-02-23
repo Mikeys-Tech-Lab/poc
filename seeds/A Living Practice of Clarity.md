@@ -38,6 +38,8 @@ From content to trace.
 
 A trace is a short record of the reasoning path behind a claim: what was decided, what was assumed, what was uncertain, and how it will be checked. Instead of only stating conclusions, this work makes visible the path behind them.
 
+Trace here means the visible reasoning path behind a decision. It does not refer to runtime telemetry, distributed tracing, or system observability artifacts.
+
 Clarity here does not mean certainty, agreement, or one final truth. It means:
 
 - Assumptions are visible.  

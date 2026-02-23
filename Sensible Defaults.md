@@ -25,14 +25,14 @@ If you cannot read files, ask the user to paste the seed texts before claiming y
 ## A Mandate Lens for Delivery Realism (Developer)
 
 **Trace type:** Outside trace  
-**Source organization:** ThoughtWorks  
-**Official source:** https://www.thoughtworks.com/insights/topic/sensible-defaults  
-**Original work:** *The Sensible Defaults Playbook*
+**Lineage:** Public delivery realism practice across industry  
+**Referenced source (one example):** ThoughtWorks, *Sensible Defaults*  
+https://www.thoughtworks.com/insights/topic/sensible-defaults
 
-This document is a derived operational extraction for internal agent reasoning and human use.
-It does not reproduce, reprint, or section-by-section summarize the original publication.
+This document is a derived operational extraction shaped by public delivery realism practice across industry.
+It does not reproduce, reprint, or section-by-section summarize any single publication.
 
-If the original work changes, this lens may drift. The official source remains canonical.
+If referenced source material changes, this lens may drift. Referenced sources remain external context, not canonical authority.
 
 ---
 
@@ -319,12 +319,16 @@ If another Outside Trace lens conflicts, prefer the lens closer to the mandate's
 
 ## Provenance and acknowledgement
 
-This lens is informed by public ThoughtWorks material on delivery defaults, including:
+This lens is informed by public material on delivery realism, risk surfacing, and capability mapping across industry practice.
+
+One referenced source among others:
 
 ThoughtWorks, *Sensible Defaults*  
 https://www.thoughtworks.com/insights/topic/sensible-defaults
 
-This repository is not affiliated with ThoughtWorks. Names, trademarks, and referenced titles remain with their respective owners.
+This repository is not affiliated with any organization mentioned. Names and trademarks remain with their respective owners.
+
+This lens stands as an independent synthesis. External references indicate lineage, not ownership or endorsement.
 
 ---
 
