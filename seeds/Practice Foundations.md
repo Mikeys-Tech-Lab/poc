@@ -153,6 +153,16 @@ This practice is being misused when:
 - identity is used as insulation from critique  
 - "trace" is treated as monitoring people rather than documenting reasoning  
 
+These are drift patterns.
+Drift is expected when something travels.
+Drift is not always bad.
+Unmarked drift breaks bridges.
+
+Do not guess intent.
+Ask for artifacts.
+If artifacts appear, you have something to connect to.
+If artifacts do not appear, you have a boundary.
+
 If trace disappears, the practice disappears.
 
 ---
