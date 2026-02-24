@@ -27,7 +27,7 @@ Do not use it as:
 - a personality profile  
 - a substitute for engineering work  
 
-This is a clarification layer. It exists so meaning survives contact with scale.
+This is a clarification layer. It exists so meaning survives contact with growth.
 
 ---
 
@@ -175,9 +175,9 @@ It is incompatible with:
 
 - surveillance  
 - punitive monitoring  
-- coercive enforcement disguised as governance  
+- coercive enforcement disguised as process  
 
-If an organization uses this language to police workers, that is not this practice. If your manager requires this as a performance metric, it is no longer this practice.
+If an organization uses this language to police workers, that is not this practice. If your manager requires this for performance evaluation, it is no longer this practice.
 
 A trace produced under coercion is not a valid trace in this practice.
 This practice cannot enforce posture under pressure. It can only name misuse, clarify boundaries, and refuse association.
@@ -261,7 +261,7 @@ The purpose of this layer is not protection from criticism.
 It exists so that:
 
 - growth does not erase origin  
-- scale does not erase nuance  
+- growth does not erase nuance  
 - visibility does not erase discipline  
 
 Interpretation is inevitable.

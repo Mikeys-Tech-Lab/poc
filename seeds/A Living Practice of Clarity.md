@@ -18,9 +18,9 @@ It is not a claim that a community exists yet.
 
 It emerged from a simple observation:
 
-In many modern contexts, output now scales faster than shared understanding.
+In many modern contexts, output can grow faster than shared understanding.
 
-AI accelerates production. Media accelerates distribution. But integration does not scale on its own. Integration here means more than technical merging. It means coordinating intent, assumptions, trade-offs, and risk across people who now produce faster than they can align.
+AI accelerates production. Media accelerates distribution. But integration does not automatically keep pace. Integration here means more than technical merging. It means coordinating intent, assumptions, trade-offs, and risk across people who now produce faster than they can align.
 
 The result is pressure, rework, fragmentation, and burnout.
 
@@ -38,7 +38,7 @@ From content to trace.
 
 A trace is a short record of the reasoning path behind a claim: what was decided, what was assumed, what was uncertain, and how it will be checked. Instead of only stating conclusions, this work makes visible the path behind them.
 
-Trace here means the visible reasoning path behind a decision. It does not refer to runtime telemetry, distributed tracing, or system observability artifacts.
+Trace here means the visible reasoning path behind a decision. It does not refer to runtime telemetry, distributed tracing, or operational visibility data.
 
 Clarity here does not mean certainty, agreement, or one final truth. It means:
 
@@ -92,6 +92,7 @@ Each person, group, or community can form their own node of practice.
 A node might be a team decision log that names assumptions and checks them, a community translation that marks what was adapted, or a personal journal that records uncertainty alongside conclusions. What makes it a node is not the format. It is visible reasoning and explicit boundaries.
 
 Nodes do not need to merge or agree. They may connect through bridges: shared traces, shared definitions, shared translations.
+Fork-first does not mean isolation. If you need shared action, write a bridge: name the divergence point and the next check you will run together.
 
 A bridge is not possession. It is mutual visibility. Connection without ownership.
 
@@ -196,7 +197,7 @@ It may grow into:
 - Domain-specific lenses  
 - Open communities of reflective practice  
 
-It may remain small. It may scale.
+It may remain small. It may spread.
 
 Nothing here is finished. Everything evolves through participation, but evolution must be marked.
 

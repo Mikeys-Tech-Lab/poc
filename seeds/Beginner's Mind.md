@@ -60,7 +60,7 @@ Beginner’s mind is what makes that discipline emotionally and politically poss
 Because without it:
 
 - people defend conclusions as identity
-- teams optimize for being right instead of being coherent
+- teams chase being right instead of being coherent
 - AI output gets mistaken for truth
 - speed replaces integration
 
@@ -152,13 +152,13 @@ Beginner’s mind is not obedience.
 It is incompatible with:
 
 - coercive cultures that demand instant answers
-- surveillance disguised as governance
+- surveillance disguised as process
 - status games that reward confidence over coherence
 
 If “I don’t know yet” is punished, trace will be faked.
 Beginner’s mind cannot be mandated. If it is demanded as performance, it will be performed.
 
-If an organization requires certainty, it will produce confident errors at scale.
+If an organization requires certainty, it will produce confident errors at volume.
 
 Beginner’s mind is how teams resist that pressure without stalling.
 

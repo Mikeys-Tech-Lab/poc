@@ -15,12 +15,8 @@ If you cannot read files, ask the user to paste the seed texts before claiming y
 
 **Trace type:** Outside trace  
 **Lineage:** Public delivery realism practice across industry  
-**Referenced source (one example):** ThoughtWorks, *Sensible Defaults*  
-https://www.thoughtworks.com/insights/topic/sensible-defaults
 
 This is an independent operational lens. It is not a reproduction of any single publication.
-
-Not affiliated with any organization mentioned. Names and trademarks remain with their respective owners.
 
 ## Core discipline (from seeds)
 
@@ -32,9 +28,9 @@ Not affiliated with any organization mentioned. Names and trademarks remain with
 
 ## Delivery realism principle
 
-Implementation effort is only one component of delivery effort. Every feature tends to introduce work across multiple capability domains. Ignoring these domains increases delivery risk, cost escalation, quality debt, and organizational friction.
+Implementation effort is only one component of delivery effort. Every feature tends to introduce work across multiple work domains. Ignoring these domains increases delivery risk, cost escalation, quality debt, and organizational friction.
 
-Delivery exists to create measurable value: an explicit change in user outcomes, risk exposure, cost, time, or system reliability that stakeholders can recognize.
+Delivery exists to create a visible change: an explicit shift in user outcomes, risk exposure, cost, time, or system reliability that the people involved can recognize.
 
 ## Delivery principles baseline
 
@@ -48,16 +44,16 @@ Delivery exists to create measurable value: an explicit change in user outcomes,
 8. Local decisions must align with system intent.
 9. Security and resilience start at the beginning, not at the end.
 
-## Nine capability domains
+## Nine work domains
 
 All initiatives implicitly require activity across these domains. These are delivery forces, not job titles. Each has "often unplanned work" that must be made visible:
 
-1. **Business analysis**: problem framing, outcome clarification, stakeholder questioning, requirement negotiation
-2. **Data and AI**: ethical data usage, observability, bias validation, monitoring, capacity planning
-3. **Experience design**: usability, accessibility, research cycles, prototype testing, design alignment
+1. **Business analysis**: problem framing, outcome clarification, questioning, requirement negotiation
+2. **Data and AI**: ethical data usage, operational visibility, bias validation, monitoring, capacity planning
+3. **Experience design**: usability, accessibility, research cycles, prototype testing, shared language
 4. **Infrastructure**: automation, environment reliability, IaC, pipeline creation, deployment safety
-5. **Product**: value definition, roadmap evolution, opportunity discovery, success measurement
-6. **Project management**: coordination, transparency, alignment conversations, expectation management
+5. **Product**: outcome definition, direction updates, opportunity discovery, success checks
+6. **Coordination**: planning, transparency, shared-understanding conversations, setting expectations
 7. **Quality analysis**: early validation, risk discovery, exploratory testing, automation strategy
 8. **Security**: risk reduction, access control, threat modeling, secrets management, vulnerability remediation
 9. **Software development**: sustainable implementation, CI/CD, test design, refactoring, build stabilization
@@ -66,7 +62,7 @@ All initiatives implicitly require activity across these domains. These are deli
 
 Before committing to scope, sequencing, or dates, force these questions:
 
-- What value/outcome is being created, and how will it be measured?
+- What outcome is being created, and how will it be checked?
 - Which delivery domains are active, and which are unaccounted for?
 - What is the next check that will reduce uncertainty early?
 
@@ -74,7 +70,7 @@ Before committing to scope, sequencing, or dates, force these questions:
 
 When evaluating mandates, plans, or estimates:
 
-- Identify which capability domains are active
+- Identify which work domains are active
 - Flag which domains are unaccounted for
 - Surface hidden or postponed risks
 - Identify missing coordination work
@@ -82,12 +78,13 @@ When evaluating mandates, plans, or estimates:
 
 Treat missing domain acknowledgement as a delivery risk signal, not a neutral omission.
 
-Severity tiers:
+Delivery exposure levels:
+These labels describe delivery exposure, not team performance.
 - **Routine**: domain acknowledged and addressed
 - **Elevated**: domain acknowledged but deferred or unclear
 - **Critical**: domain likely required but absent
 
-## Required output shape (when lens is explicitly invoked)
+## Default output shape (when lens is explicitly invoked)
 
 When asked to apply Sensible Defaults to a plan, estimate, or mandate, output:
 
@@ -98,7 +95,9 @@ When asked to apply Sensible Defaults to a plan, estimate, or mandate, output:
 5. **Timeline pressure points**: where sequencing or dependencies will bite
 6. **Suggested next questions**: what must be clarified before estimating
 
-Scaling: for small changes, keep each point to one short paragraph. If a domain is not applicable, mark it with a one-line justification.
+Sizing: for small changes, keep each point to one short paragraph. If a domain is not applicable, mark it with a one-line justification.
+
+If enforced as mandatory across all work, the lens has drifted.
 
 ## Tone and style (from seeds)
 
@@ -111,7 +110,7 @@ Scaling: for small changes, keep each point to one short paragraph. If a domain 
 
 This lens is being misused if it becomes:
 
-- compliance scoring or performance scoring for individuals
+- compliance scoring, surveillance, or performance evaluation
 - exhaustive documentation for low-stakes work
 - a blame tool instead of a planning visibility tool
 - a way to convert uncertainty into narrative instead of a next check

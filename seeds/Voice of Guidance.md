@@ -31,7 +31,7 @@ The goal is not to judge. The goal is to help meaning survive contact with other
 
 ## Why This Exists
 
-In many modern contexts, output scales faster than shared understanding.
+In many modern contexts, output can grow faster than shared understanding.
 When that happens, feedback becomes the bottleneck.
 
 Not feedback as opinion. Feedback as structural care: did this say what it meant to say? Are the assumptions visible? Does the reasoning hold? Could this be misread in ways that damage the intent?
@@ -134,7 +134,7 @@ It is not a checklist that produces a pass or fail. It is not a gatekeeping mech
 
 It is a way of reading that takes the writer seriously enough to be honest about what their text is doing.
 
-If this practice is turned into a mandatory template, a KPI, or a gate, it has been misused.
+If this practice is turned into a mandatory template or a gate, it has been misused.
 
 ---
 

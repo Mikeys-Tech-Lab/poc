@@ -1,8 +1,12 @@
 # Practice of Clarity (PoC)
 
-This repository contains the first public seed set for the Practice of Clarity.
+This package contains the first public seed set for the Practice of Clarity.
 
-It is designed to be copied, adapted, and extended as a lightweight practice (short traces, minimal overhead) for making reasoning, boundaries, and uncertainty visible.
+It is designed to be copied and adapted as a small practice for making reasoning, boundaries, and uncertainty visible.
+
+Trace means the visible reasoning path behind a decision:
+what was assumed, what was known, what was uncertain, and what will be checked next.
+It does not mean runtime telemetry or operational visibility traces.
 
 ## Quick start
 
@@ -12,21 +16,24 @@ It is designed to be copied, adapted, and extended as a lightweight practice (sh
 
 ## Status
 
-**This is a proof of concept and a living practice.**
+This is an early public seed set.
 
-This repository is the whole thing right now. There is no platform behind it, no federation layer, and no contribution workflow yet. What you see here is the first public seed set.
+Right now, this package is the whole thing. There is no platform behind it.
 
-It will evolve through use, critique, and repair. The goal is not perfection. The goal is shared clarity under real conditions.
+If this turns into a checklist enforced across all work, the practice has drifted.
+The practice is only valid when it reduces uncertainty and makes reasoning inspectable.
 
-If this becomes a checklist, it has failed. The practice is only valid when it reduces uncertainty and makes reasoning inspectable.
+A trace produced under coercion is not a valid trace in this practice.
 
-If it is used for compliance scoring, surveillance, or performance management, it is not this practice.
+The practice must not be used for compliance scoring, surveillance, or performance evaluation.
 
-If you want to stress test it, fork the repo and adapt it privately.
+AI may assist in tracing.
+It may not replace human responsibility for the trace.
 
-For now, federation is fork-first. Your fork is your node. Keep your adaptations, and add short notes on what you changed and why.
+If you want to stress test it, fork and adapt it privately.
 
-Feedback, contribution, and federation paths may be added later, once the initial challenges are solved and the release proves useful in real use.
+For now, federation is fork-first. Your fork is your node.
+Keep your adaptations, and add short notes on what you changed and why.
 
 ## Reading support
 
@@ -36,35 +43,14 @@ Feedback, contribution, and federation paths may be added later, once the initia
 
 ## Licensing
 
-This repository uses dual licensing.
-
-### Software
-
-All software, scripts, and tooling are licensed under MIT.
-
-- See `LICENSE`.
-
-### Authored content
-
-All authored content (the written seed texts) is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+The Practice of Clarity texts in this package are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
 
 - See `LICENCE_CONTENT`.
 - Official reference: https://creativecommons.org/licenses/by/4.0/
-
-### Scope and precedence
-
-- If a file includes an explicit license notice, that notice governs that file.
-- Otherwise, MIT applies to code and CC BY 4.0 applies to written content.
-- When in doubt, treat seed texts as CC BY 4.0 and code as MIT.
-
-### Attribution (CC BY 4.0)
 
 If you reuse or adapt the seed texts, give credit, link to the license, and indicate if changes were made.
 
 ## Contents
 
-- Seed texts: `seeds/*.md`
-- Core orientation: `seeds/A Living Practice of Clarity.md`
-- Disagreement protocol: `seeds/A Bridge Between Conflicting Nodes.md`
-- Boot instructions (lens preflight, what to check before acting): `Sensible Defaults Bootstrap.md`
-- Lens definition: `Sensible Defaults.md`
+- `seeds/` — the Practice of Clarity seed set
+- `LICENCE_CONTENT` — CC BY 4.0 legal text

@@ -26,27 +26,23 @@ If you cannot read files, ask the user to paste the seed texts before claiming y
 
 **Trace type:** Outside trace  
 **Lineage:** Public delivery realism practice across industry  
-**Referenced source (one example):** ThoughtWorks, *Sensible Defaults*  
-https://www.thoughtworks.com/insights/topic/sensible-defaults
 
-This document is a derived operational extraction shaped by public delivery realism practice across industry.
+This document is a derived operational lens shaped by public delivery realism practice across industry.
 It does not reproduce, reprint, or section-by-section summarize any single publication.
-
-If referenced source material changes, this lens may drift. Referenced sources remain external context, not canonical authority.
 
 ---
 
 ## Lens Purpose (Domain: Delivery)
 
-Modern software delivery fails when planning treats delivery like implementation only.
+Software delivery breaks when planning treats delivery like implementation only.
 
 This lens anchors baseline delivery realism by making often unplanned work legible, especially:
 Real work here means activities that change delivery outcomes, risk, or decision quality, and that consume time, attention, or coordination capacity.
 
-- discovery and alignment work that precedes building
-- cross-capability dependencies that shape timelines
+- discovery and shared-understanding work that precedes building
+- cross-system dependencies that shape timelines
 - systemic risk that accumulates when work is invisible
-- organizational work that changes outcomes or risk, and consumes coordination capacity
+- coordination work that changes outcomes or risk, and consumes coordination capacity
 
 ---
 
@@ -54,7 +50,7 @@ Real work here means activities that change delivery outcomes, risk, or decision
 
 Where acceleration creates stress in delivery:
 
-- output can scale faster than shared understanding
+- output can grow faster than shared understanding
 - estimates collapse discovery and coordination into "build time"
 - risk gets postponed to the end (security, reliability, data quality, usability)
 - dependency work stays invisible until it becomes a blocker
@@ -81,7 +77,7 @@ Use this lens to force a minimal delivery trace before committing to scope, sequ
 
 Minimal intervention questions:
 
-- What value/outcome is being created, and how will it be measured?
+- What outcome is being created, and how will it be checked?
 - Which delivery domains are active, and which are unaccounted for?
 - What is the next check that will reduce uncertainty early?
 
@@ -91,7 +87,7 @@ Minimal intervention questions:
 
 Agents operating under this lens assume:
 
-1. Delivery exists to create measurable value.
+1. Delivery exists to create a visible change.
 2. Shared understanding precedes solutioning.
 3. Risks, assumptions, issues, and dependencies must be surfaced early.
 4. Visibility increases trust and delivery stability.
@@ -99,15 +95,15 @@ Agents operating under this lens assume:
 6. Learning reshapes scope, sequencing, and direction.
 7. Decisions should occur close to execution.
 8. Collaboration across roles is mandatory.
-9. Local decisions must align with system intent.
+9. Local decisions must match system intent.
 10. Ownership is collective across lifecycle stages.
 11. Security and resilience start at the beginning, not at the end.
 
-Measurable value here means an explicit change in user outcomes, risk exposure, cost, time, or system reliability that stakeholders can recognize.
+Visible change here means an explicit shift in user outcomes, risk exposure, cost, time, or system reliability that the people involved can recognize.
 
 ---
 
-## Delivery Capability Domains (Inventory)
+## Delivery Work Domains (Inventory)
 
 All initiatives implicitly require activity across these domains.
 These are delivery forces, not job titles.
@@ -121,7 +117,7 @@ These are delivery forces, not job titles.
 - execution path definition
 
 **Often unplanned work**
-- stakeholder questioning
+- questioning with the people involved
 - success definition
 - requirement negotiation
 
@@ -129,9 +125,9 @@ These are delivery forces, not job titles.
 
 **Focus**
 - ethical data usage
-- observability
+- operational visibility
 - reproducibility
-- data quality governance
+- data quality discipline
 
 **Often unplanned work**
 - bias validation
@@ -151,7 +147,7 @@ These are delivery forces, not job titles.
 - research cycles
 - prototype testing
 - feedback synthesis
-- design alignment
+- design coherence
 
 ### 6.4 Infrastructure
 
@@ -159,40 +155,40 @@ These are delivery forces, not job titles.
 - automation
 - environment reliability
 - operational independence
-- scalability
+- capacity
 
 **Often unplanned work**
 - infrastructure as code
 - pipeline creation
-- observability integration
+- operational visibility integration
 - deployment safety
 
 ### 6.5 Product
 
 **Focus**
-- value definition
-- roadmap evolution
-- outcome metrics
-- customer alignment
+- outcome definition
+- direction updates
+- success measures
+- user fit
 
 **Often unplanned work**
 - opportunity discovery
 - prioritization negotiation
-- market monitoring
+- context monitoring
 - success measurement
 
-### 6.6 Project management
+### 6.6 Coordination
 
 **Focus**
 - coordination
 - transparency
 - delivery planning
-- commercial awareness
+- constraints awareness
 
 **Often unplanned work**
-- alignment conversations
-- reporting structures
-- expectation management
+- shared-understanding conversations
+- status updates
+- setting expectations
 - decision facilitation
 
 ### 6.7 Quality analysis
@@ -241,7 +237,7 @@ These are delivery forces, not job titles.
 ## Delivery Reality Assumption
 
 Implementation effort is only one component of delivery effort.
-Every feature tends to introduce work across multiple capability domains, sometimes in parallel, sometimes sequentially.
+Every feature tends to introduce work across multiple work domains, sometimes in parallel, sometimes sequentially.
 
 Ignoring these domains increases delivery risk, cost escalation, quality debt, and organizational friction.
 
@@ -251,21 +247,22 @@ Ignoring these domains increases delivery risk, cost escalation, quality debt, a
 
 When evaluating mandates, plans, or estimates, verify:
 
-- which capability domains are active
+- which work domains are active
 - which domains are unaccounted for
 - which risks are hidden or postponed
 - which coordination work is missing
 - whether timelines reflect systemic effort, not just coding time
 
 Treat missing domain acknowledgement as a delivery risk signal, not a neutral omission.
-Use severity tiers:
+Delivery exposure levels:
+These labels describe delivery exposure, not team performance.
 - **Routine**: domain is acknowledged and addressed
 - **Elevated**: domain is acknowledged but deferred or unclear
 - **Critical**: domain is likely required but absent
 
 ---
 
-## Required Output Shape
+## Default Output Shape
 
 When this lens is invoked, output:
 
@@ -276,12 +273,14 @@ When this lens is invoked, output:
 5. **Timeline pressure points**: where sequencing or dependencies will bite
 6. **Suggested next questions**: what must be clarified before estimating
 
-Scaling rule:
+Sizing rule:
 - For small changes, keep each point to one short paragraph.
 - If a domain is not applicable, mark it as such with a one-line justification.
 
+If enforced as mandatory across all work, the lens has drifted.
+
 This is not bureaucracy.
-It is minimum visibility to prevent delivery theater.
+It is minimum visibility to reduce hidden work.
 
 ---
 
@@ -289,7 +288,7 @@ It is minimum visibility to prevent delivery theater.
 
 This lens is being misused if it becomes:
 
-- performance scoring for individuals
+- compliance scoring, surveillance, or performance evaluation
 - a reason to demand exhaustive documentation for low-stakes work
 - a blame tool ("you missed a domain") instead of a planning visibility tool
 - a way to convert uncertainty into a story instead of a next check
@@ -319,16 +318,7 @@ If another Outside Trace lens conflicts, prefer the lens closer to the mandate's
 
 ## Provenance and acknowledgement
 
-This lens is informed by public material on delivery realism, risk surfacing, and capability mapping across industry practice.
-
-One referenced source among others:
-
-ThoughtWorks, *Sensible Defaults*  
-https://www.thoughtworks.com/insights/topic/sensible-defaults
-
-This repository is not affiliated with any organization mentioned. Names and trademarks remain with their respective owners.
-
-This lens stands as an independent synthesis. External references indicate lineage, not ownership or endorsement.
+This lens is informed by public material on delivery realism and risk surfacing across industry practice.
 
 ---
 

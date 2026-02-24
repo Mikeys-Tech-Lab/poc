@@ -13,7 +13,7 @@
 This practice begins in English as a practical initiation layer, not as a preference and not as a claim of authority.
 
 
-English dominates global knowledge systems through colonial residue, academic gatekeeping, and publishing monopolies. Its reach is structural, not neutral. This work starts here to trace and transform that dominance, not to endorse it.
+English has structural dominance in many global knowledge and publishing systems. This work starts here to acknowledge that constraint, not to treat English as authority.
 
 This matters because language choices shape who can participate and whose knowledge becomes the default.
 
@@ -71,7 +71,7 @@ Structural definitions live in the seeds:
 
 ### Phase one: English as initiation
 
-All content begins in English as a shared container for development, testing, and alignment. English is used strategically, not ideologically. It is not the endpoint.
+All content begins in English as a shared container for development, testing, and shared understanding. English is a practical starting point. It is not the endpoint.
 
 ### Phase two: multilingual resonance
 

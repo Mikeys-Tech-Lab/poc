@@ -45,7 +45,7 @@ This is a model, not a running community.
 **Trace**
 - Assumption: Model hallucination can propagate silently.
 - Evidence: Prior incident in module Y in a different context.
-- Boundary: Concern limited to customer-facing outputs.
+- Boundary: Concern limited to user-facing outputs.
 - Unknown: Actual hallucination frequency in current deployment.
 - Revision note: Based on observed failure patterns.
 
@@ -131,7 +131,7 @@ Revision is mandatory.
 
 ---
 
-## Multi-Node Scaling
+## Multi-Node Case
 
 When more than two nodes diverge:
 
