@@ -1,4 +1,6 @@
-# Translation Policy
+# Translation and Register Guidance
+
+This document offers guidance, not enforcement. It describes how language and register are handled within this practice.
 ## How This Practice Handles Language
 
 **Author:** Mikey Sebastian Drozd  
@@ -21,6 +23,10 @@ English is the launch language, not the home.
 
 Translations are not a secondary copy. Each locale is treated as an accountable edition.
 
+This practice is designed to become multilingual over time.
+
+New languages will be added as capacity and review support becomes available. The list below is a forward direction, not a launch promise.
+
 Planned locales are direction, not a promise.
 
 ---
@@ -28,6 +34,15 @@ Planned locales are direction, not a promise.
 ## What "Translated" Means Here
 
 Translations, when produced, are AI-assisted and human-reviewed. They are culturally adapted, not converted word for word.
+
+This policy also covers **register shifts**. A register shift is when the same core content is rewritten for a different audience or channel, for example beginner orientation, practitioner delivery, institutional compliance, or public platforms like short video.
+
+Locale and register are two separate axes:
+
+- Locale answers: which language and cultural context.
+- Register answers: who this is for, and how it should sound.
+
+A piece can be translated without changing register, or re-registered without changing language. Both require accountability.
 
 Translation here means: preserve intent and structure, while letting language, rhythm, and examples become local enough to read as if it was written for that culture.
 
@@ -69,6 +84,44 @@ Structural definitions live in the seeds:
 
 ## Two Phases: English Initiation, Multilingual Resonance
 
+## Two Axes: Locale and Register
+
+This practice is designed to speak across audiences, not only across languages.
+
+### Register families
+
+These are the main register families this practice will evolve toward. They are directions, not promises.
+
+- **Orientation**: beginner friendly, low assumed context, short sentences when needed.
+- **Practitioner**: operational and precise, assumes basic familiarity with the practice.
+- **Institutional**: for documents that must interface with institutions (for example procurement, risk review, or policy). This register is allowed only as an interface layer. It must not dilute or replace the practice. It must retain all boundary statements and safety constraints, including anti-surveillance and anti-coercion clauses. If an institution requires removing or weakening those constraints, the edition must be marked as incompatible.
+- **Public**: accessible, punchy, minimal jargon, suited for newsletters and public posts.
+- **Short form**: high signal, low context, designed for formats like short video captions.
+
+### What must stay stable across registers
+
+Register can change rhythm and vocabulary, but it must not change:
+
+- The structural meaning of core terms.
+- Boundary statements.
+- Safety constraints.
+- The reasoning path for core claims.
+
+If a register shift changes a core claim, mark it as an adaptation event.
+
+### Anti-co-option rule for institutional interfaces
+
+Institutional editions are permitted only to help a practitioner communicate with institutional systems.
+
+They must not:
+
+- Remove or weaken safety constraints.
+- Redefine "safety" as corporate liability.
+- Replace refusal boundaries with compliance theater.
+- Become the default or canonical edition.
+
+If an institution attempts to distribute an altered version top down, treat that as a co-option event. Record what changed and publish a public diff or change log note.
+
 ### Phase one: English as initiation
 
 All content begins in English as a shared container for development, testing, and shared understanding. English is a practical starting point. It is not the endpoint.
@@ -91,7 +144,8 @@ This is not simplification. It is ethical adaptation.
 
 ## Locales (Initial Release + Planned)
 
-Initial release: `en-us` only.
+Initial release: `en-us` only.  
+More locales will be added over time as translation and review capacity becomes available.
 
 Planned locales (accountable editions, not “secondary copies”):
 
@@ -109,15 +163,19 @@ Planned locales (accountable editions, not “secondary copies”):
 | zh-cn | Chinese (Simplified) | LTR |
 | zh-tw | Chinese (Traditional) | LTR |
 
+Future locales will be added over time as reviewer capacity and community support become available.
+
 ---
 
 ## Translation Principles (Non-Negotiable)
 
 1. Cultural adaptation, not literal translation. Sentence structure, idiom, and rhythm must follow the target language's natural patterns.
-2. Register must match the locale. Honor what reads as warm, direct, and credible in that culture.
+2. Register must match the locale and the intended audience. Register choice must not be used to sanitize, bureaucratize, or corporate-ize the practice.
 3. Preserve intent, not words. Translate the tension and structure, not the surface phrasing.
 4. Avoid calques. If a phrase only makes sense because it was translated word-for-word from English, rewrite it.
 5. Cultural context matters. References, examples, and metaphors should make sense locally. Replace English-centric metaphors with ones that work in the target culture.
+6. Register is explicit. Each translated or rewritten edition must state its intended register (orientation, practitioner, institutional, public, short form).
+7. Avoid register drift. Do not accidentally slide into academic, corporate, or influencer tone unless the edition explicitly targets that register.
 
 ---
 
@@ -125,14 +183,14 @@ Planned locales (accountable editions, not “secondary copies”):
 
 ### de-de (German)
 
-- Professional but not stiff. "Du" form is fine (already established in these texts).
+- Match the chosen register when German editions are produced. German can be direct without being harsh. Avoid stiffness unless the edition is explicitly an institutional interface.
 - Avoid English loanwords where a clean German word exists. "Output" can become "Ergebnisse" depending on context.
 - German compound sentences are natural. Do not force English-style short sentences if the German reads better as a longer, flowing sentence.
 
 ### es-latam (Latin American Spanish)
 
 - Warm, direct. Avoid Castilian formality unless the audience specifically calls for it.
-- "Tú" form, not "usted" (matches the established register).
+- Choose address form based on register. "tú" often fits orientation and public editions. "usted" may fit institutional editions.
 - Latin American idiom, not peninsular.
 
 ### pt-br (Brazilian Portuguese)
@@ -207,9 +265,12 @@ Before publishing any translation, ask:
 1. Would a native speaker of this language read this and think "this was written for me"?
 2. Are there any phrases that only make sense if you know the English original?
 3. Does the emotional register match the culture, not just the words?
-4. Structural fidelity: do headings, lists, and trace prompts stay in the same order unless an adaptation note says otherwise?
-5. Terminology stability: are core terms either preserved or mapped once in a glossary note (trace, assumption, interpretation, misuse, federation)?
-6. Back check: can you translate a short excerpt back into English and confirm the meaning did not drift?
+4. Register fit: can you point to at least three concrete features that match the intended register (for example pronouns, sentence length, permitted jargon, formality level, call to action style)?
+   If you cannot name concrete features, the register decision is not traceable yet.
+5. Structural fidelity: do headings, lists, and trace prompts stay in the same order unless an adaptation note says otherwise?
+6. Terminology stability: are core terms either preserved or mapped once in a glossary note (trace, assumption, interpretation, misuse, federation)?
+7. Back check: can you translate a short excerpt back into English and confirm the meaning did not drift?
+8. Co-option check: does any wording shift boundaries into corporate compliance language or redefine safety as liability? If yes, rewrite and record an adaptation note.
 
 If any answer is no, rewrite.
 
@@ -229,7 +290,7 @@ The following short notice may be placed at the beginning or end of individual p
 
 ---
 
-This work is part of the Practice of Clarity by  
+This work is part of the Practice of Clarity.  
 Mikey Sebastian Drozd, Dipl.-Ing. (FH).
 
 Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).  
