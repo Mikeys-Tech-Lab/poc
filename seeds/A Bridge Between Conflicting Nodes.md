@@ -77,12 +77,12 @@ A facilitator:
 - does not merge claims
 - does not impose compromise
 
-Facilitators must be consented to by the participating nodes.
+Facilitators need to be consented to by the participating nodes.
 
 If consent fails, the bridge remains public and inspectable without facilitation.
 
 Bridge building is labor.
-It must be time-boxed and acknowledged as work.
+It needs to be time-boxed and acknowledged as work.
 
 ---
 
@@ -119,7 +119,7 @@ Action proceeds with declared boundaries.
 
 Federation does not permit endless escalation.
 
-Every bridge must produce, at minimum:
+Every bridge needs to produce, at minimum:
 
 - a bounded experiment
 - a measurable variable
@@ -127,7 +127,7 @@ Every bridge must produce, at minimum:
 
 If no action is defined, the bridge is incomplete.
 
-Revision is mandatory.
+This only works if revision happens.
 
 ---
 
@@ -266,7 +266,7 @@ The revision pathway:
 - does not require real time engagement
 - does not override the engagement boundary
 
-A valid revision trace must include:
+A valid revision trace needs to include:
 
 - a clear description of what new information has emerged
 - evidence of why the prior verification may be incomplete or incorrect

@@ -140,9 +140,9 @@ Traceability does not require conformity. It requires transparency about interna
 
 English can be a practical initiation layer for shared development, but it is not the home language of the practice. English is the launch language, not the endpoint.
 
-Translation is not a mechanical export. It is contextual resonance: a structural recoding so the practice can speak with integrity across different memory systems. Words may shift to hold historical trauma accurately. Forms may adapt to reflect local epistemologies. Accessibility must include language levels, not just vocabulary.
+Translation is not a mechanical export. It is contextual resonance: a structural recoding so the practice can speak with integrity across different memory systems. Words may shift to hold historical trauma accurately. Forms may adapt to reflect local epistemologies. Accessibility includes language levels, not just vocabulary.
 
-One core accessibility principle: clarity must not require education. Language should meet people where they are without lowering depth. This is not simplification. It is ethical adaptation.
+One core accessibility principle: clarity does not require education. Language should meet people where they are without lowering depth. This is not simplification. It is ethical adaptation.
 
 ---
 
@@ -199,7 +199,7 @@ It may grow into:
 
 It may remain small. It may spread.
 
-Nothing here is finished. Everything evolves through participation, but evolution must be marked.
+Nothing here is finished. Everything evolves through participation, but evolution needs to be marked.
 
 This marks a beginning, not a conclusion.
 

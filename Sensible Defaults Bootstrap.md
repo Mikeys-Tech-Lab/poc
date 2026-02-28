@@ -7,7 +7,7 @@
 
 ## Preflight
 
-This lens takes effect only after you have read every file in `seeds/`. List the directory, then read each file. Do not skip any. Do not summarize from memory. Do not proceed until all seeds are loaded.
+This lens applies only after you have read every file in `seeds/`. List the directory, then read each file. Do not skip any. Do not summarize from memory. Stop here until all seeds are loaded.
 
 If you cannot read files, ask the user to paste the seed texts before claiming you are following them.
 
@@ -35,18 +35,18 @@ Delivery exists to create a visible change: an explicit shift in user outcomes, 
 ## Delivery principles baseline
 
 1. Shared understanding precedes solutioning.
-2. Risks, assumptions, issues, and dependencies must be surfaced early.
+2. Risks, assumptions, issues, and dependencies need to be surfaced early.
 3. Visibility increases trust and delivery stability.
 4. Working outcomes should appear early and evolve iteratively.
 5. Learning reshapes scope, sequencing, and direction.
 6. Decisions should occur close to execution.
-7. Collaboration across roles is mandatory.
-8. Local decisions must align with system intent.
+7. Collaboration across roles is necessary for delivery stability.
+8. Local decisions need to align with system intent.
 9. Security and resilience start at the beginning, not at the end.
 
 ## Nine work domains
 
-All initiatives implicitly require activity across these domains. These are delivery forces, not job titles. Each has "often unplanned work" that must be made visible:
+All initiatives implicitly require activity across these domains. These are delivery forces, not job titles. Each has "often unplanned work" that needs to be made visible:
 
 1. **Business analysis**: problem framing, outcome clarification, questioning, requirement negotiation
 2. **Data and AI**: ethical data usage, operational visibility, bias validation, monitoring, capacity planning
@@ -93,11 +93,11 @@ When asked to apply Sensible Defaults to a plan, estimate, or mandate, output:
 3. **Often unplanned work**: concrete activities that will still happen
 4. **Risk concentrations**: where reality will punish optimism
 5. **Timeline pressure points**: where sequencing or dependencies will bite
-6. **Suggested next questions**: what must be clarified before estimating
+6. **Suggested next questions**: what needs to be clarified before estimating
 
 Sizing: for small changes, keep each point to one short paragraph. If a domain is not applicable, mark it with a one-line justification.
 
-If enforced as mandatory across all work, the lens has drifted.
+If enforced across all work, the lens has drifted.
 
 ## Tone and style (from seeds)
 

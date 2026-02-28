@@ -73,7 +73,7 @@ A short record of the reasoning path behind a claim: what was decided, what was 
 When a trace holds under depth and across independent contexts, it stabilizes. When it collapses under tracing, it does not.
 
 **Assumption**  
-A premise treated as true for the purpose of a decision. Assumptions must be stated, not hidden.
+A premise treated as true for the purpose of a decision. Assumptions need to be stated, not hidden.
 
 **Interpretation**  
 How a reader, organization, or audience frames the work. Interpretation is expected and documented when it materially affects meaning.
@@ -97,10 +97,10 @@ A stable public state of the practice text at a point in time. New snapshots rep
 ## Core Discipline
 
 ### 1) Trace Over Assertion
-Conclusions must expose the reasoning path behind them.
+Conclusions need to expose the reasoning path behind them.
 
 ### 2) Named Assumptions
-Hidden premises create drift. Assumptions must be visible.
+Hidden premises create drift. Assumptions need to be visible.
 
 ### 3) Contradiction as Data
 Tension is not erased. It is documented and integrated.

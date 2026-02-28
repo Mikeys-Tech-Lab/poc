@@ -70,7 +70,7 @@ If a translated edition discusses harm reports or "inspectable evidence", keep t
 
 Some structural terms will not have a clean equivalent in every language. When that happens, the choice is part of the meaning. Treat it as an adaptation and trace it.
 
-If a translation changes a core claim, that is an adaptation, not a translation. Adaptations are allowed under the CC BY 4.0 license, but they must be marked explicitly.
+If a translation changes a core claim, that is an adaptation, not a translation. Adaptations are allowed under the CC BY 4.0 license, but they need to be marked explicitly.
 
 If two translations choose different localized terms for the same structural concept, treat that mismatch as an adaptation event.
 Record the term choice and the reason, and prefer interoperability over novelty.
@@ -96,9 +96,9 @@ This means:
 
 - Words may shift to hold historical trauma accurately
 - Forms may adapt to reflect local epistemologies
-- Accessibility must include language levels, not just vocabulary
+- Accessibility includes language levels, not just vocabulary
 
-One core design principle: clarity must not require education. Language should meet people where they are without lowering depth.
+One core design principle: clarity does not require education. Language should meet people where they are without lowering depth.
 
 This is not simplification. It is ethical adaptation.
 
@@ -112,11 +112,11 @@ These are the main register families this practice will evolve toward.
 
 - **Orientation**: beginner friendly, low assumed context, short sentences when needed.
 - **Practitioner**: operational and precise, assumes basic familiarity with the practice.
-- **Institutional**: for documents that must interface with institutions (for example procurement, risk review, or policy). This register is allowed only as an interface layer. It must not dilute or replace the practice. It must retain all boundary statements and safety constraints, including anti-surveillance and anti-coercion clauses. If an institution requires removing or weakening those constraints, the edition must be marked as incompatible.
+- **Institutional**: for documents that need to interface with institutions (for example procurement, risk review, or policy). This register is allowed only as an interface layer. It must not dilute or replace the practice. It must retain all boundary statements and safety constraints, including anti-surveillance and anti-coercion clauses. If an institution requires removing or weakening those constraints, the edition must be marked as incompatible.
 - **Public**: accessible, punchy, minimal jargon, suited for newsletters and public posts.
 - **Short form**: high signal, low context, designed for formats like short video captions.
 
-### What must stay stable across registers
+### What stays stable across registers
 
 Register can change rhythm and vocabulary, but it must not change:
 
@@ -176,12 +176,12 @@ Future locales will be added over time as reviewer capacity and community suppor
 
 ## Translation Principles (Non-Negotiable)
 
-1. Cultural adaptation, not literal translation. Sentence structure, idiom, and rhythm must follow the target language's natural patterns.
-2. Register must match the locale and the intended audience. Register choice must not be used to sanitize, bureaucratize, or corporate-ize the practice.
+1. Cultural adaptation, not literal translation. Sentence structure, idiom, and rhythm need to follow the target language's natural patterns.
+2. Register needs to match the locale and the intended audience. Register choice must not be used to sanitize, bureaucratize, or corporate-ize the practice.
 3. Preserve intent, not words. Translate the tension and structure, not the surface phrasing.
 4. Avoid calques. If a phrase only makes sense because it was translated word-for-word from English, rewrite it.
 5. Cultural context matters. References, examples, and metaphors should make sense locally. Replace English-centric metaphors with ones that work in the target culture.
-6. Register is explicit. Each translated or rewritten edition must state its intended register (orientation, practitioner, institutional, public, short form).
+6. Register is explicit. Each translated or rewritten edition needs to state its intended register (orientation, practitioner, institutional, public, short form).
 7. Avoid register drift. Do not accidentally slide into academic, corporate, or influencer tone unless the edition explicitly targets that register.
 
 ---

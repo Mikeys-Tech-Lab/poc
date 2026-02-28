@@ -110,7 +110,7 @@ Culturally loaded terms need context-sensitive alternatives. Sentence structures
 
 The test: would a native speaker of the target language read it and think this was written for them? If not, the translation needs more than vocabulary. It needs adaptation.
 
-This discipline applies beyond language. When a practice moves across domains, professions, or communities, the same care is needed. Structure and meaning must travel, not just words.
+This discipline applies beyond language. When a practice moves across domains, professions, or communities, the same care is needed. Structure and meaning need to travel, not just words.
 
 ### Restraint in judgment
 

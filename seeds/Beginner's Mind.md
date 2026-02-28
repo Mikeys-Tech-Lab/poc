@@ -187,7 +187,7 @@ If you can answer those, you are practicing beginner’s mind.
 This page describes a posture, not a rulebook.
 
 It may evolve in examples, templates, and teaching style.
-It must not evolve away from its core:
+It does not work if it evolves away from its core:
 
 Beginner’s mind protects trace.
 Trace protects shared understanding.

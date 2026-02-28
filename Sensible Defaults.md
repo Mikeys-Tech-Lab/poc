@@ -1,9 +1,9 @@
-## Preflight: Seed Loading (Required)
+## Preflight: Seed Loading (Prerequisite)
 
 Before applying this lens, preload the full Practice of Clarity seed set.
-Fail fast if any seed is unavailable.
+Stop here if any seed is unavailable.
 
-Required seeds (repo paths):
+Seed prerequisites (repo paths):
 
 - `seeds/A Living Practice of Clarity.md`
 - `seeds/Practice Foundations.md`
@@ -89,13 +89,13 @@ Agents operating under this lens assume:
 
 1. Delivery exists to create a visible change.
 2. Shared understanding precedes solutioning.
-3. Risks, assumptions, issues, and dependencies must be surfaced early.
+3. Risks, assumptions, issues, and dependencies need to be surfaced early.
 4. Visibility increases trust and delivery stability.
 5. Working outcomes should appear early and evolve iteratively.
 6. Learning reshapes scope, sequencing, and direction.
 7. Decisions should occur close to execution.
-8. Collaboration across roles is mandatory.
-9. Local decisions must match system intent.
+8. Collaboration across roles is necessary for delivery stability.
+9. Local decisions need to match system intent.
 10. Ownership is collective across lifecycle stages.
 11. Security and resilience start at the beginning, not at the end.
 
@@ -271,13 +271,13 @@ When this lens is invoked, output:
 3. **Often unplanned work**: concrete activities that will still happen
 4. **Risk concentrations**: where reality will punish optimism
 5. **Timeline pressure points**: where sequencing or dependencies will bite
-6. **Suggested next questions**: what must be clarified before estimating
+6. **Suggested next questions**: what needs to be clarified before estimating
 
 Sizing rule:
 - For small changes, keep each point to one short paragraph.
 - If a domain is not applicable, mark it as such with a one-line justification.
 
-If enforced as mandatory across all work, the lens has drifted.
+If enforced across all work, the lens has drifted.
 
 This is not bureaucracy.
 It is minimum visibility to reduce hidden work.
