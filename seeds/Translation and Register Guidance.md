@@ -1,6 +1,7 @@
 # Translation and Register Guidance
 
 This document offers guidance, not enforcement. It describes how language and register are handled within this practice.
+
 ## How This Practice Handles Language
 
 **Author:** Mikey Sebastian Drozd  
@@ -14,7 +15,6 @@ This document offers guidance, not enforcement. It describes how language and re
 
 This practice begins in English as a practical initiation layer, not as a preference and not as a claim of authority.
 
-
 English has structural dominance in many global knowledge and publishing systems. This work starts here to acknowledge that constraint, not to treat English as authority.
 
 This matters because language choices shape who can participate and whose knowledge becomes the default.
@@ -25,7 +25,7 @@ Translations are not a secondary copy. Each locale is treated as an accountable 
 
 This practice is designed to become multilingual over time.
 
-New languages will be added as capacity and review support becomes available. The list below is a forward direction, not a launch promise.
+New languages will be added as capacity and review support becomes available.
 
 Planned locales are direction, not a promise.
 
@@ -35,7 +35,7 @@ Planned locales are direction, not a promise.
 
 Translations, when produced, are AI-assisted and human-reviewed. They are culturally adapted, not converted word for word.
 
-This policy also covers **register shifts**. A register shift is when the same core content is rewritten for a different audience or channel, for example beginner orientation, practitioner delivery, institutional compliance, or public platforms like short video.
+This guidance also covers **register shifts**. A register shift is when the same core content is rewritten for a different audience or channel, for example beginner orientation, practitioner delivery, institutional compliance, or public platforms like short video.
 
 Locale and register are two separate axes:
 
@@ -84,13 +84,31 @@ Structural definitions live in the seeds:
 
 ## Two Phases: English Initiation, Multilingual Resonance
 
+### Phase one: English as initiation
+
+All content begins in English as a shared container for development, testing, and shared understanding. English is a practical starting point. It is not the endpoint.
+
+### Phase two: multilingual resonance
+
+Translation is not a mechanical export. It is contextual resonance. A structural recoding so the practice can speak with integrity across different memory systems.
+
+This means:
+
+- Words may shift to hold historical trauma accurately
+- Forms may adapt to reflect local epistemologies
+- Accessibility must include language levels, not just vocabulary
+
+One core design principle: clarity must not require education. Language should meet people where they are without lowering depth.
+
+This is not simplification. It is ethical adaptation.
+
 ## Two Axes: Locale and Register
 
 This practice is designed to speak across audiences, not only across languages.
 
 ### Register families
 
-These are the main register families this practice will evolve toward. They are directions, not promises.
+These are the main register families this practice will evolve toward.
 
 - **Orientation**: beginner friendly, low assumed context, short sentences when needed.
 - **Practitioner**: operational and precise, assumes basic familiarity with the practice.
@@ -128,24 +146,6 @@ Response must be safe. Do not publish internal or employer-confidential material
 If it is safe and lawful to do so, publish a public change note that describes the nature of the changes at a pattern level. If it is not safe, keep a private record and publish a general warning without naming the institution.
 
 When documenting co-option, prefer: neutral summaries, redacted excerpts, and abstracted diffs over verbatim internal text. Safety and employment security come first.
-
-### Phase one: English as initiation
-
-All content begins in English as a shared container for development, testing, and shared understanding. English is a practical starting point. It is not the endpoint.
-
-### Phase two: multilingual resonance
-
-Translation is not a mechanical export. It is contextual resonance. A structural recoding so the practice can speak with integrity across different memory systems.
-
-This means:
-
-- Words may shift to hold historical trauma accurately
-- Forms may adapt to reflect local epistemologies
-- Accessibility must include language levels, not just vocabulary
-
-One core design principle: clarity must not require education. Language should meet people where they are without lowering depth.
-
-This is not simplification. It is ethical adaptation.
 
 ---
 
