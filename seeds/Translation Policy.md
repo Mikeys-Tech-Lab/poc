@@ -120,7 +120,14 @@ They must not:
 - Replace refusal boundaries with compliance theater.
 - Become the default or canonical edition.
 
-If an institution attempts to distribute an altered version top down, treat that as a co-option event. Record what changed and publish a public diff or change log note.
+
+If an institution attempts to distribute an altered version top down, treat that as a co-option event. Record what changed.
+
+Response must be safe. Do not publish internal or employer-confidential material in a way that exposes you to retaliation or violates confidentiality.
+
+If it is safe and lawful to do so, publish a public change note that describes the nature of the changes at a pattern level. If it is not safe, keep a private record and publish a general warning without naming the institution.
+
+When documenting co-option, prefer: neutral summaries, redacted excerpts, and abstracted diffs over verbatim internal text. Safety and employment security come first.
 
 ### Phase one: English as initiation
 
@@ -270,7 +277,7 @@ Before publishing any translation, ask:
 5. Structural fidelity: do headings, lists, and trace prompts stay in the same order unless an adaptation note says otherwise?
 6. Terminology stability: are core terms either preserved or mapped once in a glossary note (trace, assumption, interpretation, misuse, federation)?
 7. Back check: can you translate a short excerpt back into English and confirm the meaning did not drift?
-8. Co-option check: does any wording shift boundaries into corporate compliance language or redefine safety as liability? If yes, rewrite and record an adaptation note.
+8. Co-option check: does any wording shift boundaries into corporate compliance language or redefine safety as liability? If yes, rewrite and record an adaptation note. If documenting the issue publicly is unsafe, record it privately and publish only a non-identifying, high-level warning.
 
 If any answer is no, rewrite.
 
