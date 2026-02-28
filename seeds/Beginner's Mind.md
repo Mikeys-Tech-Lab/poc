@@ -124,12 +124,12 @@ It makes the definitions and boundaries easier to share and inspect.
 
 Current seed set:
 
-- A Living Practice of Clarity
-- Practice Foundations
-- Beginner’s Mind
-- A Bridge Between Conflicting Nodes
-- Voice of Guidance
-- Translation Policy
+- [A Living Practice of Clarity](./A Living Practice of Clarity.md)
+- [Practice Foundations](./Practice Foundations.md)
+- [Beginner’s Mind](./Beginner's Mind.md)
+- [A Bridge Between Conflicting Nodes](./A Bridge Between Conflicting Nodes.md)
+- [Voice of Guidance](./Voice of Guidance.md)
+- [Translation and Register Guidance](./Translation and Register Guidance.md)
 
 What this tends to improve:
 

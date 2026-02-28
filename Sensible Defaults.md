@@ -10,7 +10,7 @@ Required seeds (repo paths):
 - `seeds/Beginner's Mind.md`
 - `seeds/A Bridge Between Conflicting Nodes.md`
 - `seeds/Voice of Guidance.md`
-- `seeds/Translation Policy.md`
+- `seeds/Translation and Register Guidance.md`
 
 If you cannot read files, ask the user to paste the seed texts before claiming you are following them.
 
@@ -335,7 +335,7 @@ Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
 Commercial use and adaptation are permitted with proper attribution.
 
 Canonical source and full license terms:  
-../LICENCE_CONTENT
+LICENCE_CONTENT
 
 Official reference:  
 https://creativecommons.org/licenses/by/4.0/

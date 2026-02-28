@@ -77,8 +77,8 @@ Record the term choice and the reason, and prefer interoperability over novelty.
 
 Structural definitions live in the seeds:
 
-- Practice Foundations: `./Practice Foundations.md`
-- A Living Practice of Clarity: `./A Living Practice of Clarity.md`
+- [Practice Foundations](./Practice Foundations.md)
+- [A Living Practice of Clarity](./A Living Practice of Clarity.md)
 
 ---
 

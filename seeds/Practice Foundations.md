@@ -235,8 +235,8 @@ This is not legal enforcement. It is interpretability under stress.
 Practice Foundations defines boundaries and interpretation discipline.
 Two other seeds support it directly:
 
-- Beginner’s Mind, the posture that keeps trace honest under pressure
-- A Bridge Between Conflicting Nodes, how contradiction stays connected without forced consensus
+- [Beginner’s Mind](./Beginner's Mind.md), the posture that keeps trace honest under pressure
+- [A Bridge Between Conflicting Nodes](./A Bridge Between Conflicting Nodes.md), how contradiction stays connected without forced consensus
 
 ---
 
