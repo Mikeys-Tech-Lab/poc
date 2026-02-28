@@ -112,7 +112,7 @@ These are the main register families this practice will evolve toward.
 
 - **Orientation**: beginner friendly, low assumed context, short sentences when needed.
 - **Practitioner**: operational and precise, assumes basic familiarity with the practice.
-- **Institutional**: for documents that need to interface with institutions (for example procurement, risk review, or policy). This register is allowed only as an interface layer. It must not dilute or replace the practice. It must retain all boundary statements and safety constraints, including anti-surveillance and anti-coercion clauses. If an institution requires removing or weakening those constraints, the edition must be marked as incompatible.
+- **Institutional**: for documents that need to interface with institutions (for example procurement, risk review, or governance docs). This register is allowed only as an interface layer. It must not dilute or replace the practice. It must retain all boundary statements and safety constraints, including anti-surveillance and anti-coercion clauses. If an institution requires removing or weakening those constraints, the edition must be marked as incompatible.
 - **Public**: accessible, punchy, minimal jargon, suited for newsletters and public posts.
 - **Short form**: high signal, low context, designed for formats like short video captions.
 
@@ -174,7 +174,7 @@ Future locales will be added over time as reviewer capacity and community suppor
 
 ---
 
-## Translation Principles (Non-Negotiable)
+## Constraints that keep the practice intact
 
 1. Cultural adaptation, not literal translation. Sentence structure, idiom, and rhythm need to follow the target language's natural patterns.
 2. Register needs to match the locale and the intended audience. Register choice must not be used to sanitize, bureaucratize, or corporate-ize the practice.

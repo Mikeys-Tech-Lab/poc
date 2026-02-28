@@ -295,7 +295,7 @@ It requires:
 - voluntary participation
 - protected bandwidth
 
-If trace disappears, federation collapses into narrative warfare.
+If trace disappears, federation collapses into narrative escalation.
 
 ---
 
