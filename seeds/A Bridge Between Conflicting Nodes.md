@@ -144,7 +144,7 @@ Federation allows multiple bridges to coexist.
 
 ---
 
-## Network-Defense Boundary
+## Engagement Boundary
 
 Federation is voluntary.
 Engagement is selective.
@@ -180,7 +180,7 @@ Refusal to engage is permitted.
 
 ## Anti-Erasure Safeguard
 
-Network defense must not be used to dismiss reports of harm or abuse.
+This boundary must not be used to dismiss reports of harm or abuse.
 
 A minimal trace can be:
 
@@ -203,9 +203,9 @@ Bandwidth protection is for bad faith escalation, not for silencing accountabili
 
 ---
 
-## Bad Faith Fuse
+## Bad Faith Stop Condition
 
-If a report is verified as fabricated, coordinated flooding, or harassment disguised as harm reporting, the network-defense boundary applies immediately.
+If a report is verified as fabricated, coordinated flooding, or harassment disguised as harm reporting, the engagement boundary applies immediately.
 
 Verification must itself meet the trace requirement.
 
@@ -264,7 +264,7 @@ The revision pathway:
 - is strictly asynchronous
 - is subject to its own trace requirement
 - does not require real time engagement
-- does not override the network defense boundary
+- does not override the engagement boundary
 
 A valid revision trace must include:
 
@@ -278,7 +278,7 @@ Revision is a channel for correction, not a channel for re-litigation.
 
 If a revision trace fails to meet these requirements, it does not reopen engagement.
 
-The fuse remains active unless new trace materially alters the verification basis.
+This stop condition remains in place unless new trace materially alters the verification basis.
 
 ---
 

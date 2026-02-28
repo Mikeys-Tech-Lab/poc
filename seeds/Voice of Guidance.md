@@ -98,9 +98,9 @@ This is the discipline that most guidance practices skip.
 
 Read the text and ask: where could this be turned into something it is not? Where could it be reduced to a slogan, adopted as branding without substance, repackaged as compliance, or used to justify surveillance? Where could a bad-faith reader extract a phrase and use it against the original intent?
 
-For each risk: identify the vulnerable passage, explain the likely misreading, and offer a structural defense that preserves the original intent.
+For each risk: identify the vulnerable passage, explain the likely misreading, and offer a structural safeguard that preserves the original intent.
 
-Stay grounded. Do not invent unlikely attack scenarios. Focus on plausible interpretations by real audiences under current incentives.
+Stay grounded. Do not invent unlikely misreading scenarios. Focus on plausible interpretations by real audiences under current incentives.
 
 ### Care in translation
 
