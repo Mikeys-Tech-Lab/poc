@@ -35,7 +35,7 @@ Planned locales are direction, not a promise.
 
 Translations, when produced, are AI-assisted and human-reviewed. They are culturally adapted, not converted word for word.
 
-This guidance also covers **register shifts**. A register shift is when the same core content is rewritten for a different audience or channel, for example beginner orientation, practitioner delivery, institutional compliance, or public platforms like short video.
+This guidance also covers **register shifts**. A register shift is when the same core content is rewritten for a different audience or channel, for example beginner orientation, practitioner delivery, institutional interfaces, or public platforms like short video.
 
 Locale and register are two separate axes:
 
@@ -57,7 +57,7 @@ Translation here means: preserve intent and structure, while letting language, r
 
 - Definitions of structural terms (trace, seed, node, lens)
 - Boundary statements (what the practice is not)
-- Safety constraints (anti-surveillance, anti-coercion)
+- Safety constraints (anti surveillance, anti coercion)
 - Core claims and reasoning paths
 
 ### Harm reports, evidence, and privacy
@@ -66,7 +66,8 @@ If a translated edition discusses harm reports or "inspectable evidence", keep t
 
 - Do not include identifying personal data in the name of inspectability.
 - Prefer anonymized, aggregated, or pattern-level evidence over exposure of individuals.
-- Follow applicable data protection law (for example GDPR / FADP) and local safety norms. This is not legal advice.
+Follow applicable data protection law (for example GDPR / FADP) and local safety norms.
+This document is not legal advice.
 
 Some structural terms will not have a clean equivalent in every language. When that happens, the choice is part of the meaning. Treat it as an adaptation and trace it.
 
@@ -112,7 +113,7 @@ These are the main register families this practice will evolve toward.
 
 - **Orientation**: beginner friendly, low assumed context, short sentences when needed.
 - **Practitioner**: operational and precise, assumes basic familiarity with the practice.
-- **Institutional**: for documents that need to interface with institutions (for example procurement, risk review, or governance docs). This register is allowed only as an interface layer. It must not dilute or replace the practice. It must retain all boundary statements and safety constraints, including anti-surveillance and anti-coercion clauses. If an institution requires removing or weakening those constraints, the edition must be marked as incompatible.
+- **Institutional interface**: for documents that need to interface with institutions (for example procurement, risk review, or governance docs). This is an interface layer, not a replacement for the practice. It must retain all boundary statements and safety constraints, including anti surveillance and anti coercion. If an institution requires removing or weakening those constraints, mark that edition as incompatible.
 - **Public**: accessible, punchy, minimal jargon, suited for newsletters and public posts.
 - **Short form**: high signal, low context, designed for formats like short video captions.
 
@@ -127,31 +128,32 @@ Register can change rhythm and vocabulary, but it must not change:
 
 If a register shift changes a core claim, mark it as an adaptation event.
 
-### Anti-co-option rule for institutional interfaces
+### Anti co option boundary for institutional interfaces
 
-Institutional editions are permitted only to help a practitioner communicate with institutional systems.
+Institutional interface editions exist only to help a practitioner communicate with institutional systems.
 
 They must not:
 
 - Remove or weaken safety constraints.
 - Redefine "safety" as corporate liability.
-- Replace refusal boundaries with compliance theater.
+- Replace refusal boundaries with compliance performance.
 - Become the default or canonical edition.
 
 
-If an institution attempts to distribute an altered version top down, treat that as a co-option event. Record what changed.
+If an institution attempts to distribute an altered version top down, treat that as a co option event and record what changed.
 
-Response must be safe. Do not publish internal or employer-confidential material in a way that exposes you to retaliation or violates confidentiality.
+Protect yourself first. Do not publish internal or employer confidential material in ways that create retaliation risk or breach confidentiality.
 
-If it is safe and lawful to do so, publish a public change note that describes the nature of the changes at a pattern level. If it is not safe, keep a private record and publish a general warning without naming the institution.
+If it is safe and lawful, publish a public change note that describes the nature of the changes at a pattern level.
+If it is not safe, keep a private record and publish a general warning without naming the institution.
 
-When documenting co-option, prefer: neutral summaries, redacted excerpts, and abstracted diffs over verbatim internal text. Safety and employment security come first.
+When documenting co option, prefer neutral summaries, redacted excerpts, and abstracted diffs over verbatim internal text.
 
 ---
 
 ## Locales (Initial Release + Planned)
 
-Initial release: `en-us` only.  
+Initial release: `en-us` only.
 More locales will be added over time as translation and review capacity becomes available.
 
 Planned locales (accountable editions, not “secondary copies”):
@@ -177,7 +179,7 @@ Future locales will be added over time as reviewer capacity and community suppor
 ## Constraints that keep the practice intact
 
 1. Cultural adaptation, not literal translation. Sentence structure, idiom, and rhythm need to follow the target language's natural patterns.
-2. Register needs to match the locale and the intended audience. Register choice must not be used to sanitize, bureaucratize, or corporate-ize the practice.
+2. Register needs to match the locale and the intended audience. Register choice must not be used to sanitize, bureaucratize, or corporateize the practice.
 3. Preserve intent, not words. Translate the tension and structure, not the surface phrasing.
 4. Avoid calques. If a phrase only makes sense because it was translated word-for-word from English, rewrite it.
 5. Cultural context matters. References, examples, and metaphors should make sense locally. Replace English-centric metaphors with ones that work in the target culture.
@@ -277,7 +279,7 @@ Before publishing any translation, ask:
 5. Structural fidelity: do headings, lists, and trace prompts stay in the same order unless an adaptation note says otherwise?
 6. Terminology stability: are core terms either preserved or mapped once in a glossary note (trace, assumption, interpretation, misuse, federation)?
 7. Back check: can you translate a short excerpt back into English and confirm the meaning did not drift?
-8. Co-option check: does any wording shift boundaries into corporate compliance language or redefine safety as liability? If yes, rewrite and record an adaptation note. If documenting the issue publicly is unsafe, record it privately and publish only a non-identifying, high-level warning.
+8. Co option check: does any wording shift boundaries into corporate compliance language or redefine safety as liability? If yes, rewrite and record an adaptation note. If public documentation is unsafe, record it privately and publish only a non identifying, high level warning.
 
 If any answer is no, rewrite.
 
@@ -285,7 +287,7 @@ If any answer is no, rewrite.
 
 ## Why This Matters
 
-Clarity across languages is also about power. If only the English version is treated as real and everything else as a copy, translation becomes subordination. This practice refuses that.
+Clarity across languages is also about power. If only the English version is treated as real and everything else as a copy, translation becomes subordination. This practice does not accept that.
 
 Every edition is accountable. Every adaptation is marked. The reasoning path stays visible, regardless of language.
 
