@@ -52,7 +52,21 @@ Coherence is not produced through forced consensus. It emerges through visibilit
 
 This practice chooses not to flatten complexity into slogans, not to mistake speed for understanding, and not to erase difference for the sake of artificial unity.
 
+
 If a summary loses the trace, it has lost the clarity.
+
+## Model Limits and Error
+
+This practice does not eliminate model error. Language models generate probable text, not verified truth.
+
+Trace reduces silent error by requiring:
+
+- assumptions to be visible
+- uncertainty to be visible
+- boundaries to be visible
+- checks to be named
+
+AI may assist in tracing. Human responsibility for verification remains.
 
 ---
 
