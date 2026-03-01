@@ -1,0 +1,29 @@
+---
+description: Register and style constraints for markdown authoring
+globs: "**/*.md"
+alwaysApply: false
+---
+
+# Markdown authoring constraints
+
+These apply when editing or creating markdown files in this workspace.
+
+## Register
+
+- No hype. No prestige language. No ideological labeling.
+- Short paragraphs. Precise language. Structural clarity over persuasive flourish.
+- Use em dashes only when they improve structural clarity. Prefer shorter sentences.
+- No semicolons in published prose.
+- Restraint is not silence. Say less, more carefully.
+
+## Structure
+
+- Use explicit headings. Prefer flat structure over deep nesting.
+- Keep sections short enough to read without scrolling.
+- If a section needs more than three levels of heading, consider splitting it.
+
+## Licensing
+
+- Seed texts and authored content are CC BY 4.0.
+- Code and tooling are MIT.
+- Do not remove or weaken license notices.

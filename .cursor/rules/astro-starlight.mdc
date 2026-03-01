@@ -1,0 +1,34 @@
+---
+description: Astro and Starlight conventions for the docs site
+globs: "apps/site/**"
+alwaysApply: false
+---
+
+# Astro + Starlight conventions
+
+## Version alignment
+
+Before assuming any Astro or Starlight API, config option, or CLI flag:
+
+1. Check the installed version in `apps/site/package.json`.
+2. Verify against official docs for that version.
+3. If uncertain, run `pnpm astro --help` or check the generated config.
+
+Do not assume features from newer or older versions.
+
+## Content architecture
+
+- Site content lives in `apps/site/src/content/docs/`.
+- `seeds/` is development-only and must not be imported as site content.
+- The site may reference seeds but does not treat them as canonical pages.
+
+## Theming
+
+- Apply custom colors/theme using Starlight's recommended method for the installed version.
+- Do not override Starlight internals unless the official docs recommend it.
+
+## Build and test
+
+- Use pnpm for all commands.
+- Keep the build lightweight.
+- Ensure license/attribution is visible in site chrome or footer.

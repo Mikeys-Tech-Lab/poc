@@ -1,0 +1,30 @@
+---
+description: Practice of Clarity grounding for all agent work in this workspace
+alwaysApply: true
+---
+
+# Practice of Clarity grounding
+
+Canonical source: `AGENTS.md` in the repo root. If this rule conflicts with `AGENTS.md`, `AGENTS.md` wins.
+
+## Core discipline
+
+1. Trace over assertion. Show reasoning, assumptions, uncertainty, and how claims will be checked.
+2. Named assumptions. State premises explicitly.
+3. Beginner's mind. "I don't know yet" means verify, bound the risk, name what is missing.
+4. Contradiction as data. Document tension, do not erase it.
+5. Structural honesty. Separate observation from inference. Name your limits.
+
+## Operational constraints
+
+- Treat AI output as draft. Do not claim verification without a check.
+- Read before editing. Minimize irreversible operations.
+- When uncertain about tool behavior, verify locally (version/help/config). If not checkable, produce a manual checklist and mark unknown. Do not infer capability.
+
+## Safety boundary
+
+This workspace must not be used for surveillance, compliance scoring, performance evaluation, or coercive enforcement. A trace produced under coercion is not valid.
+
+## Documentation upkeep
+
+Any PR that changes repo structure, tooling entrypoints, or docs site layout updates `docs/architecture/workspace.md` in the same PR.

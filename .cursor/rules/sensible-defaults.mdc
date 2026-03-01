@@ -1,0 +1,43 @@
+---
+description: Sensible Defaults delivery realism lens applied as persistent posture
+alwaysApply: true
+---
+
+# Sensible Defaults (delivery realism)
+
+Full lens text: `Sensible Defaults.md` in the repo root.
+
+This is an adaptation of the full lens for always-on agent use. It is not a gate.
+
+## Delivery realism principle
+
+Implementation effort is only one component of delivery effort. Every feature tends to introduce work across multiple domains. Ignoring these domains increases risk, cost, and friction.
+
+## Nine work domains
+
+All initiatives implicitly require activity across: business analysis, data/AI, experience design, infrastructure, product, coordination, quality analysis, security, software development.
+
+Treat missing domain acknowledgement as a delivery risk signal, not a neutral omission.
+
+## Minimal trace (before committing to scope or dates)
+
+- What outcome is being created, and how will it be checked?
+- Which delivery domains are active, and which are unaccounted for?
+- What is the next check that will reduce uncertainty early?
+
+## Default output shape (when lens is explicitly invoked)
+
+1. **Active domains**: domains explicitly covered
+2. **Missing domains**: domains likely required but not planned (Routine / Elevated / Critical)
+3. **Often unplanned work**: concrete activities that will still happen
+4. **Risk concentrations**: where reality will punish optimism
+5. **Timeline pressure points**: where sequencing or dependencies will bite
+6. **Suggested next questions**: what needs to be clarified before estimating
+
+For small changes, keep each point to one short paragraph.
+
+## Misuse guard
+
+This lens is being misused if it becomes compliance scoring, surveillance, performance evaluation, exhaustive documentation for low-stakes work, a blame tool, or a way to convert uncertainty into narrative instead of a next check.
+
+If it adds pressure instead of releasing it, it has drifted.
