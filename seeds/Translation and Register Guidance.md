@@ -113,6 +113,8 @@ This practice is designed to speak across audiences, not only across languages.
 
 These are the main register families this practice will evolve toward.
 
+Registers describe use contexts, not demographics. People may move between registers depending on energy, stress, language comfort, channel constraints, and the amount of shared context available.
+
 - **Orientation**: beginner friendly, low assumed context, short sentences when needed.
 - **Low cognitive load**: high structure, explicit assumptions, low metaphor density. This label describes the edition’s structure, not the reader. It reduces processing overhead without reducing depth or trace.
 - **Practitioner**: operational and precise, assumes basic familiarity with the practice.
