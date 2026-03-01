@@ -37,10 +37,12 @@ Translations, when produced, are AI-assisted and human-reviewed. They are cultur
 
 This guidance also covers **register shifts**. A register shift is when the same core content is rewritten for a different audience or channel, for example beginner orientation, practitioner delivery, institutional interfaces, or public platforms like short video.
 
+Here, register means the audience voice: tone, formality, assumed context, and what the text asks the reader to do.
+
 Locale and register are two separate axes:
 
 - Locale answers: which language and cultural context.
-- Register answers: who this is for, and how it should sound.
+- Register answers: who this is for, and how it should sound (tone, formality, and assumed context).
 
 A piece can be translated without changing register, or re-registered without changing language. Both require accountability.
 
