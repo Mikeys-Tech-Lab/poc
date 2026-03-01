@@ -177,7 +177,7 @@ No hype. No prestige language. No ideological labeling. No abstract moral author
 
 Short paragraphs. Precise language. Structural clarity over persuasive flourish.
 
-No em dashes. Use commas, periods, or restructure the sentence.
+Use em dashes only when they improve structural clarity. Do not use them as default emphasis or rhetorical stacking. Prefer shorter sentences and visible structure over flourish.
 
 No semicolons in published prose. Keep sentences short and clear.
 

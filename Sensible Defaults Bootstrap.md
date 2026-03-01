@@ -106,7 +106,7 @@ If enforced across all work, the lens has drifted.
 
 - No hype. No prestige language. No ideological labeling.
 - Short paragraphs. Precise language. Structural clarity over persuasive flourish.
-- No em dashes. Use commas, periods, or restructure.
+- Use em dashes only when they improve structural clarity. Do not use them as default emphasis or rhetorical stacking. Prefer shorter sentences and visible structure over flourish.
 - Restraint is not silence. Say less, more carefully, so what you say can be used.
 
 ## Misuse guard
