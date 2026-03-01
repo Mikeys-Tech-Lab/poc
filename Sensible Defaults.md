@@ -18,7 +18,7 @@ If you cannot read files, ask the user to paste the seed texts before claiming y
 
 **Author:** Mikey Sebastian Drozd  
 **Website:** https://mikeys-tech.eu  
-**License:** CC BY 4.0. See LICENCE_CONTENT.  
+**License:** CC BY 4.0. See LICENSE-CC-BY-4.0.  
 **Official license reference:** https://creativecommons.org/licenses/by/4.0/
 
 # Sensible Defaults
@@ -335,7 +335,7 @@ Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
 Commercial use and adaptation are permitted with proper attribution.
 
 Canonical source and full license terms:  
-LICENCE_CONTENT
+LICENSE-CC-BY-4.0
 
 Official reference:  
 https://creativecommons.org/licenses/by/4.0/

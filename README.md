@@ -43,9 +43,11 @@ Keep your adaptations, and add short notes on what you changed and why.
 
 ## Licensing
 
-The Practice of Clarity texts in this package are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+This repository is dual-licensed:
 
-- See `LICENCE_CONTENT`.
+- Code and tooling are licensed under the MIT License. See `LICENSE`.
+- Seed texts and other authored content are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0). See `LICENSE-CC-BY-4.0`.
+
 - Official reference: https://creativecommons.org/licenses/by/4.0/
 
 If you reuse or adapt the seed texts, give credit, link to the license, and indicate if changes were made.
@@ -53,4 +55,4 @@ If you reuse or adapt the seed texts, give credit, link to the license, and indi
 ## Contents
 
 - `seeds/` — the Practice of Clarity seed set
-- `LICENCE_CONTENT` — CC BY 4.0 legal text
+- `LICENSE-CC-BY-4.0` — CC BY 4.0 legal text
