@@ -24,8 +24,31 @@ Before relying on any Astro or Starlight feature:
 ## Content boundaries
 
 - Site content: `apps/site/src/content/docs/`
+- Assets (images, fonts): `apps/site/src/assets/`
 - Seeds (`seeds/`) are development-only sources. They are not the site content tree.
 - The site may reference seeds but must not import them as pages.
+
+## Known pitfalls
+
+These are verified mistakes. Do not repeat them.
+
+### Image paths in content frontmatter
+
+Astro content collections (`.md`, `.mdx` files in `src/content/`) resolve image paths differently from `.astro` component imports.
+
+- **In frontmatter YAML**: use relative paths from the content file. Example: `../../assets/hero.png`
+- **In `.astro` components**: aliases like `~/assets/` or `@/assets/` may work (depending on tsconfig).
+- **Do not** use `~/assets/` in frontmatter. It will fail at build time with `[ImageNotFound]`.
+
+### Path alias context rule
+
+Never assume a path alias works in all contexts. Aliases that resolve in module imports (`.ts`, `.astro`) may not resolve in YAML frontmatter, CSS `url()`, or HTML attributes. When in doubt, use a relative path and verify with a build.
+
+## Build verification gate
+
+Any change to assets, config, content structure, or frontmatter must be followed by `pnpm run build` before committing. Do not commit without a passing build.
+
+If the build fails, fix the issue before committing. Do not commit broken builds.
 
 ## Theming workflow
 
@@ -36,9 +59,9 @@ Before relying on any Astro or Starlight feature:
 ## Common commands
 
 ```bash
-pnpm --filter site dev       # Start dev server
-pnpm --filter site build     # Production build
-pnpm --filter site preview   # Preview production build
+pnpm run local              # Start dev server
+pnpm run build              # Production build (run before committing)
+pnpm --filter site preview  # Preview production build
 ```
 
 ## Additional resources
