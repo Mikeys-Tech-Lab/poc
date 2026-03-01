@@ -69,7 +69,7 @@ It does this by requiring:
 
 If AI is used at any step, treat the output as a draft, not as evidence.
 
-Non negotiables when AI assists:
+Non-negotiables when AI assists:
 
 - Do not treat the model as a source. If a claim needs a source, add one or mark the claim as unverified.
 - Name what you checked, how you checked it, and what you did not verify yet.

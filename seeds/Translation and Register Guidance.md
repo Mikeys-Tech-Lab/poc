@@ -133,7 +133,7 @@ Register can change rhythm and vocabulary, but it must not change:
 
 If a register shift changes a core claim, mark it as an adaptation event.
 
-### Anti co option boundary for institutional interfaces
+### Anti co-option boundary for institutional interfaces
 
 Institutional interface editions exist only to help a practitioner communicate with institutional systems.
 
@@ -145,14 +145,14 @@ They must not:
 - Become the default or canonical edition.
 
 
-If an institution attempts to distribute an altered version top down, treat that as a co option event and record what changed.
+If an institution attempts to distribute an altered version top-down, treat that as a co-option event and record what changed.
 
 Protect yourself first. Do not publish internal or employer confidential material in ways that create retaliation risk or breach confidentiality.
 
 If it is safe and lawful, publish a public change note that describes the nature of the changes at a pattern level.
 If it is not safe, keep a private record and publish a general warning without naming the institution.
 
-When documenting co option, prefer neutral summaries, redacted excerpts, and abstracted diffs over verbatim internal text.
+When documenting co-option, prefer neutral summaries, redacted excerpts, and abstracted diffs over verbatim internal text.
 
 ---
 
@@ -184,7 +184,7 @@ Future locales will be added over time as reviewer capacity and community suppor
 ## Constraints that keep the practice intact
 
 1. Cultural adaptation, not literal translation. Sentence structure, idiom, and rhythm need to follow the target language's natural patterns.
-2. Register needs to match the locale and the intended audience. Register choice must not be used to sanitize, bureaucratize, or corporateize the practice.
+2. Register needs to match the locale and the intended audience. Register choice must not be used to sanitize, bureaucratize, or corporatize the practice.
 3. Preserve intent, not words. Translate the tension and structure, not the surface phrasing.
 4. Avoid calques. If a phrase only makes sense because it was translated word-for-word from English, rewrite it.
 5. Cultural context matters. References, examples, and metaphors should make sense locally. Replace English-centric metaphors with ones that work in the target culture.
@@ -284,7 +284,7 @@ Before publishing any translation, ask:
 5. Structural fidelity: do headings, lists, and trace prompts stay in the same order unless an adaptation note says otherwise?
 6. Terminology stability: are core terms either preserved or mapped once in a glossary note (trace, assumption, interpretation, misuse, federation)?
 7. Back check: can you translate a short excerpt back into English and confirm the meaning did not drift?
-8. Co option check: does any wording shift boundaries into corporate compliance language or redefine safety as liability? If yes, rewrite and record an adaptation note. If public documentation is unsafe, record it privately and publish only a non identifying, high level warning.
+8. Co-option check: does any wording shift boundaries into corporate compliance language or redefine safety as liability? If yes, rewrite and record an adaptation note. If public documentation is unsafe, record it privately and publish only a non identifying, high level warning.
 
 If any answer is no, rewrite.
 

@@ -258,10 +258,10 @@ When evaluating mandates, plans, or estimates, verify:
 - which coordination work is missing
 - whether timelines reflect systemic effort, not just coding time
 
- Do not convert this lens into a numeric scoring system.
- - No points, grades, heatmaps, leaderboards, or KPIs.
- - No aggregating results across teams for comparison.
- - No attaching outcomes to individual performance evaluation.
+Do not convert this lens into a numeric scoring system.
+- No points, grades, heatmaps, leaderboards, or KPIs.
+- No aggregating results across teams for comparison.
+- No attaching outcomes to individual performance evaluation.
 
 Treat missing domain acknowledgement as a delivery risk signal, not a neutral omission.
 

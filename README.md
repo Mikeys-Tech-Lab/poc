@@ -54,7 +54,7 @@ This repository is dual-licensed:
 - Code and tooling are licensed under the MIT License. See `LICENSE`.
 - Seed texts and other authored content are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0). See `LICENSE-CC-BY-4.0`.
 
-- Official reference: https://creativecommons.org/licenses/by/4.0/
+Official reference: https://creativecommons.org/licenses/by/4.0/
 
 If you reuse or adapt the seed texts, give credit, link to the license, and indicate if changes were made.
 
