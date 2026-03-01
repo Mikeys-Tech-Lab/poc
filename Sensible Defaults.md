@@ -18,7 +18,7 @@ If you cannot read files, ask the user to paste the seed texts before claiming y
 
 **Author:** Mikey Sebastian Drozd  
 **Website:** https://mikeys-tech.eu  
-**License:** CC BY 4.0. See LICENSE-CC-BY-4.0.  
+**License:** CC BY 4.0. See `LICENSE-CC-BY-4.0`.  
 **Official license reference:** https://creativecommons.org/licenses/by/4.0/
 
 # Sensible Defaults
@@ -29,6 +29,11 @@ If you cannot read files, ask the user to paste the seed texts before claiming y
 
 This document is a derived operational lens shaped by public delivery realism practice across industry.
 It does not reproduce, reprint, or section-by-section summarize any single publication.
+
+Outside trace note:
+- This lens is not evidence about people.
+- It is a planning visibility aid.
+- It must not be converted into scoring, ranking, or compliance gating.
 
 ---
 
@@ -253,9 +258,16 @@ When evaluating mandates, plans, or estimates, verify:
 - which coordination work is missing
 - whether timelines reflect systemic effort, not just coding time
 
+ Do not convert this lens into a numeric scoring system.
+ - No points, grades, heatmaps, leaderboards, or KPIs.
+ - No aggregating results across teams for comparison.
+ - No attaching outcomes to individual performance evaluation.
+
 Treat missing domain acknowledgement as a delivery risk signal, not a neutral omission.
+
 Delivery exposure levels:
 These labels describe delivery exposure, not team performance.
+They are descriptive, not prescriptive.
 - **Routine**: domain is acknowledged and addressed
 - **Elevated**: domain is acknowledged but deferred or unclear
 - **Critical**: domain is likely required but absent
@@ -279,6 +291,12 @@ Sizing rule:
 
 If enforced across all work, the lens has drifted.
 
+Guardrails:
+- Use on request, not as a universal gate.
+- Do not require this output for low-stakes work.
+- Do not store or aggregate outputs for oversight dashboards.
+- Do not attach outputs to individual names unless those people explicitly consent.
+
 This is not bureaucracy.
 It is minimum visibility to reduce hidden work.
 
@@ -288,12 +306,22 @@ It is minimum visibility to reduce hidden work.
 
 This lens is being misused if it becomes:
 
-- compliance scoring, surveillance, or performance evaluation
+- compliance scoring, surveillance, performance evaluation, or HR instrumentation
+- a required gate for approvals, staffing, or funding
+- a dashboard input for oversight or cross-team comparison
 - a reason to demand exhaustive documentation for low-stakes work
 - a blame tool ("you missed a domain") instead of a planning visibility tool
 - a way to convert uncertainty into a story instead of a next check
+- a retroactive justification tool used after a decision is already made
 
 If it adds pressure instead of releasing it, it has drifted.
+
+### Anti-co-option response
+
+If an organization attempts to adopt the vocabulary while stripping the guardrails:
+- mark that edition as incompatible
+- refuse association with any scoring or surveillance use
+- point back to this section and the repository README boundaries
 
 ---
 

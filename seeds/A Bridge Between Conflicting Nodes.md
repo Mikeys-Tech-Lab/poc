@@ -4,7 +4,7 @@
 **Author:** Mikey Sebastian Drozd  
 **Pronouns:** he/him · they/them  
 **Website:** https://mikeys-tech.eu  
-**License:** CC BY 4.0. See ../LICENSE-CC-BY-4.0.
+**License:** CC BY 4.0. See `../LICENSE-CC-BY-4.0`.
 
 ---
 

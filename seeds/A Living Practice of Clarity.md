@@ -4,7 +4,7 @@
 **Author:** Mikey Sebastian Drozd  
 **Pronouns:** he/him · they/them  
 **Website:** https://mikeys-tech.eu  
-**License:** CC BY 4.0. See ../LICENSE-CC-BY-4.0.
+**License:** CC BY 4.0. See `../LICENSE-CC-BY-4.0`.
 
 ---
 
@@ -59,12 +59,22 @@ If a summary loses the trace, it has lost the clarity.
 
 This practice does not eliminate model error. Language models generate probable text, not verified truth.
 
-Trace reduces silent error by requiring:
+A trace is one of the ways we prevent silent error from becoming shared reality.
+It does this by requiring:
 
 - assumptions to be visible
 - uncertainty to be visible
 - boundaries to be visible
 - checks to be named
+
+If AI is used at any step, treat the output as a draft, not as evidence.
+
+Non negotiables when AI assists:
+
+- Do not treat the model as a source. If a claim needs a source, add one or mark the claim as unverified.
+- Name what you checked, how you checked it, and what you did not verify yet.
+- If you cannot verify a claim, do not present it as fact. Mark it as uncertainty.
+- In high stakes contexts, do not rely on AI output without independent verification.
 
 AI may assist in tracing. Human responsibility for verification remains.
 

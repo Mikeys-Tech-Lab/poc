@@ -2,14 +2,15 @@
 
 **Author:** Mikey Sebastian Drozd  
 **Website:** https://mikeys-tech.eu  
-**License:** CC BY 4.0. See LICENSE-CC-BY-4.0.  
-**Official license reference:** https://creativecommons.org/licenses/by/4.0/
+**License:** CC BY 4.0. See `LICENSE-CC-BY-4.0`.
 
 ## Preflight
 
-This lens applies only after you have read every file in `seeds/`. List the directory, then read each file. Do not skip any. Do not summarize from memory. Stop here until all seeds are loaded.
+This lens only works after you have read every file in `seeds/`. List the directory, then read each file. If any seed is missing, stop and load it before applying the lens. Do not summarize from memory.
 
 If you cannot read files, ask the user to paste the seed texts before claiming you are following them.
+
+If you are using an LLM to apply this lens, treat the output as a draft trace. Verify claims against the plan, repo, or artifacts. Do not invent details.
 
 ## Source
 
@@ -78,8 +79,10 @@ When evaluating mandates, plans, or estimates:
 
 Treat missing domain acknowledgement as a delivery risk signal, not a neutral omission.
 
-Delivery exposure levels:
+## Delivery exposure levels
+
 These labels describe delivery exposure, not team performance.
+
 - **Routine**: domain acknowledged and addressed
 - **Elevated**: domain acknowledged but deferred or unclear
 - **Critical**: domain likely required but absent

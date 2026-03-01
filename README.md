@@ -8,6 +8,12 @@ Trace means the visible reasoning path behind a decision:
 what was assumed, what was known, what was uncertain, and what will be checked next.
 It does not mean runtime telemetry or operational visibility traces.
 
+## Model limits
+
+AI can assist with drafting, but it can be wrong even when it sounds certain.
+Treat AI output as a draft, not evidence.
+For important claims, include a trace and a check.
+
 ## Quick start
 
 - Start here: `seeds/A Living Practice of Clarity.md`

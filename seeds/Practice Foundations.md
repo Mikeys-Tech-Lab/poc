@@ -4,7 +4,8 @@
 **Author:** Mikey Sebastian Drozd  
 **Pronouns:** he/him · they/them  
 **Website:** https://mikeys-tech.eu  
-**License:** CC BY 4.0. See ../LICENSE-CC-BY-4.0.
+**License:** CC BY 4.0. See `../LICENSE-CC-BY-4.0`.
+**Note:** This repository documents a practice. It is not a data collection program.
 
 ---
 
@@ -92,6 +93,24 @@ Federation is an option, not a claim of existing adoption.
 **Snapshot**  
 A stable public state of the practice text at a point in time. New snapshots replace old ones only when a pattern of ambiguity or misuse makes refinement necessary.
 
+**Outside trace**
+A trace that points to external sources or lived context without importing, copying, or extracting them into this repository.
+Outside trace is for lineage and accountability, not for scraping.
+
+Outside trace may include: a citation, a public URL, a book reference, a brief paraphrase, or a minimal quote used for identification.
+Outside trace must not include: bulk text capture, private data, or reproduction that substitutes for the original.
+
+**Lineage**
+A record of where an idea, method, or claim came from, and how it changed across editions.
+Lineage can include influences, source clusters, forks, and adaptation notes.
+Lineage is not ownership theater. It is a map of origin and mutation.
+
+**Source cluster**
+A named set of external references that travel together.
+A source cluster can be expanded over time.
+In this release, only a small number of clusters may be present.
+More clusters may be added in future snapshots as the practice grows and as new domains are traced.
+
 ---
 
 ## Core Discipline
@@ -107,6 +126,8 @@ Tension is not erased. It is documented and integrated.
 
 ### 4) Non-Extractive Framing
 Sources and communities are not flattened for rhetorical ease.
+Outside trace is preferred over extraction.
+If you need material from outside, link it, cite it, and summarize what is structurally relevant.
 
 These are workflow constraints.
 
@@ -123,6 +144,8 @@ Examples include:
 - a rationale note that explains why an option was rejected  
 - an interpretation log entry with clarification and status  
 - a snapshot update that explains what ambiguity or misuse it resolves  
+- an outside trace entry that shows lineage without importing the source
+- a lineage note that marks what changed and why across editions
 
 If the artifacts are missing, the practice is not present, even if the words are used.
 
@@ -170,6 +193,9 @@ If trace disappears, the practice disappears.
 ## Safety and Power Boundary
 
 This practice documents reasoning, not people.
+
+It also documents lineage, not raw capture.
+If the practice becomes a pipeline for extraction, it has failed its own boundary.
 
 It is incompatible with:
 
@@ -247,6 +273,7 @@ You may adapt this practice.
 If you do:
 
 - mark what you changed  
+- preserve outside trace and lineage, or state explicitly why you removed them
 - keep the definitions and misuse boundary intact, or state explicitly why you removed them  
 - do not claim equivalence if you removed trace requirements  
 
