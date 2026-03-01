@@ -114,6 +114,7 @@ This practice is designed to speak across audiences, not only across languages.
 These are the main register families this practice will evolve toward.
 
 - **Orientation**: beginner friendly, low assumed context, short sentences when needed.
+- **Low cognitive load**: high structure, explicit assumptions, low metaphor density. This label describes the edition’s structure, not the reader. It reduces processing overhead without reducing depth or trace.
 - **Practitioner**: operational and precise, assumes basic familiarity with the practice.
 - **Institutional interface**: for documents that need to interface with institutions (for example procurement, risk review, or governance docs). This is an interface layer, not a replacement for the practice. It must retain all boundary statements and safety constraints, including anti surveillance and anti coercion. If an institution requires removing or weakening those constraints, mark that edition as incompatible.
 - **Public**: accessible, punchy, minimal jargon, suited for newsletters and public posts.
