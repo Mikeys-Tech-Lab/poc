@@ -57,8 +57,8 @@ Silent divergence is drift. Marked divergence is federation.
 
 This section declares operator tool choices. Agents must respect these and not substitute alternatives without asking.
 
-- **Git hosting**: GitHub (remote `origin`)
-- **GitHub CLI**: use `gh` for PR creation, issue management, and release workflows. Prefer `gh` over raw `curl` or `hub`.
+- **Operator config**: read `.local/config.md` for operator-specific values (GitHub account, GPG key, SSH alias). This file is gitignored. A template is at `.local.example.md`.
+- **GitHub CLI**: use `gh` for PR creation, issue management, and release workflows. Prefer `gh` over raw `curl` or `hub`. Before running `gh`, verify the active account matches the operator config.
 - **Package manager**: pnpm. Do not use npm or yarn.
 - **Runtime**: Node.js (check version locally before assuming features)
 - **Test runner**: Vitest
