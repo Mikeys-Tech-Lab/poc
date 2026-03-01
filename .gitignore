@@ -1,3 +1,6 @@
+# Local operator config (not committed)
+.local/
+
 # Dependencies
 node_modules/
 
