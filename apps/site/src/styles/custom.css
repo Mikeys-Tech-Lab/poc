@@ -25,3 +25,12 @@
   --sl-color-gray-6: #f1f5f9;
   --sl-color-black: #f8fafc;
 }
+
+/* Hero image: circular center crop */
+.hero img {
+  border-radius: 50%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  max-width: 280px;
+  max-height: 280px;
+}
