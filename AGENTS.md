@@ -77,7 +77,21 @@ This is a public repository. Everything committed is world-readable. Agents must
 
 - GitHub Actions are pinned to major version tags (`@v4`). Dependabot monitors for updates.
 - No third-party deployment actions. Direct `ssh`/`rsync` reduces supply chain surface.
+- CI security scanning runs on every PR and push to `main`: gitleaks (secret detection), Shai-Hulud (npm supply chain), CodeQL (static analysis), OSSF Scorecard (supply chain posture).
+- gitleaks uses the MIT-licensed CLI directly to avoid commercial licensing constraints. The version is pinned in the workflow.
+- Dependabot alerts, security updates, and grouped security updates are enabled.
 - When the project matures, pinning to commit SHAs is the next step.
+
+### CI security scanning
+
+| Workflow | Tool | What it checks |
+|---|---|---|
+| `secret-scan.yml` | gitleaks CLI | Accidentally committed secrets, tokens, credentials |
+| `supply-chain.yml` | Shai-Hulud 2.0 Detector | Compromised npm packages from known supply chain attacks |
+| `codeql.yml` | GitHub CodeQL | Static analysis for security vulnerabilities in JS/TS |
+| `scorecard.yml` | OSSF Scorecard | Supply chain security posture scoring |
+
+CodeQL and Scorecard also run on a weekly schedule.
 
 ### Credential lifecycle
 
