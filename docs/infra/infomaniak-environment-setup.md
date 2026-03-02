@@ -145,8 +145,9 @@ Watch the workflow run. If it fails, the step name and error message indicate wh
 | `Permission denied (publickey)` | Wrong key or permissions | Verify ed25519, check chmod 600/700 on server |
 | `Host key verification failed` | Host not in known_hosts | `ssh-keyscan` runs in the workflow, check SSH_HOST value |
 | rsync exits non-zero | Wrong deploy path | Verify the path exists and ends with `/` |
-| 403 Forbidden on the site | `.htaccess` blocking your IP | Update `ALLOWED_IPS` secret with your current IP (`curl ifconfig.me`) |
-| 403 but IP is correct | Cloudflare proxy not sending real IP | Verify domain is proxied (orange cloud) in Cloudflare DNS, check `CF-Connecting-IP` header |
+| 403 Forbidden on the site | `.htaccess` blocking your IP | Update `ALLOWED_IPS` secret with your current IP (`curl ifconfig.me`), redeploy |
+| 403 but IP is correct | Cloudflare proxy not active or redirect rule | Verify domain is proxied (orange cloud) in Cloudflare DNS. Check redirect rules exclude the subdomain. Verify IP via `curl https://<domain>/cdn-cgi/trace` |
+| 403 with `Order Deny,Allow` | Infomaniak `mod_remoteip` changes `REMOTE_ADDR` | Do not use `Order`/`Allow`/`Deny`. Use only `mod_rewrite` with `CF-Connecting-IP` |
 | Wrong URLs in the site | `SITE_URL` not set | Check the variable name and value |
 
 ## Step 10: Record values locally
