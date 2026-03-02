@@ -50,7 +50,7 @@ flowchart TD
 | `seeds/` | Development-only canonical sources for the Practice of Clarity | Exists |
 | `docs/practices/` | Practice documents and operational lenses (e.g., Sensible Defaults) | Exists |
 | `AGENTS.md` | Canonical agent guidance (single source of truth) | Exists |
-| `.cursor/rules/` | Cursor always-apply and file-scoped rules | Exists |
+| `.cursor/rules/` | Cursor always-apply and file-scoped rules (includes security-awareness) | Exists |
 | `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management) | Exists |
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
 | `.github/` | PR template, Copilot instructions, Dependabot config | Exists |

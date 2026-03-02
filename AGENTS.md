@@ -51,6 +51,39 @@ Agents must not assert operational outcomes without evidence from actual tool ex
 
 These rules exist because high-capability reasoning models can simulate execution convincingly. Simulated execution that is presented as real execution is compliance theater. This practice is explicitly anti-theater.
 
+## Security posture
+
+This is a public repository. Everything committed is world-readable. Agents must treat security as a first-class concern.
+
+### Secret handling in AI chat
+
+- **Never display, `cat`, echo, or pipe** private keys, tokens, passwords, or credentials through tool calls. The output transits AI infrastructure and persists in local transcripts. Neither channel is private.
+- **Give the operator the command to run.** Do not capture the output. Example: tell the operator to run `cat ~/.ssh/key` in their own terminal and paste the value into GitHub secrets. Do not run it via a tool call.
+- **If a secret was accidentally exposed in chat**, flag it immediately and recommend rotation. Treat the secret as compromised.
+
+### Public repo hygiene
+
+- No secrets, IPs, internal hostnames, client IDs, or infrastructure paths in committed files.
+- Operator-specific values go in `.local/config.md` (gitignored). CI/CD values go in GitHub secrets and variables.
+- Before writing any file containing secrets or operator-specific values, verify the target path is gitignored. If not, stop and ask.
+
+### Deployment awareness
+
+- Read `.local/config.md` and the `infomaniak-deployment` skill to understand the current environment topology.
+- SSH keys are generated locally. Private keys never transit through AI tools.
+- IP restriction is defense-in-depth, not the sole access control layer.
+
+### Supply chain
+
+- GitHub Actions are pinned to major version tags (`@v4`). Dependabot monitors for updates.
+- No third-party deployment actions. Direct `ssh`/`rsync` reduces supply chain surface.
+- When the project matures, pinning to commit SHAs is the next step.
+
+### Credential lifecycle
+
+- Each deployment environment gets its own SSH key pair.
+- Keys are rotated if exposed. The setup runbook is at `docs/infra/infomaniak-environment-setup.md`.
+
 ## Register and writing constraints
 
 For authored text in this repo:
