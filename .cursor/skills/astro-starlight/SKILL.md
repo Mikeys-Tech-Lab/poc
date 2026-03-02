@@ -50,11 +50,34 @@ Any change to assets, config, content structure, or frontmatter must be followed
 
 If the build fails, fix the issue before committing. Do not commit broken builds.
 
-## Theming workflow
+## Theming: Catppuccin for Starlight
 
-1. Check the installed Starlight version.
-2. Use the recommended theming mechanism for that version (typically `astro.config.mjs` or CSS custom properties).
-3. Do not override Starlight internals unless official docs recommend it.
+The site uses [`@catppuccin/starlight`](https://github.com/catppuccin/starlight) as a Starlight plugin for all color theming.
+
+### Current configuration
+
+```js
+starlightCatppuccin({
+  dark: { flavor: "frappe", accent: "flamingo" },
+  light: { flavor: "latte", accent: "flamingo" },
+})
+```
+
+- **Dark mode**: Frappé flavor, flamingo accent (rosé pink)
+- **Light mode**: Latte flavor, flamingo accent (Latte is the only light-mode flavor)
+
+### Constraints
+
+- Do not manually set `--sl-color-accent*` or `--sl-color-gray-*` CSS custom properties. Catppuccin owns these. Override only layout/component-specific properties in `custom.css`.
+- Dark flavor options: `frappe`, `macchiato`, `mocha`. Light flavor: `latte` only.
+- Accent options: `lavender`, `blue`, `sapphire`, `sky`, `teal`, `green`, `yellow`, `peach`, `maroon`, `red`, `mauve`, `pink`, `flamingo`, `rosewater`.
+- To change flavor or accent, edit the plugin config in `astro.config.mjs`. Do not create separate theme CSS files.
+- After changing theme config, run `pnpm run build` to verify. The plugin generates theme CSS at build time.
+
+### Reference
+
+- Official docs: https://starlight.catppuccin.com/
+- Configuration reference: https://starlight.catppuccin.com/configuration
 
 ## Common commands
 
