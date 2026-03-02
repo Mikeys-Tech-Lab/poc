@@ -1,4 +1,5 @@
 {
+  ".": "0.2.0",
   "apps/site": "0.2.0",
   "tools/ai-guidance": "0.2.0"
 }

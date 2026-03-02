@@ -166,7 +166,7 @@ Optional later scopes: `release`, `website`
 
 Version bumps, CHANGELOGs, and GitHub Releases are handled by [Release Please](https://github.com/googleapis/release-please). It reads Conventional Commits on `main`, creates a Release PR with version bumps and CHANGELOG updates, and creates GitHub Releases when the PR is merged.
 
-Two packages are tracked: `apps/site` (component: `site`) and `tools/ai-guidance` (component: `ai-guidance`). Changes outside these directories do not trigger version bumps.
+Three packages are tracked: root `workspace` (CI/CD, security, agent guidance, docs, repo config), `apps/site` (component: `site`), and `tools/ai-guidance` (component: `ai-guidance`). Commits are attributed to packages based on which files they change.
 
 Do not bump versions manually. The `github-automation` skill has the full details.
 
