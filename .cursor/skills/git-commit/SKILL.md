@@ -15,9 +15,10 @@ Before staging and committing, verify in this order:
 
 1. **Build passes**: run `pnpm run build` if you changed assets, config, content structure, or frontmatter.
 2. **Tests pass**: run `pnpm test` if you changed tooling code.
-3. **Scope is atomic**: the staged changes do exactly one logical thing. If you need to describe two unrelated changes, split into two commits.
-4. **Nothing unintended is staged**: run `git diff --cached --stat` and review the file list.
-5. **GPG signing is active**: this repo requires signed commits. If you cannot sign, output the commands for the operator to run. Do not use `--no-gpg-sign`.
+3. **Internal references are valid**: if you added or changed any markdown link, backtick path, or file reference, verify the target exists. A build catches broken links in site content, but not in skills, rules, or docs outside the Astro site.
+4. **Scope is atomic**: the staged changes do exactly one logical thing. If you need to describe two unrelated changes, split into two commits.
+5. **Nothing unintended is staged**: run `git diff --cached --stat` and review the file list.
+6. **GPG signing is active**: this repo requires signed commits. If you cannot sign, output the commands for the operator to run. Do not use `--no-gpg-sign`.
 
 ## Commit message format
 
