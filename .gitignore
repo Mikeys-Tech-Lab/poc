@@ -1,3 +1,19 @@
+# Local operator config (not committed)
+.local/
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+
+# pnpm
+pnpm-debug.log*
+
+# Coverage
+coverage/
+
 # OS generated files (keep this minimal; grow iteratively as needed)
 
 ## macOS

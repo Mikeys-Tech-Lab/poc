@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@10.30.3",
+  "scripts": {
+    "local": "pnpm --filter site dev",
+    "build": "pnpm --filter site build",
+    "preview": "pnpm --filter site preview",
+    "test": "pnpm --filter ai-guidance test",
+    "test:coverage": "pnpm --filter ai-guidance coverage"
+  }
+}

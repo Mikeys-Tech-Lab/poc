@@ -1,0 +1,34 @@
+---
+description: TypeScript and Node.js tooling conventions for this workspace
+globs: "**/*.{ts,tsx,js,mjs,cjs}"
+alwaysApply: false
+---
+
+# Tooling conventions (Node.js + TypeScript)
+
+## Package manager
+
+Use pnpm. Do not use npm or yarn.
+
+## Functional style
+
+- Separate pure domain logic from IO. Domain modules must not import fs, http, or process.
+- Prefer pure functions that take data and return data.
+- IO lives in a thin shell layer (`src/infra/`).
+
+## Testing
+
+- TDD posture: tests co-evolve with changes.
+- Use Vitest for unit tests.
+- Use fixtures for deterministic tests. Do not rely on network calls in tests.
+- Coverage should be meaningful for domain logic.
+
+## Dependencies
+
+- Add dependencies via `pnpm add`. Do not make up version numbers.
+- Verify the package exists and check its current version before adding.
+
+## Scripts
+
+- Keep pnpm scripts in `package.json`.
+- Each script does one thing.

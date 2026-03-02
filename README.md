@@ -1,64 +1,97 @@
-# Practice of Clarity (PoC)
+# Practice of Clarity
 
-This package contains the first public seed set for the Practice of Clarity.
+A living practice of clarity designed for federation. Not a framework. Not a method. A set of seeds that grow differently in every context.
 
-It is designed to be copied and adapted as a small practice for making reasoning, boundaries, and uncertainty visible.
+## Local setup
 
-Trace means the visible reasoning path behind a decision:
-what was assumed, what was known, what was uncertain, and what will be checked next.
-It does not mean runtime telemetry or operational visibility traces.
+```bash
+# Install dependencies
+pnpm install
 
-## Model limits
+# Start the docs site locally (http://localhost:4321)
+pnpm run local
 
-AI can assist with drafting, but it can be wrong even when it sounds certain.
-Treat AI output as a draft, not evidence.
-For important claims, include a trace and a check.
+# Production build
+pnpm run build
 
-## Quick start
+# Preview the production build
+pnpm run preview
 
-- Start here: `seeds/A Living Practice of Clarity.md`
-- If you are under time pressure: `Sensible Defaults.md`
-- If you are dealing with disagreement: `seeds/A Bridge Between Conflicting Nodes.md`
+# Run tooling tests
+pnpm test
 
-## Status
+# Run tests with coverage
+pnpm run test:coverage
+```
 
-This is an early public seed set.
+### Operator configuration
 
-Right now, this package is the whole thing. There is no platform behind it.
+This repo uses a local config pattern for operator-specific values (GitHub account, GPG key, SSH alias). These are gitignored and never committed.
 
-If this turns into a checklist enforced across all work, the practice has drifted.
-The practice is only valid when it reduces uncertainty and makes reasoning inspectable.
+1. Copy the template: `cp .local.example.md .local/config.md`
+2. Fill in your values (GitHub account, GPG signing key, SSH host alias)
+3. Agents read `.local/config.md` at runtime for operator-specific preferences
 
-A trace produced under coercion is not a valid trace in this practice.
+See [`.local.example.md`](.local.example.md) for the full template.
 
-The practice must not be used for compliance scoring, surveillance, or performance evaluation.
+## Repo structure
 
-AI may assist in tracing.
-It may not replace human responsibility for the trace.
+| Path | Role |
+|---|---|
+| `seeds/` | Development-only canonical sources for the Practice of Clarity |
+| `docs/practices/` | Practice documents and operational lenses |
+| `AGENTS.md` | Canonical AI agent guidance (single source of truth) |
+| `.cursor/rules/` | Cursor always-apply and file-scoped rules |
+| `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation) |
+| `.local/` | Operator-specific config (gitignored) |
+| `apps/site/` | Astro Starlight frontend |
+| `tools/ai-guidance/` | Capability alignment tooling (Node.js + Vitest) |
+| `docs/architecture/` | Architecture docs with canonical workspace diagram |
+| `docs/guidance/` | Descriptive guidance docs |
+| `docs/ai/` | Capability alignment reports (generated) |
 
-If you want to stress test it, fork and adapt it privately.
+For the full architecture diagram and directory roles, see [`docs/architecture/workspace.md`](docs/architecture/workspace.md).
 
-For now, federation is fork-first. Your fork is your node.
-Keep your adaptations, and add short notes on what you changed and why.
+## AI agent support
 
-## Reading support
+This workspace provides checked-in guidance for three AI coding agents. All derive from a single canonical source.
 
-- Short sections and explicit headings are intentional.
-- If you want the minimal path, follow the three links in Quick start.
-- If any wording is unclear or overloaded, simplify it in your local copy and add a short note about what you changed and why.
+| Agent | Guidance location | How it works |
+|---|---|---|
+| **Cursor** | `.cursor/rules/` + `.cursor/skills/` | Always-apply rules fire on every interaction. File-scoped rules fire on matching globs. Skills are invoked per task. |
+| **Claude Code** | `.claude/CLAUDE.md` | Thin adapter pointing to `AGENTS.md`. |
+| **GitHub Copilot** | `.github/copilot-instructions.md` | Thin adapter pointing to `AGENTS.md`. |
+
+[`AGENTS.md`](AGENTS.md) is the single source of truth. If any adapter conflicts with it, `AGENTS.md` wins.
+
+### Recommended model configuration
+
+For **Cursor**:
+
+| Task type | Model | Mode |
+|---|---|---|
+| Architectural work, cross-cutting changes, new features | Claude Opus 4.6 | Max (thinking enabled) |
+| Routine edits, single-file changes, formatting | Claude Sonnet 4.6 | Standard |
+| Quick exploration, search, file lookup | Any fast model | Standard |
+
+For **Claude Code**: use the highest available reasoning model with extended thinking.
+
+For **GitHub Copilot**: use the default model; guidance is embedded in `.github/copilot-instructions.md`.
+
+**Why Opus 4.6 with thinking as default**: this workspace has cross-cutting architecture (canonical guidance, adapters, tooling, conventions, frontend) where changes in one file ripple across many. The deeper reasoning can help reduce drift and catches contradictions. Switch to a faster model only when the task is clearly scoped to a single file or routine edit.
+
+## Seeds
+
+The `seeds/` directory contains the canonical sources for the Practice of Clarity. These are development-only files and are not part of the site content tree. The Starlight site at `apps/site/` evolves its content independently.
+
+Current seeds:
+
+- **Practice Foundations** — core concepts of the Practice of Clarity
+- **A Living Practice of Clarity** — structural and philosophical grounding
 
 ## Licensing
 
-This repository is dual-licensed:
+- Code and tooling: [MIT License](LICENSE)
+- Authored content (seeds, site pages, docs): [CC BY 4.0](LICENSE-CC-BY-4.0)
 
-- Code and tooling are licensed under the MIT License. See `LICENSE`.
-- Seed texts and other authored content are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0). See `LICENSE-CC-BY-4.0`.
-
-Official reference: https://creativecommons.org/licenses/by/4.0/
-
-If you reuse or adapt the seed texts, give credit, link to the license, and indicate if changes were made.
-
-## Contents
-
-- `seeds/` — the Practice of Clarity seed set
-- `LICENSE-CC-BY-4.0` — CC BY 4.0 legal text
+See individual files for applicable license.

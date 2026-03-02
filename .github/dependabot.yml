@@ -1,0 +1,93 @@
+# Dependabot version updates configuration
+# Docs: https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference
+
+version: 2
+
+updates:
+  # Root workspace (pnpm-lock.yaml lives here)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    labels:
+      - "dependencies"
+    groups:
+      # Group minor/patch updates into a single PR
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+      # Major updates get individual PRs for review
+    open-pull-requests-limit: 10
+    versioning-strategy: increase
+
+  # Astro site dependencies
+  - package-ecosystem: "npm"
+    directory: "/apps/site"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "astro"
+    groups:
+      astro-ecosystem:
+        patterns:
+          - "astro*"
+          - "@astrojs/*"
+        update-types:
+          - "minor"
+          - "patch"
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+    open-pull-requests-limit: 10
+    versioning-strategy: increase
+
+  # Tooling dependencies
+  - package-ecosystem: "npm"
+    directory: "/tools/ai-guidance"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "tooling"
+    groups:
+      vitest:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
+        update-types:
+          - "minor"
+          - "patch"
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+    open-pull-requests-limit: 10
+    versioning-strategy: increase
+
+  # GitHub Actions (if we add any later)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "ci"

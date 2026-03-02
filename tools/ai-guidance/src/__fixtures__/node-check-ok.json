@@ -1,0 +1,7 @@
+{
+  "name": "Node.js",
+  "status": "ok",
+  "version": "25.6.1",
+  "detail": "Version confirmed via node --version.",
+  "checkedAt": "2026-03-01T00:00:00Z"
+}
