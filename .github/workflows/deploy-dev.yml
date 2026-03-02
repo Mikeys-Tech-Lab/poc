@@ -90,16 +90,18 @@ jobs:
           SSH_PORT: ${{ secrets.DEVELOPMENT_SSH_PORT }}
           DEPLOY_PATH: ${{ secrets.DEVELOPMENT_DEPLOY_PATH }}
         run: |
+          set +x
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p "${SSH_PORT:-22}" "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
 
-          rsync -avz --delete \
+          rsync -az --delete \
             -e "ssh -i ~/.ssh/deploy_key -p ${SSH_PORT:-22}" \
             apps/site/dist/ \
             "${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}"
+          echo "Deployment complete."
 
       - name: Cleanup
         if: always()
