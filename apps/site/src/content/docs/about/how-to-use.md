@@ -6,7 +6,7 @@ description: Quick orientation for developers and contributors.
 ## Quick start
 
 - Start with the seeds: `seeds/A Living Practice of Clarity.md`
-- If you are under time pressure: `docs/practices/sensible-defaults.md`
+- If you are under time pressure: [`docs/practices/sensible-defaults.md`](https://github.com/Mikeys-Tech-Lab/poc/blob/main/docs/practices/sensible-defaults.md)
 - If you are dealing with disagreement: `seeds/A Bridge Between Conflicting Nodes.md`
 
 ## Repo structure

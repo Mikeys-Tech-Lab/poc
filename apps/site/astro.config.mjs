@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import starlightCatppuccin from "@catppuccin/starlight";
+import { REPO } from "./src/consts";
 
 export default defineConfig({
   integrations: [
@@ -18,7 +19,7 @@ export default defineConfig({
         {
           icon: "github",
           label: "GitHub",
-          href: "https://github.com/mikeys-tech/poc",
+          href: REPO,
         },
       ],
       head: [
@@ -86,6 +87,9 @@ export default defineConfig({
           },
         },
       ],
+      components: {
+        SocialIcons: "./src/components/SocialIcons.astro",
+      },
       customCss: ["./src/styles/custom.css"],
       sidebar: [
         { label: "Home", slug: "" },
@@ -107,7 +111,7 @@ export default defineConfig({
         },
       ],
       editLink: {
-        baseUrl: "https://github.com/mikeys-tech/poc/edit/main/apps/site/",
+        baseUrl: `${REPO}/edit/main/apps/site/`,
       },
       credits: true,
     }),
