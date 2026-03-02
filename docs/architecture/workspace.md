@@ -55,6 +55,7 @@ flowchart TD
 
   subgraph "Release Automation"
     ReleasePlease[".github/workflows/release.yml\n(Release Please)"]
+    AppToken["GitHub App token\n(actions/create-github-app-token)"]
     RPConfig["release-please-config.json"]
     RPManifest[".release-please-manifest.json"]
   end
@@ -63,6 +64,7 @@ flowchart TD
   DeployDev -->|"rsync over SSH"| InfomaniakDev["Infomaniak: PoC - Development"]
   Dependabot -.->|"action version updates"| SecretScan
   Dependabot -.->|"action version updates"| CodeQL
+  AppToken -->|"installation token"| ReleasePlease
   RPConfig -.->|"package definitions"| ReleasePlease
   RPManifest -.->|"current versions"| ReleasePlease
   ReleasePlease -->|"version bumps + CHANGELOG"| RootPkg["package.json\n(workspace)"]
@@ -90,4 +92,5 @@ flowchart TD
 | `docs/ai/` | Capability alignment reports (generated) | Exists |
 | `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks | Exists |
 | `apps/site/` | Astro Starlight frontend | Exists |
+| `docs/infra/` | Infrastructure runbooks (Infomaniak setup, GitHub App setup) | Exists |
 | `.cursor/skills/infomaniak-deployment/` | Deployment skill for Infomaniak hosting | Exists |

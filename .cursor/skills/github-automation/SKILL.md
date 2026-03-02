@@ -128,6 +128,14 @@ Version bumps, CHANGELOGs, and GitHub Releases are automated via [Release Please
 | `release-please-config.json` | Package definitions, changelog sections, release behavior |
 | `.release-please-manifest.json` | Tracks current version of each package |
 
+**Token strategy:**
+
+The `release.yml` workflow uses a GitHub App installation token instead of the default `GITHUB_TOKEN`. This is required because GitHub's anti-recursion policy prevents `GITHUB_TOKEN` from triggering workflow runs. Without the App token, CI checks (gitleaks, Shai-Hulud, CodeQL) never run on Release Please PRs, and `enforce_admins` blocks merging.
+
+The workflow falls back to `GITHUB_TOKEN` if the App is not configured (variable `RELEASE_APP_ID` is empty). In fallback mode, Release PRs require the admin bypass workaround to merge.
+
+Setup: `docs/infra/github-app-release-setup.md`.
+
 **Commit type → version bump mapping:**
 
 | Commit type | Bump | Example |
