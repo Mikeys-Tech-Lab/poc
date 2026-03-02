@@ -15,15 +15,14 @@ description: Guides dependency version management, Dependabot configuration, and
 
 ## Dependabot configuration
 
-The Dependabot config lives at `.github/dependabot.yml`. It covers three package directories:
+The Dependabot config lives at `.github/dependabot.yml`. It covers three package directories and GitHub Actions:
 
 | Directory | Ecosystem | What it covers |
 |---|---|---|
 | `/` | npm | Root workspace, pnpm-lock.yaml |
 | `/apps/site` | npm | Astro Starlight frontend |
 | `/tools/ai-guidance` | npm | Capability alignment tooling |
-
-Additionally, `github-actions` is monitored for any future CI workflows.
+| `/` | github-actions | All workflow action versions (deploy, security scanning, CodeQL, Scorecard) |
 
 ### How it works
 
@@ -32,8 +31,9 @@ Additionally, `github-actions` is monitored for any future CI workflows.
 - Major updates get individual PRs for careful review
 - Astro ecosystem packages (`astro*`, `@astrojs/*`) are grouped together
 - Vitest packages (`vitest`, `@vitest/*`) are grouped together
+- GitHub Actions minor/patch updates are grouped together
 - Commit messages use `chore(deps):` to follow Conventional Commits
-- PRs are labeled (`dependencies`, plus area labels like `astro` or `tooling`)
+- PRs are labeled (`dependencies`, plus area labels like `astro`, `tooling`, or `ci`)
 
 ### Reviewing Dependabot PRs
 
@@ -86,6 +86,28 @@ After upgrading, always run tests and build before committing.
 - Dependabot security updates are enabled for automatic patching of known vulnerabilities
 - Grouped security updates consolidate patches into fewer PRs
 - If a security alert requires immediate action, don't wait for the weekly cycle — upgrade manually
+
+### CI security scanning
+
+Four security scanning workflows run on pushes to `main` and on PRs:
+
+| Workflow | File | What it checks |
+|---|---|---|
+| Secret Scan | `secret-scan.yml` | gitleaks CLI scans for accidentally committed secrets |
+| Supply Chain | `supply-chain.yml` | Shai-Hulud 2.0 Detector scans for compromised npm packages |
+| CodeQL | `codeql.yml` | Static analysis for security vulnerabilities in JS/TS |
+| Scorecard | `scorecard.yml` | OSSF supply chain security posture scoring |
+
+gitleaks uses the MIT-licensed CLI directly (not the commercial gitleaks-action) to avoid org license requirements. The CLI version is pinned in the workflow and must be updated manually. CodeQL and Scorecard also run on a weekly schedule.
+
+### Updating pinned tool versions
+
+Some tools are pinned outside of Dependabot's reach:
+
+| Tool | Where pinned | How to update |
+|---|---|---|
+| gitleaks CLI | `GITLEAKS_VERSION` env var in `secret-scan.yml` | Check [gitleaks releases](https://github.com/gitleaks/gitleaks/releases), update the version string |
+| GitHub Actions | Action `@v4` tags in workflow files | Dependabot handles minor/patch updates automatically |
 
 ## Version policy
 

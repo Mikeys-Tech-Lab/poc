@@ -46,8 +46,17 @@ flowchart TD
     DeployDev[".github/workflows/deploy-dev.yml"]
   end
 
+  subgraph "CI / Security Scanning"
+    SecretScan["secret-scan.yml\n(gitleaks)"]
+    SupplyChain["supply-chain.yml\n(Shai-Hulud)"]
+    CodeQL["codeql.yml"]
+    ScoreCard["scorecard.yml\n(OSSF)"]
+  end
+
   AstroSite -->|"pnpm run build"| DeployDev
   DeployDev -->|"rsync over SSH"| InfomaniakDev["Infomaniak: PoC - Development"]
+  Dependabot -.->|"action version updates"| SecretScan
+  Dependabot -.->|"action version updates"| CodeQL
 ```
 
 ## Directory roles
@@ -61,11 +70,11 @@ flowchart TD
 | `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management) | Exists |
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
 | `.github/` | PR template, Copilot instructions, Dependabot config | Exists |
+| `.github/workflows/` | CI/CD (deploy-dev), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard) | Exists |
 | `.local/` | Operator-specific config (gitignored). Template: `.local.example.md` | Exists |
 | `docs/guidance/` | Descriptive guidance docs (conventions, change process) | Exists |
 | `docs/architecture/` | Architecture docs + this canonical diagram | Exists |
 | `docs/ai/` | Capability alignment reports (generated) | Exists |
 | `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks | Exists |
 | `apps/site/` | Astro Starlight frontend | Exists |
-| `.github/workflows/` | GitHub Actions CI/CD workflows | Exists |
 | `.cursor/skills/infomaniak-deployment/` | Deployment skill for Infomaniak hosting | Exists |
