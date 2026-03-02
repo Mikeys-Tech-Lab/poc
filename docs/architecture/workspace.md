@@ -41,6 +41,13 @@ flowchart TD
   Dependabot[".github/dependabot.yml"] -.->|"version updates"| Tooling
 
   AstroSite[apps/site/] -->|"site content"| SiteDocs["apps/site/src/content/docs/"]
+
+  subgraph "CI/CD (GitHub Actions)"
+    DeployDev[".github/workflows/deploy-dev.yml"]
+  end
+
+  AstroSite -->|"pnpm run build"| DeployDev
+  DeployDev -->|"rsync over SSH"| InfomaniakDev["Infomaniak: PoC - Development"]
 ```
 
 ## Directory roles
@@ -50,7 +57,7 @@ flowchart TD
 | `seeds/` | Development-only canonical sources for the Practice of Clarity | Exists |
 | `docs/practices/` | Practice documents and operational lenses (e.g., Sensible Defaults) | Exists |
 | `AGENTS.md` | Canonical agent guidance (single source of truth) | Exists |
-| `.cursor/rules/` | Cursor always-apply and file-scoped rules | Exists |
+| `.cursor/rules/` | Cursor always-apply and file-scoped rules (includes security-awareness) | Exists |
 | `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management) | Exists |
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
 | `.github/` | PR template, Copilot instructions, Dependabot config | Exists |
@@ -60,3 +67,5 @@ flowchart TD
 | `docs/ai/` | Capability alignment reports (generated) | Exists |
 | `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks | Exists |
 | `apps/site/` | Astro Starlight frontend | Exists |
+| `.github/workflows/` | GitHub Actions CI/CD workflows | Exists |
+| `.cursor/skills/infomaniak-deployment/` | Deployment skill for Infomaniak hosting | Exists |

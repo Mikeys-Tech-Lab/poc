@@ -1,6 +1,10 @@
 # Local operator config (not committed)
 .local/
 
+# Environment files (secrets)
+.env
+.env.*
+
 # Dependencies
 node_modules/
 

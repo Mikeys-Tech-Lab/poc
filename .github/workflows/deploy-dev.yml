@@ -1,0 +1,108 @@
+name: Deploy to Development
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-dev
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    environment: development
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build site
+        run: pnpm run build
+        env:
+          SITE_URL: ${{ vars.DEVELOPMENT_SITE_URL }}
+
+      - name: Generate .htaccess for access restriction
+        env:
+          ALLOWED_IPS: ${{ secrets.DEVELOPMENT_ALLOWED_IPS }}
+        run: |
+          if [ -z "$ALLOWED_IPS" ]; then
+            echo "::error::DEVELOPMENT_ALLOWED_IPS secret is not set. Deployment would leave dev site unrestricted. Aborting."
+            exit 1
+          fi
+
+          CF_IPV4=$(curl -sf https://www.cloudflare.com/ips-v4/)
+          CF_IPV6=$(curl -sf https://www.cloudflare.com/ips-v6/)
+
+          if [ -z "$CF_IPV4" ]; then
+            echo "::error::Failed to fetch Cloudflare IP ranges. Aborting."
+            exit 1
+          fi
+
+          {
+            echo "# Layer 1: Only accept traffic from Cloudflare (blocks direct-to-origin)"
+            echo "Order Deny,Allow"
+            echo "Deny from all"
+            while IFS= read -r cidr; do
+              [ -n "$cidr" ] && echo "Allow from $cidr"
+            done <<< "$CF_IPV4"
+            while IFS= read -r cidr; do
+              [ -n "$cidr" ] && echo "Allow from $cidr"
+            done <<< "$CF_IPV6"
+            echo ""
+            echo "# Layer 2: Among Cloudflare requests, allow only specific visitor IPs"
+            echo "RewriteEngine On"
+            IFS=',' read -ra IPS <<< "$ALLOWED_IPS"
+            for ip in "${IPS[@]}"; do
+              trimmed=$(echo "$ip" | xargs)
+              escaped=$(echo "$trimmed" | sed 's/\./\\./g')
+              [ -n "$trimmed" ] && echo "RewriteCond %{HTTP:CF-Connecting-IP} !^${escaped}$"
+            done
+            echo "RewriteRule ^ - [F,L]"
+          } > apps/site/dist/.htaccess
+
+          cf_count=$(grep -c 'Allow from' apps/site/dist/.htaccess)
+          ip_count=$(grep -c 'RewriteCond' apps/site/dist/.htaccess)
+          echo "Generated .htaccess: ${cf_count} Cloudflare ranges, ${ip_count} visitor IP entries"
+
+      - name: Deploy via rsync
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.DEVELOPMENT_SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.DEVELOPMENT_SSH_HOST }}
+          SSH_USER: ${{ secrets.DEVELOPMENT_SSH_USER }}
+          SSH_PORT: ${{ secrets.DEVELOPMENT_SSH_PORT }}
+          DEPLOY_PATH: ${{ secrets.DEVELOPMENT_DEPLOY_PATH }}
+        run: |
+          set +x
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "${SSH_PORT:-22}" "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p ${SSH_PORT:-22}" \
+            apps/site/dist/ \
+            "${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}"
+          echo "Deployment complete."
+
+      - name: Cleanup
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

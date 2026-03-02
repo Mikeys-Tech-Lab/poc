@@ -1,0 +1,21 @@
+# Security awareness (public repo)
+
+Full guidance: `AGENTS.md` § Security posture. This is an always-applied adapter.
+
+## Secret handling
+
+- Never output secrets through tool calls (`cat`, `echo`, shell output). Provide the command for the operator to run directly in their own terminal.
+- Treat chat transcripts and tool output as persisted and potentially transmitted. They are not private channels.
+- If a secret was exposed in a session, immediately recommend rotation.
+
+## File safety
+
+- Before writing to any file, check if it should be gitignored. Secrets and operator-specific values go in `.local/config.md` or GitHub secrets, nowhere else.
+- All committed files must be public-safe. No IPs, hostnames, deploy paths, credentials, or client identifiers.
+- `.env*` files are gitignored. Use them for local secrets if needed. Never commit them.
+
+## Deployment
+
+- SSH private keys are generated locally and copied to GitHub secrets by the operator. Agents do not handle private key content.
+- Read `.local/config.md` for infrastructure details. Do not hardcode them.
+- The setup runbook at `docs/infra/infomaniak-environment-setup.md` is the reference for environment provisioning.
