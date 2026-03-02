@@ -48,7 +48,7 @@ flowchart TD
 | `docs/practices/` | Practice documents and operational lenses (e.g., Sensible Defaults) | Exists |
 | `AGENTS.md` | Canonical agent guidance | Exists |
 | `.cursor/rules/` | Cursor-native always-apply and file-scoped rules | Exists |
-| `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, github-automation) | Exists |
+| `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation) | Exists |
 | `.claude/` | Claude Code adapter | Exists |
 | `.github/` | GitHub PR template + Copilot instructions | Exists |
 | `docs/governance/` | Descriptive governance docs | Exists |

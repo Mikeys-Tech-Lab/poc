@@ -66,4 +66,4 @@ pnpm --filter site preview  # Preview production build
 
 ## Additional resources
 
-- For detailed Starlight config patterns, see [reference.md](reference.md) (created when needed).
+- For detailed Starlight config patterns, see the [official Starlight docs](https://starlight.astro.build/).
