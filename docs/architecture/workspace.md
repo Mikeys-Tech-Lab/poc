@@ -23,7 +23,7 @@ The diagram shows the current repo architecture: where canonical guidance lives,
 ```mermaid
 flowchart TD
   Seeds[seeds/] -->|"dev-only sources"| Agents[AGENTS.md]
-  Lens["Sensible Defaults.md"] -->|"delivery realism lens"| Agents
+  Lens["docs/practices/"] -->|"delivery realism lens"| Agents
 
   Agents -->|"always-apply rules"| CursorRules[.cursor/rules/]
   Agents -->|"stack skills"| CursorSkills[.cursor/skills/]
@@ -45,7 +45,7 @@ flowchart TD
 | Path | Role | Status |
 |---|---|---|
 | `seeds/` | Development-only canonical sources for the Practice of Clarity | Exists |
-| `Sensible Defaults.md` | Delivery realism lens (full text) | Exists |
+| `docs/practices/` | Practice documents and operational lenses (e.g., Sensible Defaults) | Exists |
 | `AGENTS.md` | Canonical agent guidance | Exists |
 | `.cursor/rules/` | Cursor-native always-apply and file-scoped rules | Exists |
 | `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, github-automation) | Exists |

@@ -16,7 +16,7 @@ pnpm run build        # Production build
 | Path | Role |
 |---|---|
 | `seeds/` | Development-only canonical sources for the Practice of Clarity |
-| `Sensible Defaults.md` | Delivery realism lens (full text) |
+| `docs/practices/` | Practice documents and operational lenses |
 | `AGENTS.md` | Canonical AI agent guidance (single source of truth) |
 | `.cursor/rules/` | Cursor always-apply and file-scoped rules |
 | `.cursor/skills/` | Cursor project skills (astro, node-tooling, git-commit, github-automation) |

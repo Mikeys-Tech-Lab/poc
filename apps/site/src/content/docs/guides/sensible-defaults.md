@@ -5,7 +5,7 @@ description: A delivery realism lens for making often-unplanned work visible.
 
 Sensible Defaults is a delivery realism lens. It makes visible the work that planning often ignores.
 
-The full lens text lives in `Sensible Defaults.md` at the repo root. This page summarizes how to use it.
+The full lens text lives in `docs/practices/sensible-defaults.md`. This page summarizes how to use it.
 
 ## When to use
 

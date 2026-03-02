@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Sensible Defaults (delivery realism)
 
-Full lens text: `Sensible Defaults.md` in the repo root.
+Full lens text: `docs/practices/sensible-defaults.md`.
 
 This is an adaptation of the full lens for always-on agent use. It is not a gate.
 
