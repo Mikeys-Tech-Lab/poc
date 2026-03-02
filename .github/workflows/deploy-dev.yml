@@ -48,16 +48,17 @@ jobs:
             exit 1
           fi
           {
-            echo "Order Deny,Allow"
-            echo "Deny from all"
+            echo "RewriteEngine On"
             IFS=',' read -ra IPS <<< "$ALLOWED_IPS"
             for ip in "${IPS[@]}"; do
               trimmed=$(echo "$ip" | xargs)
-              [ -n "$trimmed" ] && echo "Allow from $trimmed"
+              escaped=$(echo "$trimmed" | sed 's/\./\\./g')
+              [ -n "$trimmed" ] && echo "RewriteCond %{HTTP:CF-Connecting-IP} !^${escaped}$"
             done
+            echo "RewriteRule ^ - [F,L]"
           } > apps/site/dist/.htaccess
-          count=$(grep -c 'Allow from' apps/site/dist/.htaccess)
-          echo "Generated .htaccess with ${count} IP allowlist entries"
+          count=$(grep -c 'RewriteCond' apps/site/dist/.htaccess)
+          echo "Generated .htaccess with ${count} Cloudflare-aware IP allowlist entries"
 
       - name: Deploy via rsync
         env:
