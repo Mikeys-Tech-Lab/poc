@@ -65,7 +65,7 @@ Every PR description is a reasoning trace, not just a changelog. Someone reading
 
 ### Context section guidance
 
-- Be specific about decisions: "renamed apps/docs to apps/site because..." not "made some changes"
+- Be specific about decisions: "restructured apps/site sidebar because..." not "made some changes"
 - Include mistakes: if something broke and was fixed, say so and link to the fixing commit
 - State what was not verified: this is honesty, not weakness
 - Keep it concise but complete: a reader should understand the full journey in 2-3 minutes

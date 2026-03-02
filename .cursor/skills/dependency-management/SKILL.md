@@ -89,7 +89,7 @@ After upgrading, always run tests and build before committing.
 
 ## Version policy
 
-- **Node.js**: track active LTS (currently >=24). Do not adopt current/development releases.
+- **Node.js**: track active LTS. Keep the repo’s minimum supported version in `package.json` `engines.node` and revisit periodically. Do not adopt current/development releases.
 - **pnpm**: track latest stable 10.x. Evaluate major versions (e.g., 11.x) when they stabilize.
 - **Astro/Starlight**: track latest stable 5.x. Evaluate Astro 6.x when it exits beta.
 - **Vitest**: track latest stable 4.x.

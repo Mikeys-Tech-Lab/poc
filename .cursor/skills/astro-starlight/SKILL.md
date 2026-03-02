@@ -30,7 +30,7 @@ Before relying on any Astro or Starlight feature:
 
 ## Known pitfalls
 
-These are verified mistakes. Do not repeat them.
+These are known pitfalls we’ve hit in this repo. Do not repeat them.
 
 ### Image paths in content frontmatter
 
@@ -44,7 +44,7 @@ Astro content collections (`.md`, `.mdx` files in `src/content/`) resolve image 
 
 Never assume a path alias works in all contexts. Aliases that resolve in module imports (`.ts`, `.astro`) may not resolve in YAML frontmatter, CSS `url()`, or HTML attributes. When in doubt, use a relative path and verify with a build.
 
-## Build verification gate
+## Build verification requirement
 
 Any change to assets, config, content structure, or frontmatter must be followed by `pnpm run build` before committing. Do not commit without a passing build.
 
