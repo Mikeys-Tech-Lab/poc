@@ -1,10 +1,17 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import starlightCatppuccin from "@catppuccin/starlight";
 
 export default defineConfig({
   integrations: [
     starlight({
+      plugins: [
+        starlightCatppuccin({
+          dark: { flavor: "frappe", accent: "flamingo" },
+          light: { flavor: "latte", accent: "flamingo" },
+        }),
+      ],
       title: "Practice of Clarity",
       favicon: "/favicon-32x32.png",
       social: [
