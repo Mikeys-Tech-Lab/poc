@@ -65,6 +65,7 @@ flowchart TD
   Dependabot -.->|"action version updates"| CodeQL
   RPConfig -.->|"package definitions"| ReleasePlease
   RPManifest -.->|"current versions"| ReleasePlease
+  ReleasePlease -->|"version bumps + CHANGELOG"| RootPkg["package.json\n(workspace)"]
   ReleasePlease -->|"version bumps + CHANGELOG"| AstroSite
   ReleasePlease -->|"version bumps + CHANGELOG"| Tooling
 ```

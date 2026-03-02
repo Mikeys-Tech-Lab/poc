@@ -5,6 +5,10 @@
   "include-component-in-tag": true,
   "include-v-in-tag": true,
   "packages": {
+    ".": {
+      "component": "workspace",
+      "changelog-path": "CHANGELOG.md"
+    },
     "apps/site": {
       "component": "site",
       "changelog-path": "CHANGELOG.md"

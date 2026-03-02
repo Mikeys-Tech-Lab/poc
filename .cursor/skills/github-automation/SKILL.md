@@ -99,14 +99,15 @@ If files changed are outside both versioned packages, no version bump occurs.
 
 ## Version policy
 
-Two packages in this workspace carry versions:
+Three packages in this workspace carry versions:
 
-| Package | Path | When to bump |
+| Package | Path | What it captures |
 |---|---|---|
-| `site` | `apps/site/package.json` | Any user-visible change: content, theme, layout, icons, config |
-| `ai-guidance` | `tools/ai-guidance/package.json` | Any change to capability check logic, report format, or dependencies |
+| `workspace` | `package.json` (root) | CI/CD, security scanning, agent guidance, skills, rules, docs, repo config |
+| `site` | `apps/site/package.json` | User-visible changes: content, theme, layout, icons, Astro config |
+| `ai-guidance` | `tools/ai-guidance/package.json` | Capability check logic, report format, dependencies |
 
-Skill, rule, and doc-only changes do not require a version bump unless they ship as part of a package.
+Release Please attributes commits to packages based on which files changed. Commits that only touch root-level files (`.github/`, `docs/`, `AGENTS.md`, `.cursor/`) are attributed to the `workspace` package.
 
 ### Automated releases (Release Please)
 
@@ -138,9 +139,8 @@ Version bumps, CHANGELOGs, and GitHub Releases are automated via [Release Please
 
 **When no bump occurs:**
 
-- Changes that only touch skills, rules, `AGENTS.md`, or docs outside a versioned package.
-- Changes to CI/CD, GitHub config, or repo-level files.
-- Release Please skips these because no files in `apps/site/` or `tools/ai-guidance/` changed.
+- Commits of type `test` (hidden in changelog sections config).
+- Commits that touch only files already covered by a more specific package (e.g., a change in `apps/site/` only bumps `site`, not `workspace`).
 
 ### Semver guidance
 
