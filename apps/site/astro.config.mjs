@@ -5,8 +5,7 @@ import starlightCatppuccin from "@catppuccin/starlight";
 import { REPO } from "./src/consts";
 
 export default defineConfig({
-  site: "https://mikeys-tech-lab.github.io",
-  base: "/poc",
+  site: "https://mikeys-tech-lab.github.io/poc",
   integrations: [
     starlight({
       plugins: [
