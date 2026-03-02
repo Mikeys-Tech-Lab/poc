@@ -168,6 +168,8 @@ Version bumps, CHANGELOGs, and GitHub Releases are handled by [Release Please](h
 
 Three packages are tracked: root `workspace` (CI/CD, security, agent guidance, docs, repo config), `apps/site` (component: `site`), and `tools/ai-guidance` (component: `ai-guidance`). Commits are attributed to packages based on which files they change.
 
+Release Please uses a GitHub App installation token so its PRs trigger CI workflow runs. Without this, GitHub's anti-recursion policy prevents `GITHUB_TOKEN` from triggering checks on Release PRs. Setup: `docs/infra/github-app-release-setup.md`.
+
 Do not bump versions manually. The `github-automation` skill has the full details.
 
 ### TDD posture
