@@ -23,7 +23,7 @@ The diagram shows the current repo architecture: where canonical guidance lives,
 ```mermaid
 flowchart TD
   Seeds[seeds/] -->|"dev-only sources"| Agents[AGENTS.md]
-  Lens["docs/practices/"] -->|"delivery realism lens"| Agents
+  Practices["docs/practices/"] -->|"operational lenses"| Agents
 
   Agents -->|"always-apply rules"| CursorRules[.cursor/rules/]
   Agents -->|"stack skills"| CursorSkills[.cursor/skills/]
@@ -37,6 +37,9 @@ flowchart TD
   Guidance[docs/guidance/] -.->|"describes"| Agents
   Architecture[docs/architecture/] -.->|"describes"| Agents
 
+  LocalConfig[".local/config.md"] -.->|"operator prefs"| Agents
+  Dependabot[".github/dependabot.yml"] -.->|"version updates"| Tooling
+
   AstroSite[apps/site/] -->|"site content"| SiteDocs["apps/site/src/content/docs/"]
 ```
 
@@ -46,13 +49,14 @@ flowchart TD
 |---|---|---|
 | `seeds/` | Development-only canonical sources for the Practice of Clarity | Exists |
 | `docs/practices/` | Practice documents and operational lenses (e.g., Sensible Defaults) | Exists |
-| `AGENTS.md` | Canonical agent guidance | Exists |
-| `.cursor/rules/` | Cursor-native always-apply and file-scoped rules | Exists |
+| `AGENTS.md` | Canonical agent guidance (single source of truth) | Exists |
+| `.cursor/rules/` | Cursor always-apply and file-scoped rules | Exists |
 | `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management) | Exists |
-| `.claude/` | Claude Code adapter | Exists |
-| `.github/` | GitHub PR template + Copilot instructions | Exists |
-| `docs/guidance/` | Descriptive guidance docs | Exists |
+| `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
+| `.github/` | PR template, Copilot instructions, Dependabot config | Exists |
+| `.local/` | Operator-specific config (gitignored). Template: `.local.example.md` | Exists |
+| `docs/guidance/` | Descriptive guidance docs (conventions, change process) | Exists |
 | `docs/architecture/` | Architecture docs + this canonical diagram | Exists |
-| `docs/ai/` | Capability alignment reports | Exists |
+| `docs/ai/` | Capability alignment reports (generated) | Exists |
 | `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks | Exists |
 | `apps/site/` | Astro Starlight frontend | Exists |

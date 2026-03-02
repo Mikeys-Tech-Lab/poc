@@ -35,10 +35,17 @@
 
 <!-- What was tested? What was not? -->
 
+### Evidence
+
+<!-- How can results be reproduced? If no CI, state that and list the local commands.
+     Example: "No CI configured. Results from local execution. Reproduce with: pnpm test && pnpm run build" -->
+
 ## Checklist
 
 - [ ] Commits follow Conventional Commits (`type(scope): subject`)
 - [ ] Updated `docs/architecture/workspace.md` if repo structure changed
-- [ ] Build passes locally
+- [ ] Build passes locally (`pnpm run build`)
+- [ ] Tests pass locally (`pnpm test`)
 - [ ] No gating, scoring, or enforcement language introduced
 - [ ] Context reflection included in PR description
+- [ ] PR description updated after final push
