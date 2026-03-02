@@ -1,64 +1,49 @@
-# Practice of Clarity (PoC)
+# Practice of Clarity
 
-This package contains the first public seed set for the Practice of Clarity.
-
-It is designed to be copied and adapted as a small practice for making reasoning, boundaries, and uncertainty visible.
-
-Trace means the visible reasoning path behind a decision:
-what was assumed, what was known, what was uncertain, and what will be checked next.
-It does not mean runtime telemetry or operational visibility traces.
-
-## Model limits
-
-AI can assist with drafting, but it can be wrong even when it sounds certain.
-Treat AI output as a draft, not evidence.
-For important claims, include a trace and a check.
+A living practice of clarity designed for federation. Not a framework. Not a method. A set of seeds that grow differently in every context.
 
 ## Quick start
 
-- Start here: `seeds/A Living Practice of Clarity.md`
-- If you are under time pressure: `Sensible Defaults.md`
-- If you are dealing with disagreement: `seeds/A Bridge Between Conflicting Nodes.md`
+```bash
+pnpm install
+pnpm run local        # Start the docs site at localhost:4321
+pnpm test             # Run tooling tests
+pnpm run build        # Production build
+```
 
-## Status
+## Repo structure
 
-This is an early public seed set.
+| Path | Role |
+|---|---|
+| `seeds/` | Development-only canonical sources for the Practice of Clarity |
+| `Sensible Defaults.md` | Delivery realism lens (full text) |
+| `AGENTS.md` | Canonical AI agent guidance (single source of truth) |
+| `.cursor/rules/` | Cursor always-apply and file-scoped rules |
+| `.cursor/skills/` | Cursor project skills (astro, node-tooling, git-commit, github-automation) |
+| `.local/` | Operator-specific config (gitignored). Copy `.local.example.md` to `.local/config.md` |
+| `apps/site/` | Astro Starlight frontend |
+| `tools/ai-guidance/` | Capability alignment tooling (Node.js + Vitest) |
+| `docs/architecture/` | Architecture docs with canonical workspace diagram |
+| `docs/governance/` | Descriptive governance docs |
 
-Right now, this package is the whole thing. There is no platform behind it.
+For the full architecture diagram, see [`docs/architecture/workspace.md`](docs/architecture/workspace.md).
 
-If this turns into a checklist enforced across all work, the practice has drifted.
-The practice is only valid when it reduces uncertainty and makes reasoning inspectable.
+## Seeds
 
-A trace produced under coercion is not a valid trace in this practice.
+The `seeds/` directory contains the canonical sources for the Practice of Clarity. These are development-only files and are not part of the site content tree. The Starlight site at `apps/site/` evolves its content independently.
 
-The practice must not be used for compliance scoring, surveillance, or performance evaluation.
+Current seeds:
 
-AI may assist in tracing.
-It may not replace human responsibility for the trace.
+- **Practice Foundations** — core concepts of the Practice of Clarity
+- **A Living Practice of Clarity** — structural and philosophical grounding
 
-If you want to stress test it, fork and adapt it privately.
+## AI guidance
 
-For now, federation is fork-first. Your fork is your node.
-Keep your adaptations, and add short notes on what you changed and why.
-
-## Reading support
-
-- Short sections and explicit headings are intentional.
-- If you want the minimal path, follow the three links in Quick start.
-- If any wording is unclear or overloaded, simplify it in your local copy and add a short note about what you changed and why.
+All AI agents (Cursor, Claude Code, GitHub Copilot) follow the conventions in [`AGENTS.md`](AGENTS.md). Platform-specific adapters derive from that file. If an adapter conflicts, `AGENTS.md` wins.
 
 ## Licensing
 
-This repository is dual-licensed:
+- Code and tooling: [MIT License](LICENSE)
+- Authored content (seeds, site pages, docs): [CC BY 4.0](LICENSE-CC-BY-4.0)
 
-- Code and tooling are licensed under the MIT License. See `LICENSE`.
-- Seed texts and other authored content are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0). See `LICENSE-CC-BY-4.0`.
-
-Official reference: https://creativecommons.org/licenses/by/4.0/
-
-If you reuse or adapt the seed texts, give credit, link to the license, and indicate if changes were made.
-
-## Contents
-
-- `seeds/` — the Practice of Clarity seed set
-- `LICENSE-CC-BY-4.0` — CC BY 4.0 legal text
+See individual files for applicable license.
