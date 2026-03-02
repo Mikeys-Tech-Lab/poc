@@ -1,0 +1,83 @@
+name: Deploy to Development
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-dev
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    environment: development
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build site
+        run: pnpm run build
+        env:
+          SITE_URL: ${{ vars.DEVELOPMENT_SITE_URL }}
+
+      - name: Generate .htaccess for IP restriction
+        env:
+          ALLOWED_IPS: ${{ secrets.DEVELOPMENT_ALLOWED_IPS }}
+        run: |
+          if [ -z "$ALLOWED_IPS" ]; then
+            echo "::error::DEVELOPMENT_ALLOWED_IPS secret is not set. Deployment would leave dev site unrestricted. Aborting."
+            exit 1
+          fi
+          {
+            echo "Order Deny,Allow"
+            echo "Deny from all"
+            IFS=',' read -ra IPS <<< "$ALLOWED_IPS"
+            for ip in "${IPS[@]}"; do
+              trimmed=$(echo "$ip" | xargs)
+              [ -n "$trimmed" ] && echo "Allow from $trimmed"
+            done
+          } > apps/site/dist/.htaccess
+          count=$(grep -c 'Allow from' apps/site/dist/.htaccess)
+          echo "Generated .htaccess with ${count} IP allowlist entries"
+
+      - name: Deploy via rsync
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.DEVELOPMENT_SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.DEVELOPMENT_SSH_HOST }}
+          SSH_USER: ${{ secrets.DEVELOPMENT_SSH_USER }}
+          SSH_PORT: ${{ secrets.DEVELOPMENT_SSH_PORT }}
+          DEPLOY_PATH: ${{ secrets.DEVELOPMENT_DEPLOY_PATH }}
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "${SSH_PORT:-22}" "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p ${SSH_PORT:-22}" \
+            apps/site/dist/ \
+            "${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}"
+
+      - name: Cleanup
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
