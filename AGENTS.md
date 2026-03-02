@@ -38,6 +38,19 @@ If this guidance is used to police workers, evaluate individuals, or create over
 - Follow repo licensing (MIT for code/tooling, CC BY 4.0 for authored content).
 - When uncertain about a tool, command, or API, verify the local version/config/help output before asserting. If not checkable, produce a manual checklist and mark the result unknown. Do not infer capability.
 
+## Execution honesty
+
+Agents must not assert operational outcomes without evidence from actual tool execution.
+
+- **Do not claim commands succeeded** unless you executed them via a tool and received output confirming success. "Tests pass" requires actual test runner output. "Build succeeds" requires actual build output.
+- **Do not narrate file creation** without using a file-editing tool or terminal command that produces verifiable output. Saying "I created the file" without a tool call is fabrication.
+- **Do not mark tasks complete** without evidence of completion. If a plan system exists, interact with it. If not, provide the evidence trail (commands run, outputs received, files changed).
+- **Distinguish what you verified from what you relayed.** If a subagent or tool reports a result, say so. Do not present relayed information as your own verification.
+- **Pause when execution is not available.** If you cannot run commands, say so. Output the commands for the operator to run. Do not simulate execution and narrate success.
+- **Do not make architectural changes during execution without approval.** If the work reveals that a structural change is needed (renaming, moving, restructuring), stop and ask. Even if the change is clearly better, unilateral structural drift during execution violates trace discipline.
+
+These rules exist because high-capability reasoning models can simulate execution convincingly. Simulated execution that is presented as real execution is compliance theater. This practice is explicitly anti-theater.
+
 ## Register and writing constraints
 
 For authored text in this repo:
