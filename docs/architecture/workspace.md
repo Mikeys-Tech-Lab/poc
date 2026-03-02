@@ -34,7 +34,7 @@ flowchart TD
   Tooling -->|"auditable reports"| DocsAI[docs/ai/]
   Tooling -->|"informs"| CursorSkills
 
-  Governance[docs/governance/] -.->|"describes"| Agents
+  Guidance[docs/guidance/] -.->|"describes"| Agents
   Architecture[docs/architecture/] -.->|"describes"| Agents
 
   AstroSite[apps/site/] -->|"site content"| SiteDocs["apps/site/src/content/docs/"]
@@ -51,7 +51,7 @@ flowchart TD
 | `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management) | Exists |
 | `.claude/` | Claude Code adapter | Exists |
 | `.github/` | GitHub PR template + Copilot instructions | Exists |
-| `docs/governance/` | Descriptive governance docs | Exists |
+| `docs/guidance/` | Descriptive guidance docs | Exists |
 | `docs/architecture/` | Architecture docs + this canonical diagram | Exists |
 | `docs/ai/` | Capability alignment reports | Exists |
 | `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks | Exists |

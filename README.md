@@ -47,7 +47,7 @@ See [`.local.example.md`](.local.example.md) for the full template.
 | `apps/site/` | Astro Starlight frontend |
 | `tools/ai-guidance/` | Capability alignment tooling (Node.js + Vitest) |
 | `docs/architecture/` | Architecture docs with canonical workspace diagram |
-| `docs/governance/` | Descriptive governance docs |
+| `docs/guidance/` | Descriptive guidance docs |
 | `docs/ai/` | Capability alignment reports (generated) |
 
 For the full architecture diagram and directory roles, see [`docs/architecture/workspace.md`](docs/architecture/workspace.md).
@@ -78,7 +78,7 @@ For **Claude Code**: use the highest available reasoning model with extended thi
 
 For **GitHub Copilot**: use the default model; guidance is embedded in `.github/copilot-instructions.md`.
 
-**Why Opus 4.6 with thinking as default**: this workspace has cross-cutting architecture (canonical guidance, adapters, tooling, governance, frontend) where changes in one file ripple across many. The deeper reasoning prevents drift and catches contradictions. Switch to a faster model only when the task is clearly scoped to a single file or routine edit.
+**Why Opus 4.6 with thinking as default**: this workspace has cross-cutting architecture (canonical guidance, adapters, tooling, conventions, frontend) where changes in one file ripple across many. The deeper reasoning prevents drift and catches contradictions. Switch to a faster model only when the task is clearly scoped to a single file or routine edit.
 
 ## Seeds
 

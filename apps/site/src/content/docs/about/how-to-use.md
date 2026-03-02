@@ -18,7 +18,7 @@ description: Quick orientation for developers and contributors.
 | `AGENTS.md` | Canonical AI agent guidance |
 | `.cursor/rules/` | Cursor-native rules (always-apply + file-scoped) |
 | `.cursor/skills/` | Cursor project skills (astro, tooling, github) |
-| `docs/` | Governance, architecture, and capability reports |
+| `docs/` | Guidance, architecture, and capability reports |
 | `tools/ai-guidance/` | TypeScript tooling for capability alignment checks |
 | `apps/site/` | This Astro Starlight site |
 
@@ -32,4 +32,4 @@ Changes follow GitHub Flow: feature branch, pull request with trace and test pla
 
 Commits use Conventional Commits: `<type>(<scope>): <subject>`
 
-See `docs/governance/` for full conventions.
+See `docs/guidance/` for full conventions.
