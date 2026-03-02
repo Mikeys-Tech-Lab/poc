@@ -74,10 +74,42 @@ starlightCatppuccin({
 - To change flavor or accent, edit the plugin config in `astro.config.mjs`. Do not create separate theme CSS files.
 - After changing theme config, run `pnpm run build` to verify. The plugin generates theme CSS at build time.
 
+### Theme-color meta tags
+
+The `head` array in `astro.config.mjs` includes `theme-color` and `msapplication-TileColor` meta tags hardcoded to `#303446` (Frappé base). If the dark flavor changes, these values must be updated manually. Catppuccin base colors:
+
+- Frappé: `#303446`
+- Macchiato: `#24273a`
+- Mocha: `#1e1e2e`
+
 ### Reference
 
 - Official docs: https://starlight.catppuccin.com/
 - Configuration reference: https://starlight.catppuccin.com/configuration
+
+## Centralized URLs
+
+Repository and social URLs live in `apps/site/src/consts.ts`. Use these constants in `.mjs`, `.ts`, and `.astro` files instead of hardcoding URLs.
+
+```ts
+import { REPO, LINKEDIN } from "./src/consts";
+```
+
+### Constraint: plain Markdown content files cannot import constants
+
+Files in `src/content/docs/` that use `.md` (not `.mdx`) cannot import TypeScript modules. Any GitHub URLs in those files must be hardcoded. If the repo moves or renames, these links break silently.
+
+Affected files (as of v0.1.0): `about/how-to-use.md`, `guides/sensible-defaults.md`.
+
+To find all hardcoded repo URLs: search for `github.com/Mikeys-Tech-Lab` in `src/content/docs/`.
+
+## Component overrides
+
+### SocialIcons (LinkedIn)
+
+`src/components/SocialIcons.astro` extends the default Starlight `SocialIcons` component to add a LinkedIn icon. It is registered in `astro.config.mjs` under `components.SocialIcons`. The LinkedIn URL comes from `consts.ts`.
+
+To add another social icon, follow the same pattern: append an `<a>` with an inline SVG after the `<Default>` slot.
 
 ## Common commands
 
