@@ -5,6 +5,8 @@ import starlightCatppuccin from "@catppuccin/starlight";
 import { REPO } from "./src/consts";
 
 export default defineConfig({
+  site: "https://mikeys-tech-lab.github.io",
+  base: "/poc",
   integrations: [
     starlight({
       plugins: [
@@ -72,6 +74,7 @@ export default defineConfig({
             content: "/mstile-150x150.png",
           },
         },
+        // Frappé base: #303446 — update if dark flavor changes (see astro-starlight skill)
         {
           tag: "meta",
           attrs: {
