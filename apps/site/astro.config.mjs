@@ -13,7 +13,7 @@ export default defineConfig({
         }),
       ],
       title: "Practice of Clarity",
-      favicon: "/favicon-32x32.png",
+      favicon: "/favicon.ico",
       social: [
         {
           icon: "github",
@@ -25,9 +25,10 @@ export default defineConfig({
         {
           tag: "link",
           attrs: {
-            rel: "apple-touch-icon",
-            sizes: "180x180",
-            href: "/apple-touch-icon.png",
+            rel: "icon",
+            type: "image/png",
+            sizes: "48x48",
+            href: "/favicon-48x48.png",
           },
         },
         {
@@ -46,6 +47,42 @@ export default defineConfig({
             type: "image/png",
             sizes: "16x16",
             href: "/favicon-16x16.png",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "apple-touch-icon",
+            sizes: "180x180",
+            href: "/apple-touch-icon.png",
+          },
+        },
+        {
+          tag: "link",
+          attrs: {
+            rel: "manifest",
+            href: "/site.webmanifest",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            name: "msapplication-TileImage",
+            content: "/mstile-150x150.png",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            name: "msapplication-TileColor",
+            content: "#303446",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            name: "theme-color",
+            content: "#303446",
           },
         },
       ],
