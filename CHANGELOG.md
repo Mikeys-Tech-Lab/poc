@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.3.1...workspace-v0.4.0) (2026-03-02)
+
+
+### Features
+
+* **astro:** atmospheric landing page with frosted glass UI ([#16](https://github.com/Mikeys-Tech-Lab/poc/issues/16)) ([8f63c49](https://github.com/Mikeys-Tech-Lab/poc/commit/8f63c49f7eab201d1706d37fb9223a36c25570bd))
+
 ## [0.3.1](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.3.0...workspace-v0.3.1) (2026-03-02)
 
 
