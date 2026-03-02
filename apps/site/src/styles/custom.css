@@ -1,36 +1,5 @@
-:root {
-  --sl-color-accent-low: #1a2332;
-  --sl-color-accent: #3b82f6;
-  --sl-color-accent-high: #bfdbfe;
-  --sl-color-white: #f8fafc;
-  --sl-color-gray-1: #e2e8f0;
-  --sl-color-gray-2: #cbd5e1;
-  --sl-color-gray-3: #94a3b8;
-  --sl-color-gray-4: #475569;
-  --sl-color-gray-5: #1e293b;
-  --sl-color-gray-6: #0f172a;
-  --sl-color-black: #020617;
-}
-
-:root[data-theme="light"] {
-  --sl-color-accent-low: #dbeafe;
-  --sl-color-accent: #2563eb;
-  --sl-color-accent-high: #1e3a5f;
-  --sl-color-white: #020617;
-  --sl-color-gray-1: #1e293b;
-  --sl-color-gray-2: #334155;
-  --sl-color-gray-3: #64748b;
-  --sl-color-gray-4: #94a3b8;
-  --sl-color-gray-5: #e2e8f0;
-  --sl-color-gray-6: #f1f5f9;
-  --sl-color-black: #f8fafc;
-}
-
-/* Hero image: circular center crop */
+/* Hero image: circular display */
 .hero img {
   border-radius: 50%;
-  object-fit: cover;
-  aspect-ratio: 1 / 1;
   max-width: 280px;
-  max-height: 280px;
 }

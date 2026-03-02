@@ -84,9 +84,17 @@ When proposing terminal commands, prefer the tools listed here. If a tool is not
 
 ### GitHub Flow
 
-- Feature branches from `main`.
+- All work happens on feature branches from `main`. Do not commit on `main`.
 - Pull request with squash merge back to `main`.
-- PRs include: summary, minimal trace (assumptions/limits), and test plan.
+- PRs include: summary, context trace (decisions/evolution/mistakes), assumptions/limits, and test plan.
+
+### Feature lifecycle
+
+Every non-trivial piece of work follows: **Start** (branch) → **Work** (atomic commits) → **Close** (reflect → cleanup → version bump → PR).
+
+The Close phase requires reflection before PR creation: audit for build warnings, dead code, missing docs, broken links, and undocumented patterns. Fix findings, bump versions if applicable, then create the PR with a full reasoning trace.
+
+The `github-automation` skill has the detailed lifecycle steps. This summary exists so agents know the lifecycle is expected even without reading the skill.
 
 ### Atomic commits
 
