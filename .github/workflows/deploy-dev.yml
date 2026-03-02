@@ -39,7 +39,7 @@ jobs:
         env:
           SITE_URL: ${{ vars.DEVELOPMENT_SITE_URL }}
 
-      - name: Generate .htaccess for IP restriction
+      - name: Generate .htaccess for access restriction
         env:
           ALLOWED_IPS: ${{ secrets.DEVELOPMENT_ALLOWED_IPS }}
         run: |
@@ -47,7 +47,27 @@ jobs:
             echo "::error::DEVELOPMENT_ALLOWED_IPS secret is not set. Deployment would leave dev site unrestricted. Aborting."
             exit 1
           fi
+
+          CF_IPV4=$(curl -sf https://www.cloudflare.com/ips-v4/)
+          CF_IPV6=$(curl -sf https://www.cloudflare.com/ips-v6/)
+
+          if [ -z "$CF_IPV4" ]; then
+            echo "::error::Failed to fetch Cloudflare IP ranges. Aborting."
+            exit 1
+          fi
+
           {
+            echo "# Layer 1: Only accept traffic from Cloudflare (blocks direct-to-origin)"
+            echo "Order Deny,Allow"
+            echo "Deny from all"
+            while IFS= read -r cidr; do
+              [ -n "$cidr" ] && echo "Allow from $cidr"
+            done <<< "$CF_IPV4"
+            while IFS= read -r cidr; do
+              [ -n "$cidr" ] && echo "Allow from $cidr"
+            done <<< "$CF_IPV6"
+            echo ""
+            echo "# Layer 2: Among Cloudflare requests, allow only specific visitor IPs"
             echo "RewriteEngine On"
             IFS=',' read -ra IPS <<< "$ALLOWED_IPS"
             for ip in "${IPS[@]}"; do
@@ -57,8 +77,10 @@ jobs:
             done
             echo "RewriteRule ^ - [F,L]"
           } > apps/site/dist/.htaccess
-          count=$(grep -c 'RewriteCond' apps/site/dist/.htaccess)
-          echo "Generated .htaccess with ${count} Cloudflare-aware IP allowlist entries"
+
+          cf_count=$(grep -c 'Allow from' apps/site/dist/.htaccess)
+          ip_count=$(grep -c 'RewriteCond' apps/site/dist/.htaccess)
+          echo "Generated .htaccess: ${cf_count} Cloudflare ranges, ${ip_count} visitor IP entries"
 
       - name: Deploy via rsync
         env:
