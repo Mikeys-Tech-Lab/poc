@@ -70,6 +70,39 @@ Every PR description is a reasoning trace, not just a changelog. Someone reading
 - State what was not verified: this is honesty, not weakness
 - Keep it concise but complete: a reader should understand the full journey in 2-3 minutes
 
+## PR description upkeep
+
+The PR description must stay current with every push. This is the last step after pushing commits to a branch with an open PR.
+
+### When to update
+
+Every time you push one or more commits to a branch that has an open PR. No exceptions.
+
+### What to verify
+
+- **Summary / "What this PR adds"**: does it list everything the branch now contains?
+- **Evolution section**: are new decisions, mistakes, or corrections documented?
+- **Trace assumptions**: are versions, tools, and limits still accurate?
+- **Skills, files, and directory lists**: do they match the current state?
+- **Checklist**: are all items still correct?
+
+### How to update
+
+```bash
+# Get current PR body
+gh pr view <number> --json body -q .body > /tmp/pr-body.md
+
+# Edit /tmp/pr-body.md with the updates
+
+# Apply
+gh pr edit <number> --body-file /tmp/pr-body.md
+rm /tmp/pr-body.md
+```
+
+### Why this matters
+
+A PR description that lags behind the commits is misleading. Reviewers read the description first. If it doesn't match the diff, trust breaks down. Keep them in sync.
+
 ## Common commands
 
 ```bash

@@ -20,6 +20,22 @@ Before staging and committing, verify in this order:
 5. **Nothing unintended is staged**: run `git diff --cached --stat` and review the file list.
 6. **GPG signing is active**: this repo requires signed commits. If you cannot sign, output the commands for the operator to run. Do not use `--no-gpg-sign`.
 
+## Post-commit: PR description upkeep
+
+After pushing commits to a branch that has an open PR, update the PR description as the last step. This is not optional.
+
+1. Check if the branch has an open PR: `gh pr view --json number,title -q .number`
+2. If a PR exists, verify the description reflects all commits on the branch
+3. Update: `gh pr edit <number> --body-file <temp-file>`
+
+What to check:
+- "What this PR adds" lists every feature, fix, and change
+- "Evolution during implementation" covers any new decisions, mistakes, or corrections
+- "Trace" assumptions are still accurate (versions, tools)
+- Skills and file lists are current
+
+If you pushed new commits and did not update the PR description, the PR is out of date. Fix it before moving on.
+
 ## Commit message format
 
 ```
