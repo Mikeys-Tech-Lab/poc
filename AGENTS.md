@@ -45,7 +45,7 @@ Agents must not assert operational outcomes without evidence from actual tool ex
 - **Do not claim commands succeeded** unless you executed them via a tool and received output confirming success. "Tests pass" requires actual test runner output. "Build succeeds" requires actual build output.
 - **Do not narrate file creation** without using a file-editing tool or terminal command that produces verifiable output. Saying "I created the file" without a tool call is fabrication.
 - **Do not mark tasks complete** without evidence of completion. If a plan system exists, interact with it. If not, provide the evidence trail (commands run, outputs received, files changed).
-- **Distinguish what you verified from what you relayed.** If a subagent or tool reports a result, say so. Do not present relayed information as your own verification.
+- **Label every operational claim.** Any claim about an operational outcome (tests passed, build succeeded, file created, command ran) must either include raw tool output as evidence, or explicitly state that it is a relayed report from a subagent or tool. Unlabeled claims erode trace. Not everything must be verified manually, but everything must be labeled.
 - **Pause when execution is not available.** If you cannot run commands, say so. Output the commands for the operator to run. Do not simulate execution and narrate success.
 - **Do not make architectural changes during execution without approval.** If the work reveals that a structural change is needed (renaming, moving, restructuring), stop and ask. Even if the change is clearly better, unilateral structural drift during execution violates trace discipline.
 
