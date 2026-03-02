@@ -3,3 +3,75 @@
   border-radius: 50%;
   max-width: 280px;
 }
+
+/* ── Landing page atmospheric background ──
+   Fullscreen blurred image tinted with theme base color.
+   Frappé base #303446, Latte base #eff1f5 — update if flavor changes. */
+body:has(.hero)::before {
+  content: "";
+  position: fixed;
+  inset: -24px;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(48, 52, 70, 0.6), rgba(48, 52, 70, 0.6)),
+    url("../assets/bg-landing.png") center / cover no-repeat;
+  filter: blur(8px);
+}
+
+:root[data-theme="light"] body:has(.hero)::before {
+  background:
+    linear-gradient(rgba(239, 241, 245, 0.65), rgba(239, 241, 245, 0.65)),
+    url("../assets/bg-landing.png") center / cover no-repeat;
+}
+
+/* ── Landing page: transparent theme ──
+   Override Starlight CSS custom properties so the atmospheric background
+   fills the entire page. Variables cascade naturally without !important.
+   backdrop-filter requires targeted selectors (not expressible as vars). */
+
+body:has(.hero) {
+  --sl-color-bg: transparent;
+  --sl-color-bg-nav: rgba(48, 52, 70, 0.35);
+  --sl-color-bg-sidebar: transparent;
+  --sl-color-hairline-shade: rgba(198, 208, 245, 0.1);
+  --sl-color-hairline-light: rgba(198, 208, 245, 0.1);
+}
+
+:root[data-theme="light"] body:has(.hero) {
+  --sl-color-bg-nav: rgba(239, 241, 245, 0.35);
+  --sl-color-hairline-shade: rgba(108, 111, 133, 0.1);
+  --sl-color-hairline-light: rgba(108, 111, 133, 0.1);
+}
+
+/* Frosted glass on header and search bar */
+body:has(.hero) .page > .header {
+  backdrop-filter: blur(16px);
+}
+
+body:has(.hero) button[data-open-modal] {
+  background-color: rgba(48, 52, 70, 0.3);
+  border-color: rgba(198, 208, 245, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+:root[data-theme="light"] body:has(.hero) button[data-open-modal] {
+  background-color: rgba(239, 241, 245, 0.3);
+  border-color: rgba(108, 111, 133, 0.15);
+}
+
+/* Frosted glass cards */
+body:has(.hero) .card {
+  background-color: rgba(48, 52, 70, 0.35);
+  border-color: rgba(198, 208, 245, 0.15);
+  backdrop-filter: blur(12px);
+}
+
+:root[data-theme="light"] body:has(.hero) .card {
+  background-color: rgba(239, 241, 245, 0.35);
+  border-color: rgba(108, 111, 133, 0.15);
+}
+
+/* ── Landing page: center search bar in header ── */
+body:has(.hero) .header > .sl-flex:nth-child(2) {
+  justify-content: center;
+}

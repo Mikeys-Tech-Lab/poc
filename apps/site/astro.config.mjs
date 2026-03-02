@@ -120,9 +120,6 @@ export default defineConfig({
           ],
         },
       ],
-      editLink: {
-        baseUrl: `${REPO}/edit/main/apps/site/`,
-      },
       credits: true,
     }),
   ],

@@ -1,0 +1,30 @@
+---
+description: Visual design principles for the docs site. Ensures text readability, theme coherence, and calm UX when making visual changes.
+globs: apps/site/src/styles/**,apps/site/src/content/**,apps/site/astro.config.mjs
+alwaysApply: false
+---
+
+# Visual design principles
+
+## Readability first
+
+Text must be readable against its background in both themes. Busy backgrounds need treatment (blur, tint, or overlay) before placing text on them. Check contrast in both Catppuccin Frappé (dark) and Latte (light).
+
+## Theme coherence
+
+Visual elements should feel like they belong to the active Catppuccin palette. When overriding backgrounds, use rgba values derived from the theme's base color so the atmosphere stays consistent. Do not introduce colors that clash with the palette.
+
+## Frosted glass pattern
+
+For translucent UI over a background image, combine CSS variable overrides with `backdrop-filter`:
+- Override `--sl-color-bg-nav` (or similar) with a semi-transparent value for the color.
+- Apply `backdrop-filter: blur()` directly on the element for the glass effect.
+- Do not use `!important` for color overrides. Starlight's CSS layers let custom CSS win naturally.
+
+## Calm over flashy
+
+Prefer subtle effects. Gentle blur, muted overlays, and soft borders over sharp contrasts, heavy shadows, or saturated accents. The site should feel quiet and focused.
+
+## Scope visual overrides
+
+Landing page styling is scoped with `body:has(.hero)`. Inner pages use the standard Catppuccin theme unmodified. Do not leak splash-page visual overrides into content pages.
