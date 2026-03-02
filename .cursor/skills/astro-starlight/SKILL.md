@@ -111,6 +111,31 @@ To find all hardcoded repo URLs: search for `github.com/Mikeys-Tech-Lab` in `src
 
 To add another social icon, follow the same pattern: append an `<a>` with an inline SVG after the `<Default>` slot.
 
+## Landing page: atmospheric background
+
+The splash page (`template: splash` in `index.mdx`) uses a fullscreen atmospheric background image with theme-aware styling. All custom styles are in `src/styles/custom.css`, scoped to `body:has(.hero)` so they only affect the landing page.
+
+### How it works
+
+1. A `::before` pseudo-element on `body:has(.hero)` renders the background image (`src/assets/bg-landing.png`) with `position: fixed` to cover the full viewport.
+2. A theme-tinted overlay (Frappé `#303446` / Latte `#eff1f5`) and `filter: blur(8px)` soften the image for text readability.
+3. Starlight CSS custom properties (`--sl-color-bg`, `--sl-color-bg-nav`, `--sl-color-hairline-shade`) are overridden to transparent/semi-transparent values on `body:has(.hero)`, making the body and header see-through.
+4. Frosted glass effects (`backdrop-filter: blur()`) are applied directly to the header, search bar, and card elements.
+
+### Constraints
+
+- **Scope with `body:has(.hero)`**. All splash-page overrides use this selector so inner pages remain unaffected.
+- **Override CSS variables, not component styles.** Starlight components reference `--sl-color-bg-nav`, `--sl-color-bg`, etc. Overriding the variables avoids specificity fights and `!important`.
+- **Use `backdrop-filter` only on targeted elements.** It cannot be expressed as a CSS custom property, so it requires direct selectors on `.header`, `.card`, `button[data-open-modal]`.
+- **`inset: -24px` on the `::before`.** The negative inset compensates for blur edge artifacts. If blur is removed, reset to `inset: 0`.
+- **Theme colors are hardcoded.** The rgba values in `custom.css` correspond to Catppuccin Frappé and Latte base colors. If the dark flavor changes, these values must be updated. See the theme-color meta tag section above for the hex values.
+
+### Background image
+
+The landing page background image is at `src/assets/bg-landing.png`. It is referenced via CSS `url()` from `custom.css` using a relative path (`../assets/bg-landing.png`). Vite resolves this at build time.
+
+To replace the image: swap the file at `src/assets/bg-landing.png` and verify with `pnpm run build`. The tint overlay opacity may need adjustment for different image color profiles.
+
 ## Common commands
 
 ```bash
