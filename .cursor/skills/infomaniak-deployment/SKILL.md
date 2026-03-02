@@ -68,7 +68,7 @@ All domains are behind Cloudflare. This affects IP restriction and SSL.
 
 ### Impact on IP restriction
 
-Cloudflare proxies all HTTP(S) traffic. Apache sees Cloudflare's IPs as `REMOTE_ADDR`, not the visitor's real IP. Standard `Order`/`Allow`/`Deny` directives do not work. Instead, use `mod_rewrite` with the `CF-Connecting-IP` header, which Cloudflare sets to the visitor's real IP.
+Cloudflare proxies all HTTP(S) traffic. Infomaniak has `mod_remoteip` configured, which restores the real visitor IP into `REMOTE_ADDR`. This means `Order`/`Allow`/`Deny` directives against Cloudflare IP ranges will fail because `REMOTE_ADDR` is no longer a Cloudflare IP. Use only `mod_rewrite` with the `CF-Connecting-IP` header for IP restriction.
 
 ### Impact on SSL
 
@@ -84,12 +84,18 @@ Non-public environments restrict web access via `.htaccess` using Cloudflare-awa
 
 ```apache
 RewriteEngine On
+
+# Block direct-to-origin (no CF-Connecting-IP = not through Cloudflare)
+RewriteCond %{HTTP:CF-Connecting-IP} ^$
+RewriteRule ^ - [F,L]
+
+# Allow only specific visitor IPs
 RewriteCond %{HTTP:CF-Connecting-IP} !^1\.2\.3\.4$
 RewriteCond %{HTTP:CF-Connecting-IP} !^5\.6\.7\.8$
 RewriteRule ^ - [F,L]
 ```
 
-Multiple `RewriteCond` lines are AND'd: the request is blocked unless the visitor IP matches at least one entry. Requests without the header (direct server access) are also blocked.
+Two rules: the first blocks requests without the `CF-Connecting-IP` header (direct-to-origin bypass attempts). The second blocks requests where the header doesn't match any allowed IP. Multiple `RewriteCond` lines are AND'd: the request is blocked unless the visitor IP matches at least one entry.
 
 The `.htaccess` file is **generated during CI/CD** from the `ALLOWED_IPS` secret (comma-separated). It is never committed to the repo.
 

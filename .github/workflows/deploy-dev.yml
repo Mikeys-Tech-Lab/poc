@@ -48,27 +48,14 @@ jobs:
             exit 1
           fi
 
-          CF_IPV4=$(curl -sf https://www.cloudflare.com/ips-v4/)
-          CF_IPV6=$(curl -sf https://www.cloudflare.com/ips-v6/)
-
-          if [ -z "$CF_IPV4" ]; then
-            echo "::error::Failed to fetch Cloudflare IP ranges. Aborting."
-            exit 1
-          fi
-
           {
-            echo "# Layer 1: Only accept traffic from Cloudflare (blocks direct-to-origin)"
-            echo "Order Deny,Allow"
-            echo "Deny from all"
-            while IFS= read -r cidr; do
-              [ -n "$cidr" ] && echo "Allow from $cidr"
-            done <<< "$CF_IPV4"
-            while IFS= read -r cidr; do
-              [ -n "$cidr" ] && echo "Allow from $cidr"
-            done <<< "$CF_IPV6"
-            echo ""
-            echo "# Layer 2: Among Cloudflare requests, allow only specific visitor IPs"
             echo "RewriteEngine On"
+            echo ""
+            echo "# Block direct-to-origin requests (no CF-Connecting-IP = not through Cloudflare)"
+            echo "RewriteCond %{HTTP:CF-Connecting-IP} ^$"
+            echo "RewriteRule ^ - [F,L]"
+            echo ""
+            echo "# Allow only specific visitor IPs (via Cloudflare's CF-Connecting-IP header)"
             IFS=',' read -ra IPS <<< "$ALLOWED_IPS"
             for ip in "${IPS[@]}"; do
               trimmed=$(echo "$ip" | xargs)
@@ -78,9 +65,8 @@ jobs:
             echo "RewriteRule ^ - [F,L]"
           } > apps/site/dist/.htaccess
 
-          cf_count=$(grep -c 'Allow from' apps/site/dist/.htaccess)
-          ip_count=$(grep -c 'RewriteCond' apps/site/dist/.htaccess)
-          echo "Generated .htaccess: ${cf_count} Cloudflare ranges, ${ip_count} visitor IP entries"
+          ip_count=$(grep -c 'RewriteCond.*CF-Connecting-IP.*!' apps/site/dist/.htaccess || true)
+          echo "Generated .htaccess: ${ip_count} allowed visitor IPs"
 
       - name: Deploy via rsync
         env:
