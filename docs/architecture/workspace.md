@@ -53,10 +53,20 @@ flowchart TD
     ScoreCard["scorecard.yml\n(OSSF)"]
   end
 
+  subgraph "Release Automation"
+    ReleasePlease[".github/workflows/release.yml\n(Release Please)"]
+    RPConfig["release-please-config.json"]
+    RPManifest[".release-please-manifest.json"]
+  end
+
   AstroSite -->|"pnpm run build"| DeployDev
   DeployDev -->|"rsync over SSH"| InfomaniakDev["Infomaniak: PoC - Development"]
   Dependabot -.->|"action version updates"| SecretScan
   Dependabot -.->|"action version updates"| CodeQL
+  RPConfig -.->|"package definitions"| ReleasePlease
+  RPManifest -.->|"current versions"| ReleasePlease
+  ReleasePlease -->|"version bumps + CHANGELOG"| AstroSite
+  ReleasePlease -->|"version bumps + CHANGELOG"| Tooling
 ```
 
 ## Directory roles
@@ -70,7 +80,9 @@ flowchart TD
 | `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management) | Exists |
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
 | `.github/` | PR template, Copilot instructions, Dependabot config | Exists |
-| `.github/workflows/` | CI/CD (deploy-dev), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard) | Exists |
+| `.github/workflows/` | CI/CD (deploy-dev, release), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard) | Exists |
+| `release-please-config.json` | Release Please package definitions and changelog sections | Exists |
+| `.release-please-manifest.json` | Tracks current version of each versioned package | Exists |
 | `.local/` | Operator-specific config (gitignored). Template: `.local.example.md` | Exists |
 | `docs/guidance/` | Descriptive guidance docs (conventions, change process) | Exists |
 | `docs/architecture/` | Architecture docs + this canonical diagram | Exists |

@@ -75,11 +75,15 @@ Fix the issues found during reflection. Each fix is its own atomic commit.
 
 #### 3c. Version bump
 
-Check whether a version bump is needed (see version policy below). If yes:
+Version bumps and CHANGELOG updates are handled automatically by Release Please. Do not bump versions manually unless Release Please is broken or the operator explicitly asks.
 
-- Bump the version in the relevant `package.json`.
-- Commit: `chore(<scope>): bump <package> version to <version>`
-- This is always a separate commit, never bundled with feature work.
+Release Please reads Conventional Commit types to determine the bump:
+- `feat` → minor bump
+- `fix` → patch bump
+- `BREAKING CHANGE` footer → major bump
+- `chore`, `docs`, `refactor`, `test` → patch bump (if files in a versioned package changed)
+
+If files changed are outside both versioned packages, no version bump occurs.
 
 #### 3d. Final verification
 
@@ -104,7 +108,41 @@ Two packages in this workspace carry versions:
 
 Skill, rule, and doc-only changes do not require a version bump unless they ship as part of a package.
 
-### How to choose the version
+### Automated releases (Release Please)
+
+Version bumps, CHANGELOGs, and GitHub Releases are automated via [Release Please](https://github.com/googleapis/release-please).
+
+**How it works:**
+
+1. Commits land on `main` via squash-merged PRs (with Conventional Commit messages).
+2. Release Please analyzes the commits and determines which packages need a version bump based on which files changed.
+3. It creates or updates a **Release PR** with version bumps in `package.json` and CHANGELOG updates.
+4. The operator reviews and merges the Release PR.
+5. On merge, Release Please creates **GitHub Releases** with tags (e.g., `site-v0.2.0`, `ai-guidance-v0.2.0`).
+
+**Configuration files:**
+
+| File | Purpose |
+|---|---|
+| `release-please-config.json` | Package definitions, changelog sections, release behavior |
+| `.release-please-manifest.json` | Tracks current version of each package |
+
+**Commit type → version bump mapping:**
+
+| Commit type | Bump | Example |
+|---|---|---|
+| `feat` | Minor | `feat(astro): add dark mode toggle` |
+| `fix` | Patch | `fix(astro): correct sidebar link` |
+| `BREAKING CHANGE` | Major | Footer `BREAKING CHANGE: remove legacy API` |
+| `chore`, `docs`, `refactor` | Patch | Only if files in a versioned package changed |
+
+**When no bump occurs:**
+
+- Changes that only touch skills, rules, `AGENTS.md`, or docs outside a versioned package.
+- Changes to CI/CD, GitHub config, or repo-level files.
+- Release Please skips these because no files in `apps/site/` or `tools/ai-guidance/` changed.
+
+### Semver guidance
 
 Follow semver:
 
@@ -112,12 +150,7 @@ Follow semver:
 - **Minor** (`0.1.0` → `0.2.0`): new features, significant content additions, theme changes
 - **Major** (`0.x.y` → `1.0.0`): reserved for first stable release or breaking changes
 
-When in doubt, prefer minor over patch. The workspace is pre-1.0; minor bumps are cheap.
-
-### When not to bump
-
-- Changes that only touch skills, rules, `AGENTS.md`, or docs outside a versioned package.
-- Changes to CI/CD, GitHub config, or repo-level files.
+The workspace is pre-1.0. Minor bumps are cheap.
 
 ## Conventional Commits
 
@@ -125,7 +158,7 @@ Format: `<type>(<scope>): <subject>`
 
 Types: `feat`, `fix`, `chore`, `docs`, `test`, `refactor`
 
-Scopes: `seedpack`, `ai`, `tooling`, `docs`, `astro`
+Scopes: `seedpack`, `ai`, `tooling`, `docs`, `astro`, `infra`
 
 Each commit does one thing. If explaining two unrelated changes, split them.
 

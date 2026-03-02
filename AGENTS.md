@@ -162,6 +162,14 @@ Scopes (area-based):
 
 Optional later scopes: `release`, `website`
 
+### Automated releases
+
+Version bumps, CHANGELOGs, and GitHub Releases are handled by [Release Please](https://github.com/googleapis/release-please). It reads Conventional Commits on `main`, creates a Release PR with version bumps and CHANGELOG updates, and creates GitHub Releases when the PR is merged.
+
+Two packages are tracked: `apps/site` (component: `site`) and `tools/ai-guidance` (component: `ai-guidance`). Changes outside these directories do not trigger version bumps.
+
+Do not bump versions manually. The `github-automation` skill has the full details.
+
 ### TDD posture
 
 Tests co-evolve with changes. Document what was verified and what was not.
