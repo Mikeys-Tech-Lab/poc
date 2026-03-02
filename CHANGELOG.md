@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.1](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.3.0...workspace-v0.3.1) (2026-03-02)
+
+
+### Bug Fixes
+
+* **infra:** replace Order/Deny/Allow with mod_rewrite-only htaccess ([#13](https://github.com/Mikeys-Tech-Lab/poc/issues/13)) ([7536b88](https://github.com/Mikeys-Tech-Lab/poc/commit/7536b88a51b47ce24b10b3814be6e38e0420fef7))
+* **infra:** use GitHub App token for Release Please ([#15](https://github.com/Mikeys-Tech-Lab/poc/issues/15)) ([6aeaa64](https://github.com/Mikeys-Tech-Lab/poc/commit/6aeaa643accb98c4da6107553bfbdcf415a94ffc))
+
 ## [0.3.0](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.2.0...workspace-v0.3.0) (2026-03-02)
 
 
