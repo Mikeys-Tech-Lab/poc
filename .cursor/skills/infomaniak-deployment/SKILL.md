@@ -1,0 +1,206 @@
+---
+name: infomaniak-deployment
+description: Guides deployment to Infomaniak managed Cloud Server. Use when configuring, deploying, or troubleshooting CI/CD workflows targeting Infomaniak hosting environments. Covers SSH access, rsync deployment, IP restriction, and GitHub Actions integration.
+---
+
+# Infomaniak Deployment
+
+Adaptation of `AGENTS.md` for Infomaniak managed hosting deployment.
+
+## When to use
+
+- Setting up or modifying GitHub Actions deployment workflows
+- Configuring Infomaniak hosting environments (SSH, paths, domains)
+- Managing IP-based access restrictions for non-public environments
+- Troubleshooting deployment failures
+- Adding new deployment targets (preview, public)
+
+## Capability alignment
+
+Before relying on any deployment command or Infomaniak feature:
+
+1. Verify SSH connectivity to the target host before automating.
+2. Confirm rsync is available on both sides (`which rsync` on the server).
+3. Test `.htaccess` behavior on the target server (Apache 2.4 vs. LiteSpeed directives differ).
+4. If not checkable, produce a manual checklist and mark the result unknown.
+
+## Hosting architecture
+
+The workspace deploys to an Infomaniak managed Cloud Server with multiple web hostings:
+
+| Web hosting | Environment | Access |
+|---|---|---|
+| Development | dev | IP-restricted |
+| Preview | preview | TBD |
+| Public | production | Open |
+
+Each web hosting has its own document root, FTP/SSH credentials, and domain binding. Credentials are managed per-hosting in the Infomaniak Manager.
+
+### Server details
+
+- Cloud Server type: Managed
+- Connection details, IPs, and credentials are in GitHub secrets for CI/CD and `.local/config.md` for local use. Never hardcode them in committed files.
+
+## Deployment method
+
+All environments deploy via **rsync over SSH**:
+
+1. GitHub Actions builds the Astro site (`pnpm run build`)
+2. Access restrictions are generated (`.htaccess` for IP allowlisting)
+3. rsync transfers `apps/site/dist/` to the server document root
+4. `--delete` flag ensures clean deployments (removes stale files)
+
+No third-party deployment actions are used. Direct `ssh`/`rsync` commands reduce supply chain risk for this public repo.
+
+## Environment strategy
+
+| Environment | Trigger | IP restriction | Status |
+|---|---|---|---|
+| Development | Push to `main` + manual dispatch | Yes (allowlist) | Active |
+| Preview | Push to `main` + manual dispatch | TBD | Planned |
+| Public | Manual dispatch only | No | Planned |
+
+Each environment uses a **GitHub environment** for isolated secrets and variables.
+
+## Cloudflare
+
+All domains are behind Cloudflare. This affects IP restriction and SSL.
+
+### Impact on IP restriction
+
+Cloudflare proxies all HTTP(S) traffic. Apache sees Cloudflare's IPs as `REMOTE_ADDR`, not the visitor's real IP. Standard `Order`/`Allow`/`Deny` directives do not work. Instead, use `mod_rewrite` with the `CF-Connecting-IP` header, which Cloudflare sets to the visitor's real IP.
+
+### Impact on SSL
+
+Cloudflare terminates SSL at the edge. The connection between Cloudflare and the origin server should use Cloudflare's "Full (strict)" mode to maintain end-to-end encryption with the Infomaniak SSL certificate.
+
+### Direct server access
+
+Requests that bypass Cloudflare (hitting the server IP directly) will not have the `CF-Connecting-IP` header. The `.htaccess` rewrite rules block these requests because the empty header does not match any allowed IP.
+
+## IP restriction strategy
+
+Non-public environments restrict web access via `.htaccess` using Cloudflare-aware rewrite rules:
+
+```apache
+RewriteEngine On
+RewriteCond %{HTTP:CF-Connecting-IP} !^1\.2\.3\.4$
+RewriteCond %{HTTP:CF-Connecting-IP} !^5\.6\.7\.8$
+RewriteRule ^ - [F,L]
+```
+
+Multiple `RewriteCond` lines are AND'd: the request is blocked unless the visitor IP matches at least one entry. Requests without the header (direct server access) are also blocked.
+
+The `.htaccess` file is **generated during CI/CD** from the `ALLOWED_IPS` secret (comma-separated). It is never committed to the repo.
+
+If `ALLOWED_IPS` is not set, the deployment fails safely rather than leaving the site open.
+
+### Constraints
+
+- `.htaccess` only restricts HTTP(S) access, not SSH.
+- The `CF-Connecting-IP` header is set by Cloudflare and cannot be spoofed through the proxy. However, direct-to-origin requests could forge the header. For stronger protection, restrict origin firewall to Cloudflare IP ranges only.
+- SSH deployment bypasses Cloudflare entirely (connects to server IP on port 22).
+
+## Site URL configuration
+
+`apps/site/astro.config.mjs` reads `SITE_URL` from the environment:
+
+```js
+site: process.env.SITE_URL || "https://mikeys-tech-lab.github.io/poc"
+```
+
+Each GitHub environment sets `SITE_URL` as a **variable** (not a secret, since URLs are not sensitive):
+
+| Environment | SITE_URL |
+|---|---|
+| development | Set via `DEVELOPMENT_SITE_URL` variable |
+| preview | (planned) |
+| production | (planned) |
+
+## GitHub configuration
+
+### Required secrets
+
+Secret names are prefixed with the environment name (`DEVELOPMENT_`, `PREVIEW_`, `PUBLIC_`) to avoid collisions across deployment targets.
+
+| Secret | Description | Example |
+|---|---|---|
+| `<ENV>_SSH_PRIVATE_KEY` | Ed25519 private key (no passphrase) | — |
+| `<ENV>_SSH_HOST` | Infomaniak SSH hostname | — |
+| `<ENV>_SSH_USER` | FTP/SSH username from Infomaniak Manager | — |
+| `<ENV>_SSH_PORT` | SSH port (omit to default to 22) | — |
+| `<ENV>_DEPLOY_PATH` | Server document root, must end with `/` | — |
+| `<ENV>_ALLOWED_IPS` | Comma-separated allowed IPs (omit for public) | — |
+
+### Required variables
+
+| Variable | Description |
+|---|---|
+| `<ENV>_SITE_URL` | Canonical site URL for Astro build |
+
+### GitHub environment setup
+
+Create a GitHub environment matching the workflow's `environment:` field. Configure secrets and variables per environment in the repo settings.
+
+## SSH setup procedure
+
+See `docs/infra/infomaniak-environment-setup.md` for the full step-by-step runbook.
+
+Key constraints:
+
+- **Algorithm**: ed25519 (RSA keys are refused by Infomaniak)
+- **Passphrase**: none (automation requires non-interactive auth)
+- **Permissions**: `authorized_keys` chmod 600, `.ssh` directory chmod 700
+- **Security**: generate keys locally, copy private key to GitHub secrets from your own terminal, never through AI chat or shared tools
+
+## Workflow reference
+
+| Environment | Workflow file | Trigger |
+|---|---|---|
+| Development | `.github/workflows/deploy-dev.yml` | Push to `main`, manual dispatch |
+| Preview | (planned) | — |
+| Public | (planned) | Manual dispatch only |
+
+## Manual deployment
+
+If CI/CD is unavailable, deploy manually. Read values from `.local/config.md`:
+
+```bash
+cd /path/to/poc
+SITE_URL=<SITE_URL> pnpm run build
+
+cat > apps/site/dist/.htaccess <<'EOF'
+RewriteEngine On
+RewriteCond %{HTTP:CF-Connecting-IP} !^<YOUR_IP_ESCAPED>$
+RewriteRule ^ - [F,L]
+EOF
+
+rsync -avz --delete \
+  -e "ssh -i <KEY_PATH> -p <PORT>" \
+  apps/site/dist/ \
+  <USER>@<HOST>:<DEPLOY_PATH>
+```
+
+Escape dots in IPs for the regex (e.g. `89\.36\.76\.75`). For public environments, omit the `.htaccess` generation.
+
+## Troubleshooting
+
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| `Permission denied (publickey)` | Wrong key type or permissions | Use ed25519, check chmod 600/700 |
+| `Host key verification failed` | First connection or changed host key | Run `ssh-keyscan` manually, verify fingerprint |
+| 403 after deployment | `.htaccess` blocking your IP | Check `ALLOWED_IPS` includes your current IP |
+| Site shows old content | rsync didn't transfer changes | Verify `DEPLOY_PATH` is correct, `ls` on server |
+| Build uses wrong URL | `SITE_URL` not set in environment | Set `SITE_URL` variable in GitHub environment |
+| `ALLOWED_IPS` error in workflow | Secret not set or empty | Add secret to the GitHub environment |
+
+## Extending to additional environments
+
+To add Preview or Public deployment:
+
+1. Create a new workflow file (e.g., `.github/workflows/deploy-preview.yml`).
+2. Create the corresponding GitHub environment with its own secrets and variables.
+3. Set the appropriate trigger (push, manual, or both).
+4. For Public: omit the `.htaccess` generation step.
+5. Update this skill with the new environment details.
+6. Update `docs/architecture/workspace.md` to reflect the new deployment target.
