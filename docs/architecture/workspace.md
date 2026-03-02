@@ -41,6 +41,13 @@ flowchart TD
   Dependabot[".github/dependabot.yml"] -.->|"version updates"| Tooling
 
   AstroSite[apps/site/] -->|"site content"| SiteDocs["apps/site/src/content/docs/"]
+
+  subgraph "CI/CD (GitHub Actions)"
+    DeployDev[".github/workflows/deploy-dev.yml"]
+  end
+
+  AstroSite -->|"pnpm run build"| DeployDev
+  DeployDev -->|"rsync over SSH"| InfomaniakDev["Infomaniak: PoC - Development"]
 ```
 
 ## Directory roles
@@ -60,3 +67,5 @@ flowchart TD
 | `docs/ai/` | Capability alignment reports (generated) | Exists |
 | `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks | Exists |
 | `apps/site/` | Astro Starlight frontend | Exists |
+| `.github/workflows/` | GitHub Actions CI/CD workflows | Exists |
+| `.cursor/skills/infomaniak-deployment/` | Deployment skill for Infomaniak hosting | Exists |

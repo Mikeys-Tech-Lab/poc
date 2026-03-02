@@ -144,8 +144,9 @@ Scopes (area-based):
 - `tooling` — pnpm, TS, vitest, scripts, checkers
 - `docs` — Starlight content pages and information architecture
 - `astro` — Starlight scaffolding, config, theme, components, integrations
+- `infra` — CI/CD workflows, deployment config, hosting
 
-Optional later scopes: `release`, `infra`, `website`
+Optional later scopes: `release`, `website`
 
 ### TDD posture
 
