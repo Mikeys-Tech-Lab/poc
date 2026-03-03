@@ -1,4 +1,4 @@
-name: Security · Live Site Scan
+name: Security · HTTP Headers (Nuclei)
 
 on:
   workflow_run:
@@ -17,7 +17,7 @@ permissions:
 
 jobs:
   scan-seed:
-    name: Scan · Seed
+    name: Headers · Seed
     runs-on: ubuntu-latest
     environment: development
     if: >-
@@ -42,7 +42,7 @@ jobs:
           category: nuclei-seed
 
   scan-preview:
-    name: Scan · Preview
+    name: Headers · Preview
     runs-on: ubuntu-latest
     environment: preview
     if: >-
@@ -67,7 +67,7 @@ jobs:
           category: nuclei-preview
 
   scan-manual:
-    name: Scan · Manual
+    name: Headers · Manual
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch'
 
