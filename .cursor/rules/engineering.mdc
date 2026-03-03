@@ -1,0 +1,44 @@
+---
+description: Universal engineering principles for this workspace. Clean code, clean architecture, modular design, reusable design — applied to any code file.
+globs: "**/*.{ts,tsx,js,mjs,cjs,css,astro}"
+alwaysApply: false
+---
+
+# Engineering principles
+
+This rule is the universal principles layer. Tech-specific rules (`poc-tooling-ts.mdc`, `visual-design.mdc`, `astro-starlight.mdc`) show how these principles manifest in each stack.
+
+## Default posture
+
+Engineering quality is delivery work, not gold-plating. Refactoring, test design, and build stabilization are expected — not optional, not "nice to have." Sensible Defaults (Domain 6.9) makes this explicit: quality activities are real work that must be planned for. Skipping them is a delivery risk, not a shortcut.
+
+Write code that is readable, modular, and honest about its boundaries. Prefer clarity over cleverness. Every file should have a reason to exist and a single responsibility.
+
+## Pre-commit checklist
+
+- Does each file have a single responsibility?
+- Are shared values tokens, constants, or types — not hardcoded?
+- Do dependencies point inward (domain does not import infra)?
+- Is there dead code, commented-out code, or unreachable branches?
+- Are names intention-revealing — would a new reader understand them without a comment?
+- If you added a new module, does it have an explicit export surface?
+- If you changed structure, did you update the affected docs in this PR?
+
+## What "domain vs infra" looks like in this repo
+
+**TypeScript** (`tools/ai-guidance/src/`): `domain/` holds pure logic — `parse-version.ts`, `report.ts`, `types.ts`. These modules take data and return data with no IO. `infra/` holds the IO shell — `run-command.ts`, `write-report.ts`, `capability-check.ts`. Domain never imports from infra. Infra calls domain.
+
+**CSS** (`apps/site/src/styles/`): `tokens.css` defines values (palette channels, surfaces, borders, shadows). Consumer files (`surfaces.css`, `controls.css`, `hero.css`) reference tokens via `var(--poc-*)`. Consumers never redefine token values — they compose them. `solid.css` overrides token values for the solid style variant; it does not duplicate consumer rules.
+
+## Do not
+
+- **Premature abstraction.** Do not extract a helper, wrapper, or shared module until the pattern has appeared at least twice. One usage is not a pattern — it is a fact.
+- **Barrel files as default.** Index re-exports add indirection. Use them only when a directory has a genuine public API that benefits from a curated surface.
+- **Cross-layer imports.** Domain must not import from infra. Consumer styles must not redefine tokens. Components must not reach into another component's internals.
+- **Tokenizing too early.** Do not extract a constant or token until a value appears 3+ times, or when it is semantically a design token even at 1 occurrence. Semantic intent (e.g. "this is the base palette channel") justifies early extraction; mere repetition at 2 does not.
+
+## Extraction discipline
+
+- Extract **structure** (modules, files, functions) when a pattern appears **twice**.
+- Extract **tokens or constants** when a value appears **3+ times**, or when it is semantically a design token even at 1 occurrence.
+- When a file grows past ~100 lines through iteration, pause and look for module boundaries. Growth is a signal, not a threshold.
