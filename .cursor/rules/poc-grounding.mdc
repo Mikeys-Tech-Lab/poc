@@ -25,6 +25,10 @@ Canonical source: `AGENTS.md` in the repo root. If this rule conflicts with `AGE
 
 This workspace must not be used for surveillance, compliance scoring, performance evaluation, or coercive enforcement. A trace produced under coercion is not valid.
 
-## Documentation upkeep
+## Structural awareness
 
-Any PR that changes repo structure, tooling entrypoints, or docs site layout updates `docs/architecture/workspace.md` in the same PR.
+Orient before acting. Understand what you are working within — directories, docs, config, and what references the area you are changing. Trace the ripple before committing. Do not flatten a connected system to just the immediate task. Full discipline: `AGENTS.md` § Structural awareness.
+
+## Documentation evolution
+
+Every PR updates all affected documentation in the same PR. There is no "update docs later." Full discipline: `AGENTS.md` § Documentation evolution discipline.

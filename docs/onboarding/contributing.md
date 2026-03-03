@@ -77,6 +77,8 @@ You do not need to bump versions manually. Release Please handles it:
 
 The `github-automation` skill has the full release details.
 
-## Documentation upkeep
+## Documentation evolution
 
-Every meaningful change updates any affected docs in the same PR. If your work changes repo structure, tooling, or the docs site layout, update `docs/architecture/workspace.md`. If your work affects an onboarding topic, update the relevant page in `docs/onboarding/`.
+Every PR updates all affected documentation in the same PR. There is no "update docs later." This applies to every surface: `AGENTS.md`, onboarding, architecture, infra, guidance, rules, skills, and adapters.
+
+See `AGENTS.md` § Documentation evolution discipline for the full rule and specific obligations by change type.

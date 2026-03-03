@@ -29,7 +29,8 @@ If an adapter conflicts with `AGENTS.md`, the canonical file wins. Adapters must
 - **Writing constraints** — no hype, short paragraphs, precise language
 - **Tool preferences** — pnpm, Vitest, `gh` CLI, GPG signing, branch naming
 - **Workflow conventions** — GitHub Flow, Conventional Commits, feature lifecycle
-- **Documentation upkeep** — what must be updated with structural changes
+- **Structural awareness** — orient before acting, ripple check, no flattening
+- **Documentation evolution discipline** — every PR updates all affected docs, no exceptions
 - **Architectural invariants** — non-negotiable constraints
 
 Full text: [`AGENTS.md`](../../AGENTS.md)
