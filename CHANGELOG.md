@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.8.1...PoC-v0.9.0) (2026-03-03)
+
+
+### Features
+
+* **astro:** site-wide atmospheric theme with modular CSS and engineering guidance ([#34](https://github.com/Mikeys-Tech-Lab/poc/issues/34)) ([3d18d9a](https://github.com/Mikeys-Tech-Lab/poc/commit/3d18d9a4acde2417637061900ddcabd8f26c7044))
+
 ## [0.8.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.8.0...PoC-v0.8.1) (2026-03-03)
 
 
