@@ -1,0 +1,87 @@
+/* ── Frosted glass surfaces ──
+   Every UI surface over the atmospheric background gets a translucent
+   fill, subtle border, and backdrop blur for readability.
+   All values reference design tokens — no raw color values here. */
+
+/* Header */
+.page > .header {
+  backdrop-filter: blur(var(--poc-blur-lg));
+  will-change: backdrop-filter;
+}
+
+/* Search bar — frosted glass at desktop, clean icon at mobile */
+@media (min-width: 50rem) {
+  button[data-open-modal] {
+    background-color: var(--poc-surface);
+    border-color: var(--poc-border);
+    backdrop-filter: blur(var(--poc-blur-sm));
+  }
+}
+
+/* Mobile "On this page" bar */
+mobile-starlight-toc nav {
+  backdrop-filter: blur(var(--poc-blur-lg));
+}
+
+mobile-starlight-toc .toggle {
+  background-color: var(--poc-surface-raised);
+  border-color: var(--poc-border);
+  backdrop-filter: blur(var(--poc-blur-sm));
+}
+
+mobile-starlight-toc .dropdown {
+  background-color: var(--poc-surface-dense);
+  backdrop-filter: blur(var(--poc-blur-lg));
+  border-color: var(--poc-border-subtle);
+}
+
+/* Cards */
+.card {
+  background-color: var(--poc-surface-mid);
+  border-color: var(--poc-border);
+  backdrop-filter: blur(var(--poc-blur-md));
+  box-shadow: var(--poc-shadow-soft);
+}
+
+/* Sidebar — translucent on mobile, transparent on desktop */
+.sidebar-pane {
+  background-color: var(--poc-surface-heavy);
+  backdrop-filter: blur(var(--poc-blur-xl));
+}
+
+.mobile-preferences {
+  border-top-color: transparent;
+}
+
+@media (min-width: 50rem) {
+  .sidebar-pane {
+    background-color: transparent;
+    backdrop-filter: blur(var(--poc-blur-md));
+    will-change: backdrop-filter;
+  }
+}
+
+/* Search dialog */
+site-search dialog {
+  background-color: var(--poc-surface-panel);
+  border-color: var(--poc-border-faint);
+  backdrop-filter: blur(var(--poc-blur-xl));
+}
+
+site-search dialog::backdrop {
+  background-color: var(--poc-backdrop);
+  backdrop-filter: blur(6px);
+}
+
+/* Pagination */
+.pagination-links a {
+  background-color: var(--poc-surface);
+  border-color: var(--poc-border-faint);
+  backdrop-filter: blur(var(--poc-blur-md));
+  box-shadow: none;
+}
+
+.pagination-links a:hover {
+  background-color: var(--poc-surface-raised);
+  border-color: var(--poc-border-hover);
+}

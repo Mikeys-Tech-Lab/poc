@@ -1,0 +1,86 @@
+---
+import Select from '@astrojs/starlight/components/Select.astro';
+---
+
+<starlight-theme-select>
+	<Select
+		icon="laptop"
+		label={Astro.locals.t('themeSelect.accessibleLabel')}
+		options={[
+			{ label: Astro.locals.t('themeSelect.dark'), selected: false, value: 'dark' },
+			{ label: Astro.locals.t('themeSelect.light'), selected: false, value: 'light' },
+			{ label: Astro.locals.t('themeSelect.auto'), selected: true, value: 'auto' },
+			{ label: 'Dark Solid', selected: false, value: 'dark-solid' },
+			{ label: 'Light Solid', selected: false, value: 'light-solid' },
+		]}
+		width="7.5em"
+	/>
+</starlight-theme-select>
+
+{/* Inlined to avoid FOUC. Uses global scope from ThemeProvider. */}
+<script is:inline>
+	StarlightThemeProvider.updatePickers();
+</script>
+
+<script>
+	type Theme = 'auto' | 'dark' | 'light' | 'dark-solid' | 'light-solid';
+
+	const storageKey = 'starlight-theme';
+
+	const parseTheme = (theme: unknown): Theme =>
+		theme === 'auto' || theme === 'dark' || theme === 'light' ||
+		theme === 'dark-solid' || theme === 'light-solid'
+			? theme : 'auto';
+
+	const loadTheme = (): Theme =>
+		parseTheme(typeof localStorage !== 'undefined' && localStorage.getItem(storageKey));
+
+	function storeTheme(theme: Theme): void {
+		if (typeof localStorage !== 'undefined') {
+			localStorage.setItem(
+				storageKey,
+				theme === 'auto' ? '' : theme,
+			);
+		}
+	}
+
+	const getPreferredColorScheme = (): 'light' | 'dark' =>
+		matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+
+	function onThemeChange(theme: Theme): void {
+		StarlightThemeProvider.updatePickers(theme);
+
+		const isSolid = theme.includes('solid');
+		const colorScheme = theme.startsWith('light')
+			? 'light'
+			: theme === 'auto'
+				? getPreferredColorScheme()
+				: 'dark';
+
+		document.documentElement.dataset.theme = colorScheme;
+		if (isSolid) {
+			document.documentElement.dataset.style = 'solid';
+		} else {
+			delete document.documentElement.dataset.style;
+		}
+
+		storeTheme(theme);
+	}
+
+	matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+		if (loadTheme() === 'auto') onThemeChange('auto');
+	});
+
+	class StarlightThemeSelect extends HTMLElement {
+		constructor() {
+			super();
+			onThemeChange(loadTheme());
+			this.querySelector('select')?.addEventListener('change', (e) => {
+				if (e.currentTarget instanceof HTMLSelectElement) {
+					onThemeChange(parseTheme(e.currentTarget.value));
+				}
+			});
+		}
+	}
+	customElements.define('starlight-theme-select', StarlightThemeSelect);
+</script>

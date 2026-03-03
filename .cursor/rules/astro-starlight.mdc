@@ -41,11 +41,15 @@ Do not commit without a passing build.
 
 ## Theming
 
-- Apply custom colors/theme using Starlight's recommended method for the installed version.
-- Do not override Starlight internals unless the official docs recommend it.
+- Color palette: Catppuccin via `@catppuccin/starlight` plugin. Do not manually set `--sl-color-accent*` or `--sl-color-gray-*`.
+- Custom visual properties use `--poc-*` design tokens defined in `apps/site/src/styles/tokens.css`. See `visual-design.mdc` for the token system and frosted glass pattern.
+- Two orthogonal dimensions: color scheme (`data-theme`: dark/light) and visual style (`data-style`: atmospheric/solid). Both are set on `<html>` by the custom `ThemeProvider.astro`.
+- Custom CSS follows modular architecture: `apps/site/src/styles/custom.css` imports purpose-specific files. See `visual-design.mdc` for the file table.
+- For universal modular and extraction principles, see `engineering.mdc`.
 
 ## Build and test
 
 - Use pnpm for all commands.
 - Keep the build lightweight.
 - Ensure license/attribution is visible in site chrome or footer.
+- If you touched any file that mentions concrete paths, components, or config, run `pnpm run build`.

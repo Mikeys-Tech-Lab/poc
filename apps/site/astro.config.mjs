@@ -99,6 +99,8 @@ export default defineConfig({
       ],
       components: {
         SocialIcons: "./src/components/SocialIcons.astro",
+        ThemeProvider: "./src/components/ThemeProvider.astro",
+        ThemeSelect: "./src/components/ThemeSelect.astro",
       },
       customCss: ["./src/styles/custom.css"],
       sidebar: [

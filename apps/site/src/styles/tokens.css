@@ -1,0 +1,71 @@
+/* ── Design tokens ──
+   Semantic tokens for the visual system.
+   Palette: Catppuccin Frappé (dark) / Latte (light).
+
+   Channel vars use space-separated RGB for modern rgb() syntax:
+     rgb(var(--poc-base) / 0.35)
+
+   Surface/border/shadow tokens reference channels and auto-resolve
+   when the color theme changes. Only tokens whose formula differs
+   between themes need explicit light overrides. */
+
+:root {
+  /* Palette channels — Catppuccin Frappé */
+  --poc-base: 48 52 70;
+  --poc-overlay: 198 208 245;
+
+  /* Surfaces — translucent fills over the atmospheric background */
+  --poc-surface-faint: rgb(var(--poc-base) / 0.2);
+  --poc-surface: rgb(var(--poc-base) / 0.3);
+  --poc-surface-mid: rgb(var(--poc-base) / 0.35);
+  --poc-surface-raised: rgb(var(--poc-base) / 0.4);
+  --poc-surface-heavy: rgb(var(--poc-base) / 0.45);
+  --poc-surface-dense: rgb(var(--poc-base) / 0.8);
+  --poc-surface-panel: rgb(var(--poc-base) / 0.85);
+
+  /* Borders */
+  --poc-border: rgb(var(--poc-overlay) / 0.15);
+  --poc-border-subtle: rgb(var(--poc-overlay) / 0.1);
+  --poc-border-faint: rgb(var(--poc-overlay) / 0.12);
+  --poc-border-hover: rgb(var(--poc-overlay) / 0.25);
+
+  /* Blur radii */
+  --poc-blur-sm: 8px;
+  --poc-blur-md: 12px;
+  --poc-blur-lg: 16px;
+  --poc-blur-xl: 20px;
+
+  /* Elevation */
+  --poc-shadow-soft:
+    0 4px 12px rgb(0 0 0 / 0.15),
+    0 10px 28px rgb(0 0 0 / 0.1);
+  --poc-shadow-medium:
+    0 6px 16px rgb(0 0 0 / 0.18),
+    0 14px 36px rgb(0 0 0 / 0.12);
+
+  /* Overlay backdrop */
+  --poc-backdrop: rgb(0 0 0 / 0.4);
+
+  /* Accent complement — Catppuccin mauve */
+  --poc-accent-complement: #ca9ee6;
+}
+
+:root[data-theme="light"] {
+  /* Palette channels — Catppuccin Latte */
+  --poc-base: 239 241 245;
+  --poc-overlay: 108 111 133;
+
+  /* Tokens whose formula differs from dark */
+  --poc-surface-faint: rgb(var(--poc-overlay) / 0.08);
+  --poc-surface-panel: rgb(var(--poc-base) / 0.88);
+
+  --poc-shadow-soft:
+    0 4px 12px rgb(0 0 0 / 0.08),
+    0 10px 28px rgb(0 0 0 / 0.05);
+  --poc-shadow-medium:
+    0 6px 16px rgb(0 0 0 / 0.1),
+    0 14px 36px rgb(0 0 0 / 0.07);
+
+  --poc-backdrop: rgb(0 0 0 / 0.2);
+  --poc-accent-complement: #8839ef;
+}

@@ -1,0 +1,18 @@
+/* ── Content typography ──
+   Inline code and code links adapted for atmospheric backgrounds. */
+
+/* Inline code — subtle tint, no visible border */
+.sl-markdown-content :not(pre) > code {
+  background-color: var(--poc-surface-faint);
+  border: 1px solid transparent;
+  padding: 0.15em 0.35em;
+}
+
+/* Code inside links — no box, inherits link styling */
+.sl-markdown-content a code {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}

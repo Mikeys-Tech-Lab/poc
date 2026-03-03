@@ -6,15 +6,26 @@ alwaysApply: false
 
 # Tooling conventions (Node.js + TypeScript)
 
+This rule shows how the universal principles in `engineering.mdc` apply to TypeScript code in this workspace.
+
 ## Package manager
 
 Use pnpm. Do not use npm or yarn.
 
-## Functional style
+## Clean architecture boundary
 
-- Separate pure domain logic from IO. Domain modules must not import fs, http, or process.
-- Prefer pure functions that take data and return data.
-- IO lives in a thin shell layer (`src/infra/`).
+The domain/infra split IS the clean architecture boundary for this workspace:
+
+- `src/domain/` — pure logic. Takes data, returns data. No imports from `fs`, `http`, `process`, or any IO library.
+- `src/infra/` — IO shell. Reads files, runs commands, writes output. Calls domain, never the reverse.
+
+Dependencies point inward: infra imports domain, domain imports nothing external.
+
+## Modular design
+
+- One module per concern. A file named `parse-version.ts` should parse versions — not also format reports.
+- Explicit exports. Each module exports what consumers need. No "export everything" patterns.
+- Barrel files (`index.ts`) only when a directory has a genuine public API. Otherwise, import from the specific module.
 
 ## Testing
 

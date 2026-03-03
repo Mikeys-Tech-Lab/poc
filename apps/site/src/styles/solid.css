@@ -1,0 +1,62 @@
+/* ── Solid style variant ──
+   Opaque backgrounds for maximum text readability.
+   Activated via data-style="solid" on <html>.
+   Uses Catppuccin Frappé/Latte surface palette directly. */
+
+/* Hide atmospheric background */
+:root[data-style="solid"] body::before {
+  display: none;
+}
+
+/* Restore opaque Starlight backgrounds */
+:root[data-style="solid"] body {
+  --sl-color-bg: #303446;
+  --sl-color-bg-nav: #292c3c;
+  --sl-color-bg-sidebar: #292c3c;
+  --sl-color-hairline-shade: #414559;
+  --sl-color-hairline-light: #414559;
+}
+
+:root[data-style="solid"][data-theme="light"] body {
+  --sl-color-bg: #eff1f5;
+  --sl-color-bg-nav: #e6e9ef;
+  --sl-color-bg-sidebar: #e6e9ef;
+  --sl-color-hairline-shade: #ccd0da;
+  --sl-color-hairline-light: #ccd0da;
+}
+
+/* Opaque surface tokens — Catppuccin Surface0/1/2 */
+:root[data-style="solid"] {
+  --poc-surface-faint: #363a4f;
+  --poc-surface: #414559;
+  --poc-surface-mid: #414559;
+  --poc-surface-raised: #51576d;
+  --poc-surface-heavy: #414559;
+  --poc-surface-dense: #51576d;
+  --poc-surface-panel: #414559;
+
+  --poc-border: #51576d;
+  --poc-border-subtle: #414559;
+  --poc-border-faint: #414559;
+  --poc-border-hover: #626880;
+
+  --poc-blur-sm: 0px;
+  --poc-blur-md: 0px;
+  --poc-blur-lg: 0px;
+  --poc-blur-xl: 0px;
+}
+
+:root[data-style="solid"][data-theme="light"] {
+  --poc-surface-faint: #e6e9ef;
+  --poc-surface: #dce0e8;
+  --poc-surface-mid: #dce0e8;
+  --poc-surface-raised: #ccd0da;
+  --poc-surface-heavy: #dce0e8;
+  --poc-surface-dense: #ccd0da;
+  --poc-surface-panel: #dce0e8;
+
+  --poc-border: #ccd0da;
+  --poc-border-subtle: #dce0e8;
+  --poc-border-faint: #dce0e8;
+  --poc-border-hover: #bcc0cc;
+}

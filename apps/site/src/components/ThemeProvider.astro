@@ -1,0 +1,50 @@
+---
+import { Icon } from '@astrojs/starlight/components';
+---
+
+{/* Inlined to prevent FOUC. Sets data-theme AND data-style before render. */}
+<script is:inline>
+	window.StarlightThemeProvider = (() => {
+		const stored =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme = stored || 'auto';
+		const isSolid = theme.includes('solid');
+		const colorScheme = theme.startsWith('light')
+			? 'light'
+			: theme === 'auto'
+				? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+				: 'dark';
+
+		document.documentElement.dataset.theme = colorScheme;
+		if (isSolid) {
+			document.documentElement.dataset.style = 'solid';
+		} else {
+			delete document.documentElement.dataset.style;
+		}
+
+		return {
+			updatePickers(theme = stored || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector('#theme-icons');
+					const iconClass = theme.replace('-solid', '');
+					const newIcon = tmpl && tmpl.content.querySelector('.' + iconClass);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script>
+
+<template id="theme-icons">
+	<Icon name="sun" class="light" />
+	<Icon name="moon" class="dark" />
+	<Icon name="laptop" class="auto" />
+</template>
