@@ -68,11 +68,20 @@ starlightCatppuccin({
 
 ### Constraints
 
-- Do not manually set `--sl-color-accent*` or `--sl-color-gray-*` CSS custom properties. Catppuccin owns these. Override only layout/component-specific properties in `custom.css`.
+- Do not manually set `--sl-color-accent*` or `--sl-color-gray-*` CSS custom properties. Catppuccin owns these. Override only layout/component-specific properties via `--poc-*` tokens.
 - Dark flavor options: `frappe`, `macchiato`, `mocha`. Light flavor: `latte` only.
 - Accent options: `lavender`, `blue`, `sapphire`, `sky`, `teal`, `green`, `yellow`, `peach`, `maroon`, `red`, `mauve`, `pink`, `flamingo`, `rosewater`.
-- To change flavor or accent, edit the plugin config in `astro.config.mjs`. Do not create separate theme CSS files.
+- To change flavor or accent, edit the plugin config in `astro.config.mjs`. Do not create separate theme CSS files for color palettes.
 - After changing theme config, run `pnpm run build` to verify. The plugin generates theme CSS at build time.
+
+### Two dimensions: color scheme and visual style
+
+The theme system has two orthogonal dimensions:
+
+- **Color scheme** (`data-theme`): `dark` or `light`. Controlled by Catppuccin plugin (Frappé/Latte flavors).
+- **Visual style** (`data-style`): atmospheric (default, no attribute) or `solid`. Controlled by custom CSS tokens and the ThemeProvider/ThemeSelect overrides.
+
+The theme selector in the header combines both into 5 options. See the "Site-wide visual system" section below for implementation details.
 
 ### Theme-color meta tags
 
@@ -105,36 +114,92 @@ To find all hardcoded repo URLs: search for `github.com/Mikeys-Tech-Lab` in `src
 
 ## Component overrides
 
-### SocialIcons (LinkedIn)
+Three Starlight components are overridden via the `components` key in `astro.config.mjs`:
 
-`src/components/SocialIcons.astro` extends the default Starlight `SocialIcons` component to add a LinkedIn icon. It is registered in `astro.config.mjs` under `components.SocialIcons`. The LinkedIn URL comes from `consts.ts`.
+| Override | File | Purpose |
+|---|---|---|
+| `SocialIcons` | `src/components/SocialIcons.astro` | Adds a LinkedIn icon after the default social icons |
+| `ThemeProvider` | `src/components/ThemeProvider.astro` | Prevents FOUC for both `data-theme` and `data-style` attributes |
+| `ThemeSelect` | `src/components/ThemeSelect.astro` | Extends the selector to 5 options (Dark, Light, Auto, Dark Solid, Light Solid) |
 
-To add another social icon, follow the same pattern: append an `<a>` with an inline SVG after the `<Default>` slot.
+### Override pattern
 
-## Landing page: atmospheric background
+Each override imports the default Starlight component, renders it via `<Default>`, then adds or replaces behavior:
 
-The splash page (`template: splash` in `index.mdx`) uses a fullscreen atmospheric background image with theme-aware styling. All custom styles are in `src/styles/custom.css`, scoped to `body:has(.hero)` so they only affect the landing page.
+```astro
+---
+import Default from '@astrojs/starlight/components/ComponentName.astro';
+---
+<Default><slot /></Default>
+<!-- additional markup -->
+```
+
+ThemeProvider and ThemeSelect do not render the default — they fully replace the component's markup and script.
+
+### Adding an override
+
+1. Copy the original from `node_modules/@astrojs/starlight/components/`.
+2. Place your version in `src/components/`.
+3. Register it in `astro.config.mjs` under `components`.
+4. Run `pnpm run build` to verify.
+
+## Site-wide visual system
+
+The atmospheric background and frosted glass treatment apply to **all pages**, not just the landing page.
+
+### CSS architecture
+
+Styles are modular, imported via `src/styles/custom.css` in dependency order:
+
+- `tokens.css` — design tokens (palette channels, surfaces, borders, shadows, blur)
+- `atmosphere.css` — fullscreen blurred background image + Starlight variable overrides
+- `solid.css` — overrides for the solid style variant (opaque backgrounds, no blur)
+- `surfaces.css` — frosted glass for header, sidebar, cards, search, pagination, mobile ToC
+- `hero.css` — landing page hero image, tagline, CTA button
+- `controls.css` — header controls: hamburger, search, theme selector styling + layout
+- `typography.css` — inline code and code links
+
+All files live in `apps/site/src/styles/`. For the design token system and frosted glass pattern details, see `visual-design.mdc`.
 
 ### How it works
 
-1. A `::before` pseudo-element on `body:has(.hero)` renders the background image (`src/assets/bg-landing.png`) with `position: fixed` to cover the full viewport.
-2. A theme-tinted overlay (Frappé `#303446` / Latte `#eff1f5`) and `filter: blur(8px)` soften the image for text readability.
-3. Starlight CSS custom properties (`--sl-color-bg`, `--sl-color-bg-nav`, `--sl-color-hairline-shade`) are overridden to transparent/semi-transparent values on `body:has(.hero)`, making the body and header see-through.
-4. Frosted glass effects (`backdrop-filter: blur()`) are applied directly to the header, search bar, and card elements.
+1. `body::before` renders the background image (`src/assets/bg-landing.png`) with `position: fixed` to cover the full viewport.
+2. `tokens.css` defines `--poc-base` and `--poc-overlay` as space-separated RGB channels. Surface, border, blur, and shadow tokens compose from these.
+3. `atmosphere.css` overrides `--sl-color-bg`, `--sl-color-bg-nav`, and `--sl-color-bg-sidebar` using `--poc-surface-*` tokens so the atmosphere shows through.
+4. `surfaces.css` applies `backdrop-filter: blur()` to specific UI elements for the frosted glass effect.
+5. The light theme overrides the channel values in `tokens.css`. Most downstream tokens auto-resolve.
+
+### Style variants
+
+Two visual styles exist, controlled by `data-style` on `<html>`:
+
+- **Atmospheric** (default): blurred background, frosted glass surfaces.
+- **Solid** (`data-style="solid"`): opaque Catppuccin backgrounds. Defined in `src/styles/solid.css`, which overrides token values and hides `body::before`.
+
+`ThemeSelect.astro` stores a composite value (e.g. `dark-solid`) in `localStorage`. `ThemeProvider.astro` reads it before render and sets both `data-theme` and `data-style`, preventing FOUC for both dimensions.
 
 ### Constraints
 
-- **Scope with `body:has(.hero)`**. All splash-page overrides use this selector so inner pages remain unaffected.
 - **Override CSS variables, not component styles.** Starlight components reference `--sl-color-bg-nav`, `--sl-color-bg`, etc. Overriding the variables avoids specificity fights and `!important`.
-- **Use `backdrop-filter` only on targeted elements.** It cannot be expressed as a CSS custom property, so it requires direct selectors on `.header`, `.card`, `button[data-open-modal]`.
-- **`inset: -24px` on the `::before`.** The negative inset compensates for blur edge artifacts. If blur is removed, reset to `inset: 0`.
-- **Theme colors are hardcoded.** The rgba values in `custom.css` correspond to Catppuccin Frappé and Latte base colors. If the dark flavor changes, these values must be updated. See the theme-color meta tag section above for the hex values.
+- **Use `backdrop-filter` only on targeted elements.** It cannot be expressed as a CSS custom property, so it requires direct selectors (e.g. `.page > .header`, `.sidebar-pane`).
+- **`inset: -24px` on `body::before`.** Compensates for blur edge artifacts. If blur is removed, reset to `inset: 0`.
+- **Token colors, not hardcoded rgba.** All color values come from `--poc-*` tokens. The only hardcoded hex values are in `solid.css` (Catppuccin Surface0/1/2) and `theme-color` meta tags.
+- **Catppuccin hex maintenance.** If the dark flavor changes in `astro.config.mjs`, update `solid.css` surface hex values and the `theme-color`/`msapplication-TileColor` meta tags in the `head` array.
 
 ### Background image
 
-The landing page background image is at `src/assets/bg-landing.png`. It is referenced via CSS `url()` from `custom.css` using a relative path (`../assets/bg-landing.png`). Vite resolves this at build time.
+`src/assets/bg-landing.png` is referenced via CSS `url()` from `atmosphere.css` using a relative path (`../assets/bg-landing.png`). Vite resolves this at build time.
 
-To replace the image: swap the file at `src/assets/bg-landing.png` and verify with `pnpm run build`. The tint overlay opacity may need adjustment for different image color profiles.
+To replace the image: swap the file and run `pnpm run build`. The tint overlay opacity may need adjustment for different image color profiles.
+
+## Theme system guardrail
+
+Any change to theme tokens, the theme selector, the ThemeProvider inline script, or style variants must be validated by:
+
+1. Running `pnpm run build` to confirm no build errors.
+2. Doing one manual browser refresh to confirm no FOUC (flash of unstyled content).
+
+FOUC regressions are silent — they do not fail the build. The only reliable check is a visual refresh after a clean load (hard refresh or incognito window).
 
 ## Common commands
 
