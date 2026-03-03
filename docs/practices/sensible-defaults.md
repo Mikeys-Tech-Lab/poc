@@ -17,7 +17,7 @@ If you cannot read files, ask the user to paste the seed texts before claiming y
 ---
 
 **Author:** Mikey Sebastian Drozd  
-**Website:** https://mikeys-tech.eu  
+**Website:** https://practiceofclarity.eu  
 **License:** CC BY 4.0. See `LICENSE-CC-BY-4.0`.  
 **Official license reference:** https://creativecommons.org/licenses/by/4.0/
 

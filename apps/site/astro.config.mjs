@@ -5,7 +5,7 @@ import starlightCatppuccin from "@catppuccin/starlight";
 import { REPO } from "./src/consts";
 
 export default defineConfig({
-  site: process.env.SITE_URL || "https://mikeys-tech-lab.github.io/poc",
+  site: process.env.SITE_URL || "https://practiceofclarity.eu",
   integrations: [
     starlight({
       plugins: [

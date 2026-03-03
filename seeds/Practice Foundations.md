@@ -3,7 +3,7 @@
 
 **Author:** Mikey Sebastian Drozd  
 **Pronouns:** he/him · they/them  
-**Website:** https://mikeys-tech.eu  
+**Website:** https://practiceofclarity.eu  
 **License:** CC BY 4.0. See `../LICENSE-CC-BY-4.0`.
 **Note:** This repository documents a practice. It is not a data collection program.
 
