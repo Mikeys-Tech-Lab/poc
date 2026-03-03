@@ -25,6 +25,6 @@ For translucent UI over a background image, combine CSS variable overrides with 
 
 Prefer subtle effects. Gentle blur, muted overlays, and soft borders over sharp contrasts, heavy shadows, or saturated accents. The site should feel quiet and focused.
 
-## Scope visual overrides
+## Site-wide atmospheric background
 
-Landing page styling is scoped with `body:has(.hero)`. Inner pages use the standard Catppuccin theme unmodified. Do not leak splash-page visual overrides into content pages.
+The blurred, theme-tinted background image applies to all pages. Starlight's `--sl-color-bg`, `--sl-color-bg-nav`, and `--sl-color-bg-sidebar` are overridden to transparent/semi-transparent so the atmosphere shows through everywhere. Frosted glass (`backdrop-filter`) is applied to the header, sidebar, search bar, and cards for readability. Landing-page-only layout tweaks (centered search bar) remain scoped with `body:has(.hero)`.
