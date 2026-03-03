@@ -16,9 +16,15 @@ starlight-menu-button [aria-expanded="true"] button {
   box-shadow: none;
 }
 
-/* Search icon */
+/* Search button: wider on desktop (2.5x Starlight's default 22rem) */
 button[data-open-modal] {
   color: var(--sl-color-text-accent);
+}
+@media (min-width: 50rem) {
+  button[data-open-modal] {
+    width: 55rem;
+    max-width: calc(100vw - 30rem);
+  }
 }
 
 /* Theme selector */
@@ -29,6 +35,15 @@ starlight-theme-select label {
 starlight-theme-select label:hover {
   color: var(--sl-color-text-accent);
   opacity: 0.66;
+}
+
+/* Cap right sidebar ("On this page") to the same width as the left sidebar.
+   Starlight's default formula gives the right sidebar extra space on wide
+   viewports, making the layout asymmetric. */
+@media (min-width: 72rem) {
+  .right-sidebar-container {
+    max-width: var(--sl-sidebar-width);
+  }
 }
 
 /* Center search bar in the viewport on desktop.
