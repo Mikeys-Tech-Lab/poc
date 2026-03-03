@@ -36,6 +36,8 @@ flowchart TD
 
   Guidance[docs/guidance/] -.->|"describes"| Agents
   Architecture[docs/architecture/] -.->|"describes"| Agents
+  Onboarding[docs/onboarding/] -.->|"newcomer paths"| Agents
+  OnboardSkill[".cursor/skills/onboarding/"] -->|"reads index"| Onboarding
 
   LocalConfig[".local/config.md"] -.->|"operator prefs"| Agents
   Dependabot[".github/dependabot.yml"] -.->|"version updates"| Tooling
@@ -86,13 +88,14 @@ flowchart TD
 | `docs/practices/` | Practice documents and operational lenses (e.g., Sensible Defaults) | Exists |
 | `AGENTS.md` | Canonical agent guidance (single source of truth) | Exists |
 | `.cursor/rules/` | Cursor always-apply and file-scoped rules (includes security-awareness) | Exists |
-| `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management) | Exists |
+| `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, infomaniak-deployment, onboarding) | Exists |
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
 | `.github/` | PR template, Copilot instructions, Dependabot config | Exists |
 | `.github/workflows/` | CI/CD (deploy-dev, deploy-preview, release), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard) | Exists |
 | `release-please-config.json` | Release Please package definitions and changelog sections | Exists |
 | `.release-please-manifest.json` | Tracks current version of each versioned package | Exists |
 | `.local/` | Operator-specific config (gitignored). Template: `.local.example.md` | Exists |
+| `docs/onboarding/` | Newcomer onboarding paths (topic index, local setup, AI guidance, workspace, security, infra, contributing) | Exists |
 | `docs/guidance/` | Descriptive guidance docs (conventions, change process) | Exists |
 | `docs/architecture/` | Architecture docs + this canonical diagram | Exists |
 | `docs/ai/` | Capability alignment reports (generated) | Exists |

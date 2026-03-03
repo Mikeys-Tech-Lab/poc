@@ -51,6 +51,38 @@ Agents must not assert operational outcomes without evidence from actual tool ex
 
 These rules exist because high-capability reasoning models can simulate execution convincingly. Simulated execution that is presented as real execution is compliance theater. This practice is explicitly anti-theater.
 
+## Structural awareness
+
+Agents must orient in the workspace before acting on it. A change that is correct in isolation but ignores its connections is a change that creates drift.
+
+### Orient before acting
+
+Before substantive work, understand what you are acting within:
+
+- What directories, docs, and config files describe the area you are about to change?
+- What other systems reference or depend on the thing you are changing?
+- What documentation surfaces will need to evolve with this change?
+
+This is not overhead. It is the difference between working in a system and working on a fragment in isolation.
+
+### Ripple check
+
+Before committing or marking work complete, trace the ripple:
+
+- What did this change touch beyond the immediate files?
+- Which docs, tests, onboarding pages, architecture descriptions, rules, or skills now describe something that no longer matches reality?
+- If nothing else was affected, state that explicitly. Silence is not the same as "nothing changed."
+
+### No flattening
+
+This workspace is a connected system: code, documentation, AI guidance, infrastructure, and practices all reference each other. Agents must not reduce it to just the immediate task.
+
+- A code change may affect onboarding docs, architecture descriptions, and security posture.
+- A docs change may affect the topic index, the manual onboarding path, and adapter files.
+- An infrastructure change may affect protection layers, deployment runbooks, and security guidance.
+
+If you see only the file you are editing, you are flattening. Zoom out, then act.
+
 ## Security posture
 
 This is a public repository. Everything committed is world-readable. Agents must treat security as a first-class concern.
@@ -99,6 +131,17 @@ CodeQL and Scorecard also run on a weekly schedule.
 
 - Each deployment environment gets its own SSH key pair.
 - Keys are rotated if exposed. The setup runbook is at `docs/infra/infomaniak-environment-setup.md`.
+
+## Onboarding
+
+This workspace has a structured onboarding system at `docs/onboarding/`. AI agents can guide newcomers through it interactively.
+
+- The topic index is at `docs/onboarding/README.md`. It lists available topics with IDs, paths, descriptions, and prerequisites.
+- The Cursor skill at `.cursor/skills/onboarding/SKILL.md` defines the agent-driven onboarding flow.
+- For Claude Code and GitHub Copilot: read the topic index and follow the same structure when a user asks for onboarding.
+- For human readers without AI assistance: `docs/onboarding/manual.md` provides the same paths.
+
+Onboarding docs summarize and link to deep docs. They do not duplicate content that lives elsewhere.
 
 ## Register and writing constraints
 
@@ -178,13 +221,35 @@ Do not bump versions manually. The `github-automation` skill has the full detail
 
 Tests co-evolve with changes. Document what was verified and what was not.
 
-## Documentation upkeep rule
+## Documentation evolution discipline
 
-Every meaningful workspace change updates any affected docs, diagrams, templates, and decision traces in the same PR.
+Documentation evolves with the workspace. Every PR updates all affected documentation in the same PR. There is no "update docs later." Deferred documentation is deferred clarity, and deferred clarity is debt.
 
-`docs/architecture/workspace.md` is the canonical architecture diagram and narrative. Any PR that changes repo structure, tooling entrypoints, or docs site layout updates that file in the same PR (or explicitly states why not).
+This applies to every documentation surface:
 
-If the diagram and the file tree/config diverge, the file tree/config wins and the diagram must be updated.
+- `AGENTS.md` (agent behavior, tool preferences, conventions, invariants)
+- `docs/onboarding/` (topic index and topic pages)
+- `docs/architecture/workspace.md` (directory roles, diagram, narrative)
+- `docs/infra/` (runbooks, protection layers, environment setup)
+- `docs/guidance/` (principles, workflow)
+- `.cursor/rules/` and `.cursor/skills/` (agent rules and skills)
+- Adapter files (`.claude/CLAUDE.md`, `.github/copilot-instructions.md`)
+- `README.md` (gateway)
+
+### What "affected" means
+
+If a PR changes behavior, structure, tooling, conventions, or security posture, every document that describes or references the changed area must be updated to reflect the new state. If a document is not updated, the PR must explicitly state why not.
+
+### Specific obligations
+
+- **Structural changes** (repo layout, new directories, moved files): update `docs/architecture/workspace.md`. If the diagram and the file tree diverge, the file tree wins and the diagram must be updated.
+- **Onboarding-relevant changes** (setup, workflow, AI guidance, security posture): update the topic index (`docs/onboarding/README.md`) and the affected topic page(s).
+- **Infrastructure or security changes**: update `docs/infra/protection-layers.md` and/or relevant runbooks.
+- **Agent behavior changes** (new rules, skills, tool preferences): update `AGENTS.md` and any affected adapters.
+
+### No duplication constraint
+
+Onboarding pages summarize and link. Deep docs hold authoritative procedures. If an onboarding topic page grows beyond a summary, the content must be promoted to a deep doc. Two sources of truth is not clarity — it is drift waiting to happen.
 
 ## Architectural invariants (v1)
 
