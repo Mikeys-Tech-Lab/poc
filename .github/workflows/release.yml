@@ -34,5 +34,6 @@ jobs:
         if: steps.release.outputs.prs_created == 'true' && vars.RELEASE_APP_ID != ''
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
           gh pr merge "${{ fromJson(steps.release.outputs.pr).number }}" --auto --squash
