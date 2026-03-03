@@ -1,4 +1,4 @@
-name: Deploy to Development
+name: Deploy · Seed
 
 on:
   release:
