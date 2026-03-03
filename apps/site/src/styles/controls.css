@@ -44,6 +44,9 @@ starlight-theme-select label:hover {
   .right-sidebar-container {
     max-width: var(--sl-sidebar-width);
   }
+  .right-sidebar {
+    max-width: var(--sl-sidebar-width);
+  }
 }
 
 /* Center search bar in the viewport on desktop.

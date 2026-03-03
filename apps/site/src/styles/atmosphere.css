@@ -15,6 +15,7 @@ body::before {
     linear-gradient(rgb(var(--poc-base) / 0.6), rgb(var(--poc-base) / 0.6)),
     url("../assets/bg-landing.png") center / cover no-repeat;
   filter: blur(var(--poc-blur-sm));
+  will-change: transform;
 }
 
 :root[data-theme="light"] body::before {

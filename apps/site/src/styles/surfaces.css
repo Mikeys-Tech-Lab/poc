@@ -6,6 +6,7 @@
 /* Header */
 .page > .header {
   backdrop-filter: blur(var(--poc-blur-lg));
+  will-change: backdrop-filter;
 }
 
 /* Search bar — frosted glass at desktop, clean icon at mobile */
@@ -56,6 +57,7 @@ mobile-starlight-toc .dropdown {
   .sidebar-pane {
     background-color: transparent;
     backdrop-filter: blur(var(--poc-blur-md));
+    will-change: backdrop-filter;
   }
 }
 
