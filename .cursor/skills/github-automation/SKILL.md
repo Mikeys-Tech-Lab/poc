@@ -118,8 +118,9 @@ Version bumps, CHANGELOGs, and GitHub Releases are automated via [Release Please
 1. Commits land on `main` via squash-merged PRs (with Conventional Commit messages).
 2. Release Please analyzes the commits and determines which packages need a version bump based on which files changed.
 3. It creates or updates a **Release PR** with version bumps in `package.json` and CHANGELOG updates.
-4. The operator reviews and merges the Release PR.
+4. When the GitHub App token is configured, auto-merge is enabled on the Release PR. CI checks run (triggered by the App token), and the PR merges automatically when all required checks pass. Without the App token, the operator merges manually.
 5. On merge, Release Please creates **GitHub Releases** with tags (e.g., `site-v0.2.0`, `ai-guidance-v0.2.0`).
+6. Published releases trigger environment deployments (seed deploys on `release: published`).
 
 **Configuration files:**
 
@@ -132,9 +133,13 @@ Version bumps, CHANGELOGs, and GitHub Releases are automated via [Release Please
 
 The `release.yml` workflow uses a GitHub App installation token instead of the default `GITHUB_TOKEN`. This is required because GitHub's anti-recursion policy prevents `GITHUB_TOKEN` from triggering workflow runs. Without the App token, CI checks (gitleaks, Shai-Hulud, CodeQL) never run on Release Please PRs, and `enforce_admins` blocks merging.
 
-The workflow falls back to `GITHUB_TOKEN` if the App is not configured (variable `RELEASE_APP_ID` is empty). In fallback mode, Release PRs require the admin bypass workaround to merge.
+The workflow falls back to `GITHUB_TOKEN` if the App is not configured (variable `RELEASE_APP_ID` is empty). In fallback mode, auto-merge is disabled and Release PRs require the admin bypass workaround to merge.
 
 Setup: `docs/infra/github-app-release-setup.md`.
+
+**Deployment trigger:**
+
+Deployments are triggered by `release: types: [published]`, not `push: branches: [main]`. This ensures the version bump lands on `main` before the deploy runs, so every deployment corresponds to a tagged release. Manual deploys remain available via `workflow_dispatch`.
 
 **Commit type → version bump mapping:**
 
@@ -175,6 +180,18 @@ For full commit discipline, see the `git-commit` skill.
 ## PR as reasoning trace
 
 Every PR description is a reasoning trace, not just a changelog. Someone reading the PR should understand how the work evolved, what decisions were made, what went wrong, and what was learned.
+
+### PR description security scan
+
+Before posting or updating any PR description, scan the text for:
+
+- Origin server IPs or any IP address that is not a public example
+- Internal paths (`/home/clients/`, `/sites/`, deploy paths)
+- SSH hostnames, usernames, or key filenames
+- Client IDs or long hex identifiers (except git commit SHAs)
+- Port numbers in infrastructure context
+
+If any appear, replace with generic references. This is a public repository. PR descriptions are world-readable and permanently archived.
 
 ### Required PR sections
 

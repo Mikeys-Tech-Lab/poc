@@ -1,4 +1,4 @@
-name: Release
+name: Release · Versioning
 
 on:
   push:
@@ -23,8 +23,16 @@ jobs:
           private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
 
       - name: Run Release Please
+        id: release
         uses: googleapis/release-please-action@v4
         with:
           token: ${{ steps.app-token.outputs.token || github.token }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+
+      - name: Enable auto-merge for Release Please PR
+        if: steps.release.outputs.prs_created == 'true' && vars.RELEASE_APP_ID != ''
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          gh pr merge "${{ fromJson(steps.release.outputs.pr).number }}" --auto --squash

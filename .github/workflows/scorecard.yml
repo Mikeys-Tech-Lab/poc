@@ -1,4 +1,4 @@
-name: Scorecard
+name: Security · OSSF Scorecard
 
 on:
   push:

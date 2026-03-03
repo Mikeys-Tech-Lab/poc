@@ -54,14 +54,14 @@ flowchart TD
   end
 
   subgraph "Release Automation"
-    ReleasePlease[".github/workflows/release.yml\n(Release Please)"]
+    ReleasePlease[".github/workflows/release.yml\n(Release Please + auto-merge)"]
     AppToken["GitHub App token\n(actions/create-github-app-token)"]
     RPConfig["release-please-config.json"]
     RPManifest[".release-please-manifest.json"]
+    GitHubRelease["GitHub Release\n(tag published)"]
   end
 
-  AstroSite -->|"pnpm run build"| DeployDev
-  DeployDev -->|"rsync over SSH"| InfomaniakDev["Infomaniak: PoC - Development"]
+  DeployDev -->|"pnpm run build\n+ rsync over SSH"| InfomaniakDev["Infomaniak: seed.practiceofclarity.eu"]
   Dependabot -.->|"action version updates"| SecretScan
   Dependabot -.->|"action version updates"| CodeQL
   AppToken -->|"installation token"| ReleasePlease
@@ -70,6 +70,8 @@ flowchart TD
   ReleasePlease -->|"version bumps + CHANGELOG"| RootPkg["package.json\n(workspace)"]
   ReleasePlease -->|"version bumps + CHANGELOG"| AstroSite
   ReleasePlease -->|"version bumps + CHANGELOG"| Tooling
+  ReleasePlease -->|"publishes"| GitHubRelease
+  GitHubRelease -->|"triggers"| DeployDev
 ```
 
 ## Directory roles

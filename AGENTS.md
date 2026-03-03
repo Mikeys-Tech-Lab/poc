@@ -63,7 +63,9 @@ This is a public repository. Everything committed is world-readable. Agents must
 
 ### Public repo hygiene
 
-- No secrets, IPs, internal hostnames, client IDs, or infrastructure paths in committed files.
+- No secrets, IPs, internal hostnames, client IDs, key filenames, or infrastructure paths in committed files.
+- The same rule applies to all public-facing text: PR descriptions, commit messages, issue bodies, and review comments. These are world-readable and permanently archived. Use generic references ("origin server", "deploy path updated") instead of actual values.
+- Before creating or updating a PR description, scan the draft for origin IPs, internal paths, SSH hostnames/usernames, client IDs, and key filenames. Redact before posting.
 - Operator-specific values go in `.local/config.md` (gitignored). CI/CD values go in GitHub secrets and variables.
 - Before writing any file containing secrets or operator-specific values, verify the target path is gitignored. If not, stop and ask.
 

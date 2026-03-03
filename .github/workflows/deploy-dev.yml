@@ -1,8 +1,8 @@
-name: Deploy to Development
+name: Deploy · Seed
 
 on:
-  push:
-    branches: [main]
+  release:
+    types: [published]
   workflow_dispatch:
 
 concurrency:
