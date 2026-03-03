@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.5.0...workspace-v0.5.1) (2026-03-03)
+
+
+### Documentation
+
+* **infra:** add protection layers documentation and maintenance assets ([#24](https://github.com/Mikeys-Tech-Lab/poc/issues/24)) ([4212b78](https://github.com/Mikeys-Tech-Lab/poc/commit/4212b788e266f45652e1c457133aacaccdf015d6))
+
 ## [0.5.0](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.4.2...workspace-v0.5.0) (2026-03-03)
 
 
