@@ -1,0 +1,82 @@
+# Contributing
+
+How work moves through this repo: branching, committing, and opening pull requests.
+
+## GitHub Flow
+
+All work happens on feature branches from `main`. No commits directly on `main`.
+
+1. Create a feature branch from `main`
+2. Make changes with atomic commits
+3. Open a pull request
+4. Squash merge back to `main`
+
+## Branch naming
+
+Format: `<type>/<scope>/<short-description>`
+
+Examples:
+- `feat/astro/add-dark-mode-toggle`
+- `fix/docs/correct-sidebar-link`
+- `docs/ai/update-onboarding`
+
+Types: `feat`, `fix`, `chore`, `docs`, `test`, `refactor`
+
+Scopes: `seedpack`, `ai`, `tooling`, `docs`, `astro`, `infra`
+
+## Conventional Commits
+
+Every commit message follows the format: `<type>(<scope>): <subject>`
+
+Each commit does one thing. If you need to explain two unrelated changes, split them into separate commits.
+
+The `git-commit` skill (`.cursor/skills/git-commit/SKILL.md`) has the full commit discipline. AI agents read it before every commit.
+
+## Feature lifecycle
+
+Non-trivial work follows three phases:
+
+1. **Start** — create a branch, confirm scope
+2. **Work** — atomic commits, push periodically
+3. **Close** — reflect, cleanup, then PR
+
+The Close phase matters. Before creating a PR:
+- Run `pnpm run build` and check for zero warnings
+- Search for unused exports, dead code, orphaned config
+- Check that docs, skills, and rules are updated if the work introduced new patterns
+- Verify naming conventions and file organization are consistent
+
+The `github-automation` skill (`.cursor/skills/github-automation/SKILL.md`) has the detailed lifecycle.
+
+## Pull request expectations
+
+PRs are reasoning traces, not just changelogs. The description should explain:
+
+1. **Summary** — what the PR adds or changes
+2. **Context** — how the work evolved, what decisions were made, what went wrong
+3. **Trace** — assumptions, limits, what was not checked
+4. **Test plan** — what was verified, what was not
+
+Someone reading the PR should understand the full journey, not just the final state.
+
+### Security scan before posting
+
+Before creating or updating a PR description, scan the text for origin IPs, internal paths, SSH hostnames, client IDs, or key filenames. This is a public repo. PR descriptions are permanently archived.
+
+Full PR conventions: [`AGENTS.md` § Repo workflow conventions](../../AGENTS.md)
+
+## Automated releases
+
+You do not need to bump versions manually. Release Please handles it:
+
+1. Your PR merges to `main` with Conventional Commit messages
+2. Release Please creates a version bump PR automatically
+3. When CI passes, the bump PR auto-merges
+4. GitHub Releases are published with tags
+5. Published releases trigger deployments
+
+The `github-automation` skill has the full release details.
+
+## Documentation upkeep
+
+Every meaningful change updates any affected docs in the same PR. If your work changes repo structure, tooling, or the docs site layout, update `docs/architecture/workspace.md`. If your work affects an onboarding topic, update the relevant page in `docs/onboarding/`.
