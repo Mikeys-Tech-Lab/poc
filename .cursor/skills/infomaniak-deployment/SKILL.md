@@ -30,8 +30,8 @@ The workspace deploys to an Infomaniak managed Cloud Server with multiple web ho
 
 | Web hosting | Environment | Domain | Access |
 |---|---|---|---|
-| Seed | dev | `seed.practiceofclarity.eu` | IP-restricted |
-| Preview | preview | `preview.practiceofclarity.eu` | TBD |
+| Seed | dev | `seed.practiceofclarity.eu` | IP-restricted (`.htaccess` allowlist) |
+| Preview | preview | `preview.practiceofclarity.eu` | Cloudflare Access (email OTP) |
 | Public | production | `practiceofclarity.eu` | Open |
 
 Each web hosting has its own document root, FTP/SSH credentials, and domain binding. Credentials are managed per-hosting in the Infomaniak Manager.
@@ -54,13 +54,31 @@ No third-party deployment actions are used. Direct `ssh`/`rsync` commands reduce
 
 ## Environment strategy
 
-| Environment | Trigger | IP restriction | Status |
+| Environment | Trigger | Access control | Status |
 |---|---|---|---|
-| Development | Push to `main` + manual dispatch | Yes (allowlist) | Active |
-| Preview | Push to `main` + manual dispatch | TBD | Planned |
-| Public | Manual dispatch only | No | Planned |
+| Development | `release: published` + manual dispatch | `.htaccess` IP allowlist | Active |
+| Preview | `release: published` + manual dispatch | Cloudflare Access (email OTP) | Active |
+| Public | Manual dispatch only | None (public) | Planned |
 
 Each environment uses a **GitHub environment** for isolated secrets and variables.
+
+## Defense-in-depth layering
+
+All environments share a baseline: `.htaccess` blocks requests without `CF-Connecting-IP` (direct-to-origin bypass). Each environment adds its own access control layer:
+
+- **Seed**: baseline + IP allowlist. Only requests from allowed IPs (via `CF-Connecting-IP` header) are permitted.
+- **Preview**: baseline + Cloudflare Access. All traffic must go through Cloudflare, where Zero Trust enforces email-based authentication (one-time PIN). No IP allowlist needed.
+- **Production** (planned): baseline only. Public site, no additional auth. `workflow_dispatch` trigger ensures operator validates on preview first.
+
+The baseline `.htaccess` rule:
+
+```apache
+RewriteEngine On
+RewriteCond %{HTTP:CF-Connecting-IP} ^$
+RewriteRule ^ - [F,L]
+```
+
+This blocks requests that bypass Cloudflare (hitting the origin IP directly), since they lack the `CF-Connecting-IP` header.
 
 ## Cloudflare
 
@@ -163,8 +181,8 @@ Key constraints:
 
 | Environment | Workflow file | Trigger |
 |---|---|---|
-| Development | `.github/workflows/deploy-dev.yml` | Push to `main`, manual dispatch |
-| Preview | (planned) | — |
+| Development | `.github/workflows/deploy-dev.yml` | `release: published`, manual dispatch |
+| Preview | `.github/workflows/deploy-preview.yml` | `release: published`, manual dispatch |
 | Public | (planned) | Manual dispatch only |
 
 ## Manual deployment

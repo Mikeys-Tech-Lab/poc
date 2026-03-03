@@ -28,3 +28,13 @@ This is a public repository. PR descriptions, commit messages, issue bodies, and
 - SSH private keys are generated locally and copied to GitHub secrets by the operator. Agents do not handle private key content.
 - Read `.local/config.md` for infrastructure details. Do not hardcode them.
 - The setup runbook at `docs/infra/infomaniak-environment-setup.md` is the reference for environment provisioning.
+
+## Defense-in-depth (origin protection)
+
+All environments enforce a shared baseline: `.htaccess` blocks requests without `CF-Connecting-IP` (direct-to-origin bypass). Each environment adds its own access control:
+
+- **Seed**: baseline + IP allowlist via `CF-Connecting-IP`
+- **Preview**: baseline + Cloudflare Access (email one-time PIN at the edge)
+- **Production** (planned): baseline only (public)
+
+The `CF-Connecting-IP` header is set by Cloudflare's proxy. Direct-to-origin requests lack this header and are blocked. For stronger origin protection, Cloudflare Authenticated Origin Pulls (mTLS) could be added later.
