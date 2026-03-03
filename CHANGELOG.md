@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.4.0...workspace-v0.4.1) (2026-03-03)
+
+
+### Miscellaneous
+
+* **infra:** migrate domain to practiceofclarity.eu ([#18](https://github.com/Mikeys-Tech-Lab/poc/issues/18)) ([32ef5b7](https://github.com/Mikeys-Tech-Lab/poc/commit/32ef5b7f79de5ef7229d0f8a88ba73a7fe1e6eea))
+
 ## [0.4.0](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.3.1...workspace-v0.4.0) (2026-03-02)
 
 
