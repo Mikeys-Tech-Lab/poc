@@ -103,11 +103,11 @@ Three packages in this workspace carry versions:
 
 | Package | Path | What it captures |
 |---|---|---|
-| `workspace` | `package.json` (root) | CI/CD, security scanning, agent guidance, skills, rules, docs, repo config |
+| `PoC` | `package.json` (root) | CI/CD, security scanning, agent guidance, skills, rules, docs, repo config |
 | `site` | `apps/site/package.json` | User-visible changes: content, theme, layout, icons, Astro config |
 | `ai-guidance` | `tools/ai-guidance/package.json` | Capability check logic, report format, dependencies |
 
-Release Please attributes commits to packages based on which files changed. Commits that only touch root-level files (`.github/`, `docs/`, `AGENTS.md`, `.cursor/`) are attributed to the `workspace` package.
+Release Please attributes commits to packages based on which files changed. Commits that only touch root-level files (`.github/`, `docs/`, `AGENTS.md`, `.cursor/`) are attributed to the `PoC` package.
 
 ### Automated releases (Release Please)
 
@@ -153,7 +153,7 @@ Deployments are triggered by `release: types: [published]`, not `push: branches:
 **When no bump occurs:**
 
 - Commits of type `test` (hidden in changelog sections config).
-- Commits that touch only files already covered by a more specific package (e.g., a change in `apps/site/` only bumps `site`, not `workspace`).
+- Commits that touch only files already covered by a more specific package (e.g., a change in `apps/site/` only bumps `site`, not `PoC`).
 
 ### Semver guidance
 

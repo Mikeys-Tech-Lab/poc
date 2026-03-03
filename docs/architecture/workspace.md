@@ -75,7 +75,7 @@ flowchart TD
   AppToken -->|"installation token"| ReleasePlease
   RPConfig -.->|"package definitions"| ReleasePlease
   RPManifest -.->|"current versions"| ReleasePlease
-  ReleasePlease -->|"version bumps + CHANGELOG"| RootPkg["package.json\n(workspace)"]
+  ReleasePlease -->|"version bumps + CHANGELOG"| RootPkg["package.json\n(PoC)"]
   ReleasePlease -->|"version bumps + CHANGELOG"| AstroSite
   ReleasePlease -->|"version bumps + CHANGELOG"| Tooling
   ReleasePlease -->|"publishes"| GitHubRelease

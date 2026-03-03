@@ -49,7 +49,7 @@ Release Please tracks versions for three packages:
 
 | Package | Path | What triggers a bump |
 |---|---|---|
-| `workspace` | `package.json` (root) | CI/CD, security, agent guidance, skills, rules, docs, repo config |
+| `PoC` | `package.json` (root) | CI/CD, security, agent guidance, skills, rules, docs, repo config |
 | `site` | `apps/site/package.json` | Content, theme, layout, Astro config |
 | `ai-guidance` | `tools/ai-guidance/package.json` | Capability check logic, report format |
 
