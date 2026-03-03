@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.5.1...workspace-v0.6.0) (2026-03-03)
+
+
+### Features
+
+* **docs:** add onboarding documentation system ([#26](https://github.com/Mikeys-Tech-Lab/poc/issues/26)) ([1950443](https://github.com/Mikeys-Tech-Lab/poc/commit/19504433e3ee217522550ecdb8efebad26959f11))
+
 ## [0.5.1](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.5.0...workspace-v0.5.1) (2026-03-03)
 
 
