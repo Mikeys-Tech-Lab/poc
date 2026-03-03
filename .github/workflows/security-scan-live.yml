@@ -1,4 +1,4 @@
-name: Security · Live Site Scan
+name: Security · HTTP Headers (Nuclei)
 
 on:
   workflow_run:
@@ -16,42 +16,73 @@ permissions:
   security-events: write
 
 jobs:
-  scan:
-    name: Nuclei Security Scan
+  scan-seed:
+    name: Headers · Seed
     runs-on: ubuntu-latest
+    environment: development
     if: >-
-      github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'workflow_run' &&
+      github.event.workflow_run.name == 'Deploy · Seed' &&
       github.event.workflow_run.conclusion == 'success'
 
     steps:
-      - name: Resolve target URL
-        id: target
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "url=${{ inputs.target_url }}" >> "$GITHUB_OUTPUT"
-            echo "Target: ${{ inputs.target_url }} (manual dispatch)"
-          elif [ "${{ github.event.workflow_run.name }}" = "Deploy · Seed" ]; then
-            echo "url=${{ vars.DEVELOPMENT_SITE_URL }}" >> "$GITHUB_OUTPUT"
-            echo "Target: ${{ vars.DEVELOPMENT_SITE_URL }} (post-deploy seed)"
-          elif [ "${{ github.event.workflow_run.name }}" = "Deploy · Preview" ]; then
-            echo "url=${{ vars.PREVIEW_SITE_URL }}" >> "$GITHUB_OUTPUT"
-            echo "Target: ${{ vars.PREVIEW_SITE_URL }} (post-deploy preview)"
-          else
-            echo "::error::Could not resolve target URL from workflow run: ${{ github.event.workflow_run.name }}"
-            exit 1
-          fi
-
       - name: Run Nuclei scan
         uses: projectdiscovery/nuclei-action@v3
         with:
           args: >-
-            -u ${{ steps.target.outputs.url }}
+            -u ${{ vars.DEVELOPMENT_SITE_URL }}
             -t http/misconfiguration/http-missing-security-headers.yaml
             -sarif-export nuclei.sarif
 
       - name: Upload SARIF to GitHub Security
         uses: github/codeql-action/upload-sarif@v4
-        if: always()
+        if: always() && hashFiles('nuclei.sarif') != ''
         with:
           sarif_file: nuclei.sarif
-          category: nuclei-live-scan
+          category: nuclei-seed
+
+  scan-preview:
+    name: Headers · Preview
+    runs-on: ubuntu-latest
+    environment: preview
+    if: >-
+      github.event_name == 'workflow_run' &&
+      github.event.workflow_run.name == 'Deploy · Preview' &&
+      github.event.workflow_run.conclusion == 'success'
+
+    steps:
+      - name: Run Nuclei scan
+        uses: projectdiscovery/nuclei-action@v3
+        with:
+          args: >-
+            -u ${{ vars.PREVIEW_SITE_URL }}
+            -t http/misconfiguration/http-missing-security-headers.yaml
+            -sarif-export nuclei.sarif
+
+      - name: Upload SARIF to GitHub Security
+        uses: github/codeql-action/upload-sarif@v4
+        if: always() && hashFiles('nuclei.sarif') != ''
+        with:
+          sarif_file: nuclei.sarif
+          category: nuclei-preview
+
+  scan-manual:
+    name: Headers · Manual
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Run Nuclei scan
+        uses: projectdiscovery/nuclei-action@v3
+        with:
+          args: >-
+            -u ${{ inputs.target_url }}
+            -t http/misconfiguration/http-missing-security-headers.yaml
+            -sarif-export nuclei.sarif
+
+      - name: Upload SARIF to GitHub Security
+        uses: github/codeql-action/upload-sarif@v4
+        if: always() && hashFiles('nuclei.sarif') != ''
+        with:
+          sarif_file: nuclei.sarif
+          category: nuclei-manual
