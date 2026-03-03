@@ -19,4 +19,4 @@ This workspace documents reasoning, not people. Reports, traces, and tooling out
 - GitHub Flow: feature branches from `main`, PRs with squash merge.
 - PRs include summary, context trace, test plan, and checklist.
 - Conventional Commits: `type(scope): subject`.
-- Every PR that changes repo structure updates `docs/architecture/workspace.md`.
+- Documentation evolution discipline: every PR updates all affected documentation in the same PR. See `AGENTS.md` § Documentation evolution discipline for the full rule and specific obligations by change type.
