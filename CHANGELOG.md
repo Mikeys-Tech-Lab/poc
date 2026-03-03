@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.2](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.4.1...workspace-v0.4.2) (2026-03-03)
+
+
+### Bug Fixes
+
+* **infra:** pass GH_REPO to auto-merge step in release workflow ([#20](https://github.com/Mikeys-Tech-Lab/poc/issues/20)) ([06c2b80](https://github.com/Mikeys-Tech-Lab/poc/commit/06c2b809df073ab942f0faa5a90c04b2823f4cd4))
+
 ## [0.4.1](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.4.0...workspace-v0.4.1) (2026-03-03)
 
 
