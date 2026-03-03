@@ -61,7 +61,7 @@ flowchart TD
   end
 
   AstroSite -->|"pnpm run build"| DeployDev
-  DeployDev -->|"rsync over SSH"| InfomaniakDev["Infomaniak: PoC - Development"]
+  DeployDev -->|"rsync over SSH"| InfomaniakDev["Infomaniak: seed.practiceofclarity.eu"]
   Dependabot -.->|"action version updates"| SecretScan
   Dependabot -.->|"action version updates"| CodeQL
   AppToken -->|"installation token"| ReleasePlease

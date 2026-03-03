@@ -28,11 +28,11 @@ Before relying on any deployment command or Infomaniak feature:
 
 The workspace deploys to an Infomaniak managed Cloud Server with multiple web hostings:
 
-| Web hosting | Environment | Access |
-|---|---|---|
-| Development | dev | IP-restricted |
-| Preview | preview | TBD |
-| Public | production | Open |
+| Web hosting | Environment | Domain | Access |
+|---|---|---|---|
+| Seed | dev | `seed.practiceofclarity.eu` | IP-restricted |
+| Preview | preview | `preview.practiceofclarity.eu` | TBD |
+| Public | production | `practiceofclarity.eu` | Open |
 
 Each web hosting has its own document root, FTP/SSH credentials, and domain binding. Credentials are managed per-hosting in the Infomaniak Manager.
 
@@ -112,7 +112,7 @@ If `ALLOWED_IPS` is not set, the deployment fails safely rather than leaving the
 `apps/site/astro.config.mjs` reads `SITE_URL` from the environment:
 
 ```js
-site: process.env.SITE_URL || "https://mikeys-tech-lab.github.io/poc"
+site: process.env.SITE_URL || "https://practiceofclarity.eu"
 ```
 
 Each GitHub environment sets `SITE_URL` as a **variable** (not a secret, since URLs are not sensitive):
