@@ -176,6 +176,18 @@ For full commit discipline, see the `git-commit` skill.
 
 Every PR description is a reasoning trace, not just a changelog. Someone reading the PR should understand how the work evolved, what decisions were made, what went wrong, and what was learned.
 
+### PR description security scan
+
+Before posting or updating any PR description, scan the text for:
+
+- Origin server IPs or any IP address that is not a public example
+- Internal paths (`/home/clients/`, `/sites/`, deploy paths)
+- SSH hostnames, usernames, or key filenames
+- Client IDs or long hex identifiers (except git commit SHAs)
+- Port numbers in infrastructure context
+
+If any appear, replace with generic references. This is a public repository. PR descriptions are world-readable and permanently archived.
+
 ### Required PR sections
 
 1. **Summary**: what the PR adds or changes (bullet list)

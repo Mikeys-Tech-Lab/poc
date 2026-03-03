@@ -14,6 +14,15 @@ Full guidance: `AGENTS.md` § Security posture. This is an always-applied adapte
 - All committed files must be public-safe. No IPs, hostnames, deploy paths, credentials, or client identifiers.
 - `.env*` files are gitignored. Use them for local secrets if needed. Never commit them.
 
+## Public-facing text (PR descriptions, commit messages, issues)
+
+This is a public repository. PR descriptions, commit messages, issue bodies, and review comments are world-readable and permanently archived (even after PR edits, cached versions may persist).
+
+- **Apply the same rules as committed files.** No origin server IPs, internal paths, SSH hostnames, SSH usernames, client IDs, key filenames, or infrastructure naming conventions.
+- **Use generic references.** Write "origin server" not the IP. Write "deploy path updated" not the path value. Write "SSH key rotated" not the key filename.
+- **Before creating or updating a PR description**, scan the text for the patterns above. If any appear, redact before posting.
+- **Commit messages** follow the same constraint. Describe what changed, not the infrastructure values involved.
+
 ## Deployment
 
 - SSH private keys are generated locally and copied to GitHub secrets by the operator. Agents do not handle private key content.
