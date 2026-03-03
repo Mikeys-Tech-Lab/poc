@@ -100,6 +100,17 @@ CodeQL and Scorecard also run on a weekly schedule.
 - Each deployment environment gets its own SSH key pair.
 - Keys are rotated if exposed. The setup runbook is at `docs/infra/infomaniak-environment-setup.md`.
 
+## Onboarding
+
+This workspace has a structured onboarding system at `docs/onboarding/`. AI agents can guide newcomers through it interactively.
+
+- The topic index is at `docs/onboarding/README.md`. It lists available topics with IDs, paths, descriptions, and prerequisites.
+- The Cursor skill at `.cursor/skills/onboarding/SKILL.md` defines the agent-driven onboarding flow.
+- For Claude Code and GitHub Copilot: read the topic index and follow the same structure when a user asks for onboarding.
+- For human readers without AI assistance: `docs/onboarding/manual.md` provides the same paths.
+
+Onboarding docs summarize and link to deep docs. They do not duplicate content that lives elsewhere.
+
 ## Register and writing constraints
 
 For authored text in this repo:
@@ -185,6 +196,14 @@ Every meaningful workspace change updates any affected docs, diagrams, templates
 `docs/architecture/workspace.md` is the canonical architecture diagram and narrative. Any PR that changes repo structure, tooling entrypoints, or docs site layout updates that file in the same PR (or explicitly states why not).
 
 If the diagram and the file tree/config diverge, the file tree/config wins and the diagram must be updated.
+
+### Doc evolution discipline
+
+Onboarding and infrastructure docs evolve with the workspace:
+
+- Any PR that changes onboarding-relevant behavior updates the topic index (`docs/onboarding/README.md`) and the affected topic page in the same PR.
+- Any PR that changes infra or security updates `docs/infra/protection-layers.md` or explicitly states why not.
+- Onboarding pages summarize and link. They do not become a second source of truth. If a topic page grows beyond a summary, the content must be promoted to a deep doc.
 
 ## Architectural invariants (v1)
 
