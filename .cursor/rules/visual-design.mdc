@@ -1,6 +1,6 @@
 ---
 description: Visual design principles for the docs site. Ensures text readability, theme coherence, and calm UX when making visual changes.
-globs: apps/site/src/styles/**,apps/site/src/content/**,apps/site/astro.config.mjs
+globs: apps/site/src/styles/**,apps/site/src/components/**,apps/site/src/content/**,apps/site/astro.config.mjs
 alwaysApply: false
 ---
 
@@ -14,6 +14,8 @@ Text must be readable against its background in both themes. Busy backgrounds ne
 
 Visual elements should feel like they belong to the active Catppuccin palette. When overriding backgrounds, use the design tokens (`--poc-*`) so values stay consistent across themes. Do not introduce colors that clash with the palette.
 
+For underlying modular and extraction principles, see `engineering.mdc`.
+
 ## CSS architecture
 
 Styles are modular, imported via `custom.css`:
@@ -22,10 +24,13 @@ Styles are modular, imported via `custom.css`:
 |---|---|
 | `tokens.css` | Design tokens: palette channels, surfaces, borders, shadows, blur. Single source of truth for theming. |
 | `atmosphere.css` | Fullscreen blurred background image + Starlight variable overrides for transparency. |
+| `solid.css` | Overrides for the solid style variant: opaque backgrounds, no blur, no atmosphere. |
 | `surfaces.css` | Frosted glass treatment for header, sidebar, cards, search, pagination, mobile ToC. |
 | `hero.css` | Landing page hero: image, tagline, CTA button. |
 | `controls.css` | Header controls: hamburger, search, theme selector styling + layout. |
 | `typography.css` | Inline code and code links adapted for atmospheric backgrounds. |
+
+All files live in `apps/site/src/styles/` and are imported via `apps/site/src/styles/custom.css`.
 
 ## Design token system
 
@@ -38,7 +43,24 @@ Tokens use space-separated RGB channels with modern `rgb()` syntax:
 
 The light theme overrides `--poc-base` and `--poc-overlay` channels. Most surface/border tokens auto-resolve — only tokens whose formula differs between themes (e.g. `--poc-surface-faint`, shadows) need explicit light overrides. This eliminates duplicate `:root[data-theme="light"]` selectors in component files.
 
-To add a style variant (e.g. "solid" for maximum readability): override the surface and blur tokens so backgrounds become opaque and backdrop-filter is disabled. Hide the atmosphere pseudo-element. Component files need no changes.
+## Style variants
+
+The site supports two visual styles, controlled by the `data-style` attribute on `<html>`:
+
+- **Atmospheric** (default, no `data-style` attribute): blurred background image, frosted glass surfaces, translucent overlays.
+- **Solid** (`data-style="solid"`): opaque Catppuccin backgrounds, no blur, no atmosphere pseudo-element. Defined in `apps/site/src/styles/solid.css`.
+
+The theme selector (`apps/site/src/components/ThemeSelect.astro`) offers 5 options: Dark, Light, Auto, Dark Solid, Light Solid. It stores a composite value in `localStorage` and sets both `data-theme` and `data-style` on `<html>`.
+
+FOUC prevention: `apps/site/src/components/ThemeProvider.astro` has an inline script that reads `localStorage` and sets both attributes before render.
+
+### Adding a new style variant
+
+Override the `--poc-surface-*`, `--poc-border-*`, `--poc-blur-*`, and `--poc-shadow-*` tokens under a new `[data-style="yourvariant"]` selector. Hide or adjust `body::before` if the variant does not use the atmospheric background. Consumer files (`surfaces.css`, `controls.css`, etc.) need no changes — they consume tokens.
+
+### Catppuccin hex maintenance
+
+`solid.css` hardcodes Frappé and Latte surface hex values (Surface0/1/2) for opaque backgrounds. If the Catppuccin flavor changes in `astro.config.mjs`, update both `solid.css` and the `theme-color` meta tags in the `head` array of `astro.config.mjs`.
 
 ## Frosted glass pattern
 
