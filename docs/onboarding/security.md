@@ -54,6 +54,8 @@ Four automated scans run on every PR and push to `main`:
 
 These are not optional. They run automatically and block merging if they find issues.
 
+A fifth scan (Nuclei) runs after each deployment to verify HTTP security headers on the live site. Results appear in the GitHub Security tab.
+
 ## Supply chain posture
 
 - GitHub Actions are pinned to major version tags. Dependabot monitors for updates.

@@ -54,6 +54,7 @@ flowchart TD
     SupplyChain["supply-chain.yml\n(Shai-Hulud)"]
     CodeQL["codeql.yml"]
     ScoreCard["scorecard.yml\n(OSSF)"]
+    LiveScan["security-scan-live.yml\n(Nuclei)"]
   end
 
   subgraph "Release Automation"
@@ -66,6 +67,8 @@ flowchart TD
 
   DeployDev -->|"pnpm run build\n+ rsync over SSH"| InfomaniakDev["Infomaniak: seed.practiceofclarity.eu"]
   DeployPreview -->|"pnpm run build\n+ rsync over SSH"| InfomaniakPreview["Infomaniak: preview.practiceofclarity.eu"]
+  DeployDev -->|"triggers"| LiveScan
+  DeployPreview -->|"triggers"| LiveScan
   InfomaniakPreview -.->|"Cloudflare Access\n(email OTP)"| CFAccess["Cloudflare Zero Trust"]
   Dependabot -.->|"action version updates"| SecretScan
   Dependabot -.->|"action version updates"| CodeQL
@@ -91,7 +94,7 @@ flowchart TD
 | `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, infomaniak-deployment, onboarding) | Exists |
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
 | `.github/` | PR template, Copilot instructions, Dependabot config | Exists |
-| `.github/workflows/` | CI/CD (deploy-dev, deploy-preview, release), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard) | Exists |
+| `.github/workflows/` | CI/CD (deploy-dev, deploy-preview, release), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard, Nuclei live scan) | Exists |
 | `release-please-config.json` | Release Please package definitions and changelog sections | Exists |
 | `.release-please-manifest.json` | Tracks current version of each versioned package | Exists |
 | `.local/` | Operator-specific config (gitignored). Template: `.local.example.md` | Exists |
@@ -101,5 +104,5 @@ flowchart TD
 | `docs/ai/` | Capability alignment reports (generated) | Exists |
 | `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks | Exists |
 | `apps/site/` | Astro Starlight frontend | Exists |
-| `docs/infra/` | Infrastructure runbooks (Infomaniak setup, GitHub App setup, protection layers) and maintenance assets | Exists |
+| `docs/infra/` | Infrastructure runbooks (Infomaniak setup, GitHub App setup, protection layers, authenticated origin pulls) and maintenance assets | Exists |
 | `.cursor/skills/infomaniak-deployment/` | Deployment skill for Infomaniak hosting | Exists |

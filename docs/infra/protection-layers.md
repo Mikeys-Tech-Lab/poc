@@ -76,14 +76,40 @@ Visitor → Cloudflare edge → (Access check, if configured) → Origin server 
                               Direct request (no Cloudflare) → blocked by .htaccess (no CF-Connecting-IP)
 ```
 
+## HTTP security headers
+
+Every environment's `.htaccess` includes a security header block generated during CI/CD. These instruct browsers to enforce protections against common attack vectors:
+
+| Header | Purpose |
+|---|---|
+| `X-Content-Type-Options: nosniff` | Prevents MIME-type sniffing |
+| `X-Frame-Options: DENY` | Blocks clickjacking via iframe embedding |
+| `Referrer-Policy: strict-origin-when-cross-origin` | Limits URL leakage to third parties |
+| `Permissions-Policy` | Disables unused browser APIs (geolocation, camera, etc.) |
+| `X-Permitted-Cross-Domain-Policies: none` | Blocks Flash/PDF cross-domain policy files |
+| `Cross-Origin-Opener-Policy: same-origin` | Isolates browsing context from cross-origin popups |
+| `Cross-Origin-Resource-Policy: same-origin` | Prevents cross-origin resource reads |
+| `Content-Security-Policy-Report-Only` | CSP in observation mode (not yet enforcing) |
+
+CSP starts in report-only mode to avoid breaking Starlight's inline styles. Violations appear in the browser console. Once the policy is verified clean, it will be promoted to enforcing `Content-Security-Policy`.
+
+`Strict-Transport-Security` (HSTS) is omitted from `.htaccess` because Cloudflare injects it at the edge.
+
+## Post-deploy security scanning
+
+The `security-scan-live.yml` workflow runs [Nuclei](https://github.com/projectdiscovery/nuclei) against deployed environments to verify HTTP security headers are present and correctly configured. It triggers automatically after each deployment and supports manual dispatch for scanning any URL (including production).
+
+Results are uploaded as SARIF to the GitHub Security tab.
+
 ## SSL
 
 Cloudflare terminates SSL at the edge. The connection between Cloudflare and the origin uses Cloudflare's "Full (strict)" mode with the Infomaniak SSL certificate, maintaining end-to-end encryption.
 
 ## Future improvements
 
-- **Cloudflare Authenticated Origin Pulls (mTLS)**: validates at the TLS layer that the connection comes from Cloudflare, eliminating the header-forgery limitation
-- **Origin firewall rules**: restrict the server's firewall to only accept connections from Cloudflare IP ranges on ports 80/443
+- **Cloudflare Authenticated Origin Pulls (mTLS)**: validates at the TLS layer that the connection comes from Cloudflare, eliminating the header-forgery limitation. Setup checklist: [`docs/infra/authenticated-origin-pulls.md`](authenticated-origin-pulls.md). Blocked on verifying Infomaniak support for `SSLVerifyClient` configuration.
+- **Enforce Content-Security-Policy**: promote CSP from report-only to enforcing after verifying no violations on the live site.
+- **Origin firewall rules**: restrict the server's firewall to only accept connections from Cloudflare IP ranges on ports 80/443.
 
 ## Maintenance page assets
 

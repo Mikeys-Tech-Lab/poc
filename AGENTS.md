@@ -124,8 +124,9 @@ This is a public repository. Everything committed is world-readable. Agents must
 | `supply-chain.yml` | Shai-Hulud 2.0 Detector | Compromised npm packages from known supply chain attacks |
 | `codeql.yml` | GitHub CodeQL | Static analysis for security vulnerabilities in JS/TS |
 | `scorecard.yml` | OSSF Scorecard | Supply chain security posture scoring |
+| `security-scan-live.yml` | Nuclei | HTTP security header verification on deployed environments |
 
-CodeQL and Scorecard also run on a weekly schedule.
+CodeQL and Scorecard also run on a weekly schedule. Nuclei runs after each deployment and on manual dispatch.
 
 ### Credential lifecycle
 
