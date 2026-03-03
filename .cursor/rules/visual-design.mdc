@@ -12,14 +12,41 @@ Text must be readable against its background in both themes. Busy backgrounds ne
 
 ## Theme coherence
 
-Visual elements should feel like they belong to the active Catppuccin palette. When overriding backgrounds, use rgba values derived from the theme's base color so the atmosphere stays consistent. Do not introduce colors that clash with the palette.
+Visual elements should feel like they belong to the active Catppuccin palette. When overriding backgrounds, use the design tokens (`--poc-*`) so values stay consistent across themes. Do not introduce colors that clash with the palette.
+
+## CSS architecture
+
+Styles are modular, imported via `custom.css`:
+
+| File | Responsibility |
+|---|---|
+| `tokens.css` | Design tokens: palette channels, surfaces, borders, shadows, blur. Single source of truth for theming. |
+| `atmosphere.css` | Fullscreen blurred background image + Starlight variable overrides for transparency. |
+| `surfaces.css` | Frosted glass treatment for header, sidebar, cards, search, pagination, mobile ToC. |
+| `hero.css` | Landing page hero: image, tagline, CTA button. |
+| `controls.css` | Header controls: hamburger, search, theme selector styling + layout. |
+| `typography.css` | Inline code and code links adapted for atmospheric backgrounds. |
+
+## Design token system
+
+Tokens use space-separated RGB channels with modern `rgb()` syntax:
+
+```css
+--poc-base: 48 52 70;                        /* Frappé base channel */
+--poc-surface: rgb(var(--poc-base) / 0.3);   /* composed surface */
+```
+
+The light theme overrides `--poc-base` and `--poc-overlay` channels. Most surface/border tokens auto-resolve — only tokens whose formula differs between themes (e.g. `--poc-surface-faint`, shadows) need explicit light overrides. This eliminates duplicate `:root[data-theme="light"]` selectors in component files.
+
+To add a style variant (e.g. "solid" for maximum readability): override the surface and blur tokens so backgrounds become opaque and backdrop-filter is disabled. Hide the atmosphere pseudo-element. Component files need no changes.
 
 ## Frosted glass pattern
 
-For translucent UI over a background image, combine CSS variable overrides with `backdrop-filter`:
-- Override `--sl-color-bg-nav` (or similar) with a semi-transparent value for the color.
-- Apply `backdrop-filter: blur()` directly on the element for the glass effect.
-- Do not use `!important` for color overrides. Starlight's CSS layers let custom CSS win naturally.
+For translucent UI over the atmospheric background:
+- Use a `--poc-surface-*` token for the background color.
+- Apply `backdrop-filter: blur(var(--poc-blur-*))` for the glass effect.
+- Use `--poc-border*` tokens for borders.
+- Do not use `!important`. Starlight's CSS layers let custom CSS win naturally.
 
 ## Calm over flashy
 
@@ -27,4 +54,4 @@ Prefer subtle effects. Gentle blur, muted overlays, and soft borders over sharp 
 
 ## Site-wide atmospheric background
 
-The blurred, theme-tinted background image applies to all pages. Starlight's `--sl-color-bg`, `--sl-color-bg-nav`, and `--sl-color-bg-sidebar` are overridden to transparent/semi-transparent so the atmosphere shows through everywhere. Frosted glass (`backdrop-filter`) is applied to the header, sidebar, search bar, and cards for readability. Landing-page-only layout tweaks (centered search bar) remain scoped with `body:has(.hero)`.
+The blurred, theme-tinted background image applies to all pages. Starlight's `--sl-color-bg`, `--sl-color-bg-nav`, and `--sl-color-bg-sidebar` are overridden via tokens in `atmosphere.css` so the atmosphere shows through everywhere.

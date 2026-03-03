@@ -1,0 +1,37 @@
+/* ── Header controls ──
+   Accent-colored, flat styling for navigation controls
+   and header layout adjustments. */
+
+/* Hamburger menu button */
+starlight-menu-button button {
+  background-color: transparent;
+  color: var(--sl-color-text-accent);
+  box-shadow: none;
+  border: 0;
+}
+
+starlight-menu-button [aria-expanded="true"] button {
+  background-color: transparent;
+  color: var(--sl-color-text-accent);
+  box-shadow: none;
+}
+
+/* Search icon */
+button[data-open-modal] {
+  color: var(--sl-color-text-accent);
+}
+
+/* Theme selector */
+starlight-theme-select label {
+  color: var(--sl-color-text-accent);
+}
+
+starlight-theme-select label:hover {
+  color: var(--sl-color-text-accent);
+  opacity: 0.66;
+}
+
+/* Center search bar in header */
+.header > .sl-flex:nth-child(2) {
+  justify-content: center;
+}

@@ -1,0 +1,17 @@
+/* ── Hero section ──
+   Landing page hero: circular image with soft elevation,
+   complementary purple tagline, elevated CTA button. */
+
+.hero img {
+  border-radius: 50%;
+  max-width: 280px;
+  box-shadow: var(--poc-shadow-medium);
+}
+
+.hero .tagline {
+  color: var(--poc-accent-complement);
+}
+
+.hero .actions a {
+  box-shadow: var(--poc-shadow-soft);
+}
