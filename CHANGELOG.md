@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.6.0...workspace-v0.7.0) (2026-03-03)
+
+
+### Features
+
+* **infra:** harden origin security with HTTP headers, Nuclei scanning, and mTLS docs ([#28](https://github.com/Mikeys-Tech-Lab/poc/issues/28)) ([57f2d40](https://github.com/Mikeys-Tech-Lab/poc/commit/57f2d4085b1d537e67d8bc801ca650516290155e))
+
 ## [0.6.0](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.5.1...workspace-v0.6.0) (2026-03-03)
 
 
