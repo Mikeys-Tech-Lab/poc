@@ -51,6 +51,24 @@ jobs:
           } > apps/site/dist/.htaccess
           echo "Generated .htaccess: direct-to-origin block (Cloudflare Access handles auth)"
 
+      - name: Append security headers to .htaccess
+        run: |
+          cat >> apps/site/dist/.htaccess << 'HEADERS'
+
+          # HTTP security headers
+          <IfModule mod_headers.c>
+            Header always set X-Content-Type-Options "nosniff"
+            Header always set X-Frame-Options "DENY"
+            Header always set Referrer-Policy "strict-origin-when-cross-origin"
+            Header always set Permissions-Policy "geolocation=(), camera=(), microphone=(), usb=(), payment=(), interest-cohort=()"
+            Header always set X-Permitted-Cross-Domain-Policies "none"
+            Header always set Cross-Origin-Opener-Policy "same-origin"
+            Header always set Cross-Origin-Resource-Policy "same-origin"
+            Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+          </IfModule>
+          HEADERS
+          echo "Appended security headers to .htaccess"
+
       - name: Deploy via rsync
         env:
           SSH_PRIVATE_KEY: ${{ secrets.PREVIEW_SSH_PRIVATE_KEY }}
