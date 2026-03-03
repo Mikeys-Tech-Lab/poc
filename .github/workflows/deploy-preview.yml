@@ -1,0 +1,77 @@
+name: Deploy · Preview
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-preview
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    environment: preview
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build site
+        run: pnpm run build
+        env:
+          SITE_URL: ${{ vars.PREVIEW_SITE_URL }}
+
+      - name: Generate .htaccess to block direct-to-origin
+        run: |
+          {
+            echo "RewriteEngine On"
+            echo ""
+            echo "# Block direct-to-origin requests (no CF-Connecting-IP = not through Cloudflare)"
+            echo "# All legitimate traffic goes through Cloudflare, where Access handles authentication"
+            echo "RewriteCond %{HTTP:CF-Connecting-IP} ^$"
+            echo "RewriteRule ^ - [F,L]"
+          } > apps/site/dist/.htaccess
+          echo "Generated .htaccess: direct-to-origin block (Cloudflare Access handles auth)"
+
+      - name: Deploy via rsync
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.PREVIEW_SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.PREVIEW_SSH_HOST }}
+          SSH_USER: ${{ secrets.PREVIEW_SSH_USER }}
+          SSH_PORT: ${{ secrets.PREVIEW_SSH_PORT }}
+          DEPLOY_PATH: ${{ secrets.PREVIEW_DEPLOY_PATH }}
+        run: |
+          set +x
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "${SSH_PORT:-22}" "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p ${SSH_PORT:-22}" \
+            apps/site/dist/ \
+            "${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}"
+          echo "Deployment complete."
+
+      - name: Cleanup
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
