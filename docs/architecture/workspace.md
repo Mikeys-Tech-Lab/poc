@@ -98,5 +98,5 @@ flowchart TD
 | `docs/ai/` | Capability alignment reports (generated) | Exists |
 | `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks | Exists |
 | `apps/site/` | Astro Starlight frontend | Exists |
-| `docs/infra/` | Infrastructure runbooks (Infomaniak setup, GitHub App setup) | Exists |
+| `docs/infra/` | Infrastructure runbooks (Infomaniak setup, GitHub App setup, protection layers) and maintenance assets | Exists |
 | `.cursor/skills/infomaniak-deployment/` | Deployment skill for Infomaniak hosting | Exists |
