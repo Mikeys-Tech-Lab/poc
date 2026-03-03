@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.4.2...workspace-v0.5.0) (2026-03-03)
+
+
+### Features
+
+* **infra:** add preview environment with Cloudflare Access ([#22](https://github.com/Mikeys-Tech-Lab/poc/issues/22)) ([e4d13ae](https://github.com/Mikeys-Tech-Lab/poc/commit/e4d13ae705508d9237ac2d49264318b884104e3a))
+
 ## [0.4.2](https://github.com/Mikeys-Tech-Lab/poc/compare/workspace-v0.4.1...workspace-v0.4.2) (2026-03-03)
 
 
