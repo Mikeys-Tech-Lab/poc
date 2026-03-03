@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.8.0...PoC-v0.8.1) (2026-03-03)
+
+
+### Bug Fixes
+
+* **infra:** fix Nuclei scan environment access and naming ([#32](https://github.com/Mikeys-Tech-Lab/poc/issues/32)) ([eecec1d](https://github.com/Mikeys-Tech-Lab/poc/commit/eecec1dec4ac605c4b031d8a29db722817a8fd1c))
+
 ## [0.8.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.7.0...PoC-v0.8.0) (2026-03-03)
 
 
