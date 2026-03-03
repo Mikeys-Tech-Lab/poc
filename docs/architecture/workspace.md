@@ -44,6 +44,7 @@ flowchart TD
 
   subgraph "CI/CD (GitHub Actions)"
     DeployDev[".github/workflows/deploy-dev.yml"]
+    DeployPreview[".github/workflows/deploy-preview.yml"]
   end
 
   subgraph "CI / Security Scanning"
@@ -62,6 +63,8 @@ flowchart TD
   end
 
   DeployDev -->|"pnpm run build\n+ rsync over SSH"| InfomaniakDev["Infomaniak: seed.practiceofclarity.eu"]
+  DeployPreview -->|"pnpm run build\n+ rsync over SSH"| InfomaniakPreview["Infomaniak: preview.practiceofclarity.eu"]
+  InfomaniakPreview -.->|"Cloudflare Access\n(email OTP)"| CFAccess["Cloudflare Zero Trust"]
   Dependabot -.->|"action version updates"| SecretScan
   Dependabot -.->|"action version updates"| CodeQL
   AppToken -->|"installation token"| ReleasePlease
@@ -72,6 +75,7 @@ flowchart TD
   ReleasePlease -->|"version bumps + CHANGELOG"| Tooling
   ReleasePlease -->|"publishes"| GitHubRelease
   GitHubRelease -->|"triggers"| DeployDev
+  GitHubRelease -->|"triggers"| DeployPreview
 ```
 
 ## Directory roles
@@ -85,7 +89,7 @@ flowchart TD
 | `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management) | Exists |
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
 | `.github/` | PR template, Copilot instructions, Dependabot config | Exists |
-| `.github/workflows/` | CI/CD (deploy-dev, release), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard) | Exists |
+| `.github/workflows/` | CI/CD (deploy-dev, deploy-preview, release), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard) | Exists |
 | `release-please-config.json` | Release Please package definitions and changelog sections | Exists |
 | `.release-please-manifest.json` | Tracks current version of each versioned package | Exists |
 | `.local/` | Operator-specific config (gitignored). Template: `.local.example.md` | Exists |
