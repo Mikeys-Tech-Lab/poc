@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v0.4.1...site-v0.5.0) (2026-03-04)
+
+
+### Features
+
+* **astro:** content frame restructure with registers, i18n, and prefixed locales ([#42](https://github.com/Mikeys-Tech-Lab/poc/issues/42)) ([2106170](https://github.com/Mikeys-Tech-Lab/poc/commit/21061701d82c612cd0c5b53d1c0081a41f35ba3d))
+
 ## [0.4.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v0.4.0...site-v0.4.1) (2026-03-04)
 
 
