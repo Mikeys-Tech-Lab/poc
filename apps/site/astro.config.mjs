@@ -1,27 +1,9 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-import { execSync } from "node:child_process";
 import starlight from "@astrojs/starlight";
 import starlightCatppuccin from "@catppuccin/starlight";
-import { REPO } from "./src/consts";
-
-const commitSha =
-  process.env.GITHUB_SHA ||
-  (() => {
-    try {
-      return execSync("git rev-parse HEAD").toString().trim();
-    } catch {
-      return "unknown";
-    }
-  })();
-
 export default defineConfig({
   site: process.env.SITE_URL || "https://practiceofclarity.eu",
-  vite: {
-    define: {
-      __COMMIT_SHA__: JSON.stringify(commitSha),
-    },
-  },
   integrations: [
     starlight({
       plugins: [
@@ -32,13 +14,12 @@ export default defineConfig({
       ],
       title: "Practice of Clarity",
       favicon: "/favicon.ico",
-      social: [
-        {
-          icon: "github",
-          label: "GitHub",
-          href: REPO,
-        },
-      ],
+      locales: {
+        "en-us": { label: "English (US)", lang: "en-US" },
+        "en-gb": { label: "English (UK)", lang: "en-GB" },
+        "de-de": { label: "Deutsch", lang: "de-DE" },
+      },
+      defaultLocale: "en-us",
       head: [
         {
           tag: "link",
@@ -114,7 +95,9 @@ export default defineConfig({
         },
       ],
       components: {
+        Header: "./src/components/Header.astro",
         SocialIcons: "./src/components/SocialIcons.astro",
+        MobileMenuFooter: "./src/components/MobileMenuFooter.astro",
         ThemeProvider: "./src/components/ThemeProvider.astro",
         ThemeSelect: "./src/components/ThemeSelect.astro",
         Pagination: "./src/components/LicensePanel.astro",
@@ -126,16 +109,20 @@ export default defineConfig({
           label: "About",
           items: [
             { label: "What this is", slug: "about/what-this-is" },
-            { label: "How to use this repo", slug: "about/how-to-use" },
+            { label: "Publication arc", slug: "about/publication-arc" },
           ],
         },
         {
-          label: "Guides",
+          label: "Articles",
           items: [
-            {
-              label: "Sensible Defaults",
-              slug: "guides/sensible-defaults",
-            },
+            { label: "Placeholder article", slug: "articles/placeholder" },
+          ],
+        },
+        {
+          label: "Licenses",
+          items: [
+            { label: "CC BY 4.0", slug: "licenses/cc-by-4-0" },
+            { label: "MIT", slug: "licenses/mit" },
           ],
         },
       ],

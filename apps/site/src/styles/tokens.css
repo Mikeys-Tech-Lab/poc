@@ -48,6 +48,25 @@
 
   /* Accent complement — Catppuccin mauve */
   --poc-accent-complement: #ca9ee6;
+
+  /* Register atmospheric tint — practitioner uses the base palette,
+     beginner shifts to a greenish pastel. Only the tint channel changes;
+     surfaces, borders, and blur stay the same. */
+  --poc-register-tint: var(--poc-base);
+  /* Register control accent should be distinct from the theme control. */
+  --poc-register-accent: var(--sl-color-blue-high);
+}
+
+:root[data-register="beginner"] {
+  /* Catppuccin Frappé green channel: soft sage */
+  --poc-register-tint: 56 70 56;
+  --poc-register-accent: #a6d189;
+}
+
+:root[data-register="beginner"][data-theme="light"] {
+  /* Catppuccin Latte green channel: warm pastel */
+  --poc-register-tint: 225 240 225;
+  --poc-register-accent: #40a02b;
 }
 
 :root[data-theme="light"] {

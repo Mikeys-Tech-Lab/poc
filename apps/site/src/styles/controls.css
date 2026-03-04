@@ -16,15 +16,9 @@ starlight-menu-button [aria-expanded="true"] button {
   box-shadow: none;
 }
 
-/* Search button: wider on desktop (2.5x Starlight's default 22rem) */
+/* Search button */
 button[data-open-modal] {
   color: var(--sl-color-text-accent);
-}
-@media (min-width: 50rem) {
-  button[data-open-modal] {
-    width: 55rem;
-    max-width: calc(100vw - 30rem);
-  }
 }
 
 /* Theme selector */
@@ -46,33 +40,5 @@ starlight-theme-select label:hover {
   }
   .right-sidebar {
     max-width: var(--sl-sidebar-width);
-  }
-}
-
-/* Center search bar in the viewport on desktop.
-   Starlight's header grid is asymmetric (col 1 matches sidebar width,
-   col 3 is auto). The search spans all columns in row 1 with grid
-   centering; the other items are pinned to their columns in the same
-   row so everything overlaps in a single row. pointer-events: none
-   on the spanning container prevents blocking clicks on title/controls. */
-@media (min-width: 50rem) {
-  .header > :nth-child(1) {
-    grid-row: 1;
-    grid-column: 1;
-  }
-  .header > .sl-flex:nth-child(2) {
-    grid-column: 1 / -1;
-    grid-row: 1;
-    justify-self: center;
-    align-self: center;
-    z-index: 1;
-    pointer-events: none;
-  }
-  .header > .sl-flex:nth-child(2) > * {
-    pointer-events: auto;
-  }
-  .header > :nth-child(3) {
-    grid-row: 1;
-    grid-column: 3;
   }
 }

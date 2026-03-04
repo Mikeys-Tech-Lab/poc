@@ -60,3 +60,47 @@
   --poc-border-faint: #dce0e8;
   --poc-border-hover: #bcc0cc;
 }
+
+/* ── Beginner register — solid dark ── */
+:root[data-style="solid"][data-register="beginner"] body {
+  --sl-color-bg: #2e3a2e;
+  --sl-color-bg-nav: #283228;
+  --sl-color-bg-sidebar: #283228;
+}
+
+:root[data-style="solid"][data-register="beginner"] {
+  --poc-surface-faint: #344034;
+  --poc-surface: #3a4a3a;
+  --poc-surface-mid: #3a4a3a;
+  --poc-surface-raised: #445544;
+  --poc-surface-heavy: #3a4a3a;
+  --poc-surface-dense: #445544;
+  --poc-surface-panel: #3a4a3a;
+
+  --poc-border: #445544;
+  --poc-border-subtle: #3a4a3a;
+  --poc-border-faint: #3a4a3a;
+  --poc-border-hover: #506050;
+}
+
+/* ── Beginner register — solid light ── */
+:root[data-style="solid"][data-register="beginner"][data-theme="light"] body {
+  --sl-color-bg: #e8f0e8;
+  --sl-color-bg-nav: #dde8dd;
+  --sl-color-bg-sidebar: #dde8dd;
+}
+
+:root[data-style="solid"][data-register="beginner"][data-theme="light"] {
+  --poc-surface-faint: #dde8dd;
+  --poc-surface: #d0ddd0;
+  --poc-surface-mid: #d0ddd0;
+  --poc-surface-raised: #c2d2c2;
+  --poc-surface-heavy: #d0ddd0;
+  --poc-surface-dense: #c2d2c2;
+  --poc-surface-panel: #d0ddd0;
+
+  --poc-border: #c2d2c2;
+  --poc-border-subtle: #d0ddd0;
+  --poc-border-faint: #d0ddd0;
+  --poc-border-hover: #b0c4b0;
+}

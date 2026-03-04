@@ -2,7 +2,7 @@
 import { Icon } from '@astrojs/starlight/components';
 ---
 
-{/* Inlined to prevent FOUC. Sets data-theme AND data-style before render. */}
+{/* Inlined to prevent FOUC. Sets data-theme, data-style, and data-register before render. */}
 <script is:inline>
 	window.StarlightThemeProvider = (() => {
 		const stored =
@@ -20,6 +20,15 @@ import { Icon } from '@astrojs/starlight/components';
 			document.documentElement.dataset.style = 'solid';
 		} else {
 			delete document.documentElement.dataset.style;
+		}
+
+		const urlRegister = new URLSearchParams(window.location.search).get('register');
+		const storedRegister =
+			typeof localStorage !== 'undefined' && localStorage.getItem('poc-register');
+		const register = urlRegister || storedRegister;
+		document.documentElement.dataset.register = register === 'beginner' ? 'beginner' : 'practitioner';
+		if (urlRegister && typeof localStorage !== 'undefined') {
+			localStorage.setItem('poc-register', register === 'beginner' ? 'beginner' : 'practitioner');
 		}
 
 		return {
