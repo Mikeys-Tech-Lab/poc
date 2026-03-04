@@ -58,3 +58,7 @@ pnpm coverage          # Run tests with coverage
 pnpm cursor:check      # Check Cursor capability signals
 pnpm capability:check  # Aggregate capability checks
 ```
+
+---
+© 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).  
+Source: https://github.com/Mikeys-Tech-Lab/poc/blob/main/.cursor/skills/node-tooling/SKILL.md

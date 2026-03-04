@@ -53,3 +53,7 @@ Do not commit without a passing build.
 - Keep the build lightweight.
 - Ensure license/attribution is visible in site chrome or footer.
 - If you touched any file that mentions concrete paths, components, or config, run `pnpm run build`.
+
+---
+© 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).  
+Source: https://github.com/Mikeys-Tech-Lab/poc

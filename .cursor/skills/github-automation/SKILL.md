@@ -265,3 +265,7 @@ Tip: write the PR body to a temp file first, then use `--body-file`. This avoids
 - Do not skip hooks (`--no-verify`) unless explicitly requested.
 - Do not amend commits that have been pushed to remote.
 - Do not commit on `main`. All work happens on feature branches.
+
+---
+© 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).  
+Source: https://github.com/Mikeys-Tech-Lab/poc/blob/main/.cursor/skills/github-automation/SKILL.md

@@ -118,3 +118,7 @@ Some tools are pinned outside of Dependabot's reach:
 - **TypeScript**: track latest stable 5.x. Evaluate 6.x when it exits beta.
 
 When a major version upgrade is available, create a dedicated branch and PR for it. Do not bundle major upgrades with other changes.
+
+---
+© 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).  
+Source: https://github.com/Mikeys-Tech-Lab/poc/blob/main/.cursor/skills/dependency-management/SKILL.md

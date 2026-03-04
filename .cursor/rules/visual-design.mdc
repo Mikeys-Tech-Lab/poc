@@ -77,3 +77,7 @@ Prefer subtle effects. Gentle blur, muted overlays, and soft borders over sharp 
 ## Site-wide atmospheric background
 
 The blurred, theme-tinted background image applies to all pages. Starlight's `--sl-color-bg`, `--sl-color-bg-nav`, and `--sl-color-bg-sidebar` are overridden via tokens in `atmosphere.css` so the atmosphere shows through everywhere.
+
+---
+© 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).  
+Source: https://github.com/Mikeys-Tech-Lab/poc

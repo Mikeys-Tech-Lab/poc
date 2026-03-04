@@ -43,3 +43,7 @@ Dependencies point inward: infra imports domain, domain imports nothing external
 
 - Keep pnpm scripts in `package.json`.
 - Each script does one thing.
+
+---
+© 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).  
+Source: https://github.com/Mikeys-Tech-Lab/poc

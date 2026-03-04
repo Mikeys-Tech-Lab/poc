@@ -212,3 +212,7 @@ pnpm --filter site preview  # Preview production build
 ## Additional resources
 
 - For detailed Starlight config patterns, see the [official Starlight docs](https://starlight.astro.build/).
+
+---
+© 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).  
+Source: https://github.com/Mikeys-Tech-Lab/poc/blob/main/.cursor/skills/astro-starlight/SKILL.md
