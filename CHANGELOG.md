@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.3](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.9.2...PoC-v0.9.3) (2026-03-04)
+
+
+### Bug Fixes
+
+* **infra:** remove SARIF upload from Nuclei workflow ([#40](https://github.com/Mikeys-Tech-Lab/poc/issues/40)) ([f6803bf](https://github.com/Mikeys-Tech-Lab/poc/commit/f6803bf46e8f54a91a1fab3c61d96be03a90f487)), closes [#38](https://github.com/Mikeys-Tech-Lab/poc/issues/38)
+
 ## [0.9.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.9.1...PoC-v0.9.2) (2026-03-04)
 
 
