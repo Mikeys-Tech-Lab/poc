@@ -1,9 +1,17 @@
 ---
 import { REPO } from "../consts";
 
+interface Props {
+  sourceFilePath?: string;
+}
+
+const { sourceFilePath } = Astro.props;
 const sha: string = typeof __COMMIT_SHA__ !== "undefined" ? __COMMIT_SHA__ : "unknown";
 const shortSha = sha !== "unknown" ? sha.slice(0, 7) : sha;
-const sourceUrl = sha !== "unknown" ? `${REPO}/tree/${sha}` : REPO;
+const sourceUrl =
+  sourceFilePath && sha !== "unknown"
+    ? `${REPO}/blob/${sha}/${sourceFilePath}`
+    : REPO;
 ---
 
 <aside class="license-notice">
@@ -14,9 +22,12 @@ const sourceUrl = sha !== "unknown" ? `${REPO}/tree/${sha}` : REPO;
   <p>
     <strong>Website:</strong>
     <a href="https://practiceofclarity.eu">practiceofclarity.eu</a>
-    &nbsp;·&nbsp;
-    <strong>Source:</strong>
-    <a href={sourceUrl}>{shortSha}</a>
+    {sourceFilePath && (
+      <>
+        &nbsp;·&nbsp;
+        <a href={sourceUrl} class="source-link" title={`Source at ${shortSha}`}>{shortSha}</a>
+      </>
+    )}
   </p>
   <p class="legal">
     © 2026 Mikey Sebastian Drozd.
@@ -54,5 +65,11 @@ const sourceUrl = sha !== "unknown" ? `${REPO}/tree/${sha}` : REPO;
 
   .license-notice a:hover {
     text-decoration: underline;
+  }
+
+  .source-link {
+    font-family: var(--sl-font-mono, monospace);
+    font-size: 0.9em;
+    opacity: 0.7;
   }
 </style>
