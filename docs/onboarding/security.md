@@ -54,7 +54,7 @@ Four automated scans run on every PR and push to `main`:
 
 These are not optional. They run automatically and block merging if they find issues.
 
-A fifth scan (Nuclei) runs after each deployment to verify HTTP security headers on the live site. Results appear in the GitHub Security tab.
+A fifth scan (Nuclei) runs after each deployment to verify HTTP security headers on the live site. Results appear in the workflow run logs. SARIF upload to the Security tab will be enabled when the repository goes public.
 
 ## Supply chain posture
 

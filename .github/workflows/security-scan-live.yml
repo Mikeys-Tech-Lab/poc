@@ -12,9 +12,7 @@ on:
         type: string
 
 permissions:
-  actions: read
   contents: read
-  security-events: write
 
 jobs:
   scan-seed:
@@ -33,14 +31,9 @@ jobs:
           args: >-
             -u ${{ vars.DEVELOPMENT_SITE_URL }}
             -t http/misconfiguration/http-missing-security-headers.yaml
-            -sarif-export nuclei.sarif
 
-      - name: Upload SARIF to GitHub Security
-        uses: github/codeql-action/upload-sarif@v4
-        if: always() && hashFiles('nuclei.sarif') != ''
-        with:
-          sarif_file: nuclei.sarif
-          category: nuclei-seed
+      # SARIF upload requires GitHub Advanced Security (free for public repos).
+      # Re-enable when the repository goes public. See #38.
 
   scan-preview:
     name: Headers · Preview
@@ -58,14 +51,9 @@ jobs:
           args: >-
             -u ${{ vars.PREVIEW_SITE_URL }}
             -t http/misconfiguration/http-missing-security-headers.yaml
-            -sarif-export nuclei.sarif
 
-      - name: Upload SARIF to GitHub Security
-        uses: github/codeql-action/upload-sarif@v4
-        if: always() && hashFiles('nuclei.sarif') != ''
-        with:
-          sarif_file: nuclei.sarif
-          category: nuclei-preview
+      # SARIF upload requires GitHub Advanced Security (free for public repos).
+      # Re-enable when the repository goes public. See #38.
 
   scan-manual:
     name: Headers · Manual
@@ -79,11 +67,6 @@ jobs:
           args: >-
             -u ${{ inputs.target_url }}
             -t http/misconfiguration/http-missing-security-headers.yaml
-            -sarif-export nuclei.sarif
 
-      - name: Upload SARIF to GitHub Security
-        uses: github/codeql-action/upload-sarif@v4
-        if: always() && hashFiles('nuclei.sarif') != ''
-        with:
-          sarif_file: nuclei.sarif
-          category: nuclei-manual
+      # SARIF upload requires GitHub Advanced Security (free for public repos).
+      # Re-enable when the repository goes public. See #38.

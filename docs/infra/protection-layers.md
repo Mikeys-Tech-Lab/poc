@@ -99,7 +99,7 @@ CSP starts in report-only mode to avoid breaking Starlight's inline styles. Viol
 
 The `security-scan-live.yml` workflow runs [Nuclei](https://github.com/projectdiscovery/nuclei) against deployed environments to verify HTTP security headers are present and correctly configured. It triggers automatically after each deployment and supports manual dispatch for scanning any URL (including production).
 
-Results are uploaded as SARIF to the GitHub Security tab.
+Results appear in the workflow run logs. SARIF upload to the GitHub Security tab requires GitHub Advanced Security, which is free for public repositories but paid for private ones. SARIF upload will be re-enabled when the repository goes public.
 
 ## SSL
 
