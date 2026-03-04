@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.9.1...PoC-v0.9.2) (2026-03-04)
+
+
+### Bug Fixes
+
+* **infra:** add actions:read permission to Nuclei SARIF upload ([#38](https://github.com/Mikeys-Tech-Lab/poc/issues/38)) ([dc6ec56](https://github.com/Mikeys-Tech-Lab/poc/commit/dc6ec56c0461ac0fcfaccfe5fbb8495e76893dc4))
+
 ## [0.9.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.9.0...PoC-v0.9.1) (2026-03-04)
 
 
