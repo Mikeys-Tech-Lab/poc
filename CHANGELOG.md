@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.9.0...PoC-v0.9.1) (2026-03-04)
+
+
+### Miscellaneous
+
+* license and attribution cleanup ([#36](https://github.com/Mikeys-Tech-Lab/poc/issues/36)) ([8dd5298](https://github.com/Mikeys-Tech-Lab/poc/commit/8dd52980713187f5158b4d90d1417b6b1d89bbd4))
+
 ## [0.9.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.8.1...PoC-v0.9.0) (2026-03-03)
 
 
