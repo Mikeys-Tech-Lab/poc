@@ -16,15 +16,9 @@ starlight-menu-button [aria-expanded="true"] button {
   box-shadow: none;
 }
 
-/* Search button: wider on desktop (2.5x Starlight's default 22rem) */
+/* Search button */
 button[data-open-modal] {
   color: var(--sl-color-text-accent);
-}
-@media (min-width: 50rem) {
-  button[data-open-modal] {
-    width: 55rem;
-    max-width: calc(100vw - 30rem);
-  }
 }
 
 /* Theme selector */

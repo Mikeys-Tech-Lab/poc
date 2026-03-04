@@ -1,0 +1,146 @@
+---
+---
+
+<poc-register-select>
+  <label>
+    <span class="sr-only">Register</span>
+    <svg
+      aria-hidden="true"
+      class="icon label-icon"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <circle cx="9" cy="12" r="7" opacity="0.6" />
+      <circle cx="15" cy="12" r="7" opacity="0.6" />
+    </svg>
+    <select autocomplete="off">
+      <option value="practitioner" selected>Practitioner</option>
+      <option value="beginner">Beginner</option>
+    </select>
+    <svg
+      aria-hidden="true"
+      class="icon caret"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M12 15.25l-4.5-4.5h9z" />
+    </svg>
+  </label>
+</poc-register-select>
+
+{/* Sync select value on page load to prevent mismatch */}
+<script is:inline>
+  (() => {
+    const register =
+      typeof localStorage !== 'undefined' && localStorage.getItem('poc-register');
+    if (register === 'beginner') {
+      document.querySelectorAll('poc-register-select select').forEach((sel) => {
+        sel.value = 'beginner';
+      });
+    }
+  })();
+</script>
+
+<script>
+  type Register = 'practitioner' | 'beginner';
+
+  const storageKey = 'poc-register';
+
+  const parseRegister = (value: unknown): Register =>
+    value === 'beginner' ? 'beginner' : 'practitioner';
+
+  const loadRegister = (): Register =>
+    parseRegister(
+      typeof localStorage !== 'undefined' && localStorage.getItem(storageKey)
+    );
+
+  function applyRegister(register: Register): void {
+    document.documentElement.dataset.register = register;
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(storageKey, register);
+    }
+    document.querySelectorAll('poc-register-select select').forEach((sel) => {
+      if (sel instanceof HTMLSelectElement) sel.value = register;
+    });
+  }
+
+  class PocRegisterSelect extends HTMLElement {
+    constructor() {
+      super();
+      applyRegister(loadRegister());
+
+      this.querySelector('select')?.addEventListener('change', (e) => {
+        if (e.currentTarget instanceof HTMLSelectElement) {
+          applyRegister(parseRegister(e.currentTarget.value));
+        }
+      });
+    }
+  }
+  customElements.define('poc-register-select', PocRegisterSelect);
+</script>
+
+<style>
+  label {
+    --sl-label-icon-size: 0.875rem;
+    --sl-caret-size: 1.25rem;
+    --sl-inline-padding: 0.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--sl-color-text-accent);
+  }
+
+  label:hover {
+    opacity: 0.66;
+  }
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .label-icon {
+    font-size: var(--sl-label-icon-size);
+    inset-inline-start: 0;
+    width: var(--sl-label-icon-size);
+    height: var(--sl-label-icon-size);
+  }
+
+  .caret {
+    font-size: var(--sl-caret-size);
+    inset-inline-end: 0;
+    width: var(--sl-caret-size);
+    height: var(--sl-caret-size);
+  }
+
+  select {
+    border: 0;
+    padding-block: 0.625rem;
+    padding-inline:
+      calc(var(--sl-label-icon-size) + var(--sl-inline-padding) + 0.25rem)
+      calc(var(--sl-caret-size) + var(--sl-inline-padding) + 0.25rem);
+    margin-inline: calc(var(--sl-inline-padding) * -1);
+    width: calc(8.5em + var(--sl-inline-padding) * 2);
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    appearance: none;
+    font-size: var(--sl-text-sm);
+  }
+
+  option {
+    background-color: var(--sl-color-bg-nav);
+    color: var(--sl-color-gray-1);
+  }
+</style>

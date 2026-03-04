@@ -29,10 +29,10 @@ Clarity here does not mean certainty, agreement, or one final truth. It means:
 
 ## Federation
 
-Federated means no single center owns meaning. Anyone can begin where they are. Language can adapt to culture and domain. Connection is voluntary.
+Federated means no single centre owns meaning. Anyone can begin where they are. Language can adapt to culture and domain. Connection is voluntary.
 
 Each person, group, or community can form their own node of practice. Nodes do not need to merge or agree. They may connect through bridges: shared traces, shared definitions, shared translations.
 
-## Licenses
+## Licences
 
-Authored content is licensed under [CC BY 4.0](/licenses/cc-by-4-0/). Code and tooling are licensed under the [MIT License](/licenses/mit/).
+Authored content is licenced under [CC BY 4.0](/en-gb/licenses/cc-by-4-0/). Code and tooling are licenced under the [MIT Licence](/en-gb/licenses/mit/).

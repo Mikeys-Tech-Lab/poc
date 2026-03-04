@@ -12,22 +12,23 @@ body::before {
   inset: -24px;
   z-index: -1;
   background:
-    linear-gradient(rgb(var(--poc-base) / 0.6), rgb(var(--poc-base) / 0.6)),
+    linear-gradient(rgb(var(--poc-register-tint) / 0.6), rgb(var(--poc-register-tint) / 0.6)),
     url("../assets/bg-landing.png") center / cover no-repeat;
   filter: blur(var(--poc-blur-sm));
   will-change: transform;
+  transition: background 0.4s ease;
 }
 
 :root[data-theme="light"] body::before {
   background:
-    linear-gradient(rgb(var(--poc-base) / 0.65), rgb(var(--poc-base) / 0.65)),
+    linear-gradient(rgb(var(--poc-register-tint) / 0.65), rgb(var(--poc-register-tint) / 0.65)),
     url("../assets/bg-landing.png") center / cover no-repeat;
 }
 
 /* Override Starlight variables for transparency */
 body {
   --sl-color-bg: transparent;
-  --sl-color-bg-nav: var(--poc-surface-mid);
+  --sl-color-bg-nav: rgb(var(--poc-register-tint) / 0.35);
   --sl-color-bg-sidebar: transparent;
   --sl-color-hairline-shade: var(--poc-border-subtle);
   --sl-color-hairline-light: var(--poc-border-subtle);
