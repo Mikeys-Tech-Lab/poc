@@ -12,6 +12,9 @@
     "build": "pnpm --filter site build",
     "preview": "pnpm --filter site preview",
     "test": "pnpm --filter ai-guidance test",
-    "test:coverage": "pnpm --filter ai-guidance coverage"
+    "test:coverage": "pnpm --filter ai-guidance coverage",
+    "clean": "rm -rf node_modules apps/site/node_modules tools/ai-guidance/node_modules apps/site/dist apps/site/.astro",
+    "fresh": "pnpm run clean && pnpm install && pnpm build",
+    "fresh:start": "lsof -ti:4321 | xargs kill -9 2>/dev/null; pnpm run fresh && pnpm run local"
   }
 }
