@@ -1,4 +1,12 @@
 ---
+const pathname = Astro.url?.pathname ?? '/';
+const localeBase = pathname.startsWith('/en-gb/')
+  ? '/en-gb'
+  : pathname.startsWith('/de-de/')
+    ? '/de-de'
+    : pathname.startsWith('/en-us/')
+      ? '/en-us'
+      : '/en-us';
 ---
 
 <aside class="license-notice">
@@ -12,7 +20,7 @@
   </p>
   <p class="legal">
     © 2026 Mikey Sebastian Drozd.
-    Licensed under <a href="/licenses/cc-by-4-0/">CC BY 4.0</a>.
+    Licensed under <a href={`${localeBase}/licenses/cc-by-4-0/`}>CC BY 4.0</a>.
   </p>
   <p class="provenance">
     Source history and implementation details will be published with the repository in Act IV.

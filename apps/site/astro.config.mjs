@@ -15,10 +15,11 @@ export default defineConfig({
       title: "Practice of Clarity",
       favicon: "/favicon.ico",
       locales: {
-        root: { label: "English", lang: "en-US" },
+        "en-us": { label: "English (US)", lang: "en-US" },
         "en-gb": { label: "English (UK)", lang: "en-GB" },
+        "de-de": { label: "Deutsch", lang: "de-DE" },
       },
-      defaultLocale: "root",
+      defaultLocale: "en-us",
       head: [
         {
           tag: "link",
@@ -96,6 +97,7 @@ export default defineConfig({
       components: {
         Header: "./src/components/Header.astro",
         SocialIcons: "./src/components/SocialIcons.astro",
+        MobileMenuFooter: "./src/components/MobileMenuFooter.astro",
         ThemeProvider: "./src/components/ThemeProvider.astro",
         ThemeSelect: "./src/components/ThemeSelect.astro",
         Pagination: "./src/components/LicensePanel.astro",
@@ -113,7 +115,7 @@ export default defineConfig({
         {
           label: "Articles",
           items: [
-            { label: "Sensible Defaults", slug: "articles/sensible-defaults" },
+            { label: "Placeholder article", slug: "articles/placeholder" },
           ],
         },
         {
