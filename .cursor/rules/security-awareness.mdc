@@ -38,3 +38,7 @@ All environments enforce a shared baseline: `.htaccess` blocks requests without 
 - **Production** (planned): baseline only (public)
 
 The `CF-Connecting-IP` header is set by Cloudflare's proxy. Direct-to-origin requests lack this header and are blocked. For stronger origin protection, Cloudflare Authenticated Origin Pulls (mTLS) could be added later.
+
+---
+© 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).  
+Source: https://github.com/Mikeys-Tech-Lab/poc

@@ -228,3 +228,7 @@ To add Preview or Public deployment:
 4. For Public: omit the `.htaccess` generation step.
 5. Update this skill with the new environment details.
 6. Update `docs/architecture/workspace.md` to reflect the new deployment target.
+
+---
+© 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).  
+Source: https://github.com/Mikeys-Tech-Lab/poc/blob/main/.cursor/skills/infomaniak-deployment/SKILL.md

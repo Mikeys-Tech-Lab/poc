@@ -150,3 +150,7 @@ feat: add hero and fix paths         # two things
 Fixed the build                      # past tense, no scope, no detail
 chore(astro): add new feature        # wrong type
 ```
+
+---
+© 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).  
+Source: https://github.com/Mikeys-Tech-Lab/poc/blob/main/.cursor/skills/git-commit/SKILL.md

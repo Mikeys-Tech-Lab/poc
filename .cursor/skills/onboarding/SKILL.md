@@ -87,3 +87,7 @@ Respect prereq ordering when presenting topics in sequence.
 - Do not duplicate deep doc content. Summarize and link. Read the no-duplication rule in the topic index.
 - Deployment procedures are out of scope for onboarding. Point to `docs/infra/` runbooks if asked.
 - If the user asks about something not covered by a topic, answer from the repo docs (AGENTS.md, docs/guidance/, docs/architecture/) but note that the answer came from outside the onboarding path.
+
+---
+© 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).  
+Source: https://github.com/Mikeys-Tech-Lab/poc/blob/main/.cursor/skills/onboarding/SKILL.md

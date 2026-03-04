@@ -1,0 +1,10 @@
+---
+import Default from "@astrojs/starlight/components/Pagination.astro";
+import LicenseNotice from "./LicenseNotice.astro";
+
+const { entry } = Astro.locals.starlightRoute;
+const sourceFilePath = `apps/site/src/content/docs/${entry.id}`;
+---
+
+<LicenseNotice sourceFilePath={sourceFilePath} />
+<Default><slot /></Default>

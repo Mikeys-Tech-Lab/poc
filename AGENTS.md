@@ -1,5 +1,10 @@
 # Agent Guidance (Canonical)
 
+**Author:** Mikey Sebastian Drozd  
+**Source:** https://github.com/Mikeys-Tech-Lab/poc/blob/main/AGENTS.md  
+**Copyright:** © 2026 Mikey Sebastian Drozd  
+**License:** [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).
+
 This file is the single source of truth for how AI agents behave in this workspace.
 
 All platform-specific adapters (Cursor rules, Cursor skills, Claude, Copilot) derive from this file. If an adapter conflicts with this file, this file wins.

@@ -1,11 +1,27 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import { execSync } from "node:child_process";
 import starlight from "@astrojs/starlight";
 import starlightCatppuccin from "@catppuccin/starlight";
 import { REPO } from "./src/consts";
 
+const commitSha =
+  process.env.GITHUB_SHA ||
+  (() => {
+    try {
+      return execSync("git rev-parse HEAD").toString().trim();
+    } catch {
+      return "unknown";
+    }
+  })();
+
 export default defineConfig({
   site: process.env.SITE_URL || "https://practiceofclarity.eu",
+  vite: {
+    define: {
+      __COMMIT_SHA__: JSON.stringify(commitSha),
+    },
+  },
   integrations: [
     starlight({
       plugins: [
@@ -101,6 +117,7 @@ export default defineConfig({
         SocialIcons: "./src/components/SocialIcons.astro",
         ThemeProvider: "./src/components/ThemeProvider.astro",
         ThemeSelect: "./src/components/ThemeSelect.astro",
+        Pagination: "./src/components/LicensePanel.astro",
       },
       customCss: ["./src/styles/custom.css"],
       sidebar: [

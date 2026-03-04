@@ -35,4 +35,4 @@ Full setup details: [docs/onboarding/local-setup.md](docs/onboarding/local-setup
 - Code and tooling: [MIT License](LICENSE)
 - Authored content (seeds, site pages, docs): [CC BY 4.0](LICENSE-CC-BY-4.0)
 
-See individual files for applicable license.
+File headers and site license notices reflect this split. See individual files for applicable license.

@@ -4,7 +4,9 @@
 **Author:** Mikey Sebastian Drozd  
 **Pronouns:** he/him · they/them  
 **Website:** https://practiceofclarity.eu  
-**License:** CC BY 4.0. See `../LICENSE-CC-BY-4.0`.
+**Source:** https://github.com/Mikeys-Tech-Lab/poc/blob/main/seeds/A%20Living%20Practice%20of%20Clarity.md  
+**Copyright:** © 2026 Mikey Sebastian Drozd  
+**License:** [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).
 
 ---
 
