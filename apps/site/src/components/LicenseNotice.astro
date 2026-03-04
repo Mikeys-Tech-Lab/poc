@@ -1,0 +1,58 @@
+---
+import { REPO } from "../consts";
+
+const sha: string = typeof __COMMIT_SHA__ !== "undefined" ? __COMMIT_SHA__ : "unknown";
+const shortSha = sha !== "unknown" ? sha.slice(0, 7) : sha;
+const sourceUrl = sha !== "unknown" ? `${REPO}/tree/${sha}` : REPO;
+---
+
+<aside class="license-notice">
+  <p>
+    <strong>Author:</strong> Mikey Sebastian Drozd
+    <span class="pronouns">(he/him · they/them)</span>
+  </p>
+  <p>
+    <strong>Website:</strong>
+    <a href="https://practiceofclarity.eu">practiceofclarity.eu</a>
+    &nbsp;·&nbsp;
+    <strong>Source:</strong>
+    <a href={sourceUrl}>{shortSha}</a>
+  </p>
+  <p class="legal">
+    © 2026 Mikey Sebastian Drozd.
+    Licensed under <a href={`${REPO}/blob/main/LICENSE-CC-BY-4.0`}>CC BY 4.0</a>.
+    Repository code and tooling: <a href={`${REPO}/blob/main/LICENSE`}>MIT</a>.
+  </p>
+</aside>
+
+<style>
+  .license-notice {
+    margin-block-start: 3rem;
+    padding: 1rem 1.25rem;
+    border-block-start: 1px solid var(--poc-border, var(--sl-color-gray-5));
+    font-size: var(--sl-text-xs);
+    color: var(--sl-color-gray-3);
+    line-height: 1.6;
+  }
+
+  .license-notice p {
+    margin: 0.25em 0;
+  }
+
+  .pronouns {
+    opacity: 0.7;
+  }
+
+  .legal {
+    margin-block-start: 0.5em;
+  }
+
+  .license-notice a {
+    color: var(--sl-color-text-accent);
+    text-decoration: none;
+  }
+
+  .license-notice a:hover {
+    text-decoration: underline;
+  }
+</style>
