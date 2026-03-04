@@ -117,6 +117,7 @@ export default defineConfig({
         SocialIcons: "./src/components/SocialIcons.astro",
         ThemeProvider: "./src/components/ThemeProvider.astro",
         ThemeSelect: "./src/components/ThemeSelect.astro",
+        Pagination: "./src/components/LicensePanel.astro",
       },
       customCss: ["./src/styles/custom.css"],
       sidebar: [
