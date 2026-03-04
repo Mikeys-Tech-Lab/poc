@@ -22,9 +22,14 @@ import { Icon } from '@astrojs/starlight/components';
 			delete document.documentElement.dataset.style;
 		}
 
-		const register =
+		const urlRegister = new URLSearchParams(window.location.search).get('register');
+		const storedRegister =
 			typeof localStorage !== 'undefined' && localStorage.getItem('poc-register');
+		const register = urlRegister || storedRegister;
 		document.documentElement.dataset.register = register === 'beginner' ? 'beginner' : 'practitioner';
+		if (urlRegister && typeof localStorage !== 'undefined') {
+			localStorage.setItem('poc-register', register === 'beginner' ? 'beginner' : 'practitioner');
+		}
 
 		return {
 			updatePickers(theme = stored || 'auto') {

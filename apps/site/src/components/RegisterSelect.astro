@@ -1,9 +1,23 @@
 ---
+const pathname = Astro.url?.pathname ?? '/';
+const lang = pathname.startsWith('/de-de/')
+  ? 'de-DE'
+  : pathname.startsWith('/en-gb/')
+    ? 'en-GB'
+    : 'en-US';
+
+const labels: Record<string, { practitioner: string; beginner: string; ariaLabel: string }> = {
+  'en-US': { practitioner: 'Practitioner', beginner: 'Beginner', ariaLabel: 'Reading register' },
+  'en-GB': { practitioner: 'Practitioner', beginner: 'Beginner', ariaLabel: 'Reading register' },
+  'de-DE': { practitioner: 'Praktiker', beginner: 'Anfänger', ariaLabel: 'Leseebene' },
+};
+
+const t = labels[lang] ?? labels['en-US'];
 ---
 
 <poc-register-toggle>
-  <button type="button" aria-label="Register">
-    <span class="sr-only">Register</span>
+  <button type="button" aria-label={t.ariaLabel}>
+    <span class="sr-only">{t.ariaLabel}</span>
     <svg
       aria-hidden="true"
       class="icon label-icon"
@@ -21,8 +35,8 @@
     </svg>
 
     <span class="text" aria-hidden="true">
-      <span class="label label-practitioner">Practitioner</span>
-      <span class="label label-beginner">Beginner</span>
+      <span class="label label-practitioner">{t.practitioner}</span>
+      <span class="label label-beginner">{t.beginner}</span>
     </span>
   </button>
 </poc-register-toggle>
@@ -40,11 +54,22 @@
       typeof localStorage !== 'undefined' && localStorage.getItem(storageKey)
     );
 
+  function syncUrlParam(register: Register): void {
+    const url = new URL(window.location.href);
+    if (register === 'beginner') {
+      url.searchParams.set('register', 'beginner');
+    } else {
+      url.searchParams.delete('register');
+    }
+    history.replaceState(null, '', url);
+  }
+
   function applyRegister(register: Register): void {
     document.documentElement.dataset.register = register;
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem(storageKey, register);
     }
+    syncUrlParam(register);
     document.querySelectorAll('poc-register-toggle button').forEach((btn) => {
       if (btn instanceof HTMLButtonElement) {
         btn.setAttribute('aria-pressed', register === 'beginner' ? 'true' : 'false');
