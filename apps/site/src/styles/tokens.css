@@ -53,7 +53,8 @@
      beginner shifts to a greenish pastel. Only the tint channel changes;
      surfaces, borders, and blur stay the same. */
   --poc-register-tint: var(--poc-base);
-  --poc-register-accent: var(--sl-color-text-accent);
+  /* Register control accent should be distinct from the theme control. */
+  --poc-register-accent: var(--sl-color-blue-high);
 }
 
 :root[data-register="beginner"] {

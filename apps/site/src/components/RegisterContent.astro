@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from 'astro:content';
+
+interface Props {
+	beginner?: string;
+}
+
+const { beginner } = Astro.props;
+
+let BeginnerContent: any = null;
+
+if (beginner) {
+	const allEntries = await getCollection('beginner');
+	const match = allEntries.find((e: any) => e.id === beginner || e.id === beginner.replace(/\/index$/, ''));
+	if (match) {
+		const rendered = await render(match);
+		BeginnerContent = rendered.Content;
+	}
+}
+---
+
+<div data-register-content="practitioner">
+	<slot />
+</div>
+
+{
+	BeginnerContent && (
+		<div data-register-content="beginner">
+			<BeginnerContent />
+		</div>
+	)
+}
+
+<style is:global>
+	[data-register-content='beginner'] {
+		display: none;
+	}
+
+	:root[data-register='beginner'] [data-register-content='practitioner'] {
+		display: none;
+	}
+
+	:root[data-register='beginner'] [data-register-content='beginner'] {
+		display: contents;
+	}
+</style>
