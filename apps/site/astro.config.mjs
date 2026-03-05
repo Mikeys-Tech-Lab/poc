@@ -104,6 +104,8 @@ export default defineConfig({
         ThemeProvider: './src/components/ThemeProvider.astro',
         ThemeSelect: './src/components/ThemeSelect.astro',
         Pagination: './src/components/LicensePanel.astro',
+        Header: './src/components/Header.astro',
+        MobileMenuFooter: './src/components/MobileMenuFooter.astro',
       },
       customCss: ['./src/styles/custom.css'],
       sidebar: [
