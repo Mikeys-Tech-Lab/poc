@@ -13,7 +13,7 @@
     "preview": "pnpm --filter site preview",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "test": "pnpm --filter ai-guidance test",
+    "test": "pnpm -r test",
     "test:coverage": "pnpm --filter ai-guidance coverage",
     "clean": "rm -rf node_modules apps/site/node_modules tools/ai-guidance/node_modules apps/site/dist apps/site/.astro",
     "fresh": "pnpm run clean && pnpm install && pnpm build",
