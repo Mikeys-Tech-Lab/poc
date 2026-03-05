@@ -20,6 +20,6 @@
     "fresh:start": "lsof -ti:4321 | xargs kill -9 2>/dev/null; pnpm run fresh && pnpm run local"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.6"
+    "@biomejs/biome": "^2.4.5"
   }
 }

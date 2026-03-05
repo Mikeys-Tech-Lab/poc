@@ -20,6 +20,7 @@
     "sharp": "^0.34.5"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.1",
     "@playwright/test": "^1.58.2",
     "happy-dom": "^20.8.3",
     "vitest": "^4.0.18"
