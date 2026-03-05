@@ -32,4 +32,5 @@ body {
   --sl-color-bg-sidebar: transparent;
   --sl-color-hairline-shade: var(--poc-border-subtle);
   --sl-color-hairline-light: var(--poc-border-subtle);
+  overflow-x: clip;
 }
