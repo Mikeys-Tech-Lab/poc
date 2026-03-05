@@ -95,9 +95,8 @@ export default defineConfig({
         },
       ],
       components: {
-        Header: "./src/components/Header.astro",
+        SiteTitle: "./src/components/SiteTitle.astro",
         SocialIcons: "./src/components/SocialIcons.astro",
-        MobileMenuFooter: "./src/components/MobileMenuFooter.astro",
         ThemeProvider: "./src/components/ThemeProvider.astro",
         ThemeSelect: "./src/components/ThemeSelect.astro",
         Pagination: "./src/components/LicensePanel.astro",
