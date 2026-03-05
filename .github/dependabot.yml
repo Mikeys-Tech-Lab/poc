@@ -4,9 +4,12 @@
 version: 2
 
 updates:
-  # Root workspace (pnpm-lock.yaml lives here)
+  # All npm/pnpm workspace packages (single entry avoids lockfile conflicts)
   - package-ecosystem: "npm"
-    directory: "/"
+    directories:
+      - "/"
+      - "/apps/site"
+      - "/tools/ai-guidance"
     schedule:
       interval: "weekly"
       day: "monday"
@@ -15,56 +18,15 @@ updates:
       include: "scope"
     labels:
       - "dependencies"
-    groups:
-      # Group minor/patch updates into a single PR
-      minor-and-patch:
-        update-types:
-          - "minor"
-          - "patch"
-      # Major updates get individual PRs for review
-    open-pull-requests-limit: 10
-    versioning-strategy: increase
-
-  # Astro site dependencies
-  - package-ecosystem: "npm"
-    directory: "/apps/site"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
-    labels:
-      - "dependencies"
-      - "astro"
     groups:
       astro-ecosystem:
         patterns:
           - "astro*"
           - "@astrojs/*"
+          - "@catppuccin/*"
         update-types:
           - "minor"
           - "patch"
-      minor-and-patch:
-        update-types:
-          - "minor"
-          - "patch"
-    open-pull-requests-limit: 10
-    versioning-strategy: increase
-
-  # Tooling dependencies
-  - package-ecosystem: "npm"
-    directory: "/tools/ai-guidance"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
-    labels:
-      - "dependencies"
-      - "tooling"
-    groups:
       vitest:
         patterns:
           - "vitest"
@@ -76,6 +38,14 @@ updates:
         update-types:
           - "minor"
           - "patch"
+        group-by: dependency-name
+      security-patches:
+        applies-to: security-updates
+        patterns:
+          - "*"
+        update-types:
+          - "patch"
+          - "minor"
     open-pull-requests-limit: 10
     versioning-strategy: increase
 
