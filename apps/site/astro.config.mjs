@@ -5,6 +5,9 @@ import starlightCatppuccin from '@catppuccin/starlight';
 import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: process.env.SITE_URL || 'https://practiceofclarity.eu',
+  devToolbar: {
+    enabled: false,
+  },
   integrations: [
     starlight({
       plugins: [
@@ -124,7 +127,7 @@ export default defineConfig({
           ],
         },
       ],
-      credits: true,
+      credits: false,
     }),
   ],
 });
