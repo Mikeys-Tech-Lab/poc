@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.10.0...PoC-v0.10.1) (2026-03-05)
+
+
+### Code Refactoring
+
+* **astro:** move register toggle into site title and rewrite what-this-is ([#44](https://github.com/Mikeys-Tech-Lab/poc/issues/44)) ([344dc1c](https://github.com/Mikeys-Tech-Lab/poc/commit/344dc1cfa6be5ef9dce3a584e6ce3600768f6299))
+
 ## [0.10.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.9.3...PoC-v0.10.0) (2026-03-04)
 
 
