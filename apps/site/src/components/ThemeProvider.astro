@@ -39,6 +39,29 @@ import { Icon } from '@astrojs/starlight/components';
 			localStorage.setItem('poc-register', register === 'beginner' ? 'beginner' : 'practitioner');
 		}
 
+		/* ── Accessibility preferences (duplicated from a11y-preferences.ts) ── */
+		const a11yDefaults = { contrast: 'default', text: '100', motion: 'default', links: 'default', font: 'default' };
+		let a11y = a11yDefaults;
+		try {
+			const raw = typeof localStorage !== 'undefined' && localStorage.getItem('poc-a11y');
+			if (raw) {
+				const parsed = JSON.parse(raw);
+				a11y = {
+					contrast: parsed.contrast === 'more' ? 'more' : 'default',
+					text: parsed.text === '112' ? '112' : parsed.text === '125' ? '125' : '100',
+					motion: parsed.motion === 'reduce' ? 'reduce' : 'default',
+					links: parsed.links === 'underline' ? 'underline' : 'default',
+					font: parsed.font === 'alt' ? 'alt' : 'default',
+				};
+			}
+		} catch (_) { /* ignore corrupt storage */ }
+		const d = document.documentElement.dataset;
+		d.a11yContrast = a11y.contrast;
+		d.a11yText = a11y.text;
+		d.a11yMotion = a11y.motion;
+		d.a11yLinks = a11y.links;
+		d.a11yFont = a11y.font;
+
 		return {
 			updatePickers(theme = stored || 'auto') {
 				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
