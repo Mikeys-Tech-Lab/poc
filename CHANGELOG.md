@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.11.2...PoC-v0.12.0) (2026-03-05)
+
+
+### Features
+
+* **astro:** add home attribution cards and disable credits ([#52](https://github.com/Mikeys-Tech-Lab/poc/issues/52)) ([ceeaea0](https://github.com/Mikeys-Tech-Lab/poc/commit/ceeaea058290387c54078c95a900c179c5061139))
+
 ## [0.11.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.11.1...PoC-v0.11.2) (2026-03-05)
 
 
