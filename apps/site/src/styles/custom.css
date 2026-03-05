@@ -1,6 +1,7 @@
 /* ── Custom styles entry point ──
    Vite resolves and bundles these imports at build time.
-   Order matters: tokens first, then atmosphere, then consumers. */
+   Order matters: tokens first, then atmosphere, then consumers.
+   a11y.css goes last so preference overrides win. */
 
 @import "./tokens.css";
 @import "./atmosphere.css";
@@ -9,3 +10,4 @@
 @import "./hero.css";
 @import "./controls.css";
 @import "./typography.css";
+@import "./a11y.css";

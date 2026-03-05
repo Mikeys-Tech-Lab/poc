@@ -1,11 +1,14 @@
 /* ── Content typography ──
-   Inline code and code links adapted for atmospheric backgrounds. */
+   Inline code and code links adapted for atmospheric backgrounds.
+   Reflow: code blocks may scroll horizontally; page-level horizontal
+   scroll is disallowed for prose (WCAG 1.4.10). */
 
 /* Inline code — subtle tint, no visible border */
 .sl-markdown-content :not(pre) > code {
   background-color: var(--poc-surface-faint);
   border: 1px solid transparent;
   padding: 0.15em 0.35em;
+  overflow-wrap: break-word;
 }
 
 /* Code inside links — no box, inherits link styling */
@@ -15,4 +18,9 @@
   padding: 0;
   color: inherit;
   font-size: inherit;
+}
+
+/* Long words/URLs in prose wrap instead of causing horizontal scroll */
+.sl-markdown-content {
+  overflow-wrap: break-word;
 }
