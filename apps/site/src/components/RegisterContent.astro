@@ -1,5 +1,5 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getEntry, render } from 'astro:content';
 
 interface Props {
 	beginner?: string;
@@ -10,8 +10,7 @@ const { beginner } = Astro.props;
 let BeginnerContent: any = null;
 
 if (beginner) {
-	const allEntries = await getCollection('beginner');
-	const match = allEntries.find((e: any) => e.id === beginner || e.id === beginner.replace(/\/index$/, ''));
+	const match = await getEntry('beginner', beginner);
 	if (match) {
 		const rendered = await render(match);
 		BeginnerContent = rendered.Content;

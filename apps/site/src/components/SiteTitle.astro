@@ -1,23 +1,12 @@
 ---
 import config from 'virtual:starlight/user-config';
 import { logos } from 'virtual:starlight/user-images';
+import { getLocaleFromPath } from '../lib/locale';
+import { getRegisterLabels } from '../lib/i18n';
 
 const { siteTitle } = Astro.locals.starlightRoute;
-
-const pathname = Astro.url?.pathname ?? '/';
-const lang = pathname.startsWith('/de-de/')
-  ? 'de-DE'
-  : pathname.startsWith('/en-gb/')
-    ? 'en-GB'
-    : 'en-US';
-
-const labels: Record<string, { practitioner: string; beginner: string }> = {
-  'en-US': { practitioner: 'Practitioner', beginner: 'Beginner' },
-  'en-GB': { practitioner: 'Practitioner', beginner: 'Beginner' },
-  'de-DE': { practitioner: 'Praktiker', beginner: 'Anfänger' },
-};
-
-const t = labels[lang] ?? labels['en-US'];
+const locale = getLocaleFromPath(Astro.url?.pathname ?? '/');
+const t = getRegisterLabels(locale);
 ---
 
 <poc-register-toggle>
@@ -51,88 +40,31 @@ const t = labels[lang] ?? labels['en-US'];
 </poc-register-toggle>
 
 <script>
-  type Register = 'practitioner' | 'beginner';
+  import { parseRegister, loadRegister, setRegister } from '../lib/register';
+  import { rebuildToc } from '../lib/toc';
 
-  const storageKey = 'poc-register';
-
-  const parseRegister = (value: unknown): Register =>
-    value === 'beginner' ? 'beginner' : 'practitioner';
-
-  const loadRegister = (): Register =>
-    parseRegister(
-      typeof localStorage !== 'undefined' && localStorage.getItem(storageKey)
-    );
-
-  function syncUrlParam(register: Register): void {
-    const url = new URL(window.location.href);
-    if (register === 'beginner') {
-      url.searchParams.set('register', 'beginner');
-    } else {
-      url.searchParams.delete('register');
-    }
-    history.replaceState(null, '', url);
-  }
-
-  function rebuildToc(): void {
-    const tocNav = document.querySelector('starlight-toc nav > ul');
-    if (!tocNav) return;
-
-    const register = document.documentElement.dataset.register || 'practitioner';
-    const content = document.querySelector(`[data-register-content="${register}"]`);
-    if (!content) return;
-
-    const headings = content.querySelectorAll('h2, h3');
-    if (headings.length === 0) return;
-
-    tocNav.innerHTML = '';
-    let currentH2Li: HTMLLIElement | null = null;
-
-    headings.forEach((h) => {
-      if (!h.id || !h.textContent) return;
-      const li = document.createElement('li');
-      const a = document.createElement('a');
-      a.href = `#${h.id}`;
-      a.textContent = h.textContent.trim();
-
-      if (h.tagName === 'H3' && currentH2Li) {
-        let sub = currentH2Li.querySelector(':scope > ul');
-        if (!sub) {
-          sub = document.createElement('ul');
-          currentH2Li.appendChild(sub);
-        }
-        li.appendChild(a);
-        sub.appendChild(li);
-      } else {
-        li.appendChild(a);
-        tocNav.appendChild(li);
-        if (h.tagName === 'H2') currentH2Li = li;
-      }
-    });
-  }
-
-  function applyRegister(register: Register): void {
-    document.documentElement.dataset.register = register;
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem(storageKey, register);
-    }
-    syncUrlParam(register);
+  window.addEventListener('poc:register-change', (e) => {
+    const { register } = (e as CustomEvent).detail;
     document.querySelectorAll('poc-register-toggle button').forEach((btn) => {
       if (btn instanceof HTMLButtonElement) {
-        btn.setAttribute('aria-pressed', register === 'beginner' ? 'true' : 'false');
+        btn.setAttribute(
+          'aria-pressed',
+          register === 'beginner' ? 'true' : 'false',
+        );
       }
     });
     rebuildToc();
-  }
+  });
 
   class PocRegisterToggle extends HTMLElement {
     constructor() {
       super();
-      applyRegister(loadRegister());
+      setRegister(loadRegister());
 
       this.querySelector('button')?.addEventListener('click', () => {
         const current = parseRegister(document.documentElement.dataset.register);
-        const next: Register = current === 'beginner' ? 'practitioner' : 'beginner';
-        applyRegister(next);
+        const next = current === 'beginner' ? 'practitioner' : 'beginner';
+        setRegister(next);
       });
     }
   }
