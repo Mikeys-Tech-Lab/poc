@@ -173,6 +173,7 @@ This section declares operator tool choices. Agents must respect these and not s
 - **Package manager**: pnpm. Do not use npm or yarn.
 - **Runtime**: Node.js (check version locally before assuming features)
 - **Test runner**: Vitest
+- **Linter and formatter**: Biome (`biome.json` at repo root). Run `pnpm lint` to check, `pnpm lint:fix` to auto-fix. Biome covers `.ts`, `.mjs`, `.js`, `.json`, `.css`. It does not process `.astro` files.
 - **GPG signing**: enabled for all commits (`commit.gpgsign = true`). Do not disable or skip signing. If an agent cannot sign, output the git commands for the operator to run.
 - **Branch naming**: `<type>/<scope>/<short-description>` (e.g., `feat/ai/add-grounding-rules`)
 

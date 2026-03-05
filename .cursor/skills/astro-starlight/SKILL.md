@@ -23,10 +23,21 @@ Before relying on any Astro or Starlight feature:
 
 ## Content boundaries
 
-- Site content: `apps/site/src/content/docs/`
+- Site content (practitioner): `apps/site/src/content/docs/`
+- Site content (beginner): `apps/site/src/content/beginner/`
 - Assets (images, fonts): `apps/site/src/assets/`
+- Shared modules: `apps/site/src/lib/`
 - Seeds (`seeds/`) are development-only sources. They are not the site content tree.
 - The site may reference seeds but must not import them as pages.
+
+### Content collections
+
+Two content collections are defined in `content.config.ts`:
+
+- `docs`: Starlight's native collection. Uses `docsLoader()` and `docsSchema()`.
+- `beginner`: Custom collection for beginner-register companion content. Uses Astro's `glob` loader for `**/*.mdx` files in `src/content/beginner/`.
+
+Both follow the same locale directory structure: `{locale}/section/page.mdx`.
 
 ## Known pitfalls
 
@@ -98,50 +109,83 @@ The `head` array in `astro.config.mjs` includes `theme-color` and `msapplication
 
 ## Centralized URLs
 
-Repository and social URLs live in `apps/site/src/consts.ts`. Use these constants in `.mjs`, `.ts`, and `.astro` files instead of hardcoding URLs.
+Social URLs live in `apps/site/src/consts.ts`. Use these constants in `.mjs`, `.ts`, and `.astro` files instead of hardcoding URLs.
 
 ```ts
-import { REPO, LINKEDIN } from "./src/consts";
+import { LINKEDIN } from '../consts';
 ```
 
-### Constraint: plain Markdown content files cannot import constants
+The site is a publication surface, not repository documentation. Repository links are intentionally absent from published content.
 
-Files in `src/content/docs/` that use `.md` (not `.mdx`) cannot import TypeScript modules. Any GitHub URLs in those files must be hardcoded. If the repo moves or renames, these links break silently.
+## Shared modules (`src/lib/`)
 
-Affected files (as of v0.1.0): `about/how-to-use.md`, `guides/sensible-defaults.md`.
+Reusable logic lives in `src/lib/` as pure TypeScript modules. Components import from these instead of inlining logic.
 
-To find all hardcoded repo URLs: search for `github.com/Mikeys-Tech-Lab` in `src/content/docs/`.
+| Module | Context | Purpose |
+|---|---|---|
+| `locale.ts` | Server (frontmatter) | Resolve locale from URL pathname. Single source for locale detection. |
+| `i18n.ts` | Server (frontmatter) | Label maps for register names and theme names per locale. |
+| `register.ts` | Client (`<script>`) | Register state: read, write, localStorage, URL param sync, event dispatch. |
+| `toc.ts` | Client (`<script>`) | Rebuild Starlight ToC for the active register's visible headings. |
+
+**Server vs. client**: `locale.ts` and `i18n.ts` run at build time in Astro frontmatter. `register.ts` and `toc.ts` run in the browser via Vite-processed `<script>` tags.
+
+**Adding a locale**: update `locale.ts` (prefix map), `i18n.ts` (label maps), and `astro.config.mjs` (locales object).
 
 ## Component overrides
 
-Three Starlight components are overridden via the `components` key in `astro.config.mjs`:
+Five Starlight components are overridden via the `components` key in `astro.config.mjs`:
 
 | Override | File | Purpose |
 |---|---|---|
-| `SocialIcons` | `src/components/SocialIcons.astro` | Adds a LinkedIn icon after the default social icons |
-| `ThemeProvider` | `src/components/ThemeProvider.astro` | Prevents FOUC for both `data-theme` and `data-style` attributes |
-| `ThemeSelect` | `src/components/ThemeSelect.astro` | Extends the selector to 5 options (Dark, Light, Auto, Dark Solid, Light Solid) |
+| `SiteTitle` | `src/components/SiteTitle.astro` | Site title with register toggle. Clicking the title switches between Practitioner and Beginner. |
+| `SocialIcons` | `src/components/SocialIcons.astro` | Adds a LinkedIn icon after the default social icons. |
+| `ThemeProvider` | `src/components/ThemeProvider.astro` | Prevents FOUC for `data-theme`, `data-style`, and `data-register` attributes. |
+| `ThemeSelect` | `src/components/ThemeSelect.astro` | Extends the selector to 5 options with locale-aware labels. |
+| `Pagination` | `src/components/LicensePanel.astro` | Wraps default Pagination with LicenseNotice footer. |
 
-### Override pattern
+### Override principles
 
-Each override imports the default Starlight component, renders it via `<Default>`, then adds or replaces behavior:
+1. **Minimal surface.** Only override what Starlight cannot configure. Each override is a maintenance contract that must survive Starlight upgrades.
+2. **Single responsibility.** Each component does one thing. SiteTitle handles the register toggle UI. ThemeSelect handles theme selection. LicensePanel composes Pagination with LicenseNotice.
+3. **Delegate to shared modules.** Components import logic from `src/lib/` instead of inlining state management, locale detection, or i18n lookups.
+4. **Inline scripts only for FOUC prevention.** ThemeProvider uses `is:inline` because it must run before first paint. All other client logic uses regular `<script>` tags processed by Vite, which allows ES imports.
 
-```astro
----
-import Default from '@astrojs/starlight/components/ComponentName.astro';
----
-<Default><slot /></Default>
-<!-- additional markup -->
-```
+### The inline script constraint
 
-ThemeProvider and ThemeSelect do not render the default — they fully replace the component's markup and script.
+`<script is:inline>` runs synchronously before paint but cannot use ES imports. `<script>` (without `is:inline`) is processed by Vite, supports imports, but is deferred. When logic must exist in both contexts (e.g., register storage key, parsing), the duplication is intentional and documented. If a shared value changes, update both locations.
 
 ### Adding an override
 
-1. Copy the original from `node_modules/@astrojs/starlight/components/`.
-2. Place your version in `src/components/`.
-3. Register it in `astro.config.mjs` under `components`.
-4. Run `pnpm run build` to verify.
+1. Check if the need can be met via CSS tokens or Starlight config first.
+2. If an override is needed, copy the original from `node_modules/@astrojs/starlight/components/`.
+3. Place your version in `src/components/`.
+4. Extract reusable logic to `src/lib/`. The component should orchestrate, not contain business logic.
+5. Register it in `astro.config.mjs` under `components`.
+6. Run `pnpm run build` to verify.
+
+## Register system
+
+The register (Practitioner/Beginner) controls which content variant is visible on each page.
+
+### How it works
+
+1. **Build time**: `RegisterContent.astro` renders both variants into the HTML, wrapped in `[data-register-content="practitioner"]` and `[data-register-content="beginner"]` divs.
+2. **Before paint**: ThemeProvider's inline script reads `?register=` URL param or `localStorage`, sets `data-register` on `<html>`.
+3. **CSS**: Global styles hide the inactive variant based on `data-register`.
+4. **Toggle**: SiteTitle's `<script>` imports from `register.ts` and `toc.ts`. Clicking the title calls `setRegister()`, which updates state and dispatches `poc:register-change` on `window`.
+5. **Listeners**: The `poc:register-change` event triggers UI updates (aria-pressed) and ToC rebuild.
+
+### State flow
+
+```
+ThemeProvider (inline, sync) → sets data-register → CSS hides inactive content
+SiteTitle (module, deferred) → click → setRegister() → event → UI update + ToC rebuild
+```
+
+### Adding register-aware behavior
+
+Listen for the `poc:register-change` event on `window`. The event detail contains `{ register: 'practitioner' | 'beginner' }`. Do not read `localStorage` directly from components; use the DOM attribute or the event.
 
 ## Site-wide visual system
 
@@ -201,12 +245,29 @@ Any change to theme tokens, the theme selector, the ThemeProvider inline script,
 
 FOUC regressions are silent — they do not fail the build. The only reliable check is a visual refresh after a clean load (hard refresh or incognito window).
 
+## Linting and formatting
+
+Biome handles linting, formatting, and import organization for `.ts`, `.mjs`, `.js`, `.json`, and `.css` files workspace-wide. Configuration is in `biome.json` at the repo root.
+
+Biome does not process `.astro` files. Astro frontmatter and templates are excluded. This means `.astro` files rely on convention and review rather than automated enforcement.
+
+The `!important` lint rule is suppressed for `controls.css` because Starlight sets the language selector width via inline style, leaving no other override path. This is a documented constraint, not a pattern to follow elsewhere.
+
+```bash
+pnpm lint                   # Check lint + formatting (no changes)
+pnpm lint:fix               # Auto-fix lint + formatting
+pnpm --filter site check    # Astro type checking
+```
+
 ## Common commands
 
 ```bash
 pnpm run local              # Start dev server
 pnpm run build              # Production build (run before committing)
 pnpm --filter site preview  # Preview production build
+pnpm lint                   # Lint and format check
+pnpm lint:fix               # Auto-fix lint and formatting
+pnpm test                   # Run tests (ai-guidance)
 ```
 
 ## Additional resources
