@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v0.5.1...site-v0.6.0) (2026-03-05)
+
+
+### Features
+
+* **astro:** testing and quality evolution ([#46](https://github.com/Mikeys-Tech-Lab/poc/issues/46)) ([138360b](https://github.com/Mikeys-Tech-Lab/poc/commit/138360b29fe7eb230ea8e09c67354867563733c0))
+
 ## [0.5.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v0.5.0...site-v0.5.1) (2026-03-05)
 
 

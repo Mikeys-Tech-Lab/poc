@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.10.1...PoC-v0.11.0) (2026-03-05)
+
+
+### Features
+
+* **astro:** testing and quality evolution ([#46](https://github.com/Mikeys-Tech-Lab/poc/issues/46)) ([138360b](https://github.com/Mikeys-Tech-Lab/poc/commit/138360b29fe7eb230ea8e09c67354867563733c0))
+
 ## [0.10.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.10.0...PoC-v0.10.1) (2026-03-05)
 
 
