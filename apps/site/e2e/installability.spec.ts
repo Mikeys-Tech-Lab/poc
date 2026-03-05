@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('installability', () => {
   test('manifest is linked in head', async ({ page }) => {
@@ -29,8 +29,12 @@ test.describe('installability', () => {
 
     const has192any = icons.some((i) => i.sizes === '192x192' && i.purpose?.includes('any'));
     const has512any = icons.some((i) => i.sizes === '512x512' && i.purpose?.includes('any'));
-    const has192maskable = icons.some((i) => i.sizes === '192x192' && i.purpose?.includes('maskable'));
-    const has512maskable = icons.some((i) => i.sizes === '512x512' && i.purpose?.includes('maskable'));
+    const has192maskable = icons.some(
+      (i) => i.sizes === '192x192' && i.purpose?.includes('maskable'),
+    );
+    const has512maskable = icons.some(
+      (i) => i.sizes === '512x512' && i.purpose?.includes('maskable'),
+    );
 
     expect(has192any, '192x192 any icon').toBe(true);
     expect(has512any, '512x512 any icon').toBe(true);
@@ -52,10 +56,9 @@ test.describe('installability', () => {
     for (const icon of icons) {
       const response = await request.get(icon.src);
       expect(response.status(), `${icon.src} should return 200`).toBe(200);
-      expect(
-        response.headers()['content-type'],
-        `${icon.src} should be image/png`,
-      ).toContain('image/png');
+      expect(response.headers()['content-type'], `${icon.src} should be image/png`).toContain(
+        'image/png',
+      );
       const body = await response.body();
       expect(body.length, `${icon.src} should not be empty`).toBeGreaterThan(0);
     }

@@ -35,10 +35,13 @@ src/
 
 ## Testing
 
-- Use Vitest for unit tests.
+- Use Vitest for unit tests across all packages.
+- Both `tools/ai-guidance` and `apps/site` have Vitest configs. `pnpm test` at root runs both.
+- `apps/site` uses `happy-dom` for DOM-dependent tests (opt-in per file via `// @vitest-environment happy-dom`). Pure logic tests run in the default `node` environment.
 - Store test fixtures alongside tests or in a `__fixtures__/` directory.
 - Do not rely on network calls in tests. Use fixtures for deterministic results.
 - Coverage should be meaningful for domain logic.
+- E2E tests for the site use Playwright (Chromium only). See the `astro-starlight` skill for details.
 
 ## Dependency management
 
@@ -53,8 +56,9 @@ Do not make up version numbers. Verify the package exists before adding.
 ## Common commands
 
 ```bash
-pnpm test              # Run tests
-pnpm coverage          # Run tests with coverage
+pnpm test              # Run unit tests (all packages)
+pnpm coverage          # Run tests with coverage (ai-guidance)
+pnpm --filter site test:e2e  # Run E2E tests (requires prior build)
 pnpm cursor:check      # Check Cursor capability signals
 pnpm capability:check  # Aggregate capability checks
 ```

@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
-import { getLocaleFromPath, getLocaleBase } from '../locale';
+import { describe, expect, it } from 'vitest';
+import { getLocaleBase, getLocaleFromPath } from '../locale';
 import { LOCALE_PREFIXES } from './test-constants';
 
 describe('getLocaleFromPath', () => {

@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { getRegisterLabels, getThemeLabels } from '../i18n';
-import { LOCALES } from './test-constants';
 import type { Locale } from '../locale';
+import { LOCALES } from './test-constants';
 
 describe('getRegisterLabels', () => {
   it.each(LOCALES)('returns labels for %s', (locale) => {

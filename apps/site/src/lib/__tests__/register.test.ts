@@ -1,6 +1,6 @@
 // @vitest-environment happy-dom
-import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { parseRegister, getRegister, loadRegister, setRegister, STORAGE_KEY } from '../register';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { getRegister, loadRegister, parseRegister, STORAGE_KEY, setRegister } from '../register';
 
 const store = new Map<string, string>();
 const mockLocalStorage = {

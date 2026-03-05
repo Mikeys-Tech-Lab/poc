@@ -1,7 +1,7 @@
 // @vitest-environment happy-dom
-import { describe, it, expect, beforeEach } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { rebuildToc } from '../toc';
-import { createTocNav, createRegisterContent, setRegisterAttribute } from './dom-helpers';
+import { createRegisterContent, createTocNav, setRegisterAttribute } from './dom-helpers';
 
 describe('rebuildToc', () => {
   beforeEach(() => {

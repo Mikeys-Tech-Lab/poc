@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('locale switching', () => {
   test('language selector navigates to correct locale', async ({ page }) => {
@@ -9,7 +9,7 @@ test.describe('locale switching', () => {
     const deValue = await deOption.getAttribute('value');
     expect(deValue).toBeTruthy();
 
-    await select.selectOption(deValue!);
+    await select.selectOption(deValue ?? '');
     await page.waitForURL('**/de-de/**');
 
     expect(page.url()).toContain('/de-de/');

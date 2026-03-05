@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { allPages } from './helpers';
 
 test.describe('navigation', () => {
@@ -16,11 +16,13 @@ test.describe('navigation', () => {
     for (const url of allPages) {
       await page.goto(url);
 
-      const links = await page.locator('a[href^="/"]').evaluateAll((anchors) =>
-        anchors
-          .map((a) => a.getAttribute('href'))
-          .filter((href): href is string => href !== null),
-      );
+      const links = await page
+        .locator('a[href^="/"]')
+        .evaluateAll((anchors) =>
+          anchors
+            .map((a) => a.getAttribute('href'))
+            .filter((href): href is string => href !== null),
+        );
 
       for (const href of links) {
         const normalized = href.split('?')[0].split('#')[0];

@@ -36,6 +36,10 @@ Treat missing domain acknowledgement as a delivery risk signal, not a neutral om
 
 For small changes, keep each point to one short paragraph.
 
+## Quality checkpoint
+
+If a change affects content rendering, verify all register x locale combinations render correctly. Register state is a query parameter (`?register=beginner`), not a route. The state matrix is 3 locales x 6 content paths x 2 registers = 36 states. E2E tests cover this automatically; if they are not available, manually spot-check at least one page per locale in both registers.
+
 ## Misuse guard
 
 This lens is being misused if it becomes compliance scoring, surveillance, performance evaluation, exhaustive documentation for low-stakes work, a blame tool, or a way to convert uncertainty into narrative instead of a next check.

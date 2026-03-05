@@ -1,6 +1,6 @@
 import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
-import { LOCALE_PREFIXES, CONTENT_PATHS } from '../src/lib/__tests__/test-constants';
+import { CONTENT_PATHS, LOCALE_PREFIXES } from '../src/lib/__tests__/test-constants';
 
 export const allPages = LOCALE_PREFIXES.flatMap((locale) =>
   CONTENT_PATHS.map((path) => `${locale}${path}`),
