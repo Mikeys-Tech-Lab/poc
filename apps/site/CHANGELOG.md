@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v0.5.0...site-v0.5.1) (2026-03-05)
+
+
+### Code Refactoring
+
+* **astro:** move register toggle into site title and rewrite what-this-is ([#44](https://github.com/Mikeys-Tech-Lab/poc/issues/44)) ([344dc1c](https://github.com/Mikeys-Tech-Lab/poc/commit/344dc1cfa6be5ef9dce3a584e6ce3600768f6299))
+
 ## [0.5.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v0.4.1...site-v0.5.0) (2026-03-04)
 
 
