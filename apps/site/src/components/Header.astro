@@ -2,8 +2,8 @@
 /**
  * Starlight Header override — adds accessibility panel trigger.
  *
- * Minimal diff from the default Header.astro: one extra component
- * (AccessibilityPanel) rendered as the last item in the right-group.
+ * Two instances of AccessibilityPanel: one in the mobile search group
+ * (hidden on desktop), one in the right-group (hidden on mobile).
  * Keep this in sync with upstream Header when upgrading Starlight.
  */
 import config from 'virtual:starlight/user-config';
@@ -25,7 +25,9 @@ const shouldRenderSearch =
 		<SiteTitle />
 	</div>
 	<div class="sl-flex print:hidden search-a11y">
-		<AccessibilityPanel />
+		<div class="a11y-mobile">
+			<AccessibilityPanel />
+		</div>
 		{shouldRenderSearch && <Search />}
 	</div>
 	<div class="sl-hidden md:sl-flex print:hidden right-group">
@@ -34,6 +36,7 @@ const shouldRenderSearch =
 		</div>
 		<ThemeSelect />
 		<LanguageSelect />
+		<AccessibilityPanel />
 	</div>
 </div>
 
@@ -57,6 +60,16 @@ const shouldRenderSearch =
 		.search-a11y {
 			gap: 0.5rem;
 			align-items: center;
+		}
+
+		.a11y-mobile {
+			display: contents;
+		}
+
+		@media (min-width: 50rem) {
+			.a11y-mobile {
+				display: none;
+			}
 		}
 
 		.right-group,
