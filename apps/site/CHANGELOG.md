@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v0.7.0...site-v0.8.0) (2026-03-05)
+
+
+### Features
+
+* **astro:** add accessibility preferences panel and zoom/reflow resilience ([#54](https://github.com/Mikeys-Tech-Lab/poc/issues/54)) ([bf188a2](https://github.com/Mikeys-Tech-Lab/poc/commit/bf188a26777a4ce3b6eaceec5d47ece5165a23f2))
+
 ## [0.7.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v0.6.1...site-v0.7.0) (2026-03-05)
 
 

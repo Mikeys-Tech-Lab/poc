@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.12.0...PoC-v0.13.0) (2026-03-05)
+
+
+### Features
+
+* **astro:** add accessibility preferences panel and zoom/reflow resilience ([#54](https://github.com/Mikeys-Tech-Lab/poc/issues/54)) ([bf188a2](https://github.com/Mikeys-Tech-Lab/poc/commit/bf188a26777a4ce3b6eaceec5d47ece5165a23f2))
+
 ## [0.12.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.11.2...PoC-v0.12.0) (2026-03-05)
 
 
