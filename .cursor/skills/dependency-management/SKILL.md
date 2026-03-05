@@ -15,25 +15,28 @@ description: Guides dependency version management, Dependabot configuration, and
 
 ## Dependabot configuration
 
-The Dependabot config lives at `.github/dependabot.yml`. It covers three package directories and GitHub Actions:
+The Dependabot config lives at `.github/dependabot.yml`. It uses two ecosystem entries:
 
-| Directory | Ecosystem | What it covers |
-|---|---|---|
-| `/` | npm | Root workspace, pnpm-lock.yaml |
-| `/apps/site` | npm | Astro Starlight frontend |
-| `/tools/ai-guidance` | npm | Capability alignment tooling |
-| `/` | github-actions | All workflow action versions (deploy, security scanning, CodeQL, Scorecard) |
+| Entry | Ecosystem | Directories | What it covers |
+|---|---|---|---|
+| npm | npm | `/`, `/apps/site`, `/tools/ai-guidance` | All workspace packages via a single `directories` list |
+| github-actions | github-actions | `/` | All workflow action versions |
+
+Using a single npm entry with `directories` (plural) avoids the lockfile conflict problem where separate entries generate PRs that all modify `pnpm-lock.yaml`.
 
 ### How it works
 
 - Checks weekly (Monday) for version updates
 - Minor and patch updates are grouped into single PRs to reduce noise
 - Major updates get individual PRs for careful review
-- Astro ecosystem packages (`astro*`, `@astrojs/*`) are grouped together
+- Astro ecosystem packages (`astro*`, `@astrojs/*`, `@catppuccin/*`) are grouped together
 - Vitest packages (`vitest`, `@vitest/*`) are grouped together
+- Remaining minor/patch updates use `group-by: dependency-name` to consolidate the same dependency across directories into one PR
+- Security updates are grouped into a single PR via `applies-to: security-updates`
 - GitHub Actions minor/patch updates are grouped together
 - Commit messages use `chore(deps):` to follow Conventional Commits
-- PRs are labeled (`dependencies`, plus area labels like `astro`, `tooling`, or `ci`)
+- PRs are labeled `dependencies` (npm) or `dependencies` + `ci` (GitHub Actions)
+- `versioning-strategy: increase` bumps the lower bound in `package.json` to document the minimum tested version
 
 ### Reviewing Dependabot PRs
 
@@ -46,9 +49,9 @@ The Dependabot config lives at `.github/dependabot.yml`. It covers three package
 
 ### Known limitations
 
-- Dependabot does not natively understand pnpm workspaces the same way it understands npm workspaces. Each directory with a `package.json` needs its own entry.
 - Dependabot uses `npm` ecosystem identifier even for pnpm repos. It reads `package.json` and `pnpm-lock.yaml` correctly.
 - Grouped PRs may contain updates to multiple packages. Review the full diff, not just the title.
+- Cross-directory grouping (`group-by: dependency-name`) applies to version updates only; security updates use their own group.
 
 ## Adding dependencies
 
@@ -58,7 +61,7 @@ When adding a new dependency:
 2. Always add to the specific workspace package, not the root: `pnpm --filter <package> add <dep>`
 3. Use caret ranges (`^`) for semver-compatible updates (default)
 4. After adding, verify: `pnpm install`, `pnpm test`, `pnpm run build`
-5. Check if the new dependency's directory is covered by Dependabot. If you add a new workspace package, add a corresponding entry to `.github/dependabot.yml`.
+5. Check if the new dependency's directory is covered by Dependabot. If you add a new workspace package, add its path to the `directories` list in `.github/dependabot.yml`.
 
 ## Upgrading dependencies manually
 
