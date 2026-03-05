@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v0.8.0...site-v0.8.1) (2026-03-05)
+
+
+### Documentation
+
+* **astro:** add Cursor to attribution cards ([#56](https://github.com/Mikeys-Tech-Lab/poc/issues/56)) ([2dbc877](https://github.com/Mikeys-Tech-Lab/poc/commit/2dbc877899d5c9d08fbb4f5b2d927b62c110c786))
+
 ## [0.8.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v0.7.0...site-v0.8.0) (2026-03-05)
 
 
