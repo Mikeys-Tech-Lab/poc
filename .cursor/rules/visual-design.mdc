@@ -74,6 +74,30 @@ For translucent UI over the atmospheric background:
 
 Prefer subtle effects. Gentle blur, muted overlays, and soft borders over sharp contrasts, heavy shadows, or saturated accents. The site should feel quiet and focused.
 
+## Psychological safety for thinking
+
+The UI is part of the practice. It should lower cognitive pressure so readers can slow down and think.
+
+Guardrails:
+
+- **Calm, not performative**: avoid visual noise, attention traps, and novelty for its own sake.
+- **Generous navigation**: keep the context triad intact (sidebar = place, center = reading, right rail = structure).
+- **No epistemic hierarchy**: the register system (Practitioner/Beginner) must never hide structure. Only voice changes.
+
+### Density and spacing
+
+Prefer a clear, repeatable vertical rhythm over one-off margin tweaks.
+
+- **Use layout gaps over margins** where possible (e.g. `flex`/`grid` with `gap`) to avoid margin-collapsing surprises.
+- **Match gaps intentionally**: lede → grid spacing should usually equal the grid’s own `gap` unless there is a specific reason not to.
+- **When a section feels “stuffed”**: reduce list length, split content, or demote secondary items (e.g. “Honorable Mentions”) rather than shrinking font sizes.
+
+### Quick visual checks (required for frontend changes)
+
+- Toggle **theme**: Dark Atmospheric ↔ Light Atmospheric.
+- Toggle **register**: Practitioner ↔ Beginner (confirm parity and no layout glitches).
+- Spot-check **locales**: `/en-us/`, `/en-gb/`, `/de-de/` for the changed surface.
+
 ## Site-wide atmospheric background
 
 The blurred, theme-tinted background image applies to all pages. Starlight's `--sl-color-bg`, `--sl-color-bg-nav`, and `--sl-color-bg-sidebar` are overridden via tokens in `atmosphere.css` so the atmosphere shows through everywhere.

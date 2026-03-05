@@ -1,7 +1,10 @@
 ---
+import { Card, CardGrid } from '@astrojs/starlight/components';
 import { getLocaleBase } from '../lib/locale';
 
 const localeBase = getLocaleBase(Astro.url?.pathname ?? '/');
+const pathname = Astro.url?.pathname ?? '/';
+const isHome = pathname === `${localeBase}/`;
 ---
 
 <aside class="license-notice">
@@ -20,6 +23,64 @@ const localeBase = getLocaleBase(Astro.url?.pathname ?? '/');
   <p class="provenance">
     Source history and implementation details will be published with the repository in Act IV.
   </p>
+  {
+    isHome && (
+      <div class="attribution">
+        <p class="attribution-lede">
+          <strong>Attribution:</strong> this publication surface is possible because other people built and maintained the services and tools it relies on.
+        </p>
+
+        <div class="attribution-cards">
+          <CardGrid>
+            <Card title="Infrastructure" icon="document">
+              <ul>
+                <li>
+                  <a href="https://www.infomaniak.com/">Infomaniak</a>: hosting
+                </li>
+                <li>
+                  <a href="https://www.cloudflare.com/">Cloudflare</a>: edge/CDN
+                </li>
+              </ul>
+            </Card>
+
+            <Card title="Site framework" icon="open-book">
+              <ul>
+                <li><a href="https://astro.build/">Astro</a></li>
+                <li><a href="https://starlight.astro.build/">Starlight</a></li>
+                <li><a href="https://starlight.catppuccin.com/">@catppuccin/starlight</a></li>
+              </ul>
+            </Card>
+
+            <Card title="Build and packaging" icon="list-format">
+              <ul>
+                <li><a href="https://nodejs.org/">Node.js</a></li>
+                <li><a href="https://pnpm.io/">pnpm</a></li>
+                <li><a href="https://sharp.pixelplumbing.com/">sharp</a></li>
+              </ul>
+            </Card>
+
+            <Card title="Quality and automation" icon="approve-check">
+              <ul>
+                <li><a href="https://biomejs.dev/">Biome</a></li>
+                <li><a href="https://vitest.dev/">Vitest</a> (and <a href="https://github.com/capricorn86/happy-dom">happy-dom</a>)</li>
+                <li><a href="https://playwright.dev/">Playwright</a></li>
+                <li><a href="https://github.com/features/actions">GitHub Actions</a></li>
+                <li><a href="https://github.com/github/codeql-action">CodeQL</a></li>
+              </ul>
+              <p class="also-used">
+                Honorable Mentions: <a href="https://docs.github.com/en/code-security/dependabot">Dependabot</a>,{' '}
+                <a href="https://github.com/googleapis/release-please-action">Release Please</a>,{' '}
+                <a href="https://github.com/gitleaks/gitleaks">gitleaks</a>,{' '}
+                <a href="https://github.com/ossf/scorecard-action">OSSF Scorecard</a>,{' '}
+                <a href="https://github.com/projectdiscovery/nuclei">Nuclei</a>,{' '}
+                <a href="https://github.com/gensecaihq/Shai-Hulud-2.0-Detector">Shai-Hulud</a>.
+              </p>
+            </Card>
+          </CardGrid>
+        </div>
+      </div>
+    )
+  }
 </aside>
 
 <style>
@@ -56,5 +117,66 @@ const localeBase = getLocaleBase(Astro.url?.pathname ?? '/');
 
   .license-notice a:hover {
     text-decoration: underline;
+  }
+
+  .attribution {
+    margin-block-start: 0.75em;
+    --poc-attribution-gap: 1rem;
+    padding-block-start: var(--poc-attribution-gap);
+    border-block-start: 1px solid var(--poc-border-subtle, var(--sl-color-gray-6));
+    display: flex;
+    flex-direction: column;
+    gap: var(--poc-attribution-gap);
+  }
+
+  .attribution-lede {
+    opacity: 0.9;
+    margin: 0;
+    font-size: clamp(var(--sl-text-sm), calc(0.0625rem + 1.6vw), var(--sl-text-lg));
+    line-height: var(--sl-line-height);
+    color: var(--sl-color-gray-2);
+  }
+
+  .attribution-cards {
+    margin: 0;
+  }
+
+  .attribution-cards :global(.card) {
+    background-color: var(--poc-surface-mid, rgb(var(--poc-base) / 0.35));
+    border-color: var(--poc-border, var(--sl-color-gray-5));
+  }
+
+  .attribution-cards :global(.card .title) {
+    color: var(--sl-color-white);
+  }
+
+  :root[data-theme="light"] .attribution-cards :global(.card .title) {
+    color: var(--sl-color-gray-1);
+  }
+
+  .attribution-cards :global(.card .body) {
+    color: var(--sl-color-gray-2);
+    font-size: var(--sl-text-sm);
+    line-height: 1.7;
+  }
+
+  .attribution-cards :global(.card .body ul) {
+    margin: 0.25em 0 0;
+    padding-inline-start: 1.1em;
+  }
+
+  .attribution-cards :global(.card .body li) {
+    margin: 0.1em 0;
+  }
+
+  .attribution-cards :global(.card .body .also-used) {
+    margin: 0.75em 0 0;
+    opacity: 0.8;
+  }
+
+  @media (min-width: 50rem) {
+    .attribution {
+      --poc-attribution-gap: 1.5rem;
+    }
   }
 </style>

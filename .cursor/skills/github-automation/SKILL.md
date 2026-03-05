@@ -66,6 +66,11 @@ Audit the branch for issues the work introduced or exposed:
 - **Broken or missing links**: check all content pages for unlinked repo references, wrong URLs, or stale paths.
 - **Skill and doc drift**: does the work introduce patterns, conventions, or constraints not yet documented in skills, rules, or `AGENTS.md`?
 - **Consistency**: are naming conventions, URL patterns, and file organization consistent with the rest of the repo?
+- **Frontend calmness (when UI changed)**: do a quick visual check that the UI still feels quiet and readable.
+  - Toggle themes: Dark Atmospheric ↔ Light Atmospheric.
+  - Toggle register: Practitioner ↔ Beginner (confirm parity and no layout glitches).
+  - Spot-check locales: `/en-us/`, `/en-gb/`, `/de-de/` for the changed surface.
+  - Prefer layout `gap` over margin stacks; if something feels “stuffed”, reduce density instead of shrinking type.
 
 Present findings to the operator. Be specific: "I found X, Y, Z. Here is what I recommend fixing."
 
