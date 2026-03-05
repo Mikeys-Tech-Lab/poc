@@ -1,128 +1,126 @@
 // @ts-check
-import { defineConfig } from "astro/config";
-import starlight from "@astrojs/starlight";
-import starlightCatppuccin from "@catppuccin/starlight";
+
+import starlight from '@astrojs/starlight';
+import starlightCatppuccin from '@catppuccin/starlight';
+import { defineConfig } from 'astro/config';
 export default defineConfig({
-  site: process.env.SITE_URL || "https://practiceofclarity.eu",
+  site: process.env.SITE_URL || 'https://practiceofclarity.eu',
   integrations: [
     starlight({
       plugins: [
         starlightCatppuccin({
-          dark: { flavor: "frappe", accent: "flamingo" },
-          light: { flavor: "latte", accent: "flamingo" },
+          dark: { flavor: 'frappe', accent: 'flamingo' },
+          light: { flavor: 'latte', accent: 'flamingo' },
         }),
       ],
-      title: "Practice of Clarity",
-      favicon: "/favicon.ico",
+      title: 'Practice of Clarity',
+      favicon: '/favicon.ico',
       locales: {
-        "en-us": { label: "English (US)", lang: "en-US" },
-        "en-gb": { label: "English (UK)", lang: "en-GB" },
-        "de-de": { label: "Deutsch", lang: "de-DE" },
+        'en-us': { label: 'English (US)', lang: 'en-US' },
+        'en-gb': { label: 'English (UK)', lang: 'en-GB' },
+        'de-de': { label: 'Deutsch', lang: 'de-DE' },
       },
-      defaultLocale: "en-us",
+      defaultLocale: 'en-us',
       head: [
         {
-          tag: "link",
+          tag: 'link',
           attrs: {
-            rel: "icon",
-            type: "image/svg+xml",
-            href: "/favicon.svg",
+            rel: 'icon',
+            type: 'image/svg+xml',
+            href: '/favicon.svg',
           },
         },
         {
-          tag: "link",
+          tag: 'link',
           attrs: {
-            rel: "icon",
-            type: "image/png",
-            sizes: "48x48",
-            href: "/favicon-48x48.png",
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '48x48',
+            href: '/favicon-48x48.png',
           },
         },
         {
-          tag: "link",
+          tag: 'link',
           attrs: {
-            rel: "icon",
-            type: "image/png",
-            sizes: "32x32",
-            href: "/favicon-32x32.png",
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '32x32',
+            href: '/favicon-32x32.png',
           },
         },
         {
-          tag: "link",
+          tag: 'link',
           attrs: {
-            rel: "icon",
-            type: "image/png",
-            sizes: "16x16",
-            href: "/favicon-16x16.png",
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '16x16',
+            href: '/favicon-16x16.png',
           },
         },
         {
-          tag: "link",
+          tag: 'link',
           attrs: {
-            rel: "apple-touch-icon",
-            sizes: "180x180",
-            href: "/apple-touch-icon.png",
+            rel: 'apple-touch-icon',
+            sizes: '180x180',
+            href: '/apple-touch-icon.png',
           },
         },
         {
-          tag: "link",
+          tag: 'link',
           attrs: {
-            rel: "manifest",
-            href: "/site.webmanifest",
+            rel: 'manifest',
+            href: '/site.webmanifest',
           },
         },
         {
-          tag: "meta",
+          tag: 'meta',
           attrs: {
-            name: "msapplication-TileImage",
-            content: "/mstile-150x150.png",
+            name: 'msapplication-TileImage',
+            content: '/mstile-150x150.png',
           },
         },
         // Frappé base: #303446 — update if dark flavor changes (see astro-starlight skill)
         {
-          tag: "meta",
+          tag: 'meta',
           attrs: {
-            name: "msapplication-TileColor",
-            content: "#303446",
+            name: 'msapplication-TileColor',
+            content: '#303446',
           },
         },
         {
-          tag: "meta",
+          tag: 'meta',
           attrs: {
-            name: "theme-color",
-            content: "#303446",
+            name: 'theme-color',
+            content: '#303446',
           },
         },
       ],
       components: {
-        Header: "./src/components/Header.astro",
-        SocialIcons: "./src/components/SocialIcons.astro",
-        MobileMenuFooter: "./src/components/MobileMenuFooter.astro",
-        ThemeProvider: "./src/components/ThemeProvider.astro",
-        ThemeSelect: "./src/components/ThemeSelect.astro",
-        Pagination: "./src/components/LicensePanel.astro",
+        SiteTitle: './src/components/SiteTitle.astro',
+        SocialIcons: './src/components/SocialIcons.astro',
+        ThemeProvider: './src/components/ThemeProvider.astro',
+        ThemeSelect: './src/components/ThemeSelect.astro',
+        Pagination: './src/components/LicensePanel.astro',
       },
-      customCss: ["./src/styles/custom.css"],
+      customCss: ['./src/styles/custom.css'],
       sidebar: [
-        { label: "Home", slug: "" },
+        { label: 'Home', slug: '' },
         {
-          label: "About",
+          label: 'About',
           items: [
-            { label: "What this is", slug: "about/what-this-is" },
-            { label: "Publication arc", slug: "about/publication-arc" },
+            { label: 'What this is', slug: 'about/what-this-is' },
+            { label: 'Publication arc', slug: 'about/publication-arc' },
           ],
         },
         {
-          label: "Articles",
-          items: [
-            { label: "Placeholder article", slug: "articles/placeholder" },
-          ],
+          label: 'Articles',
+          items: [{ label: 'Placeholder article', slug: 'articles/placeholder' }],
         },
         {
-          label: "Licenses",
+          label: 'Licenses',
           items: [
-            { label: "CC BY 4.0", slug: "licenses/cc-by-4-0" },
-            { label: "MIT", slug: "licenses/mit" },
+            { label: 'CC BY 4.0', slug: 'licenses/cc-by-4-0' },
+            { label: 'MIT', slug: 'licenses/mit' },
           ],
         },
       ],

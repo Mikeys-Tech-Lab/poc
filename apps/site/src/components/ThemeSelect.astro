@@ -1,5 +1,10 @@
 ---
 import Select from '@astrojs/starlight/components/Select.astro';
+import { getLocaleFromPath } from '../lib/locale';
+import { getThemeLabels } from '../lib/i18n';
+
+const locale = getLocaleFromPath(Astro.url?.pathname ?? '/');
+const t = getThemeLabels(locale);
 ---
 
 <starlight-theme-select>
@@ -7,13 +12,13 @@ import Select from '@astrojs/starlight/components/Select.astro';
 		icon="laptop"
 		label={Astro.locals.t('themeSelect.accessibleLabel')}
 		options={[
-			{ label: Astro.locals.t('themeSelect.dark'), selected: false, value: 'dark' },
-			{ label: Astro.locals.t('themeSelect.light'), selected: false, value: 'light' },
+			{ label: t.darkAtmospheric, selected: false, value: 'dark' },
+			{ label: t.lightAtmospheric, selected: false, value: 'light' },
 			{ label: Astro.locals.t('themeSelect.auto'), selected: true, value: 'auto' },
-			{ label: 'Dark Solid', selected: false, value: 'dark-solid' },
-			{ label: 'Light Solid', selected: false, value: 'light-solid' },
+			{ label: t.darkSolid, selected: false, value: 'dark-solid' },
+			{ label: t.lightSolid, selected: false, value: 'light-solid' },
 		]}
-		width="7.5em"
+		width="12em"
 	/>
 </starlight-theme-select>
 

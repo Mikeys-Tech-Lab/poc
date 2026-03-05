@@ -1,12 +1,7 @@
 ---
-const pathname = Astro.url?.pathname ?? '/';
-const localeBase = pathname.startsWith('/en-gb/')
-  ? '/en-gb'
-  : pathname.startsWith('/de-de/')
-    ? '/de-de'
-    : pathname.startsWith('/en-us/')
-      ? '/en-us'
-      : '/en-us';
+import { getLocaleBase } from '../lib/locale';
+
+const localeBase = getLocaleBase(Astro.url?.pathname ?? '/');
 ---
 
 <aside class="license-notice">

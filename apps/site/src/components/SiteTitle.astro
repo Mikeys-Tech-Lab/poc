@@ -1,0 +1,142 @@
+---
+import config from 'virtual:starlight/user-config';
+import { logos } from 'virtual:starlight/user-images';
+import { getLocaleFromPath } from '../lib/locale';
+import { getRegisterLabels } from '../lib/i18n';
+
+const { siteTitle } = Astro.locals.starlightRoute;
+const locale = getLocaleFromPath(Astro.url?.pathname ?? '/');
+const t = getRegisterLabels(locale);
+---
+
+<poc-register-toggle>
+  <button type="button" class="site-title sl-flex">
+    {
+      config.logo && logos.dark && (
+        <>
+          <img
+            class:list={{ 'light:sl-hidden print:hidden': !('src' in config.logo) }}
+            alt={config.logo.alt}
+            src={logos.dark.src}
+            width={logos.dark.width}
+            height={logos.dark.height}
+          />
+          {!('src' in config.logo) && (
+            <img
+              class="dark:sl-hidden print:block"
+              alt={config.logo.alt}
+              src={logos.light?.src}
+              width={logos.light?.width}
+              height={logos.light?.height}
+            />
+          )}
+        </>
+      )
+    }
+    <span class:list={{ 'sr-only': config.logo?.replacesTitle }} translate="no">
+      {siteTitle}<sup class="register-label"><svg aria-hidden="true" class="register-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="7" opacity="0.6" /><circle cx="15" cy="12" r="7" opacity="0.6" /></svg><span class="label-practitioner">{t.practitioner}</span><span class="label-beginner">{t.beginner}</span></sup>
+    </span>
+  </button>
+</poc-register-toggle>
+
+<script>
+  import { parseRegister, loadRegister, setRegister } from '../lib/register';
+  import { rebuildToc } from '../lib/toc';
+
+  window.addEventListener('poc:register-change', (e) => {
+    const { register } = (e as CustomEvent).detail;
+    document.querySelectorAll('poc-register-toggle button').forEach((btn) => {
+      if (btn instanceof HTMLButtonElement) {
+        btn.setAttribute(
+          'aria-pressed',
+          register === 'beginner' ? 'true' : 'false',
+        );
+      }
+    });
+    rebuildToc();
+  });
+
+  class PocRegisterToggle extends HTMLElement {
+    constructor() {
+      super();
+      setRegister(loadRegister());
+
+      this.querySelector('button')?.addEventListener('click', () => {
+        const current = parseRegister(document.documentElement.dataset.register);
+        const next = current === 'beginner' ? 'practitioner' : 'beginner';
+        setRegister(next);
+      });
+    }
+  }
+  customElements.define('poc-register-toggle', PocRegisterToggle);
+</script>
+
+<style>
+  @layer starlight.core {
+    .site-title {
+      align-items: center;
+      gap: var(--sl-nav-gap);
+      font-size: var(--sl-text-h4);
+      font-weight: 600;
+      color: var(--sl-color-text-accent);
+      text-decoration: none;
+      white-space: nowrap;
+      min-width: 0;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      font-family: var(--sl-font);
+      line-height: normal;
+    }
+
+    .site-title:hover {
+      opacity: 0.8;
+    }
+
+    span {
+      overflow: visible;
+    }
+
+    img {
+      height: calc(var(--sl-nav-height) - 2 * var(--sl-nav-pad-y));
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      object-position: 0 50%;
+    }
+  }
+
+  .register-label {
+    font-size: 0.65em;
+    font-weight: 400;
+    color: var(--poc-register-accent);
+    margin-inline-start: 0.4em;
+    vertical-align: super;
+    letter-spacing: 0.02em;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    line-height: 1;
+  }
+
+  .register-icon {
+    flex-shrink: 0;
+    width: 1.5cap;
+    height: 1.5cap;
+    align-self: center;
+  }
+
+  .label-beginner {
+    display: none;
+  }
+
+  :global(:root[data-register='beginner']) .label-practitioner {
+    display: none;
+  }
+
+  :global(:root[data-register='beginner']) .label-beginner {
+    display: inline;
+  }
+</style>

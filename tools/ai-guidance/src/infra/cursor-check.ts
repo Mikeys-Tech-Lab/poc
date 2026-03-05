@@ -1,27 +1,24 @@
-import { checkCursor } from "./collect-checks.js";
-import { renderReport } from "../domain/report.js";
-import { writeReport } from "./write-report.js";
-import type { CapabilityReport } from "../domain/types.js";
-import { resolve } from "node:path";
+import { resolve } from 'node:path';
+import { renderReport } from '../domain/report.js';
+import type { CapabilityReport } from '../domain/types.js';
+import { checkCursor } from './collect-checks.js';
+import { writeReport } from './write-report.js';
 
-const REPORT_PATH = resolve(
-  import.meta.dirname,
-  "../../../../docs/ai/cursor-state.md"
-);
+const REPORT_PATH = resolve(import.meta.dirname, '../../../../docs/ai/cursor-state.md');
 
 const main = async () => {
   const cursorCheck = checkCursor();
 
   const report: CapabilityReport = {
-    title: "Cursor Capability State",
+    title: 'Cursor Capability State',
     generatedAt: new Date().toISOString(),
     checks: [cursorCheck],
     manualChecklist: [
-      "Verify Cursor version via Help > About",
-      "Check if AskQuestion tool is available in current Cursor build",
-      "Check if Plan mode is available in current Cursor build",
-      "Check if project skills (.cursor/skills/) are supported",
-      "Check if .mdc rule format is supported",
+      'Verify Cursor version via Help > About',
+      'Check if AskQuestion tool is available in current Cursor build',
+      'Check if Plan mode is available in current Cursor build',
+      'Check if project skills (.cursor/skills/) are supported',
+      'Check if .mdc rule format is supported',
     ],
   };
 

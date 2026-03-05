@@ -2,7 +2,15 @@
 import { Icon } from '@astrojs/starlight/components';
 ---
 
-{/* Inlined to prevent FOUC. Sets data-theme, data-style, and data-register before render. */}
+{/*
+  Inlined to prevent FOUC. Sets data-theme, data-style, and data-register
+  before first paint. This script MUST be is:inline because Vite-processed
+  module scripts are deferred and would cause a flash.
+
+  The register storage key ('poc-register') and parsing logic are intentionally
+  duplicated from src/lib/register.ts. Inline scripts cannot use ES imports.
+  If the key or default changes, update both locations.
+*/}
 <script is:inline>
 	window.StarlightThemeProvider = (() => {
 		const stored =
