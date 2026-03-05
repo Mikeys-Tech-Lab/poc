@@ -1,1 +1,1 @@
-export const LINKEDIN = "https://www.linkedin.com/in/mikeysebastiandrozd";
+export const LINKEDIN = 'https://www.linkedin.com/in/mikeysebastiandrozd';

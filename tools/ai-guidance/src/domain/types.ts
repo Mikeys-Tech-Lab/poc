@@ -1,4 +1,4 @@
-export type CheckStatus = "ok" | "unknown" | "mismatch" | "error";
+export type CheckStatus = 'ok' | 'unknown' | 'mismatch' | 'error';
 
 export interface CheckResult {
   readonly name: string;
