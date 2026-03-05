@@ -24,7 +24,8 @@ const shouldRenderSearch =
 	<div class="title-wrapper sl-flex">
 		<SiteTitle />
 	</div>
-	<div class="sl-flex print:hidden">
+	<div class="sl-flex print:hidden search-a11y">
+		<AccessibilityPanel />
 		{shouldRenderSearch && <Search />}
 	</div>
 	<div class="sl-hidden md:sl-flex print:hidden right-group">
@@ -33,7 +34,6 @@ const shouldRenderSearch =
 		</div>
 		<ThemeSelect />
 		<LanguageSelect />
-		<AccessibilityPanel />
 	</div>
 </div>
 
@@ -52,6 +52,11 @@ const shouldRenderSearch =
 			padding: 0.25rem;
 			margin: -0.25rem;
 			min-width: 0;
+		}
+
+		.search-a11y {
+			gap: 0.5rem;
+			align-items: center;
 		}
 
 		.right-group,
