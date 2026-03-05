@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.2](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v0.8.1...site-v0.8.2) (2026-03-05)
+
+
+### Bug Fixes
+
+* **astro:** move accessibility button to right-group on desktop ([#58](https://github.com/Mikeys-Tech-Lab/poc/issues/58)) ([3c07a48](https://github.com/Mikeys-Tech-Lab/poc/commit/3c07a481d282fd87687a7d4e180560a708570de8))
+
 ## [0.8.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v0.8.0...site-v0.8.1) (2026-03-05)
 
 
