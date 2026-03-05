@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.2.1...ai-guidance-v0.2.2) (2026-03-05)
+
+
+### Miscellaneous
+
+* update dependencies and consolidate Dependabot config ([#48](https://github.com/Mikeys-Tech-Lab/poc/issues/48)) ([72424dd](https://github.com/Mikeys-Tech-Lab/poc/commit/72424dd8d261d010024b6356c66e665abd0ab48a))
+
 ## [0.2.1](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.2.0...ai-guidance-v0.2.1) (2026-03-05)
 
 
