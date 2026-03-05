@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.11.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.11.1...PoC-v0.11.2) (2026-03-05)
+
+
+### Miscellaneous
+
+* **deps-dev:** bump @biomejs/biome in / ([#50](https://github.com/Mikeys-Tech-Lab/poc/issues/50)) ([30e24a8](https://github.com/Mikeys-Tech-Lab/poc/commit/30e24a86333ed3b3b35a1edde00538aa37003a03))
+
+## [0.11.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.11.0...PoC-v0.11.1) (2026-03-05)
+
+
+### Miscellaneous
+
+* update dependencies and consolidate Dependabot config ([#48](https://github.com/Mikeys-Tech-Lab/poc/issues/48)) ([72424dd](https://github.com/Mikeys-Tech-Lab/poc/commit/72424dd8d261d010024b6356c66e665abd0ab48a))
+
 ## [0.11.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.10.1...PoC-v0.11.0) (2026-03-05)
 
 

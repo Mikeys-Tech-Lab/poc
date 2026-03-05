@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v0.6.0...site-v0.6.1) (2026-03-05)
+
+
+### Miscellaneous
+
+* update dependencies and consolidate Dependabot config ([#48](https://github.com/Mikeys-Tech-Lab/poc/issues/48)) ([72424dd](https://github.com/Mikeys-Tech-Lab/poc/commit/72424dd8d261d010024b6356c66e665abd0ab48a))
+
 ## [0.6.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v0.5.1...site-v0.6.0) (2026-03-05)
 
 
