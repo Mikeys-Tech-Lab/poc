@@ -14,7 +14,7 @@
  */
 
 export type A11yContrast = 'default' | 'more';
-export type A11yTextSize = '100' | '112' | '125';
+export type A11yTextSize = '100' | '125' | '150' | '175' | '200';
 export type A11yMotion = 'default' | 'reduce';
 export type A11yLinks = 'default' | 'underline';
 export type A11yFont = 'default' | 'alt';
@@ -42,7 +42,16 @@ export function parsePreferences(raw: unknown): A11yPreferences {
   const obj = raw as Record<string, unknown>;
   return {
     contrast: obj.contrast === 'more' ? 'more' : 'default',
-    text: obj.text === '112' ? '112' : obj.text === '125' ? '125' : '100',
+    text:
+      obj.text === '125'
+        ? '125'
+        : obj.text === '150'
+          ? '150'
+          : obj.text === '175'
+            ? '175'
+            : obj.text === '200'
+              ? '200'
+              : '100',
     motion: obj.motion === 'reduce' ? 'reduce' : 'default',
     links: obj.links === 'underline' ? 'underline' : 'default',
     font: obj.font === 'alt' ? 'alt' : 'default',

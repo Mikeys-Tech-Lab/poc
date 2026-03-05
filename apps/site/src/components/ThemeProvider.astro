@@ -48,7 +48,7 @@ import { Icon } from '@astrojs/starlight/components';
 				const parsed = JSON.parse(raw);
 				a11y = {
 					contrast: parsed.contrast === 'more' ? 'more' : 'default',
-					text: parsed.text === '112' ? '112' : parsed.text === '125' ? '125' : '100',
+					text: parsed.text === '125' ? '125' : parsed.text === '150' ? '150' : parsed.text === '175' ? '175' : parsed.text === '200' ? '200' : '100',
 					motion: parsed.motion === 'reduce' ? 'reduce' : 'default',
 					links: parsed.links === 'underline' ? 'underline' : 'default',
 					font: parsed.font === 'alt' ? 'alt' : 'default',

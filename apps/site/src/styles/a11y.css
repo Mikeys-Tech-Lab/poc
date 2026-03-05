@@ -10,12 +10,20 @@
    targeting component selectors directly. */
 
 /* ── Text size ── */
-:root[data-a11y-text="112"] {
-  font-size: 112.5%;
-}
-
 :root[data-a11y-text="125"] {
   font-size: 125%;
+}
+
+:root[data-a11y-text="150"] {
+  font-size: 150%;
+}
+
+:root[data-a11y-text="175"] {
+  font-size: 175%;
+}
+
+:root[data-a11y-text="200"] {
+  font-size: 200%;
 }
 
 /* ── Increased contrast ──
