@@ -1,0 +1,98 @@
+/* ── Alternate font (Atkinson Hyperlegible Next) ──
+   Loaded first because @import must precede other rules.
+   Designed for low-vision readability. */
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+/* ── Accessibility preference behaviors ──
+   Activated by data-a11y-* attributes on <html>, set by
+   ThemeProvider (before paint) and a11y-preferences.ts (runtime).
+   Token-first: modifies --poc-* and --sl-* tokens rather than
+   targeting component selectors directly. */
+
+/* ── Text size ── */
+:root[data-a11y-text="112"] {
+  font-size: 112.5%;
+}
+
+:root[data-a11y-text="125"] {
+  font-size: 125%;
+}
+
+/* ── Increased contrast ──
+   Atmospheric mode: darken surfaces, strengthen borders.
+   Solid mode already has maximum opacity, so contrast mode
+   only strengthens borders and text contrast there. */
+:root[data-a11y-contrast="more"] {
+  --poc-surface-faint: rgb(var(--poc-base) / 0.35);
+  --poc-surface: rgb(var(--poc-base) / 0.5);
+  --poc-surface-mid: rgb(var(--poc-base) / 0.55);
+  --poc-surface-raised: rgb(var(--poc-base) / 0.6);
+  --poc-surface-heavy: rgb(var(--poc-base) / 0.65);
+  --poc-surface-dense: rgb(var(--poc-base) / 0.9);
+  --poc-surface-panel: rgb(var(--poc-base) / 0.92);
+
+  --poc-border: rgb(var(--poc-overlay) / 0.3);
+  --poc-border-subtle: rgb(var(--poc-overlay) / 0.2);
+  --poc-border-faint: rgb(var(--poc-overlay) / 0.22);
+  --poc-border-hover: rgb(var(--poc-overlay) / 0.4);
+}
+
+:root[data-a11y-contrast="more"][data-theme="light"] {
+  --poc-surface-faint: rgb(var(--poc-overlay) / 0.15);
+  --poc-surface-panel: rgb(var(--poc-base) / 0.94);
+
+  --poc-border: rgb(var(--poc-overlay) / 0.3);
+  --poc-border-subtle: rgb(var(--poc-overlay) / 0.2);
+  --poc-border-faint: rgb(var(--poc-overlay) / 0.22);
+  --poc-border-hover: rgb(var(--poc-overlay) / 0.4);
+}
+
+/* Increase atmospheric tint overlay for better text contrast */
+:root[data-a11y-contrast="more"] body::before {
+  background:
+    linear-gradient(rgb(var(--poc-register-tint) / 0.78), rgb(var(--poc-register-tint) / 0.78)),
+    url("../assets/bg-landing.png") center / cover no-repeat;
+}
+:root[data-a11y-contrast="more"][data-theme="light"] body::before {
+  background:
+    linear-gradient(rgb(var(--poc-register-tint) / 0.82), rgb(var(--poc-register-tint) / 0.82)),
+    url("../assets/bg-landing.png") center / cover no-repeat;
+}
+
+/* ── Reduce motion ──
+   Respect both the user's OS preference and the explicit toggle. */
+:root[data-a11y-motion="reduce"],
+:root[data-a11y-motion="reduce"] * {
+  transition-duration: 0.01ms !important;
+  animation-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-a11y-motion="default"]),
+  :root:not([data-a11y-motion="default"]) * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Underline links ──
+   Scoped to content area. Respects existing link styles. */
+:root[data-a11y-links="underline"] .sl-markdown-content a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+}
+
+/* ── Alternate font activation ── */
+:root[data-a11y-font="alt"] {
+  --sl-font: "Atkinson Hyperlegible Next", sans-serif;
+}
+
+/* ── Focus visibility ──
+   Ensure focus rings are visible across all themes and styles. */
+:focus-visible {
+  outline: 2px solid var(--sl-color-accent);
+  outline-offset: 2px;
+}

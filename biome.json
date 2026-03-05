@@ -36,6 +36,16 @@
           }
         }
       }
+    },
+    {
+      "includes": ["**/a11y.css"],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noImportantStyles": "off"
+          }
+        }
+      }
     }
   ],
   "assist": {
