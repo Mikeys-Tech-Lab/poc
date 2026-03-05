@@ -259,6 +259,46 @@ pnpm lint:fix               # Auto-fix lint + formatting
 pnpm --filter site check    # Astro type checking
 ```
 
+## Testing
+
+### Unit tests (Vitest)
+
+Unit tests for shared modules live in `apps/site/src/lib/__tests__/`.
+
+- Vitest config: `apps/site/vitest.config.ts`. Default environment is `node`.
+- Pure modules (`locale.ts`, `i18n.ts`) run in `node` environment.
+- DOM modules (`register.ts`, `toc.ts`) opt in to `happy-dom` via `// @vitest-environment happy-dom` per file.
+- Shared test constants in `test-constants.ts` define the locale, path, and register matrix. Both unit and E2E tests import from this single source.
+- DOM helpers in `dom-helpers.ts` provide functional factory functions for test setup.
+
+### E2E tests (Playwright)
+
+E2E tests live in `apps/site/e2e/`. Playwright config: `apps/site/playwright.config.ts`.
+
+- Run against the built static output (`dist/`) via `pnpm preview`.
+- Chromium only. `webServer` config manages preview lifecycle.
+- Shared helpers in `e2e/helpers.ts` generate the page matrix and provide assertion functions.
+
+| Spec file | What it covers |
+|---|---|
+| `register-parity.spec.ts` | Both register content divs exist on every page (3 locales x 6 paths) |
+| `navigation.spec.ts` | All pages return 200, all internal links resolve |
+| `register-toggle.spec.ts` | Toggle content, URL param sync, ToC update |
+| `locale-switching.spec.ts` | Language selector navigation, locale reachability |
+| `installability.spec.ts` | Manifest, icons, maskable, theme-color consistency |
+
+### Test matrix
+
+The state matrix (3 locales x 6 content paths x 2 registers = 36 states) is generated from arrays in `test-constants.ts`. Adding a locale or page is a one-line data change. Register state is a query parameter (`?register=beginner`), not a route segment.
+
+## Installability surface
+
+The app icon comes from the web manifest (`public/site.webmanifest`), not the repo icon, not Astro, not GitHub.
+
+- All manifest-referenced assets live in `apps/site/public/` with absolute path references.
+- Maskable icons are required to prevent off-center cropping on Android-like launchers. The maskable safe zone is the inner 80% of the canvas.
+- After any icon change: `pnpm run build`, one manual install check in Chrome (clear site data if icon appears cached), and the installability E2E must pass.
+
 ## Common commands
 
 ```bash
@@ -267,7 +307,8 @@ pnpm run build              # Production build (run before committing)
 pnpm --filter site preview  # Preview production build
 pnpm lint                   # Lint and format check
 pnpm lint:fix               # Auto-fix lint and formatting
-pnpm test                   # Run tests (ai-guidance)
+pnpm test                   # Run all unit tests (both packages)
+pnpm --filter site test:e2e # Run E2E tests (requires prior build)
 ```
 
 ## Additional resources
