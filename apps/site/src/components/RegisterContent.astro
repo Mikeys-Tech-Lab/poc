@@ -10,7 +10,8 @@ const { beginner } = Astro.props;
 let BeginnerContent: any = null;
 
 if (beginner) {
-	const match = await getEntry('beginner', beginner);
+	const match = await getEntry('beginner', beginner)
+		?? await getEntry('beginner', beginner.replace(/\/index$/, ''));
 	if (match) {
 		const rendered = await render(match);
 		BeginnerContent = rendered.Content;
