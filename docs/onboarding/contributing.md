@@ -81,4 +81,6 @@ The `github-automation` skill has the full release details.
 
 Every PR updates all affected documentation in the same PR. There is no "update docs later." This applies to every surface: `AGENTS.md`, onboarding, architecture, infra, guidance, rules, skills, and adapters.
 
+Significant structural decisions get an Architecture Decision Record in `docs/decisions/`. The criteria: URL or content architecture changes, multi-file reversals, hard breaks, or decisions someone might ask "why?" about in 6 months. See `docs/decisions/README.md` for the template.
+
 See `AGENTS.md` § Documentation evolution discipline for the full rule and specific obligations by change type.

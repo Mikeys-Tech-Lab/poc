@@ -36,6 +36,7 @@ flowchart TD
 
   Guidance[docs/guidance/] -.->|"describes"| Agents
   Architecture[docs/architecture/] -.->|"describes"| Agents
+  Decisions[docs/decisions/] -.->|"structural rationale"| Agents
   Onboarding[docs/onboarding/] -.->|"newcomer paths"| Agents
   OnboardSkill[".cursor/skills/onboarding/"] -->|"reads index"| Onboarding
 
@@ -101,6 +102,7 @@ flowchart TD
 | `docs/onboarding/` | Newcomer onboarding paths (topic index, local setup, AI guidance, workspace, security, infra, contributing) | Exists |
 | `docs/guidance/` | Descriptive guidance docs (conventions, change process) | Exists |
 | `docs/architecture/` | Architecture docs + this canonical diagram | Exists |
+| `docs/decisions/` | Architecture Decision Records (ADRs) — structural rationale with trace | Exists |
 | `docs/ai/` | Capability alignment reports (generated) | Exists |
 | `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks | Exists |
 | `apps/site/` | Astro Starlight frontend | Exists |

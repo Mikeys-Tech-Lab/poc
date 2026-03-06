@@ -65,6 +65,8 @@ Audit the branch for issues the work introduced or exposed:
 - **Dead code**: search for unused exports, unreferenced files, or orphaned config.
 - **Broken or missing links**: check all content pages for unlinked repo references, wrong URLs, or stale paths.
 - **Skill and doc drift**: does the work introduce patterns, conventions, or constraints not yet documented in skills, rules, or `AGENTS.md`?
+- **ADR needed?** Does this work involve a structural decision that meets the ADR criteria (`docs/decisions/README.md`)? If yes, write or update an ADR in the same PR.
+- **Path verification**: verify all doc surface paths referenced in the PR description or plan are still valid. Do not reference files that have moved or do not exist.
 - **Consistency**: are naming conventions, URL patterns, and file organization consistent with the rest of the repo?
 - **Frontend calmness (when UI changed)**: do a quick visual check that the UI still feels quiet and readable.
   - Toggle themes: Dark Atmospheric ↔ Light Atmospheric.
