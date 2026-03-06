@@ -19,11 +19,11 @@ export default defineConfig({
       title: 'Practice of Clarity',
       favicon: '/favicon.ico',
       locales: {
-        'en-us': { label: 'English (US)', lang: 'en-US' },
+        root: { label: 'English (US)', lang: 'en-US' },
         'en-gb': { label: 'English (UK)', lang: 'en-GB' },
         'de-de': { label: 'Deutsch', lang: 'de-DE' },
       },
-      defaultLocale: 'en-us',
+      defaultLocale: 'root',
       head: [
         {
           tag: 'link',
