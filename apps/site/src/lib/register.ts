@@ -11,12 +11,12 @@
  * can react without coupling to the toggle component.
  */
 
-export type Register = 'practitioner' | 'beginner';
+export type Register = 'practitioner' | 'orientation';
 
 export const STORAGE_KEY = 'poc-register';
 
 export const parseRegister = (value: unknown): Register =>
-  value === 'beginner' ? 'beginner' : 'practitioner';
+  value === 'orientation' ? 'orientation' : 'practitioner';
 
 export const getRegister = (): Register => parseRegister(document.documentElement.dataset.register);
 
@@ -25,8 +25,8 @@ export const loadRegister = (): Register =>
 
 function syncUrlParam(register: Register): void {
   const url = new URL(window.location.href);
-  if (register === 'beginner') {
-    url.searchParams.set('register', 'beginner');
+  if (register === 'orientation') {
+    url.searchParams.set('register', 'orientation');
   } else {
     url.searchParams.delete('register');
   }

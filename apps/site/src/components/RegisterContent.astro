@@ -2,19 +2,19 @@
 import { getEntry, render } from 'astro:content';
 
 interface Props {
-	beginner?: string;
+	orientation?: string;
 }
 
-const { beginner } = Astro.props;
+const { orientation } = Astro.props;
 
-let BeginnerContent: any = null;
+let OrientationContent: any = null;
 
-if (beginner) {
-	const match = await getEntry('beginner', beginner)
-		?? await getEntry('beginner', beginner.replace(/\/index$/, ''));
+if (orientation) {
+	const match = await getEntry('register', orientation)
+		?? await getEntry('register', orientation.replace(/\/index$/, ''));
 	if (match) {
 		const rendered = await render(match);
-		BeginnerContent = rendered.Content;
+		OrientationContent = rendered.Content;
 	}
 }
 ---
@@ -24,23 +24,23 @@ if (beginner) {
 </div>
 
 {
-	BeginnerContent && (
-		<div data-register-content="beginner">
-			<BeginnerContent />
+	OrientationContent && (
+		<div data-register-content="orientation">
+			<OrientationContent />
 		</div>
 	)
 }
 
 <style is:global>
-	[data-register-content='beginner'] {
+	[data-register-content='orientation'] {
 		display: none;
 	}
 
-	:root[data-register='beginner'] [data-register-content='practitioner'] {
+	:root[data-register='orientation'] [data-register-content='practitioner'] {
 		display: none;
 	}
 
-	:root[data-register='beginner'] [data-register-content='beginner'] {
+	:root[data-register='orientation'] [data-register-content='orientation'] {
 		display: contents;
 	}
 </style>

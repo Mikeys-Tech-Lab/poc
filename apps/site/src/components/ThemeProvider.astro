@@ -34,9 +34,9 @@ import { Icon } from '@astrojs/starlight/components';
 		const storedRegister =
 			typeof localStorage !== 'undefined' && localStorage.getItem('poc-register');
 		const register = urlRegister || storedRegister;
-		document.documentElement.dataset.register = register === 'beginner' ? 'beginner' : 'practitioner';
+		document.documentElement.dataset.register = register === 'orientation' ? 'orientation' : 'practitioner';
 		if (urlRegister && typeof localStorage !== 'undefined') {
-			localStorage.setItem('poc-register', register === 'beginner' ? 'beginner' : 'practitioner');
+			localStorage.setItem('poc-register', register === 'orientation' ? 'orientation' : 'practitioner');
 		}
 
 		/* ── Accessibility preferences (duplicated from a11y-preferences.ts) ── */

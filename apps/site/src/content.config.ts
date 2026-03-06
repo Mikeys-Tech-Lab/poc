@@ -5,8 +5,8 @@ import { glob } from 'astro/loaders';
 
 export const collections = {
   docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
-  beginner: defineCollection({
-    loader: glob({ pattern: '**/*.mdx', base: './src/content/beginner' }),
+  register: defineCollection({
+    loader: glob({ pattern: '**/*.mdx', base: './src/content/register' }),
     schema: z.object({
       title: z.string().optional(),
     }),

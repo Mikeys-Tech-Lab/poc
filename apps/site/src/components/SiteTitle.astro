@@ -34,7 +34,7 @@ const t = getRegisterLabels(locale);
       )
     }
     <span class:list={{ 'sr-only': config.logo?.replacesTitle }} translate="no">
-      {siteTitle}<sup class="register-label"><svg aria-hidden="true" class="register-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="7" opacity="0.6" /><circle cx="15" cy="12" r="7" opacity="0.6" /></svg><span class="label-practitioner">{t.practitioner}</span><span class="label-beginner">{t.beginner}</span></sup>
+      {siteTitle}<sup class="register-label"><svg aria-hidden="true" class="register-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="7" opacity="0.6" /><circle cx="15" cy="12" r="7" opacity="0.6" /></svg><span class="label-practitioner">{t.practitioner}</span><span class="label-orientation">{t.orientation}</span></sup>
     </span>
   </button>
 </poc-register-toggle>
@@ -49,7 +49,7 @@ const t = getRegisterLabels(locale);
       if (btn instanceof HTMLButtonElement) {
         btn.setAttribute(
           'aria-pressed',
-          register === 'beginner' ? 'true' : 'false',
+          register === 'orientation' ? 'true' : 'false',
         );
       }
     });
@@ -63,7 +63,7 @@ const t = getRegisterLabels(locale);
 
       this.querySelector('button')?.addEventListener('click', () => {
         const current = parseRegister(document.documentElement.dataset.register);
-        const next = current === 'beginner' ? 'practitioner' : 'beginner';
+        const next = current === 'orientation' ? 'practitioner' : 'orientation';
         setRegister(next);
       });
     }
@@ -130,15 +130,15 @@ const t = getRegisterLabels(locale);
     align-self: center;
   }
 
-  .label-beginner {
+  .label-orientation {
     display: none;
   }
 
-  :global(:root[data-register='beginner']) .label-practitioner {
+  :global(:root[data-register='orientation']) .label-practitioner {
     display: none;
   }
 
-  :global(:root[data-register='beginner']) .label-beginner {
+  :global(:root[data-register='orientation']) .label-orientation {
     display: inline;
   }
 </style>
