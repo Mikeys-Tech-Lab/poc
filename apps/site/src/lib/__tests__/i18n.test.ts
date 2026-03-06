@@ -7,23 +7,23 @@ describe('getRegisterLabels', () => {
   it.each(LOCALES)('returns labels for %s', (locale) => {
     const labels = getRegisterLabels(locale);
     expect(labels).toHaveProperty('practitioner');
-    expect(labels).toHaveProperty('beginner');
+    expect(labels).toHaveProperty('orientation');
     expect(typeof labels.practitioner).toBe('string');
-    expect(typeof labels.beginner).toBe('string');
+    expect(typeof labels.orientation).toBe('string');
     expect(labels.practitioner.length).toBeGreaterThan(0);
-    expect(labels.beginner.length).toBeGreaterThan(0);
+    expect(labels.orientation.length).toBeGreaterThan(0);
   });
 
   it('returns German labels for de-DE', () => {
     const labels = getRegisterLabels('de-DE');
     expect(labels.practitioner).toBe('Praktiker');
-    expect(labels.beginner).toBe('Anfänger');
+    expect(labels.orientation).toBe('Orientierung');
   });
 
   it('falls back to en-US for unknown locale', () => {
     const labels = getRegisterLabels('fr-FR' as Locale);
     expect(labels.practitioner).toBe('Practitioner');
-    expect(labels.beginner).toBe('Beginner');
+    expect(labels.orientation).toBe('Orientation');
   });
 });
 

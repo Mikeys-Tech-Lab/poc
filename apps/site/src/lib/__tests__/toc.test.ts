@@ -67,18 +67,18 @@ describe('rebuildToc', () => {
     const practitioner = createRegisterContent('practitioner', [
       { tag: 'h2', id: 'p-heading', text: 'Practitioner Heading' },
     ]);
-    const beginner = createRegisterContent('beginner', [
-      { tag: 'h2', id: 'b-heading', text: 'Beginner Heading' },
+    const orientation = createRegisterContent('orientation', [
+      { tag: 'h2', id: 'o-heading', text: 'Orientation Heading' },
     ]);
     document.body.appendChild(practitioner);
-    document.body.appendChild(beginner);
-    setRegisterAttribute('beginner');
+    document.body.appendChild(orientation);
+    setRegisterAttribute('orientation');
 
     rebuildToc();
 
     const items = document.querySelectorAll('starlight-toc nav > ul > li');
     expect(items.length).toBe(1);
-    expect(items[0].querySelector('a')?.textContent).toBe('Beginner Heading');
+    expect(items[0].querySelector('a')?.textContent).toBe('Orientation Heading');
   });
 
   it('skips headings without id or text', () => {
