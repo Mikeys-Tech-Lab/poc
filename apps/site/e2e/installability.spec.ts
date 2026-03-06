@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test.describe('installability', () => {
   test('manifest is linked in head', async ({ page }) => {
-    await page.goto('/en-us/');
+    await page.goto('/');
     const manifestHref = await page.locator('link[rel="manifest"]').getAttribute('href');
     expect(manifestHref).toBeTruthy();
   });
@@ -77,7 +77,7 @@ test.describe('installability', () => {
   });
 
   test('theme_color is consistent between manifest and meta tag', async ({ page, request }) => {
-    await page.goto('/en-us/');
+    await page.goto('/');
     const metaColor = await page.locator('meta[name="theme-color"]').getAttribute('content');
 
     const manifest = await (await request.get('/site.webmanifest')).json();

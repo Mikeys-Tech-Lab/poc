@@ -23,21 +23,30 @@ Before relying on any Astro or Starlight feature:
 
 ## Content boundaries
 
-- Site content (practitioner): `apps/site/src/content/docs/`
-- Site content (beginner): `apps/site/src/content/beginner/`
+- Practitioner register (canonical): `apps/site/src/content/docs/` (Starlight-native, root locale = en-US)
+- Register content (orientation and future registers): `apps/site/src/content/register/<register>/<locale>/...`
 - Assets (images, fonts): `apps/site/src/assets/`
 - Shared modules: `apps/site/src/lib/`
 - Seeds (`seeds/`) are development-only sources. They are not the site content tree.
 - The site may reference seeds but must not import them as pages.
+
+### Register × locale two-axis model
+
+Locale and register are independent axes (see `seeds/Translation and Register Guidance.md`). Every register is multilingual and every locale is an accountable edition.
+
+- **Practitioner** register is the canonical Starlight content in `src/content/docs/`. Root locale (en-US) content lives directly in `docs/`; other locales live in `docs/en-gb/`, `docs/de-de/`, etc.
+- **Other registers** live under `src/content/register/<register>/<locale>/...`. Each register keeps explicit locale folders (e.g. `register/orientation/en-us/`, `register/orientation/en-gb/`).
+
+Register families (from seeds): orientation, low-cognitive-load, institutional-interface, public, short-form.
 
 ### Content collections
 
 Two content collections are defined in `content.config.ts`:
 
 - `docs`: Starlight's native collection. Uses `docsLoader()` and `docsSchema()`.
-- `beginner`: Custom collection for beginner-register companion content. Uses Astro's `glob` loader for `**/*.mdx` files in `src/content/beginner/`.
+- `register`: Custom collection for non-practitioner register content. Uses Astro's `glob` loader for `**/*.mdx` files in `src/content/register/`.
 
-Both follow the same locale directory structure: `{locale}/section/page.mdx`.
+Root locale (en-US) uses Starlight's `root` key. Content lives directly in `docs/` (no `en-us/` prefix). Other locales keep their prefixed subdirectories.
 
 ## Known pitfalls
 
@@ -130,7 +139,7 @@ Reusable logic lives in `src/lib/` as pure TypeScript modules. Components import
 
 **Server vs. client**: `locale.ts` and `i18n.ts` run at build time in Astro frontmatter. `register.ts` and `toc.ts` run in the browser via Vite-processed `<script>` tags.
 
-**Adding a locale**: update `locale.ts` (prefix map), `i18n.ts` (label maps), and `astro.config.mjs` (locales object).
+**Adding a locale**: update `locale.ts` (prefix map), `i18n.ts` (label maps), and `astro.config.mjs` (locales object). For register content, add a new locale folder under each active register in `src/content/register/`.
 
 ## Component overrides
 
@@ -138,7 +147,7 @@ Five Starlight components are overridden via the `components` key in `astro.conf
 
 | Override | File | Purpose |
 |---|---|---|
-| `SiteTitle` | `src/components/SiteTitle.astro` | Site title with register toggle. Clicking the title switches between Practitioner and Beginner. |
+| `SiteTitle` | `src/components/SiteTitle.astro` | Site title with register toggle. Clicking the title switches between Practitioner and Orientation. |
 | `SocialIcons` | `src/components/SocialIcons.astro` | Adds a LinkedIn icon after the default social icons. |
 | `ThemeProvider` | `src/components/ThemeProvider.astro` | Prevents FOUC for `data-theme`, `data-style`, and `data-register` attributes. |
 | `ThemeSelect` | `src/components/ThemeSelect.astro` | Extends the selector to 5 options with locale-aware labels. |
@@ -166,11 +175,11 @@ Five Starlight components are overridden via the `components` key in `astro.conf
 
 ## Register system
 
-The register (Practitioner/Beginner) controls which content variant is visible on each page.
+The register (Practitioner/Orientation) controls which content variant is visible on each page.
 
 ### How it works
 
-1. **Build time**: `RegisterContent.astro` renders both variants into the HTML, wrapped in `[data-register-content="practitioner"]` and `[data-register-content="beginner"]` divs.
+1. **Build time**: `RegisterContent.astro` renders both variants into the HTML, wrapped in `[data-register-content="practitioner"]` and `[data-register-content="orientation"]` divs.
 2. **Before paint**: ThemeProvider's inline script reads `?register=` URL param or `localStorage`, sets `data-register` on `<html>`.
 3. **CSS**: Global styles hide the inactive variant based on `data-register`.
 4. **Toggle**: SiteTitle's `<script>` imports from `register.ts` and `toc.ts`. Clicking the title calls `setRegister()`, which updates state and dispatches `poc:register-change` on `window`.
@@ -185,7 +194,7 @@ SiteTitle (module, deferred) → click → setRegister() → event → UI update
 
 ### Adding register-aware behavior
 
-Listen for the `poc:register-change` event on `window`. The event detail contains `{ register: 'practitioner' | 'beginner' }`. Do not read `localStorage` directly from components; use the DOM attribute or the event.
+Listen for the `poc:register-change` event on `window`. The event detail contains `{ register: 'practitioner' | 'orientation' }`. Do not read `localStorage` directly from components; use the DOM attribute or the event.
 
 ## Site-wide visual system
 
@@ -289,7 +298,7 @@ E2E tests live in `apps/site/e2e/`. Playwright config: `apps/site/playwright.con
 
 ### Test matrix
 
-The state matrix (3 locales x 6 content paths x 2 registers = 36 states) is generated from arrays in `test-constants.ts`. Adding a locale or page is a one-line data change. Register state is a query parameter (`?register=beginner`), not a route segment.
+The state matrix (3 locales x 6 content paths x 2 registers = 36 states) is generated from arrays in `test-constants.ts`. Adding a locale or page is a one-line data change. Register state is a query parameter (`?register=orientation`), not a route segment.
 
 ## Installability surface
 

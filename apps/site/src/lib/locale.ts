@@ -26,5 +26,5 @@ export function getLocaleBase(pathname: string): string {
   for (const prefix of Object.keys(LOCALE_PREFIXES)) {
     if (pathname.startsWith(prefix)) return prefix.slice(0, -1);
   }
-  return '/en-us';
+  return '';
 }

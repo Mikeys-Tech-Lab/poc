@@ -4,8 +4,8 @@ import { LOCALE_PREFIXES } from './test-constants';
 
 describe('getLocaleFromPath', () => {
   it.each([
-    ['/en-us/', 'en-US'],
-    ['/en-us/about/what-this-is/', 'en-US'],
+    ['/', 'en-US'],
+    ['/about/what-this-is/', 'en-US'],
     ['/en-gb/', 'en-GB'],
     ['/en-gb/articles/placeholder/', 'en-GB'],
     ['/de-de/', 'de-DE'],
@@ -36,17 +36,17 @@ describe('getLocaleFromPath', () => {
 
 describe('getLocaleBase', () => {
   it.each([
-    ['/en-us/about/', '/en-us'],
+    ['/about/', ''],
     ['/en-gb/about/', '/en-gb'],
     ['/de-de/licenses/mit/', '/de-de'],
   ])('returns base for %s', (pathname, expected) => {
     expect(getLocaleBase(pathname)).toBe(expected);
   });
 
-  it('returns /en-us for root or unknown paths', () => {
-    expect(getLocaleBase('/')).toBe('/en-us');
-    expect(getLocaleBase('/fr-fr/')).toBe('/en-us');
-    expect(getLocaleBase('')).toBe('/en-us');
+  it('returns empty string for root or unknown paths', () => {
+    expect(getLocaleBase('/')).toBe('');
+    expect(getLocaleBase('/fr-fr/')).toBe('');
+    expect(getLocaleBase('')).toBe('');
   });
 
   it('strips trailing slash from prefix', () => {

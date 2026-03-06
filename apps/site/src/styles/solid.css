@@ -61,14 +61,14 @@
   --poc-border-hover: #bcc0cc;
 }
 
-/* ── Beginner register — solid dark ── */
-:root[data-style="solid"][data-register="beginner"] body {
+/* ── Orientation register — solid dark ── */
+:root[data-style="solid"][data-register="orientation"] body {
   --sl-color-bg: #2e3a2e;
   --sl-color-bg-nav: #283228;
   --sl-color-bg-sidebar: #283228;
 }
 
-:root[data-style="solid"][data-register="beginner"] {
+:root[data-style="solid"][data-register="orientation"] {
   --poc-surface-faint: #344034;
   --poc-surface: #3a4a3a;
   --poc-surface-mid: #3a4a3a;
@@ -83,14 +83,14 @@
   --poc-border-hover: #506050;
 }
 
-/* ── Beginner register — solid light ── */
-:root[data-style="solid"][data-register="beginner"][data-theme="light"] body {
+/* ── Orientation register — solid light ── */
+:root[data-style="solid"][data-register="orientation"][data-theme="light"] body {
   --sl-color-bg: #e8f0e8;
   --sl-color-bg-nav: #dde8dd;
   --sl-color-bg-sidebar: #dde8dd;
 }
 
-:root[data-style="solid"][data-register="beginner"][data-theme="light"] {
+:root[data-style="solid"][data-register="orientation"][data-theme="light"] {
   --poc-surface-faint: #dde8dd;
   --poc-surface: #d0ddd0;
   --poc-surface-mid: #d0ddd0;

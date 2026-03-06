@@ -15,8 +15,8 @@ beforeEach(() => {
 });
 
 describe('parseRegister', () => {
-  it('returns beginner for "beginner"', () => {
-    expect(parseRegister('beginner')).toBe('beginner');
+  it('returns orientation for "orientation"', () => {
+    expect(parseRegister('orientation')).toBe('orientation');
   });
 
   it('returns practitioner for "practitioner"', () => {
@@ -46,8 +46,8 @@ describe('getRegister', () => {
   });
 
   it('reads from data-register attribute', () => {
-    document.documentElement.dataset.register = 'beginner';
-    expect(getRegister()).toBe('beginner');
+    document.documentElement.dataset.register = 'orientation';
+    expect(getRegister()).toBe('orientation');
   });
 
   it('defaults to practitioner when attribute is absent', () => {
@@ -57,8 +57,8 @@ describe('getRegister', () => {
 
 describe('loadRegister', () => {
   it('reads from localStorage', () => {
-    store.set(STORAGE_KEY, 'beginner');
-    expect(loadRegister()).toBe('beginner');
+    store.set(STORAGE_KEY, 'orientation');
+    expect(loadRegister()).toBe('orientation');
   });
 
   it('defaults to practitioner when localStorage is empty', () => {
@@ -72,35 +72,35 @@ describe('setRegister', () => {
   });
 
   it('sets data-register on documentElement', () => {
-    setRegister('beginner');
-    expect(document.documentElement.dataset.register).toBe('beginner');
+    setRegister('orientation');
+    expect(document.documentElement.dataset.register).toBe('orientation');
   });
 
   it('persists to localStorage', () => {
-    setRegister('beginner');
-    expect(store.get(STORAGE_KEY)).toBe('beginner');
+    setRegister('orientation');
+    expect(store.get(STORAGE_KEY)).toBe('orientation');
   });
 
   it('dispatches poc:register-change event', () => {
     const handler = vi.fn();
     window.addEventListener('poc:register-change', handler);
 
-    setRegister('beginner');
+    setRegister('orientation');
 
     expect(handler).toHaveBeenCalledOnce();
     const event = handler.mock.calls[0][0] as CustomEvent;
-    expect(event.detail).toEqual({ register: 'beginner' });
+    expect(event.detail).toEqual({ register: 'orientation' });
 
     window.removeEventListener('poc:register-change', handler);
   });
 
-  it('adds ?register=beginner to URL for beginner', () => {
-    setRegister('beginner');
-    expect(window.location.search).toContain('register=beginner');
+  it('adds ?register=orientation to URL for orientation', () => {
+    setRegister('orientation');
+    expect(window.location.search).toContain('register=orientation');
   });
 
   it('removes register param from URL for practitioner', () => {
-    setRegister('beginner');
+    setRegister('orientation');
     setRegister('practitioner');
     expect(window.location.search).not.toContain('register');
   });

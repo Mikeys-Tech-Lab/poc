@@ -1,0 +1,41 @@
+---
+title: Practice of Clarity
+description: A publication surface for the Practice of Clarity.
+template: splash
+hero:
+  tagline: A publication surface for making reasoning visible.
+  image:
+    file: ../../assets/hero.png
+    alt: Colorful silhouettes of people connected by a network of lines, representing shared understanding
+  actions:
+    - text: What this is
+      link: /about/what-this-is/
+      icon: right-arrow
+prev: false
+next: false
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import RegisterContent from '../../components/RegisterContent.astro';
+
+<RegisterContent orientation="orientation/en-us">
+  <CardGrid>
+    <Card title="What this is" icon="open-book">
+      A publication surface for the Practice of Clarity. Start here if you want the framing and how to read the site.
+      [Start reading](/about/what-this-is/)
+    </Card>
+    <Card title="Publication arc" icon="document">
+      The release sequence: concepts first, implementation later. Repository publication is Act IV.
+      [See the arc](/about/publication-arc/)
+    </Card>
+    <Card title="Articles" icon="list-format">
+      Long-form essays will live here. For now there is one placeholder page to validate structure.
+      [Read the placeholder](/articles/placeholder/)
+    </Card>
+    <Card title="Licenses" icon="approve-check">
+      Authored content is CC BY 4.0. Code and tooling are MIT.
+      [View licenses](/licenses/cc-by-4-0/)
+    </Card>
+  </CardGrid>
+</RegisterContent>
+

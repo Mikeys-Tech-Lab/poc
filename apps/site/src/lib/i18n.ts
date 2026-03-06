@@ -10,7 +10,7 @@ import type { Locale } from './locale';
 
 export interface RegisterLabels {
   practitioner: string;
-  beginner: string;
+  orientation: string;
 }
 
 export interface ThemeLabels {
@@ -21,9 +21,9 @@ export interface ThemeLabels {
 }
 
 const registerLabels: Record<Locale, RegisterLabels> = {
-  'en-US': { practitioner: 'Practitioner', beginner: 'Beginner' },
-  'en-GB': { practitioner: 'Practitioner', beginner: 'Beginner' },
-  'de-DE': { practitioner: 'Praktiker', beginner: 'Anfänger' },
+  'en-US': { practitioner: 'Practitioner', orientation: 'Orientation' },
+  'en-GB': { practitioner: 'Practitioner', orientation: 'Orientation' },
+  'de-DE': { practitioner: 'Praktiker', orientation: 'Orientierung' },
 };
 
 const themeLabels: Record<Locale, ThemeLabels> = {
