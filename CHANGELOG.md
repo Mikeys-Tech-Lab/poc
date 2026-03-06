@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.0.0...PoC-v1.0.1) (2026-03-06)
+
+
+### Documentation
+
+* **docs:** introduce ADR practice and first decision record ([#62](https://github.com/Mikeys-Tech-Lab/poc/issues/62)) ([a7f5679](https://github.com/Mikeys-Tech-Lab/poc/commit/a7f5679c1556e39d60b92b86bcc168c8b2047950))
+
 ## [1.0.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.13.2...PoC-v1.0.0) (2026-03-06)
 
 
