@@ -82,7 +82,7 @@ Guardrails:
 
 - **Calm, not performative**: avoid visual noise, attention traps, and novelty for its own sake.
 - **Generous navigation**: keep the context triad intact (sidebar = place, center = reading, right rail = structure).
-- **No epistemic hierarchy**: the register system (Practitioner/Beginner) must never hide structure. Only voice changes.
+- **No epistemic hierarchy**: the register system (Practitioner/Orientation) must never hide structure. Only voice changes.
 
 ### Density and spacing
 
@@ -95,8 +95,8 @@ Prefer a clear, repeatable vertical rhythm over one-off margin tweaks.
 ### Quick visual checks (required for frontend changes)
 
 - Toggle **theme**: Dark Atmospheric ↔ Light Atmospheric.
-- Toggle **register**: Practitioner ↔ Beginner (confirm parity and no layout glitches).
-- Spot-check **locales**: `/en-us/`, `/en-gb/`, `/de-de/` for the changed surface.
+- Toggle **register**: Practitioner ↔ Orientation (confirm parity and no layout glitches).
+- Spot-check **locales**: `/`, `/en-gb/`, `/de-de/` for the changed surface.
 
 ## Site-wide atmospheric background
 
