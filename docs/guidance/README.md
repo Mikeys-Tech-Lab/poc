@@ -20,3 +20,4 @@ This workspace documents reasoning, not people. Reports, traces, and tooling out
 - PRs include summary, context trace, test plan, and checklist.
 - Conventional Commits: `type(scope): subject`.
 - Documentation evolution discipline: every PR updates all affected documentation in the same PR. See `AGENTS.md` § Documentation evolution discipline for the full rule and specific obligations by change type.
+- Architecture Decision Records: significant structural decisions are recorded in `docs/decisions/`. See `docs/decisions/README.md` for criteria and template.
