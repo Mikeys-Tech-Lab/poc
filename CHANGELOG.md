@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.13.2...PoC-v1.0.0) (2026-03-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* **astro:** /en-us/ URLs no longer exist; content is at /
+
+### Code Refactoring
+
+* **astro:** root locale restoration and register directory restructure ([#60](https://github.com/Mikeys-Tech-Lab/poc/issues/60)) ([cda867f](https://github.com/Mikeys-Tech-Lab/poc/commit/cda867f4a5f674791e2ad3b80bb80e4c2260585c))
+
 ## [0.13.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v0.13.1...PoC-v0.13.2) (2026-03-05)
 
 
