@@ -56,6 +56,10 @@ Agents must not assert operational outcomes without evidence from actual tool ex
 
 These rules exist because high-capability reasoning models can simulate execution convincingly. Simulated execution that is presented as real execution is compliance theater. This practice is explicitly anti-theater.
 
+### Plans declare intent, not tool invocations
+
+Plans and documentation should declare what needs to be verified (e.g., "verify documentation changes") rather than prescribing specific tool invocations. Agents resolve intent to commands by reading the workspace's declared tool preferences and scripts at execution time. Hardcoding tool commands into plans creates a second source of truth for tooling that drifts when tooling evolves.
+
 ## Structural awareness
 
 Agents must orient in the workspace before acting on it. A change that is correct in isolation but ignores its connections is a change that creates drift.
@@ -69,6 +73,10 @@ Before substantive work, understand what you are acting within:
 - What documentation surfaces will need to evolve with this change?
 
 This is not overhead. It is the difference between working in a system and working on a fragment in isolation.
+
+### Path verification before execution
+
+If a plan names files to create or update, verify they exist (or confirm they do not, if creating) before executing. Cached context drifts. An agent can orient conceptually while still referencing paths that have moved or never existed. This is the difference between orienting conceptually and grounding against actual state.
 
 ### Ripple check
 
@@ -238,6 +246,7 @@ This applies to every documentation surface:
 - `AGENTS.md` (agent behavior, tool preferences, conventions, invariants)
 - `docs/onboarding/` (topic index and topic pages)
 - `docs/architecture/workspace.md` (directory roles, diagram, narrative)
+- `docs/decisions/` (Architecture Decision Records for structural rationale)
 - `docs/infra/` (runbooks, protection layers, environment setup)
 - `docs/guidance/` (principles, workflow)
 - `.cursor/rules/` and `.cursor/skills/` (agent rules and skills)
@@ -251,6 +260,7 @@ If a PR changes behavior, structure, tooling, conventions, or security posture, 
 ### Specific obligations
 
 - **Structural changes** (repo layout, new directories, moved files): update `docs/architecture/workspace.md`. If the diagram and the file tree diverge, the file tree wins and the diagram must be updated.
+- **Structural decisions** that meet the ADR criteria (`docs/decisions/README.md`): write or update an ADR. Not every structural change needs one — only those where the rationale would otherwise be lost.
 - **Onboarding-relevant changes** (setup, workflow, AI guidance, security posture): update the topic index (`docs/onboarding/README.md`) and the affected topic page(s).
 - **Infrastructure or security changes**: update `docs/infra/protection-layers.md` and/or relevant runbooks.
 - **Agent behavior changes** (new rules, skills, tool preferences): update `AGENTS.md` and any affected adapters.
