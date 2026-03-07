@@ -96,7 +96,7 @@ Prefer a clear, repeatable vertical rhythm over one-off margin tweaks.
 
 - Toggle **theme**: Dark Atmospheric ↔ Light Atmospheric.
 - Toggle **register**: Practitioner ↔ Orientation (confirm parity and no layout glitches).
-- Spot-check **locales**: `/`, `/en-gb/`, `/de-de/` for the changed surface.
+- Spot-check **locales**: `/en-us/`, `/en-gb/`, `/de-de/` for the changed surface.
 
 ## Site-wide atmospheric background
 

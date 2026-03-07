@@ -23,7 +23,7 @@ Before relying on any Astro or Starlight feature:
 
 ## Content boundaries
 
-- Practitioner register (canonical): `apps/site/src/content/docs/` (Starlight-native, root locale = en-US)
+- Practitioner register (canonical): `apps/site/src/content/docs/` (Starlight-native, all locales as peer directories)
 - Register content (orientation and future registers): `apps/site/src/content/register/<register>/<locale>/...`
 - Assets (images, fonts): `apps/site/src/assets/`
 - Shared modules: `apps/site/src/lib/`
@@ -34,7 +34,7 @@ Before relying on any Astro or Starlight feature:
 
 Locale and register are independent axes (see `seeds/Translation and Register Guidance.md`). Every register is multilingual and every locale is an accountable edition.
 
-- **Practitioner** register is the canonical Starlight content in `src/content/docs/`. Root locale (en-US) content lives directly in `docs/`; other locales live in `docs/en-gb/`, `docs/de-de/`, etc.
+- **Practitioner** register is the canonical Starlight content in `src/content/docs/`. All locales are peer directories: `docs/en-us/`, `docs/en-gb/`, `docs/de-de/`.
 - **Other registers** live under `src/content/register/<register>/<locale>/...`. Each register keeps explicit locale folders (e.g. `register/orientation/en-us/`, `register/orientation/en-gb/`).
 
 Register families (from seeds): orientation, low-cognitive-load, institutional-interface, public, short-form.
@@ -46,7 +46,7 @@ Two content collections are defined in `content.config.ts`:
 - `docs`: Starlight's native collection. Uses `docsLoader()` and `docsSchema()`.
 - `register`: Custom collection for non-practitioner register content. Uses Astro's `glob` loader for `**/*.mdx` files in `src/content/register/`.
 
-Root locale (en-US) uses Starlight's `root` key. Content lives directly in `docs/` (no `en-us/` prefix). Other locales keep their prefixed subdirectories.
+All locales use prefixed keys (`en-us`, `en-gb`, `de-de`). Content lives in symmetric locale directories under `docs/`. There is no `root` locale — en-US gets the `/en-us/` URL prefix like all other locales. Astro's `redirects` config handles `/` → `/en-us/` (301 in dev server, meta-refresh HTML in static build). The deployment workflows append a `RewriteRule` 301 redirect to the generated `.htaccess` for server-level handling in production.
 
 ## Known pitfalls
 

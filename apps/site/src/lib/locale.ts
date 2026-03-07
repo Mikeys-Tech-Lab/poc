@@ -9,6 +9,7 @@
 export type Locale = 'en-US' | 'en-GB' | 'de-DE';
 
 const LOCALE_PREFIXES: Record<string, Locale> = {
+  '/en-us/': 'en-US',
   '/en-gb/': 'en-GB',
   '/de-de/': 'de-DE',
 };
