@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.0.1...PoC-v1.0.2) (2026-03-07)
+
+
+### Code Refactoring
+
+* **astro:** replace root locale with symmetric en-us directory ([#64](https://github.com/Mikeys-Tech-Lab/poc/issues/64)) ([c108c23](https://github.com/Mikeys-Tech-Lab/poc/commit/c108c23b941755ed8a81af1357cddf677346c487))
+
 ## [1.0.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.0.0...PoC-v1.0.1) (2026-03-06)
 
 
