@@ -4,8 +4,8 @@ import { LOCALE_PREFIXES } from './test-constants';
 
 describe('getLocaleFromPath', () => {
   it.each([
-    ['/', 'en-US'],
-    ['/about/what-this-is/', 'en-US'],
+    ['/en-us/', 'en-US'],
+    ['/en-us/about/what-this-is/', 'en-US'],
     ['/en-gb/', 'en-GB'],
     ['/en-gb/articles/placeholder/', 'en-GB'],
     ['/de-de/', 'de-DE'],
@@ -14,7 +14,7 @@ describe('getLocaleFromPath', () => {
     expect(getLocaleFromPath(pathname)).toBe(expected);
   });
 
-  it('defaults to en-US for root path', () => {
+  it('defaults to en-US for unrecognised path', () => {
     expect(getLocaleFromPath('/')).toBe('en-US');
   });
 
@@ -36,14 +36,14 @@ describe('getLocaleFromPath', () => {
 
 describe('getLocaleBase', () => {
   it.each([
-    ['/about/', ''],
+    ['/en-us/about/', '/en-us'],
     ['/en-gb/about/', '/en-gb'],
     ['/de-de/licenses/mit/', '/de-de'],
   ])('returns base for %s', (pathname, expected) => {
     expect(getLocaleBase(pathname)).toBe(expected);
   });
 
-  it('returns empty string for root or unknown paths', () => {
+  it('returns empty string for unknown paths', () => {
     expect(getLocaleBase('/')).toBe('');
     expect(getLocaleBase('/fr-fr/')).toBe('');
     expect(getLocaleBase('')).toBe('');

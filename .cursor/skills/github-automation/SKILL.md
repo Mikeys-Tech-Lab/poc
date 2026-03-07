@@ -71,7 +71,7 @@ Audit the branch for issues the work introduced or exposed:
 - **Frontend calmness (when UI changed)**: do a quick visual check that the UI still feels quiet and readable.
   - Toggle themes: Dark Atmospheric ↔ Light Atmospheric.
   - Toggle register: Practitioner ↔ Orientation (confirm parity and no layout glitches).
-  - Spot-check locales: `/`, `/en-gb/`, `/de-de/` for the changed surface.
+  - Spot-check locales: `/en-us/`, `/en-gb/`, `/de-de/` for the changed surface.
   - Prefer layout `gap` over margin stacks; if something feels “stuffed”, reduce density instead of shrinking type.
 
 Present findings to the operator. Be specific: "I found X, Y, Z. Here is what I recommend fixing."

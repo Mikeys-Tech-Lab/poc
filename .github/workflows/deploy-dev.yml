@@ -86,6 +86,15 @@ jobs:
           HEADERS
           echo "Appended security headers to .htaccess"
 
+      - name: Append locale redirect to .htaccess
+        run: |
+          cat >> apps/site/dist/.htaccess << 'REDIRECT'
+
+          # Default locale redirect (no root locale — all locales use /xx-xx/ prefix)
+          RewriteRule ^$ /en-us/ [R=301,L]
+          REDIRECT
+          echo "Appended locale redirect to .htaccess"
+
       - name: Deploy via rsync
         env:
           SSH_PRIVATE_KEY: ${{ secrets.DEVELOPMENT_SSH_PRIVATE_KEY }}

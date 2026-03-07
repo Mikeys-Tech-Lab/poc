@@ -5,6 +5,9 @@ import starlightCatppuccin from '@catppuccin/starlight';
 import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: process.env.SITE_URL || 'https://practiceofclarity.eu',
+  redirects: {
+    '/': '/en-us/',
+  },
   devToolbar: {
     enabled: false,
   },
@@ -19,11 +22,11 @@ export default defineConfig({
       title: 'Practice of Clarity',
       favicon: '/favicon.ico',
       locales: {
-        root: { label: 'English (US)', lang: 'en-US' },
+        'en-us': { label: 'English (US)', lang: 'en-US' },
         'en-gb': { label: 'English (UK)', lang: 'en-GB' },
         'de-de': { label: 'Deutsch', lang: 'de-DE' },
       },
-      defaultLocale: 'root',
+      defaultLocale: 'en-us',
       head: [
         {
           tag: 'link',
