@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.0.1...site-v1.0.2) (2026-03-10)
+
+
+### Miscellaneous
+
+* **deps:** bump @astrojs/starlight in / ([#67](https://github.com/Mikeys-Tech-Lab/poc/issues/67)) ([89d9951](https://github.com/Mikeys-Tech-Lab/poc/commit/89d9951a47df9a77a36e5c7920424489c934504e))
+
 ## [1.0.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.0.0...site-v1.0.1) (2026-03-07)
 
 
