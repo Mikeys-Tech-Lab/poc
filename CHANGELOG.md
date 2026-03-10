@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.0.2...PoC-v1.0.3) (2026-03-10)
+
+
+### Miscellaneous
+
+* **deps-dev:** bump @biomejs/biome in / ([#66](https://github.com/Mikeys-Tech-Lab/poc/issues/66)) ([bff84be](https://github.com/Mikeys-Tech-Lab/poc/commit/bff84be2f52184e4d7a87c4e0d7e52fc70870f37))
+
 ## [1.0.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.0.1...PoC-v1.0.2) (2026-03-07)
 
 
