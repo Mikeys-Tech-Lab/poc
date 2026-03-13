@@ -23,8 +23,8 @@ Before relying on any Astro or Starlight feature:
 
 ## Content boundaries
 
-- Practitioner register (canonical): `apps/site/src/content/docs/` (Starlight-native, all locales as peer directories)
-- Register content (orientation and future registers): `apps/site/src/content/register/<register>/<locale>/...`
+- Practitioner register (canonical): `apps/site/src/content/docs/` (Starlight-native; `en-us` is the only active locale in the current repo)
+- Register content: `apps/site/src/content/register/<register>/<locale>/...` (currently only `register/orientation/en-us/` is active)
 - Assets (images, fonts): `apps/site/src/assets/`
 - Shared modules: `apps/site/src/lib/`
 - Seeds (`seeds/`) are development-only sources. They are not the site content tree.
@@ -32,12 +32,11 @@ Before relying on any Astro or Starlight feature:
 
 ### Register × locale two-axis model
 
-Locale and register are independent axes (see `seeds/Translation and Register Guidance.md`). Every register is multilingual and every locale is an accountable edition.
+Locale and register are independent axes in the practice model, but the current repo activates only a small subset of that model.
 
-- **Practitioner** register is the canonical Starlight content in `src/content/docs/`. All locales are peer directories: `docs/en-us/`, `docs/en-gb/`, `docs/de-de/`.
-- **Other registers** live under `src/content/register/<register>/<locale>/...`. Each register keeps explicit locale folders (e.g. `register/orientation/en-us/`, `register/orientation/en-gb/`).
-
-Register families (from seeds): orientation, low-cognitive-load, institutional-interface, public, short-form.
+- **Practitioner** register is the canonical Starlight content in `src/content/docs/`, with `docs/en-us/` as the active locale tree.
+- **Orientation** is the only active non-practitioner register in the repo today, at `src/content/register/orientation/en-us/`.
+- Other register families may exist conceptually in seeds, but they are not active repo structure. Do not scaffold or preserve them unless the operator explicitly asks.
 
 ### Content collections
 
@@ -46,7 +45,7 @@ Two content collections are defined in `content.config.ts`:
 - `docs`: Starlight's native collection. Uses `docsLoader()` and `docsSchema()`.
 - `register`: Custom collection for non-practitioner register content. Uses Astro's `glob` loader for `**/*.mdx` files in `src/content/register/`.
 
-All locales use prefixed keys (`en-us`, `en-gb`, `de-de`). Content lives in symmetric locale directories under `docs/`. There is no `root` locale — en-US gets the `/en-us/` URL prefix like all other locales. Astro's `redirects` config handles `/` → `/en-us/` (301 in dev server, meta-refresh HTML in static build). The deployment workflows append a `RewriteRule` 301 redirect to the generated `.htaccess` for server-level handling in production.
+The current site uses a single prefixed locale key, `en-us`. Content lives in symmetric `en-us` directories under both `docs/` and the active `register/orientation/` tree. There is no `root` locale; Astro's `redirects` config handles `/` → `/en-us/` (301 in dev server, meta-refresh HTML in static build). Do not assume additional locales are present unless you verify them in the current tree and config.
 
 ## Known pitfalls
 
@@ -290,7 +289,7 @@ E2E tests live in `apps/site/e2e/`. Playwright config: `apps/site/playwright.con
 
 | Spec file | What it covers |
 |---|---|
-| `register-parity.spec.ts` | Both register content divs exist on every page (3 locales x 6 paths) |
+| `register-parity.spec.ts` | Both register content divs exist on every page in the current `en-us` matrix |
 | `navigation.spec.ts` | All pages return 200, all internal links resolve |
 | `register-toggle.spec.ts` | Toggle content, URL param sync, ToC update |
 | `locale-switching.spec.ts` | Language selector navigation, locale reachability |
@@ -298,7 +297,7 @@ E2E tests live in `apps/site/e2e/`. Playwright config: `apps/site/playwright.con
 
 ### Test matrix
 
-The state matrix (3 locales x 6 content paths x 2 registers = 36 states) is generated from arrays in `test-constants.ts`. Adding a locale or page is a one-line data change. Register state is a query parameter (`?register=orientation`), not a route segment.
+The current state matrix is 1 locale x 6 content paths x 2 registers = 12 states, generated from arrays in `test-constants.ts`. Register state is a query parameter (`?register=orientation`), not a route segment. If the repo activates additional locales or routes later, update the arrays first and let the matrix expand from verified repo state.
 
 ## Installability surface
 
