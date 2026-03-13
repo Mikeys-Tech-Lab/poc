@@ -6,12 +6,10 @@
  * astro.config.mjs locales.
  */
 
-export type Locale = 'en-US' | 'en-GB' | 'de-DE';
+export type Locale = 'en-US';
 
 const LOCALE_PREFIXES: Record<string, Locale> = {
   '/en-us/': 'en-US',
-  '/en-gb/': 'en-GB',
-  '/de-de/': 'de-DE',
 };
 
 const DEFAULT_LOCALE: Locale = 'en-US';

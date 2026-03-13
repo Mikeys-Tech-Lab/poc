@@ -22,8 +22,6 @@ export interface ThemeLabels {
 
 const registerLabels: Record<Locale, RegisterLabels> = {
   'en-US': { practitioner: 'Practitioner', orientation: 'Orientation' },
-  'en-GB': { practitioner: 'Practitioner', orientation: 'Orientation' },
-  'de-DE': { practitioner: 'Praktiker', orientation: 'Orientierung' },
 };
 
 const themeLabels: Record<Locale, ThemeLabels> = {
@@ -32,18 +30,6 @@ const themeLabels: Record<Locale, ThemeLabels> = {
     lightAtmospheric: 'Light Atmospheric',
     darkSolid: 'Dark Solid',
     lightSolid: 'Light Solid',
-  },
-  'en-GB': {
-    darkAtmospheric: 'Dark Atmospheric',
-    lightAtmospheric: 'Light Atmospheric',
-    darkSolid: 'Dark Solid',
-    lightSolid: 'Light Solid',
-  },
-  'de-DE': {
-    darkAtmospheric: 'Dunkel Atmosphärisch',
-    lightAtmospheric: 'Hell Atmosphärisch',
-    darkSolid: 'Dunkel Solide',
-    lightSolid: 'Hell Solide',
   },
 };
 
@@ -76,34 +62,6 @@ const a11yLabels: Record<Locale, A11yLabels> = {
     reset: 'Reset to defaults',
     close: 'Close',
     openPanel: 'Accessibility settings',
-  },
-  'en-GB': {
-    panelTitle: 'Accessibility',
-    contrast: 'Increase contrast',
-    contrastMore: 'More',
-    contrastDefault: 'Default',
-    textSize: 'Text size',
-    reduceMotion: 'Reduce motion',
-    solidShortcut: 'Solid (max readability)',
-    underlineLinks: 'Underline links',
-    altFont: 'Alternate font',
-    reset: 'Reset to defaults',
-    close: 'Close',
-    openPanel: 'Accessibility settings',
-  },
-  'de-DE': {
-    panelTitle: 'Barrierefreiheit',
-    contrast: 'Kontrast erhöhen',
-    contrastMore: 'Mehr',
-    contrastDefault: 'Standard',
-    textSize: 'Textgröße',
-    reduceMotion: 'Bewegung reduzieren',
-    solidShortcut: 'Solide (beste Lesbarkeit)',
-    underlineLinks: 'Links unterstreichen',
-    altFont: 'Alternative Schrift',
-    reset: 'Zurücksetzen',
-    close: 'Schließen',
-    openPanel: 'Barrierefreiheit-Einstellungen',
   },
 };
 

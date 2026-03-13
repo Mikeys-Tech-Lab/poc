@@ -14,10 +14,10 @@ describe('getRegisterLabels', () => {
     expect(labels.orientation.length).toBeGreaterThan(0);
   });
 
-  it('returns German labels for de-DE', () => {
-    const labels = getRegisterLabels('de-DE');
-    expect(labels.practitioner).toBe('Praktiker');
-    expect(labels.orientation).toBe('Orientierung');
+  it('returns en-US labels', () => {
+    const labels = getRegisterLabels('en-US');
+    expect(labels.practitioner).toBe('Practitioner');
+    expect(labels.orientation).toBe('Orientation');
   });
 
   it('falls back to en-US for unknown locale', () => {
@@ -36,10 +36,10 @@ describe('getThemeLabels', () => {
     expect(labels).toHaveProperty('lightSolid');
   });
 
-  it('returns German theme labels for de-DE', () => {
-    const labels = getThemeLabels('de-DE');
-    expect(labels.darkAtmospheric).toBe('Dunkel Atmosphärisch');
-    expect(labels.lightSolid).toBe('Hell Solide');
+  it('returns en-US theme labels', () => {
+    const labels = getThemeLabels('en-US');
+    expect(labels.darkAtmospheric).toBe('Dark Atmospheric');
+    expect(labels.lightSolid).toBe('Light Solid');
   });
 
   it('falls back to en-US for unknown locale', () => {

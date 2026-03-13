@@ -1,40 +1,14 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('locale switching', () => {
-  test('language selector navigates to correct locale', async ({ page }) => {
-    await page.goto('/en-us/about/what-this-is/');
-
-    const select = page.locator('starlight-lang-select select').first();
-    const deOption = select.locator('option', { hasText: 'Deutsch' });
-    const deValue = await deOption.getAttribute('value');
-    expect(deValue).toBeTruthy();
-
-    await select.selectOption(deValue ?? '');
-    await page.waitForURL('**/de-de/**');
-
-    expect(page.url()).toContain('/de-de/');
+test.describe('locale', () => {
+  test('en-US homepage is reachable', async ({ page }) => {
+    const response = await page.goto('/en-us/');
+    expect(response?.status(), '/en-us/ should return 200').toBe(200);
   });
 
-  test('each locale homepage is reachable', async ({ page }) => {
-    for (const locale of ['/en-us/', '/en-gb/', '/de-de/']) {
-      const response = await page.goto(locale);
-      expect(response?.status(), `${locale} should return 200`).toBe(200);
-    }
-  });
-
-  test('locale content matches language', async ({ page }) => {
-    await page.goto('/de-de/about/what-this-is/');
-    const heading = page.locator('h1');
-    await expect(heading).toBeVisible();
-
-    await page.goto('/en-us/about/what-this-is/');
-    const enHeading = page.locator('h1');
-    await expect(enHeading).toBeVisible();
-  });
-
-  test('language selector shows all three locales', async ({ page }) => {
+  test('language selector is not visible with single locale', async ({ page }) => {
     await page.goto('/en-us/');
-    const options = page.locator('starlight-lang-select select option');
-    await expect(options).toHaveCount(3);
+    const langSelect = page.locator('starlight-lang-select');
+    await expect(langSelect).toHaveCount(0);
   });
 });

@@ -1,5 +1,5 @@
-export const LOCALES = ['en-US', 'en-GB', 'de-DE'] as const;
-export const LOCALE_PREFIXES = ['/en-us/', '/en-gb/', '/de-de/'] as const;
+export const LOCALES = ['en-US'] as const;
+export const LOCALE_PREFIXES = ['/en-us/'] as const;
 export const CONTENT_PATHS = [
   '',
   'about/what-this-is',

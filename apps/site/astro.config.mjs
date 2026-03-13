@@ -23,8 +23,6 @@ export default defineConfig({
       favicon: '/favicon.ico',
       locales: {
         'en-us': { label: 'English (US)', lang: 'en-US' },
-        'en-gb': { label: 'English (UK)', lang: 'en-GB' },
-        'de-de': { label: 'Deutsch', lang: 'de-DE' },
       },
       defaultLocale: 'en-us',
       head: [
@@ -121,7 +119,9 @@ export default defineConfig({
         },
         {
           label: 'Articles',
-          items: [{ label: 'Placeholder article', slug: 'articles/placeholder' }],
+          items: [
+            { label: 'Placeholder article', slug: 'articles/placeholder' },
+          ],
         },
         {
           label: 'Licenses',
