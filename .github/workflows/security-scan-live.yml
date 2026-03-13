@@ -32,8 +32,8 @@ jobs:
             -u ${{ vars.DEVELOPMENT_SITE_URL }}
             -t http/misconfiguration/http-missing-security-headers.yaml
 
-      # SARIF upload requires GitHub Advanced Security (free for public repos).
-      # Re-enable when the repository goes public. See #38.
+      # SARIF upload is currently disabled in this repo setup.
+      # Re-enable if GitHub Advanced Security is available and wanted here.
 
   scan-preview:
     name: Headers · Preview
@@ -52,8 +52,8 @@ jobs:
             -u ${{ vars.PREVIEW_SITE_URL }}
             -t http/misconfiguration/http-missing-security-headers.yaml
 
-      # SARIF upload requires GitHub Advanced Security (free for public repos).
-      # Re-enable when the repository goes public. See #38.
+      # SARIF upload is currently disabled in this repo setup.
+      # Re-enable if GitHub Advanced Security is available and wanted here.
 
   scan-manual:
     name: Headers · Manual
@@ -68,5 +68,5 @@ jobs:
             -u ${{ inputs.target_url }}
             -t http/misconfiguration/http-missing-security-headers.yaml
 
-      # SARIF upload requires GitHub Advanced Security (free for public repos).
-      # Re-enable when the repository goes public. See #38.
+      # SARIF upload is currently disabled in this repo setup.
+      # Re-enable if GitHub Advanced Security is available and wanted here.
