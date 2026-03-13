@@ -113,14 +113,27 @@ export default defineConfig({
         {
           label: 'About',
           items: [
-            { label: 'What this is', slug: 'about/what-this-is' },
-            { label: 'Publication arc', slug: 'about/publication-arc' },
+            { label: 'What This Work Is', slug: 'about/what-this-is' },
+            { label: 'About the Author', slug: 'about/about-the-author' },
           ],
         },
         {
-          label: 'Articles',
+          label: 'Writing',
           items: [
-            { label: 'Placeholder article', slug: 'articles/placeholder' },
+            {
+              label: 'Articles',
+              items: [
+                {
+                  label: 'Practice of Clarity',
+                  items: [
+                    {
+                      label: 'Act I — When Output Outpaces Understanding',
+                      slug: 'writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding',
+                    },
+                  ],
+                },
+              ],
+            },
           ],
         },
         {
