@@ -1,0 +1,95 @@
+---
+/**
+ * Lightweight share control for article pages.
+ *
+ * Uses navigator.share() when available, falls back to copying
+ * the canonical page URL to clipboard. Renders as a single calm
+ * affordance near the article metadata area.
+ */
+---
+
+<poc-share-button>
+	<button type="button" aria-label="Share this page">
+		<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+			<polyline points="16 6 12 2 8 6" />
+			<line x1="12" y1="2" x2="12" y2="15" />
+		</svg>
+		<span class="label">Share</span>
+		<span class="copied" aria-live="polite" hidden>Link copied</span>
+	</button>
+</poc-share-button>
+
+<script>
+	class PocShareButton extends HTMLElement {
+		connectedCallback() {
+			const button = this.querySelector('button');
+			if (!button) return;
+
+			const label = this.querySelector('.label') as HTMLElement;
+			const copied = this.querySelector('.copied') as HTMLElement;
+
+			button.addEventListener('click', async () => {
+				const url = window.location.href.split('?')[0].split('#')[0];
+				const title = document.title;
+
+				if (navigator.share) {
+					try {
+						await navigator.share({ title, url });
+						return;
+					} catch {
+						// User cancelled or share failed — fall through to clipboard
+					}
+				}
+
+				try {
+					await navigator.clipboard.writeText(url);
+					label.hidden = true;
+					copied.hidden = false;
+					setTimeout(() => {
+						label.hidden = false;
+						copied.hidden = true;
+					}, 2000);
+				} catch {
+					// Clipboard API unavailable
+				}
+			});
+		}
+	}
+
+	customElements.define('poc-share-button', PocShareButton);
+</script>
+
+<style>
+	poc-share-button {
+		display: inline-block;
+	}
+
+	poc-share-button button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35em;
+		padding: 0.25em 0.6em;
+		border: 1px solid var(--poc-border-subtle, var(--sl-color-gray-5));
+		border-radius: 0.35em;
+		background: transparent;
+		color: var(--sl-color-gray-3);
+		font-size: var(--sl-text-xs);
+		cursor: pointer;
+		transition: color 0.15s ease, border-color 0.15s ease;
+		line-height: 1;
+	}
+
+	poc-share-button button:hover {
+		color: var(--sl-color-text-accent);
+		border-color: var(--sl-color-text-accent);
+	}
+
+	poc-share-button svg {
+		flex-shrink: 0;
+	}
+
+	poc-share-button .copied {
+		color: var(--sl-color-text-accent);
+	}
+</style>
