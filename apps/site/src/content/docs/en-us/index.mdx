@@ -3,7 +3,16 @@ title: Practice of Clarity
 description: A publication for the Practice of Clarity.
 template: splash
 hero:
-  tagline: A publication about making reasoning visible.
+  tagline: |
+    <p>A publication about making reasoning visible.</p>
+    <div data-register-content="practitioner">
+      <p>AI-assisted work now lets teams generate ideas, code, and decisions faster than they can fully understand them. When output outpaces understanding, coordination gets harder, review gets heavier, and trust starts to thin out.</p>
+      <p>Practice of Clarity is a publication about that condition and about a usable response to it: making reasoning visible so shared understanding can form without pretending certainty.</p>
+    </div>
+    <div data-register-content="orientation">
+      <p>Many people are now expected to work, decide, and respond faster than they can really understand what is happening. When that happens, pressure rises, confusion spreads, and responsibility lands on people without enough shared clarity.</p>
+      <p>Practice of Clarity is a publication about that condition and about a practical response to it: making reasoning visible so people can follow how decisions were formed, what is still uncertain, and where the pressure is landing.</p>
+    </div>
   image:
     file: ../../../assets/hero.png
     alt: Silhouettes of people connected by lines in a network pattern.
@@ -19,10 +28,6 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 import RegisterContent from '../../../components/RegisterContent.astro';
 
 <RegisterContent register="orientation/en-us">
-  AI-assisted work now lets teams generate ideas, code, and decisions faster than they can fully understand them. When output outpaces understanding, coordination gets harder, review gets heavier, and trust starts to thin out.
-
-  Practice of Clarity is a publication about that condition and about a usable response to it: making reasoning visible so shared understanding can form without pretending certainty.
-
   <CardGrid>
     <Card title="What This Work Is" icon="open-book">
       Start here for the framing, the reading model, and the boundaries of the practice.
