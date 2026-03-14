@@ -21,6 +21,8 @@
 </poc-share-button>
 
 <script>
+	import { buildShareUrl } from '../lib/share';
+
 	class PocShareButton extends HTMLElement {
 		connectedCallback() {
 			const button = this.querySelector('button');
@@ -30,7 +32,7 @@
 			const copied = this.querySelector('.copied') as HTMLElement;
 
 			button.addEventListener('click', async () => {
-				const url = window.location.href.split('?')[0].split('#')[0];
+				const url = buildShareUrl(window.location.href);
 				const title = document.title;
 
 				if (navigator.share) {
