@@ -2,7 +2,7 @@
 
 How web traffic reaches each environment and what blocks unauthorized access at each layer.
 
-All environments are hosted on an Infomaniak managed Cloud Server behind Cloudflare's proxy. No environment is directly accessible from the public internet by design.
+The deployment topology uses an Infomaniak managed Cloud Server behind Cloudflare's proxy. Seed and preview are backed by committed workflows in this repo. Production is documented as the intended public environment, but its deploy workflow is not committed here.
 
 ## Shared baseline: direct-to-origin block
 
@@ -64,9 +64,9 @@ No IP allowlist is needed. Cloudflare Access is the access control layer, and th
 | Origin baseline | `.htaccess` direct-to-origin block |
 | Access control | None (public site) |
 
-Production is a public site. The only protection is the baseline direct-to-origin block, ensuring all traffic flows through Cloudflare for DDoS protection, caching, and SSL termination.
+Production is the intended public environment. The only documented protection is the baseline direct-to-origin block, ensuring traffic flows through Cloudflare for DDoS protection, caching, and SSL termination.
 
-Deployment is `workflow_dispatch` only (manual trigger). The operator validates a release on preview before deploying to production.
+This repo does not currently contain a committed production deploy workflow. Treat this section as topology and access model, not proof of active automation.
 
 ## Traffic flow summary
 
@@ -97,9 +97,9 @@ CSP starts in report-only mode to avoid breaking Starlight's inline styles. Viol
 
 ## Post-deploy security scanning
 
-The `security-scan-live.yml` workflow runs [Nuclei](https://github.com/projectdiscovery/nuclei) against deployed environments to verify HTTP security headers are present and correctly configured. It triggers automatically after each deployment and supports manual dispatch for scanning any URL (including production).
+The `security-scan-live.yml` workflow runs [Nuclei](https://github.com/projectdiscovery/nuclei) against deployed environments to verify HTTP security headers are present and correctly configured. It triggers automatically after seed and preview deployments and supports manual dispatch for scanning any URL, including a production URL if one exists.
 
-Results appear in the workflow run logs. SARIF upload to the GitHub Security tab requires GitHub Advanced Security, which is free for public repositories but paid for private ones. SARIF upload will be re-enabled when the repository goes public.
+Results appear in the workflow run logs. SARIF upload to the GitHub Security tab is currently disabled in this repo setup.
 
 ## SSL
 

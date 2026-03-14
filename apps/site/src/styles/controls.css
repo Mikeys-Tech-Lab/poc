@@ -31,16 +31,6 @@ starlight-theme-select label:hover {
   opacity: 0.66;
 }
 
-/* Widen language selector — Starlight sets 7em via inline style, so !important
-   is needed to override. Prevents truncation of "English (US)" / "English (UK)". */
-starlight-lang-select label {
-  --sl-select-width: 10em !important;
-}
-
-starlight-lang-select select {
-  text-overflow: unset !important;
-}
-
 /* Cap right sidebar ("On this page") to the same width as the left sidebar.
    Starlight's default formula gives the right sidebar extra space on wide
    viewports, making the layout asymmetric. */

@@ -13,7 +13,7 @@ Adaptation of `AGENTS.md` for Infomaniak managed hosting deployment.
 - Configuring Infomaniak hosting environments (SSH, paths, domains)
 - Managing IP-based access restrictions for non-public environments
 - Troubleshooting deployment failures
-- Adding new deployment targets (preview, public)
+- Adding or changing deployment targets (for example, introducing a public workflow)
 
 ## Capability alignment
 
@@ -32,7 +32,7 @@ The workspace deploys to an Infomaniak managed Cloud Server with multiple web ho
 |---|---|---|---|
 | Seed | dev | `seed.practiceofclarity.eu` | IP-restricted (`.htaccess` allowlist) |
 | Preview | preview | `preview.practiceofclarity.eu` | Cloudflare Access (email OTP) |
-| Public | production | `practiceofclarity.eu` | Open |
+| Public | production | `practiceofclarity.eu` | Open (when active) |
 
 Each web hosting has its own document root, FTP/SSH credentials, and domain binding. Credentials are managed per-hosting in the Infomaniak Manager.
 
@@ -58,7 +58,7 @@ No third-party deployment actions are used. Direct `ssh`/`rsync` commands reduce
 |---|---|---|---|
 | Development | `release: published` + manual dispatch | `.htaccess` IP allowlist | Active |
 | Preview | `release: published` + manual dispatch | Cloudflare Access (email OTP) | Active |
-| Public | Manual dispatch only | None (public) | Planned |
+| Public | No committed workflow in current repo | None (public) | Planned topology |
 
 Each environment uses a **GitHub environment** for isolated secrets and variables.
 
@@ -68,7 +68,7 @@ All environments share a baseline: `.htaccess` blocks requests without `CF-Conne
 
 - **Seed**: baseline + IP allowlist. Only requests from allowed IPs (via `CF-Connecting-IP` header) are permitted.
 - **Preview**: baseline + Cloudflare Access. All traffic must go through Cloudflare, where Zero Trust enforces email-based authentication (one-time PIN). No IP allowlist needed.
-- **Production** (planned): baseline only. Public site, no additional auth. `workflow_dispatch` trigger ensures operator validates on preview first.
+- **Production**: baseline only when active. Public site, no additional auth. Do not assume a committed production workflow exists unless you verify it in `.github/workflows/`.
 
 The baseline `.htaccess` rule:
 
@@ -138,8 +138,8 @@ Each GitHub environment sets `SITE_URL` as a **variable** (not a secret, since U
 | Environment | SITE_URL |
 |---|---|
 | development | Set via `DEVELOPMENT_SITE_URL` variable |
-| preview | (planned) |
-| production | (planned) |
+| preview | Set via `PREVIEW_SITE_URL` variable |
+| production | Verify current workflow/setup before assuming a value is wired |
 
 ## GitHub configuration
 
@@ -183,7 +183,7 @@ Key constraints:
 |---|---|---|
 | Development | `.github/workflows/deploy-dev.yml` | `release: published`, manual dispatch |
 | Preview | `.github/workflows/deploy-preview.yml` | `release: published`, manual dispatch |
-| Public | (planned) | Manual dispatch only |
+| Public | No committed workflow in current repo | Verify before assuming automation |
 
 ## Manual deployment
 
@@ -220,12 +220,12 @@ Escape dots in IPs for the regex (e.g. `89\.36\.76\.75`). For public environment
 
 ## Extending to additional environments
 
-To add Preview or Public deployment:
+To add a new deployment target, or to add the currently absent Public workflow:
 
-1. Create a new workflow file (e.g., `.github/workflows/deploy-preview.yml`).
+1. Create a new workflow file for the missing target.
 2. Create the corresponding GitHub environment with its own secrets and variables.
 3. Set the appropriate trigger (push, manual, or both).
-4. For Public: omit the `.htaccess` generation step.
+4. For Public: omit the IP allowlist generation step, but keep the direct-to-origin block and security headers.
 5. Update this skill with the new environment details.
 6. Update `docs/architecture/workspace.md` to reflect the new deployment target.
 

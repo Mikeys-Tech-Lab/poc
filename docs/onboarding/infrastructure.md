@@ -1,18 +1,18 @@
 # Infrastructure and Environments
 
-A high-level view of the deployment environments and their protection model. This page describes what exists and what each environment is for. Procedures for setting up environments are in the runbooks linked below.
+A high-level view of the deployment topology and current workflow coverage. This page distinguishes between environments the architecture accounts for and automation that is actually committed in the repo. Procedures for setting up environments are in the runbooks linked below.
 
 ## Environment model
 
-Three environments share an origin hosting server behind a CDN/proxy layer. Each environment has its own domain, access controls, and deployment trigger.
+The deployment topology accounts for three environments behind a shared origin hosting server and CDN/proxy layer. Seed and preview are backed by committed workflows in this repo. Production is documented as the intended public environment, but its deploy workflow is not committed here.
 
 | Environment | Purpose | Deployment trigger | Access |
 |---|---|---|---|
 | Seed | Development — operator-only, for verifying changes in a live environment | Published release (automatic) | Restricted to specific IPs |
 | Preview | Stakeholder review — authenticated access for reviewing before production | Published release (automatic) | Email-based authentication at the edge |
-| Production | Public site | Manual dispatch only | Public |
+| Production | Intended public site | No committed production deploy workflow in this repo | Public when active |
 
-Seed and preview deploy automatically when a release is published. Production requires the operator to validate on preview first, then manually trigger the deploy.
+Seed and preview deploy automatically when a release is published. Production remains part of the documented topology, but this repo does not currently contain a production deploy workflow.
 
 ## Protection layers
 
@@ -51,10 +51,10 @@ Feature PR → main (squash merge)
       → Seed deploys automatically
       → Preview deploys automatically
         → Operator validates on preview
-          → Operator triggers production deploy manually
+          → Optional operator-run production step (not automated in this repo)
 ```
 
-This ensures every deployment corresponds to a tagged release, and production changes are always validated on preview first.
+This ensures every automated deployment in the repo corresponds to a tagged release. If production deployment is used, it should still be validated on preview first.
 
 ## Runbook reference
 

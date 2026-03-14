@@ -23,8 +23,6 @@ export default defineConfig({
       favicon: '/favicon.ico',
       locales: {
         'en-us': { label: 'English (US)', lang: 'en-US' },
-        'en-gb': { label: 'English (UK)', lang: 'en-GB' },
-        'de-de': { label: 'Deutsch', lang: 'de-DE' },
       },
       defaultLocale: 'en-us',
       head: [
@@ -115,13 +113,28 @@ export default defineConfig({
         {
           label: 'About',
           items: [
-            { label: 'What this is', slug: 'about/what-this-is' },
-            { label: 'Publication arc', slug: 'about/publication-arc' },
+            { label: 'What This Work Is', slug: 'about/what-this-is' },
+            { label: 'About the Author', slug: 'about/about-the-author' },
           ],
         },
         {
-          label: 'Articles',
-          items: [{ label: 'Placeholder article', slug: 'articles/placeholder' }],
+          label: 'Writing',
+          items: [
+            {
+              label: 'Articles',
+              items: [
+                {
+                  label: 'Practice of Clarity',
+                  items: [
+                    {
+                      label: 'Act I — When Output Outpaces Understanding',
+                      slug: 'writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding',
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
         },
         {
           label: 'Licenses',

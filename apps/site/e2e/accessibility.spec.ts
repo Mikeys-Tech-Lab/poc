@@ -3,10 +3,10 @@ import { expect, test } from '@playwright/test';
 import { CONTENT_PATHS, LOCALE_PREFIXES, REGISTERS } from '../src/lib/__tests__/test-constants';
 
 /**
- * v1 axe scope (runtime-realistic):
- * - 1 page per locale x both registers = 6
- * - 2 "stress" pages in default locale x both registers = 4
- * Total: 10 axe runs
+ * Axe scope (runtime-realistic):
+ * - 1 representative page x both registers = 2
+ * - 2 "stress" pages x both registers = 4
+ * Total: 6 axe runs
  */
 const AXE_REPRESENTATIVE_PAGE = CONTENT_PATHS[1]; // about/what-this-is
 const AXE_STRESS_PAGES = [CONTENT_PATHS[4], CONTENT_PATHS[5]]; // cc-by-4-0, mit
