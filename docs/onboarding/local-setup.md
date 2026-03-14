@@ -27,6 +27,7 @@ Other commands:
 | `pnpm run preview` | Preview the production build locally |
 | `pnpm test` | Run tooling tests (Vitest) |
 | `pnpm run test:coverage` | Run tests with coverage |
+| `pnpm screendump` | Build the site, export desktop/tablet/mobile screenshots, and create a versioned zip in `.dist/` |
 
 ## Operator configuration
 

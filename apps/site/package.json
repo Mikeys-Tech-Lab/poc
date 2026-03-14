@@ -7,6 +7,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "screendump": "node ./scripts/screendump.mjs",
     "astro": "astro",
     "check": "astro check",
     "test": "vitest run",
