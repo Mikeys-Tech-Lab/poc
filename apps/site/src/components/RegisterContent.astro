@@ -2,19 +2,19 @@
 import { getEntry, render } from 'astro:content';
 
 interface Props {
-	orientation?: string;
+	register?: string;
 }
 
-const { orientation } = Astro.props;
+const { register: registerEntry } = Astro.props;
 
-let OrientationContent: any = null;
+let RegisterEntryContent: any = null;
 
-if (orientation) {
-	const match = await getEntry('register', orientation)
-		?? await getEntry('register', orientation.replace(/\/index$/, ''));
+if (registerEntry) {
+	const match = await getEntry('register', registerEntry)
+		?? await getEntry('register', registerEntry.replace(/\/index$/, ''));
 	if (match) {
 		const rendered = await render(match);
-		OrientationContent = rendered.Content;
+		RegisterEntryContent = rendered.Content;
 	}
 }
 ---
@@ -24,9 +24,9 @@ if (orientation) {
 </div>
 
 {
-	OrientationContent && (
+	RegisterEntryContent && (
 		<div data-register-content="orientation">
-			<OrientationContent />
+			<RegisterEntryContent />
 		</div>
 	)
 }
