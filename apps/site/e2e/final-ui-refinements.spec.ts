@@ -29,7 +29,9 @@ const neutralA11yLabels = [
 
 test.describe('final ui refinements', () => {
   for (const { name, viewport } of viewports) {
-    test(`share button follows the intended anchor paragraphs on ${name}`, async ({ browser }) => {
+    test(`share button sits above the article anchor paragraphs on ${name}`, async ({
+      browser,
+    }) => {
       const context = await browser.newContext({ viewport });
       const page = await context.newPage();
 
@@ -49,7 +51,7 @@ test.describe('final ui refinements', () => {
             }
 
             return Boolean(
-              anchor.compareDocumentPosition(shareButton) & Node.DOCUMENT_POSITION_FOLLOWING,
+              shareButton.compareDocumentPosition(anchor) & Node.DOCUMENT_POSITION_FOLLOWING,
             );
           },
           {
@@ -75,7 +77,7 @@ test.describe('final ui refinements', () => {
             }
 
             return Boolean(
-              anchor.compareDocumentPosition(shareButton) & Node.DOCUMENT_POSITION_FOLLOWING,
+              shareButton.compareDocumentPosition(anchor) & Node.DOCUMENT_POSITION_FOLLOWING,
             );
           },
           {

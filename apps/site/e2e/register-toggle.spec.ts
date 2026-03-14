@@ -51,4 +51,55 @@ test.describe('register toggle', () => {
     expect(afterToggleCount).toBeGreaterThan(0);
     expect(typeof initialCount).toBe('number');
   });
+
+  test('ToC links jump to the visible heading in practitioner and orientation', async ({
+    page,
+  }) => {
+    await page.goto('/en-us/about/what-this-is/');
+
+    await page.locator('starlight-toc nav a').filter({ hasText: 'Theme' }).first().click();
+    await page.waitForTimeout(100);
+
+    const practitionerPosition = await page.evaluate(() => {
+      const visibleTheme = [...document.querySelectorAll('#theme')].find((element) => {
+        if (!(element instanceof HTMLElement)) return false;
+        const style = window.getComputedStyle(element);
+        return (
+          style.display !== 'none' && style.visibility !== 'hidden' && element.offsetParent !== null
+        );
+      });
+
+      if (!(visibleTheme instanceof HTMLElement)) return null;
+      return {
+        hash: window.location.hash,
+        top: visibleTheme.getBoundingClientRect().top,
+      };
+    });
+
+    expect(practitionerPosition?.hash).toBe('#theme');
+    expect(practitionerPosition?.top ?? Number.POSITIVE_INFINITY).toBeLessThan(140);
+
+    await page.locator('poc-register-toggle button').click();
+    await page.locator('starlight-toc nav a').filter({ hasText: 'Theme' }).first().click();
+    await page.waitForTimeout(100);
+
+    const orientationPosition = await page.evaluate(() => {
+      const visibleTheme = [...document.querySelectorAll('#theme')].find((element) => {
+        if (!(element instanceof HTMLElement)) return false;
+        const style = window.getComputedStyle(element);
+        return (
+          style.display !== 'none' && style.visibility !== 'hidden' && element.offsetParent !== null
+        );
+      });
+
+      if (!(visibleTheme instanceof HTMLElement)) return null;
+      return {
+        hash: window.location.hash,
+        top: visibleTheme.getBoundingClientRect().top,
+      };
+    });
+
+    expect(orientationPosition?.hash).toBe('#theme');
+    expect(orientationPosition?.top ?? Number.POSITIVE_INFINITY).toBeLessThan(140);
+  });
 });

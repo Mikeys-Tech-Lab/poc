@@ -25,8 +25,19 @@ export function rebuildToc(): void {
     if (!h.id || !h.textContent) return;
     const li = document.createElement('li');
     const a = document.createElement('a');
-    a.href = `#${h.id}`;
+    const targetId = h.id;
+    a.href = `#${targetId}`;
     a.textContent = h.textContent.trim();
+    a.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      const selector = `#${CSS.escape(targetId)}`;
+      const target = content.querySelector(selector);
+      if (!(target instanceof HTMLElement)) return;
+
+      target.scrollIntoView({ block: 'start' });
+      history.replaceState(null, '', `#${targetId}`);
+    });
 
     if (h.tagName === 'H3' && currentH2Li) {
       let sub = currentH2Li.querySelector(':scope > ul');
