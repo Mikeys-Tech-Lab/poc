@@ -11,6 +11,7 @@
     "local": "pnpm --filter site dev",
     "build": "pnpm --filter site build",
     "preview": "pnpm --filter site preview",
+    "screendump": "pnpm --filter site screendump",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "test": "pnpm -r test",

@@ -11,6 +11,8 @@ import type { Locale } from './locale';
 export interface RegisterLabels {
   practitioner: string;
   orientation: string;
+  practitionerHelper: string;
+  orientationHelper: string;
 }
 
 export interface ThemeLabels {
@@ -21,7 +23,12 @@ export interface ThemeLabels {
 }
 
 const registerLabels: Record<Locale, RegisterLabels> = {
-  'en-US': { practitioner: 'Practitioner', orientation: 'Orientation' },
+  'en-US': {
+    practitioner: 'Practitioner',
+    orientation: 'Orientation',
+    practitionerHelper: 'Structural analysis and implementation context',
+    orientationHelper: 'Plain language explanation',
+  },
 };
 
 const themeLabels: Record<Locale, ThemeLabels> = {
@@ -56,7 +63,7 @@ const a11yLabels: Record<Locale, A11yLabels> = {
     contrastDefault: 'Default',
     textSize: 'Text size',
     reduceMotion: 'Reduce motion',
-    solidShortcut: 'Solid (max readability)',
+    solidShortcut: 'Solid background for higher contrast',
     underlineLinks: 'Underline links',
     altFont: 'Alternate font',
     reset: 'Reset to defaults',

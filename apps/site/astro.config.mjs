@@ -121,16 +121,11 @@ export default defineConfig({
           label: 'Writing',
           items: [
             {
-              label: 'Articles',
+              label: 'Practice of Clarity',
               items: [
                 {
-                  label: 'Practice of Clarity',
-                  items: [
-                    {
-                      label: 'Act I — When Output Outpaces Understanding',
-                      slug: 'writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding',
-                    },
-                  ],
+                  label: 'Act I: When Output Outpaces Understanding',
+                  slug: 'writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding',
                 },
               ],
             },

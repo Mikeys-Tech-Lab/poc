@@ -1,14 +1,23 @@
 ---
 title: Practice of Clarity
-description: A publication surface for the Practice of Clarity.
+description: A publication for the Practice of Clarity.
 template: splash
 hero:
-  tagline: A publication surface for making reasoning visible.
+  tagline: |
+    <p>A publication about making reasoning visible.</p>
+    <div data-register-content="practitioner">
+      <p>AI-assisted work now lets teams generate ideas, code, and decisions faster than they can fully understand them. When output outpaces understanding, coordination gets harder, review gets heavier, and trust starts to thin out.</p>
+      <p>Practice of Clarity is a publication about that condition and about a usable response to it: making reasoning visible so shared understanding can form without pretending certainty.</p>
+    </div>
+    <div data-register-content="orientation">
+      <p>Many people are now expected to work, decide, and respond faster than they can really understand what is happening. When that happens, pressure rises, confusion spreads, and responsibility lands on people without enough shared clarity.</p>
+      <p>Practice of Clarity is a publication about that condition and about a practical response to it: making reasoning visible so people can follow how decisions were formed, what is still uncertain, and where the pressure is landing.</p>
+    </div>
   image:
     file: ../../../assets/hero.png
-    alt: Colorful silhouettes of people connected by a network of lines, representing shared understanding
+    alt: Silhouettes of people connected by lines in a network pattern.
   actions:
-    - text: What this is
+    - text: Start Here
       link: /en-us/about/what-this-is/
       icon: right-arrow
 prev: false
@@ -18,22 +27,22 @@ next: false
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import RegisterContent from '../../../components/RegisterContent.astro';
 
-<RegisterContent orientation="orientation/en-us">
+<RegisterContent register="orientation/en-us">
   <CardGrid>
     <Card title="What This Work Is" icon="open-book">
-      A publication surface for the Practice of Clarity. Start here if you want the framing and how to read the site.
+      Start here for the framing, the reading model, and the boundaries of the practice.
       [Start reading](/en-us/about/what-this-is/)
     </Card>
     <Card title="Writing" icon="list-format">
-      Writing begins here. Act I is the opening route in the publication.
+      The publication begins with Practice of Clarity. Act I names the condition this work responds to.
       [Read Act I](/en-us/writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding/)
     </Card>
     <Card title="Licenses" icon="approve-check">
-      Authored content is CC BY 4.0. Code and tooling are MIT.
+      Writing is published under CC BY 4.0. Code, tooling, and automation scripts are MIT licensed.
       [View licenses](/en-us/licenses/cc-by-4-0/)
     </Card>
     <Card title="About the Author" icon="pencil">
-      About Mikey Sebastian Drozd and the origins of this practice.
+      About Mikey Sebastian Drozd and how this practice emerged.
       [Read more](/en-us/about/about-the-author/)
     </Card>
   </CardGrid>

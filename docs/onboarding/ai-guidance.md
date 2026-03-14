@@ -65,6 +65,7 @@ Current skills:
 | `git-commit` | Before every commit |
 | `github-automation` | Feature lifecycle and PRs |
 | `dependency-management` | Adding or updating dependencies |
+| `screen-dump` | Exporting page/register screenshots and versioned snapshot bundles |
 | `infomaniak-deployment` | Deployment configuration and troubleshooting |
 
 ## Claude and Copilot

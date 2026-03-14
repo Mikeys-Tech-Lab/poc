@@ -12,6 +12,29 @@
   color: var(--poc-accent-complement);
 }
 
+.hero .tagline p {
+  margin: 0;
+}
+
+.hero .tagline > p:first-child {
+  font-size: clamp(var(--sl-text-base), calc(0.0625rem + 2vw), var(--sl-text-xl));
+}
+
+.hero .tagline [data-register-content] p {
+  color: var(--sl-color-text);
+  font-size: var(--sl-text-base);
+  line-height: var(--sl-line-height);
+  max-width: 60ch;
+}
+
+.hero .tagline [data-register-content] > p:first-child {
+  margin-top: 1rem;
+}
+
+.hero .tagline [data-register-content] p + p {
+  margin-top: 0.875rem;
+}
+
 .hero .actions a {
   box-shadow: var(--poc-shadow-soft);
 }

@@ -9,6 +9,6 @@ export const allPages = LOCALE_PREFIXES.flatMap((locale) =>
 export const orientationPages = allPages.map((url) => `${url}?register=orientation`);
 
 export const expectBothRegisters = async (page: Page) => {
-  await expect(page.locator('[data-register-content="practitioner"]')).toBeAttached();
-  await expect(page.locator('[data-register-content="orientation"]')).toBeAttached();
+  expect(await page.locator('[data-register-content="practitioner"]').count()).toBeGreaterThan(0);
+  expect(await page.locator('[data-register-content="orientation"]').count()).toBeGreaterThan(0);
 };

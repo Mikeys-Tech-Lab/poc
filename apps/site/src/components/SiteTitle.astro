@@ -33,8 +33,14 @@ const t = getRegisterLabels(locale);
         </>
       )
     }
-    <span class:list={{ 'sr-only': config.logo?.replacesTitle }} translate="no">
-      {siteTitle}<sup class="register-label"><svg aria-hidden="true" class="register-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="7" opacity="0.6" /><circle cx="15" cy="12" r="7" opacity="0.6" /></svg><span class="label-practitioner">{t.practitioner}</span><span class="label-orientation">{t.orientation}</span></sup>
+    <span class:list={{ 'sr-only': config.logo?.replacesTitle, 'title-copy': true }} translate="no">
+      <span class="title-main">
+        {siteTitle}<sup class="register-label"><svg aria-hidden="true" class="register-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="7" opacity="0.6" /><circle cx="15" cy="12" r="7" opacity="0.6" /></svg><span class="label-practitioner">{t.practitioner}</span><span class="label-orientation">{t.orientation}</span></sup>
+      </span>
+      <span class="register-helper" aria-hidden="true">
+        <span class="helper-practitioner">{t.practitionerHelper}</span>
+        <span class="helper-orientation">{t.orientationHelper}</span>
+      </span>
     </span>
   </button>
 </poc-register-toggle>
@@ -134,11 +140,52 @@ const t = getRegisterLabels(locale);
     display: none;
   }
 
+  .title-copy {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .title-main {
+    display: inline-block;
+  }
+
+  .register-helper {
+    display: none;
+    font-size: 0.48em;
+    font-weight: 400;
+    color: var(--sl-color-gray-3);
+    letter-spacing: 0.01em;
+    line-height: 1.25;
+    white-space: normal;
+    max-width: 22rem;
+  }
+
+  .helper-orientation {
+    display: none;
+  }
+
   :global(:root[data-register='orientation']) .label-practitioner {
     display: none;
   }
 
   :global(:root[data-register='orientation']) .label-orientation {
+    display: inline;
+  }
+
+  @media (min-width: 72rem) {
+    .register-helper {
+      display: block;
+    }
+  }
+
+  :global(:root[data-register='orientation']) .helper-practitioner {
+    display: none;
+  }
+
+  :global(:root[data-register='orientation']) .helper-orientation {
     display: inline;
   }
 </style>
