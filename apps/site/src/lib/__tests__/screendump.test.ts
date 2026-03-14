@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
 
 import {
-  CONTENT_PATHS,
-  REGISTERS,
-  VIEWPORTS,
   buildPageUrl,
+  CONTENT_PATHS,
   createScreendumpPlan,
+  REGISTERS,
   screenshotFileName,
+  VIEWPORTS,
   zipFileName,
 } from '../screendump.js';
 
@@ -14,21 +14,17 @@ describe('screendump helpers', () => {
   it('builds screenshot filenames from path and register', () => {
     expect(screenshotFileName('', 'practitioner')).toBe('home__practitioner.png');
     expect(screenshotFileName('about/what-this-is', 'orientation')).toBe(
-      'about__what-this-is__orientation.png'
+      'about__what-this-is__orientation.png',
     );
   });
 
   it('builds orientation urls with the register query param', () => {
     expect(buildPageUrl('http://127.0.0.1:4321/en-us/', '', 'practitioner')).toBe(
-      'http://127.0.0.1:4321/en-us/'
+      'http://127.0.0.1:4321/en-us/',
     );
-    expect(
-      buildPageUrl(
-        'http://127.0.0.1:4321/en-us/',
-        'licenses/mit',
-        'orientation'
-      )
-    ).toBe('http://127.0.0.1:4321/en-us/licenses/mit?register=orientation');
+    expect(buildPageUrl('http://127.0.0.1:4321/en-us/', 'licenses/mit', 'orientation')).toBe(
+      'http://127.0.0.1:4321/en-us/licenses/mit?register=orientation',
+    );
   });
 
   it('builds the full page x register x viewport plan', () => {
@@ -37,7 +33,7 @@ describe('screendump helpers', () => {
     });
 
     expect(plan).toHaveLength(
-      CONTENT_PATHS.length * REGISTERS.length * Object.keys(VIEWPORTS).length
+      CONTENT_PATHS.length * REGISTERS.length * Object.keys(VIEWPORTS).length,
     );
     expect(plan[0]).toMatchObject({
       viewportName: 'desktop',

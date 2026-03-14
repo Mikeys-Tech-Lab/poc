@@ -1,15 +1,15 @@
-import { readFile, mkdir, rm } from 'node:fs/promises';
+import { spawn } from 'node:child_process';
+import { mkdir, readFile, rm } from 'node:fs/promises';
 import { createServer } from 'node:net';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { spawn } from 'node:child_process';
 
 import { chromium } from '@playwright/test';
 
 import {
+  createScreendumpPlan,
   OUTPUT_DIRNAME,
   VIEWPORTS,
-  createScreendumpPlan,
   zipFileName,
 } from '../src/lib/screendump.js';
 
@@ -36,7 +36,7 @@ const runCommand = (command, args, options = {}) =>
       }
 
       rejectCommand(
-        new Error(`${command} ${args.join(' ')} exited with code ${code ?? 'unknown'}`)
+        new Error(`${command} ${args.join(' ')} exited with code ${code ?? 'unknown'}`),
       );
     });
   });
@@ -85,14 +85,10 @@ const nextFreePort = async (candidate) =>
   });
 
 const startPreviewServer = async (port) => {
-  const child = spawn(
-    'pnpm',
-    ['preview', '--host', '127.0.0.1', '--port', String(port)],
-    {
-      cwd: siteDirectory,
-      stdio: 'ignore',
-    }
-  );
+  const child = spawn('pnpm', ['preview', '--host', '127.0.0.1', '--port', String(port)], {
+    cwd: siteDirectory,
+    stdio: 'ignore',
+  });
 
   const url = `http://127.0.0.1:${port}/en-us/`;
   await waitForServer(url);
@@ -110,10 +106,7 @@ const stopPreviewServer = async (child) => {
 
   child.kill('SIGTERM');
 
-  await Promise.race([
-    new Promise((resolveExit) => child.once('exit', resolveExit)),
-    delay(2000),
-  ]);
+  await Promise.race([new Promise((resolveExit) => child.once('exit', resolveExit)), delay(2000)]);
 
   if (child.exitCode === null) {
     child.kill('SIGKILL');
@@ -131,8 +124,8 @@ const ensureFreshOutputDirectories = async () => {
 
   await Promise.all(
     Object.keys(VIEWPORTS).map((viewportName) =>
-      mkdir(resolve(outputDirectory, viewportName), { recursive: true })
-    )
+      mkdir(resolve(outputDirectory, viewportName), { recursive: true }),
+    ),
   );
 };
 

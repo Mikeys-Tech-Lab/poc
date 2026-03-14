@@ -20,8 +20,7 @@ export const HOME_SLUG = 'home';
 
 export const toScreenshotSlug = (path) => (path || HOME_SLUG).replaceAll('/', '__');
 
-export const screenshotFileName = (path, register) =>
-  `${toScreenshotSlug(path)}__${register}.png`;
+export const screenshotFileName = (path, register) => `${toScreenshotSlug(path)}__${register}.png`;
 
 export const zipFileName = (version, baseName = OUTPUT_DIRNAME) =>
   `${baseName}-snapshot-${version}.zip`;
@@ -51,6 +50,6 @@ export const createScreendumpPlan = ({
         register,
         fileName: screenshotFileName(path, register),
         url: buildPageUrl(baseUrl, path, register),
-      }))
-    )
+      })),
+    ),
   );
