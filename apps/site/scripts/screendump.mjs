@@ -16,7 +16,8 @@ import {
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const siteDirectory = resolve(scriptDirectory, '..');
 const workspaceDirectory = resolve(siteDirectory, '..', '..');
-const outputDirectory = resolve(workspaceDirectory, '.dist', OUTPUT_DIRNAME);
+const distDirectory = resolve(workspaceDirectory, '.dist');
+const outputDirectory = resolve(distDirectory, OUTPUT_DIRNAME);
 const packageJsonPath = resolve(siteDirectory, 'package.json');
 
 const delay = (ms) => new Promise((resolveDelay) => setTimeout(resolveDelay, ms));
@@ -118,8 +119,8 @@ const readPackageVersion = async () => {
   return packageJson.version;
 };
 
-const ensureFreshOutputDirectories = async () => {
-  await rm(outputDirectory, { recursive: true, force: true });
+const ensureFreshDistDirectories = async () => {
+  await rm(distDirectory, { recursive: true, force: true });
   await mkdir(outputDirectory, { recursive: true });
 
   await Promise.all(
@@ -161,11 +162,11 @@ const captureScreenshots = async (plan) => {
 
 const main = async () => {
   const version = await readPackageVersion();
-  const zipPath = resolve(workspaceDirectory, '.dist', zipFileName(version));
+  const zipPath = resolve(distDirectory, zipFileName(version));
   const port = await nextFreePort(4321);
 
   await runCommand('pnpm', ['build'], { cwd: siteDirectory });
-  await ensureFreshOutputDirectories();
+  await ensureFreshDistDirectories();
 
   const preview = await startPreviewServer(port);
 
