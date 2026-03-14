@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.1.0...PoC-v1.2.0) (2026-03-14)
+
+
+### Features
+
+* **astro:** finalize publication surface refinements ([#72](https://github.com/Mikeys-Tech-Lab/poc/issues/72)) ([9fd1f27](https://github.com/Mikeys-Tech-Lab/poc/commit/9fd1f27347183f92cc4dfc4bae363b5eb037d0f6))
+
 ## [1.1.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.0.4...PoC-v1.1.0) (2026-03-14)
 
 
