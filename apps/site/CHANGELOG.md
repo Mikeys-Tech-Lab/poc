@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.0.2...site-v1.1.0) (2026-03-14)
+
+
+### Features
+
+* **astro:** launch prep and ground repo reality ([#70](https://github.com/Mikeys-Tech-Lab/poc/issues/70)) ([dfefb57](https://github.com/Mikeys-Tech-Lab/poc/commit/dfefb572ceedf46506141edb19cef047209f5019))
+
 ## [1.0.2](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.0.1...site-v1.0.2) (2026-03-10)
 
 
