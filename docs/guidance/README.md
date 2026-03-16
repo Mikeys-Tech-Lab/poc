@@ -14,6 +14,10 @@ These documents are descriptive, not prescriptive, and must not introduce gating
 
 This workspace documents reasoning, not people. Reports, traces, and tooling output must not be aggregated, ranked, or attached to individuals. If any artifact in this repo is repurposed for surveillance, punitive monitoring, or performance evaluation, it has been misused.
 
+## Guidance docs
+
+- [Agent pre-commit verification](agent-pre-commit-verification.md) — reflection on lint-before-commit, assumptions, and mistakes from publication refinements.
+
 ## Change process
 
 - GitHub Flow: feature branches from `main`, PRs with squash merge.

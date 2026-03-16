@@ -63,6 +63,10 @@ Astro content collections (`.md`, `.mdx` files in `src/content/`) resolve image 
 
 Never assume a path alias works in all contexts. Aliases that resolve in module imports (`.ts`, `.astro`) may not resolve in YAML frontmatter, CSS `url()`, or HTML attributes. When in doubt, use a relative path and verify with a build.
 
+### MDX headings with icons
+
+When you need an icon next to an MDX heading (e.g. `### Accessibility` with an icon), do **not** use a component inside the heading. `### <Component />` can lose the heading anchor (`id`) or flatten the component output. Use inline HTML instead: `### <span style="..."><span>Accessibility</span><svg>...</svg></span>`. Duplicate the markup across registers if the heading appears in both practitioner and orientation content. See `docs/guidance/agent-pre-commit-verification.md` for the reasoning trace.
+
 ## Build verification requirement
 
 Any change to assets, config, content structure, or frontmatter must be followed by `pnpm run build` before committing. Do not commit without a passing build.
