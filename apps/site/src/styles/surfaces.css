@@ -85,3 +85,13 @@ site-search dialog::backdrop {
   background-color: var(--poc-surface-raised);
   border-color: var(--poc-border-hover);
 }
+
+/* Asides */
+:root:not([data-style="solid"]) .starlight-aside {
+  background-color: var(--poc-surface-mid);
+  border: 1px solid var(--poc-border-faint);
+  border-inline-start: 0.25rem solid var(--sl-color-asides-border);
+  border-radius: 0.75rem;
+  backdrop-filter: blur(var(--poc-blur-md));
+  box-shadow: var(--poc-shadow-soft);
+}

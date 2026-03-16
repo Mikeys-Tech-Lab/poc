@@ -69,6 +69,7 @@ body {
     .card,
     .card .title,
     .card .body,
+    .starlight-aside,
     .pagination-links a,
     .license-notice,
     .license-notice p,
@@ -78,6 +79,28 @@ body {
     starlight-theme-select label
   ) {
   color: var(--poc-text-muted);
+}
+
+:root:not([data-style="solid"]) .starlight-aside :is(
+    p,
+    li,
+    strong,
+    em,
+    blockquote,
+    td,
+    th,
+    summary,
+    code
+  ) {
+  color: var(--poc-text);
+}
+
+:root:not([data-style="solid"]) .starlight-aside .starlight-aside__title {
+  color: var(--sl-color-asides-text-accent);
+}
+
+:root:not([data-style="solid"]) .starlight-aside .starlight-aside__content a {
+  color: var(--sl-color-asides-text-accent);
 }
 
 :root[data-theme="dark"]:not([data-style="solid"]) :is(.sidebar-content [aria-current='page'], .card .title) {
