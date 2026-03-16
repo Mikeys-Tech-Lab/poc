@@ -34,6 +34,9 @@ export const buildPageUrl = (baseUrl, path, register) => {
   return url.toString();
 };
 
+/**
+ * @param {{ baseUrl?: string; paths?: string[]; registers?: string[]; viewports?: typeof VIEWPORTS }} [options]
+ */
 export const createScreendumpPlan = ({
   baseUrl,
   paths = CONTENT_PATHS,

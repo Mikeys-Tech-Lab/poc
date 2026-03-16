@@ -207,7 +207,7 @@ const t = getA11yLabels(locale);
 				} else if (key === 'text') {
 					continue;
 				} else if (input.type === 'checkbox') {
-					input.checked = (this.prefs as Record<string, string>)[key] !== 'default';
+					input.checked = (this.prefs as unknown as Record<string, string>)[key] !== 'default';
 				}
 			}
 			const textSelect = this.querySelector<HTMLSelectElement>('[data-a11y-control="text"]');
