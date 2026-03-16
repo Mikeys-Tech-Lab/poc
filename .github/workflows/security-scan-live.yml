@@ -2,7 +2,7 @@ name: Security · HTTP Headers (Nuclei)
 
 on:
   workflow_run:
-    workflows: ["Deploy · Seed", "Deploy · Preview"]
+    workflows: ["Deploy · Seed", "Deploy · Preview", "Deploy · Production"]
     types: [completed]
   workflow_dispatch:
     inputs:
@@ -50,6 +50,26 @@ jobs:
         with:
           args: >-
             -u ${{ vars.PREVIEW_SITE_URL }}
+            -t http/misconfiguration/http-missing-security-headers.yaml
+
+      # SARIF upload is currently disabled in this repo setup.
+      # Re-enable if GitHub Advanced Security is available and wanted here.
+
+  scan-production:
+    name: Headers · Production
+    runs-on: ubuntu-latest
+    environment: production
+    if: >-
+      github.event_name == 'workflow_run' &&
+      github.event.workflow_run.name == 'Deploy · Production' &&
+      github.event.workflow_run.conclusion == 'success'
+
+    steps:
+      - name: Run Nuclei scan
+        uses: projectdiscovery/nuclei-action@v3
+        with:
+          args: >-
+            -u ${{ vars.PUBLIC_SITE_URL }}
             -t http/misconfiguration/http-missing-security-headers.yaml
 
       # SARIF upload is currently disabled in this repo setup.

@@ -1,0 +1,113 @@
+name: Deploy · Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: "What is being deployed and why (e.g. 'site-v1.2.1 — verified on preview')"
+        required: true
+        type: string
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Log deployment reason
+        run: |
+          echo "## Production deployment" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Reason:** ${{ inputs.reason }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Ref:** ${{ github.ref_name }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Triggered by:** ${{ github.actor }}" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build site
+        run: pnpm run build
+        env:
+          SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
+
+      - name: Generate .htaccess
+        run: |
+          {
+            echo "RewriteEngine On"
+            echo ""
+            echo "# Block direct-to-origin requests (no CF-Connecting-IP = not through Cloudflare)"
+            echo "RewriteCond %{HTTP:CF-Connecting-IP} ^$"
+            echo "RewriteRule ^ - [F,L]"
+          } > apps/site/dist/.htaccess
+          echo "Generated .htaccess: direct-to-origin block (public site, no IP restriction)"
+
+      - name: Append security headers to .htaccess
+        run: |
+          cat >> apps/site/dist/.htaccess << 'HEADERS'
+
+          # HTTP security headers
+          <IfModule mod_headers.c>
+            Header always set X-Content-Type-Options "nosniff"
+            Header always set X-Frame-Options "DENY"
+            Header always set Referrer-Policy "strict-origin-when-cross-origin"
+            Header always set Permissions-Policy "geolocation=(), camera=(), microphone=(), usb=(), payment=(), interest-cohort=()"
+            Header always set X-Permitted-Cross-Domain-Policies "none"
+            Header always set Cross-Origin-Opener-Policy "same-origin"
+            Header always set Cross-Origin-Resource-Policy "same-origin"
+            Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+          </IfModule>
+          HEADERS
+          echo "Appended security headers to .htaccess"
+
+      - name: Append locale redirect to .htaccess
+        run: |
+          cat >> apps/site/dist/.htaccess << 'REDIRECT'
+
+          # Default locale redirect (no root locale — all locales use /xx-xx/ prefix)
+          RewriteRule ^$ /en-us/ [R=301,L]
+          REDIRECT
+          echo "Appended locale redirect to .htaccess"
+
+      - name: Deploy via rsync
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.PUBLIC_SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.PUBLIC_SSH_HOST }}
+          SSH_USER: ${{ secrets.PUBLIC_SSH_USER }}
+          SSH_PORT: ${{ secrets.PUBLIC_SSH_PORT }}
+          DEPLOY_PATH: ${{ secrets.PUBLIC_DEPLOY_PATH }}
+        run: |
+          set +x
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "${SSH_PORT:-22}" "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p ${SSH_PORT:-22}" \
+            apps/site/dist/ \
+            "${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}"
+          echo "Deployment complete."
+
+      - name: Cleanup
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
