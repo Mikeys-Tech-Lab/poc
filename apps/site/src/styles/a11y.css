@@ -86,9 +86,10 @@
 }
 
 /* ── Underline links ──
-   Scoped to content area. Respects existing link styles. */
-:root[data-a11y-links="underline"] .sl-markdown-content a {
-  text-decoration: underline;
+   Accessibility enhancement only. Preserve each component's default link
+   styling when off; when enabled, underline every link consistently. */
+:root[data-a11y-links="underline"] a {
+  text-decoration: underline !important;
   text-underline-offset: 0.15em;
   text-decoration-thickness: 1px;
 }
