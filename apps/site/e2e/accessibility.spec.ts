@@ -109,9 +109,11 @@ test.describe('a11y panel controls', () => {
     }));
   }
 
-  test('default state preserves existing link styling', async ({ page }) => {
+  test('default state keeps links non-underlined across the page', async ({ page }) => {
     const footerLink = page.locator('.license-notice a').first();
+    const contentLink = page.locator('.sl-markdown-content a').first();
     await expect(footerLink).toHaveCSS('text-decoration-line', 'none');
+    await expect(contentLink).toHaveCSS('text-decoration-line', 'none');
   });
 
   test('contrast toggle sets data-a11y-contrast', async ({ page }) => {
@@ -160,7 +162,9 @@ test.describe('a11y panel controls', () => {
 
   test('underline links toggle sets data-a11y-links and styles links', async ({ page }) => {
     const footerLink = page.locator('.license-notice a').first();
+    const contentLink = page.locator('.sl-markdown-content a').first();
     await expect(footerLink).toHaveCSS('text-decoration-line', 'none');
+    await expect(contentLink).toHaveCSS('text-decoration-line', 'none');
 
     await openPanel(page);
     const checkbox = openDialog(page).locator('[data-a11y-control="links"]');
@@ -168,10 +172,12 @@ test.describe('a11y panel controls', () => {
     const ds = await getRootDataset(page);
     expect(ds.a11yLinks).toBe('underline');
     await expect(footerLink).toHaveCSS('text-decoration-line', 'underline');
+    await expect(contentLink).toHaveCSS('text-decoration-line', 'underline');
     await checkbox.uncheck();
     const ds2 = await getRootDataset(page);
     expect(ds2.a11yLinks).toBe('default');
     await expect(footerLink).toHaveCSS('text-decoration-line', 'none');
+    await expect(contentLink).toHaveCSS('text-decoration-line', 'none');
   });
 
   test('alternate font toggle sets data-a11y-font', async ({ page }) => {

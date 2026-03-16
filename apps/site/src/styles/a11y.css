@@ -86,8 +86,12 @@
 }
 
 /* ── Underline links ──
-   Accessibility enhancement only. Preserve each component's default link
-   styling when off; when enabled, underline every link consistently. */
+   Workspace contract: default links are not underlined across the page.
+   When enabled, underline every link consistently. */
+:root:not([data-a11y-links="underline"]) a {
+  text-decoration: none;
+}
+
 :root[data-a11y-links="underline"] a {
   text-decoration: underline !important;
   text-underline-offset: 0.15em;
