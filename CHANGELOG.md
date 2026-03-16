@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.2.1...PoC-v1.3.0) (2026-03-16)
+
+
+### Features
+
+* **infra:** add production deployment workflow ([#76](https://github.com/Mikeys-Tech-Lab/poc/issues/76)) ([c6c489a](https://github.com/Mikeys-Tech-Lab/poc/commit/c6c489a1aa21efed37bb1e107e5f3571184c689f))
+
 ## [1.2.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.2.0...PoC-v1.2.1) (2026-03-16)
 
 
