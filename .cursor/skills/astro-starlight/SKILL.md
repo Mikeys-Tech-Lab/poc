@@ -67,14 +67,16 @@ Never assume a path alias works in all contexts. Aliases that resolve in module 
 
 When you need an icon next to an MDX heading (e.g. `### Accessibility` with an icon), do **not** use a component inside the heading. `### <Component />` can lose the heading anchor (`id`) or flatten the component output. Use inline HTML instead: `### <span style="..."><span>Accessibility</span><svg>...</svg></span>`. Duplicate the markup across registers if the heading appears in both practitioner and orientation content. See `docs/guidance/agent-pre-commit-verification.md` for the reasoning trace.
 
-### Accessibility preference overrides must be additive
+### Accessibility preference contracts must be explicit
 
-When implementing accessibility preferences in site CSS, treat them as additive overrides, not baseline resets.
+When implementing accessibility preferences in site CSS, do not guess the default behavior from a general principle. Verify the product contract first.
 
-- **Good:** `:root[data-a11y-links="underline"] a { ... }`
-- **Bad:** `:root:not([data-a11y-links="underline"]) a { ... }`
+For this workspace's current underline-links preference:
 
-The default state should preserve the site's existing styling. Do not use a global default-state selector to normalize the whole page unless the operator explicitly asked for a site-wide redesign. After changing an accessibility preference:
+- default: links are not underlined across the page
+- preference on: all links are underlined across the page
+
+After changing an accessibility preference:
 
 1. verify the default state still matches the intended baseline
 2. verify the preference-on state applies everywhere it should

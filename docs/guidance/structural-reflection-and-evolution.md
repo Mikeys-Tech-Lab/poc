@@ -37,7 +37,7 @@ When writing a reflection, retrospective, or evolution note, include:
 
 **Too local:** "The selector was wrong, so it was replaced."
 
-**Structural:** "An optional accessibility preference was implemented as a global baseline reset. The rule is that optional preferences are additive overrides that preserve the baseline when off. The evolution is to encode that rule in canonical guidance, affected skills, and tests that verify baseline -> override -> restored baseline."
+**Structural:** "A local fix was overgeneralized into a false universal rule. The real guardrail is to verify the explicit product contract before turning a correction into guidance. The evolution is to encode that rule in canonical guidance, affected skills, and tests that verify default -> override -> restored default."
 
 ## Surface order
 

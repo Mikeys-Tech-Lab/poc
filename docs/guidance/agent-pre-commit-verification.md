@@ -26,8 +26,8 @@ Later in the same area, an accessibility refinement for "Underline links" overre
 3. **MDX heading + component would work.**  
    For the accessibility icon, we tried `### <InlineAccessibilityLabel />` expecting the component to render inside the heading with a stable `id="accessibility"` anchor. MDX/Starlight flattened or lost the anchor. We iterated through explicit `<h3>`, then settled on inline HTML with `### <span>...</span>` containing the SVG. The pattern is documented in the astro-starlight skill.
 
-4. **Accessibility toggle off means global visual reset.**  
-   We treated "underline links off by default" as "force all links to `text-decoration: none` until the toggle is on." That reversed the intent. Accessibility preferences are additive overrides. When off, they should preserve the site's baseline styling. They should not flatten or normalize the whole surface.
+4. **Overgeneralized from a local fix into a false universal.**  
+   We turned one correction into a broad rule: "accessibility preferences are additive overrides, not baseline resets." That was too abstract and it overrode the explicit product contract for this workspace. The real requirement for underline-links was simpler: default links are not underlined, and the accessibility preference underlines all of them.
 
 ## Mistakes
 
@@ -52,11 +52,11 @@ Later in the same area, an accessibility refinement for "Underline links" overre
 
 2. **astro-starlight skill:** Added "MDX headings with icons" to Known pitfalls. When an icon is needed in an MDX heading, use inline HTML (`### <span>...</span>` with SVG). Component-in-heading can lose the anchor or flatten. Duplicate across registers if needed.
 
-3. **Accessibility toggle rule:** Reverted the global default-off selector. "Underline links" now only adds underlines when enabled; it does not reset defaults when disabled.
+3. **Accessibility toggle rule:** Restored the explicit site contract. Default links are not underlined across the page; the accessibility preference underlines all links.
 
-4. **Test posture:** Updated the E2E test to verify the real behavior boundary: preserve the component default when off, force underline when on, and restore the default when turned back off.
+4. **Test posture:** Updated the E2E test to verify the real behavior boundary: links are not underlined by default across the page, force underline when on, and return to non-underlined when turned back off.
 
-5. **astro-starlight skill:** Added a guardrail for accessibility preference work. Preference CSS must be additive and reversible. Do not use a global default-state selector to normalize the whole page unless the operator explicitly requests a site-wide redesign.
+5. **astro-starlight skill:** Reframed the guardrail for accessibility preference work. Do not infer the contract from a generic principle; verify the workspace's intended default and preference-on states, then test both directions.
 
 6. **This document:** Captures the reflection so future agents (or operators on other machines) see the reasoning and avoid repeating the same assumptions.
 
@@ -66,13 +66,13 @@ This incident is not only about lint order or a CSS selector. It exposed a deepe
 
 The structural pattern is:
 
-- an optional override was implemented as a baseline reset
+- a local correction was overgeneralized into a false universal rule
 - a follow-up test protected the bad assumption
 - the guidance initially stayed too close to the incident
 
 The structural rule is:
 
-- accessibility preferences and similar optional behaviors must be additive
+- verify the explicit product contract before turning a correction into guidance
 - reflections must climb from incident to pattern to guardrail
 - tests must verify the intended contract, not the shortcut that caused the regression
 
@@ -86,7 +86,7 @@ Before every commit:
 2. Run `pnpm build` if you changed assets, config, content, or frontmatter.
 3. Run `pnpm test` if you changed tooling code.
 4. If you changed accessibility preferences or theme CSS, verify both states manually:
-   preference off preserves the baseline, preference on adds the intended override, and toggling back off restores the baseline.
+   preference off matches the intended default, preference on matches the intended override, and toggling back off restores the intended default.
 
 CI runs lint first. Align local verification with CI so you fail fast and avoid pushing broken checks.
 
