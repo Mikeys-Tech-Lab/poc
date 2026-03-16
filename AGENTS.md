@@ -96,6 +96,28 @@ This workspace is a connected system: code, documentation, AI guidance, infrastr
 
 If you see only the file you are editing, you are flattening. Zoom out, then act.
 
+## Reflection and evolution discipline
+
+Reflection in this workspace must be structural.
+
+A useful reflection does not stop at the local bug, local file, or local workaround. It climbs from the incident to the pattern, from the pattern to the guardrail, and from the guardrail to the workspace surfaces that must evolve.
+
+### Required climb
+
+When documenting a mistake, correction, or retrospective:
+
+1. **Name the incident.** What happened in concrete terms?
+2. **Name the underlying pattern.** What class of failure does this belong to?
+3. **Name the structural rule.** What principle or invariant should prevent recurrence?
+4. **Update the right surfaces.** Canonical guidance first, then affected skills, rules, docs, and tests.
+5. **Verify the contract.** Tests and checks must protect the intended behavior, not the accidental implementation that caused the bug.
+
+### Anti-pattern
+
+If a reflection ends at "fixed the selector", "updated the command", or "made the test pass", it is incomplete. That is patching, not evolution.
+
+The purpose of reflection here is not only to record what went wrong. It is to improve the architecture of future decisions.
+
 ## Security posture
 
 This is a public repository. Everything committed is world-readable. Agents must treat security as a first-class concern.

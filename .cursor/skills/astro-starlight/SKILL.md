@@ -67,6 +67,19 @@ Never assume a path alias works in all contexts. Aliases that resolve in module 
 
 When you need an icon next to an MDX heading (e.g. `### Accessibility` with an icon), do **not** use a component inside the heading. `### <Component />` can lose the heading anchor (`id`) or flatten the component output. Use inline HTML instead: `### <span style="..."><span>Accessibility</span><svg>...</svg></span>`. Duplicate the markup across registers if the heading appears in both practitioner and orientation content. See `docs/guidance/agent-pre-commit-verification.md` for the reasoning trace.
 
+### Accessibility preference overrides must be additive
+
+When implementing accessibility preferences in site CSS, treat them as additive overrides, not baseline resets.
+
+- **Good:** `:root[data-a11y-links="underline"] a { ... }`
+- **Bad:** `:root:not([data-a11y-links="underline"]) a { ... }`
+
+The default state should preserve the site's existing styling. Do not use a global default-state selector to normalize the whole page unless the operator explicitly asked for a site-wide redesign. After changing an accessibility preference:
+
+1. verify the default state still matches the intended baseline
+2. verify the preference-on state applies everywhere it should
+3. verify toggling back off restores the original baseline
+
 ## Build verification requirement
 
 Any change to assets, config, content structure, or frontmatter must be followed by `pnpm run build` before committing. Do not commit without a passing build.

@@ -13,6 +13,8 @@ During the publication refinements work, we added:
 
 Commits were pushed without running `pnpm lint`. CI failed on Biome formatting in `astro.config.mjs`, `screendump.test.ts`, and `atmosphere.css`. A follow-up commit applied `pnpm lint:fix` to resolve.
 
+Later in the same area, an accessibility refinement for "Underline links" overreached. A global default-off CSS rule (`:root:not([data-a11y-links="underline"]) a`) was added in `a11y.css`. That did not merely keep the preference inactive; it erased the site's normal link styling across the page. The dev server was healthy. The regression was self-inflicted by an over-broad selector and a bad assumption about what "default off" should mean.
+
 ## Assumptions made (and why they were wrong)
 
 1. **Build pass implies CI pass.**  
@@ -23,6 +25,9 @@ Commits were pushed without running `pnpm lint`. CI failed on Biome formatting i
 
 3. **MDX heading + component would work.**  
    For the accessibility icon, we tried `### <InlineAccessibilityLabel />` expecting the component to render inside the heading with a stable `id="accessibility"` anchor. MDX/Starlight flattened or lost the anchor. We iterated through explicit `<h3>`, then settled on inline HTML with `### <span>...</span>` containing the SVG. The pattern is documented in the astro-starlight skill.
+
+4. **Accessibility toggle off means global visual reset.**  
+   We treated "underline links off by default" as "force all links to `text-decoration: none` until the toggle is on." That reversed the intent. Accessibility preferences are additive overrides. When off, they should preserve the site's baseline styling. They should not flatten or normalize the whole surface.
 
 ## Mistakes
 
@@ -35,13 +40,43 @@ Commits were pushed without running `pnpm lint`. CI failed on Biome formatting i
 3. **Inline HTML duplication.**  
    The accessibility icon markup is duplicated in both practitioner and orientation `what-this-is.mdx` files. A shared component was abandoned when it didn't render correctly in the heading context. The duplication is acceptable for a one-off but could be revisited if the pattern recurs.
 
+4. **Used a global selector without checking the baseline state.**  
+   The rule was written against all anchors on the page without first verifying which areas were intentionally underlined, intentionally plain, or component-specific. That changed behavior far beyond the accessibility panel.
+
+5. **Test encoded the wrong requirement.**  
+   A follow-up E2E test asserted that links should be non-underlined by default. That protected the bad assumption instead of the real contract. The correct assertion is narrower: a known non-underlined link stays non-underlined by default, and the accessibility preference underlines it when enabled.
+
 ## Evolution (what we changed)
 
 1. **git-commit skill:** Added "Lint passes" to the pre-commit checklist. Run `pnpm lint` before commit. If format issues exist, run `pnpm lint:fix` then `pnpm lint` to verify.
 
 2. **astro-starlight skill:** Added "MDX headings with icons" to Known pitfalls. When an icon is needed in an MDX heading, use inline HTML (`### <span>...</span>` with SVG). Component-in-heading can lose the anchor or flatten. Duplicate across registers if needed.
 
-3. **This document:** Captures the reflection so future agents (or operators on other machines) see the reasoning and avoid repeating the same assumptions.
+3. **Accessibility toggle rule:** Reverted the global default-off selector. "Underline links" now only adds underlines when enabled; it does not reset defaults when disabled.
+
+4. **Test posture:** Updated the E2E test to verify the real behavior boundary: preserve the component default when off, force underline when on, and restore the default when turned back off.
+
+5. **astro-starlight skill:** Added a guardrail for accessibility preference work. Preference CSS must be additive and reversible. Do not use a global default-state selector to normalize the whole page unless the operator explicitly requests a site-wide redesign.
+
+6. **This document:** Captures the reflection so future agents (or operators on other machines) see the reasoning and avoid repeating the same assumptions.
+
+## Structural lesson
+
+This incident is not only about lint order or a CSS selector. It exposed a deeper failure mode: a local fix was treated as sufficient before the underlying pattern had been named.
+
+The structural pattern is:
+
+- an optional override was implemented as a baseline reset
+- a follow-up test protected the bad assumption
+- the guidance initially stayed too close to the incident
+
+The structural rule is:
+
+- accessibility preferences and similar optional behaviors must be additive
+- reflections must climb from incident to pattern to guardrail
+- tests must verify the intended contract, not the shortcut that caused the regression
+
+The broader discipline now lives in `docs/guidance/structural-reflection-and-evolution.md` and `AGENTS.md`.
 
 ## For future agents
 
@@ -50,6 +85,8 @@ Before every commit:
 1. Run `pnpm lint`. If it fails, run `pnpm lint:fix` then `pnpm lint` again.
 2. Run `pnpm build` if you changed assets, config, content, or frontmatter.
 3. Run `pnpm test` if you changed tooling code.
+4. If you changed accessibility preferences or theme CSS, verify both states manually:
+   preference off preserves the baseline, preference on adds the intended override, and toggling back off restores the baseline.
 
 CI runs lint first. Align local verification with CI so you fail fast and avoid pushing broken checks.
 

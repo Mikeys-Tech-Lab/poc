@@ -16,7 +16,8 @@ This workspace documents reasoning, not people. Reports, traces, and tooling out
 
 ## Guidance docs
 
-- [Agent pre-commit verification](agent-pre-commit-verification.md) — reflection on lint-before-commit, assumptions, and mistakes from publication refinements.
+- [Structural reflection and evolution](structural-reflection-and-evolution.md) — the high-level rule for converting incidents into patterns, guardrails, and workspace changes.
+- [Agent pre-commit verification](agent-pre-commit-verification.md) — reflection on lint-before-commit, accessibility override regressions, assumptions, and mistakes from publication refinements.
 
 ## Change process
 

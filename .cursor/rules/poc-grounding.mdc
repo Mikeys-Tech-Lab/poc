@@ -33,6 +33,10 @@ Orient before acting. Understand what you are working within — directories, do
 
 Every PR updates all affected documentation in the same PR. There is no "update docs later." Full discipline: `AGENTS.md` § Documentation evolution discipline.
 
+## Reflection and evolution
+
+Reflections must be structural. Do not stop at the local bug or local fix. Climb from incident to pattern to guardrail, then update the canonical and affected guidance surfaces. Full discipline: `AGENTS.md` § Reflection and evolution discipline.
+
 ---
 © 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).  
 Source: https://github.com/Mikeys-Tech-Lab/poc
