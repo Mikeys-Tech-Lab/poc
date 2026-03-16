@@ -12,7 +12,7 @@ body::before {
   inset: -24px;
   z-index: -1;
   background:
-    linear-gradient(rgb(var(--poc-register-tint) / 0.6), rgb(var(--poc-register-tint) / 0.6)),
+    linear-gradient(rgb(var(--poc-register-tint) / 0.7), rgb(var(--poc-register-tint) / 0.7)),
     url("../assets/bg-landing.png") center / cover no-repeat;
   filter: blur(var(--poc-blur-sm));
   will-change: transform;
@@ -33,4 +33,53 @@ body {
   --sl-color-hairline-shade: var(--poc-border-subtle);
   --sl-color-hairline-light: var(--poc-border-subtle);
   overflow-x: clip;
+}
+
+:root[data-theme="dark"]:not([data-style="solid"]) body {
+  color: var(--poc-text);
+}
+
+:root[data-theme="dark"]:not([data-style="solid"]) :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--poc-text-strong);
+}
+
+:root[data-theme="dark"]:not([data-style="solid"]) :is(
+    .sl-markdown-content,
+    .sl-markdown-content p,
+    .sl-markdown-content li,
+    .sl-markdown-content blockquote,
+    .sl-markdown-content td,
+    .sl-markdown-content th,
+    .sl-markdown-content summary,
+    .sl-markdown-content strong,
+    .sl-markdown-content em
+  ) {
+  color: var(--poc-text);
+}
+
+:root[data-theme="dark"]:not([data-style="solid"]) :is(
+    .sidebar-pane,
+    .sidebar-content,
+    .sidebar-content a,
+    .right-sidebar,
+    .right-sidebar a,
+    mobile-starlight-toc nav,
+    mobile-starlight-toc .toggle,
+    mobile-starlight-toc .dropdown,
+    .card,
+    .card .title,
+    .card .body,
+    .pagination-links a,
+    .license-notice,
+    .license-notice p,
+    .license-notice .pronouns,
+    .license-notice .provenance,
+    button[data-open-modal],
+    starlight-theme-select label
+  ) {
+  color: var(--poc-text-muted);
+}
+
+:root[data-theme="dark"]:not([data-style="solid"]) :is(.sidebar-content [aria-current='page'], .card .title) {
+  color: var(--poc-text-strong);
 }
