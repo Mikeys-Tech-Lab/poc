@@ -24,3 +24,10 @@
 .sl-markdown-content {
   overflow-wrap: break-word;
 }
+
+/* Code blocks — scroll within container, no page-level overflow (WCAG 1.4.10) */
+.sl-markdown-content pre,
+.starlight-aside pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
