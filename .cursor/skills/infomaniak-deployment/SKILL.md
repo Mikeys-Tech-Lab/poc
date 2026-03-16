@@ -58,7 +58,7 @@ No third-party deployment actions are used. Direct `ssh`/`rsync` commands reduce
 |---|---|---|---|
 | Development | `release: published` + manual dispatch | `.htaccess` IP allowlist | Active |
 | Preview | `release: published` + manual dispatch | Cloudflare Access (email OTP) | Active |
-| Public | No committed workflow in current repo | None (public) | Planned topology |
+| Public | Manual dispatch only (required reason input) | None (public) | Active |
 
 Each environment uses a **GitHub environment** for isolated secrets and variables.
 
@@ -68,7 +68,7 @@ All environments share a baseline: `.htaccess` blocks requests without `CF-Conne
 
 - **Seed**: baseline + IP allowlist. Only requests from allowed IPs (via `CF-Connecting-IP` header) are permitted.
 - **Preview**: baseline + Cloudflare Access. All traffic must go through Cloudflare, where Zero Trust enforces email-based authentication (one-time PIN). No IP allowlist needed.
-- **Production**: baseline only when active. Public site, no additional auth. Do not assume a committed production workflow exists unless you verify it in `.github/workflows/`.
+- **Production**: baseline only. Public site, no additional auth. Deployed via manual dispatch (`deploy-production.yml`).
 
 The baseline `.htaccess` rule:
 
@@ -139,7 +139,7 @@ Each GitHub environment sets `SITE_URL` as a **variable** (not a secret, since U
 |---|---|
 | development | Set via `DEVELOPMENT_SITE_URL` variable |
 | preview | Set via `PREVIEW_SITE_URL` variable |
-| production | Verify current workflow/setup before assuming a value is wired |
+| production | Set via `PUBLIC_SITE_URL` variable |
 
 ## GitHub configuration
 
@@ -183,7 +183,7 @@ Key constraints:
 |---|---|---|
 | Development | `.github/workflows/deploy-dev.yml` | `release: published`, manual dispatch |
 | Preview | `.github/workflows/deploy-preview.yml` | `release: published`, manual dispatch |
-| Public | No committed workflow in current repo | Verify before assuming automation |
+| Public | `.github/workflows/deploy-production.yml` | Manual dispatch (required reason input) |
 
 ## Manual deployment
 
@@ -220,12 +220,12 @@ Escape dots in IPs for the regex (e.g. `89\.36\.76\.75`). For public environment
 
 ## Extending to additional environments
 
-To add a new deployment target, or to add the currently absent Public workflow:
+To add a new deployment target:
 
-1. Create a new workflow file for the missing target.
+1. Create a new workflow file.
 2. Create the corresponding GitHub environment with its own secrets and variables.
-3. Set the appropriate trigger (push, manual, or both).
-4. For Public: omit the IP allowlist generation step, but keep the direct-to-origin block and security headers.
+3. Set the appropriate trigger (release, manual, or both).
+4. For public environments: omit the IP allowlist generation step, but keep the direct-to-origin block and security headers.
 5. Update this skill with the new environment details.
 6. Update `docs/architecture/workspace.md` to reflect the new deployment target.
 

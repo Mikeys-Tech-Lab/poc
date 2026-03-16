@@ -64,9 +64,9 @@ No IP allowlist is needed. Cloudflare Access is the access control layer, and th
 | Origin baseline | `.htaccess` direct-to-origin block |
 | Access control | None (public site) |
 
-Production is the intended public environment. The only documented protection is the baseline direct-to-origin block, ensuring traffic flows through Cloudflare for DDoS protection, caching, and SSL termination.
+Production is the public environment. The only protection is the baseline direct-to-origin block, ensuring traffic flows through Cloudflare for DDoS protection, caching, and SSL termination.
 
-This repo does not currently contain a committed production deploy workflow. Treat this section as topology and access model, not proof of active automation.
+The production deploy workflow (`.github/workflows/deploy-production.yml`) is triggered by manual dispatch only. Seed and preview auto-deploy on every release to serve as validation layers; the operator explicitly promotes to production after verification.
 
 ## Traffic flow summary
 

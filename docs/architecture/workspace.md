@@ -48,6 +48,7 @@ flowchart TD
   subgraph "CI/CD (GitHub Actions)"
     DeployDev[".github/workflows/deploy-dev.yml"]
     DeployPreview[".github/workflows/deploy-preview.yml"]
+    DeployProd[".github/workflows/deploy-production.yml"]
   end
 
   subgraph "CI / Security Scanning"
@@ -68,8 +69,10 @@ flowchart TD
 
   DeployDev -->|"pnpm run build\n+ rsync over SSH"| InfomaniakDev["Infomaniak: seed.practiceofclarity.eu"]
   DeployPreview -->|"pnpm run build\n+ rsync over SSH"| InfomaniakPreview["Infomaniak: preview.practiceofclarity.eu"]
+  DeployProd -->|"pnpm run build\n+ rsync over SSH\n(manual dispatch)"| InfomaniakProd["Infomaniak: practiceofclarity.eu"]
   DeployDev -->|"triggers"| LiveScan
   DeployPreview -->|"triggers"| LiveScan
+  DeployProd -->|"triggers"| LiveScan
   InfomaniakPreview -.->|"Cloudflare Access\n(email OTP)"| CFAccess["Cloudflare Zero Trust"]
   Dependabot -.->|"action version updates"| SecretScan
   Dependabot -.->|"action version updates"| CodeQL
@@ -95,7 +98,7 @@ flowchart TD
 | `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, infomaniak-deployment, onboarding) | Exists |
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
 | `.github/` | PR template, Copilot instructions, Dependabot config | Exists |
-| `.github/workflows/` | CI/CD (deploy-dev, deploy-preview, release), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard, Nuclei live scan) | Exists |
+| `.github/workflows/` | CI/CD (deploy-dev, deploy-preview, deploy-production, release), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard, Nuclei live scan) | Exists |
 | `release-please-config.json` | Release Please package definitions and changelog sections | Exists |
 | `.release-please-manifest.json` | Tracks current version of each versioned package | Exists |
 | `.local/` | Operator-specific config (gitignored). Template: `.local.example.md` | Exists |
