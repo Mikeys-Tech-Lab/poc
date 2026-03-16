@@ -5,11 +5,11 @@ import { CONTENT_PATHS, LOCALE_PREFIXES, REGISTERS } from '../src/lib/__tests__/
 /**
  * Axe scope (runtime-realistic):
  * - 1 representative page x both registers = 2
- * - 2 "stress" pages x both registers = 4
- * Total: 6 axe runs
+ * - 1 "stress" page x both registers = 2
+ * Total: 4 axe runs
  */
 const AXE_REPRESENTATIVE_PAGE = CONTENT_PATHS[1]; // about/what-this-is
-const AXE_STRESS_PAGES = [CONTENT_PATHS[4], CONTENT_PATHS[5]]; // cc-by-4-0, mit
+const AXE_STRESS_PAGES = [CONTENT_PATHS[4]]; // cc-by-4-0
 
 const axePages = [
   ...LOCALE_PREFIXES.flatMap((locale) =>

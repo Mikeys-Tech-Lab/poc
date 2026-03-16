@@ -22,8 +22,10 @@ describe('screendump helpers', () => {
     expect(buildPageUrl('http://127.0.0.1:4321/en-us/', '', 'practitioner')).toBe(
       'http://127.0.0.1:4321/en-us/',
     );
-    expect(buildPageUrl('http://127.0.0.1:4321/en-us/', 'licenses/mit', 'orientation')).toBe(
-      'http://127.0.0.1:4321/en-us/licenses/mit?register=orientation',
+    expect(
+      buildPageUrl('http://127.0.0.1:4321/en-us/', 'licenses/cc-by-4-0', 'orientation'),
+    ).toBe(
+      'http://127.0.0.1:4321/en-us/licenses/cc-by-4-0?register=orientation',
     );
   });
 

@@ -16,8 +16,8 @@ const orientationAnchor =
   'Understanding takes time. People still need to ask questions, examine assumptions, and see how a decision fits with everything else that already exists.';
 
 const helperCopy = {
-  practitioner: 'Structural analysis and implementation context',
-  orientation: 'Plain language explanation',
+  practitioner: 'Deeper reading and working context',
+  orientation: 'Plain-language introduction',
 } as const;
 
 const neutralA11yLabels = [
@@ -101,7 +101,7 @@ test.describe('final ui refinements', () => {
         await page.waitForLoadState('domcontentloaded');
 
         await expect(page.locator('.license-notice .provenance')).toContainText(
-          'This site is built in the open. The writing is the front door, and the repository is part of the same work.',
+          'This site is built in the open. The writing is the public front door. The repository is part of the same work and will be surfaced more directly in a later stage.',
         );
         await expect(page.locator('.license-notice .provenance a')).toHaveCount(0);
 

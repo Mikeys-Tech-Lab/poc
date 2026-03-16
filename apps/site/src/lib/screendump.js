@@ -4,7 +4,6 @@ export const CONTENT_PATHS = [
   'about/about-the-author',
   'writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding',
   'licenses/cc-by-4-0',
-  'licenses/mit',
 ];
 
 export const REGISTERS = ['practitioner', 'orientation'];
