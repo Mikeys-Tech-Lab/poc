@@ -105,13 +105,11 @@ test.describe('final ui refinements', () => {
         );
         await expect(page.locator('.license-notice .provenance a')).toHaveCount(0);
 
-        if (viewport.width >= 1152) {
-          await expect(page.locator('.helper-practitioner')).toBeVisible();
-          await expect(page.locator('.helper-practitioner')).toHaveText(helperCopy.practitioner);
-          await page.locator('poc-register-toggle button').click();
-          await expect(page.locator('.helper-orientation')).toBeVisible();
-          await expect(page.locator('.helper-orientation')).toHaveText(helperCopy.orientation);
-        }
+        await expect(page.locator('.helper-practitioner')).toBeVisible();
+        await expect(page.locator('.helper-practitioner')).toHaveText(helperCopy.practitioner);
+        await page.locator('poc-register-toggle button').click();
+        await expect(page.locator('.helper-orientation')).toBeVisible();
+        await expect(page.locator('.helper-orientation')).toHaveText(helperCopy.orientation);
 
         const panelTrigger = page.locator('poc-a11y-panel .a11y-trigger:visible').first();
         await panelTrigger.click();
