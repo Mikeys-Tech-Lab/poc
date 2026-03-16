@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.2.0...site-v1.2.1) (2026-03-16)
+
+
+### Bug Fixes
+
+* **astro:** publication refinements ([#74](https://github.com/Mikeys-Tech-Lab/poc/issues/74)) ([395ee04](https://github.com/Mikeys-Tech-Lab/poc/commit/395ee04c97190f8f6ca07fc2202b2c89670f0ee8))
+
 ## [1.2.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.1.0...site-v1.2.0) (2026-03-14)
 
 
