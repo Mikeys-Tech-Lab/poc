@@ -63,6 +63,25 @@ Astro content collections (`.md`, `.mdx` files in `src/content/`) resolve image 
 
 Never assume a path alias works in all contexts. Aliases that resolve in module imports (`.ts`, `.astro`) may not resolve in YAML frontmatter, CSS `url()`, or HTML attributes. When in doubt, use a relative path and verify with a build.
 
+### MDX headings with icons
+
+When you need an icon next to an MDX heading (e.g. `### Accessibility` with an icon), do **not** use a component inside the heading. `### <Component />` can lose the heading anchor (`id`) or flatten the component output. Use inline HTML instead: `### <span style="..."><span>Accessibility</span><svg>...</svg></span>`. Duplicate the markup across registers if the heading appears in both practitioner and orientation content. See `docs/guidance/agent-pre-commit-verification.md` for the reasoning trace.
+
+### Accessibility preference contracts must be explicit
+
+When implementing accessibility preferences in site CSS, do not guess the default behavior from a general principle. Verify the product contract first.
+
+For this workspace's current underline-links preference:
+
+- default: links are not underlined across the page
+- preference on: all links are underlined across the page
+
+After changing an accessibility preference:
+
+1. verify the default state still matches the intended baseline
+2. verify the preference-on state applies everywhere it should
+3. verify toggling back off restores the original baseline
+
 ## Build verification requirement
 
 Any change to assets, config, content structure, or frontmatter must be followed by `pnpm run build` before committing. Do not commit without a passing build.
@@ -297,7 +316,7 @@ E2E tests live in `apps/site/e2e/`. Playwright config: `apps/site/playwright.con
 
 ### Test matrix
 
-The current state matrix is 1 locale x 6 content paths x 2 registers = 12 states, generated from arrays in `test-constants.ts`. Register state is a query parameter (`?register=orientation`), not a route segment. If the repo activates additional locales or routes later, update the arrays first and let the matrix expand from verified repo state.
+The current state matrix is 1 locale x 5 content paths x 2 registers = 10 states, generated from arrays in `test-constants.ts`. Register state is a query parameter (`?register=orientation`), not a route segment. If the repo activates additional locales or routes later, update the arrays first and let the matrix expand from verified repo state.
 
 ## Installability surface
 

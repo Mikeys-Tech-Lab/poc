@@ -81,27 +81,56 @@ const t = getA11yLabels(locale);
 		type A11yPreferences,
 	} from '../lib/a11y-preferences';
 
+	const themeStorageKey = 'starlight-theme';
+	const atmosphericThemeStorageKey = 'poc-atmospheric-theme';
+
+	type Theme = 'auto' | 'dark' | 'light' | 'dark-solid' | 'light-solid';
+
+	const parseTheme = (theme: unknown): Theme =>
+		theme === 'auto' ||
+		theme === 'dark' ||
+		theme === 'light' ||
+		theme === 'dark-solid' ||
+		theme === 'light-solid'
+			? theme
+			: 'auto';
+
+	const loadTheme = (): Theme =>
+		parseTheme(typeof localStorage !== 'undefined' && localStorage.getItem(themeStorageKey));
+
+	const toAtmosphericTheme = (theme: Theme): 'auto' | 'dark' | 'light' =>
+		theme === 'dark-solid'
+			? 'dark'
+			: theme === 'light-solid'
+				? 'light'
+				: theme;
+
 	function isSolidTheme(): boolean {
-		const stored = typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
-		return typeof stored === 'string' && stored.includes('solid');
+		return loadTheme().includes('solid');
 	}
 
 	function setSolidTheme(solid: boolean): void {
-		const stored = typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
-		const current = stored || '';
-		const isSolid = current.includes('solid');
+		const currentTheme = loadTheme();
+		const isSolid = currentTheme.includes('solid');
 
 		if (solid && !isSolid) {
 			const colorScheme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
-			const newTheme = `${colorScheme}-solid`;
-			localStorage.setItem('starlight-theme', newTheme);
+			const newTheme = `${colorScheme}-solid` as Theme;
+			localStorage.setItem(atmosphericThemeStorageKey, currentTheme);
+			localStorage.setItem(themeStorageKey, newTheme);
 			document.documentElement.dataset.style = 'solid';
 			StarlightThemeProvider.updatePickers(newTheme);
 		} else if (!solid && isSolid) {
-			const colorScheme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
-			localStorage.setItem('starlight-theme', colorScheme);
+			const storedAtmosphericTheme =
+				typeof localStorage !== 'undefined' &&
+				localStorage.getItem(atmosphericThemeStorageKey);
+			const fallbackAtmosphericTheme = currentTheme.startsWith('light') ? 'light' : 'dark';
+			const atmosphericTheme = toAtmosphericTheme(
+				parseTheme(storedAtmosphericTheme || fallbackAtmosphericTheme),
+			);
+			localStorage.setItem(themeStorageKey, atmosphericTheme === 'auto' ? '' : atmosphericTheme);
 			delete document.documentElement.dataset.style;
-			StarlightThemeProvider.updatePickers(colorScheme);
+			StarlightThemeProvider.updatePickers(atmosphericTheme);
 		}
 	}
 
@@ -178,7 +207,7 @@ const t = getA11yLabels(locale);
 				} else if (key === 'text') {
 					continue;
 				} else if (input.type === 'checkbox') {
-					input.checked = (this.prefs as Record<string, string>)[key] !== 'default';
+					input.checked = (this.prefs as unknown as Record<string, string>)[key] !== 'default';
 				}
 			}
 			const textSelect = this.querySelector<HTMLSelectElement>('[data-a11y-control="text"]');

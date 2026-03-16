@@ -13,8 +13,8 @@ const t = getThemeLabels(locale);
 		label={Astro.locals.t('themeSelect.accessibleLabel')}
 		options={[
 			{ label: t.darkAtmospheric, selected: false, value: 'dark' },
-			{ label: t.lightAtmospheric, selected: false, value: 'light' },
 			{ label: Astro.locals.t('themeSelect.auto'), selected: true, value: 'auto' },
+			{ label: t.lightAtmospheric, selected: false, value: 'light' },
 			{ label: t.darkSolid, selected: false, value: 'dark-solid' },
 			{ label: t.lightSolid, selected: false, value: 'light-solid' },
 		]}

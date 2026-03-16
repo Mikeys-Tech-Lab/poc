@@ -15,11 +15,11 @@
   --poc-overlay: 198 208 245;
 
   /* Surfaces — translucent fills over the atmospheric background */
-  --poc-surface-faint: rgb(var(--poc-base) / 0.2);
-  --poc-surface: rgb(var(--poc-base) / 0.3);
-  --poc-surface-mid: rgb(var(--poc-base) / 0.35);
-  --poc-surface-raised: rgb(var(--poc-base) / 0.4);
-  --poc-surface-heavy: rgb(var(--poc-base) / 0.45);
+  --poc-surface-faint: rgb(var(--poc-base) / 0.24);
+  --poc-surface: rgb(var(--poc-base) / 0.36);
+  --poc-surface-mid: rgb(var(--poc-base) / 0.42);
+  --poc-surface-raised: rgb(var(--poc-base) / 0.47);
+  --poc-surface-heavy: rgb(var(--poc-base) / 0.52);
   --poc-surface-dense: rgb(var(--poc-base) / 0.8);
   --poc-surface-panel: rgb(var(--poc-base) / 0.85);
 
@@ -44,6 +44,12 @@
 
   /* Accent complement — Catppuccin mauve */
   --poc-accent-complement: #ca9ee6;
+
+  /* Readability hierarchy */
+  --poc-text-strong: #f3f6ff;
+  --poc-text: rgb(var(--poc-overlay) / 0.96);
+  --poc-text-muted: rgb(var(--poc-overlay) / 0.84);
+  --poc-text-soft: rgb(var(--poc-overlay) / 0.72);
 
   /* Register atmospheric tint — practitioner uses the base palette,
      orientation shifts to a greenish pastel. Only the tint channel changes;
@@ -79,4 +85,8 @@
 
   --poc-backdrop: rgb(0 0 0 / 0.2);
   --poc-accent-complement: #8839ef;
+  --poc-text-strong: #303446;
+  --poc-text: #4c4f69;
+  --poc-text-muted: #5c5f77;
+  --poc-text-soft: #6c6f85;
 }

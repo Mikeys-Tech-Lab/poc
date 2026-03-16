@@ -26,8 +26,8 @@ const registerLabels: Record<Locale, RegisterLabels> = {
   'en-US': {
     practitioner: 'Practitioner',
     orientation: 'Orientation',
-    practitionerHelper: 'Structural analysis and implementation context',
-    orientationHelper: 'Plain language explanation',
+    practitionerHelper: 'Deeper reading and working context',
+    orientationHelper: 'Plain-language introduction',
   },
 };
 

@@ -132,11 +132,8 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Licenses',
-          items: [
-            { label: 'CC BY 4.0', slug: 'licenses/cc-by-4-0' },
-            { label: 'MIT', slug: 'licenses/mit' },
-          ],
+          label: 'License',
+          items: [{ label: 'CC BY 4.0', slug: 'licenses/cc-by-4-0' }],
         },
       ],
       credits: false,

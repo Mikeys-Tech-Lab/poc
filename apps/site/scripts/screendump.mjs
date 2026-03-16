@@ -142,17 +142,26 @@ const captureScreenshots = async (plan) => {
 
   try {
     for (const [viewportName, viewport] of Object.entries(VIEWPORTS)) {
-      const page = await browser.newPage({ viewport });
+      for (const entry of plan.filter((item) => item.viewportName === viewportName)) {
+        const context = await browser.newContext({ viewport });
 
-      try {
-        for (const entry of plan.filter((item) => item.viewportName === viewportName)) {
+        try {
+          // Fresh storage per capture prevents register state leaking across screenshots.
+          await context.addInitScript(
+            ({ register }) => {
+              window.localStorage.setItem('poc-register', register);
+            },
+            { register: entry.register },
+          );
+
+          const page = await context.newPage();
           const targetPath = resolve(outputDirectory, viewportName, entry.fileName);
           await page.goto(entry.url, { waitUntil: 'networkidle' });
           await page.screenshot({ path: targetPath, fullPage: true });
           console.log(`${viewportName}/${entry.fileName}`);
+        } finally {
+          await context.close();
         }
-      } finally {
-        await page.close();
       }
     }
   } finally {

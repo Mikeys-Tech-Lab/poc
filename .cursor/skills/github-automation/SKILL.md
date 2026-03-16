@@ -76,6 +76,15 @@ Audit the branch for issues the work introduced or exposed:
 
 Present findings to the operator. Be specific: "I found X, Y, Z. Here is what I recommend fixing."
 
+Reflections must be structural, not merely local. If the work exposed a mistake or regression, do not stop at the fix. Climb:
+
+1. **Incident**: what happened
+2. **Pattern**: what class of failure it belongs to
+3. **Guardrail**: what rule should prevent recurrence
+4. **Surface updates**: which canonical docs, skills, rules, or tests must evolve
+
+If the reflection ends at "fixed the file" or "updated the selector," the Close phase is incomplete.
+
 #### 3b. Cleanup
 
 Fix the issues found during reflection. Each fix is its own atomic commit.

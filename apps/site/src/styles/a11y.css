@@ -86,9 +86,14 @@
 }
 
 /* ── Underline links ──
-   Scoped to content area. Respects existing link styles. */
-:root[data-a11y-links="underline"] .sl-markdown-content a {
-  text-decoration: underline;
+   Workspace contract: default links are not underlined across the page.
+   When enabled, underline every link consistently. */
+:root:not([data-a11y-links="underline"]) a {
+  text-decoration: none;
+}
+
+:root[data-a11y-links="underline"] a {
+  text-decoration: underline !important;
   text-underline-offset: 0.15em;
   text-decoration-thickness: 1px;
 }

@@ -4,7 +4,6 @@ export const CONTENT_PATHS = [
   'about/about-the-author',
   'writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding',
   'licenses/cc-by-4-0',
-  'licenses/mit',
 ];
 
 export const REGISTERS = ['practitioner', 'orientation'];
@@ -35,6 +34,9 @@ export const buildPageUrl = (baseUrl, path, register) => {
   return url.toString();
 };
 
+/**
+ * @param {{ baseUrl?: string; paths?: string[]; registers?: string[]; viewports?: typeof VIEWPORTS }} [options]
+ */
 export const createScreendumpPlan = ({
   baseUrl,
   paths = CONTENT_PATHS,
