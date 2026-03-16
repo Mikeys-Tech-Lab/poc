@@ -43,7 +43,8 @@ body {
   color: var(--poc-text-strong);
 }
 
-:root[data-theme="dark"]:not([data-style="solid"]) :is(
+:root[data-theme="dark"]:not([data-style="solid"])
+  :is(
     .sl-markdown-content,
     .sl-markdown-content p,
     .sl-markdown-content li,
@@ -57,7 +58,8 @@ body {
   color: var(--poc-text);
 }
 
-:root[data-theme="dark"]:not([data-style="solid"]) :is(
+:root[data-theme="dark"]:not([data-style="solid"])
+  :is(
     .sidebar-pane,
     .sidebar-content,
     .sidebar-content a,
@@ -81,17 +83,9 @@ body {
   color: var(--poc-text-muted);
 }
 
-:root:not([data-style="solid"]) .starlight-aside :is(
-    p,
-    li,
-    strong,
-    em,
-    blockquote,
-    td,
-    th,
-    summary,
-    code
-  ) {
+:root:not([data-style="solid"])
+  .starlight-aside
+  :is(p, li, strong, em, blockquote, td, th, summary, code) {
   color: var(--poc-text);
 }
 
@@ -103,6 +97,7 @@ body {
   color: var(--sl-color-asides-text-accent);
 }
 
-:root[data-theme="dark"]:not([data-style="solid"]) :is(.sidebar-content [aria-current='page'], .card .title) {
+:root[data-theme="dark"]:not([data-style="solid"])
+  :is(.sidebar-content [aria-current="page"], .card .title) {
   color: var(--poc-text-strong);
 }

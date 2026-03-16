@@ -133,9 +133,7 @@ export default defineConfig({
         },
         {
           label: 'License',
-          items: [
-            { label: 'CC BY 4.0', slug: 'licenses/cc-by-4-0' },
-          ],
+          items: [{ label: 'CC BY 4.0', slug: 'licenses/cc-by-4-0' }],
         },
       ],
       credits: false,
