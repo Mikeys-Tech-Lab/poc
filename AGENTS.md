@@ -170,12 +170,14 @@ CodeQL and Scorecard also run on a weekly schedule. Nuclei runs after each deplo
 
 ## Onboarding
 
-This workspace has a structured onboarding system at `docs/onboarding/`. AI agents can guide newcomers through it interactively.
+This workspace has structured repo entry paths at `docs/onboarding/`. AI agents can guide newcomers through them interactively.
 
+- Say `onboard me` for setup, workspace orientation, and contribution guidance.
+- Say `Evolution Arc` for repo history, reasoning trace, and how the workspace changed. This path asks which register the reader wants, then follows inspectable repo-local sources.
 - The topic index is at `docs/onboarding/README.md`. It lists available topics with IDs, paths, descriptions, and prerequisites.
-- The Cursor skill at `.cursor/skills/onboarding/SKILL.md` defines the agent-driven onboarding flow.
-- For Claude Code and GitHub Copilot: read the topic index and follow the same structure when a user asks for onboarding.
-- For human readers without AI assistance: `docs/onboarding/manual.md` provides the same paths.
+- The Cursor skills at `.cursor/skills/onboarding/SKILL.md` and `.cursor/skills/evolution-arc/SKILL.md` define the agent-driven entry flows.
+- For Claude Code and GitHub Copilot: read the topic index and follow the same structure when a user asks for onboarding or repo history.
+- For human readers without AI assistance: `docs/onboarding/manual.md` and `docs/onboarding/evolution-arc.md` provide the same entry points.
 
 Onboarding docs summarize and link to deep docs. They do not duplicate content that lives elsewhere.
 

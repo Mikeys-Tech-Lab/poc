@@ -4,9 +4,11 @@ A living practice of clarity designed for federation. Not a framework. Not a met
 
 ## Get started
 
-If you are using an AI-assisted editor (Cursor, Claude Code, GitHub Copilot), say **"onboard me"** in chat. The agent will ask what depth you need and walk you through the relevant topics.
+If you are using an AI-assisted editor (Cursor, Claude Code, GitHub Copilot), say **"onboard me"** in chat for setup, structure, and contribution guidance.
 
-For a manual path without AI, read the [onboarding guide](docs/onboarding/manual.md).
+If you want the repo's history and reasoning trace instead, say **"Evolution Arc"**. The agent will ask which register you want and walk the inspectable repo-local sources.
+
+For manual paths without AI, read the [onboarding guide](docs/onboarding/manual.md) and [Evolution Arc](docs/onboarding/evolution-arc.md).
 
 ## Quick commands
 

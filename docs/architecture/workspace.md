@@ -39,6 +39,10 @@ flowchart TD
   Decisions[docs/decisions/] -.->|"structural rationale"| Agents
   Onboarding[docs/onboarding/] -.->|"newcomer paths"| Agents
   OnboardSkill[".cursor/skills/onboarding/"] -->|"reads index"| Onboarding
+  EvolutionArcSkill[".cursor/skills/evolution-arc/"] -->|"reads trace map"| EvolutionArcGuide["docs/guidance/evolution-arc.md"]
+  EvolutionArcGuide -.->|"curates"| Decisions
+  EvolutionArcGuide -.->|"curates"| Architecture
+  EvolutionArcGuide -.->|"curates"| Guidance
 
   LocalConfig[".local/config.md"] -.->|"operator prefs"| Agents
   Dependabot[".github/dependabot.yml"] -.->|"version updates"| Tooling
@@ -95,15 +99,15 @@ flowchart TD
 | `docs/practices/` | Practice documents and operational lenses (e.g., Sensible Defaults) | Exists |
 | `AGENTS.md` | Canonical agent guidance (single source of truth) | Exists |
 | `.cursor/rules/` | Cursor always-apply and file-scoped rules (includes security-awareness) | Exists |
-| `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, infomaniak-deployment, onboarding) | Exists |
+| `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, infomaniak-deployment, onboarding, evolution-arc) | Exists |
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
 | `.github/` | PR template, Copilot instructions, Dependabot config | Exists |
 | `.github/workflows/` | CI/CD (deploy-dev, deploy-preview, deploy-production, release), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard, Nuclei live scan) | Exists |
 | `release-please-config.json` | Release Please package definitions and changelog sections | Exists |
 | `.release-please-manifest.json` | Tracks current version of each versioned package | Exists |
 | `.local/` | Operator-specific config (gitignored). Template: `.local.example.md` | Exists |
-| `docs/onboarding/` | Newcomer onboarding paths (topic index, local setup, AI guidance, workspace, security, infra, contributing) | Exists |
-| `docs/guidance/` | Descriptive guidance docs (conventions, change process) | Exists |
+| `docs/onboarding/` | Newcomer and repo-history entry paths (topic index, local setup, AI guidance, workspace, evolution arc, security, infra, contributing) | Exists |
+| `docs/guidance/` | Descriptive guidance docs (conventions, change process, evolution trace map) | Exists |
 | `docs/architecture/` | Architecture docs + this canonical diagram | Exists |
 | `docs/decisions/` | Architecture Decision Records (ADRs) — structural rationale with trace | Exists |
 | `docs/ai/` | Capability alignment reports (generated) | Exists |
