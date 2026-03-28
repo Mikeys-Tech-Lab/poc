@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.3.0...PoC-v1.4.0) (2026-03-28)
+
+
+### Features
+
+* **ai:** add evolution arc repo entry path ([#93](https://github.com/Mikeys-Tech-Lab/poc/issues/93)) ([e229cd9](https://github.com/Mikeys-Tech-Lab/poc/commit/e229cd9e7773b2d0f887faef6fbb4f8f2bc3849e))
+
 ## [1.3.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.2.1...PoC-v1.3.0) (2026-03-16)
 
 
