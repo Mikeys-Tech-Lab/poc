@@ -33,6 +33,13 @@ Each entry below describes one onboarding topic. Agents parse the entries to bui
 - **When to use:** Understanding what lives where and how pieces relate
 - **Prereqs:** none
 
+### evolution-arc
+
+- **Title:** Evolution Arc
+- **Path:** `docs/onboarding/evolution-arc.md`
+- **When to use:** Understanding how the workspace evolved, which trace surfaces explain it, and where to ask follow-up questions
+- **Prereqs:** none
+
 ### security
 
 - **Title:** Security and public repo hygiene

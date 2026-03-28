@@ -17,7 +17,7 @@ poc/
 │   └── ai-guidance/           # Capability alignment tooling (package: ai-guidance)
 ├── seeds/                     # Development-only Practice of Clarity sources
 ├── docs/
-│   ├── onboarding/            # Newcomer paths (this directory)
+│   ├── onboarding/            # Newcomer and evolution entry paths
 │   ├── architecture/          # Canonical workspace diagram
 │   ├── guidance/              # Principles and workflow conventions
 │   ├── practices/             # Operational lenses (e.g., Sensible Defaults)
@@ -25,7 +25,7 @@ poc/
 │   └── ai/                    # Generated capability reports
 ├── .cursor/
 │   ├── rules/                 # Always-apply and file-scoped rules
-│   └── skills/                # Per-task agent skills
+│   └── skills/                # Per-task agent skills, including onboarding and Evolution Arc
 ├── .claude/                   # Claude Code adapter
 ├── .github/
 │   ├── workflows/             # CI/CD, security scanning, releases
@@ -40,7 +40,7 @@ poc/
 - **`seeds/`** contains development-only source material. It never becomes site content.
 - **`apps/site/`** is the Astro Starlight frontend. Its content evolves independently from seeds.
 - **`tools/ai-guidance/`** produces capability reports written to `docs/ai/`.
-- **`docs/`** is for repo-level documentation. It is not site content.
+- **`docs/`** is for repo-level documentation. It is not site content. `docs/onboarding/` holds entry paths such as `onboard me` and `Evolution Arc`, while `docs/guidance/evolution-arc.md` curates the trace surfaces behind the history path.
 - **`.local/config.md`** holds operator-specific values (gitignored). Template: `.local.example.md`.
 
 ## Three versioned packages

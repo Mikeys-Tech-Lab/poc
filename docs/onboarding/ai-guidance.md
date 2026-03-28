@@ -41,7 +41,7 @@ Cursor uses two mechanisms:
 
 **Rules** (`.cursor/rules/*.mdc`) fire automatically. Some apply to every interaction (always-apply), others fire when matching file patterns (file-scoped). Rules handle cross-cutting concerns: Practice grounding, security awareness, writing conventions, visual design.
 
-**Skills** (`.cursor/skills/*/SKILL.md`) are invoked per task. When the agent recognizes a relevant task, it reads the skill file and follows its instructions. Skills handle domain-specific workflows: Astro development, deployment, git commits, GitHub automation, dependency management, onboarding.
+**Skills** (`.cursor/skills/*/SKILL.md`) are invoked per task. When the agent recognizes a relevant task, it reads the skill file and follows its instructions. Skills handle domain-specific workflows: Astro development, deployment, git commits, GitHub automation, dependency management, onboarding, and guided repo history via `evolution-arc`.
 
 Current rules:
 
@@ -55,11 +55,17 @@ Current rules:
 | `astro-starlight.mdc` | Astro + Starlight development |
 | `visual-design.mdc` | Visual design |
 
+The repo currently exposes two conversational entry paths:
+
+- `onboard me` for setup, structure, and contribution guidance
+- `Evolution Arc` for the repo's history and reasoning trace
+
 Current skills:
 
 | Skill | When invoked |
 |---|---|
 | `onboarding` | Newcomer onboarding and repo orientation |
+| `evolution-arc` | Guided repo history, reasoning trace, and workspace evolution |
 | `astro-starlight` | Docs site development |
 | `node-tooling` | Scripts, tests, TypeScript tooling |
 | `git-commit` | Before every commit |
