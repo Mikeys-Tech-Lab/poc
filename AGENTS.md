@@ -287,12 +287,24 @@ If a PR changes behavior, structure, tooling, conventions, or security posture, 
 - **Structural changes** (repo layout, new directories, moved files): update `docs/architecture/workspace.md`. If the diagram and the file tree diverge, the file tree wins and the diagram must be updated.
 - **Structural decisions** that meet the ADR criteria (`docs/decisions/README.md`): write or update an ADR. Not every structural change needs one — only those where the rationale would otherwise be lost.
 - **Onboarding-relevant changes** (setup, workflow, AI guidance, security posture): update the topic index (`docs/onboarding/README.md`) and the affected topic page(s).
+- **Onboarding and Evolution Arc contract changes**: keep the deterministic guidance drift guard coherent in the same PR. The blocking layer validates explicit mappings between skills, entry docs, adapters, and trace maps. It must not depend on inferred expectations.
 - **Infrastructure or security changes**: update `docs/infra/protection-layers.md` and/or relevant runbooks.
 - **Agent behavior changes** (new rules, skills, tool preferences): update `AGENTS.md` and any affected adapters.
 
 ### No duplication constraint
 
 Onboarding pages summarize and link. Deep docs hold authoritative procedures. If an onboarding topic page grows beyond a summary, the content must be promoted to a deep doc. Two sources of truth is not clarity — it is drift waiting to happen.
+
+### Guidance drift guard
+
+This workspace uses a two-layer guard for `onboard me` and `Evolution Arc`:
+
+- A **blocking deterministic validator** checks path integrity, topic index consistency, explicit mapping contracts, and referenced guidance surfaces.
+- A **non-blocking advisory review** uses an AI reasoning layer over inspectable repo traces to surface broader drift, missing reflection, or missing guidance evolution.
+
+The blocking layer must stay explicit and checkable. It must not fail on interpretation, tone, or inferred intent.
+
+The advisory layer must stay advisory. It is a visibility mechanism, not a scoring or compliance system.
 
 ## Architectural invariants (v1)
 

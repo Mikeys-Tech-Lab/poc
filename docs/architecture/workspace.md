@@ -33,6 +33,8 @@ flowchart TD
   Agents -->|"capability checks"| Tooling[tools/ai-guidance/]
   Tooling -->|"auditable reports"| DocsAI[docs/ai/]
   Tooling -->|"informs"| CursorSkills
+  Tooling -->|"guidance drift validator"| Onboarding
+  Tooling -->|"guidance drift validator"| EvolutionArcGuide
 
   Guidance[docs/guidance/] -.->|"describes"| Agents
   Architecture[docs/architecture/] -.->|"describes"| Agents
@@ -61,6 +63,7 @@ flowchart TD
     CodeQL["codeql.yml"]
     ScoreCard["scorecard.yml\n(OSSF)"]
     LiveScan["security-scan-live.yml\n(Nuclei)"]
+    GuidanceReview["guidance-drift-review.yml\n(advisory AI reasoning layer)"]
   end
 
   subgraph "Release Automation"
@@ -80,6 +83,8 @@ flowchart TD
   InfomaniakPreview -.->|"Cloudflare Access\n(email OTP)"| CFAccess["Cloudflare Zero Trust"]
   Dependabot -.->|"action version updates"| SecretScan
   Dependabot -.->|"action version updates"| CodeQL
+  GuidanceReview -.->|"comments on PRs"| Onboarding
+  GuidanceReview -.->|"surfaces drift"| EvolutionArcGuide
   AppToken -->|"installation token"| ReleasePlease
   RPConfig -.->|"package definitions"| ReleasePlease
   RPManifest -.->|"current versions"| ReleasePlease
@@ -101,8 +106,8 @@ flowchart TD
 | `.cursor/rules/` | Cursor always-apply and file-scoped rules (includes security-awareness) | Exists |
 | `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, infomaniak-deployment, onboarding, evolution-arc) | Exists |
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
-| `.github/` | PR template, Copilot instructions, Dependabot config | Exists |
-| `.github/workflows/` | CI/CD (deploy-dev, deploy-preview, deploy-production, release), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard, Nuclei live scan) | Exists |
+| `.github/` | PR template, Copilot instructions, Dependabot config, prompt files for advisory automation | Exists |
+| `.github/workflows/` | CI/CD (deploy-dev, deploy-preview, deploy-production, release), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard, Nuclei live scan), guidance drift review | Exists |
 | `release-please-config.json` | Release Please package definitions and changelog sections | Exists |
 | `.release-please-manifest.json` | Tracks current version of each versioned package | Exists |
 | `.local/` | Operator-specific config (gitignored). Template: `.local.example.md` | Exists |
@@ -111,7 +116,7 @@ flowchart TD
 | `docs/architecture/` | Architecture docs + this canonical diagram | Exists |
 | `docs/decisions/` | Architecture Decision Records (ADRs) — structural rationale with trace | Exists |
 | `docs/ai/` | Capability alignment reports (generated) | Exists |
-| `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks | Exists |
+| `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks and deterministic guidance drift validation | Exists |
 | `apps/site/` | Astro Starlight frontend | Exists |
 | `docs/infra/` | Infrastructure runbooks (Infomaniak setup, GitHub App setup, protection layers, authenticated origin pulls) and maintenance assets | Exists |
 | `.cursor/skills/infomaniak-deployment/` | Deployment skill for Infomaniak hosting | Exists |

@@ -43,6 +43,13 @@ Cursor uses two mechanisms:
 
 **Skills** (`.cursor/skills/*/SKILL.md`) are invoked per task. When the agent recognizes a relevant task, it reads the skill file and follows its instructions. Skills handle domain-specific workflows: Astro development, deployment, git commits, GitHub automation, dependency management, onboarding, and guided repo history via `evolution-arc`.
 
+The repo also keeps the guidance layer from drifting silently:
+
+- a **blocking deterministic validator** in `tools/ai-guidance/` checks onboarding and Evolution Arc contracts using explicit mappings
+- a **non-blocking advisory review** in GitHub Actions uses an AI reasoning layer over inspectable repo traces to surface broader drift
+
+The split is intentional. Deterministic checks fail only on checkable facts. Broader interpretation stays advisory.
+
 Current rules:
 
 | Rule | Scope |
@@ -88,6 +95,8 @@ These files contain minimal content. They tell the agent to read `AGENTS.md` for
 To add a new rule: create a `.mdc` file in `.cursor/rules/`. Declare it as an adaptation of `AGENTS.md`. Set the appropriate scope (always-apply or file-scoped).
 
 To add a new skill: create a directory in `.cursor/skills/` with a `SKILL.md` file. Follow the structure of existing skills (frontmatter with name and description, "When to use" section, capability alignment checks).
+
+If the new skill changes onboarding or Evolution Arc contracts, update the mapped docs and guidance surfaces in the same PR so the deterministic guard still reflects reality.
 
 To change agent behavior: edit `AGENTS.md`. Adapters follow. If an adapter needs to diverge, it declares the divergence explicitly.
 

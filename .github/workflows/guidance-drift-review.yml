@@ -1,0 +1,137 @@
+name: Guidance Drift Review
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, edited]
+
+concurrency:
+  group: guidance-drift-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  issues: write
+  models: read
+  pull-requests: read
+
+jobs:
+  guidance-drift-review:
+    name: Guidance Drift Review (advisory)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Gather PR context
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p .tmp
+          BASE_REF="${{ github.event.pull_request.base.ref }}"
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+
+          git fetch origin "$BASE_REF" --depth=1
+          git diff --name-only "origin/$BASE_REF...HEAD" > .tmp/guidance-drift-changed-files.txt
+          git diff --unified=1 "origin/$BASE_REF...HEAD" -- README.md AGENTS.md docs/onboarding docs/guidance .cursor/skills .github/copilot-instructions.md .claude/CLAUDE.md docs/architecture/workspace.md > .tmp/guidance-drift-diff.patch || true
+          gh pr view "$PR_NUMBER" --json title,body,url > .tmp/guidance-drift-pr.json
+
+          {
+            echo "# Pull Request"
+            cat .tmp/guidance-drift-pr.json
+            echo
+            echo "# Changed Files"
+            cat .tmp/guidance-drift-changed-files.txt
+            echo
+            echo "# Repo Contract Excerpts"
+            echo "## AGENTS.md"
+            sed -n '171,181p' AGENTS.md
+            echo
+            echo "## Documentation evolution discipline"
+            sed -n '263,293p' AGENTS.md
+            echo
+            echo "## Evolution Arc map"
+            sed -n '1,120p' docs/guidance/evolution-arc.md
+            echo
+            echo "## Onboarding AI guidance"
+            sed -n '38,95p' docs/onboarding/ai-guidance.md
+            echo
+            echo "# Diff Excerpt"
+            head -c 20000 .tmp/guidance-drift-diff.patch
+            echo
+          } > .tmp/guidance-drift-review-input.md
+
+      - name: Run advisory AI review
+        id: advisory-review
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh extension install https://github.com/github/gh-models
+          gh models run --file .github/prompts/guidance-drift-review.prompt.yml < .tmp/guidance-drift-review-input.md > .tmp/guidance-drift-review-output.md
+
+      - name: Post advisory comment
+        if: always()
+        uses: actions/github-script@v7
+        env:
+          REVIEW_FAILED: ${{ steps.advisory-review.outcome != 'success' }}
+        with:
+          script: |
+            const fs = require('node:fs');
+            const marker = '<!-- guidance-drift-review -->';
+            const outputPath = '.tmp/guidance-drift-review-output.md';
+
+            let body;
+            if (process.env.REVIEW_FAILED === 'true' || !fs.existsSync(outputPath)) {
+              body = `${marker}
+            ## Guidance Drift Review
+            - Advisory review was unavailable for this run.
+            - The blocking deterministic validator remains the merge gate for factual contract checks.`;
+            } else {
+              const output = fs.readFileSync(outputPath, 'utf8').trim();
+              body = `${marker}
+            ## Guidance Drift Review
+            _Non-blocking advisory review generated from inspectable repo traces._
+
+            ${output}`;
+            }
+
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner,
+              repo,
+              issue_number,
+              per_page: 100,
+            });
+
+            const existing = comments.find((comment) => comment.body.includes(marker));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner,
+                repo,
+                comment_id: existing.id,
+                body,
+              });
+              return;
+            }
+
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number,
+              body,
+            });
+
+      - name: Upload advisory artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: guidance-drift-review
+          path: |
+            .tmp/guidance-drift-review-input.md
+            .tmp/guidance-drift-review-output.md
