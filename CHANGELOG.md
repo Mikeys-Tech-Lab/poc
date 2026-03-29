@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.8](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.7...PoC-v1.7.8) (2026-03-29)
+
+
+### Miscellaneous
+
+* **deps:** update dependency @catppuccin/starlight to v2 ([#115](https://github.com/Mikeys-Tech-Lab/poc/issues/115)) ([49002c6](https://github.com/Mikeys-Tech-Lab/poc/commit/49002c68ad9a2c8a91eda9e762dec6dd8041e5fb))
+
 ## [1.7.7](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.6...PoC-v1.7.7) (2026-03-29)
 
 
