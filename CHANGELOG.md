@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.11](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.10...PoC-v1.7.11) (2026-03-29)
+
+
+### Bug Fixes
+
+* **astro:** upgrade Astro 6 with compatible Starlight ([#116](https://github.com/Mikeys-Tech-Lab/poc/issues/116)) ([a24e964](https://github.com/Mikeys-Tech-Lab/poc/commit/a24e964a0d1c0f8563d44c18bc6972dc953bcb79))
+
 ## [1.7.10](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.9...PoC-v1.7.10) (2026-03-29)
 
 
