@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.3.0...ai-guidance-v0.4.0) (2026-03-29)
+
+
+### Features
+
+* **ai:** add local config boundary for agents ([#97](https://github.com/Mikeys-Tech-Lab/poc/issues/97)) ([8eb6045](https://github.com/Mikeys-Tech-Lab/poc/commit/8eb604562f247a73047dc8f8a459fe6e64c33d83))
+
 ## [0.3.0](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.2.2...ai-guidance-v0.3.0) (2026-03-29)
 
 
