@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.7](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.6...PoC-v1.7.7) (2026-03-29)
+
+
+### Miscellaneous
+
+* **deps:** update actions/upload-artifact action to v7 ([#114](https://github.com/Mikeys-Tech-Lab/poc/issues/114)) ([c5323f6](https://github.com/Mikeys-Tech-Lab/poc/commit/c5323f6c8ba66184dbf128fa43348bde6129b5a3))
+
 ## [1.7.6](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.5...PoC-v1.7.6) (2026-03-29)
 
 
