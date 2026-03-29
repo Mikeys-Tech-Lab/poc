@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.4.0...PoC-v1.5.0) (2026-03-29)
+
+
+### Features
+
+* **tooling:** add guidance drift guard ([#95](https://github.com/Mikeys-Tech-Lab/poc/issues/95)) ([f0f0957](https://github.com/Mikeys-Tech-Lab/poc/commit/f0f095795cd20b405d8b483322f2ffe881d13036))
+
 ## [1.4.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.3.0...PoC-v1.4.0) (2026-03-28)
 
 

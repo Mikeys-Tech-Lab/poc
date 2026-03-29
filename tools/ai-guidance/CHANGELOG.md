@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.2.2...ai-guidance-v0.3.0) (2026-03-29)
+
+
+### Features
+
+* **tooling:** add guidance drift guard ([#95](https://github.com/Mikeys-Tech-Lab/poc/issues/95)) ([f0f0957](https://github.com/Mikeys-Tech-Lab/poc/commit/f0f095795cd20b405d8b483322f2ffe881d13036))
+
 ## [0.2.2](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.2.1...ai-guidance-v0.2.2) (2026-03-05)
 
 
