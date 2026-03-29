@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.6.0...PoC-v1.7.0) (2026-03-29)
+
+
+### Features
+
+* **tooling:** adopt renovate dependency operations ([#100](https://github.com/Mikeys-Tech-Lab/poc/issues/100)) ([e3eae8c](https://github.com/Mikeys-Tech-Lab/poc/commit/e3eae8cdbc9214bb55df86486e570e63c2059e62))
+
 ## [1.6.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.5.0...PoC-v1.6.0) (2026-03-29)
 
 
