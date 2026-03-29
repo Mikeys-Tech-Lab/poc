@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.10](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.9...PoC-v1.7.10) (2026-03-29)
+
+
+### Miscellaneous
+
+* **deps:** update dependency typescript to v6 ([#117](https://github.com/Mikeys-Tech-Lab/poc/issues/117)) ([583303f](https://github.com/Mikeys-Tech-Lab/poc/commit/583303ffe40a820b3a40b1d1197c3f9f5190a68d))
+
 ## [1.7.9](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.8...PoC-v1.7.9) (2026-03-29)
 
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.4.0...ai-guidance-v0.4.1) (2026-03-29)
+
+
+### Miscellaneous
+
+* **deps:** update dependency typescript to v6 ([#117](https://github.com/Mikeys-Tech-Lab/poc/issues/117)) ([583303f](https://github.com/Mikeys-Tech-Lab/poc/commit/583303ffe40a820b3a40b1d1197c3f9f5190a68d))
+
 ## [0.4.0](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.3.0...ai-guidance-v0.4.0) (2026-03-29)
 
 
