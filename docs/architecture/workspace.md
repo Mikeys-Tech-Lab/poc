@@ -48,7 +48,8 @@ flowchart TD
 
   LocalConfig[".local/config.md"] -.->|"operator-local values"| OperatorBoundary["operator-mediated disclosure"]
   OperatorBoundary -.->|"minimum necessary runtime facts"| Agents
-  Dependabot[".github/dependabot.yml"] -.->|"version updates"| Tooling
+  Renovate["renovate.json"] -.->|"routine dependency updates"| Tooling
+  Dependabot[".github/dependabot.yml"] -.->|"security-only updates"| Tooling
 
   AstroSite[apps/site/] -->|"site content"| SiteDocs["apps/site/src/content/docs/"]
 
@@ -82,8 +83,8 @@ flowchart TD
   DeployPreview -->|"triggers"| LiveScan
   DeployProd -->|"triggers"| LiveScan
   InfomaniakPreview -.->|"Cloudflare Access\n(email OTP)"| CFAccess["Cloudflare Zero Trust"]
-  Dependabot -.->|"action version updates"| SecretScan
-  Dependabot -.->|"action version updates"| CodeQL
+  Renovate -.->|"action version updates"| SecretScan
+  Renovate -.->|"action version updates"| CodeQL
   GuidanceReview -.->|"comments on PRs"| Onboarding
   GuidanceReview -.->|"surfaces drift"| EvolutionArcGuide
   AppToken -->|"installation token"| ReleasePlease
@@ -107,7 +108,8 @@ flowchart TD
 | `.cursor/rules/` | Cursor always-apply and file-scoped rules (includes security-awareness) | Exists |
 | `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, infomaniak-deployment, onboarding, evolution-arc) | Exists |
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
-| `.github/` | PR template, Copilot instructions, Dependabot config, prompt files for advisory automation | Exists |
+| `.github/` | PR template, Copilot instructions, Dependabot security config, prompt files for advisory automation | Exists |
+| `renovate.json` | Renovate routine dependency policy, grouping, automerge, and dashboard behavior | Exists |
 | `.github/workflows/` | CI/CD (deploy-dev, deploy-preview, deploy-production, release), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard, Nuclei live scan), guidance drift review | Exists |
 | `release-please-config.json` | Release Please package definitions and changelog sections | Exists |
 | `.release-please-manifest.json` | Tracks current version of each versioned package | Exists |

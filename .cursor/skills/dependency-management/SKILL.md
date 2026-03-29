@@ -8,50 +8,94 @@ description: Guides dependency version management, Dependabot configuration, and
 ## When to use
 
 - Adding or updating dependencies in any workspace package
-- Configuring or modifying Dependabot
+- Configuring or modifying Renovate or Dependabot
 - Reviewing Dependabot PRs
+- Reviewing Renovate PRs
 - Auditing dependencies for security or currency
 - Troubleshooting dependency resolution or lockfile issues
 
-## Dependabot configuration
+## Target model
 
-The Dependabot config lives at `.github/dependabot.yml`. It uses two ecosystem entries:
+- `renovate.json` is the primary dependency update policy.
+- `.github/dependabot.yml` is retained only for GitHub-native security update surfaces.
+- Routine version updates do not belong in Dependabot anymore.
 
-| Entry | Ecosystem | Directories | What it covers |
-|---|---|---|---|
-| npm | npm | `/`, `/apps/site`, `/tools/ai-guidance` | All workspace packages via a single `directories` list |
-| github-actions | github-actions | `/` | All workflow action versions |
+This split exists because the repo needs:
 
-Using a single npm entry with `directories` (plural) avoids the lockfile conflict problem where separate entries generate PRs that all modify `pnpm-lock.yaml`.
+- bounded routine PR volume
+- visible majors without queue sprawl
+- security updates that are easy to identify and prioritize
+- automatic routine coverage for future workspace packages
+- less Release Please churn from scattered dependency merges
+
+## Renovate configuration
+
+The Renovate config lives at `renovate.json`.
 
 ### How it works
 
-- Checks weekly (Monday) for version updates
-- Minor and patch updates are grouped into single PRs to reduce noise
-- Major updates get individual PRs for careful review
-- Astro ecosystem packages (`astro*`, `@astrojs/*`, `@catppuccin/*`) are grouped together
-- Vitest packages (`vitest`, `@vitest/*`) are grouped together
-- Remaining minor/patch updates use `group-by: dependency-name` to consolidate the same dependency across directories into one PR
-- Security updates are grouped into a single PR via `applies-to: security-updates`
-- GitHub Actions minor/patch updates are grouped together
-- Commit messages use `chore(deps):` to follow Conventional Commits
-- PRs are labeled `dependencies` (npm) or `dependencies` + `ci` (GitHub Actions)
-- `versioning-strategy: increase` bumps the lower bound in `package.json` to document the minimum tested version
+- Checks on a weekly cadence to keep routine merges batched
+- Uses `config:best-practices` as the base preset
+- Groups non-major updates by package family and ecosystem
+- Auto-merges bounded non-major updates after CI passes
+- Holds majors behind Dependency Dashboard approval
+- Keeps concurrent routine PR volume capped
+- Uses semantic commit messages so Release Please can trace dependency work cleanly
 
-### Reviewing Dependabot PRs
+### Current grouping posture
 
-1. Check the changelog/release notes linked in the PR
-2. For major updates: read the migration guide before merging
-3. Run `pnpm install` locally after checkout
-4. Run `pnpm test` and `pnpm run build` to verify nothing broke
-5. If tests fail, check if the breaking change requires code updates
-6. Squash merge to `main` once verified
+- Astro ecosystem non-majors are grouped together
+- Test tooling non-majors are grouped together
+- Remaining dev tooling non-majors are grouped together
+- Remaining runtime npm non-majors are grouped together
+- GitHub Actions non-majors are grouped together
+- Lock file maintenance runs as its own low-risk stream
 
-### Known limitations
+### Major updates
 
-- Dependabot uses `npm` ecosystem identifier even for pnpm repos. It reads `package.json` and `pnpm-lock.yaml` correctly.
-- Grouped PRs may contain updates to multiple packages. Review the full diff, not just the title.
-- Cross-directory grouping (`group-by: dependency-name`) applies to version updates only; security updates use their own group.
+- Major updates are never auto-merged
+- Major updates require explicit Dependency Dashboard approval
+- Review them on purpose, not in the background queue
+
+## Dependabot configuration
+
+The Dependabot config lives at `.github/dependabot.yml`.
+
+It is now security-only:
+
+- npm security updates only
+- GitHub Actions security updates only
+- `open-pull-requests-limit: 0` disables routine version-update PRs while preserving security-update behavior
+- Security PRs are labeled for visibility and reviewed manually
+
+## Reviewing dependency PRs
+
+### Routine Renovate PRs
+
+1. Check the changelog or release notes linked in the PR
+2. Confirm the PR matches the expected grouping boundary
+3. Let CI finish before taking action
+4. If the update is non-major and CI is green, the repo policy may auto-merge it
+5. If the PR reveals a behavioral break, disable or narrow the matching rule rather than silently tolerating queue drift
+
+### Security PRs
+
+1. Review security PRs first
+2. Do not auto-merge security fixes by default
+3. Verify the blast radius is understandable before grouping multiple fixes together
+4. Run `pnpm test` and `pnpm run build` before merging if the fix touches runtime behavior
+5. If a fix needs code changes, do that work in a dedicated branch instead of widening the security PR casually
+
+## Backlog recovery
+
+When the dependency queue becomes noisy again, recover in this order:
+
+1. Bucket all open work into security, non-major, and major
+2. Fix security work first
+3. Close or replace stale routine PRs after the repo policy is correct
+4. Let grouped non-major flow resume
+5. Hold majors in the dashboard instead of leaving them in the open PR queue
+6. Only widen automerge after the queue is stable
 
 ## Adding dependencies
 
@@ -61,7 +105,7 @@ When adding a new dependency:
 2. Always add to the specific workspace package, not the root: `pnpm --filter <package> add <dep>`
 3. Use caret ranges (`^`) for semver-compatible updates (default)
 4. After adding, verify: `pnpm install`, `pnpm test`, `pnpm run build`
-5. Check if the new dependency's directory is covered by Dependabot. If you add a new workspace package, add its path to the `directories` list in `.github/dependabot.yml`.
+5. Check whether the new package belongs in an existing Renovate grouping rule. If you add a new workspace package or a noisy dependency family, update `renovate.json` so the queue shape stays intentional.
 
 ## Upgrading dependencies manually
 
@@ -86,13 +130,13 @@ After upgrading, always run tests and build before committing.
 ## Security
 
 - Dependabot alerts are enabled for vulnerability notifications
-- Dependabot security updates are enabled for automatic patching of known vulnerabilities
-- Grouped security updates consolidate patches into fewer PRs
+- Dependabot security updates remain enabled as the GitHub-native security surface
+- Renovate is not the routine security bottleneck. Security work skips normal queue expectations and is handled first
 - If a security alert requires immediate action, don't wait for the weekly cycle — upgrade manually
 
 ### CI security scanning
 
-Four security scanning workflows run on pushes to `main` and on PRs:
+Four repo security scanning workflows run on pushes to `main` and on PRs:
 
 | Workflow | File | What it checks |
 |---|---|---|
@@ -101,7 +145,7 @@ Four security scanning workflows run on pushes to `main` and on PRs:
 | CodeQL | `codeql.yml` | Static analysis for security vulnerabilities in JS/TS |
 | Scorecard | `scorecard.yml` | OSSF supply chain security posture scoring |
 
-gitleaks uses the MIT-licensed CLI directly (not the commercial gitleaks-action) to avoid org license requirements. The CLI version is pinned in the workflow and must be updated manually. CodeQL and Scorecard also run on a weekly schedule.
+gitleaks uses the MIT-licensed CLI directly (not the commercial gitleaks-action) to avoid org license requirements. The CLI version is pinned in the workflow and must be updated manually. CodeQL and Scorecard also run on a weekly schedule. A fifth live scan (`security-scan-live.yml`) runs after deployments and on manual dispatch.
 
 ### Updating pinned tool versions
 
@@ -110,7 +154,11 @@ Some tools are pinned outside of Dependabot's reach:
 | Tool | Where pinned | How to update |
 |---|---|---|
 | gitleaks CLI | `GITLEAKS_VERSION` env var in `secret-scan.yml` | Check [gitleaks releases](https://github.com/gitleaks/gitleaks/releases), update the version string |
-| GitHub Actions | Action `@v4` tags in workflow files | Dependabot handles minor/patch updates automatically |
+| GitHub Actions | Workflow `uses:` references | Renovate handles routine update PRs according to `renovate.json` |
+
+## Enablement
+
+This repo config assumes the Renovate GitHub App is installed for the repository. Setup steps live in `docs/infra/renovate-app-setup.md`.
 
 ## Version policy
 

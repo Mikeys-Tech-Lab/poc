@@ -1,0 +1,98 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":semanticCommitTypeAll(chore)",
+    ":semanticCommitScope(deps)"
+  ],
+  "timezone": "UTC",
+  "schedule": ["before 5am on monday"],
+  "prCreation": "not-pending",
+  "rangeStrategy": "bump",
+  "rebaseWhen": "behind-base-branch",
+  "prConcurrentLimit": 5,
+  "branchConcurrentLimit": 5,
+  "labels": ["dependencies"],
+  "major": {
+    "dependencyDashboardApproval": true,
+    "automerge": false
+  },
+  "packageRules": [
+    {
+      "description": "Automerge lock file maintenance after CI.",
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "groupName": "lock file maintenance",
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Automerge non-major GitHub Actions updates after CI.",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "groupName": "github actions non-major",
+      "labels": ["dependencies", "ci"],
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Hold GitHub Actions majors for dashboard-driven review.",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["major"],
+      "labels": ["dependencies", "ci"],
+      "dependencyDashboardApproval": true,
+      "automerge": false
+    },
+    {
+      "description": "Automerge Astro ecosystem non-major updates after CI.",
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["astro", "@astrojs/**", "@catppuccin/**"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "astro ecosystem non-major",
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Automerge test tooling non-major updates after CI.",
+      "matchManagers": ["npm"],
+      "matchPackageNames": [
+        "vitest",
+        "@vitest/**",
+        "happy-dom",
+        "@playwright/test",
+        "@axe-core/playwright"
+      ],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "test tooling non-major",
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Automerge remaining dev tooling non-major updates after CI.",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["devDependencies"],
+      "excludePackageNames": [
+        "vitest",
+        "@vitest/**",
+        "happy-dom",
+        "@playwright/test",
+        "@axe-core/playwright"
+      ],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "dev tooling non-major",
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Automerge remaining runtime npm non-major updates after CI.",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["dependencies"],
+      "excludePackageNames": ["astro", "@astrojs/**", "@catppuccin/**"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "runtime npm non-major",
+      "automerge": true,
+      "automergeType": "pr"
+    }
+  ]
+}

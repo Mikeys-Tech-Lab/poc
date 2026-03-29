@@ -54,7 +54,7 @@ If any appear, replace with generic references before posting.
 
 ## CI security scanning
 
-Four automated scans run on every PR and push to `main`:
+Four automated repo scans run on every PR and push to `main`:
 
 | Workflow | What it checks |
 |---|---|
@@ -69,8 +69,12 @@ A fifth scan (Nuclei) runs automatically after seed and preview deployments, and
 
 ## Supply chain posture
 
-- GitHub Actions are pinned to major version tags. Dependabot monitors for updates.
+- Routine dependency and GitHub Actions version updates are managed by Renovate.
+- Dependabot remains the GitHub-native security surface for alerts and security-only update PRs.
+- GitHub Actions are currently referenced by version tags in workflow files. Renovate tracks them as part of the routine update queue.
 - No third-party deployment actions. Direct `ssh`/`rsync` reduces supply chain surface.
 - gitleaks uses the MIT-licensed CLI directly to avoid commercial licensing constraints.
+
+Queue policy: [`docs/guidance/dependency-update-operations.md`](../guidance/dependency-update-operations.md)
 
 Full security posture: [`AGENTS.md` § Security posture](../../AGENTS.md)

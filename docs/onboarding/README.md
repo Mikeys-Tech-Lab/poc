@@ -58,7 +58,7 @@ Each entry below describes one onboarding topic. Agents parse the entries to bui
 
 - **Title:** Contributing
 - **Path:** `docs/onboarding/contributing.md`
-- **When to use:** Making changes, opening PRs, understanding the workflow
+- **When to use:** Making changes, opening PRs, understanding the workflow, and finding the dependency update policy
 - **Prereqs:** local-setup
 
 ### manual

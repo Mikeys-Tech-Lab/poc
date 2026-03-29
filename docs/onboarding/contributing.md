@@ -48,6 +48,17 @@ The Close phase matters. Before creating a PR:
 
 The `github-automation` skill (`.cursor/skills/github-automation/SKILL.md`) has the detailed lifecycle.
 
+## Dependency updates
+
+Routine dependency updates are not handled like ordinary feature work.
+
+- Renovate is the primary engine for routine version updates.
+- Dependabot is retained for GitHub-native security update surfaces.
+- Non-major updates are grouped and may auto-merge after CI.
+- Major updates stay in the Renovate Dependency Dashboard until reviewed deliberately.
+
+Authoritative policy: [`docs/guidance/dependency-update-operations.md`](../guidance/dependency-update-operations.md)
+
 ## Pull request expectations
 
 PRs are reasoning traces, not just changelogs. The description should explain:

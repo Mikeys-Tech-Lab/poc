@@ -17,6 +17,7 @@ This workspace documents reasoning, not people. Reports, traces, and tooling out
 ## Guidance docs
 
 - [Evolution Arc](evolution-arc.md) — curated map of the repo's trace surfaces, source roles, and Mermaid-backed history path.
+- [Dependency update operations](dependency-update-operations.md) — target state, policy invariants, queue model, and backlog recovery order for dependency automation.
 - [Structural reflection and evolution](structural-reflection-and-evolution.md) — the high-level rule for converting incidents into patterns, guardrails, and workspace changes.
 - [Agent pre-commit verification](agent-pre-commit-verification.md) — reflection on lint-before-commit, accessibility override regressions, assumptions, and mistakes from publication refinements.
 
