@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.6](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.5...PoC-v1.7.6) (2026-03-29)
+
+
+### Miscellaneous
+
+* **deps:** update actions/github-script action to v8 ([#113](https://github.com/Mikeys-Tech-Lab/poc/issues/113)) ([59d72bb](https://github.com/Mikeys-Tech-Lab/poc/commit/59d72bb094eec93b9a34c46449fa43c09d5cb88e))
+
 ## [1.7.5](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.4...PoC-v1.7.5) (2026-03-29)
 
 
