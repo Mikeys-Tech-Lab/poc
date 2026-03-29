@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -36,6 +38,24 @@ jobs:
 
       - name: Lint
         run: pnpm lint
+
+      - name: Collect changed files
+        run: |
+          mkdir -p .tmp
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git fetch origin "${{ github.base_ref }}" --depth=1
+            git diff --name-only "origin/${{ github.base_ref }}...HEAD" > .tmp/guidance-changed-files.txt
+          else
+            BEFORE="${{ github.event.before }}"
+            if [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+              git diff-tree --no-commit-id --name-only -r HEAD > .tmp/guidance-changed-files.txt
+            else
+              git diff --name-only "$BEFORE...HEAD" > .tmp/guidance-changed-files.txt
+            fi
+          fi
+
+      - name: Guidance drift guard
+        run: pnpm guidance:check -- --changed-files .tmp/guidance-changed-files.txt
 
       - name: Unit tests
         run: pnpm -r test

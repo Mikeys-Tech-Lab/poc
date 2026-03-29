@@ -14,6 +14,7 @@
     "screendump": "pnpm --filter site screendump",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
+    "guidance:check": "pnpm --filter ai-guidance guidance:check",
     "test": "pnpm -r test",
     "test:coverage": "pnpm --filter ai-guidance coverage",
     "clean": "rm -rf node_modules apps/site/node_modules tools/ai-guidance/node_modules apps/site/dist apps/site/.astro",
