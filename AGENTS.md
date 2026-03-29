@@ -216,7 +216,7 @@ This section declares operator tool choices. Agents must respect these and not s
 - **GitHub CLI**: use `gh` for PR creation, issue management, and release workflows. Prefer `gh` over raw `curl` or `hub`. Before running `gh`, verify the active account matches the operator-provided account context or other safe local evidence.
 - **Package manager**: pnpm. Do not use npm or yarn.
 - **Runtime**: Node.js (check version locally before assuming features)
-- **Dependency updates**: Renovate (`renovate.json`) is the primary engine for routine version updates. Dependabot is security-only. Major updates require deliberate review; routine non-major flow may auto-merge after CI according to the repo config.
+- **Dependency updates**: Renovate (`renovate.json`) is the primary engine for routine version updates and vulnerability-fix PRs. Dependabot remains the GitHub-native alerting surface. Major updates require deliberate review; passing routine and vulnerability PRs may auto-merge after CI according to the repo config.
 - **Test runner (unit)**: Vitest. Both `tools/ai-guidance` and `apps/site` have Vitest configs. `pnpm test` runs across all packages.
 - **Test runner (E2E)**: Playwright (Chromium only). E2E tests live in `apps/site/e2e/`. Run against the built static output via `pnpm preview`. `pnpm --filter site test:e2e` runs E2E tests.
 - **Snapshot export**: use `pnpm screendump` to build the site, export all current page x register x viewport screenshots to `.dist/poc-snapshot-images/`, and create `.dist/poc-snapshot-images-snapshot-<version>.zip`

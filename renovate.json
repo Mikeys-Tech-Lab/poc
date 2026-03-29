@@ -15,6 +15,12 @@
   "prConcurrentLimit": 5,
   "branchConcurrentLimit": 5,
   "labels": ["dependencies"],
+  "vulnerabilityAlerts": {
+    "labels": ["dependencies", "security"],
+    "automerge": true,
+    "automergeType": "pr",
+    "vulnerabilityFixStrategy": "lowest"
+  },
   "major": {
     "dependencyDashboardApproval": true,
     "automerge": false
@@ -72,27 +78,27 @@
       "description": "Automerge remaining dev tooling non-major updates after CI.",
       "matchManagers": ["npm"],
       "matchDepTypes": ["devDependencies"],
-      "excludePackageNames": [
-        "vitest",
-        "@vitest/**",
-        "happy-dom",
-        "@playwright/test",
-        "@axe-core/playwright"
-      ],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "dev tooling non-major",
       "automerge": true,
-      "automergeType": "pr"
+      "automergeType": "pr",
+      "matchPackageNames": [
+        "!vitest",
+        "!@vitest/**",
+        "!happy-dom",
+        "!@playwright/test",
+        "!@axe-core/playwright"
+      ]
     },
     {
       "description": "Automerge remaining runtime npm non-major updates after CI.",
       "matchManagers": ["npm"],
       "matchDepTypes": ["dependencies"],
-      "excludePackageNames": ["astro", "@astrojs/**", "@catppuccin/**"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "runtime npm non-major",
       "automerge": true,
-      "automergeType": "pr"
+      "automergeType": "pr",
+      "matchPackageNames": ["!astro", "!@astrojs/**", "!@catppuccin/**"]
     }
   ]
 }
