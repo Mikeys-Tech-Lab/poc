@@ -52,7 +52,8 @@ const loadChangedFiles = async (args: readonly string[]): Promise<readonly strin
     throw new Error('Missing path after --changed-files.');
   }
 
-  const content = await readFile(resolve(process.cwd(), targetPath), 'utf-8');
+  const absolutePath = targetPath.startsWith('/') ? targetPath : resolve(REPO_ROOT, targetPath);
+  const content = await readFile(absolutePath, 'utf-8');
   return content
     .split('\n')
     .map((line) => line.trim())

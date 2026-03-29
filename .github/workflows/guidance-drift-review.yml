@@ -13,7 +13,7 @@ permissions:
   contents: read
   issues: write
   models: read
-  pull-requests: read
+  pull-requests: write
 
 jobs:
   guidance-drift-review:
