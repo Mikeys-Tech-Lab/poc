@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.2](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.4.1...ai-guidance-v0.4.2) (2026-03-29)
+
+
+### Miscellaneous
+
+* **deps:** pin dependencies ([#128](https://github.com/Mikeys-Tech-Lab/poc/issues/128)) ([a18b052](https://github.com/Mikeys-Tech-Lab/poc/commit/a18b052160273b97af86aa9ab4b3f1f5cf80b0d6))
+
 ## [0.4.1](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.4.0...ai-guidance-v0.4.1) (2026-03-29)
 
 
