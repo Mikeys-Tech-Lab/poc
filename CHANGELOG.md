@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.17](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.16...PoC-v1.7.17) (2026-03-29)
+
+
+### Miscellaneous
+
+* **deps:** update pnpm to v10.33.0 ([#132](https://github.com/Mikeys-Tech-Lab/poc/issues/132)) ([1a6cbe3](https://github.com/Mikeys-Tech-Lab/poc/commit/1a6cbe3763b8aff4ddbe873cb076238f164417d6))
+
 ## [1.7.16](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.15...PoC-v1.7.16) (2026-03-29)
 
 
