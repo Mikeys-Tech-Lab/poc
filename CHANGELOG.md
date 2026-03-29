@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.5.0...PoC-v1.6.0) (2026-03-29)
+
+
+### Features
+
+* **ai:** add local config boundary for agents ([#97](https://github.com/Mikeys-Tech-Lab/poc/issues/97)) ([8eb6045](https://github.com/Mikeys-Tech-Lab/poc/commit/8eb604562f247a73047dc8f8a459fe6e64c33d83))
+
 ## [1.5.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.4.0...PoC-v1.5.0) (2026-03-29)
 
 
