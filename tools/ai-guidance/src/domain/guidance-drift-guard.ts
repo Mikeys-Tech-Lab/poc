@@ -47,6 +47,13 @@ const ROOT_FILE_REFERENCES = new Set([
   'release-please-config.json',
   '.release-please-manifest.json',
 ]);
+const LOGICAL_RUNTIME_PATHS = new Set([
+  '.local',
+  '.local/config.md',
+  '.dist',
+  '.dist/poc-snapshot-images',
+]);
+const LOGICAL_RUNTIME_PREFIXES = ['.local/', '.dist/'];
 
 const CONTRACT_MAPPINGS: readonly MappingContract[] = [
   {
@@ -224,6 +231,8 @@ const pathExists = (
   repoDirectories: ReadonlySet<string>,
 ): boolean => {
   if (candidate.startsWith('/Users/')) return true;
+  if (LOGICAL_RUNTIME_PATHS.has(candidate)) return true;
+  if (LOGICAL_RUNTIME_PREFIXES.some((prefix) => candidate.startsWith(prefix))) return true;
   if (repoFiles.has(candidate)) return true;
   if (repoDirectories.has(candidate)) return true;
   return false;

@@ -158,4 +158,61 @@ describe('runGuidanceDriftGuard', () => {
       },
     ]);
   });
+
+  it('allows logical runtime paths that are gitignored or generated', () => {
+    const result = runGuidanceDriftGuard({
+      files: {
+        'README.md': 'Use onboard me and Evolution Arc.',
+        'AGENTS.md':
+          'Say `onboard me`. Say `Evolution Arc`. Read `.local/config.md` and use `pnpm screendump` to export to `.dist/poc-snapshot-images/`.',
+        '.github/copilot-instructions.md': 'Use `onboard me` and `Evolution Arc`.',
+        '.claude/CLAUDE.md': 'Use `onboard me` and `Evolution Arc`.',
+        '.cursor/skills/onboarding/SKILL.md':
+          'Read `docs/onboarding/README.md`. Check if `.local/config.md` exists. Use Evolution Arc.',
+        '.cursor/skills/evolution-arc/SKILL.md':
+          'Ask which register. Read `docs/guidance/evolution-arc.md`.',
+        'docs/onboarding/README.md': `
+### evolution-arc
+- **Title:** Evolution Arc
+- **Path:** \`docs/onboarding/evolution-arc.md\`
+- **When to use:** Understand history
+- **Prereqs:** none
+`,
+        'docs/onboarding/manual.md':
+          'Say "onboard me" or "Evolution Arc". Copy `.local.example.md` to `.local/config.md`.',
+        'docs/onboarding/ai-guidance.md': 'Use `onboard me` and `evolution-arc`.',
+        'docs/onboarding/evolution-arc.md':
+          'Choose register. Read `docs/guidance/evolution-arc.md`.',
+        'docs/onboarding/workspace-overview.md':
+          'Template: `.local.example.md`. See `.local/config.md`.',
+        'docs/guidance/evolution-arc.md': 'See `docs/onboarding/evolution-arc.md`.',
+        'docs/architecture/workspace.md':
+          '`.local/`, `.cursor/skills/evolution-arc/`, and `docs/guidance/evolution-arc.md`.',
+      },
+      repoFiles: new Set([
+        'README.md',
+        'AGENTS.md',
+        '.github/copilot-instructions.md',
+        '.claude/CLAUDE.md',
+        '.cursor/skills/onboarding/SKILL.md',
+        '.cursor/skills/evolution-arc/SKILL.md',
+        'docs/onboarding/README.md',
+        'docs/onboarding/manual.md',
+        'docs/onboarding/ai-guidance.md',
+        'docs/onboarding/evolution-arc.md',
+        'docs/onboarding/workspace-overview.md',
+        'docs/guidance/evolution-arc.md',
+        'docs/architecture/workspace.md',
+        '.local.example.md',
+      ]),
+      repoDirectories: new Set([
+        'docs/onboarding',
+        'docs/guidance',
+        '.cursor/skills/evolution-arc',
+      ]),
+      changedFiles: [],
+    });
+
+    expect(result.failures).toEqual([]);
+  });
 });
