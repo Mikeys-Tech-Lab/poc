@@ -129,7 +129,7 @@ jobs:
 
       - name: Upload advisory artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7
         with:
           name: guidance-drift-review
           path: |
