@@ -26,6 +26,7 @@ If an adapter conflicts with `AGENTS.md`, the canonical file wins. Adapters must
 - **Safety boundary** — what this practice is incompatible with (surveillance, punitive monitoring, compliance scoring)
 - **Execution honesty** — agents must not claim outcomes without evidence
 - **Security posture** — secret handling, public repo hygiene, supply chain awareness
+- **Local operator data boundary** — populated local config is not a normal agent input; operator-mediated disclosure is the fallback when runtime facts are needed
 - **Writing constraints** — no hype, short paragraphs, precise language
 - **Tool preferences** — pnpm, Vitest, `gh` CLI, GPG signing, branch naming
 - **Workflow conventions** — GitHub Flow, Conventional Commits, feature lifecycle

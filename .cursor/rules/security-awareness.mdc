@@ -10,9 +10,19 @@ Full guidance: `AGENTS.md` § Security posture. This is an always-applied adapte
 
 ## File safety
 
-- Before writing to any file, check if it should be gitignored. Secrets and operator-specific values go in `.local/config.md` or GitHub secrets, nowhere else.
+- Before writing to any file, check if it should be gitignored. Sensitive local operator values go only in gitignored local files such as `.local/config.md` or in GitHub secrets when needed for CI/CD.
 - All committed files must be public-safe. No IPs, hostnames, deploy paths, credentials, or client identifiers.
 - `.env*` files are gitignored. Use them for local secrets if needed. Never commit them.
+
+## Local operator data boundary
+
+- Do not read populated local config files that may contain sensitive or operator-specific infrastructure values. Gitignored does not mean safe to expose to AI tooling.
+- Distinguish three categories:
+  - Agent-readable non-sensitive preferences
+  - Operator-mediated operational facts
+  - Never-read sensitive local values
+- When a task needs runtime facts, ask the operator for the minimum required non-sensitive value or have the operator run the command locally and relay the result.
+- Do not treat one populated local file as a normal agent input for all operator context.
 
 ## Public-facing text (PR descriptions, commit messages, issues)
 
@@ -26,7 +36,7 @@ This is a public repository. PR descriptions, commit messages, issue bodies, and
 ## Deployment
 
 - SSH private keys are generated locally and copied to GitHub secrets by the operator. Agents do not handle private key content.
-- Read `.local/config.md` for infrastructure details. Do not hardcode them.
+- Read committed runbooks for deployment structure. If operator-specific runtime facts are needed, use operator-mediated disclosure. Do not hardcode them.
 - The setup runbook at `docs/infra/infomaniak-environment-setup.md` is the reference for environment provisioning.
 
 ## Defense-in-depth (origin protection)

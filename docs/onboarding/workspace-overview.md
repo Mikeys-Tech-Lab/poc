@@ -41,7 +41,7 @@ poc/
 - **`apps/site/`** is the Astro Starlight frontend. Its content evolves independently from seeds.
 - **`tools/ai-guidance/`** produces capability reports written to `docs/ai/`.
 - **`docs/`** is for repo-level documentation. It is not site content. `docs/onboarding/` holds entry paths such as `onboard me` and `Evolution Arc`, while `docs/guidance/evolution-arc.md` curates the trace surfaces behind the history path.
-- **`.local/config.md`** holds operator-specific values (gitignored). Template: `.local.example.md`.
+- **`.local/config.md`** holds gitignored operator-specific local values. Template: `.local.example.md`. Populated local config is not a normal agent input.
 
 ## Three versioned packages
 
@@ -61,6 +61,6 @@ The canonical architecture diagram with all relationships is at [`docs/architect
 
 ## What is not in this repo
 
-- Production secrets, IPs, or credentials (these live in GitHub secrets and `.local/config.md`)
+- Production secrets, sensitive infrastructure details, or operator-local values in committed files (runtime values live in GitHub secrets or gitignored local files)
 - Deployment infrastructure (managed externally on Infomaniak and Cloudflare)
 - User data or databases (this is a static site workspace)

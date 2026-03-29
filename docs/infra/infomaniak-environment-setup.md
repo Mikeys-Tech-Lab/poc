@@ -152,7 +152,7 @@ Watch the workflow run. If it fails, the step name and error message indicate wh
 
 ## Step 10: Record values locally
 
-Copy the connection details into `.local/config.md` (gitignored) so you have them for manual deployment and so agents can read them without accessing GitHub secrets. The template is at `.local.example.md`.
+Copy the connection details into `.local/config.md` (gitignored) so you have them for manual deployment. Do not treat the populated file as an agent-readable input. If an AI agent needs a runtime fact, disclose only the minimum required non-sensitive value or run the command locally and relay the result. The template is at `.local.example.md`.
 
 ## Step 11: Verify the live site
 
