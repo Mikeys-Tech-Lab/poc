@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.3.0...site-v1.3.1) (2026-03-29)
+
+
+### Miscellaneous
+
+* **deps:** update dependency @catppuccin/starlight to v2 ([#115](https://github.com/Mikeys-Tech-Lab/poc/issues/115)) ([49002c6](https://github.com/Mikeys-Tech-Lab/poc/commit/49002c68ad9a2c8a91eda9e762dec6dd8041e5fb))
+
 ## [1.3.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.2.1...site-v1.3.0) (2026-03-29)
 
 
