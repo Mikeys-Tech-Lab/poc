@@ -154,11 +154,13 @@ This is a public repository. Everything committed is world-readable. Agents must
 
 ### Supply chain
 
-- GitHub Actions are pinned to major version tags (`@v4`). Dependabot monitors for updates.
+- Routine dependency and GitHub Actions version updates are managed by Renovate (`renovate.json`).
+- Dependabot remains enabled for GitHub-native alerting and security-only update surfaces.
+- GitHub Actions are currently referenced by version tags in workflow files. Renovate tracks them as part of the routine update queue.
 - No third-party deployment actions. Direct `ssh`/`rsync` reduces supply chain surface.
 - CI security scanning runs on every PR and push to `main`: gitleaks (secret detection), Shai-Hulud (npm supply chain), CodeQL (static analysis), OSSF Scorecard (supply chain posture).
 - gitleaks uses the MIT-licensed CLI directly to avoid commercial licensing constraints. The version is pinned in the workflow.
-- Dependabot alerts, security updates, and grouped security updates are enabled.
+- Dependabot alerts and security updates remain enabled.
 - When the project matures, pinning to commit SHAs is the next step.
 
 ### CI security scanning
@@ -214,6 +216,7 @@ This section declares operator tool choices. Agents must respect these and not s
 - **GitHub CLI**: use `gh` for PR creation, issue management, and release workflows. Prefer `gh` over raw `curl` or `hub`. Before running `gh`, verify the active account matches the operator-provided account context or other safe local evidence.
 - **Package manager**: pnpm. Do not use npm or yarn.
 - **Runtime**: Node.js (check version locally before assuming features)
+- **Dependency updates**: Renovate (`renovate.json`) is the primary engine for routine version updates. Dependabot is security-only. Major updates require deliberate review; routine non-major flow may auto-merge after CI according to the repo config.
 - **Test runner (unit)**: Vitest. Both `tools/ai-guidance` and `apps/site` have Vitest configs. `pnpm test` runs across all packages.
 - **Test runner (E2E)**: Playwright (Chromium only). E2E tests live in `apps/site/e2e/`. Run against the built static output via `pnpm preview`. `pnpm --filter site test:e2e` runs E2E tests.
 - **Snapshot export**: use `pnpm screendump` to build the site, export all current page x register x viewport screenshots to `.dist/poc-snapshot-images/`, and create `.dist/poc-snapshot-images-snapshot-<version>.zip`

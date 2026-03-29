@@ -33,9 +33,9 @@ If you are new to this repo and reading without AI assistance, this is the recom
 
 3. **[AI guidance architecture](ai-guidance.md)** — this repo has an unusual feature: a canonical AI guidance file (`AGENTS.md`) that all AI agents read. Rules fire automatically, skills are invoked per task. Understanding this explains many of the repo's conventions.
 
-4. **[Security and public repo hygiene](security.md)** — before you commit anything or open a PR, read this. Short version: no secrets, IPs, or internal paths in any public-facing text. Four CI security scans run automatically.
+4. **[Security and public repo hygiene](security.md)** — before you commit anything or open a PR, read this. Short version: no secrets, IPs, or internal paths in any public-facing text. Five security scans cover repo and live surfaces.
 
-5. **[Contributing](contributing.md)** — GitHub Flow, Conventional Commits, feature lifecycle with a reflect-before-PR step. PRs are reasoning traces, not just changelogs.
+5. **[Contributing](contributing.md)** — GitHub Flow, Conventional Commits, feature lifecycle with a reflect-before-PR step, and the dependency update queue model. PRs are reasoning traces, not just changelogs.
 
 6. **[Infrastructure and environments](infrastructure.md)** — three deployment environments with layered protection. This page is intentionally high-level. The deep docs are in `docs/infra/`.
 

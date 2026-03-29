@@ -31,6 +31,7 @@ poc/
 │   ├── workflows/             # CI/CD, security scanning, releases
 │   ├── copilot-instructions.md
 │   └── dependabot.yml
+├── renovate.json              # Renovate routine dependency policy
 └── .local/                    # Operator config (gitignored)
 ```
 
@@ -42,6 +43,7 @@ poc/
 - **`tools/ai-guidance/`** produces capability reports written to `docs/ai/`.
 - **`docs/`** is for repo-level documentation. It is not site content. `docs/onboarding/` holds entry paths such as `onboard me` and `Evolution Arc`, while `docs/guidance/evolution-arc.md` curates the trace surfaces behind the history path.
 - **`.local/config.md`** holds gitignored operator-specific local values. Template: `.local.example.md`. Populated local config is not a normal agent input.
+- **`renovate.json`** drives routine dependency updates across the workspace. `.github/dependabot.yml` is narrowed to security-only behavior.
 
 ## Three versioned packages
 

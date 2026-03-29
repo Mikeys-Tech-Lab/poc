@@ -65,3 +65,4 @@ This ensures every automated deployment in the repo corresponds to a tagged rele
 | [`docs/infra/protection-layers.md`](../infra/protection-layers.md) | Full protection layer architecture per environment |
 | [`docs/infra/infomaniak-environment-setup.md`](../infra/infomaniak-environment-setup.md) | Step-by-step environment provisioning |
 | [`docs/infra/github-app-release-setup.md`](../infra/github-app-release-setup.md) | Release automation GitHub App setup |
+| [`docs/infra/renovate-app-setup.md`](../infra/renovate-app-setup.md) | Renovate GitHub App setup and dependency automation enablement |

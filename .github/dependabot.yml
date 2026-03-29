@@ -1,69 +1,54 @@
-# Dependabot version updates configuration
+# Dependabot is retained only for GitHub-native security updates.
+# Routine version updates are managed by Renovate via `renovate.json`.
 # Docs: https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference
 
 version: 2
 
 updates:
-  # All npm/pnpm workspace packages (single entry avoids lockfile conflicts)
+  # npm security updates only
   - package-ecosystem: "npm"
     directories:
       - "/"
       - "/apps/site"
       - "/tools/ai-guidance"
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: "daily"
     commit-message:
       prefix: "chore"
       include: "scope"
     labels:
       - "dependencies"
+      - "security"
     groups:
-      astro-ecosystem:
+      astro-ecosystem-security:
+        applies-to: security-updates
         patterns:
           - "astro*"
           - "@astrojs/*"
           - "@catppuccin/*"
-        update-types:
-          - "minor"
-          - "patch"
-      vitest:
-        patterns:
-          - "vitest"
-          - "@vitest/*"
-        update-types:
-          - "minor"
-          - "patch"
-      minor-and-patch:
-        update-types:
-          - "minor"
-          - "patch"
-        group-by: dependency-name
-      security-patches:
+      runtime-security:
         applies-to: security-updates
-        patterns:
-          - "*"
-        update-types:
-          - "patch"
-          - "minor"
-    open-pull-requests-limit: 10
-    versioning-strategy: increase
+        dependency-type: "production"
+      development-security:
+        applies-to: security-updates
+        dependency-type: "development"
+    open-pull-requests-limit: 0
 
-  # GitHub Actions workflows
+  # GitHub Actions security updates only
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: "daily"
     commit-message:
       prefix: "chore"
       include: "scope"
     labels:
       - "dependencies"
       - "ci"
+      - "security"
     groups:
-      actions-minor-and-patch:
-        update-types:
-          - "minor"
-          - "patch"
-    open-pull-requests-limit: 10
+      actions-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
+    open-pull-requests-limit: 0
