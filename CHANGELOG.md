@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.4](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.3...PoC-v1.7.4) (2026-03-29)
+
+
+### Miscellaneous
+
+* **config:** migrate Renovate config ([#104](https://github.com/Mikeys-Tech-Lab/poc/issues/104)) ([38d42bc](https://github.com/Mikeys-Tech-Lab/poc/commit/38d42bc02683b1253a01abfb00cdb8e6c72f4868))
+
 ## [1.7.3](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.2...PoC-v1.7.3) (2026-03-29)
 
 
