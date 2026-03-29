@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.13](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.12...PoC-v1.7.13) (2026-03-29)
+
+
+### Miscellaneous
+
+* **deps:** pin dependencies ([#128](https://github.com/Mikeys-Tech-Lab/poc/issues/128)) ([a18b052](https://github.com/Mikeys-Tech-Lab/poc/commit/a18b052160273b97af86aa9ab4b3f1f5cf80b0d6))
+
 ## [1.7.12](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.11...PoC-v1.7.12) (2026-03-29)
 
 
