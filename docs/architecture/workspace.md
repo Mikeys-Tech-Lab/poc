@@ -106,7 +106,7 @@ flowchart TD
 | `docs/practices/` | Practice documents and operational lenses (e.g., Sensible Defaults) | Exists |
 | `AGENTS.md` | Canonical agent guidance (single source of truth) | Exists |
 | `.cursor/rules/` | Cursor always-apply and file-scoped rules (includes security-awareness) | Exists |
-| `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, infomaniak-deployment, onboarding, evolution-arc) | Exists |
+| `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, renovate-operations, infomaniak-deployment, onboarding, evolution-arc) | Exists |
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
 | `.github/` | PR template, Copilot instructions, Dependabot security config, prompt files for advisory automation | Exists |
 | `renovate.json` | Renovate routine dependency policy, grouping, automerge, and dashboard behavior | Exists |

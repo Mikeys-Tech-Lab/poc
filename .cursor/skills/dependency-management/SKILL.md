@@ -81,10 +81,10 @@ It is now security-only:
 ### Security PRs
 
 1. Review security PRs first
-2. Do not auto-merge security fixes by default
-3. Verify the blast radius is understandable before grouping multiple fixes together
-4. Run `pnpm test` and `pnpm run build` before merging if the fix touches runtime behavior
-5. If a fix needs code changes, do that work in a dedicated branch instead of widening the security PR casually
+2. The repo may auto-merge vulnerability PRs after checks pass when the Renovate config allows it
+3. Confirm the PR is a straightforward vulnerability fix and not a disguised migration
+4. If a fix fails checks or needs code changes, treat it as a manual exception instead of widening the rule casually
+5. Keep major upgrades and config migrations out of the “merge it automatically” mental model
 
 ## Backlog recovery
 
@@ -159,6 +159,8 @@ Some tools are pinned outside of Dependabot's reach:
 ## Enablement
 
 This repo config assumes the Renovate GitHub App is installed for the repository. Setup steps live in `docs/infra/renovate-app-setup.md`.
+
+For Renovate-specific config changes, live-doc grounding, config migration PRs, and safe automerge tuning, use `.cursor/skills/renovate-operations/SKILL.md`.
 
 ## Version policy
 

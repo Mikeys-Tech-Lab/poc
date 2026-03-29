@@ -35,9 +35,11 @@ This repo needed a model where:
 ### Security updates
 
 - Security updates stay visible immediately.
-- No security update is auto-merged.
-- Security fixes are reviewed manually.
-- Dependabot remains the GitHub-native security surface. Its repo config is narrowed to security-only behavior.
+- Renovate reads GitHub vulnerability alerts and raises fix PRs immediately.
+- Vulnerability PRs are auto-merge eligible after required checks pass.
+- Vulnerability fixes use the lowest fixed version by default to keep remediation deltas small.
+- If a security PR fails checks or needs code changes, it becomes a manual exception rather than the default path.
+- Dependabot remains the GitHub-native alerting surface. Its repo config is narrowed to security-only behavior.
 
 ### Non-major routine updates
 
@@ -70,6 +72,7 @@ The queue is considered healthy when:
 - non-major PR volume stays small
 - majors remain in the dashboard instead of the main PR list
 - security work is easy to spot
+- passing vulnerability fixes can merge without manual babysitting
 - release PRs are a bounded consequence of intentional dependency movement, not constant churn
 
 ## Backlog recovery sequence

@@ -42,7 +42,7 @@ Cursor uses two mechanisms:
 
 **Rules** (`.cursor/rules/*.mdc`) fire automatically. Some apply to every interaction (always-apply), others fire when matching file patterns (file-scoped). Rules handle cross-cutting concerns: Practice grounding, security awareness, writing conventions, visual design.
 
-**Skills** (`.cursor/skills/*/SKILL.md`) are invoked per task. When the agent recognizes a relevant task, it reads the skill file and follows its instructions. Skills handle domain-specific workflows: Astro development, deployment, git commits, GitHub automation, dependency management, onboarding, and guided repo history via `evolution-arc`.
+**Skills** (`.cursor/skills/*/SKILL.md`) are invoked per task. When the agent recognizes a relevant task, it reads the skill file and follows its instructions. Skills handle domain-specific workflows: Astro development, deployment, git commits, GitHub automation, dependency management, Renovate operations, onboarding, and guided repo history via `evolution-arc`.
 
 The repo also keeps the guidance layer from drifting silently:
 
@@ -79,6 +79,7 @@ Current skills:
 | `git-commit` | Before every commit |
 | `github-automation` | Feature lifecycle and PRs |
 | `dependency-management` | Adding or updating dependencies |
+| `renovate-operations` | Live-doc-grounded Renovate config, PR review, and config migration handling |
 | `screen-dump` | Exporting page/register screenshots and versioned snapshot bundles |
 | `infomaniak-deployment` | Deployment configuration and troubleshooting |
 
