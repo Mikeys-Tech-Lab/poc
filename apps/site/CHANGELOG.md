@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.2.1...site-v1.3.0) (2026-03-29)
+
+
+### Features
+
+* **tooling:** adopt renovate dependency operations ([#100](https://github.com/Mikeys-Tech-Lab/poc/issues/100)) ([e3eae8c](https://github.com/Mikeys-Tech-Lab/poc/commit/e3eae8cdbc9214bb55df86486e570e63c2059e62))
+
 ## [1.2.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.2.0...site-v1.2.1) (2026-03-16)
 
 

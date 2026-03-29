@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.7.3](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.2...PoC-v1.7.3) (2026-03-29)
+
+
+### Miscellaneous
+
+* **deps:** update dependency happy-dom to v20.8.9 [security] ([#108](https://github.com/Mikeys-Tech-Lab/poc/issues/108)) ([f41716d](https://github.com/Mikeys-Tech-Lab/poc/commit/f41716d13bce2bbe72658049d7acd295aed28ad2))
+
+## [1.7.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.1...PoC-v1.7.2) (2026-03-29)
+
+
+### Miscellaneous
+
+* **deps:** update dependency astro to v5.18.1 [security] ([#102](https://github.com/Mikeys-Tech-Lab/poc/issues/102)) ([9ce0e37](https://github.com/Mikeys-Tech-Lab/poc/commit/9ce0e377c2351ee0d38676b03d30e30af737bac5))
+
+## [1.7.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.0...PoC-v1.7.1) (2026-03-29)
+
+
+### Miscellaneous
+
+* **deps:** update dependency happy-dom to v20.8.8 [security] ([#103](https://github.com/Mikeys-Tech-Lab/poc/issues/103)) ([67d4352](https://github.com/Mikeys-Tech-Lab/poc/commit/67d4352f84e5401a2cdbd58ba9150fe7b72c8642))
+
+## [1.7.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.6.0...PoC-v1.7.0) (2026-03-29)
+
+
+### Features
+
+* **tooling:** adopt renovate dependency operations ([#100](https://github.com/Mikeys-Tech-Lab/poc/issues/100)) ([e3eae8c](https://github.com/Mikeys-Tech-Lab/poc/commit/e3eae8cdbc9214bb55df86486e570e63c2059e62))
+
 ## [1.6.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.5.0...PoC-v1.6.0) (2026-03-29)
 
 
