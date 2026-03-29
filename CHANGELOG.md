@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.0...PoC-v1.7.1) (2026-03-29)
+
+
+### Miscellaneous
+
+* **deps:** update dependency happy-dom to v20.8.8 [security] ([#103](https://github.com/Mikeys-Tech-Lab/poc/issues/103)) ([67d4352](https://github.com/Mikeys-Tech-Lab/poc/commit/67d4352f84e5401a2cdbd58ba9150fe7b72c8642))
+
 ## [1.7.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.6.0...PoC-v1.7.0) (2026-03-29)
 
 
