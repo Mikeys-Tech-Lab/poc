@@ -164,7 +164,7 @@ describe('runGuidanceDriftGuard', () => {
       files: {
         'README.md': 'Use onboard me and Evolution Arc.',
         'AGENTS.md':
-          'Say `onboard me`. Say `Evolution Arc`. Read `.local/config.md` and use `pnpm screendump` to export to `.dist/poc-snapshot-images/`.',
+          'Say `onboard me`. Say `Evolution Arc`. Do not read populated `.local/config.md`. Use `pnpm screendump` to export to `.dist/poc-snapshot-images/`.',
         '.github/copilot-instructions.md': 'Use `onboard me` and `Evolution Arc`.',
         '.claude/CLAUDE.md': 'Use `onboard me` and `Evolution Arc`.',
         '.cursor/skills/onboarding/SKILL.md':
@@ -184,7 +184,7 @@ describe('runGuidanceDriftGuard', () => {
         'docs/onboarding/evolution-arc.md':
           'Choose register. Read `docs/guidance/evolution-arc.md`.',
         'docs/onboarding/workspace-overview.md':
-          'Template: `.local.example.md`. See `.local/config.md`.',
+          'Template: `.local.example.md`. Do not treat populated `.local/config.md` as a normal agent input.',
         'docs/guidance/evolution-arc.md': 'See `docs/onboarding/evolution-arc.md`.',
         'docs/architecture/workspace.md':
           '`.local/`, `.cursor/skills/evolution-arc/`, and `docs/guidance/evolution-arc.md`.',

@@ -46,7 +46,8 @@ flowchart TD
   EvolutionArcGuide -.->|"curates"| Architecture
   EvolutionArcGuide -.->|"curates"| Guidance
 
-  LocalConfig[".local/config.md"] -.->|"operator prefs"| Agents
+  LocalConfig[".local/config.md"] -.->|"operator-local values"| OperatorBoundary["operator-mediated disclosure"]
+  OperatorBoundary -.->|"minimum necessary runtime facts"| Agents
   Dependabot[".github/dependabot.yml"] -.->|"version updates"| Tooling
 
   AstroSite[apps/site/] -->|"site content"| SiteDocs["apps/site/src/content/docs/"]
@@ -110,7 +111,7 @@ flowchart TD
 | `.github/workflows/` | CI/CD (deploy-dev, deploy-preview, deploy-production, release), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard, Nuclei live scan), guidance drift review | Exists |
 | `release-please-config.json` | Release Please package definitions and changelog sections | Exists |
 | `.release-please-manifest.json` | Tracks current version of each versioned package | Exists |
-| `.local/` | Operator-specific config (gitignored). Template: `.local.example.md` | Exists |
+| `.local/` | Operator-specific local config (gitignored), not a normal agent input. Template: `.local.example.md` | Exists |
 | `docs/onboarding/` | Newcomer and repo-history entry paths (topic index, local setup, AI guidance, workspace, evolution arc, security, infra, contributing) | Exists |
 | `docs/guidance/` | Descriptive guidance docs (conventions, change process, evolution trace map) | Exists |
 | `docs/architecture/` | Architecture docs + this canonical diagram | Exists |

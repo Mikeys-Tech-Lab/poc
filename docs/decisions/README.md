@@ -84,6 +84,7 @@ Links to seeds, PRs, related ADRs, or external sources. Not a duplication of PR 
 |--------|-------|--------|------|
 | [0001](0001-root-locale-and-register-restructure.md) | Root locale and register restructure | Superseded | 2026-03-06 |
 | [0002](0002-current-launch-surface-and-locale-reality.md) | Current launch surface and locale reality | Accepted | 2026-03-13 |
+| [0003](0003-agent-local-config-boundary.md) | Agent local config boundary | Accepted | 2026-03-28 |
 
 ---
 © 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).

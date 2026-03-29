@@ -45,7 +45,7 @@ If you are new to this repo and reading without AI assistance, this is the recom
 |---|---|
 | `AGENTS.md` | Canonical AI agent guidance. The single source of truth. |
 | `docs/guidance/evolution-arc.md` | Curated map of the repo's trace surfaces for the `Evolution Arc` path. |
-| `.local.example.md` | Template for operator-specific config. Copy to `.local/config.md`. |
+| `.local.example.md` | Template for operator-specific local config structure. Do not treat populated `.local/config.md` as a normal agent input. |
 | `docs/architecture/workspace.md` | Canonical architecture diagram. Updated with every structural change. |
 | `docs/guidance/README.md` | Principles and workflow conventions overview. |
 

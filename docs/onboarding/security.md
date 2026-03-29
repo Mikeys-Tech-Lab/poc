@@ -15,11 +15,21 @@ Use generic references instead of actual values:
 
 | What | Where | Accessible to |
 |---|---|---|
-| Operator-specific config | `.local/config.md` (gitignored) | Local machine only |
+| Operator-specific local values | Gitignored local files such as `.local/config.md` | Local machine only, not a normal agent input |
 | CI/CD credentials | GitHub Secrets (per environment) | GitHub Actions runners |
 | Infrastructure details | GitHub Variables (per environment) | GitHub Actions runners |
 
 The template at `.local.example.md` shows the structure without real values.
+
+## Local operator data boundary
+
+Not every local value belongs in the same bucket.
+
+- **Agent-readable non-sensitive preferences** can be shared intentionally.
+- **Operator-mediated operational facts** should be disclosed minimally at runtime, only when needed for the task.
+- **Never-read sensitive local values** such as secrets, hostnames, internal paths, key filenames, and identifiers should not transit AI tooling.
+
+Do not treat one populated local file as a general agent-readable source of operator context.
 
 ## Secrets in AI chat
 
@@ -27,6 +37,7 @@ AI chat sessions transit external infrastructure and persist in local transcript
 
 - Never display, `cat`, echo, or pipe private keys, tokens, or credentials through AI tool calls.
 - If you need to use a secret, run the command in your own terminal. Do not ask the AI to capture the output.
+- Do not ask the AI to read populated local config files that may contain sensitive or operator-specific infrastructure values.
 - If a secret is accidentally exposed in chat, treat it as compromised and rotate it.
 
 Full details: [`AGENTS.md` § Secret handling in AI chat](../../AGENTS.md)

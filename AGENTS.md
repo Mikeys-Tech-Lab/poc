@@ -133,12 +133,22 @@ This is a public repository. Everything committed is world-readable. Agents must
 - No secrets, IPs, internal hostnames, client IDs, key filenames, or infrastructure paths in committed files.
 - The same rule applies to all public-facing text: PR descriptions, commit messages, issue bodies, and review comments. These are world-readable and permanently archived. Use generic references ("origin server", "deploy path updated") instead of actual values.
 - Before creating or updating a PR description, scan the draft for origin IPs, internal paths, SSH hostnames/usernames, client IDs, and key filenames. Redact before posting.
-- Operator-specific values go in `.local/config.md` (gitignored). CI/CD values go in GitHub secrets and variables.
+- Sensitive operator-specific local values belong only in gitignored local files such as `.local/config.md`. CI/CD values go in GitHub secrets and variables.
 - Before writing any file containing secrets or operator-specific values, verify the target path is gitignored. If not, stop and ask.
+
+### Local operator data boundary
+
+- **Do not read populated local config files** that may contain sensitive or operator-specific infrastructure values. Gitignored does not mean safe to expose to AI tooling.
+- **Classify local operator data explicitly.**
+  - Agent-readable non-sensitive preferences: safe defaults or workflow preferences that can be shared intentionally.
+  - Operator-mediated operational facts: values an agent may need, but which the operator discloses minimally at runtime or verifies through operator-run commands.
+  - Never-read sensitive local values: secrets, hostnames, internal paths, key filenames, identifiers, or similar infrastructure details that must not transit AI tool output.
+- **Reject the old mental model.** One populated local file that agents are expected to read is not an acceptable workspace contract.
+- **When runtime facts are needed**, ask the operator for the minimum required non-sensitive value or have the operator run the command locally and relay the result.
 
 ### Deployment awareness
 
-- Read `.local/config.md` and the `infomaniak-deployment` skill to understand the current environment topology.
+- Read the committed deployment docs and the `infomaniak-deployment` skill to understand the current environment topology. If operator-specific runtime facts are needed, use operator-mediated disclosure.
 - SSH keys are generated locally. Private keys never transit through AI tools.
 - IP restriction is defense-in-depth, not the sole access control layer.
 
@@ -200,8 +210,8 @@ Silent divergence is drift. Marked divergence is federation.
 
 This section declares operator tool choices. Agents must respect these and not substitute alternatives without asking.
 
-- **Operator config**: read `.local/config.md` for operator-specific values (GitHub account, GPG key, SSH alias). This file is gitignored. A template is at `.local.example.md`.
-- **GitHub CLI**: use `gh` for PR creation, issue management, and release workflows. Prefer `gh` over raw `curl` or `hub`. Before running `gh`, verify the active account matches the operator config.
+- **Operator config**: do not assume populated local config is agent-readable. Use operator-mediated disclosure for account or identity facts, and treat `.local.example.md` as structure only.
+- **GitHub CLI**: use `gh` for PR creation, issue management, and release workflows. Prefer `gh` over raw `curl` or `hub`. Before running `gh`, verify the active account matches the operator-provided account context or other safe local evidence.
 - **Package manager**: pnpm. Do not use npm or yarn.
 - **Runtime**: Node.js (check version locally before assuming features)
 - **Test runner (unit)**: Vitest. Both `tools/ai-guidance` and `apps/site` have Vitest configs. `pnpm test` runs across all packages.

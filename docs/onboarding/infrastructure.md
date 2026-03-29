@@ -35,12 +35,14 @@ This is intentionally described at the mechanism level, not the product level. T
 These details live in:
 - [`docs/infra/protection-layers.md`](../infra/protection-layers.md) — the full protection layer architecture
 - [`docs/infra/infomaniak-environment-setup.md`](../infra/infomaniak-environment-setup.md) — environment setup runbook
-- `.local/config.md` (gitignored) — operator-specific connection details
+- `.local/config.md` (gitignored) — operator-specific local notes and connection details, not a normal agent input
 - GitHub Secrets — CI/CD credentials
 
 ### Known limitations
 
 The origin baseline checks a request header to verify CDN provenance. A direct-to-origin request could forge this header. Stronger protections (mutual TLS between CDN and origin, origin firewall restricting to CDN IP ranges) are noted as future improvements in the protection layers doc.
+
+If an AI agent needs a runtime fact during infrastructure work, disclose only the minimum required non-sensitive value or run the command locally and relay the result.
 
 ## Release and deployment flow
 

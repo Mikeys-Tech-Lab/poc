@@ -66,7 +66,7 @@ If missing, offer to create it from the template:
 cp .local.example.md .local/config.md
 ```
 
-Explain which sections of the config the user needs to fill in based on their role (local dev only vs. deployer).
+Explain which sections of the config the user needs to fill in based on their role (local dev only vs. deployer). Do not treat the populated file as a normal agent input. If runtime facts are needed later, ask for the minimum required non-sensitive value instead of reading the file.
 
 ## Topic discovery
 

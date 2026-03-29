@@ -39,7 +39,7 @@ Each web hosting has its own document root, FTP/SSH credentials, and domain bind
 ### Server details
 
 - Cloud Server type: Managed
-- Connection details, IPs, and credentials are in GitHub secrets for CI/CD and `.local/config.md` for local use. Never hardcode them in committed files.
+- Connection details, IPs, and credentials are in GitHub secrets for CI/CD and may be kept in gitignored local files for operator use. Do not treat populated local config as a normal agent input. Never hardcode them in committed files.
 
 ## Deployment method
 
@@ -187,7 +187,7 @@ Key constraints:
 
 ## Manual deployment
 
-If CI/CD is unavailable, deploy manually. Read values from `.local/config.md`:
+If CI/CD is unavailable, deploy manually. Use operator-held local values without passing them through AI tooling. If an agent is assisting, keep placeholders in chat and have the operator substitute or run commands locally:
 
 ```bash
 cd /path/to/poc

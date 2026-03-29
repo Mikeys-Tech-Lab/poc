@@ -31,13 +31,17 @@ Other commands:
 
 ## Operator configuration
 
-This repo uses a local config file for operator-specific values: GitHub account, GPG signing key, SSH alias, deployment details. These values are gitignored and never committed.
+This repo uses gitignored local config for operator-specific values such as GitHub account context, GPG signing preferences, SSH aliases, and deployment details. These values are never committed.
 
 1. Copy the template: `cp .local.example.md .local/config.md`
 2. Fill in your values. The template at `.local.example.md` explains each field.
-3. AI agents read `.local/config.md` at runtime for operator-specific preferences.
+3. Do not treat populated `.local/config.md` as a normal agent input. Agents use operator-mediated disclosure for runtime facts and treat `.local.example.md` as structure only.
 
-If you are only running the site locally and not deploying, you can skip the infrastructure sections of the config. The GitHub account and GPG signing sections are needed for committing.
+If you are only running the site locally and not deploying, you can skip the infrastructure sections of the config. For AI-assisted work, keep the boundary clear:
+
+- non-sensitive preferences may be disclosed intentionally
+- operational facts should be shared minimally when needed
+- sensitive infrastructure values should not transit AI tooling
 
 ## What you do not need for local development
 
