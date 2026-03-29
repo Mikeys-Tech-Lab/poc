@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.5](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.4...PoC-v1.7.5) (2026-03-29)
+
+
+### Miscellaneous
+
+* **deps:** update actions/create-github-app-token action to v3 ([#112](https://github.com/Mikeys-Tech-Lab/poc/issues/112)) ([52fc6ec](https://github.com/Mikeys-Tech-Lab/poc/commit/52fc6ec76e8789793ac625094b9c54a708894392))
+
 ## [1.7.4](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.3...PoC-v1.7.4) (2026-03-29)
 
 
