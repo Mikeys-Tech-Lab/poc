@@ -9,11 +9,10 @@ const t = getThemeLabels(locale);
 
 <starlight-theme-select>
 	<Select
-		icon="laptop"
+		icon="moon"
 		label={Astro.locals.t('themeSelect.accessibleLabel')}
 		options={[
-			{ label: t.darkAtmospheric, selected: false, value: 'dark' },
-			{ label: Astro.locals.t('themeSelect.auto'), selected: true, value: 'auto' },
+			{ label: t.darkAtmospheric, selected: true, value: 'dark' },
 			{ label: t.lightAtmospheric, selected: false, value: 'light' },
 			{ label: t.darkSolid, selected: false, value: 'dark-solid' },
 			{ label: t.lightSolid, selected: false, value: 'light-solid' },
@@ -28,29 +27,24 @@ const t = getThemeLabels(locale);
 </script>
 
 <script>
-	type Theme = 'auto' | 'dark' | 'light' | 'dark-solid' | 'light-solid';
+	type Theme = 'dark' | 'light' | 'dark-solid' | 'light-solid';
 
 	const storageKey = 'starlight-theme';
+	const defaultTheme: Theme = 'dark';
 
 	const parseTheme = (theme: unknown): Theme =>
-		theme === 'auto' || theme === 'dark' || theme === 'light' ||
+		theme === 'dark' || theme === 'light' ||
 		theme === 'dark-solid' || theme === 'light-solid'
-			? theme : 'auto';
+			? theme : defaultTheme;
 
 	const loadTheme = (): Theme =>
 		parseTheme(typeof localStorage !== 'undefined' && localStorage.getItem(storageKey));
 
 	function storeTheme(theme: Theme): void {
 		if (typeof localStorage !== 'undefined') {
-			localStorage.setItem(
-				storageKey,
-				theme === 'auto' ? '' : theme,
-			);
+			localStorage.setItem(storageKey, theme);
 		}
 	}
-
-	const getPreferredColorScheme = (): 'light' | 'dark' =>
-		matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
 
 	function onThemeChange(theme: Theme): void {
 		StarlightThemeProvider.updatePickers(theme);
@@ -58,9 +52,7 @@ const t = getThemeLabels(locale);
 		const isSolid = theme.includes('solid');
 		const colorScheme = theme.startsWith('light')
 			? 'light'
-			: theme === 'auto'
-				? getPreferredColorScheme()
-				: 'dark';
+			: 'dark';
 
 		document.documentElement.dataset.theme = colorScheme;
 		if (isSolid) {
@@ -71,10 +63,6 @@ const t = getThemeLabels(locale);
 
 		storeTheme(theme);
 	}
-
-	matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
-		if (loadTheme() === 'auto') onThemeChange('auto');
-	});
 
 	class StarlightThemeSelect extends HTMLElement {
 		constructor() {

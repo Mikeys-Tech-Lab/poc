@@ -17,7 +17,7 @@ pnpm install
 pnpm run local        # docs site at http://localhost:4321
 pnpm run build        # production build
 pnpm test             # tooling tests
-pnpm screendump       # export desktop/tablet/mobile page snapshots + zip
+pnpm screendump       # export desktop/tablet/mobile snapshots for both atmospheric themes + zip
 ```
 
 Full setup details: [docs/onboarding/local-setup.md](docs/onboarding/local-setup.md)

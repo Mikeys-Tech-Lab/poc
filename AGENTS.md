@@ -84,6 +84,7 @@ Before committing or marking work complete, trace the ripple:
 
 - What did this change touch beyond the immediate files?
 - Which docs, tests, onboarding pages, architecture descriptions, rules, or skills now describe something that no longer matches reality?
+- If the same control, preference, or action is exposed in multiple UI surfaces, do those surfaces still express the same option model and the same action semantics?
 - If nothing else was affected, state that explicitly. Silence is not the same as "nothing changed."
 
 ### No flattening
@@ -219,7 +220,7 @@ This section declares operator tool choices. Agents must respect these and not s
 - **Dependency updates**: Renovate (`renovate.json`) is the primary engine for routine version updates and vulnerability-fix PRs. Dependabot remains the GitHub-native alerting surface. Major updates require deliberate review; passing routine and vulnerability PRs may auto-merge after CI according to the repo config.
 - **Test runner (unit)**: Vitest. Both `tools/ai-guidance` and `apps/site` have Vitest configs. `pnpm test` runs across all packages.
 - **Test runner (E2E)**: Playwright (Chromium only). E2E tests live in `apps/site/e2e/`. Run against the built static output via `pnpm preview`. `pnpm --filter site test:e2e` runs E2E tests.
-- **Snapshot export**: use `pnpm screendump` to build the site, export all current page x register x viewport screenshots to `.dist/poc-snapshot-images/`, and create `.dist/poc-snapshot-images-snapshot-<version>.zip`
+- **Snapshot export**: use `pnpm screendump` to build the site, export all current page x register x atmospheric theme x viewport screenshots to `.dist/poc-snapshot-images/`, and create `.dist/poc-snapshot-images-snapshot-<version>.zip`
 - **Linter and formatter**: Biome (`biome.json` at repo root). Run `pnpm lint` to check, `pnpm lint:fix` to auto-fix. Biome covers `.ts`, `.mjs`, `.js`, `.json`, `.css`. It does not process `.astro` files.
 - **GPG signing**: enabled for all commits (`commit.gpgsign = true`). Do not disable or skip signing. If an agent cannot sign, output the git commands for the operator to run.
 - **Branch naming**: `<type>/<scope>/<short-description>` (e.g., `feat/ai/add-grounding-rules`)

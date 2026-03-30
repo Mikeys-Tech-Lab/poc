@@ -3,15 +3,19 @@ title: Practice of Clarity
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import HomeFeaturedCard from '../../../../components/HomeFeaturedCard.astro';
 
 <CardGrid>
-  <Card title="What This Work Is" icon="open-book">
-    Start here if you want the basic framing, how to read the site, and what this work is trying to do.
-    [Start reading](/en-us/about/what-this-is/)
-  </Card>
-  <Card title="Writing" icon="list-format">
-    The publication begins with Practice of Clarity. Act I is the first step into the series.
+  <div class="home-card-featured">
+    <HomeFeaturedCard variant="orientation" />
+  </div>
+  <Card title="Act I: When Output Outpaces Understanding">
+    Names the condition: output is accelerating faster than shared understanding.
     [Read Act I](/en-us/writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding/)
+  </Card>
+  <Card title="Act II: Practicing Decision Hygiene Under AI Speed">
+    Introduces the discipline: keep reasoning visible while work is still moving.
+    [Read Act II](/en-us/writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed/)
   </Card>
   <Card title="License" icon="approve-check">
     The writing on this site is shared under CC BY 4.0.

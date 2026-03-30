@@ -6,15 +6,18 @@ import {
   createScreendumpPlan,
   REGISTERS,
   screenshotFileName,
+  THEMES,
   VIEWPORTS,
   zipFileName,
 } from '../screendump.js';
 
 describe('screendump helpers', () => {
-  it('builds screenshot filenames from path and register', () => {
-    expect(screenshotFileName('', 'practitioner')).toBe('home__practitioner.png');
-    expect(screenshotFileName('about/what-this-is', 'orientation')).toBe(
-      'about__what-this-is__orientation.png',
+  it('builds screenshot filenames from path, register, and theme', () => {
+    expect(screenshotFileName('', 'practitioner', 'dark-atmo')).toBe(
+      'home__practitioner__dark-atmo.png',
+    );
+    expect(screenshotFileName('about/what-this-is', 'orientation', 'light-atmo')).toBe(
+      'about__what-this-is__orientation__light-atmo.png',
     );
   });
 
@@ -27,19 +30,20 @@ describe('screendump helpers', () => {
     );
   });
 
-  it('builds the full page x register x viewport plan', () => {
+  it('builds the full page x register x theme x viewport plan', () => {
     const plan = createScreendumpPlan({
       baseUrl: 'http://127.0.0.1:4321/en-us/',
     });
 
     expect(plan).toHaveLength(
-      CONTENT_PATHS.length * REGISTERS.length * Object.keys(VIEWPORTS).length,
+      CONTENT_PATHS.length * REGISTERS.length * THEMES.length * Object.keys(VIEWPORTS).length,
     );
     expect(plan[0]).toMatchObject({
       viewportName: 'desktop',
       path: '',
       register: 'practitioner',
-      fileName: 'home__practitioner.png',
+      theme: { name: 'dark-atmo', storageValue: 'dark' },
+      fileName: 'home__practitioner__dark-atmo.png',
       url: 'http://127.0.0.1:4321/en-us/',
     });
   });

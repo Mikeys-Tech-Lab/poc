@@ -119,7 +119,7 @@ The theme system has two orthogonal dimensions:
 - **Color scheme** (`data-theme`): `dark` or `light`. Controlled by Catppuccin plugin (Frappé/Latte flavors).
 - **Visual style** (`data-style`): atmospheric (default, no attribute) or `solid`. Controlled by custom CSS tokens and the ThemeProvider/ThemeSelect overrides.
 
-The theme selector in the header combines both into 5 options. See the "Site-wide visual system" section below for implementation details.
+The theme selector in the header combines both into 4 explicit options. See the "Site-wide visual system" section below for implementation details.
 
 ### Theme-color meta tags
 
@@ -168,7 +168,7 @@ Five Starlight components are overridden via the `components` key in `astro.conf
 | `SiteTitle` | `src/components/SiteTitle.astro` | Site title with register toggle. Clicking the title switches between Practitioner and Orientation. |
 | `SocialIcons` | `src/components/SocialIcons.astro` | Adds a LinkedIn icon after the default social icons. |
 | `ThemeProvider` | `src/components/ThemeProvider.astro` | Prevents FOUC for `data-theme`, `data-style`, and `data-register` attributes. |
-| `ThemeSelect` | `src/components/ThemeSelect.astro` | Extends the selector to 5 options with locale-aware labels. |
+| `ThemeSelect` | `src/components/ThemeSelect.astro` | Extends the selector to 4 explicit theme options with locale-aware labels. |
 | `Pagination` | `src/components/LicensePanel.astro` | Wraps default Pagination with LicenseNotice footer. |
 
 ### Override principles
@@ -269,8 +269,18 @@ Any change to theme tokens, the theme selector, the ThemeProvider inline script,
 
 1. Running `pnpm run build` to confirm no build errors.
 2. Doing one manual browser refresh to confirm no FOUC (flash of unstyled content).
+3. Auditing both atmospheric themes explicitly when custom surfaces or controls changed. Do not assume light mode is solved because token inheritance makes it “acceptable.”
+4. Checking mirrored theme entry points against each other. If the homepage, header, accessibility panel, or another surface exposes the same theme choice, they must share one explicit option model.
 
 FOUC regressions are silent — they do not fail the build. The only reliable check is a visual refresh after a clean load (hard refresh or incognito window).
+
+## Control semantics guardrail
+
+When a control label names an action, the primary behavior must match that label.
+
+- If a control says `Copy link`, its primary action should be copying.
+- If a control says `Share`, its primary action should be opening a share flow.
+- If behavior is mixed or conditional, rename the control or simplify the behavior until the label is honest.
 
 ## Linting and formatting
 
@@ -316,7 +326,7 @@ E2E tests live in `apps/site/e2e/`. Playwright config: `apps/site/playwright.con
 
 ### Test matrix
 
-The current state matrix is 1 locale x 5 content paths x 2 registers = 10 states, generated from arrays in `test-constants.ts`. Register state is a query parameter (`?register=orientation`), not a route segment. If the repo activates additional locales or routes later, update the arrays first and let the matrix expand from verified repo state.
+The current state matrix is 1 locale x 6 content paths x 2 registers = 12 states, generated from arrays in `test-constants.ts`. Register state is a query parameter (`?register=orientation`), not a route segment. If the repo activates additional locales or routes later, update the arrays first and let the matrix expand from verified repo state.
 
 ## Installability surface
 

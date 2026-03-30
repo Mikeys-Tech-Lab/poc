@@ -31,3 +31,92 @@
   overflow-x: auto;
   max-width: 100%;
 }
+
+/* Reading flow helpers — restrained landmarks for long-form prose */
+.sl-markdown-content .reading-beat {
+  margin: 1.75rem 0;
+  padding: 0.1rem 0 0.1rem 1rem;
+  border-inline-start: 0.22rem solid var(--poc-reading-accent);
+  color: var(--poc-text-strong);
+  font-size: 1.08rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+.sl-markdown-content .reading-frame {
+  margin: 1.75rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--poc-border-faint);
+  border-radius: 0.9rem;
+  background-color: var(--poc-surface-faint);
+  box-shadow: var(--poc-shadow-soft);
+}
+
+:root:not([data-style="solid"]) .sl-markdown-content .reading-frame {
+  backdrop-filter: blur(var(--poc-blur-sm));
+}
+
+:root[data-theme="light"]:not([data-style="solid"]) .sl-markdown-content .reading-frame {
+  background-color: rgb(255 255 255 / 0.62);
+  border-color: rgb(var(--poc-overlay) / 0.2);
+  box-shadow:
+    0 3px 10px rgb(0 0 0 / 0.06),
+    0 10px 24px rgb(0 0 0 / 0.04);
+}
+
+.sl-markdown-content .reading-frame-example {
+  border-inline-start: 0.24rem solid var(--poc-reading-accent);
+}
+
+.sl-markdown-content .reading-frame-boundary {
+  background-color: var(--poc-surface);
+  border-color: var(--poc-border-hover);
+}
+
+.sl-markdown-content .reading-frame-next {
+  background-color: var(--poc-surface-mid);
+  border-color: var(--poc-border-hover);
+  border-inline-start: 0.24rem solid var(--poc-reading-accent);
+}
+
+:root[data-theme="light"]:not([data-style="solid"]) .sl-markdown-content .reading-frame-boundary {
+  background-color: rgb(255 255 255 / 0.72);
+  border-color: rgb(var(--poc-overlay) / 0.24);
+}
+
+:root[data-theme="light"]:not([data-style="solid"]) .sl-markdown-content .reading-frame-next {
+  background-color: rgb(255 255 255 / 0.68);
+  border-color: rgb(var(--poc-overlay) / 0.22);
+}
+
+.sl-markdown-content .reading-frame-label,
+.sl-markdown-content .reading-frame-title {
+  margin: 0;
+}
+
+.sl-markdown-content .reading-frame-label {
+  color: var(--poc-text-soft);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sl-markdown-content .reading-frame-title {
+  margin-top: 0.3rem;
+  color: var(--poc-text-strong);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.sl-markdown-content .reading-frame-body {
+  margin-top: 0.75rem;
+}
+
+.sl-markdown-content .reading-frame-body > :first-child {
+  margin-top: 0;
+}
+
+.sl-markdown-content .reading-frame-body > :last-child {
+  margin-bottom: 0;
+}

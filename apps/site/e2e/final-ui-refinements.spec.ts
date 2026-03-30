@@ -29,7 +29,7 @@ const neutralA11yLabels = [
 
 test.describe('final ui refinements', () => {
   for (const { name, viewport } of viewports) {
-    test(`share button sits above the article anchor paragraphs on ${name}`, async ({
+    test(`copy link control sits above the article anchor paragraphs on ${name}`, async ({
       browser,
     }) => {
       const context = await browser.newContext({ viewport });
@@ -44,14 +44,14 @@ test.describe('final ui refinements', () => {
             const container = document.querySelector(containerSelector);
             const paragraphs = [...(container?.querySelectorAll('p') ?? [])];
             const anchor = paragraphs.find((element) => element.textContent?.trim() === anchorText);
-            const shareButton = container?.querySelector('poc-share-button');
+            const copyLinkControl = container?.querySelector('poc-share-button');
 
-            if (!anchor || !shareButton) {
+            if (!anchor || !copyLinkControl) {
               return false;
             }
 
             return Boolean(
-              shareButton.compareDocumentPosition(anchor) & Node.DOCUMENT_POSITION_FOLLOWING,
+              copyLinkControl.compareDocumentPosition(anchor) & Node.DOCUMENT_POSITION_FOLLOWING,
             );
           },
           {
@@ -70,14 +70,14 @@ test.describe('final ui refinements', () => {
             const container = document.querySelector(containerSelector);
             const paragraphs = [...(container?.querySelectorAll('p') ?? [])];
             const anchor = paragraphs.find((element) => element.textContent?.trim() === anchorText);
-            const shareButton = container?.querySelector('poc-share-button');
+            const copyLinkControl = container?.querySelector('poc-share-button');
 
-            if (!anchor || !shareButton) {
+            if (!anchor || !copyLinkControl) {
               return false;
             }
 
             return Boolean(
-              shareButton.compareDocumentPosition(anchor) & Node.DOCUMENT_POSITION_FOLLOWING,
+              copyLinkControl.compareDocumentPosition(anchor) & Node.DOCUMENT_POSITION_FOLLOWING,
             );
           },
           {

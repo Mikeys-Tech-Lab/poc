@@ -1,21 +1,21 @@
 ---
 /**
- * Lightweight share control for article pages.
+ * Lightweight copy-link control for article pages.
  *
- * Uses navigator.share() when available, falls back to copying
- * the canonical page URL to clipboard. Renders as a single calm
- * affordance near the article metadata area.
+ * Copies the canonical page URL to clipboard and briefly confirms
+ * success inline. Renders as a single calm affordance near the
+ * article metadata area.
  */
 ---
 
 <poc-share-button>
-	<button type="button" aria-label="Share this page">
+	<button type="button" aria-label="Copy link to this page">
 		<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 			<path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
 			<polyline points="16 6 12 2 8 6" />
 			<line x1="12" y1="2" x2="12" y2="15" />
 		</svg>
-		<span class="label">Share</span>
+		<span class="label">Copy link</span>
 		<span class="copied" aria-live="polite" hidden>Link copied</span>
 	</button>
 </poc-share-button>
@@ -33,17 +33,6 @@
 
 			button.addEventListener('click', async () => {
 				const url = buildShareUrl(window.location.href);
-				const title = document.title;
-
-				if (navigator.share) {
-					try {
-						await navigator.share({ title, url });
-						return;
-					} catch {
-						// User cancelled or share failed — fall through to clipboard
-					}
-				}
-
 				try {
 					await navigator.clipboard.writeText(url);
 					label.hidden = true;
@@ -82,24 +71,44 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.35em;
-		padding: 0.25em 0.6em;
-		border: 1px solid var(--poc-border-subtle, var(--sl-color-gray-5));
-		border-radius: 0.35em;
-		background: transparent;
-		color: var(--sl-color-gray-3);
+		padding: 0.42em 0.78em;
+		border: 1px solid var(--poc-border, var(--sl-color-gray-5));
+		border-radius: 0.6em;
+		background: var(--poc-surface-mid, transparent);
+		backdrop-filter: blur(var(--poc-blur-sm, 8px));
+		box-shadow: var(--poc-shadow-soft, none);
+		color: var(--poc-text-strong, var(--sl-color-gray-2));
 		font-size: var(--sl-text-xs);
 		cursor: pointer;
-		transition: color 0.15s ease, border-color 0.15s ease;
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease,
+			background-color 0.15s ease,
+			transform 0.15s ease;
 		line-height: 1;
 	}
 
 	poc-share-button button:hover {
 		color: var(--sl-color-text-accent);
 		border-color: var(--sl-color-text-accent);
+		background: var(--poc-surface-raised, transparent);
+		transform: translateY(-1px);
+	}
+
+	:root[data-theme='light']:not([data-style='solid']) poc-share-button button {
+		background: rgb(255 255 255 / 0.68);
+		border-color: rgb(var(--poc-overlay) / 0.2);
+		box-shadow: 0 3px 10px rgb(0 0 0 / 0.06), 0 10px 24px rgb(0 0 0 / 0.04);
+		color: var(--poc-text, var(--sl-color-text));
+	}
+
+	:root[data-theme='light']:not([data-style='solid']) poc-share-button button:hover {
+		background: rgb(255 255 255 / 0.82);
 	}
 
 	poc-share-button svg {
 		flex-shrink: 0;
+		opacity: 0.92;
 	}
 
 	poc-share-button .copied {

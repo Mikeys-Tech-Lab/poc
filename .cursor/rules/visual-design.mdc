@@ -43,6 +43,8 @@ Tokens use space-separated RGB channels with modern `rgb()` syntax:
 
 The light theme overrides `--poc-base` and `--poc-overlay` channels. Most surface/border tokens auto-resolve — only tokens whose formula differs between themes (e.g. `--poc-surface-faint`, shadows) need explicit light overrides. This eliminates duplicate `:root[data-theme="light"]` selectors in component files.
 
+Do not treat inherited light-mode output as equivalent to a designed light mode. If a custom atmospheric surface, callout, reading box, or control is introduced, verify whether light mode needs explicit background, border, shadow, or text adjustments instead of relying on dark-first tokens to carry the design.
+
 ## Style variants
 
 The site supports two visual styles, controlled by the `data-style` attribute on `<html>`:
@@ -50,7 +52,7 @@ The site supports two visual styles, controlled by the `data-style` attribute on
 - **Atmospheric** (default, no `data-style` attribute): blurred background image, frosted glass surfaces, translucent overlays.
 - **Solid** (`data-style="solid"`): opaque Catppuccin backgrounds, no blur, no atmosphere pseudo-element. Defined in `apps/site/src/styles/solid.css`.
 
-The theme selector (`apps/site/src/components/ThemeSelect.astro`) offers 5 options: Dark, Light, Auto, Dark Solid, Light Solid. It stores a composite value in `localStorage` and sets both `data-theme` and `data-style` on `<html>`.
+The theme selector (`apps/site/src/components/ThemeSelect.astro`) offers 4 explicit options: Dark Atmospheric, Light Atmospheric, Dark Solid, Light Solid. It stores a composite value in `localStorage` and sets both `data-theme` and `data-style` on `<html>`.
 
 FOUC prevention: `apps/site/src/components/ThemeProvider.astro` has an inline script that reads `localStorage` and sets both attributes before render.
 
@@ -95,6 +97,9 @@ Prefer a clear, repeatable vertical rhythm over one-off margin tweaks.
 ### Quick visual checks (required for frontend changes)
 
 - Toggle **theme**: Dark Atmospheric ↔ Light Atmospheric.
+- If you changed custom surfaces or controls, tune both atmospheric themes explicitly. Dark done and light inherited is not complete.
+- If the same choice appears in more than one UI surface, check that each surface exposes the same option model and selected state.
+- If a control label names an action, check that the behavior still matches the label.
 - Toggle **register**: Practitioner ↔ Orientation (confirm parity and no layout glitches).
 - Spot-check the active locale surface: `/en-us/` for the changed page or component.
 

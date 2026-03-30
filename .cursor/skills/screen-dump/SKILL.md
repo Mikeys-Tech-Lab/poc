@@ -1,6 +1,6 @@
 ---
 name: screen-dump
-description: Export full-page screenshots for every current page, register, and viewport. Use when the user says screen dump, screendump, snapshot images, export screenshots, or asks for a versioned screenshot zip.
+description: Export full-page screenshots for every current page, register, atmospheric theme, and viewport. Use when the user says screen dump, screendump, snapshot images, export screenshots, or asks for a versioned screenshot zip.
 ---
 # Screen Dump
 

@@ -1,0 +1,203 @@
+---
+title: "Act II: Practicing Decision Hygiene Under AI Speed"
+description: The first disciplined response when output speed stops being the limiting factor.
+---
+
+import RegisterContent from '../../../../../../components/RegisterContent.astro';
+import ReadingBeat from '../../../../../../components/ReadingBeat.astro';
+import ReadingFrame from '../../../../../../components/ReadingFrame.astro';
+import ShareButton from '../../../../../../components/ShareButton.astro';
+
+<RegisterContent register="orientation/en-us/writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed">
+
+<ShareButton />
+
+Modern systems can now generate plausible answers faster than teams can fully examine them.
+
+This is not new.
+
+High delivery pressure has always pushed teams to move faster than they can fully integrate what they are doing.
+
+AI does not create this condition.
+
+It amplifies it by increasing the volume of plausible output that must be understood, questioned, and integrated.
+
+This creates a subtle shift.
+
+The constraint is no longer access to options.  
+The constraint is the ability to work with those options without losing understanding.
+
+Act I described the condition.
+
+Act II begins with a different question:
+
+What changes in practice when speed is no longer the limiting factor?
+
+### The discipline
+
+When output accelerates, teams cannot rely on implicit understanding.
+
+What was previously carried informally must become visible.
+
+Decision hygiene is the practice of keeping reasoning in view while work is still moving.
+
+Without this, teams compensate in predictable ways.
+
+Assumptions are left implicit to maintain speed.  
+Questions are postponed because there is no time.  
+Agreement is taken as a signal of understanding.
+
+Work continues to move.
+
+Understanding does not.
+
+Not as documentation after the fact.  
+Not as justification once a decision is made.
+
+But as part of the decision itself.
+
+This changes the unit of work.
+
+The unit is no longer just the artifact:
+
+- a document
+- a design
+- a piece of code
+
+The unit becomes:
+
+- the artifact
+- the assumptions behind it
+- the uncertainties that remain
+
+<ReadingFrame
+  variant="example"
+  label="Example 1"
+  title="Plausible code, invisible assumptions"
+>
+  <p>A generated implementation appears correct.</p>
+  <p>
+    It compiles. <br />
+    It passes initial tests. <br />
+    It follows expected patterns.
+  </p>
+  <p>The team accepts it.</p>
+  <p>What is not visible:</p>
+  <ul>
+    <li>which edge cases were assumed away</li>
+    <li>which constraints were inferred rather than confirmed</li>
+    <li>which parts of the system were not considered</li>
+  </ul>
+  <p>The issue is not that the code is wrong.</p>
+  <p>The issue is that the reasoning behind it is absent.</p>
+  <p>Drift begins at the point where plausibility replaces inspection.</p>
+</ReadingFrame>
+
+<ReadingFrame
+  variant="example"
+  label="Example 2"
+  title="Agreement without shared understanding"
+>
+  <p>A plan is produced quickly.</p>
+  <p>
+    Everyone reviews it. <br />
+    No major objections are raised. <br />
+    The work begins.
+  </p>
+  <p>Weeks later, inconsistencies appear.</p>
+  <p>Each part of the system reflects a slightly different interpretation of the same plan.</p>
+  <ReadingBeat>Agreement was visible. Understanding was not.</ReadingBeat>
+  <p>The plan functioned as a shared artifact, but not as shared reasoning.</p>
+</ReadingFrame>
+
+<ReadingFrame
+  variant="example"
+  label="Example 3"
+  title="Pressure to sound certain"
+>
+  <p>Under time pressure, uncertainty becomes uncomfortable.</p>
+  <p>
+    Questions are compressed into confident statements. <br />
+    Doubt is reframed as decisiveness.
+  </p>
+  <p>The team moves faster.</p>
+  <p>But the unresolved questions do not disappear.</p>
+  <p>They reappear later as rework, friction, or silent divergence.</p>
+  <p>Speed was maintained. <br />Clarity was deferred.</p>
+</ReadingFrame>
+
+### What this discipline does
+
+Decision hygiene does not slow work down in the way teams often fear.
+
+It makes visible where speed is creating hidden risk.
+
+It changes where effort is applied.
+
+Instead of accelerating output alone, it stabilizes how decisions are made under that speed.
+
+It introduces small, continuous checks:
+
+- What are we assuming here?
+- What is still unclear?
+- Where could this drift?
+
+These are not formal gates.
+
+They are part of how work moves.
+
+### Misuse
+
+<ReadingFrame variant="boundary" label="Boundary statement">
+  <p>This practice is often mistaken for:</p>
+  <ul>
+    <li>more documentation</li>
+    <li>heavier process</li>
+    <li>additional approval layers</li>
+  </ul>
+  <p>It is none of these.</p>
+  <p>If it becomes overhead, it has already failed.</p>
+  <p>A common failure mode is turning this into a requirement or metric.</p>
+  <ReadingBeat>
+    If teams are asked to "show their reasoning" as a deliverable, it becomes
+    performance.
+  </ReadingBeat>
+  <p>The practice is not about producing evidence.</p>
+  <p>This creates a tension that cannot be resolved by policy.</p>
+  <p>
+    Reasoning must be visible enough to support understanding, but not
+    formalized in a way that turns it into performance.
+  </p>
+  <p>
+    If it becomes something to complete, measure, or report on, teams will
+    optimize for appearance rather than clarity.
+  </p>
+  <p>This discipline cannot be enforced from the outside.</p>
+  <p>It has to be practiced in the flow of work itself.</p>
+  <p>It is about keeping understanding alive while decisions are being made.</p>
+  <p>The purpose is not to record everything.</p>
+  <p>The purpose is to make the right things visible at the right moment.</p>
+</ReadingFrame>
+
+### Forward edge
+
+Making reasoning visible at the level of individual decisions is only the first step.
+
+As systems grow, reasoning does not stay contained.
+
+It moves.
+
+It diverges.  
+It reconnects.  
+It drifts across boundaries.
+
+To work with this, we need a way to understand how reasoning travels through a system.
+
+<ReadingFrame variant="next" label="Next movement" title="What comes after Act II">
+  <p>
+    The next act follows reasoning as it travels, diverges, and reconnects
+    across system boundaries.
+  </p>
+</ReadingFrame>
+
+</RegisterContent>

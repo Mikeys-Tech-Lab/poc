@@ -15,19 +15,26 @@ import { Icon } from '@astrojs/starlight/components';
 	window.StarlightThemeProvider = (() => {
 		const stored =
 			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
-		const theme = stored || 'auto';
+		const theme =
+			stored === 'light' ||
+			stored === 'dark' ||
+			stored === 'dark-solid' ||
+			stored === 'light-solid'
+				? stored
+				: 'dark';
 		const isSolid = theme.includes('solid');
 		const colorScheme = theme.startsWith('light')
 			? 'light'
-			: theme === 'auto'
-				? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
-				: 'dark';
+			: 'dark';
 
 		document.documentElement.dataset.theme = colorScheme;
 		if (isSolid) {
 			document.documentElement.dataset.style = 'solid';
 		} else {
 			delete document.documentElement.dataset.style;
+		}
+		if (typeof localStorage !== 'undefined' && stored !== theme) {
+			localStorage.setItem('starlight-theme', theme);
 		}
 
 		const urlRegister = new URLSearchParams(window.location.search).get('register');
@@ -71,7 +78,7 @@ import { Icon } from '@astrojs/starlight/components';
 		});
 
 		return {
-			updatePickers(theme = stored || 'auto') {
+			updatePickers(theme = theme) {
 				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
 					const select = picker.querySelector('select');
 					if (select) select.value = theme;
@@ -94,5 +101,4 @@ import { Icon } from '@astrojs/starlight/components';
 <template id="theme-icons">
 	<Icon name="sun" class="light" />
 	<Icon name="moon" class="dark" />
-	<Icon name="laptop" class="auto" />
 </template>

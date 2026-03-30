@@ -127,6 +127,10 @@ export default defineConfig({
                   label: 'Act I: When Output Outpaces Understanding',
                   slug: 'writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding',
                 },
+                {
+                  label: 'Act II: Practicing Decision Hygiene Under AI Speed',
+                  slug: 'writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed',
+                },
               ],
             },
           ],
