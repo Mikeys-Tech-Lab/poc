@@ -97,13 +97,6 @@ const t = getA11yLabels(locale);
 	const loadTheme = (): Theme =>
 		parseTheme(typeof localStorage !== 'undefined' && localStorage.getItem(themeStorageKey));
 
-	const toAtmosphericTheme = (theme: Theme): 'dark' | 'light' =>
-		theme === 'dark-solid'
-			? 'dark'
-			: theme === 'light-solid'
-				? 'light'
-				: theme;
-
 	const parseAtmosphericTheme = (
 		theme: unknown,
 		fallback: 'dark' | 'light',
