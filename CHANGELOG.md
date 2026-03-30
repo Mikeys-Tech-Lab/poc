@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.18...PoC-v1.8.0) (2026-03-30)
+
+
+### Features
+
+* **astro:** refine the initial release reading surface ([#140](https://github.com/Mikeys-Tech-Lab/poc/issues/140)) ([1754fe9](https://github.com/Mikeys-Tech-Lab/poc/commit/1754fe9a532d2734d7e89a27c41a09b8495e46fa))
+
 ## [1.7.18](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.17...PoC-v1.7.18) (2026-03-29)
 
 
