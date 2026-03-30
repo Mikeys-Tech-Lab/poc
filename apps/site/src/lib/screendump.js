@@ -3,6 +3,7 @@ export const CONTENT_PATHS = [
   'about/what-this-is',
   'about/about-the-author',
   'writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding',
+  'writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed',
   'licenses/cc-by-4-0',
 ];
 
