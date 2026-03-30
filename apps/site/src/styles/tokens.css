@@ -14,14 +14,14 @@
   --poc-base: 48 52 70;
   --poc-overlay: 198 208 245;
 
-  /* Surfaces — translucent fills over the atmospheric background */
-  --poc-surface-faint: rgb(var(--poc-base) / 0.24);
-  --poc-surface: rgb(var(--poc-base) / 0.36);
-  --poc-surface-mid: rgb(var(--poc-base) / 0.42);
-  --poc-surface-raised: rgb(var(--poc-base) / 0.47);
-  --poc-surface-heavy: rgb(var(--poc-base) / 0.52);
-  --poc-surface-dense: rgb(var(--poc-base) / 0.8);
-  --poc-surface-panel: rgb(var(--poc-base) / 0.85);
+  /* Surfaces — atmospheric, but closer to the solid variants */
+  --poc-surface-faint: rgb(var(--poc-base) / 0.38);
+  --poc-surface: rgb(var(--poc-base) / 0.5);
+  --poc-surface-mid: rgb(var(--poc-base) / 0.58);
+  --poc-surface-raised: rgb(var(--poc-base) / 0.66);
+  --poc-surface-heavy: rgb(var(--poc-base) / 0.74);
+  --poc-surface-dense: rgb(var(--poc-base) / 0.88);
+  --poc-surface-panel: rgb(var(--poc-base) / 0.92);
 
   /* Borders */
   --poc-border: rgb(var(--poc-overlay) / 0.15);
@@ -44,12 +44,14 @@
 
   /* Accent complement — Catppuccin mauve */
   --poc-accent-complement: #ca9ee6;
+  /* Reading accents stay softer than the primary theme accent. */
+  --poc-reading-accent: rgb(229 161 163 / 0.82);
 
   /* Readability hierarchy */
-  --poc-text-strong: #f3f6ff;
-  --poc-text: rgb(var(--poc-overlay) / 0.96);
-  --poc-text-muted: rgb(var(--poc-overlay) / 0.84);
-  --poc-text-soft: rgb(var(--poc-overlay) / 0.72);
+  --poc-text-strong: #ffffff;
+  --poc-text: rgb(255 255 255 / 0.96);
+  --poc-text-muted: rgb(255 255 255 / 0.88);
+  --poc-text-soft: rgb(255 255 255 / 0.76);
 
   /* Register atmospheric tint — practitioner uses the base palette,
      orientation shifts to a greenish pastel. Only the tint channel changes;
@@ -77,14 +79,20 @@
   --poc-overlay: 108 111 133;
 
   /* Tokens whose formula differs from dark */
-  --poc-surface-faint: rgb(var(--poc-overlay) / 0.08);
-  --poc-surface-panel: rgb(var(--poc-base) / 0.88);
+  --poc-surface-faint: rgb(var(--poc-overlay) / 0.14);
+  --poc-surface: rgb(var(--poc-base) / 0.72);
+  --poc-surface-mid: rgb(var(--poc-base) / 0.8);
+  --poc-surface-raised: rgb(var(--poc-base) / 0.88);
+  --poc-surface-heavy: rgb(var(--poc-base) / 0.92);
+  --poc-surface-dense: rgb(var(--poc-base) / 0.96);
+  --poc-surface-panel: rgb(var(--poc-base) / 0.95);
 
   --poc-shadow-soft: 0 4px 12px rgb(0 0 0 / 0.08), 0 10px 28px rgb(0 0 0 / 0.05);
   --poc-shadow-medium: 0 6px 16px rgb(0 0 0 / 0.1), 0 14px 36px rgb(0 0 0 / 0.07);
 
   --poc-backdrop: rgb(0 0 0 / 0.2);
   --poc-accent-complement: #8839ef;
+  --poc-reading-accent: rgb(221 120 120 / 0.68);
   --poc-text-strong: #303446;
   --poc-text: #4c4f69;
   --poc-text-muted: #5c5f77;

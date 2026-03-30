@@ -2,6 +2,8 @@
 title: "Act II: Practicing Decision Hygiene Under AI Speed"
 ---
 
+import ReadingBeat from '../../../../../../../components/ReadingBeat.astro';
+import ReadingFrame from '../../../../../../../components/ReadingFrame.astro';
 import ShareButton from '../../../../../../../components/ShareButton.astro';
 
 <ShareButton />
@@ -39,16 +41,15 @@ The work continues.
 
 Understanding falls behind.
 
-### Example
-
-A plan looks clear, so everyone agrees and starts working.
-
-Later, problems appear.
-
-Not because people made mistakes, but because each person understood the plan slightly differently.
-
-The plan was shared.  
-The understanding was not.
+<ReadingFrame variant="example" label="Example" title="A shared plan without shared understanding">
+  <p>A plan looks clear, so everyone agrees and starts working.</p>
+  <p>Later, problems appear.</p>
+  <p>
+    Not because people made mistakes, but because each person understood the
+    plan slightly differently.
+  </p>
+  <ReadingBeat>The plan was shared. The understanding was not.</ReadingBeat>
+</ReadingFrame>
 
 ### What changes
 
@@ -73,17 +74,23 @@ It has to happen inside the work itself.
 
 ### What this is not
 
-This is not about more process or more documentation.
-
-It may feel different at first, because things that were implicit are now spoken out loud.
-
-Over time, it often reduces confusion, even though the path there is not always smooth.
-
-It should make work clearer, not slower.
-
-It is also not about proving that you are right.
-
-If people feel they need to justify themselves, the practice has already shifted into performance.
+<ReadingFrame variant="boundary" label="Boundary statement">
+  <p>This is not about more process or more documentation.</p>
+  <p>
+    It may feel different at first, because things that were implicit are now
+    spoken out loud.
+  </p>
+  <p>
+    Over time, it often reduces confusion, even though the path there is not
+    always smooth.
+  </p>
+  <p>It should make work clearer, not slower.</p>
+  <p>It is also not about proving that you are right.</p>
+  <ReadingBeat>
+    If people feel they need to justify themselves, the practice has already
+    shifted into performance.
+  </ReadingBeat>
+</ReadingFrame>
 
 ### What comes next
 
@@ -91,4 +98,9 @@ Once reasoning is visible, another question appears:
 
 How does that reasoning move through a larger system?
 
-That is the question we take up next: how do we keep this understanding alive as it moves between people and teams?
+<ReadingFrame variant="next" label="Next movement" title="What comes next">
+  <p>
+    The next act asks how this understanding can stay alive as it moves between
+    people and teams.
+  </p>
+</ReadingFrame>

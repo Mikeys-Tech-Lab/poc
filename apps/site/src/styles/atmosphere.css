@@ -12,23 +12,29 @@ body::before {
   inset: -24px;
   z-index: -1;
   background:
-    linear-gradient(rgb(var(--poc-register-tint) / 0.7), rgb(var(--poc-register-tint) / 0.7)),
+    linear-gradient(rgb(var(--poc-register-tint) / 0.86), rgb(var(--poc-register-tint) / 0.86)),
+    radial-gradient(circle at 18% 18%, rgb(var(--poc-overlay) / 0.12), transparent 38%),
+    radial-gradient(circle at 82% 24%, rgb(var(--poc-overlay) / 0.08), transparent 42%),
+    radial-gradient(circle at 50% 82%, rgb(var(--poc-overlay) / 0.1), transparent 48%),
     url("../assets/bg-landing.png") center / cover no-repeat;
-  filter: blur(var(--poc-blur-sm));
+  filter: blur(calc(var(--poc-blur-sm) + 2px));
   will-change: transform;
   transition: background 0.4s ease;
 }
 
 :root[data-theme="light"] body::before {
   background:
-    linear-gradient(rgb(var(--poc-register-tint) / 0.65), rgb(var(--poc-register-tint) / 0.65)),
+    linear-gradient(rgb(var(--poc-register-tint) / 0.78), rgb(var(--poc-register-tint) / 0.78)),
+    radial-gradient(circle at 18% 18%, rgb(255 255 255 / 0.22), transparent 38%),
+    radial-gradient(circle at 82% 24%, rgb(255 255 255 / 0.16), transparent 42%),
+    radial-gradient(circle at 50% 82%, rgb(255 255 255 / 0.18), transparent 48%),
     url("../assets/bg-landing.png") center / cover no-repeat;
 }
 
 /* Override Starlight variables for transparency */
 body {
   --sl-color-bg: transparent;
-  --sl-color-bg-nav: rgb(var(--poc-register-tint) / 0.35);
+  --sl-color-bg-nav: rgb(var(--poc-register-tint) / 0.62);
   --sl-color-bg-sidebar: transparent;
   --sl-color-hairline-shade: var(--poc-border-subtle);
   --sl-color-hairline-light: var(--poc-border-subtle);

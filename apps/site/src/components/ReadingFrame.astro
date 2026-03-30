@@ -1,0 +1,18 @@
+---
+interface Props {
+  label?: string;
+  title?: string;
+  variant?: 'example' | 'boundary' | 'next';
+  children?: any;
+}
+
+const { label, title, variant = 'example' } = Astro.props as Props;
+---
+
+<section class={`reading-frame reading-frame-${variant}`}>
+  {label && <p class="reading-frame-label">{label}</p>}
+  {title && <p class="reading-frame-title">{title}</p>}
+  <div class="reading-frame-body">
+    <slot />
+  </div>
+</section>

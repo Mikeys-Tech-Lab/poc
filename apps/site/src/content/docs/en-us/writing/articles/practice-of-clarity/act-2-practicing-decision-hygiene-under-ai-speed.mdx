@@ -4,6 +4,8 @@ description: The first disciplined response when output speed stops being the li
 ---
 
 import RegisterContent from '../../../../../../components/RegisterContent.astro';
+import ReadingBeat from '../../../../../../components/ReadingBeat.astro';
+import ReadingFrame from '../../../../../../components/ReadingFrame.astro';
 import ShareButton from '../../../../../../components/ShareButton.astro';
 
 <RegisterContent register="orientation/en-us/writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed">
@@ -68,60 +70,61 @@ The unit becomes:
 - the assumptions behind it
 - the uncertainties that remain
 
-### Example 1: Plausible code, invisible assumptions
+<ReadingFrame
+  variant="example"
+  label="Example 1"
+  title="Plausible code, invisible assumptions"
+>
+  <p>A generated implementation appears correct.</p>
+  <p>
+    It compiles. <br />
+    It passes initial tests. <br />
+    It follows expected patterns.
+  </p>
+  <p>The team accepts it.</p>
+  <p>What is not visible:</p>
+  <ul>
+    <li>which edge cases were assumed away</li>
+    <li>which constraints were inferred rather than confirmed</li>
+    <li>which parts of the system were not considered</li>
+  </ul>
+  <p>The issue is not that the code is wrong.</p>
+  <p>The issue is that the reasoning behind it is absent.</p>
+  <p>Drift begins at the point where plausibility replaces inspection.</p>
+</ReadingFrame>
 
-A generated implementation appears correct.
+<ReadingFrame
+  variant="example"
+  label="Example 2"
+  title="Agreement without shared understanding"
+>
+  <p>A plan is produced quickly.</p>
+  <p>
+    Everyone reviews it. <br />
+    No major objections are raised. <br />
+    The work begins.
+  </p>
+  <p>Weeks later, inconsistencies appear.</p>
+  <p>Each part of the system reflects a slightly different interpretation of the same plan.</p>
+  <ReadingBeat>Agreement was visible. Understanding was not.</ReadingBeat>
+  <p>The plan functioned as a shared artifact, but not as shared reasoning.</p>
+</ReadingFrame>
 
-It compiles.  
-It passes initial tests.  
-It follows expected patterns.
-
-The team accepts it.
-
-What is not visible:
-
-- which edge cases were assumed away
-- which constraints were inferred rather than confirmed
-- which parts of the system were not considered
-
-The issue is not that the code is wrong.
-
-The issue is that the reasoning behind it is absent.
-
-Drift begins at the point where plausibility replaces inspection.
-
-### Example 2: Agreement without shared understanding
-
-A plan is produced quickly.
-
-Everyone reviews it.  
-No major objections are raised.  
-The work begins.
-
-Weeks later, inconsistencies appear.
-
-Each part of the system reflects a slightly different interpretation of the same plan.
-
-Agreement was visible.  
-Understanding was not.
-
-The plan functioned as a shared artifact, but not as shared reasoning.
-
-### Example 3: Pressure to sound certain
-
-Under time pressure, uncertainty becomes uncomfortable.
-
-Questions are compressed into confident statements.  
-Doubt is reframed as decisiveness.
-
-The team moves faster.
-
-But the unresolved questions do not disappear.
-
-They reappear later as rework, friction, or silent divergence.
-
-Speed was maintained.  
-Clarity was deferred.
+<ReadingFrame
+  variant="example"
+  label="Example 3"
+  title="Pressure to sound certain"
+>
+  <p>Under time pressure, uncertainty becomes uncomfortable.</p>
+  <p>
+    Questions are compressed into confident statements. <br />
+    Doubt is reframed as decisiveness.
+  </p>
+  <p>The team moves faster.</p>
+  <p>But the unresolved questions do not disappear.</p>
+  <p>They reappear later as rework, friction, or silent divergence.</p>
+  <p>Speed was maintained. <br />Clarity was deferred.</p>
+</ReadingFrame>
 
 ### What this discipline does
 
@@ -145,37 +148,36 @@ They are part of how work moves.
 
 ### Misuse
 
-This practice is often mistaken for:
-
-- more documentation
-- heavier process
-- additional approval layers
-
-It is none of these.
-
-If it becomes overhead, it has already failed.
-
-A common failure mode is turning this into a requirement or metric.
-
-If teams are asked to "show their reasoning" as a deliverable, it becomes performance.
-
-The practice is not about producing evidence.
-
-This creates a tension that cannot be resolved by policy.
-
-Reasoning must be visible enough to support understanding, but not formalized in a way that turns it into performance.
-
-If it becomes something to complete, measure, or report on, teams will optimize for appearance rather than clarity.
-
-This discipline cannot be enforced from the outside.
-
-It has to be practiced in the flow of work itself.
-
-It is about keeping understanding alive while decisions are being made.
-
-The purpose is not to record everything.
-
-The purpose is to make the right things visible at the right moment.
+<ReadingFrame variant="boundary" label="Boundary statement">
+  <p>This practice is often mistaken for:</p>
+  <ul>
+    <li>more documentation</li>
+    <li>heavier process</li>
+    <li>additional approval layers</li>
+  </ul>
+  <p>It is none of these.</p>
+  <p>If it becomes overhead, it has already failed.</p>
+  <p>A common failure mode is turning this into a requirement or metric.</p>
+  <ReadingBeat>
+    If teams are asked to "show their reasoning" as a deliverable, it becomes
+    performance.
+  </ReadingBeat>
+  <p>The practice is not about producing evidence.</p>
+  <p>This creates a tension that cannot be resolved by policy.</p>
+  <p>
+    Reasoning must be visible enough to support understanding, but not
+    formalized in a way that turns it into performance.
+  </p>
+  <p>
+    If it becomes something to complete, measure, or report on, teams will
+    optimize for appearance rather than clarity.
+  </p>
+  <p>This discipline cannot be enforced from the outside.</p>
+  <p>It has to be practiced in the flow of work itself.</p>
+  <p>It is about keeping understanding alive while decisions are being made.</p>
+  <p>The purpose is not to record everything.</p>
+  <p>The purpose is to make the right things visible at the right moment.</p>
+</ReadingFrame>
 
 ### Forward edge
 
@@ -191,6 +193,11 @@ It drifts across boundaries.
 
 To work with this, we need a way to understand how reasoning travels through a system.
 
-That is where the next act begins: tracing how reasoning travels, diverges, and reconnects across system boundaries.
+<ReadingFrame variant="next" label="Next movement" title="What comes after Act II">
+  <p>
+    The next act follows reasoning as it travels, diverges, and reconnects
+    across system boundaries.
+  </p>
+</ReadingFrame>
 
 </RegisterContent>
