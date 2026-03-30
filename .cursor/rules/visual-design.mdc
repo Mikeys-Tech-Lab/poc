@@ -52,7 +52,7 @@ The site supports two visual styles, controlled by the `data-style` attribute on
 - **Atmospheric** (default, no `data-style` attribute): blurred background image, frosted glass surfaces, translucent overlays.
 - **Solid** (`data-style="solid"`): opaque Catppuccin backgrounds, no blur, no atmosphere pseudo-element. Defined in `apps/site/src/styles/solid.css`.
 
-The theme selector (`apps/site/src/components/ThemeSelect.astro`) offers 5 options: Dark, Light, Auto, Dark Solid, Light Solid. It stores a composite value in `localStorage` and sets both `data-theme` and `data-style` on `<html>`.
+The theme selector (`apps/site/src/components/ThemeSelect.astro`) offers 4 explicit options: Dark Atmospheric, Light Atmospheric, Dark Solid, Light Solid. It stores a composite value in `localStorage` and sets both `data-theme` and `data-style` on `<html>`.
 
 FOUC prevention: `apps/site/src/components/ThemeProvider.astro` has an inline script that reads `localStorage` and sets both attributes before render.
 

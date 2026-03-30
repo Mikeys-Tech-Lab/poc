@@ -119,7 +119,7 @@ The theme system has two orthogonal dimensions:
 - **Color scheme** (`data-theme`): `dark` or `light`. Controlled by Catppuccin plugin (Frappé/Latte flavors).
 - **Visual style** (`data-style`): atmospheric (default, no attribute) or `solid`. Controlled by custom CSS tokens and the ThemeProvider/ThemeSelect overrides.
 
-The theme selector in the header combines both into 5 options. See the "Site-wide visual system" section below for implementation details.
+The theme selector in the header combines both into 4 explicit options. See the "Site-wide visual system" section below for implementation details.
 
 ### Theme-color meta tags
 
@@ -168,7 +168,7 @@ Five Starlight components are overridden via the `components` key in `astro.conf
 | `SiteTitle` | `src/components/SiteTitle.astro` | Site title with register toggle. Clicking the title switches between Practitioner and Orientation. |
 | `SocialIcons` | `src/components/SocialIcons.astro` | Adds a LinkedIn icon after the default social icons. |
 | `ThemeProvider` | `src/components/ThemeProvider.astro` | Prevents FOUC for `data-theme`, `data-style`, and `data-register` attributes. |
-| `ThemeSelect` | `src/components/ThemeSelect.astro` | Extends the selector to 5 options with locale-aware labels. |
+| `ThemeSelect` | `src/components/ThemeSelect.astro` | Extends the selector to 4 explicit theme options with locale-aware labels. |
 | `Pagination` | `src/components/LicensePanel.astro` | Wraps default Pagination with LicenseNotice footer. |
 
 ### Override principles

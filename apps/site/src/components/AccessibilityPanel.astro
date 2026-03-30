@@ -84,26 +84,30 @@ const t = getA11yLabels(locale);
 	const themeStorageKey = 'starlight-theme';
 	const atmosphericThemeStorageKey = 'poc-atmospheric-theme';
 
-	type Theme = 'auto' | 'dark' | 'light' | 'dark-solid' | 'light-solid';
+	type Theme = 'dark' | 'light' | 'dark-solid' | 'light-solid';
 
 	const parseTheme = (theme: unknown): Theme =>
-		theme === 'auto' ||
 		theme === 'dark' ||
 		theme === 'light' ||
 		theme === 'dark-solid' ||
 		theme === 'light-solid'
 			? theme
-			: 'auto';
+			: 'dark';
 
 	const loadTheme = (): Theme =>
 		parseTheme(typeof localStorage !== 'undefined' && localStorage.getItem(themeStorageKey));
 
-	const toAtmosphericTheme = (theme: Theme): 'auto' | 'dark' | 'light' =>
+	const toAtmosphericTheme = (theme: Theme): 'dark' | 'light' =>
 		theme === 'dark-solid'
 			? 'dark'
 			: theme === 'light-solid'
 				? 'light'
 				: theme;
+
+	const parseAtmosphericTheme = (
+		theme: unknown,
+		fallback: 'dark' | 'light',
+	): 'dark' | 'light' => (theme === 'light' || theme === 'dark' ? theme : fallback);
 
 	function isSolidTheme(): boolean {
 		return loadTheme().includes('solid');
@@ -125,10 +129,11 @@ const t = getA11yLabels(locale);
 				typeof localStorage !== 'undefined' &&
 				localStorage.getItem(atmosphericThemeStorageKey);
 			const fallbackAtmosphericTheme = currentTheme.startsWith('light') ? 'light' : 'dark';
-			const atmosphericTheme = toAtmosphericTheme(
-				parseTheme(storedAtmosphericTheme || fallbackAtmosphericTheme),
+			const atmosphericTheme = parseAtmosphericTheme(
+				storedAtmosphericTheme,
+				fallbackAtmosphericTheme,
 			);
-			localStorage.setItem(themeStorageKey, atmosphericTheme === 'auto' ? '' : atmosphericTheme);
+			localStorage.setItem(themeStorageKey, atmosphericTheme);
 			delete document.documentElement.dataset.style;
 			StarlightThemeProvider.updatePickers(atmosphericTheme);
 		}
