@@ -1,21 +1,21 @@
 ---
 /**
- * Lightweight share control for article pages.
+ * Lightweight copy-link control for article pages.
  *
- * Uses navigator.share() when available, falls back to copying
- * the canonical page URL to clipboard. Renders as a single calm
- * affordance near the article metadata area.
+ * Copies the canonical page URL to clipboard and briefly confirms
+ * success inline. Renders as a single calm affordance near the
+ * article metadata area.
  */
 ---
 
 <poc-share-button>
-	<button type="button" aria-label="Share this page">
+	<button type="button" aria-label="Copy link to this page">
 		<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 			<path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
 			<polyline points="16 6 12 2 8 6" />
 			<line x1="12" y1="2" x2="12" y2="15" />
 		</svg>
-		<span class="label">Share</span>
+		<span class="label">Copy link</span>
 		<span class="copied" aria-live="polite" hidden>Link copied</span>
 	</button>
 </poc-share-button>
@@ -33,17 +33,6 @@
 
 			button.addEventListener('click', async () => {
 				const url = buildShareUrl(window.location.href);
-				const title = document.title;
-
-				if (navigator.share) {
-					try {
-						await navigator.share({ title, url });
-						return;
-					} catch {
-						// User cancelled or share failed — fall through to clipboard
-					}
-				}
-
 				try {
 					await navigator.clipboard.writeText(url);
 					label.hidden = true;
