@@ -43,6 +43,21 @@ mobile-starlight-toc .dropdown {
   box-shadow: var(--poc-shadow-soft);
 }
 
+.home-card-featured {
+  display: contents;
+}
+
+@media (min-width: 50rem) {
+  .home-card-featured {
+    display: block;
+    grid-column: 1 / -1;
+  }
+
+  .home-card-featured > .card {
+    width: 100%;
+  }
+}
+
 /* Sidebar — translucent on mobile, transparent on desktop */
 .sidebar-pane {
   background-color: var(--poc-surface-heavy);

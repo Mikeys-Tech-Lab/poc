@@ -25,14 +25,14 @@ next: false
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import HomeFeaturedCard from '../../../components/HomeFeaturedCard.astro';
 import RegisterContent from '../../../components/RegisterContent.astro';
 
 <RegisterContent register="orientation/en-us">
   <CardGrid>
-    <Card title="What This Work Is" icon="open-book">
-      Start here for the framing, the reading model, and the boundaries of the practice.
-      [Start reading](/en-us/about/what-this-is/)
-    </Card>
+    <div class="home-card-featured">
+      <HomeFeaturedCard variant="practitioner" />
+    </div>
     <Card title="Act I: When Output Outpaces Understanding">
       Names the condition: output is accelerating faster than shared understanding.
       [Read Act I](/en-us/writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding/)

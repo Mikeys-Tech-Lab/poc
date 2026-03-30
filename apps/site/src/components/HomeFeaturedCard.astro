@@ -1,0 +1,382 @@
+---
+import { Card } from '@astrojs/starlight/components';
+import { getRegisterLabels, getThemeLabels } from '../lib/i18n';
+import { getLocaleFromPath } from '../lib/locale';
+
+interface Props {
+  variant?: 'practitioner' | 'orientation';
+}
+
+const { variant = 'practitioner' } = Astro.props as Props;
+const locale = getLocaleFromPath(Astro.url?.pathname ?? '/');
+const registerLabels = getRegisterLabels(locale);
+const themeLabels = getThemeLabels(locale);
+
+const intro =
+  variant === 'orientation'
+    ? 'Start here if you want the basic framing, how to read the site, and what this work is trying to do.'
+    : 'Start here for the framing, the reading model, and the boundaries of the practice.';
+
+const registerCopy =
+  variant === 'orientation'
+    ? 'The page title button in the navigation bar is the register switch. Click it there, or click this example here. The ideas stay the same. The voice changes.'
+    : 'The page title button in the navigation bar is the register switch. Click it there, or click this example here. The structure stays the same. Only the voice changes.';
+
+const themeCopy =
+  variant === 'orientation'
+    ? 'Select the theme here or in the selector. The highlighted option is the one currently active.'
+    : 'Select the theme here or in the selector. The highlighted option is the one currently active.';
+---
+
+<poc-home-featured-card>
+  <Card title="What This Work Is" icon="open-book">
+    <p>
+      {intro}
+      <a href="/en-us/about/what-this-is/">Start reading</a>
+    </p>
+    <div class="home-featured-guides">
+      <section class="home-featured-guide">
+        <p class="home-featured-guide-label">Register</p>
+        <p class="home-featured-guide-body">{registerCopy}</p>
+        <button type="button" class="home-register-preview" data-home-action="register">
+          <span class="home-register-preview-copy">
+            <span class="home-register-preview-main">
+              Practice of Clarity
+              <sup class="home-register-preview-label">
+                <svg
+                  aria-hidden="true"
+                  class="home-register-preview-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="9" cy="12" r="7" opacity="0.6"></circle>
+                  <circle cx="15" cy="12" r="7" opacity="0.6"></circle>
+                </svg>
+                <span class="home-register-label-practitioner">
+                  {registerLabels.practitioner}
+                </span>
+                <span class="home-register-label-orientation">
+                  {registerLabels.orientation}
+                </span>
+              </sup>
+            </span>
+            <span class="home-register-preview-helper" aria-hidden="true">
+              <span class="home-register-helper-practitioner">
+                {registerLabels.practitionerHelper}
+              </span>
+              <span class="home-register-helper-orientation">
+                {registerLabels.orientationHelper}
+              </span>
+            </span>
+          </span>
+        </button>
+      </section>
+      <section class="home-featured-guide">
+        <p class="home-featured-guide-label">Theme</p>
+        <p class="home-featured-guide-body">{themeCopy}</p>
+        <div class="home-theme-grid" role="group" aria-label="Choose a theme">
+          <button type="button" class="home-theme-option" data-home-theme="dark">
+            {themeLabels.darkAtmospheric}
+          </button>
+          <button type="button" class="home-theme-option" data-home-theme="light">
+            {themeLabels.lightAtmospheric}
+          </button>
+          <button type="button" class="home-theme-option" data-home-theme="dark-solid">
+            {themeLabels.darkSolid}
+          </button>
+          <button type="button" class="home-theme-option" data-home-theme="light-solid">
+            {themeLabels.lightSolid}
+          </button>
+        </div>
+      </section>
+    </div>
+  </Card>
+</poc-home-featured-card>
+
+<script>
+  const visibleThemeSelect = () => {
+    const selects = [...document.querySelectorAll('starlight-theme-select select')];
+    return selects.find((element) => element instanceof HTMLSelectElement) ?? null;
+  };
+
+  const currentThemeValue = () => {
+    const stored = typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+    if (stored === 'dark' || stored === 'light' || stored === 'dark-solid' || stored === 'light-solid') {
+      return stored;
+    }
+
+    const root = document.documentElement;
+    const colorScheme = root.dataset.theme === 'light' ? 'light' : 'dark';
+    const isSolid = root.dataset.style === 'solid';
+    return isSolid ? `${colorScheme}-solid` : colorScheme;
+  };
+
+  const syncThemeOptions = () => {
+    const current = currentThemeValue();
+    document.querySelectorAll<HTMLElement>('[data-home-theme]').forEach((button) => {
+      const isCurrent = button.dataset.homeTheme === current;
+      button.setAttribute('aria-pressed', isCurrent ? 'true' : 'false');
+    });
+  };
+
+  const applyTheme = (theme: string) => {
+    const select = visibleThemeSelect();
+    if (!(select instanceof HTMLSelectElement)) return;
+    select.value = theme;
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+    select.focus();
+    syncThemeOptions();
+  };
+
+  const toggleRegister = () => {
+    const titleButton = document.querySelector('poc-register-toggle button');
+    if (titleButton instanceof HTMLButtonElement) {
+      titleButton.focus();
+      titleButton.click();
+    }
+  };
+
+  if (!customElements.get('poc-home-featured-card')) {
+    class PocHomeFeaturedCard extends HTMLElement {
+      connectedCallback() {
+        this.querySelector('[data-home-action="register"]')?.addEventListener('click', () => {
+          toggleRegister();
+        });
+
+        this.querySelectorAll<HTMLElement>('[data-home-theme]').forEach((button) => {
+          button.addEventListener('click', () => {
+            const theme = button.dataset.homeTheme;
+            if (theme) applyTheme(theme);
+          });
+        });
+
+        syncThemeOptions();
+      }
+    }
+
+    customElements.define('poc-home-featured-card', PocHomeFeaturedCard);
+  }
+
+  window.addEventListener('poc:register-change', () => {
+    syncThemeOptions();
+  });
+
+  document.addEventListener('change', (event) => {
+    if (event.target instanceof HTMLSelectElement && event.target.closest('starlight-theme-select')) {
+      syncThemeOptions();
+    }
+  });
+</script>
+
+<style>
+  poc-home-featured-card .card {
+    width: 100%;
+  }
+
+  poc-home-featured-card .card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .home-featured-guides {
+    display: grid;
+    gap: 0.9rem;
+    margin: 1rem 0 1.1rem;
+    align-items: start;
+  }
+
+  .home-featured-guide {
+    margin: 0;
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    gap: 0.7rem;
+    padding: 1rem 1.05rem;
+    border: 1px solid var(--poc-border-faint);
+    border-radius: 0.9rem;
+    background-color: var(--poc-surface);
+    color: var(--poc-text);
+    backdrop-filter: blur(var(--poc-blur-sm));
+    box-shadow: var(--poc-shadow-soft);
+  }
+
+  .home-featured-guide-label {
+    margin: 0;
+    color: var(--poc-text-strong);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .home-featured-guide-body {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .home-register-preview,
+  .home-theme-option {
+    border: 1px solid var(--poc-border-faint);
+    border-radius: 0.8rem;
+    background-color: var(--poc-surface-mid);
+    color: var(--poc-text);
+    backdrop-filter: blur(var(--poc-blur-sm));
+    box-shadow: var(--poc-shadow-soft);
+    transition:
+      border-color 0.15s ease,
+      background-color 0.15s ease,
+      transform 0.15s ease;
+  }
+
+  .home-register-preview:hover,
+  .home-theme-option:hover {
+    border-color: var(--poc-border-hover);
+    background-color: var(--poc-surface-raised);
+    transform: translateY(-1px);
+  }
+
+  .home-register-preview:focus-visible,
+  .home-theme-option:focus-visible {
+    outline: 2px solid var(--sl-color-text-accent);
+    outline-offset: 2px;
+  }
+
+  .home-register-preview {
+    width: 100%;
+    min-height: 6.5rem;
+    padding: 0.75rem 0.9rem;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    align-self: end;
+  }
+
+  .home-register-preview-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.18rem;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .home-register-preview-main {
+    display: inline-block;
+    color: var(--sl-color-text-accent);
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .home-register-preview-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    margin-inline-start: 0.35em;
+    color: var(--poc-register-accent);
+    font-size: 0.68em;
+    font-weight: 400;
+    vertical-align: super;
+  }
+
+  .home-register-preview-icon {
+    width: 1.5cap;
+    height: 1.5cap;
+    flex-shrink: 0;
+  }
+
+  .home-register-label-orientation,
+  .home-register-helper-orientation {
+    display: none;
+  }
+
+  .home-register-preview-helper {
+    color: var(--poc-text-soft);
+    font-size: 0.8rem;
+    line-height: 1.35;
+    white-space: normal;
+  }
+
+  :root[data-register='orientation'] .home-register-label-practitioner,
+  :root[data-register='orientation'] .home-register-helper-practitioner {
+    display: none;
+  }
+
+  :root[data-register='orientation'] .home-register-label-orientation,
+  :root[data-register='orientation'] .home-register-helper-orientation {
+    display: inline;
+  }
+
+  .home-theme-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 3rem;
+    gap: 0.45rem;
+    min-height: 6.5rem;
+    align-self: end;
+  }
+
+  .home-theme-option {
+    margin: 0;
+    height: 100%;
+    padding: 0.45rem 0.65rem;
+    font-size: 0.77rem;
+    line-height: 1.2;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .home-theme-option[aria-pressed='true'],
+  .home-theme-option[aria-pressed='true']:hover {
+    border-color: rgb(229 161 163 / 0.5);
+    background-color: rgb(229 161 163 / 0.14);
+    color: var(--poc-text-strong);
+    transform: none;
+    box-shadow:
+      inset 0 0 0 1px rgb(229 161 163 / 0.26),
+      var(--poc-shadow-soft);
+  }
+
+  :root[data-theme='light']:not([data-style='solid']) .home-featured-guide,
+  :root[data-theme='light']:not([data-style='solid']) .home-register-preview,
+  :root[data-theme='light']:not([data-style='solid']) .home-theme-option {
+    background-color: rgb(255 255 255 / 0.68);
+    border-color: rgb(var(--poc-overlay) / 0.2);
+    box-shadow:
+      0 3px 10px rgb(0 0 0 / 0.06),
+      0 10px 24px rgb(0 0 0 / 0.04);
+  }
+
+  :root[data-theme='light']:not([data-style='solid']) .home-register-preview:hover,
+  :root[data-theme='light']:not([data-style='solid']) .home-theme-option:hover {
+    background-color: rgb(255 255 255 / 0.82);
+    border-color: rgb(var(--poc-overlay) / 0.24);
+  }
+
+  :root[data-theme='light'] .home-theme-option[aria-pressed='true'],
+  :root[data-theme='light'] .home-theme-option[aria-pressed='true']:hover {
+    border-color: rgb(229 161 163 / 0.5);
+    background-color: rgb(229 161 163 / 0.14);
+    color: var(--poc-text-strong);
+    transform: none;
+    box-shadow:
+      inset 0 0 0 1px rgb(229 161 163 / 0.26),
+      var(--poc-shadow-soft);
+  }
+
+  @media (min-width: 50rem) {
+    .home-featured-guides {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+    }
+  }
+</style>
