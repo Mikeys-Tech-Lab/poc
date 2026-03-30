@@ -84,6 +84,7 @@ Before committing or marking work complete, trace the ripple:
 
 - What did this change touch beyond the immediate files?
 - Which docs, tests, onboarding pages, architecture descriptions, rules, or skills now describe something that no longer matches reality?
+- If the same control, preference, or action is exposed in multiple UI surfaces, do those surfaces still express the same option model and the same action semantics?
 - If nothing else was affected, state that explicitly. Silence is not the same as "nothing changed."
 
 ### No flattening

@@ -270,8 +270,17 @@ Any change to theme tokens, the theme selector, the ThemeProvider inline script,
 1. Running `pnpm run build` to confirm no build errors.
 2. Doing one manual browser refresh to confirm no FOUC (flash of unstyled content).
 3. Auditing both atmospheric themes explicitly when custom surfaces or controls changed. Do not assume light mode is solved because token inheritance makes it “acceptable.”
+4. Checking mirrored theme entry points against each other. If the homepage, header, accessibility panel, or another surface exposes the same theme choice, they must share one explicit option model.
 
 FOUC regressions are silent — they do not fail the build. The only reliable check is a visual refresh after a clean load (hard refresh or incognito window).
+
+## Control semantics guardrail
+
+When a control label names an action, the primary behavior must match that label.
+
+- If a control says `Copy link`, its primary action should be copying.
+- If a control says `Share`, its primary action should be opening a share flow.
+- If behavior is mixed or conditional, rename the control or simplify the behavior until the label is honest.
 
 ## Linting and formatting
 
