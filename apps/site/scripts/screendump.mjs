@@ -146,12 +146,13 @@ const captureScreenshots = async (plan) => {
         const context = await browser.newContext({ viewport });
 
         try {
-          // Fresh storage per capture prevents register state leaking across screenshots.
+          // Fresh storage per capture prevents register/theme state leaking across screenshots.
           await context.addInitScript(
-            ({ register }) => {
+            ({ register, theme }) => {
               window.localStorage.setItem('poc-register', register);
+              window.localStorage.setItem('starlight-theme', theme);
             },
-            { register: entry.register },
+            { register: entry.register, theme: entry.theme.storageValue },
           );
 
           const page = await context.newPage();
