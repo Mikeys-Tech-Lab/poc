@@ -43,6 +43,8 @@ Tokens use space-separated RGB channels with modern `rgb()` syntax:
 
 The light theme overrides `--poc-base` and `--poc-overlay` channels. Most surface/border tokens auto-resolve — only tokens whose formula differs between themes (e.g. `--poc-surface-faint`, shadows) need explicit light overrides. This eliminates duplicate `:root[data-theme="light"]` selectors in component files.
 
+Do not treat inherited light-mode output as equivalent to a designed light mode. If a custom atmospheric surface, callout, reading box, or control is introduced, verify whether light mode needs explicit background, border, shadow, or text adjustments instead of relying on dark-first tokens to carry the design.
+
 ## Style variants
 
 The site supports two visual styles, controlled by the `data-style` attribute on `<html>`:
@@ -95,6 +97,7 @@ Prefer a clear, repeatable vertical rhythm over one-off margin tweaks.
 ### Quick visual checks (required for frontend changes)
 
 - Toggle **theme**: Dark Atmospheric ↔ Light Atmospheric.
+- If you changed custom surfaces or controls, tune both atmospheric themes explicitly. Dark done and light inherited is not complete.
 - Toggle **register**: Practitioner ↔ Orientation (confirm parity and no layout glitches).
 - Spot-check the active locale surface: `/en-us/` for the changed page or component.
 

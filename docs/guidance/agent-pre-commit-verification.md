@@ -87,6 +87,8 @@ Before every commit:
 3. Run `pnpm test` if you changed tooling code.
 4. If you changed accessibility preferences or theme CSS, verify both states manually:
    preference off matches the intended default, preference on matches the intended override, and toggling back off restores the intended default.
+5. If you changed custom theme surfaces or controls, verify both atmospheric themes explicitly:
+   dark and light must each be tuned on purpose. Do not treat "light inherited from dark tokens" as a completed design pass.
 
 CI runs lint first. Align local verification with CI so you fail fast and avoid pushing broken checks.
 
