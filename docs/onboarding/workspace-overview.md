@@ -11,16 +11,18 @@ poc/
 ├── AGENTS.md                  # Canonical AI guidance
 ├── package.json               # Root workspace (CI/CD, docs, agent config)
 ├── pnpm-workspace.yaml        # Defines workspace packages
+├── seeds/                     # Structural seed canon at repo root
+├── continuity/                # Temporal anchors and architecture memory
+├── mandateLenses/             # Canonical lens packages and context seeders
 ├── apps/
 │   └── site/                  # Astro Starlight docs site (package: site)
 ├── tools/
 │   └── ai-guidance/           # Capability alignment tooling (package: ai-guidance)
-├── seeds/                     # Development-only Practice of Clarity sources
 ├── docs/
 │   ├── onboarding/            # Newcomer and evolution entry paths
 │   ├── architecture/          # Canonical workspace diagram
 │   ├── guidance/              # Principles and workflow conventions
-│   ├── practices/             # Operational lenses (e.g., Sensible Defaults)
+│   ├── practices/             # Derived explainers and bridge docs
 │   ├── infra/                 # Environment runbooks and protection layers
 │   └── ai/                    # Generated capability reports
 ├── .cursor/
@@ -38,8 +40,11 @@ poc/
 ## Key relationships
 
 - **`AGENTS.md`** is the canonical source. Rules, skills, and adapters derive from it.
-- **`seeds/`** contains development-only source material. It never becomes site content.
+- **`seeds/`** contains the structural seed canon at the repo root. It never becomes site content.
+- **`continuity/`** holds temporal anchors that preserve architecture and rollout direction over time.
+- **`mandateLenses/`** holds canonical runtime lens packages. In each package, `lens.md` is canonical and `context-seeder.md` is derivative.
 - **`apps/site/`** is the Astro Starlight frontend. Its content evolves independently from seeds.
+- **`docs/practices/`** is descriptive and derived. It can bridge into a lens package, but it is not the runtime source of truth for that lens.
 - **`tools/ai-guidance/`** produces capability reports written to `docs/ai/`.
 - **`docs/`** is for repo-level documentation. It is not site content. `docs/onboarding/` holds entry paths such as `onboard me` and `Evolution Arc`, while `docs/guidance/evolution-arc.md` curates the trace surfaces behind the history path.
 - **`.local/config.md`** holds gitignored operator-specific local values. Template: `.local.example.md`. Populated local config is not a normal agent input.

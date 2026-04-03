@@ -22,8 +22,10 @@ The diagram shows the current repo architecture: where canonical guidance lives,
 
 ```mermaid
 flowchart TD
-  Seeds[seeds/] -->|"dev-only sources"| Agents[AGENTS.md]
-  Practices["docs/practices/"] -->|"operational lenses"| Agents
+  Seeds[seeds/] -->|"structural canon"| Agents[AGENTS.md]
+  Continuity[continuity/] -->|"temporal anchors"| Agents
+  MandateLenses[mandateLenses/] -->|"runtime lens canon"| Agents
+  Practices["docs/practices/"] -.->|"derived explainers"| MandateLenses
 
   Agents -->|"always-apply rules"| CursorRules[.cursor/rules/]
   Agents -->|"stack skills"| CursorSkills[.cursor/skills/]
@@ -102,8 +104,10 @@ flowchart TD
 
 | Path | Role | Status |
 |---|---|---|
-| `seeds/` | Development-only canonical sources for the Practice of Clarity | Exists |
-| `docs/practices/` | Practice documents and operational lenses (e.g., Sensible Defaults) | Exists |
+| `seeds/` | Structural seed canon for the Practice of Clarity at repo root | Exists |
+| `continuity/` | Root continuity package family: temporal anchors and architecture memory | Exists |
+| `mandateLenses/` | Root runtime lens package family: canonical lenses and context seeders | Exists |
+| `docs/practices/` | Derived explainers and bridge docs for canonical lens packages | Exists |
 | `AGENTS.md` | Canonical agent guidance (single source of truth) | Exists |
 | `.cursor/rules/` | Cursor always-apply and file-scoped rules (includes security-awareness) | Exists |
 | `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, renovate-operations, infomaniak-deployment, onboarding, evolution-arc) | Exists |

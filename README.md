@@ -22,16 +22,19 @@ pnpm screendump       # export desktop/tablet/mobile snapshots for both atmosphe
 
 Full setup details: [docs/onboarding/local-setup.md](docs/onboarding/local-setup.md)
 
-## Documentation
+## Canonical surfaces
 
 | Path | What it covers |
 |---|---|
+| [seeds/](seeds/) | Structural seed canon for the Practice of Clarity |
+| [continuity/](continuity/) | Temporal anchors, architecture memory, and rollout direction |
+| [mandateLenses/](mandateLenses/) | Canonical runtime lens packages and portable context seeders |
+| [docs/practices/](docs/practices/) | Derived explainers and bridge docs for canonical lens packages |
 | [docs/onboarding/](docs/onboarding/) | Newcomer paths (start here) |
 | [AGENTS.md](AGENTS.md) | Canonical AI agent guidance |
 | [docs/architecture/](docs/architecture/) | Workspace architecture and diagram |
 | [docs/guidance/](docs/guidance/) | Principles and workflow conventions |
 | [docs/infra/](docs/infra/) | Environment runbooks and protection layers |
-| [docs/practices/](docs/practices/) | Operational lenses (e.g., Sensible Defaults) |
 
 ## Licensing
 

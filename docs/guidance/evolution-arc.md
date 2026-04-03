@@ -47,7 +47,7 @@ Read that sequence like this:
 - **Site structure and register evolution**: the docs site, locale structure, and register model were refined through implementation work and later corrected when earlier assumptions drifted.
 - **ADR and reflection discipline**: the repo started recording structural decisions in `docs/decisions/` and structural lessons in `docs/guidance/`.
 - **Launch reality grounded in current-state docs**: ADR `0002` explicitly reset the repo's public description to verified present reality instead of older assumptions.
-- **Current repo-first public node**: the workspace now carries onboarding, guidance, architecture, and skills as inspectable surfaces, with the repository itself treated as part of the public explanation.
+- **Current repo-first public node**: the workspace now carries onboarding, guidance, architecture, root canon package families, and skills as inspectable surfaces, with the repository itself treated as part of the public explanation.
 
 ## What each surface contributes
 
@@ -95,6 +95,9 @@ A richer open-source interactive layer can come later, but only after the arc sh
 
 - `docs/decisions/README.md`
 - `docs/decisions/0002-current-launch-surface-and-locale-reality.md`
+- `docs/decisions/0006-root-canon-package-families-and-lens-surfaces.md`
+- `continuity/README.md`
+- `mandateLenses/README.md`
 - `docs/guidance/structural-reflection-and-evolution.md`
 - `docs/guidance/agent-pre-commit-verification.md`
 - `docs/onboarding/evolution-arc.md`

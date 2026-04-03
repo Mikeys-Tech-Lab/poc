@@ -282,12 +282,16 @@ Documentation evolves with the workspace. Every PR updates all affected document
 
 This applies to every documentation surface:
 
+- `seeds/` (structural seed canon at repo root)
+- `continuity/` (temporal anchors and architecture memory)
+- `mandateLenses/` (canonical runtime lens packages and context seeders)
 - `AGENTS.md` (agent behavior, tool preferences, conventions, invariants)
 - `docs/onboarding/` (topic index and topic pages)
 - `docs/architecture/workspace.md` (directory roles, diagram, narrative)
 - `docs/decisions/` (Architecture Decision Records for structural rationale)
 - `docs/infra/` (runbooks, protection layers, environment setup)
 - `docs/guidance/` (principles, workflow)
+- `docs/practices/` (derived explainers and bridge docs)
 - `.cursor/rules/` and `.cursor/skills/` (agent rules and skills)
 - Adapter files (`.claude/CLAUDE.md`, `.github/copilot-instructions.md`)
 - `README.md` (gateway)
@@ -298,6 +302,7 @@ If a PR changes behavior, structure, tooling, conventions, or security posture, 
 
 ### Specific obligations
 
+- **Root canon changes** (new canonical package families, moved root artifacts, lens-source changes): update `docs/architecture/workspace.md`, the affected root packages, and any derived explainers such as `docs/practices/`.
 - **Structural changes** (repo layout, new directories, moved files): update `docs/architecture/workspace.md`. If the diagram and the file tree diverge, the file tree wins and the diagram must be updated.
 - **Structural decisions** that meet the ADR criteria (`docs/decisions/README.md`): write or update an ADR. Not every structural change needs one — only those where the rationale would otherwise be lost.
 - **Onboarding-relevant changes** (setup, workflow, AI guidance, security posture): update the topic index (`docs/onboarding/README.md`) and the affected topic page(s).
@@ -326,6 +331,8 @@ These are non-negotiable unless explicitly revised with a trace explaining why:
 
 - Canon is this file (`AGENTS.md`). Adapters only point to it.
 - `seeds/` is dev-only and never becomes the site content tree.
+- `seeds/`, `continuity/`, and `mandateLenses/` are sibling root canon surfaces. Do not introduce a nested `root/` wrapper around them.
+- `mandateLenses/*/lens.md` is the canonical lens artifact. `context-seeder.md` is derivative. `docs/practices/` can explain and bridge, but it is not the runtime source of truth for a lens.
 - `docs/architecture/workspace.md` is the canonical architecture diagram and is updated with any structural change.
 - Capability checks degrade to a manual checklist and mark results `unknown` rather than guessing.
 - Reports are for local alignment only. Never aggregated or attached to individuals.
