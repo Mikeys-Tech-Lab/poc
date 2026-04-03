@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.3](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.4.2...site-v1.4.3) (2026-04-03)
+
+
+### Miscellaneous
+
+* **deps:** update dependency astro to ^6.1.3 ([#150](https://github.com/Mikeys-Tech-Lab/poc/issues/150)) ([c6a1fed](https://github.com/Mikeys-Tech-Lab/poc/commit/c6a1fed655619d8474af4b369ab84c0c0b9cf03c))
+
 ## [1.4.2](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.4.1...site-v1.4.2) (2026-04-03)
 
 
