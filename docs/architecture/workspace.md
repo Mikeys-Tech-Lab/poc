@@ -22,9 +22,9 @@ The diagram shows the current repo architecture: where canonical guidance lives,
 
 ```mermaid
 flowchart TD
-  Seeds[seeds/] -->|"structural canon"| Agents[AGENTS.md]
-  Continuity[continuity/] -->|"temporal anchors"| Agents
-  MandateLenses[mandateLenses/] -->|"runtime lens canon"| Agents
+  Seeds[seeds/] -->|"default bootstrap"| Agents[AGENTS.md]
+  Continuity[continuity/] -->|"default bootstrap"| Agents
+  MandateLenses[mandateLenses/] -->|"on-demand lens canon"| Agents
   Practices["docs/practices/"] -.->|"derived explainers"| MandateLenses
 
   Agents -->|"always-apply rules"| CursorRules[.cursor/rules/]
@@ -44,6 +44,7 @@ flowchart TD
   Onboarding[docs/onboarding/] -.->|"newcomer paths"| Agents
   OnboardSkill[".cursor/skills/onboarding/"] -->|"reads index"| Onboarding
   EvolutionArcSkill[".cursor/skills/evolution-arc/"] -->|"reads trace map"| EvolutionArcGuide["docs/guidance/evolution-arc.md"]
+  SensibleDefaultsSkill[".cursor/skills/sensible-defaults/"] -->|"loads on demand"| MandateLenses
   EvolutionArcGuide -.->|"curates"| Decisions
   EvolutionArcGuide -.->|"curates"| Architecture
   EvolutionArcGuide -.->|"curates"| Guidance
@@ -110,7 +111,7 @@ flowchart TD
 | `docs/practices/` | Derived explainers and bridge docs for canonical lens packages | Exists |
 | `AGENTS.md` | Canonical agent guidance (single source of truth) | Exists |
 | `.cursor/rules/` | Cursor always-apply and file-scoped rules (includes security-awareness) | Exists |
-| `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, renovate-operations, infomaniak-deployment, onboarding, evolution-arc) | Exists |
+| `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, renovate-operations, infomaniak-deployment, onboarding, evolution-arc, sensible-defaults) | Exists |
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
 | `.github/` | PR template, Copilot instructions, Dependabot security config, prompt files for advisory automation | Exists |
 | `renovate.json` | Renovate routine dependency policy, grouping, automerge, and dashboard behavior | Exists |

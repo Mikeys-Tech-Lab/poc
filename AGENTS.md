@@ -43,6 +43,29 @@ If this guidance is used to police workers, evaluate individuals, or create over
 - Follow repo licensing (MIT for code/tooling, CC BY 4.0 for authored content).
 - When uncertain about a tool, command, or API, verify the local version/config/help output before asserting. If not checkable, produce a manual checklist and mark the result unknown. Do not infer capability.
 
+## Repo bootstrap posture
+
+The default workspace bootstrap is not "load every lens."
+
+For repo-native development and agent work, the always-on grounding layer is:
+
+- `AGENTS.md`
+- the root seed set in `seeds/`
+- the continuity layer in `continuity/`
+
+This baseline is the default self-boot posture for a fresh chat in this
+workspace.
+
+Mandate lenses are overlays, not universal bootstrap.
+
+Load `mandateLenses/SensibleDefaults/context-seeder.md` only when:
+
+- the user explicitly asks for `Sensible Defaults`
+- the prompt names that seeder or clearly asks for that posture
+- a development or overall workspace change needs delivery-reality framing
+
+If the seeder was not loaded, do not claim operation under that lens.
+
 ## Execution honesty
 
 Agents must not assert operational outcomes without evidence from actual tool execution.
@@ -330,6 +353,7 @@ The advisory layer must stay advisory. It is a visibility mechanism, not a scori
 These are non-negotiable unless explicitly revised with a trace explaining why:
 
 - Canon is this file (`AGENTS.md`). Adapters only point to it.
+- Default workspace bootstrap is `AGENTS.md` + `seeds/` + `continuity/`. Mandate lens seeders are on-demand overlays, not universal bootstrap.
 - `seeds/` is dev-only and never becomes the site content tree.
 - `seeds/`, `continuity/`, and `mandateLenses/` are sibling root canon surfaces. Do not introduce a nested `root/` wrapper around them.
 - `mandateLenses/*/lens.md` is the canonical lens artifact. `context-seeder.md` is derivative. `docs/practices/` can explain and bridge, but it is not the runtime source of truth for a lens.

@@ -94,7 +94,8 @@ flowchart TD
 - Seeds: structural canon, terms, posture, and misuse boundaries
 - Continuity: temporal anchors, architecture memory, and rollout discipline
 - Runtime grounding rule: the boundary between description and operation
-- Workspace bootstrap: repo-native entrypoint for development and agent work
+- Workspace bootstrap: repo-native entrypoint for development and agent work,
+  rooted in `seeds/` and `continuity/`
 
 ---
 
@@ -129,6 +130,24 @@ The system activates when a context seeder is loaded into an LLM, IDE agent, or
 comparable execution surface.
 
 Without that, nothing here is in effect.
+
+---
+
+## Workspace bootstrap
+
+For repo-native development and agent work, the default bootstrap posture is:
+
+- `AGENTS.md`
+- `seeds/`
+- `continuity/`
+
+This baseline is always-on workspace grounding.
+
+It is not the same as loading a mandate lens.
+
+Load `mandateLenses/SensibleDefaults/context-seeder.md` only on demand when a
+prompt explicitly asks for that lens or when a development or workspace change
+needs delivery-reality framing.
 
 ---
 
