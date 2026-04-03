@@ -171,11 +171,17 @@ export default defineConfig({
                   label: 'Act IV: A Public Node You Can Inspect',
                   slug: 'writing/articles/practice-of-clarity/act-4-a-public-node-you-can-inspect',
                 },
-                {
-                  label: 'Sensible Defaults: A Lens You Can Load',
-                  slug: 'writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load',
-                },
               ],
+            },
+          ],
+        },
+        {
+          label: 'Mandate Lenses',
+          items: [
+            { label: 'Overview', slug: 'mandate-lenses' },
+            {
+              label: 'Sensible Defaults: A Lens You Can Load',
+              slug: 'writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load',
             },
           ],
         },

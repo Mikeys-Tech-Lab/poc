@@ -326,7 +326,7 @@ E2E tests live in `apps/site/e2e/`. Playwright config: `apps/site/playwright.con
 
 ### Test matrix
 
-The current state matrix is 1 locale x 11 content paths x 2 registers = 22 states, generated from arrays in `test-constants.ts`. Register state is a query parameter (`?register=orientation`), not a route segment. If the repo activates additional locales or routes later, update the arrays first and let the matrix expand from verified repo state.
+The current state matrix is 1 locale x 12 content paths x 2 registers = 24 states, generated from arrays in `test-constants.ts`. Register state is a query parameter (`?register=orientation`), not a route segment. If the repo activates additional locales or routes later, update the arrays first and let the matrix expand from verified repo state.
 
 ## Installability surface
 

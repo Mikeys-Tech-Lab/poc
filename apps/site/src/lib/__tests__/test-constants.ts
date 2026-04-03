@@ -2,6 +2,7 @@ export const LOCALES = ['en-US'] as const;
 export const LOCALE_PREFIXES = ['/en-us/'] as const;
 export const CONTENT_PATHS = [
   '',
+  'mandate-lenses',
   'about/what-this-is',
   'about/architecture',
   'about/about-the-author',

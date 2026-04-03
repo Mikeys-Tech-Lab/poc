@@ -1,5 +1,6 @@
 export const CONTENT_PATHS = [
   '',
+  'mandate-lenses',
   'about/what-this-is',
   'about/architecture',
   'about/about-the-author',
