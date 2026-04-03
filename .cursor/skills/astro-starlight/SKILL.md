@@ -142,7 +142,7 @@ Social URLs live in `apps/site/src/consts.ts`. Use these constants in `.mjs`, `.
 import { LINKEDIN } from '../consts';
 ```
 
-The site is a publication surface, not repository documentation. Repository links are intentionally absent from published content.
+The site is still a publication surface first. Repository links should stay deliberate and limited to pages that explicitly handle public inspection or activation surfaces, such as `Act IV` or `Sensible Defaults`.
 
 ## Shared modules (`src/lib/`)
 
@@ -166,7 +166,7 @@ Five Starlight components are overridden via the `components` key in `astro.conf
 | Override | File | Purpose |
 |---|---|---|
 | `SiteTitle` | `src/components/SiteTitle.astro` | Site title with register toggle. Clicking the title switches between Practitioner and Orientation. |
-| `SocialIcons` | `src/components/SocialIcons.astro` | Adds a LinkedIn icon after the default social icons. |
+| `SocialIcons` | `src/components/SocialIcons.astro` | Renders the public social/profile links shown in the header. |
 | `ThemeProvider` | `src/components/ThemeProvider.astro` | Prevents FOUC for `data-theme`, `data-style`, and `data-register` attributes. |
 | `ThemeSelect` | `src/components/ThemeSelect.astro` | Extends the selector to 4 explicit theme options with locale-aware labels. |
 | `Pagination` | `src/components/LicensePanel.astro` | Wraps default Pagination with LicenseNotice footer. |
@@ -326,7 +326,7 @@ E2E tests live in `apps/site/e2e/`. Playwright config: `apps/site/playwright.con
 
 ### Test matrix
 
-The current state matrix is 1 locale x 6 content paths x 2 registers = 12 states, generated from arrays in `test-constants.ts`. Register state is a query parameter (`?register=orientation`), not a route segment. If the repo activates additional locales or routes later, update the arrays first and let the matrix expand from verified repo state.
+The current state matrix is 1 locale x 11 content paths x 2 registers = 22 states, generated from arrays in `test-constants.ts`. Register state is a query parameter (`?register=orientation`), not a route segment. If the repo activates additional locales or routes later, update the arrays first and let the matrix expand from verified repo state.
 
 ## Installability surface
 

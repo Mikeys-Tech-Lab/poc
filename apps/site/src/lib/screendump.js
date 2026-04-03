@@ -1,9 +1,14 @@
 export const CONTENT_PATHS = [
   '',
   'about/what-this-is',
+  'about/architecture',
   'about/about-the-author',
+  'writing/articles/practice-of-clarity/00-publication-arc',
   'writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding',
   'writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed',
+  'writing/articles/practice-of-clarity/act-3-nodes-bridges-and-drift',
+  'writing/articles/practice-of-clarity/act-4-a-public-node-you-can-inspect',
+  'writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load',
   'licenses/cc-by-4-0',
 ];
 

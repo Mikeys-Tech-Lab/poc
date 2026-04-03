@@ -1,0 +1,82 @@
+---
+title: Architecture
+---
+
+The Practice of Clarity is not only a body of writing.
+
+This page is the quickest way to see the whole system at once.
+
+This system only operates when its artifacts are loaded.
+
+In practice, this means: paste the context seeder.
+
+Without that, this is just description.
+
+It is a guidance system with layers that do different jobs.
+
+### The layers
+
+- Public site: the reading and orientation surface
+- Bridge article: the first easy entry into use
+- Register: the same structure in different voices
+- Context seeder: the portable activation surface
+- Agents / execution layer: where loaded artifacts reshape behavior
+- Mandate lens: the first applied reasoning layer
+- Seeds: the structural canon
+- Continuity: the memory and architecture layer
+
+```mermaid
+flowchart TD
+    PS["Public site"]
+    BA["Bridge article"]
+    REG["Register"]
+    CS["Context seeder"]
+    SD["Seeds"]
+    ML["Mandate lens"]
+    CT["Continuity"]
+    AX["Agents / execution layer<br/>LLMs, IDE agents, automation tools"]
+    OUT["Behavior and traceable output"]
+
+    REG --> PS
+    REG --> BA
+    PS --> BA
+    BA --> CS
+    CS --> SD
+    CS --> ML
+    CS --> CT
+    CS --> AX
+    SD --> AX
+    ML --> AX
+    CT --> AX
+    AX --> OUT
+```
+
+### How it works in practice
+
+1. A reader enters through the public site.
+2. A bridge article shows when the system becomes useful in real work.
+3. In practice, this means: paste the context seeder.
+4. The system activates when the context seeder is loaded into an LLM, IDE agent, or comparable execution surface.
+5. The seeder loads the readable canonical artifacts.
+6. Those artifacts reshape behavior in the execution layer.
+7. The resulting work stays traceable and can be revised over time.
+
+### What changes at different speeds
+
+- Seeds change slowly.
+- Continuity changes when architecture or rollout understanding changes.
+- Lenses and bridge articles change faster through use and feedback.
+- Register changes readability, not structural meaning.
+- The repository is where changes are proposed and reviewed.
+
+### Important boundary
+
+Reading about the system is not the same as activating it.
+
+Operational grounding begins only when readable canonical artifacts are loaded.
+
+### From reading to use
+
+If you want to see the public node that exposes the trace, continue to [Act IV](/en-us/writing/articles/practice-of-clarity/act-4-a-public-node-you-can-inspect/).
+
+If you want the first bridge into direct use, continue to [Sensible Defaults](/en-us/writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load/).

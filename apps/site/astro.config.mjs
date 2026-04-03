@@ -141,6 +141,7 @@ export default defineConfig({
           label: 'About',
           items: [
             { label: 'What This Work Is', slug: 'about/what-this-is' },
+            { label: 'Architecture', slug: 'about/architecture' },
             { label: 'About the Author', slug: 'about/about-the-author' },
           ],
         },
@@ -151,12 +152,28 @@ export default defineConfig({
               label: 'Practice of Clarity',
               items: [
                 {
+                  label: 'Publication Arc',
+                  slug: 'writing/articles/practice-of-clarity/00-publication-arc',
+                },
+                {
                   label: 'Act I: When Output Outpaces Understanding',
                   slug: 'writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding',
                 },
                 {
                   label: 'Act II: Practicing Decision Hygiene Under AI Speed',
                   slug: 'writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed',
+                },
+                {
+                  label: 'Act III: Nodes, Bridges, and Drift',
+                  slug: 'writing/articles/practice-of-clarity/act-3-nodes-bridges-and-drift',
+                },
+                {
+                  label: 'Act IV: A Public Node You Can Inspect',
+                  slug: 'writing/articles/practice-of-clarity/act-4-a-public-node-you-can-inspect',
+                },
+                {
+                  label: 'Sensible Defaults: A Lens You Can Load',
+                  slug: 'writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load',
                 },
               ],
             },
