@@ -101,7 +101,7 @@ test.describe('final ui refinements', () => {
         await page.waitForLoadState('domcontentloaded');
 
         await expect(page.locator('.license-notice .provenance')).toContainText(
-          'This site is built in the open. The writing is the public front door. The repository is part of the same work and will be surfaced more directly in a later stage.',
+          'This site is built in the open. The writing is the primary reading surface. The repository is the inspectable node behind it.',
         );
         await expect(page.locator('.license-notice .provenance a')).toHaveCount(0);
 

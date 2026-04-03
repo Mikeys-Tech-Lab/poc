@@ -3,8 +3,12 @@ import { MINIMAL_ACTIVATION_PROMPT, SEEDER_URL } from '../src/lib/activation-pro
 
 const activationPages = [
   '/en-us/about/what-this-is/',
-  '/en-us/about/architecture/',
   '/en-us/writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load/',
+] as const;
+
+const architectureVariants = [
+  '/en-us/about/architecture/',
+  '/en-us/about/architecture/?register=orientation',
 ] as const;
 
 const pageVariants = activationPages.flatMap((url) => [
@@ -43,4 +47,17 @@ test.describe('activation prompts', () => {
     const clipboardText = await page.evaluate(() => navigator.clipboard.readText());
     expect(clipboardText).toBe(MINIMAL_ACTIVATION_PROMPT);
   });
+
+  for (const url of architectureVariants) {
+    test(`architecture routes to sensible defaults activation on ${url}`, async ({ page }) => {
+      await page.goto(url);
+
+      await expect(
+        page.getByRole('link', { name: 'Go to Sensible Defaults activation' }),
+      ).toHaveAttribute(
+        'href',
+        '/en-us/writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load/#paste-ready-activation',
+      );
+    });
+  }
 });

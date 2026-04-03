@@ -3,8 +3,9 @@ title: Architecture
 description: The layers, activation path, and boundaries of the Practice of Clarity system.
 ---
 
-import ActivationPrompts from '../../../../components/ActivationPrompts.astro';
 import RegisterContent from '../../../../components/RegisterContent.astro';
+import ReadingBeat from '../../../../components/ReadingBeat.astro';
+import ReadingFrame from '../../../../components/ReadingFrame.astro';
 
 <RegisterContent register="orientation/en-us/about/architecture">
 
@@ -35,11 +36,12 @@ The architecture works in a specific order:
 
 1. A reader encounters the public surface.
 2. A bridge article shows what changes in practice.
-3. In practice, this means: paste the context seeder.
-4. The system activates when the context seeder is loaded into an LLM, IDE agent, or comparable execution surface.
-5. The seeder loads readable canonical artifacts.
-6. Those artifacts reshape behavior in the execution layer.
-7. Outputs remain inspectable through trace and revision.
+3. `Sensible Defaults` is the first bridge from reading into use.
+4. That bridge points to the live activation surface.
+5. The system activates when the context seeder is loaded into an LLM, IDE agent, or comparable execution surface.
+6. The seeder loads readable canonical artifacts.
+7. Those artifacts reshape behavior in the execution layer.
+8. Outputs remain inspectable through trace and revision.
 
 Article loading can shape register and entry expectations.
 
@@ -50,15 +52,16 @@ Operation begins at the seeder, not at the article.
 Without loaded artifacts, nothing here is in effect.
 
 ```mermaid
-flowchart LR
-    A["Article or page"]
-    B["Context seeder"]
-    C["Readable canonical artifacts"]
-    X["Agents / execution layer"]
-    D["Grounded reasoning behavior"]
-    E["Traceable output"]
+flowchart TD
+    A["Reading surface<br/>article or page"]
+    B["Bridge article<br/>Sensible Defaults"]
+    C["Context seeder"]
+    D["Readable canonical artifacts<br/>seeds, continuity, lens"]
+    E["Agents / execution layer"]
+    F["Grounded behavior"]
+    G["Traceable output"]
 
-    A --> B --> C --> X --> D --> E
+    A --> B --> C --> D --> E --> F --> G
 ```
 
 ### Evolution model
@@ -85,14 +88,29 @@ This page exists so the layers can be placed quickly:
 - what can evolve quickly
 - what must stay stable
 
-### Paste-ready activation
-
-<ActivationPrompts intro="If you want to move from the system map into live use, start with the seeder. These prompts keep the boundary honest while giving you a direct runtime entry." />
+<ReadingBeat>
+  Architecture explains the layers. The live activation surface lives in
+  `Sensible Defaults`.
+</ReadingBeat>
 
 ### From reading to use
 
 If you want to see the public node that exposes the trace, continue to [Act IV](/en-us/writing/articles/practice-of-clarity/act-4-a-public-node-you-can-inspect/).
 
-If you want the first bridge into direct use, continue to [Sensible Defaults](/en-us/writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load/).
+<ReadingFrame
+  variant="next"
+  label="Activation bridge"
+  title="Go to Sensible Defaults for the live activation surface"
+>
+  <p>
+    This page maps the layers. The paste-ready activation surface lives in the
+    `Sensible Defaults` bridge rather than here.
+  </p>
+  <p>
+    <a href="/en-us/writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load/#paste-ready-activation">
+      Go to Sensible Defaults activation
+    </a>
+  </p>
+</ReadingFrame>
 
 </RegisterContent>

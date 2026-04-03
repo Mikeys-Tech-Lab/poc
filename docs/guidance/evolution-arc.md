@@ -37,7 +37,7 @@ flowchart LR
   operations --> siteShape["Site structure and register evolution"]
   siteShape --> adrDiscipline["ADR and reflection discipline"]
   adrDiscipline --> launchReality["Launch reality grounded in current-state docs"]
-  launchReality --> publicNode["Current repo-first public node"]
+  launchReality --> publicNode["Current public site and inspectable repo node"]
 ```
 
 Read that sequence like this:
@@ -47,7 +47,7 @@ Read that sequence like this:
 - **Site structure and register evolution**: the docs site, locale structure, and register model were refined through implementation work and later corrected when earlier assumptions drifted.
 - **ADR and reflection discipline**: the repo started recording structural decisions in `docs/decisions/` and structural lessons in `docs/guidance/`.
 - **Launch reality grounded in current-state docs**: ADR `0002` explicitly reset the repo's public description to verified present reality instead of older assumptions.
-- **Current repo-first public node**: the workspace now carries onboarding, guidance, architecture, root canon package families, and skills as inspectable surfaces, with the repository itself treated as part of the public explanation.
+- **Current public site and inspectable repo node**: the published frontend is now the primary human reading surface, while the repository remains the canonical and inspectable node behind it.
 
 ## What each surface contributes
 

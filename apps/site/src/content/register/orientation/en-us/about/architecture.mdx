@@ -2,7 +2,8 @@
 title: Architecture
 ---
 
-import ActivationPrompts from '../../../../../components/ActivationPrompts.astro';
+import ReadingBeat from '../../../../../components/ReadingBeat.astro';
+import ReadingFrame from '../../../../../components/ReadingFrame.astro';
 
 The Practice of Clarity is not only a body of writing.
 
@@ -29,35 +30,25 @@ It is a guidance system with layers that do different jobs.
 
 ```mermaid
 flowchart TD
-    PS["Public site"]
-    BA["Bridge article"]
-    REG["Register"]
+    PS["Reading surface<br/>article or page"]
+    BA["Bridge article<br/>Sensible Defaults"]
     CS["Context seeder"]
-    SD["Seeds"]
-    ML["Mandate lens"]
-    CT["Continuity"]
-    AX["Agents / execution layer<br/>LLMs, IDE agents, automation tools"]
+    CA["Readable canonical artifacts<br/>seeds, continuity, lens"]
+    AX["Agents / execution layer"]
     OUT["Behavior and traceable output"]
 
-    REG --> PS
-    REG --> BA
     PS --> BA
     BA --> CS
-    CS --> SD
-    CS --> ML
-    CS --> CT
-    CS --> AX
-    SD --> AX
-    ML --> AX
-    CT --> AX
+    CS --> CA
+    CA --> AX
     AX --> OUT
 ```
 
 ### How it works in practice
 
 1. A reader enters through the public site.
-2. A bridge article shows when the system becomes useful in real work.
-3. In practice, this means: paste the context seeder.
+2. `Sensible Defaults` is the first bridge from reading into use.
+3. That bridge points to the live activation surface.
 4. The system activates when the context seeder is loaded into an LLM, IDE agent, or comparable execution surface.
 5. The seeder loads the readable canonical artifacts.
 6. Those artifacts reshape behavior in the execution layer.
@@ -77,12 +68,27 @@ Reading about the system is not the same as activating it.
 
 Operational grounding begins only when readable canonical artifacts are loaded.
 
-### Paste-ready activation
-
-<ActivationPrompts intro="If you want to move from the system map into live use, start with the seeder. These prompts preserve the boundary between reading and operation while giving you a direct runtime entry." />
+<ReadingBeat>
+  This page explains the structure. The live activation surface lives in
+  `Sensible Defaults`.
+</ReadingBeat>
 
 ### From reading to use
 
 If you want to see the public node that exposes the trace, continue to [Act IV](/en-us/writing/articles/practice-of-clarity/act-4-a-public-node-you-can-inspect/).
 
-If you want the first bridge into direct use, continue to [Sensible Defaults](/en-us/writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load/).
+<ReadingFrame
+  variant="next"
+  label="Activation bridge"
+  title="Go to Sensible Defaults for the live activation surface"
+>
+  <p>
+    This page shows the layers. The ready-to-paste activation surface lives in
+    `Sensible Defaults`, not here.
+  </p>
+  <p>
+    <a href="/en-us/writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load/#paste-ready-activation">
+      Go to Sensible Defaults activation
+    </a>
+  </p>
+</ReadingFrame>

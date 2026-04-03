@@ -14,6 +14,7 @@
   border: 1px solid var(--poc-border-faint);
   border-radius: 1rem;
   box-shadow: var(--poc-shadow-soft);
+  overflow: visible;
 }
 
 :root:not([data-style="solid"]) .sl-markdown-content svg[id^="mermaid-"] {
@@ -21,6 +22,8 @@
 }
 
 .sl-markdown-content svg[id^="mermaid-"] text,
-.sl-markdown-content svg[id^="mermaid-"] .label {
+.sl-markdown-content svg[id^="mermaid-"] .label,
+.sl-markdown-content svg[id^="mermaid-"] .nodeLabel {
   font-family: var(--__sl-font), ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.35;
 }

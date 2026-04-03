@@ -32,6 +32,7 @@ export default defineConfig({
               secondaryColor: '#eff1f5',
               tertiaryColor: '#f2d5cf',
               fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif',
+              fontSize: '18px',
             },
           },
         },
