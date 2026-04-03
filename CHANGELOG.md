@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.8.0...PoC-v1.8.1) (2026-04-03)
+
+
+### Miscellaneous
+
+* **deps:** update dependency @biomejs/biome to v2.4.10 ([#142](https://github.com/Mikeys-Tech-Lab/poc/issues/142)) ([1532808](https://github.com/Mikeys-Tech-Lab/poc/commit/1532808020aa9076c726d53671f4856b36c56911))
+
 ## [1.8.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.7.18...PoC-v1.8.0) (2026-03-30)
 
 
