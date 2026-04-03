@@ -3,6 +3,7 @@
 import starlight from '@astrojs/starlight';
 import starlightCatppuccin from '@catppuccin/starlight';
 import { defineConfig } from 'astro/config';
+import rehypeMermaid from 'rehype-mermaid';
 export default defineConfig({
   site: process.env.SITE_URL || 'https://practiceofclarity.eu',
   redirects: {
@@ -10,6 +11,32 @@ export default defineConfig({
   },
   devToolbar: {
     enabled: false,
+  },
+  markdown: {
+    syntaxHighlight: {
+      type: 'shiki',
+      excludeLangs: ['mermaid'],
+    },
+    rehypePlugins: [
+      [
+        rehypeMermaid,
+        {
+          strategy: 'inline-svg',
+          mermaidConfig: {
+            theme: 'base',
+            themeVariables: {
+              primaryColor: '#f5e0dc',
+              primaryTextColor: '#303446',
+              primaryBorderColor: '#e78284',
+              lineColor: '#e78284',
+              secondaryColor: '#eff1f5',
+              tertiaryColor: '#f2d5cf',
+              fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif',
+            },
+          },
+        },
+      ],
+    ],
   },
   integrations: [
     starlight({
