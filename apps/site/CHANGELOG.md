@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.4.1...site-v1.4.2) (2026-04-03)
+
+
+### Miscellaneous
+
+* **deps:** update dependency @playwright/test to v1.59.1 ([#144](https://github.com/Mikeys-Tech-Lab/poc/issues/144)) ([f56cf69](https://github.com/Mikeys-Tech-Lab/poc/commit/f56cf6949c79418ea46456b450ef8c6191c7dc0e))
+
 ## [1.4.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.4.0...site-v1.4.1) (2026-04-03)
 
 

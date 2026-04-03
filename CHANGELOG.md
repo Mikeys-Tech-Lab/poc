@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.4](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.8.3...PoC-v1.8.4) (2026-04-03)
+
+
+### Miscellaneous
+
+* **deps:** update dependency @playwright/test to v1.59.1 ([#144](https://github.com/Mikeys-Tech-Lab/poc/issues/144)) ([f56cf69](https://github.com/Mikeys-Tech-Lab/poc/commit/f56cf6949c79418ea46456b450ef8c6191c7dc0e))
+
 ## [1.8.3](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.8.2...PoC-v1.8.3) (2026-04-03)
 
 
