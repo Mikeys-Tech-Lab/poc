@@ -184,6 +184,27 @@ export default defineConfig({
           ],
         },
         {
+          label: 'Seeds',
+          items: [
+            { label: 'Overview', slug: 'seeds' },
+            {
+              label: 'A Living Practice of Clarity',
+              slug: 'seeds/a-living-practice-of-clarity',
+            },
+            { label: 'Practice Foundations', slug: 'seeds/practice-foundations' },
+            { label: "Beginner's Mind", slug: 'seeds/beginners-mind' },
+            {
+              label: 'A Bridge Between Conflicting Nodes',
+              slug: 'seeds/bridge-between-conflicting-nodes',
+            },
+            {
+              label: 'Translation and Register Guidance',
+              slug: 'seeds/translation-and-register-guidance',
+            },
+            { label: 'Voice of Guidance', slug: 'seeds/voice-of-guidance' },
+          ],
+        },
+        {
           label: 'License',
           items: [{ label: 'CC BY 4.0', slug: 'licenses/cc-by-4-0' }],
         },

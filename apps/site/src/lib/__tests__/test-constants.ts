@@ -3,6 +3,13 @@ export const LOCALE_PREFIXES = ['/en-us/'] as const;
 export const CONTENT_PATHS = [
   '',
   'mandate-lenses',
+  'seeds',
+  'seeds/a-living-practice-of-clarity',
+  'seeds/practice-foundations',
+  'seeds/beginners-mind',
+  'seeds/bridge-between-conflicting-nodes',
+  'seeds/translation-and-register-guidance',
+  'seeds/voice-of-guidance',
   'about/what-this-is',
   'about/architecture',
   'about/glossary',
