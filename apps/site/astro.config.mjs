@@ -153,10 +153,6 @@ export default defineConfig({
               label: 'Practice of Clarity',
               items: [
                 {
-                  label: 'Publication Arc',
-                  slug: 'writing/articles/practice-of-clarity/00-publication-arc',
-                },
-                {
                   label: 'Act I: When Output Outpaces Understanding',
                   slug: 'writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding',
                 },

@@ -4,7 +4,6 @@ export const CONTENT_PATHS = [
   'about/what-this-is',
   'about/architecture',
   'about/about-the-author',
-  'writing/articles/practice-of-clarity/00-publication-arc',
   'writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding',
   'writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed',
   'writing/articles/practice-of-clarity/act-3-nodes-bridges-and-drift',
