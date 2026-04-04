@@ -54,7 +54,8 @@ flowchart TD
   Renovate["renovate.json"] -.->|"routine dependency updates"| Tooling
   Dependabot[".github/dependabot.yml"] -.->|"security-only updates"| Tooling
 
-  AstroSite[apps/site/] -->|"site content"| SiteDocs["apps/site/src/content/docs/"]
+  AstroSite[apps/site/] -->|"practitioner content"| SiteDocs["apps/site/src/content/docs/"]
+  AstroSite -->|"active register content"| SiteRegister["apps/site/src/content/register/orientation/"]
 
   subgraph "CI/CD (GitHub Actions)"
     DeployDev[".github/workflows/deploy-dev.yml"]
@@ -126,5 +127,7 @@ flowchart TD
 | `docs/ai/` | Capability alignment reports (generated) | Exists |
 | `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks and deterministic guidance drift validation | Exists |
 | `apps/site/` | Astro Starlight frontend | Exists |
+| `apps/site/src/content/docs/` | Practitioner site content collection | Exists |
+| `apps/site/src/content/register/orientation/` | Active orientation register content collection | Exists |
 | `docs/infra/` | Infrastructure runbooks (Infomaniak setup, GitHub App setup, protection layers, authenticated origin pulls) and maintenance assets | Exists |
 | `.cursor/skills/infomaniak-deployment/` | Deployment skill for Infomaniak hosting | Exists |
