@@ -38,3 +38,29 @@
 .hero .actions a {
   box-shadow: var(--poc-shadow-soft);
 }
+
+.home-card-grid .card-grid {
+  align-items: stretch;
+}
+
+.home-card-grid .card-grid > :not(.home-card-featured) {
+  height: 100%;
+}
+
+.home-card-grid .card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-card-grid .card .body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-card-grid .card .body p:last-child {
+  margin-top: auto;
+  align-self: flex-end;
+  text-align: right;
+}
