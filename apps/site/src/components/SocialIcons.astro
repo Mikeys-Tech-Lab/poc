@@ -1,12 +1,11 @@
 ---
 import { Icon } from "@astrojs/starlight/components";
-import { BLUESKY, GITHUB, LINKEDIN, MASTODON } from "../consts";
+import { GITHUB, LINKEDIN, MASTODON } from "../consts";
 
 const links = [
-  { label: "LinkedIn", href: LINKEDIN, icon: "linkedin" },
   { label: "GitHub", href: GITHUB, icon: "github" },
-  { label: "Bluesky", href: BLUESKY, icon: "blueSky" },
   { label: "Mastodon", href: MASTODON, icon: "mastodon" },
+  { label: "LinkedIn", href: LINKEDIN, icon: "linkedin" },
 ] as const;
 ---
 
