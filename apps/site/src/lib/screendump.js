@@ -3,6 +3,7 @@ export const CONTENT_PATHS = [
   'mandate-lenses',
   'about/what-this-is',
   'about/architecture',
+  'about/glossary',
   'about/about-the-author',
   'writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding',
   'writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed',
