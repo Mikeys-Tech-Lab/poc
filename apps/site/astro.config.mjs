@@ -53,6 +53,7 @@ export default defineConfig({
         'en-us': { label: 'English (US)', lang: 'en-US' },
       },
       defaultLocale: 'en-us',
+      disable404Route: true,
       head: [
         {
           tag: 'link',
