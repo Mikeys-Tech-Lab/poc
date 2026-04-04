@@ -14,25 +14,25 @@ const themeLabels = getThemeLabels(locale);
 
 const intro =
   variant === 'orientation'
-    ? 'Start here if you want the basic framing, how to read the site, and what this work is trying to do.'
-    : 'Start here for the framing, the reading model, and the boundaries of the practice.';
+    ? 'Start here if you are new. This page explains what the practice responds to, what it refuses, and how to move through the site.'
+    : 'Start here for the framing, the reading model, and the boundary between reading about the practice and stepping into it.';
 
 const registerCopy =
   variant === 'orientation'
-    ? 'The page title button in the navigation bar is the register switch. Click it there, or click this example here. The ideas stay the same. The voice changes.'
-    : 'The page title button in the navigation bar is the register switch. Click it there, or click this example here. The structure stays the same. Only the voice changes.';
+    ? 'Use the page title button in the navigation bar, or this example here, to switch register. The ideas stay the same. The voice changes.'
+    : 'Use the page title button in the navigation bar, or this example here, to switch register. The structure stays the same. Only the voice changes.';
 
 const themeCopy =
   variant === 'orientation'
-    ? 'Select the theme here or in the selector. The highlighted option is the one currently active.'
-    : 'Select the theme here or in the selector. The highlighted option is the one currently active.';
+    ? 'Use the theme selector here or in the header. The highlighted option is the one currently active.'
+    : 'Use the theme selector here or in the header. The highlighted option is the one currently active.';
 ---
 
 <poc-home-featured-card>
   <Card title="What This Work Is" icon="open-book">
     <p>
       {intro}
-      <a href="/en-us/about/what-this-is/">Start reading</a>
+      <a href="/en-us/about/what-this-is/">Start here</a>
     </p>
     <div class="home-featured-guides">
       <section class="home-featured-guide">

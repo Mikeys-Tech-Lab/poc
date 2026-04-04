@@ -23,6 +23,19 @@ Do not assume features from newer or older versions.
 - `seeds/` is development-only and must not be imported as site content.
 - The site may reference seeds but does not treat them as canonical pages.
 
+## Public practice-first boundary
+
+For content under `apps/site/src/content/**`:
+
+- lead with condition and practice, not repo or agent mechanics
+- do not include repo-operation instructions
+- keep activation secondary to explanation
+- point activation only to mandate lenses or their context seeders
+- do not frame repo navigation or repo workflows as activation
+
+The site explains the practice. Mandate lenses activate it. The repo supports
+its evolution.
+
 ## Image and asset paths
 
 - In content frontmatter (`.md`/`.mdx`): use **relative paths** from the content file (e.g., `../../assets/hero.png`).

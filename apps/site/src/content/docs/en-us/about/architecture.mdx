@@ -1,6 +1,6 @@
 ---
 title: Architecture
-description: The layers, activation path, and boundaries of the Practice of Clarity system.
+description: A map of the layers that hold the practice, its lenses, and its evolution.
 ---
 
 import RegisterContent from '../../../../components/RegisterContent.astro';
@@ -9,89 +9,86 @@ import ReadingFrame from '../../../../components/ReadingFrame.astro';
 
 <RegisterContent register="orientation/en-us/about/architecture">
 
-The Practice of Clarity is a guidance architecture with distinct layers for orientation, grounding, application, and evolution.
+The practice has layers because not every part of the work does the same job.
 
-Use this page when you want the whole system shape before reading the rest.
+This page is the map. It is not the first thing you need to read, but it helps once you want to see how the pieces relate.
 
-This system only operates when its artifacts are loaded.
+### The layers
 
-In practice, this means: paste the context seeder.
+- Public site: where the condition, the stance, and the writing can be entered
+- Bridge articles: where reading begins to turn toward use without pretending it has already done so
+- Mandate lenses: where operational posture becomes specific to a real kind of work
+- Context seeders: where a lens is actually loaded into a reasoning environment
+- Readable canon: where seeds, continuity, and lens text can actually shape the work
+- Registers: where the same structure can be read in different voices
 
-Without that, this is just description.
+### How the layers relate
 
-### Layer roles
+Most people encounter the practice in a public page or an Act.
 
-- Public site: reading surface and trust-building entry
-- Bridge article: human-facing path from understanding into use
-- Register: accountable presentation layer only
-- Context seeder: portable runtime entry that loads canonical artifacts
-- Agents / execution layer: LLMs, IDE agents, and automation tools whose behavior is reshaped at runtime
-- Mandate lens: contextual application logic for one real workflow
-- Seeds: structural canon and stable boundary layer
-- Continuity: temporal architecture, rollout memory, and drift protection
+From there, a bridge article can point toward use without collapsing explanation into operation.
 
-### Activation path
+`Sensible Defaults` is the first mandate lens in that movement. It is not the whole practice. It is the first explicit bridge from reading into use.
 
-The architecture works in a specific order:
+When its context seeder is loaded, it brings readable artifacts into the working environment. Those artifacts shape how reasoning happens and leave work that can still be inspected later.
 
-1. A reader encounters the public surface.
-2. A bridge article shows what changes in practice.
-3. `Sensible Defaults` is the first bridge from reading into use.
-4. That bridge points to the live activation surface.
-5. The system activates when the context seeder is loaded into an LLM, IDE agent, or comparable execution surface.
-6. The seeder loads readable canonical artifacts.
-7. Those artifacts reshape behavior in the execution layer.
-8. Outputs remain inspectable through trace and revision.
-
-Article loading can shape register and entry expectations.
-
-It does not establish operational state by itself.
-
-Operation begins at the seeder, not at the article.
-
-Without loaded artifacts, nothing here is in effect.
+This page maps that relationship. It does not perform it.
 
 ```mermaid
-flowchart TD
-    A["Reading surface<br/>article or page"]
-    B["Bridge article<br/>Sensible Defaults"]
-    C["Context seeder"]
-    D["Readable canonical artifacts<br/>seeds, continuity, lens"]
-    E["Agents / execution layer"]
-    F["Grounded behavior"]
-    G["Traceable output"]
+flowchart LR
+    A["Public writing"]
+    B["Bridge article"]
+    C["First lens"]
+    D["Seeder"]
+    E["Readable canon"]
+    F["Grounded work"]
 
-    A --> B --> C --> D --> E --> F --> G
+    A --> B --> C --> D --> E --> F
 ```
 
-### Evolution model
+### What changes at different speeds
 
-Not every layer evolves at the same speed, and not every layer has the same authority.
+- Seeds change slowly because they hold terms, posture, and boundaries.
+- Mandate lenses can evolve faster because they meet real work more directly.
+- Seeders can change when activation needs change, but they stay derivative of the readable canon.
+- Public bridge pages can change when the entry path needs to become clearer.
+- Registers can expand as long as they keep one structural truth in multiple voices.
 
-- Seeds change slowly and should be protected from casual mutation because they define terms, posture, and boundaries.
-- Lenses evolve faster, can be forked, and adapt through real workflow use.
-- Continuity records why architectural and rollout decisions changed over time.
-- Seeders evolve when activation needs change, but remain derivative of canonical sources.
-- Bridge articles evolve when public entry needs clearer on-ramps.
-- Registers evolve as accountable editions for different readers.
-- The repository mediates change through visible artifacts, commits, and pull requests.
+### Space for expansion
 
-### Why this matters
+This structure is not meant to stop at one lens or one register.
 
-Without a visible architecture, the system can feel more abstract than it really is.
-
-This page exists so the layers can be placed quickly:
-
-- what is canonical
-- what is derivative
-- what loads what
-- what can evolve quickly
-- what must stay stable
+- More mandate lenses can be added.
+- Deeper layers can become explicit later.
+- More registers can be introduced without changing the underlying truth.
+- More languages can widen access without changing what activation depends on.
 
 <ReadingBeat>
-  Architecture explains the layers. The live activation surface lives in
-  `Sensible Defaults`.
+  Architecture gives you the map. The first live activation bridge still lives in
+  `Sensible Defaults`, not on this page.
 </ReadingBeat>
+
+### Reading and operating are different
+
+Reading this page is not the same as loading a lens.
+
+Operational grounding begins only when a context seeder and its readable artifacts are actually loaded into a compatible reasoning environment.
+
+<ReadingFrame
+  variant="example"
+  label="Deeper architecture trace"
+  title="The fuller guidance architecture lives in the public node"
+>
+  <p>
+    This page stays focused on the reader-facing map. The more detailed
+    continuity architecture lives in the public node as an inspectable artifact.
+  </p>
+  <p>
+    <a href="https://github.com/Mikeys-Tech-Lab/poc/blob/main/continuity/guidance-architecture.md">
+      Read the continuity architecture map
+    </a>
+  </p>
+</ReadingFrame>
 
 ### From reading to use
 
@@ -103,8 +100,8 @@ If you want to see the public node that exposes the trace, continue to [Act IV](
   title="Go to Sensible Defaults for the live activation surface"
 >
   <p>
-    This page maps the layers. The paste-ready activation surface lives in the
-    `Sensible Defaults` bridge rather than here.
+    This page maps the layers. The ready-to-paste activation surface lives in the
+    first mandate lens, `Sensible Defaults`, rather than here.
   </p>
   <p>
     <a href="/en-us/writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load/#paste-ready-activation">

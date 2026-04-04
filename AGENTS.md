@@ -66,6 +66,23 @@ Load `mandateLenses/SensibleDefaults/context-seeder.md` only when:
 
 If the seeder was not loaded, do not claim operation under that lens.
 
+## Public site boundary
+
+Content under `apps/site/src/content/**` is the public practice layer.
+
+- Lead with condition and practice, not repo, system, or agent mechanics.
+- Do not include repo-operation instructions in public pages.
+- Public pages may point toward activation only after conceptual grounding, and only by sending readers to a mandate lens or its context seeder.
+- Do not treat repo navigation or repo workflows as activation.
+- The site explains the practice. Mandate lenses activate it. The repo supports its evolution.
+
+Repo planning and coordination may assume `Sensible Defaults` as an internal
+stance, but that assumption must never be required for a reader to understand
+the public site.
+
+If the `Sensible Defaults` seeder was not actually loaded in a given chat, do
+not claim that it was loaded or that you are operating under it.
+
 ## Execution honesty
 
 Agents must not assert operational outcomes without evidence from actual tool execution.
@@ -213,7 +230,7 @@ This workspace has structured repo entry paths at `docs/onboarding/`. AI agents 
 - The topic index is at `docs/onboarding/README.md`. It lists available topics with IDs, paths, descriptions, and prerequisites.
 - The Cursor skills at `.cursor/skills/onboarding/SKILL.md` and `.cursor/skills/evolution-arc/SKILL.md` define the agent-driven entry flows.
 - For Claude Code and GitHub Copilot: read the topic index and follow the same structure when a user asks for onboarding or repo history.
-- For human readers without AI assistance: `docs/onboarding/manual.md` and `docs/onboarding/evolution-arc.md` provide the same entry points.
+- For readers without AI assistance: `docs/onboarding/manual.md` and `docs/onboarding/evolution-arc.md` provide the same starting paths.
 
 Onboarding docs summarize and link to deep docs. They do not duplicate content that lives elsewhere.
 

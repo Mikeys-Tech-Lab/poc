@@ -30,6 +30,19 @@ Before relying on any Astro or Starlight feature:
 - Seeds (`seeds/`) are development-only sources. They are not the site content tree.
 - The site may reference seeds but must not import them as pages.
 
+### Public practice-first boundary
+
+For public content under `apps/site/src/content/**`:
+
+- lead with condition and practice, not repo or agent mechanics
+- do not include repo-operation instructions
+- keep activation secondary to explanation
+- point activation only to mandate lenses or their context seeders
+- do not frame repo navigation or repo workflows as activation
+
+The site explains the practice. Mandate lenses activate it. The repo supports
+its evolution.
+
 ### Register × locale two-axis model
 
 Locale and register are independent axes in the practice model, but the current repo activates only a small subset of that model.
@@ -142,7 +155,9 @@ Social URLs live in `apps/site/src/consts.ts`. Use these constants in `.mjs`, `.
 import { LINKEDIN } from '../consts';
 ```
 
-The site is still a publication surface first. Repository links should stay deliberate and limited to pages that explicitly handle public inspection or activation surfaces, such as `Act IV` or `Sensible Defaults`.
+The site remains practice-first. Repository links should stay deliberate and
+limited to pages that explicitly handle public inspection or activation
+surfaces, such as `Act IV` or `Sensible Defaults`.
 
 ## Shared modules (`src/lib/`)
 

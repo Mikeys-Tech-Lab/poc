@@ -1,6 +1,6 @@
 ---
 description: Register and style constraints for markdown authoring
-globs: "**/*.md"
+globs: "**/*.{md,mdx}"
 alwaysApply: false
 ---
 
@@ -21,6 +21,19 @@ These apply when editing or creating markdown files in this workspace.
 - Use explicit headings. Prefer flat structure over deep nesting.
 - Keep sections short enough to read without scrolling.
 - If a section needs more than three levels of heading, consider splitting it.
+
+## Public site boundary
+
+When editing public content under `apps/site/src/content/**`:
+
+- lead with condition and practice before mechanism
+- do not include repo-operation instructions
+- keep activation visible but secondary
+- point activation to mandate lenses or their context seeders
+- do not treat repo navigation as activation
+
+The site explains the practice. Mandate lenses activate it. The repo supports
+its evolution.
 
 ## Licensing
 

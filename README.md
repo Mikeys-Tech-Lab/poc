@@ -2,19 +2,21 @@
 
 A publication surface and usable practice for making reasoning visible.
 
-The primary reading surface for humans is [practiceofclarity.eu](https://practiceofclarity.eu).
+Start with [practiceofclarity.eu](https://practiceofclarity.eu) if you are new to the work.
 
-This repository is the canonical and inspectable node behind it.
+This repository is the inspectable node behind it.
 
-You can start by reading the public site, or you can load the seeder artifacts from the repo and use the practice directly in a compatible model or agent.
+Read the site if you want the condition, the practice, and the writing first.
 
-## Public entry points
+Load the first seeder if you want to step into use in a compatible model or agent.
 
-- Read first: [practiceofclarity.eu](https://practiceofclarity.eu) is the primary reading surface.
-- Inspect the canon: this repo holds the seeds, continuity documents, mandate lenses, and guidance the public site points to.
-- Activate directly: load the seeder when you want to use the practice, not only read about it.
+## Start here
 
-Reading about the system is not activation.
+- If you are new, begin with [practiceofclarity.eu](https://practiceofclarity.eu).
+- If you want the canon behind the work, this repo holds the seeds, continuity documents, mandate lenses, and guidance the site points toward.
+- If you want to move from reading into use, load the first seeder directly.
+
+Reading about the practice is not activation.
 
 Operational grounding begins only when the seeder and canonical artifacts are loaded.
 
@@ -56,11 +58,11 @@ Then analyze the following task:
 
 ## Repo contributor entry
 
-If you are using an AI-assisted editor (Cursor, Claude Code, GitHub Copilot), say **"onboard me"** in chat for setup, structure, and contribution guidance.
+If you want help finding your way through the repo, say **"onboard me"** in chat for setup, structure, and contribution guidance.
 
 If you want the repo's history and reasoning trace instead, say **"Evolution Arc"**. The agent will ask which register you want and walk the inspectable repo-local sources.
 
-For manual paths without AI, read the [onboarding guide](docs/onboarding/manual.md) and [Evolution Arc](docs/onboarding/evolution-arc.md).
+If you prefer the manual path, read the [onboarding guide](docs/onboarding/manual.md) and [Evolution Arc](docs/onboarding/evolution-arc.md).
 
 ## Quick commands
 
