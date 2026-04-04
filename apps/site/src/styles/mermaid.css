@@ -27,3 +27,24 @@
   font-family: var(--__sl-font), ui-sans-serif, system-ui, sans-serif;
   line-height: 1.35;
 }
+
+:root[data-theme="dark"]:not([data-style="solid"])
+  .sl-markdown-content
+  svg[id^="mermaid-"]
+  .nodeLabel,
+:root[data-theme="dark"]:not([data-style="solid"])
+  .sl-markdown-content
+  svg[id^="mermaid-"]
+  .nodeLabel
+  p,
+:root[data-theme="dark"]:not([data-style="solid"])
+  .sl-markdown-content
+  svg[id^="mermaid-"]
+  .edgeLabel,
+:root[data-theme="dark"]:not([data-style="solid"])
+  .sl-markdown-content
+  svg[id^="mermaid-"]
+  .edgeLabel
+  p {
+  color: #303446;
+}
