@@ -72,3 +72,8 @@ The canonical architecture diagram with all relationships is at [`docs/architect
 - Production secrets, sensitive infrastructure details, or operator-local values in committed files (runtime values live in GitHub secrets or gitignored local files)
 - Deployment infrastructure (managed externally on Infomaniak and Cloudflare)
 - User data or databases (this is a static site workspace)
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

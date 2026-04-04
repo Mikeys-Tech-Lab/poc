@@ -18,3 +18,8 @@ The following items could not be checked automatically. Verify manually:
 
 This report is for local operator alignment only.
 Do not aggregate, rank, or attach to individuals.
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

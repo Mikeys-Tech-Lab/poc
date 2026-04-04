@@ -121,3 +121,8 @@ When an environment is parked (not yet deployed or intentionally offline), Infom
 | `maintenance-logo.png` | Hero image scaled to 128px for the logo slot |
 
 These are generated from the site's source assets (`apps/site/src/assets/`) and uploaded manually to Infomaniak's maintenance editor.
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

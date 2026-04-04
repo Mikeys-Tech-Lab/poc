@@ -20,3 +20,8 @@ description: Export full-page screenshots for every current page, register, atmo
 
 - If the command fails because Playwright Chromium is missing, run `pnpm --filter site exec playwright install chromium` and retry.
 - If the command fails because the local build is broken, stop and report the build failure instead of producing partial output.
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

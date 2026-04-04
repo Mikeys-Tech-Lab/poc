@@ -96,3 +96,8 @@ When the App is not configured, `steps.app-token.outputs.token` is empty, so the
 - Installation tokens expire after 1 hour and are scoped to the single repository.
 - The App has no webhook access and cannot be triggered externally.
 - The App's permissions are the minimum required for Release Please.
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

@@ -73,3 +73,8 @@ AOP does not replace the `.htaccess` rules. Both layers serve different purposes
 | Cloudflare Access (preview only) | Authenticates visitors at the edge |
 
 All layers remain active simultaneously. Defense in depth.
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

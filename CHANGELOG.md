@@ -497,3 +497,8 @@
 * **deps:** bump actions/checkout from 4 to 6 ([#7](https://github.com/Mikeys-Tech-Lab/poc/issues/7)) ([674c739](https://github.com/Mikeys-Tech-Lab/poc/commit/674c73973e5fb35cb68da2bdfdf06423fcd8f5f3))
 * **deps:** bump actions/setup-node from 4 to 6 ([#8](https://github.com/Mikeys-Tech-Lab/poc/issues/8)) ([d8a9ab7](https://github.com/Mikeys-Tech-Lab/poc/commit/d8a9ab714b5e355a4c4fa3cdae7b3c47d2146e45))
 * release main ([#10](https://github.com/Mikeys-Tech-Lab/poc/issues/10)) ([7f93ca9](https://github.com/Mikeys-Tech-Lab/poc/commit/7f93ca9805da6813d55328829e657711c7fcd7d0))
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

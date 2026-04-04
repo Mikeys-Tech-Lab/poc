@@ -58,11 +58,15 @@ Then analyze the following task:
 
 ## Repo contributor entry
 
-If you want help finding your way through the repo, say **"onboard me"** in chat for setup, structure, and contribution guidance.
+If you are using a coding agent in this workspace, these are the main repo-entry
+commands:
 
-If you want the repo's history and reasoning trace instead, say **"Evolution Arc"**. The agent will ask which register you want and walk the inspectable repo-local sources.
+- **`onboard me`** for setup, workspace structure, and contribution guidance
+- **`Evolution Arc`** for repo history and reasoning trace
+- **`Sensible Defaults`** when you explicitly want the first mandate lens loaded
+  for delivery-reality analysis
 
-If you prefer the manual path, read the [onboarding guide](docs/onboarding/manual.md) and [Evolution Arc](docs/onboarding/evolution-arc.md).
+If you prefer the manual path, read the [onboarding guide](docs/onboarding/manual.md), the [onboarding topic index](docs/onboarding/README.md), and [Evolution Arc](docs/onboarding/evolution-arc.md).
 
 ## Quick commands
 
@@ -70,6 +74,7 @@ If you prefer the manual path, read the [onboarding guide](docs/onboarding/manua
 pnpm install
 pnpm run local        # docs site at http://localhost:4321
 pnpm run build        # production build
+pnpm license:check    # verify markdown-like source files expose the repo license split
 pnpm test             # tooling tests
 pnpm screendump       # export desktop/tablet/mobile snapshots for both atmospheric themes + zip
 ```
@@ -95,4 +100,12 @@ Full setup details: [docs/onboarding/local-setup.md](docs/onboarding/local-setup
 - Code and tooling: [MIT License](LICENSE)
 - Authored content (seeds, site pages, docs): [CC BY 4.0](LICENSE-CC-BY-4.0)
 
-File headers and site license notices reflect this split. See individual files for applicable license.
+The root license files define this split. Some canonical authored surfaces and
+site license notices repeat it explicitly where needed.
+
+Operational policy: [docs/guidance/licensing-surface-policy.md](docs/guidance/licensing-surface-policy.md)
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

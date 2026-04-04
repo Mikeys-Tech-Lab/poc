@@ -52,3 +52,8 @@ If you are new to this repo and reading without AI assistance, this is the recom
 ## Getting help
 
 If you are working in an AI-assisted editor, the agent can answer questions about this repo by reading the docs and guidance files. If you are working without AI assistance, the docs in this directory and the files linked above are the starting points.
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

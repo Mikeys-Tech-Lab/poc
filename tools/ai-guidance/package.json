@@ -7,6 +7,7 @@
     "cursor:check": "tsx src/infra/cursor-check.ts",
     "capability:check": "tsx src/infra/capability-check.ts",
     "guidance:check": "tsx src/infra/guidance-check.ts",
+    "license:check": "tsx src/infra/license-check.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "vitest run --coverage"

@@ -66,3 +66,8 @@ This ensures every automated deployment in the repo corresponds to a tagged rele
 | [`docs/infra/infomaniak-environment-setup.md`](../infra/infomaniak-environment-setup.md) | Step-by-step environment provisioning |
 | [`docs/infra/github-app-release-setup.md`](../infra/github-app-release-setup.md) | Release automation GitHub App setup |
 | [`docs/infra/renovate-app-setup.md`](../infra/renovate-app-setup.md) | Renovate GitHub App setup and dependency automation enablement |
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

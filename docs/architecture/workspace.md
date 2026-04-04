@@ -37,6 +37,7 @@ flowchart TD
   Tooling -->|"informs"| CursorSkills
   Tooling -->|"guidance drift validator"| Onboarding
   Tooling -->|"guidance drift validator"| EvolutionArcGuide
+  Tooling -->|"license surface validator"| Guidance
 
   Guidance[docs/guidance/] -.->|"describes"| Agents
   Architecture[docs/architecture/] -.->|"describes"| Agents
@@ -125,9 +126,14 @@ flowchart TD
 | `docs/architecture/` | Architecture docs + this canonical diagram | Exists |
 | `docs/decisions/` | Architecture Decision Records (ADRs) — structural rationale with trace | Exists |
 | `docs/ai/` | Capability alignment reports (generated) | Exists |
-| `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks and deterministic guidance drift validation | Exists |
+| `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks, deterministic guidance drift validation, and license surface validation | Exists |
 | `apps/site/` | Astro Starlight frontend | Exists |
 | `apps/site/src/content/docs/` | Practitioner site content collection | Exists |
 | `apps/site/src/content/register/orientation/` | Active orientation register content collection | Exists |
 | `docs/infra/` | Infrastructure runbooks (Infomaniak setup, GitHub App setup, protection layers, authenticated origin pulls) and maintenance assets | Exists |
 | `.cursor/skills/infomaniak-deployment/` | Deployment skill for Infomaniak hosting | Exists |
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

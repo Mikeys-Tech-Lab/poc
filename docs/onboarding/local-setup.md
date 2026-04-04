@@ -25,6 +25,7 @@ Other commands:
 |---|---|
 | `pnpm run build` | Production build of the docs site |
 | `pnpm run preview` | Preview the production build locally |
+| `pnpm license:check` | Verify tracked markdown-like source files expose the repo's license split explicitly |
 | `pnpm test` | Run tooling tests (Vitest) |
 | `pnpm run test:coverage` | Run tests with coverage |
 | `pnpm screendump` | Build the site, export desktop/tablet/mobile screenshots for both atmospheric themes, and create a versioned zip in `.dist/` |
@@ -50,3 +51,8 @@ If you are only running the site locally and not deploying, you can skip the inf
 - GitHub App tokens — only needed for release automation
 
 The site builds and runs locally with no external dependencies beyond Node.js and pnpm.
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

@@ -43,6 +43,27 @@ If this guidance is used to police workers, evaluate individuals, or create over
 - Follow repo licensing (MIT for code/tooling, CC BY 4.0 for authored content).
 - When uncertain about a tool, command, or API, verify the local version/config/help output before asserting. If not checkable, produce a manual checklist and mark the result unknown. Do not infer capability.
 
+## Licensing surfaces
+
+The repo root license files define the split:
+
+- `LICENSE` for code and tooling
+- `LICENSE-CC-BY-4.0` for authored content
+
+Tracked markdown-like source files must also expose that split explicitly.
+
+- Scope: tracked `.md`, `.mdx`, and `.mdc` files
+- Acceptable forms: a full explicit header, an HTML comment notice, or an MDX
+  block comment notice
+- Purpose: keep the licensing contract inspectable in source, not only implied
+  by the repo root or the frontend
+
+Do not confuse source notices with rendered site license panels. They serve
+different layers.
+
+Use `pnpm license:check` to verify the current contract. The operational policy
+for this rule lives in `docs/guidance/licensing-surface-policy.md`.
+
 ## Repo bootstrap posture
 
 The default workspace bootstrap is not "load every lens."

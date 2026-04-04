@@ -41,6 +41,7 @@ Non-trivial work follows three phases:
 3. **Close** — reflect, cleanup, then PR
 
 The Close phase matters. Before creating a PR:
+- Run `pnpm license:check` and keep the markdown-like source license notices intact
 - Run `pnpm run build` and check for zero warnings
 - Search for unused exports, dead code, orphaned config
 - Check that docs, skills, and rules are updated if the work introduced new patterns
@@ -95,3 +96,8 @@ Every PR updates all affected documentation in the same PR. There is no "update 
 Significant structural decisions get an Architecture Decision Record in `docs/decisions/`. The criteria: URL or content architecture changes, multi-file reversals, hard breaks, or decisions someone might ask "why?" about in 6 months. See `docs/decisions/README.md` for the template.
 
 See `AGENTS.md` § Documentation evolution discipline for the full rule and specific obligations by change type.
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

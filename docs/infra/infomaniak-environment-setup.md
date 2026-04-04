@@ -177,3 +177,8 @@ Use this checklist for each new environment:
 - [ ] Workflow file created/updated
 - [ ] Deployment tested via Actions
 - [ ] Live site verified
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

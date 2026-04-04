@@ -48,6 +48,7 @@ Cursor uses two mechanisms:
 The repo also keeps the guidance layer from drifting silently:
 
 - a **blocking deterministic validator** in `tools/ai-guidance/` checks onboarding and Evolution Arc contracts using explicit mappings
+- a **blocking license surface check** in `tools/ai-guidance/` verifies that tracked markdown-like source files expose the repo's license split explicitly
 - a **non-blocking advisory review** in GitHub Actions uses an AI reasoning layer over inspectable repo traces to surface broader drift
 
 The split is intentional. Deterministic checks fail only on checkable facts. Broader interpretation stays advisory.
@@ -116,3 +117,8 @@ To change agent behavior: edit `AGENTS.md`. Adapters follow. If an adapter needs
 ## Why this matters
 
 The guidance system is what makes this workspace coherent across multiple AI agents and human contributors. Without it, each agent session would start from zero, reinventing conventions and potentially contradicting previous decisions. The canonical source ensures consistency. The adaptation rule ensures federation without drift.
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->
