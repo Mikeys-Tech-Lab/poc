@@ -103,7 +103,11 @@ test.describe('final ui refinements', () => {
         await expect(page.locator('.license-notice .provenance')).toContainText(
           'This site is built in the open. The writing is the primary reading surface. The repository is the inspectable node behind it.',
         );
-        await expect(page.locator('.license-notice .provenance a')).toHaveCount(0);
+        await expect(page.locator('.license-notice .provenance a')).toHaveCount(1);
+        await expect(page.locator('.license-notice .provenance a')).toHaveAttribute(
+          'href',
+          'https://github.com/Mikeys-Tech-Lab/poc',
+        );
 
         await expect(page.locator('.helper-practitioner')).toBeVisible();
         await expect(page.locator('.helper-practitioner')).toHaveText(helperCopy.practitioner);
