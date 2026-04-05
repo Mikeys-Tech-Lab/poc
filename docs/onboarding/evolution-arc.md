@@ -69,3 +69,7 @@ If you are not using an AI-assisted editor:
 - It should stay grounded in inspectable repo sources.
 - It should not overpromise access to PR or discussion trace before that surface is deliberately expanded.
 
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

@@ -48,3 +48,8 @@
 ### Features
 
 * scaffold workspace guidance, site, and tooling ([e441a12](https://github.com/Mikeys-Tech-Lab/poc/commit/e441a1277412a857f2c4e9dba9506979a2d74885))
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

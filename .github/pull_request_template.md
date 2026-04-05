@@ -49,3 +49,8 @@
 - [ ] No gating, scoring, or enforcement language introduced
 - [ ] Context reflection included in PR description
 - [ ] PR description updated after final push
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

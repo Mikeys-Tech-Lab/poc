@@ -57,11 +57,15 @@ test.describe('register toggle', () => {
   }) => {
     await page.goto('/en-us/about/what-this-is/');
 
-    await page.locator('starlight-toc nav a').filter({ hasText: 'Theme' }).first().click();
+    await page
+      .locator('starlight-toc nav a')
+      .filter({ hasText: 'What this is not' })
+      .first()
+      .click();
     await page.waitForTimeout(100);
 
     const practitionerPosition = await page.evaluate(() => {
-      const visibleTheme = [...document.querySelectorAll('#theme')].find((element) => {
+      const visibleHeading = [...document.querySelectorAll('#what-this-is-not')].find((element) => {
         if (!(element instanceof HTMLElement)) return false;
         const style = window.getComputedStyle(element);
         return (
@@ -69,22 +73,26 @@ test.describe('register toggle', () => {
         );
       });
 
-      if (!(visibleTheme instanceof HTMLElement)) return null;
+      if (!(visibleHeading instanceof HTMLElement)) return null;
       return {
         hash: window.location.hash,
-        top: visibleTheme.getBoundingClientRect().top,
+        top: visibleHeading.getBoundingClientRect().top,
       };
     });
 
-    expect(practitionerPosition?.hash).toBe('#theme');
+    expect(practitionerPosition?.hash).toBe('#what-this-is-not');
     expect(practitionerPosition?.top ?? Number.POSITIVE_INFINITY).toBeLessThan(140);
 
     await page.locator('poc-register-toggle button').click();
-    await page.locator('starlight-toc nav a').filter({ hasText: 'Theme' }).first().click();
+    await page
+      .locator('starlight-toc nav a')
+      .filter({ hasText: 'What this is not' })
+      .first()
+      .click();
     await page.waitForTimeout(100);
 
     const orientationPosition = await page.evaluate(() => {
-      const visibleTheme = [...document.querySelectorAll('#theme')].find((element) => {
+      const visibleHeading = [...document.querySelectorAll('#what-this-is-not')].find((element) => {
         if (!(element instanceof HTMLElement)) return false;
         const style = window.getComputedStyle(element);
         return (
@@ -92,14 +100,14 @@ test.describe('register toggle', () => {
         );
       });
 
-      if (!(visibleTheme instanceof HTMLElement)) return null;
+      if (!(visibleHeading instanceof HTMLElement)) return null;
       return {
         hash: window.location.hash,
-        top: visibleTheme.getBoundingClientRect().top,
+        top: visibleHeading.getBoundingClientRect().top,
       };
     });
 
-    expect(orientationPosition?.hash).toBe('#theme');
+    expect(orientationPosition?.hash).toBe('#what-this-is-not');
     expect(orientationPosition?.top ?? Number.POSITIVE_INFINITY).toBeLessThan(140);
   });
 });

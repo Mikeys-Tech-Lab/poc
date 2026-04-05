@@ -1,13 +1,24 @@
 ---
-description: Sensible Defaults delivery realism lens applied as persistent posture
-alwaysApply: true
+description: Sensible Defaults delivery realism lens reference for explicit lens work
+globs: "{mandateLenses/**,docs/practices/sensible-defaults.md}"
+alwaysApply: false
 ---
 
 # Sensible Defaults (delivery realism)
 
-Full lens text: `docs/practices/sensible-defaults.md`.
+Canonical lens text: `mandateLenses/SensibleDefaults/lens.md`.
+Derived explainer: `docs/practices/sensible-defaults.md`.
 
-This is an adaptation of the full lens for always-on agent use. It is not a gate.
+This is an adaptation of the full lens for direct work on the lens package and its
+derived explainer.
+
+It is not the default workspace bootstrap.
+
+Default workspace grounding comes from `AGENTS.md`, the root seed set in
+`seeds/`, and the continuity layer in `continuity/`.
+
+Load `mandateLenses/SensibleDefaults/context-seeder.md` only when the task or
+prompt explicitly calls for Sensible Defaults or needs delivery-reality framing.
 
 ## Delivery realism principle
 
@@ -38,7 +49,7 @@ For small changes, keep each point to one short paragraph.
 
 ## Quality checkpoint
 
-If a change affects content rendering, verify all active register x locale combinations render correctly. Register state is a query parameter (`?register=orientation`), not a route. The current state matrix is 1 locale x 6 content paths x 2 registers = 12 states. E2E tests cover this automatically; if they are not available, manually spot-check at least one page in both active registers.
+If a change affects content rendering, verify all active register x locale combinations render correctly. Register state is a query parameter (`?register=orientation`), not a route. The current state matrix is 1 locale x 19 content paths x 2 registers = 38 states. E2E tests cover this automatically; if they are not available, manually spot-check at least one page in both active registers.
 
 ## Misuse guard
 

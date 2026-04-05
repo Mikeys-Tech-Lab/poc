@@ -31,6 +31,7 @@ If an adapter conflicts with `AGENTS.md`, the canonical file wins. Adapters must
 - **Tool preferences** — pnpm, Vitest, `gh` CLI, GPG signing, branch naming
 - **Workflow conventions** — GitHub Flow, Conventional Commits, feature lifecycle
 - **Structural awareness** — orient before acting, ripple check, no flattening
+- **Bootstrap posture** — default workspace grounding comes from `seeds/` and `continuity/`; mandate lens seeders are loaded on demand
 - **Documentation evolution discipline** — every PR updates all affected docs, no exceptions
 - **Architectural invariants** — non-negotiable constraints
 
@@ -47,6 +48,7 @@ Cursor uses two mechanisms:
 The repo also keeps the guidance layer from drifting silently:
 
 - a **blocking deterministic validator** in `tools/ai-guidance/` checks onboarding and Evolution Arc contracts using explicit mappings
+- a **blocking license surface check** in `tools/ai-guidance/` verifies that tracked markdown-like source files expose the repo's license split explicitly
 - a **non-blocking advisory review** in GitHub Actions uses an AI reasoning layer over inspectable repo traces to surface broader drift
 
 The split is intentional. Deterministic checks fail only on checkable facts. Broader interpretation stays advisory.
@@ -56,12 +58,21 @@ Current rules:
 | Rule | Scope |
 |---|---|
 | `poc-grounding.mdc` | Practice of Clarity discipline (always apply) |
-| `sensible-defaults.mdc` | Delivery realism lens (always apply) |
+| `sensible-defaults.mdc` | Sensible Defaults lens reference for direct lens-package work |
 | `security-awareness.mdc` | Secret handling, public repo hygiene (always apply) |
 | `poc-writing-md.mdc` | Markdown writing conventions |
 | `poc-tooling-ts.mdc` | TypeScript + pnpm tooling |
 | `astro-starlight.mdc` | Astro + Starlight development |
 | `visual-design.mdc` | Visual design |
+
+Default workspace bootstrap is repo-native and always-on:
+
+- `AGENTS.md`
+- `seeds/`
+- `continuity/`
+
+Mandate lens seeders such as `mandateLenses/SensibleDefaults/context-seeder.md`
+are on-demand overlays, not universal bootstrap.
 
 The repo currently exposes two conversational entry paths:
 
@@ -74,6 +85,7 @@ Current skills:
 |---|---|
 | `onboarding` | Newcomer onboarding and repo orientation |
 | `evolution-arc` | Guided repo history, reasoning trace, and workspace evolution |
+| `sensible-defaults` | On-demand delivery realism lens loading for explicit Sensible Defaults work |
 | `astro-starlight` | Docs site development |
 | `node-tooling` | Scripts, tests, TypeScript tooling |
 | `git-commit` | Before every commit |
@@ -105,3 +117,8 @@ To change agent behavior: edit `AGENTS.md`. Adapters follow. If an adapter needs
 ## Why this matters
 
 The guidance system is what makes this workspace coherent across multiple AI agents and human contributors. Without it, each agent session would start from zero, reinventing conventions and potentially contradicting previous decisions. The canonical source ensures consistency. The adaptation rule ensures federation without drift.
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

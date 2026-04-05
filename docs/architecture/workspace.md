@@ -22,8 +22,10 @@ The diagram shows the current repo architecture: where canonical guidance lives,
 
 ```mermaid
 flowchart TD
-  Seeds[seeds/] -->|"dev-only sources"| Agents[AGENTS.md]
-  Practices["docs/practices/"] -->|"operational lenses"| Agents
+  Seeds[seeds/] -->|"default bootstrap"| Agents[AGENTS.md]
+  Continuity[continuity/] -->|"default bootstrap"| Agents
+  MandateLenses[mandateLenses/] -->|"on-demand lens canon"| Agents
+  Practices["docs/practices/"] -.->|"derived explainers"| MandateLenses
 
   Agents -->|"always-apply rules"| CursorRules[.cursor/rules/]
   Agents -->|"stack skills"| CursorSkills[.cursor/skills/]
@@ -35,6 +37,7 @@ flowchart TD
   Tooling -->|"informs"| CursorSkills
   Tooling -->|"guidance drift validator"| Onboarding
   Tooling -->|"guidance drift validator"| EvolutionArcGuide
+  Tooling -->|"license surface validator"| Guidance
 
   Guidance[docs/guidance/] -.->|"describes"| Agents
   Architecture[docs/architecture/] -.->|"describes"| Agents
@@ -42,6 +45,7 @@ flowchart TD
   Onboarding[docs/onboarding/] -.->|"newcomer paths"| Agents
   OnboardSkill[".cursor/skills/onboarding/"] -->|"reads index"| Onboarding
   EvolutionArcSkill[".cursor/skills/evolution-arc/"] -->|"reads trace map"| EvolutionArcGuide["docs/guidance/evolution-arc.md"]
+  SensibleDefaultsSkill[".cursor/skills/sensible-defaults/"] -->|"loads on demand"| MandateLenses
   EvolutionArcGuide -.->|"curates"| Decisions
   EvolutionArcGuide -.->|"curates"| Architecture
   EvolutionArcGuide -.->|"curates"| Guidance
@@ -51,7 +55,8 @@ flowchart TD
   Renovate["renovate.json"] -.->|"routine dependency updates"| Tooling
   Dependabot[".github/dependabot.yml"] -.->|"security-only updates"| Tooling
 
-  AstroSite[apps/site/] -->|"site content"| SiteDocs["apps/site/src/content/docs/"]
+  AstroSite[apps/site/] -->|"practitioner content"| SiteDocs["apps/site/src/content/docs/"]
+  AstroSite -->|"active register content"| SiteRegister["apps/site/src/content/register/orientation/"]
 
   subgraph "CI/CD (GitHub Actions)"
     DeployDev[".github/workflows/deploy-dev.yml"]
@@ -102,11 +107,13 @@ flowchart TD
 
 | Path | Role | Status |
 |---|---|---|
-| `seeds/` | Development-only canonical sources for the Practice of Clarity | Exists |
-| `docs/practices/` | Practice documents and operational lenses (e.g., Sensible Defaults) | Exists |
+| `seeds/` | Structural seed canon for the Practice of Clarity at repo root | Exists |
+| `continuity/` | Root continuity package family: temporal anchors and architecture memory | Exists |
+| `mandateLenses/` | Root runtime lens package family: canonical lenses and context seeders | Exists |
+| `docs/practices/` | Derived explainers and bridge docs for canonical lens packages | Exists |
 | `AGENTS.md` | Canonical agent guidance (single source of truth) | Exists |
 | `.cursor/rules/` | Cursor always-apply and file-scoped rules (includes security-awareness) | Exists |
-| `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, renovate-operations, infomaniak-deployment, onboarding, evolution-arc) | Exists |
+| `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, renovate-operations, infomaniak-deployment, onboarding, evolution-arc, sensible-defaults) | Exists |
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
 | `.github/` | PR template, Copilot instructions, Dependabot security config, prompt files for advisory automation | Exists |
 | `renovate.json` | Renovate routine dependency policy, grouping, automerge, and dashboard behavior | Exists |
@@ -119,7 +126,14 @@ flowchart TD
 | `docs/architecture/` | Architecture docs + this canonical diagram | Exists |
 | `docs/decisions/` | Architecture Decision Records (ADRs) — structural rationale with trace | Exists |
 | `docs/ai/` | Capability alignment reports (generated) | Exists |
-| `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks and deterministic guidance drift validation | Exists |
+| `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks, deterministic guidance drift validation, and license surface validation | Exists |
 | `apps/site/` | Astro Starlight frontend | Exists |
+| `apps/site/src/content/docs/` | Practitioner site content collection | Exists |
+| `apps/site/src/content/register/orientation/` | Active orientation register content collection | Exists |
 | `docs/infra/` | Infrastructure runbooks (Infomaniak setup, GitHub App setup, protection layers, authenticated origin pulls) and maintenance assets | Exists |
 | `.cursor/skills/infomaniak-deployment/` | Deployment skill for Infomaniak hosting | Exists |
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

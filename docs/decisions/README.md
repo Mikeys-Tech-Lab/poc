@@ -31,7 +31,7 @@ If ADRs add process friction instead of preserving reasoning, the practice has d
 - **PR descriptions** hold the implementation evolution trace (what happened during the work, including mistakes and corrections).
 - **ADRs** hold the decision rationale (what was decided, what was rejected, and why).
 - The ADR links to the PR. The PR may link back to the ADR. Neither duplicates the other.
-- The Sensible Defaults lens (`docs/practices/sensible-defaults.md`) surfaces delivery risk. When it identifies a significant structural decision, that decision may warrant an ADR.
+- The canonical Sensible Defaults lens (`mandateLenses/SensibleDefaults/lens.md`) surfaces delivery risk. The derived explainer at `docs/practices/sensible-defaults.md` can point to it, but it does not replace the canonical lens surface.
 
 ## Numbering policy
 
@@ -87,6 +87,7 @@ Links to seeds, PRs, related ADRs, or external sources. Not a duplication of PR 
 | [0003](0003-agent-local-config-boundary.md) | Agent local config boundary | Accepted | 2026-03-28 |
 | [0004](0004-renovate-primary-dependency-engine.md) | Renovate as the primary dependency update engine | Accepted | 2026-03-29 |
 | [0005](0005-renovate-automerge-posture.md) | Renovate automerge posture for routine and vulnerability updates | Accepted | 2026-03-29 |
+| [0006](0006-root-canon-package-families-and-lens-surfaces.md) | Root canon package families and lens surfaces | Accepted | 2026-04-03 |
 
 ---
 © 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).

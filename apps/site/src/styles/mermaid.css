@@ -1,0 +1,50 @@
+/* Mermaid diagrams render at build time as inline SVG.
+   Keep them visually aligned with the site's content surfaces. */
+
+:is(.sl-markdown, .sl-markdown-content) :is(svg[id^="mermaid-"], img[id^="mermaid-"]) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 2rem auto;
+}
+
+.sl-markdown-content :is(svg[id^="mermaid-"], img[id^="mermaid-"]) {
+  padding: 1rem;
+  background-color: var(--poc-surface-mid);
+  border: 1px solid var(--poc-border-faint);
+  border-radius: 1rem;
+  box-shadow: var(--poc-shadow-soft);
+  overflow: visible;
+}
+
+:root:not([data-style="solid"]) .sl-markdown-content svg[id^="mermaid-"] {
+  backdrop-filter: blur(var(--poc-blur-sm));
+}
+
+.sl-markdown-content svg[id^="mermaid-"] text,
+.sl-markdown-content svg[id^="mermaid-"] .label,
+.sl-markdown-content svg[id^="mermaid-"] .nodeLabel {
+  font-family: var(--__sl-font), ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.35;
+}
+
+:root[data-theme="dark"]:not([data-style="solid"])
+  .sl-markdown-content
+  svg[id^="mermaid-"]
+  .nodeLabel,
+:root[data-theme="dark"]:not([data-style="solid"])
+  .sl-markdown-content
+  svg[id^="mermaid-"]
+  .nodeLabel
+  p,
+:root[data-theme="dark"]:not([data-style="solid"])
+  .sl-markdown-content
+  svg[id^="mermaid-"]
+  .edgeLabel,
+:root[data-theme="dark"]:not([data-style="solid"])
+  .sl-markdown-content
+  svg[id^="mermaid-"]
+  .edgeLabel
+  p {
+  color: #303446;
+}

@@ -30,6 +30,19 @@ Before relying on any Astro or Starlight feature:
 - Seeds (`seeds/`) are development-only sources. They are not the site content tree.
 - The site may reference seeds but must not import them as pages.
 
+### Public practice-first boundary
+
+For public content under `apps/site/src/content/**`:
+
+- lead with condition and practice, not repo or agent mechanics
+- do not include repo-operation instructions
+- keep activation secondary to explanation
+- point activation only to mandate lenses or their context seeders
+- do not frame repo navigation or repo workflows as activation
+
+The site explains the practice. Mandate lenses activate it. The repo supports
+its evolution.
+
 ### Register × locale two-axis model
 
 Locale and register are independent axes in the practice model, but the current repo activates only a small subset of that model.
@@ -46,6 +59,16 @@ Two content collections are defined in `content.config.ts`:
 - `register`: Custom collection for non-practitioner register content. Uses Astro's `glob` loader for `**/*.mdx` files in `src/content/register/`.
 
 The current site uses a single prefixed locale key, `en-us`. Content lives in symmetric `en-us` directories under both `docs/` and the active `register/orientation/` tree. There is no `root` locale; Astro's `redirects` config handles `/` → `/en-us/` (301 in dev server, meta-refresh HTML in static build). Do not assume additional locales are present unless you verify them in the current tree and config.
+
+Active content files may also declare register metadata in frontmatter for source
+inspectability:
+
+- `docs/**` may use `register: practitioner`
+- `register/orientation/**` may use `register: orientation`
+
+This metadata is descriptive and should stay aligned with the collection/path.
+Do not use it as the primary source of runtime register logic when the path or
+collection already defines the same fact.
 
 ## Known pitfalls
 
@@ -142,7 +165,9 @@ Social URLs live in `apps/site/src/consts.ts`. Use these constants in `.mjs`, `.
 import { LINKEDIN } from '../consts';
 ```
 
-The site is a publication surface, not repository documentation. Repository links are intentionally absent from published content.
+The site remains practice-first. Repository links should stay deliberate and
+limited to pages that explicitly handle public inspection or activation
+surfaces, such as `Act IV` or `Sensible Defaults`.
 
 ## Shared modules (`src/lib/`)
 
@@ -166,7 +191,7 @@ Five Starlight components are overridden via the `components` key in `astro.conf
 | Override | File | Purpose |
 |---|---|---|
 | `SiteTitle` | `src/components/SiteTitle.astro` | Site title with register toggle. Clicking the title switches between Practitioner and Orientation. |
-| `SocialIcons` | `src/components/SocialIcons.astro` | Adds a LinkedIn icon after the default social icons. |
+| `SocialIcons` | `src/components/SocialIcons.astro` | Renders the public social/profile links shown in the header. |
 | `ThemeProvider` | `src/components/ThemeProvider.astro` | Prevents FOUC for `data-theme`, `data-style`, and `data-register` attributes. |
 | `ThemeSelect` | `src/components/ThemeSelect.astro` | Extends the selector to 4 explicit theme options with locale-aware labels. |
 | `Pagination` | `src/components/LicensePanel.astro` | Wraps default Pagination with LicenseNotice footer. |
@@ -326,7 +351,7 @@ E2E tests live in `apps/site/e2e/`. Playwright config: `apps/site/playwright.con
 
 ### Test matrix
 
-The current state matrix is 1 locale x 6 content paths x 2 registers = 12 states, generated from arrays in `test-constants.ts`. Register state is a query parameter (`?register=orientation`), not a route segment. If the repo activates additional locales or routes later, update the arrays first and let the matrix expand from verified repo state.
+The current state matrix is 1 locale x 19 content paths x 2 registers = 38 states, generated from arrays in `test-constants.ts`. Register state is a query parameter (`?register=orientation`), not a route segment. If the repo activates additional locales or routes later, update the arrays first and let the matrix expand from verified repo state.
 
 ## Installability surface
 

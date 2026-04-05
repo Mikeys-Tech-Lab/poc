@@ -1,0 +1,313 @@
+---
+import {
+  ACTIVATION_BOUNDARY,
+  ACTIVATION_COMPATIBILITY,
+  ACTIVATION_INCOMPATIBILITY,
+  GUIDED_ACTIVATION_PROMPT,
+  MINIMAL_ACTIVATION_PROMPT,
+  SEEDER_URL,
+} from '../lib/activation-prompts';
+
+interface Props {
+  intro: string;
+  title?: string;
+  guidedTitle?: string;
+  minimalTitle?: string;
+  summaryLabel?: string;
+}
+
+const {
+  intro,
+  title = 'Paste-ready activation',
+  guidedTitle = 'Guided activation prompt',
+  minimalTitle = 'Minimal activation prompt',
+  summaryLabel = 'Runtime entry',
+} = Astro.props as Props;
+---
+
+<poc-activation-prompts>
+  <section class="reading-frame reading-frame-next activation-prompts">
+    <p class="reading-frame-label">{summaryLabel}</p>
+    <p class="reading-frame-title">{title}</p>
+    <div class="reading-frame-body activation-prompts-body">
+      <p>{intro}</p>
+      <p>{ACTIVATION_COMPATIBILITY}</p>
+      <p class="activation-prompts-note">{ACTIVATION_INCOMPATIBILITY}</p>
+      <p class="activation-prompts-boundary">{ACTIVATION_BOUNDARY}</p>
+
+      <div class="activation-prompts-card activation-prompts-card-url">
+        <div class="activation-prompts-card-header">
+          <div>
+            <p class="activation-prompts-card-label">Seeder URL</p>
+            <p class="activation-prompts-card-title">Direct runtime entry</p>
+          </div>
+          <button
+            type="button"
+            class="activation-prompts-copy"
+            data-copy-target="seeder-url"
+            aria-label="Copy seeder URL"
+          >
+            <span data-copy-default>Copy URL</span>
+            <span data-copy-success hidden>URL copied</span>
+          </button>
+        </div>
+        <p class="activation-prompts-url-link">
+          <a href={SEEDER_URL}>Open the public seeder URL</a>
+        </p>
+        <pre><code data-copy-source="seeder-url">{SEEDER_URL}</code></pre>
+      </div>
+
+      <div class="activation-prompts-card">
+        <div class="activation-prompts-card-header">
+          <div>
+            <p class="activation-prompts-card-label">Prompt</p>
+            <p class="activation-prompts-card-title">{minimalTitle}</p>
+          </div>
+          <button
+            type="button"
+            class="activation-prompts-copy"
+            data-copy-target="minimal-prompt"
+            aria-label="Copy minimal activation prompt"
+          >
+            <span data-copy-default>Copy minimal prompt</span>
+            <span data-copy-success hidden>Minimal prompt copied</span>
+          </button>
+        </div>
+        <pre><code data-copy-source="minimal-prompt">{MINIMAL_ACTIVATION_PROMPT}</code></pre>
+      </div>
+
+      <div class="activation-prompts-card">
+        <div class="activation-prompts-card-header">
+          <div>
+            <p class="activation-prompts-card-label">Prompt</p>
+            <p class="activation-prompts-card-title">{guidedTitle}</p>
+          </div>
+          <button
+            type="button"
+            class="activation-prompts-copy"
+            data-copy-target="guided-prompt"
+            aria-label="Copy guided activation prompt"
+          >
+            <span data-copy-default>Copy guided prompt</span>
+            <span data-copy-success hidden>Guided prompt copied</span>
+          </button>
+        </div>
+        <pre><code data-copy-source="guided-prompt">{GUIDED_ACTIVATION_PROMPT}</code></pre>
+      </div>
+    </div>
+  </section>
+</poc-activation-prompts>
+
+<script>
+  class PocActivationPrompts extends HTMLElement {
+    connectedCallback() {
+      if (this.dataset.bound === 'true') return;
+      this.dataset.bound = 'true';
+
+      this.querySelectorAll<HTMLButtonElement>('[data-copy-target]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const target = button.dataset.copyTarget;
+          if (!target) return;
+
+          const source = this.querySelector<HTMLElement>(`[data-copy-source="${target}"]`);
+          const value = source?.textContent?.replace(/\s+$/, '');
+          if (!value) return;
+
+          try {
+            await navigator.clipboard.writeText(value);
+            const defaultLabel = button.querySelector<HTMLElement>('[data-copy-default]');
+            const successLabel = button.querySelector<HTMLElement>('[data-copy-success]');
+            if (!(defaultLabel && successLabel)) return;
+
+            defaultLabel.hidden = true;
+            successLabel.hidden = false;
+
+            window.setTimeout(() => {
+              defaultLabel.hidden = false;
+              successLabel.hidden = true;
+            }, 1800);
+          } catch {
+            // Clipboard API unavailable.
+          }
+        });
+      });
+    }
+  }
+
+  if (!customElements.get('poc-activation-prompts')) {
+    customElements.define('poc-activation-prompts', PocActivationPrompts);
+  }
+</script>
+
+<style>
+  poc-activation-prompts {
+    display: block;
+    min-width: 0;
+  }
+
+  .activation-prompts {
+    margin: 1.9rem 0;
+    min-width: 0;
+  }
+
+  .activation-prompts-body {
+    display: grid;
+    gap: 1rem;
+    min-width: 0;
+  }
+
+  .activation-prompts-note,
+  .activation-prompts-boundary {
+    margin: 0;
+  }
+
+  .activation-prompts-note {
+    color: var(--poc-text-soft);
+  }
+
+  .activation-prompts-boundary {
+    color: var(--poc-text-strong);
+  }
+
+  .activation-prompts-card {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem 1.05rem;
+    border: 1px solid var(--poc-border-faint);
+    border-radius: 0.9rem;
+    background-color: var(--poc-surface-mid);
+    box-shadow: var(--poc-shadow-soft);
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  :root:not([data-style='solid']) .activation-prompts-card {
+    backdrop-filter: blur(var(--poc-blur-sm));
+  }
+
+  .activation-prompts-card-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .activation-prompts-card-header > div {
+    min-width: 0;
+  }
+
+  .activation-prompts-card-label,
+  .activation-prompts-card-title {
+    margin: 0;
+  }
+
+  .activation-prompts-card-label {
+    color: var(--poc-text-soft);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .activation-prompts-card-title {
+    margin-top: 0.3rem;
+    color: var(--poc-text-strong);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .activation-prompts-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    padding: 0.42em 0.78em;
+    border: 1px solid var(--poc-border, var(--sl-color-gray-5));
+    border-radius: 0.6em;
+    background: var(--poc-surface, transparent);
+    box-shadow: var(--poc-shadow-soft, none);
+    color: var(--poc-text-strong, var(--sl-color-gray-2));
+    font-size: var(--sl-text-xs);
+    cursor: pointer;
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease,
+      background-color 0.15s ease,
+      transform 0.15s ease;
+    line-height: 1;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+  }
+
+  :root:not([data-style='solid']) .activation-prompts-copy {
+    backdrop-filter: blur(var(--poc-blur-sm, 8px));
+  }
+
+  .activation-prompts-copy:hover {
+    color: var(--sl-color-text-accent);
+    border-color: var(--sl-color-text-accent);
+    background: var(--poc-surface-raised, transparent);
+    transform: translateY(-1px);
+  }
+
+  .activation-prompts-copy:focus-visible {
+    outline: 2px solid var(--sl-color-text-accent);
+    outline-offset: 2px;
+  }
+
+  .activation-prompts-url-link,
+  .activation-prompts-card pre {
+    margin: 0;
+  }
+
+  .activation-prompts-url-link a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .activation-prompts-card pre {
+    padding: 0.95rem 1rem;
+    border: 1px solid var(--poc-border-faint);
+    border-radius: 0.8rem;
+    background-color: var(--poc-surface);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.02);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  .activation-prompts-card code {
+    display: block;
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  :root[data-theme='light']:not([data-style='solid']) .activation-prompts-card {
+    background-color: rgb(255 255 255 / 0.68);
+    border-color: rgb(var(--poc-overlay) / 0.2);
+    box-shadow:
+      0 3px 10px rgb(0 0 0 / 0.06),
+      0 10px 24px rgb(0 0 0 / 0.04);
+  }
+
+  :root[data-theme='light']:not([data-style='solid']) .activation-prompts-copy,
+  :root[data-theme='light']:not([data-style='solid']) .activation-prompts-card pre {
+    background-color: rgb(255 255 255 / 0.82);
+    border-color: rgb(var(--poc-overlay) / 0.2);
+  }
+
+  @media (max-width: 32rem) {
+    .activation-prompts-card-header {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .activation-prompts-copy {
+      width: 100%;
+    }
+  }
+</style>

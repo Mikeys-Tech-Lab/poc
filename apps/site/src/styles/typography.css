@@ -25,6 +25,23 @@
   overflow-wrap: break-word;
 }
 
+/* Prose separators — slightly stronger rhythm across all themes */
+.sl-markdown-content hr {
+  margin: 2rem 0 1.75rem;
+  border: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--poc-border-hover) 10%,
+    var(--poc-border) 45%,
+    var(--poc-border) 55%,
+    var(--poc-border-hover) 90%,
+    transparent 100%
+  );
+}
+
 /* Code blocks — scroll within container, no page-level overflow (WCAG 1.4.10) */
 .sl-markdown-content pre,
 .starlight-aside pre {

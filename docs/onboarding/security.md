@@ -78,3 +78,8 @@ A fifth scan (Nuclei) runs automatically after seed and preview deployments, and
 Queue policy: [`docs/guidance/dependency-update-operations.md`](../guidance/dependency-update-operations.md)
 
 Full security posture: [`AGENTS.md` § Security posture](../../AGENTS.md)
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

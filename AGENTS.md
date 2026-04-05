@@ -43,6 +43,67 @@ If this guidance is used to police workers, evaluate individuals, or create over
 - Follow repo licensing (MIT for code/tooling, CC BY 4.0 for authored content).
 - When uncertain about a tool, command, or API, verify the local version/config/help output before asserting. If not checkable, produce a manual checklist and mark the result unknown. Do not infer capability.
 
+## Licensing surfaces
+
+The repo root license files define the split:
+
+- `LICENSE` for code and tooling
+- `LICENSE-CC-BY-4.0` for authored content
+
+Tracked markdown-like source files must also expose that split explicitly.
+
+- Scope: tracked `.md`, `.mdx`, and `.mdc` files
+- Acceptable forms: a full explicit header, an HTML comment notice, or an MDX
+  block comment notice
+- Purpose: keep the licensing contract inspectable in source, not only implied
+  by the repo root or the frontend
+
+Do not confuse source notices with rendered site license panels. They serve
+different layers.
+
+Use `pnpm license:check` to verify the current contract. The operational policy
+for this rule lives in `docs/guidance/licensing-surface-policy.md`.
+
+## Repo bootstrap posture
+
+The default workspace bootstrap is not "load every lens."
+
+For repo-native development and agent work, the always-on grounding layer is:
+
+- `AGENTS.md`
+- the root seed set in `seeds/`
+- the continuity layer in `continuity/`
+
+This baseline is the default self-boot posture for a fresh chat in this
+workspace.
+
+Mandate lenses are overlays, not universal bootstrap.
+
+Load `mandateLenses/SensibleDefaults/context-seeder.md` only when:
+
+- the user explicitly asks for `Sensible Defaults`
+- the prompt names that seeder or clearly asks for that posture
+- a development or overall workspace change needs delivery-reality framing
+
+If the seeder was not loaded, do not claim operation under that lens.
+
+## Public site boundary
+
+Content under `apps/site/src/content/**` is the public practice layer.
+
+- Lead with condition and practice, not repo, system, or agent mechanics.
+- Do not include repo-operation instructions in public pages.
+- Public pages may point toward activation only after conceptual grounding, and only by sending readers to a mandate lens or its context seeder.
+- Do not treat repo navigation or repo workflows as activation.
+- The site explains the practice. Mandate lenses activate it. The repo supports its evolution.
+
+Repo planning and coordination may assume `Sensible Defaults` as an internal
+stance, but that assumption must never be required for a reader to understand
+the public site.
+
+If the `Sensible Defaults` seeder was not actually loaded in a given chat, do
+not claim that it was loaded or that you are operating under it.
+
 ## Execution honesty
 
 Agents must not assert operational outcomes without evidence from actual tool execution.
@@ -190,7 +251,7 @@ This workspace has structured repo entry paths at `docs/onboarding/`. AI agents 
 - The topic index is at `docs/onboarding/README.md`. It lists available topics with IDs, paths, descriptions, and prerequisites.
 - The Cursor skills at `.cursor/skills/onboarding/SKILL.md` and `.cursor/skills/evolution-arc/SKILL.md` define the agent-driven entry flows.
 - For Claude Code and GitHub Copilot: read the topic index and follow the same structure when a user asks for onboarding or repo history.
-- For human readers without AI assistance: `docs/onboarding/manual.md` and `docs/onboarding/evolution-arc.md` provide the same entry points.
+- For readers without AI assistance: `docs/onboarding/manual.md` and `docs/onboarding/evolution-arc.md` provide the same starting paths.
 
 Onboarding docs summarize and link to deep docs. They do not duplicate content that lives elsewhere.
 
@@ -282,12 +343,16 @@ Documentation evolves with the workspace. Every PR updates all affected document
 
 This applies to every documentation surface:
 
+- `seeds/` (structural seed canon at repo root)
+- `continuity/` (temporal anchors and architecture memory)
+- `mandateLenses/` (canonical runtime lens packages and context seeders)
 - `AGENTS.md` (agent behavior, tool preferences, conventions, invariants)
 - `docs/onboarding/` (topic index and topic pages)
 - `docs/architecture/workspace.md` (directory roles, diagram, narrative)
 - `docs/decisions/` (Architecture Decision Records for structural rationale)
 - `docs/infra/` (runbooks, protection layers, environment setup)
 - `docs/guidance/` (principles, workflow)
+- `docs/practices/` (derived explainers and bridge docs)
 - `.cursor/rules/` and `.cursor/skills/` (agent rules and skills)
 - Adapter files (`.claude/CLAUDE.md`, `.github/copilot-instructions.md`)
 - `README.md` (gateway)
@@ -298,6 +363,7 @@ If a PR changes behavior, structure, tooling, conventions, or security posture, 
 
 ### Specific obligations
 
+- **Root canon changes** (new canonical package families, moved root artifacts, lens-source changes): update `docs/architecture/workspace.md`, the affected root packages, and any derived explainers such as `docs/practices/`.
 - **Structural changes** (repo layout, new directories, moved files): update `docs/architecture/workspace.md`. If the diagram and the file tree diverge, the file tree wins and the diagram must be updated.
 - **Structural decisions** that meet the ADR criteria (`docs/decisions/README.md`): write or update an ADR. Not every structural change needs one — only those where the rationale would otherwise be lost.
 - **Onboarding-relevant changes** (setup, workflow, AI guidance, security posture): update the topic index (`docs/onboarding/README.md`) and the affected topic page(s).
@@ -325,7 +391,10 @@ The advisory layer must stay advisory. It is a visibility mechanism, not a scori
 These are non-negotiable unless explicitly revised with a trace explaining why:
 
 - Canon is this file (`AGENTS.md`). Adapters only point to it.
+- Default workspace bootstrap is `AGENTS.md` + `seeds/` + `continuity/`. Mandate lens seeders are on-demand overlays, not universal bootstrap.
 - `seeds/` is dev-only and never becomes the site content tree.
+- `seeds/`, `continuity/`, and `mandateLenses/` are sibling root canon surfaces. Do not introduce a nested `root/` wrapper around them.
+- `mandateLenses/*/lens.md` is the canonical lens artifact. `context-seeder.md` is derivative. `docs/practices/` can explain and bridge, but it is not the runtime source of truth for a lens.
 - `docs/architecture/workspace.md` is the canonical architecture diagram and is updated with any structural change.
 - Capability checks degrade to a manual checklist and mark results `unknown` rather than guessing.
 - Reports are for local alignment only. Never aggregated or attached to individuals.

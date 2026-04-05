@@ -67,3 +67,8 @@ Each entry below describes one onboarding topic. Agents parse the entries to bui
 - **Path:** `docs/onboarding/manual.md`
 - **When to use:** Onboarding without an AI-assisted editor
 - **Prereqs:** none
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

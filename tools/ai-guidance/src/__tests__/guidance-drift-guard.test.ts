@@ -54,6 +54,19 @@ Ignore [the website](/en-us/) and [external docs](https://example.com/docs).
 
     expect(references).toEqual(['docs/guidance/evolution-arc.md', 'AGENTS.md', 'docs/onboarding']);
   });
+
+  it('ignores conceptual backtick labels that are not explicit repo paths', () => {
+    const references = extractPathReferences(
+      'AGENTS.md',
+      `
+Do not introduce a nested \`root/\` wrapper.
+Use \`mandateLenses/SensibleDefaults/context-seeder.md\` only on demand.
+\`lens.md\` and \`context-seeder.md\` are conceptual filenames here, not local relative paths.
+`,
+    );
+
+    expect(references).toEqual(['mandateLenses/SensibleDefaults/context-seeder.md']);
+  });
 });
 
 describe('runGuidanceDriftGuard', () => {

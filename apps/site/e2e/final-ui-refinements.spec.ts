@@ -11,7 +11,7 @@ const articlePath =
 const infoPath = '/en-us/about/what-this-is/';
 
 const practitionerAnchor =
-  'Integration is the quieter work that makes output meaningful. It involves aligning proposals with intent, verifying assumptions, understanding consequences, and ensuring that new changes actually fit with what already exists.';
+  'Integration is the quieter work that makes output meaningful. It means aligning proposals with intent, checking assumptions, understanding consequences, and ensuring new changes actually fit with what already exists.';
 const orientationAnchor =
   'Understanding takes time. People still need to ask questions, examine assumptions, and see how a decision fits with everything else that already exists.';
 
@@ -101,9 +101,13 @@ test.describe('final ui refinements', () => {
         await page.waitForLoadState('domcontentloaded');
 
         await expect(page.locator('.license-notice .provenance')).toContainText(
-          'This site is built in the open. The writing is the public front door. The repository is part of the same work and will be surfaced more directly in a later stage.',
+          'This site is built in the open. The writing is the primary reading surface. The repository is the inspectable node behind it.',
         );
-        await expect(page.locator('.license-notice .provenance a')).toHaveCount(0);
+        await expect(page.locator('.license-notice .provenance a')).toHaveCount(1);
+        await expect(page.locator('.license-notice .provenance a')).toHaveAttribute(
+          'href',
+          'https://github.com/Mikeys-Tech-Lab/poc',
+        );
 
         await expect(page.locator('.helper-practitioner')).toBeVisible();
         await expect(page.locator('.helper-practitioner')).toHaveText(helperCopy.practitioner);

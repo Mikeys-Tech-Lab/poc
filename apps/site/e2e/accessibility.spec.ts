@@ -73,7 +73,7 @@ const allPages = LOCALE_PREFIXES.flatMap((locale) =>
  * and that reset restores defaults.
  */
 test.describe('a11y panel controls', () => {
-  const BASE_URL = '/en-us/about/what-this-is';
+  const BASE_URL = '/en-us/about/what-this-is/';
 
   test.beforeEach(async ({ page }) => {
     await page.goto(BASE_URL);

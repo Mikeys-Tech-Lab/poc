@@ -18,6 +18,7 @@ This workspace documents reasoning, not people. Reports, traces, and tooling out
 
 - [Evolution Arc](evolution-arc.md) — curated map of the repo's trace surfaces, source roles, and Mermaid-backed history path.
 - [Dependency update operations](dependency-update-operations.md) — target state, policy invariants, queue model, and backlog recovery order for dependency automation.
+- [Licensing surface policy](licensing-surface-policy.md) — how the MIT / CC BY 4.0 split is expressed across tracked markdown-like source files and checked deterministically.
 - [Structural reflection and evolution](structural-reflection-and-evolution.md) — the high-level rule for converting incidents into patterns, guardrails, and workspace changes.
 - [Agent pre-commit verification](agent-pre-commit-verification.md) — reflection on lint-before-commit, accessibility override regressions, assumptions, and mistakes from publication refinements.
 
@@ -28,3 +29,8 @@ This workspace documents reasoning, not people. Reports, traces, and tooling out
 - Conventional Commits: `type(scope): subject`.
 - Documentation evolution discipline: every PR updates all affected documentation in the same PR. See `AGENTS.md` § Documentation evolution discipline for the full rule and specific obligations by change type.
 - Architecture Decision Records: significant structural decisions are recorded in `docs/decisions/`. See `docs/decisions/README.md` for criteria and template.
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

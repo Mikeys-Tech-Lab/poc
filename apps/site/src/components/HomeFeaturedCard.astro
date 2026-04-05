@@ -14,25 +14,25 @@ const themeLabels = getThemeLabels(locale);
 
 const intro =
   variant === 'orientation'
-    ? 'Start here if you want the basic framing, how to read the site, and what this work is trying to do.'
-    : 'Start here for the framing, the reading model, and the boundaries of the practice.';
+    ? 'If you are new, begin here. This page shows what is happening, what this practice responds to, and how to move through it.'
+    : 'Begin here. This page grounds the practice, shows what it responds to, and offers a clear way in.';
 
 const registerCopy =
   variant === 'orientation'
-    ? 'The page title button in the navigation bar is the register switch. Click it there, or click this example here. The ideas stay the same. The voice changes.'
-    : 'The page title button in the navigation bar is the register switch. Click it there, or click this example here. The structure stays the same. Only the voice changes.';
+    ? 'Switch how this is written, not what it says. The ideas stay the same. The voice shifts so you can find your way in.'
+    : 'Switch the voice without changing the structure. Use this when you want the same thinking to land differently.';
 
 const themeCopy =
   variant === 'orientation'
-    ? 'Select the theme here or in the selector. The highlighted option is the one currently active.'
-    : 'Select the theme here or in the selector. The highlighted option is the one currently active.';
+    ? 'Choose the version that is easiest to stay with. This does not change the content, only how it feels to read.'
+    : 'Adjust how this feels to read. The content stays the same.';
 ---
 
 <poc-home-featured-card>
   <Card title="What This Work Is" icon="open-book">
     <p>
       {intro}
-      <a href="/en-us/about/what-this-is/">Start reading</a>
+      <a href="/en-us/about/what-this-is/">Start here</a>
     </p>
     <div class="home-featured-guides">
       <section class="home-featured-guide">

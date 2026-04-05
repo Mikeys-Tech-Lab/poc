@@ -3,6 +3,7 @@
 import starlight from '@astrojs/starlight';
 import starlightCatppuccin from '@catppuccin/starlight';
 import { defineConfig } from 'astro/config';
+import rehypeMermaid from 'rehype-mermaid';
 export default defineConfig({
   site: process.env.SITE_URL || 'https://practiceofclarity.eu',
   redirects: {
@@ -10,6 +11,33 @@ export default defineConfig({
   },
   devToolbar: {
     enabled: false,
+  },
+  markdown: {
+    syntaxHighlight: {
+      type: 'shiki',
+      excludeLangs: ['mermaid'],
+    },
+    rehypePlugins: [
+      [
+        rehypeMermaid,
+        {
+          strategy: 'inline-svg',
+          mermaidConfig: {
+            theme: 'base',
+            themeVariables: {
+              primaryColor: '#f5e0dc',
+              primaryTextColor: '#303446',
+              primaryBorderColor: '#e78284',
+              lineColor: '#e78284',
+              secondaryColor: '#eff1f5',
+              tertiaryColor: '#f2d5cf',
+              fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif',
+              fontSize: '18px',
+            },
+          },
+        },
+      ],
+    ],
   },
   integrations: [
     starlight({
@@ -25,6 +53,7 @@ export default defineConfig({
         'en-us': { label: 'English (US)', lang: 'en-US' },
       },
       defaultLocale: 'en-us',
+      disable404Route: true,
       head: [
         {
           tag: 'link',
@@ -114,6 +143,8 @@ export default defineConfig({
           label: 'About',
           items: [
             { label: 'What This Work Is', slug: 'about/what-this-is' },
+            { label: 'Architecture', slug: 'about/architecture' },
+            { label: 'Glossary', slug: 'about/glossary' },
             { label: 'About the Author', slug: 'about/about-the-author' },
           ],
         },
@@ -131,8 +162,47 @@ export default defineConfig({
                   label: 'Act II: Practicing Decision Hygiene Under AI Speed',
                   slug: 'writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed',
                 },
+                {
+                  label: 'Act III: Nodes, Bridges, and Drift',
+                  slug: 'writing/articles/practice-of-clarity/act-3-nodes-bridges-and-drift',
+                },
+                {
+                  label: 'Act IV: A Public Node You Can Inspect',
+                  slug: 'writing/articles/practice-of-clarity/act-4-a-public-node-you-can-inspect',
+                },
               ],
             },
+          ],
+        },
+        {
+          label: 'Mandate Lenses',
+          items: [
+            { label: 'Overview', slug: 'mandate-lenses' },
+            {
+              label: 'Sensible Defaults: A Lens You Can Load',
+              slug: 'mandate-lenses/sensible-defaults-a-lens-you-can-load',
+            },
+          ],
+        },
+        {
+          label: 'Seeds',
+          items: [
+            { label: 'Overview', slug: 'seeds' },
+            {
+              label: 'A Living Practice of Clarity',
+              slug: 'seeds/a-living-practice-of-clarity',
+            },
+            { label: 'Practice Foundations', slug: 'seeds/practice-foundations' },
+            { label: "Beginner's Mind", slug: 'seeds/beginners-mind' },
+            {
+              label: 'A Bridge Between Conflicting Nodes',
+              slug: 'seeds/bridge-between-conflicting-nodes',
+            },
+            {
+              label: 'Translation and Register Guidance',
+              slug: 'seeds/translation-and-register-guidance',
+            },
+            { label: 'Voice of Guidance', slug: 'seeds/voice-of-guidance' },
           ],
         },
         {

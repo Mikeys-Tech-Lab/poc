@@ -1,17 +1,17 @@
 ---
 title: Practice of Clarity
-description: A publication for the Practice of Clarity.
+description: A publication and usable practice for making reasoning visible.
 template: splash
 hero:
   tagline: |
-    <p>A publication about making reasoning visible.</p>
+    <p>Work is moving faster than people can make sense of it.</p>
     <div data-register-content="practitioner">
-      <p>AI-assisted work now lets teams generate ideas, code, and decisions faster than they can fully understand them. When output outpaces understanding, coordination gets harder, review gets heavier, and trust starts to thin out.</p>
-      <p>Practice of Clarity is a publication about that condition and about a usable response to it: making reasoning visible so shared understanding can form without pretending certainty.</p>
+      <p>AI-assisted work produces plans, code, and decisions faster than teams can integrate them. Pressure rises. Shared understanding thins out.</p>
+      <p>This practice keeps reasoning visible while work is still moving. Assumptions stay traceable. Uncertainty stays speakable. Decisions can be followed without pretending certainty.</p>
     </div>
     <div data-register-content="orientation">
-      <p>Many people are now expected to work, decide, and respond faster than they can really understand what is happening. When that happens, pressure rises, confusion spreads, and responsibility lands on people without enough shared clarity.</p>
-      <p>Practice of Clarity is a publication about that condition and about a practical response to it: making reasoning visible so people can follow how decisions were formed, what is still uncertain, and where the pressure is landing.</p>
+      <p>Work can feel faster and less clear at the same time. Answers arrive quickly. Meaning takes longer.</p>
+      <p>This practice helps you stay with the thinking instead of skipping over it. You begin with what is happening, then learn how to move inside it.</p>
     </div>
   image:
     file: ../../../assets/hero.png
@@ -22,6 +22,7 @@ hero:
       icon: right-arrow
 prev: false
 next: false
+register: practitioner
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
@@ -29,26 +30,57 @@ import HomeFeaturedCard from '../../../components/HomeFeaturedCard.astro';
 import RegisterContent from '../../../components/RegisterContent.astro';
 
 <RegisterContent register="orientation/en-us">
-  <CardGrid>
-    <div class="home-card-featured">
-      <HomeFeaturedCard variant="practitioner" />
-    </div>
-    <Card title="Act I: When Output Outpaces Understanding">
-      Names the condition: output is accelerating faster than shared understanding.
-      [Read Act I](/en-us/writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding/)
-    </Card>
-    <Card title="Act II: Practicing Decision Hygiene Under AI Speed">
-      Introduces the discipline: keep reasoning visible while work is still moving.
-      [Read Act II](/en-us/writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed/)
-    </Card>
-    <Card title="License" icon="approve-check">
-      The writing on this site is published under CC BY 4.0.
-      [View license](/en-us/licenses/cc-by-4-0/)
-    </Card>
-    <Card title="About the Author" icon="pencil">
-      About Mikey Sebastian Drozd and how this practice emerged.
-      [Read more](/en-us/about/about-the-author/)
-    </Card>
-  </CardGrid>
+  <div class="home-card-grid">
+    <CardGrid>
+      <div class="home-card-featured">
+        <HomeFeaturedCard variant="practitioner" />
+      </div>
+      <Card title="Act I: When Output Outpaces Understanding" icon="open-book">
+        See what it looks like when output moves faster than shared understanding, and why that creates pressure in everyday work.
+
+        [Read Act I](/en-us/writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding/)
+      </Card>
+      <Card title="Act II: Practicing Decision Hygiene Under AI Speed" icon="open-book">
+        Learn how to keep reasoning visible while work is still moving, so decisions stay traceable and discussable.
+
+        [Read Act II](/en-us/writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed/)
+      </Card>
+      <Card title="Act III: Nodes, Bridges, and Drift" icon="open-book">
+        Follow how the practice moves across people and contexts without losing its grounding in visible reasoning.
+
+        [Read Act III](/en-us/writing/articles/practice-of-clarity/act-3-nodes-bridges-and-drift/)
+      </Card>
+      <Card title="Act IV: A Public Node You Can Inspect" icon="open-book">
+        Look at how the practice becomes visible in a public node you can explore and question.
+
+        [Read Act IV](/en-us/writing/articles/practice-of-clarity/act-4-a-public-node-you-can-inspect/)
+      </Card>
+      <Card title="About the Author" icon="open-book">
+        Meet the person behind this work, where it comes from, and why these questions matter here.
+
+        [Read About the Author](/en-us/about/about-the-author/)
+      </Card>
+      <Card title="Mandate Lenses" icon="open-book">
+        When you are ready to try it in your own work, begin here with simple, paste-ready prompts.
+
+        [Explore mandate lenses](/en-us/mandate-lenses/)
+      </Card>
+      <Card title="Seeds" icon="open-book">
+        Texts that carry the core distinctions the practice depends on.
+
+        They are readable by you and loadable by the systems you work with.
+
+        You do not need them to begin.
+
+        Return here when you want to check where something comes from, or when something feels off but you cannot yet name why.
+
+        [Browse seeds](/en-us/seeds/)
+      </Card>
+    </CardGrid>
+  </div>
 </RegisterContent>
 
+{/*
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+*/}

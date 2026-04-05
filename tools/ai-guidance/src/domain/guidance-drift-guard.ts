@@ -138,8 +138,6 @@ const stripAnchorAndQuery = (value: string): string => {
   return (withoutAnchor.split('?')[0] ?? withoutAnchor).trim();
 };
 
-const isDirectoryReference = (value: string): boolean => value.endsWith('/');
-
 const isLikelyPathReference = (value: string): boolean => {
   const candidate = stripAnchorAndQuery(value);
   if (!candidate) return false;
@@ -154,15 +152,17 @@ const isLikelyPathReference = (value: string): boolean => {
     candidate.startsWith('../') ||
     candidate.startsWith('.cursor/') ||
     candidate.startsWith('.github/') ||
+    candidate.startsWith('.claude/') ||
     candidate.startsWith('.local/') ||
     candidate.startsWith('docs/') ||
     candidate.startsWith('tools/') ||
     candidate.startsWith('apps/') ||
     candidate.startsWith('seeds/') ||
+    candidate.startsWith('continuity/') ||
+    candidate.startsWith('mandateLenses/') ||
     candidate.startsWith('AGENTS.md') ||
     candidate.startsWith('README.md') ||
-    FILE_EXTENSION_PATTERN.test(candidate) ||
-    isDirectoryReference(candidate)
+    FILE_EXTENSION_PATTERN.test(candidate)
   );
 };
 
@@ -190,10 +190,6 @@ const resolveBacktickPathReference = (sourcePath: string, rawValue: string): str
 
     if (candidate === 'SKILL.md') {
       return null;
-    }
-
-    if (candidate.endsWith('.md') && candidate !== 'README.md' && candidate !== 'AGENTS.md') {
-      return normalizeRepoPath(path.join(path.dirname(sourcePath), candidate));
     }
 
     return null;
