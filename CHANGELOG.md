@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.9.1...PoC-v1.9.2) (2026-04-05)
+
+
+### Bug Fixes
+
+* **docs:** tighten public release boundary copy ([#158](https://github.com/Mikeys-Tech-Lab/poc/issues/158)) ([2d23ec4](https://github.com/Mikeys-Tech-Lab/poc/commit/2d23ec4d7d9466041174037db723d37c07fc9454))
+
 ## [1.9.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.9.0...PoC-v1.9.1) (2026-04-05)
 
 
