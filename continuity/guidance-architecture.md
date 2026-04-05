@@ -51,12 +51,12 @@ That difference is part of what keeps the system legible.
 
 ```mermaid
 flowchart TD
-    PS["Public Site<br/>reading and orientation"]
-    BA["Bridge Article<br/>human entry into use"]
+    PS["Public Site<br/>canonical expression and entry"]
+    BA["Bridge Article<br/>public bridge page"]
     REG["Register<br/>orientation or practitioner"]
+    ML["Mandate Lens<br/>activation bridge"]
     CS["Context Seeder<br/>portable activation"]
     SD["Seeds<br/>structural canon"]
-    ML["Mandate Lens<br/>contextual application"]
     CT["Continuity<br/>architecture and memory"]
     AX["Agents / Execution Layer<br/>LLMs, IDE agents, automation tools"]
     OUT["Behavior and outputs<br/>trace and revision"]
@@ -66,9 +66,9 @@ flowchart TD
     PS --> BA
     REG --> PS
     REG --> BA
-    BA --> CS
+    BA --> ML
+    ML --> CS
     CS --> SD
-    CS --> ML
     CS --> CT
     CS --> AX
     SD --> AX
@@ -83,14 +83,15 @@ flowchart TD
 
 ## Layer roles
 
-- Public site: reading surface, trust-building, and first orientation
-- Bridge article: low-friction entry into actual use
+- Public site: canonical human-facing expression, reading surface, and first
+  entry
+- Bridge article: public bridge page that can move a reader toward activation
 - Register: accountable presentation layer that changes readability without
   changing structural meaning
+- Mandate lens: activation bridge that brings the practice toward one workflow
 - Context seeder: portable activation surface that loads canonical artifacts
 - Agents / execution layer: the runtime surfaces where loaded artifacts reshape
   behavior
-- Mandate lens: first concrete application layer for one workflow
 - Seeds: structural canon, terms, posture, and misuse boundaries
 - Continuity: temporal anchors, architecture memory, and rollout discipline
 - Runtime grounding rule: the boundary between description and operation
@@ -103,23 +104,25 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    A["Article or page"]
-    B["Context seeder"]
-    C["Readable canonical artifacts"]
+    A["Public page"]
+    B["Mandate lens"]
+    C["Context seeder"]
+    D["Readable canonical artifacts"]
     X["Agents / execution layer"]
-    D["Grounded reasoning behavior"]
-    E["Outputs with trace"]
-    F["Continuity and revision"]
+    E["Grounded reasoning behavior"]
+    F["Outputs with trace"]
+    G["Continuity and revision"]
 
     A --> B
     B --> C
-    C --> X
-    X --> D
-    D --> E
+    C --> D
+    D --> X
+    X --> E
     E --> F
+    F --> G
 ```
 
-Article loading can shape register and entry expectations.
+Public pages can shape register and entry expectations.
 
 Operational grounding begins only when the seeder loads readable canonical
 artifacts.

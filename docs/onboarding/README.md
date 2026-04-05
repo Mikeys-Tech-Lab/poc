@@ -2,11 +2,11 @@
 
 This directory contains repo-native onboarding documentation for contributors and operators working inside the Practice of Clarity workspace.
 
-AI agents read this file to discover topics dynamically. Human readers can follow the same index directly or read `manual.md` for a guided walkthrough.
+AI agents read this file to discover topics dynamically. Contributors and operators can follow the same index directly or read `manual.md` for a guided walkthrough.
 
 ## How to use this index
 
-Each entry below describes one onboarding topic. Agents parse the entries to build a menu. Human readers can follow the paths directly.
+Each entry below describes one onboarding topic. Agents parse the entries to build a menu. Contributors and operators can follow the paths directly.
 
 **No-duplication rule.** Onboarding pages summarize and link to deep docs. They do not duplicate procedures, invariants, or configuration that lives elsewhere. If an onboarding page must include steps, it links to a specific section in the authoritative doc. If no deep doc exists yet, the onboarding page is the temporary home, but the content must be promoted before it grows.
 

@@ -4,11 +4,14 @@ This directory contains descriptive guidance docs for the Practice of Clarity wo
 
 These documents are descriptive, not prescriptive, and must not introduce gating, scoring, or enforcement mechanisms.
 
-## Canonical sources
+## Canonical agent sources
 
 - `AGENTS.md` is the single source of truth for agent behavior.
 - Cursor rules (`.cursor/rules/*.mdc`) and skills (`.cursor/skills/*/SKILL.md`) derive from `AGENTS.md`.
 - Claude (`.claude/CLAUDE.md`) and Copilot (`.github/copilot-instructions.md`) are thin pointers to `AGENTS.md`.
+
+The public site remains the canonical human-facing expression and entry surface
+for the practice.
 
 ## Anti-misuse boundary
 

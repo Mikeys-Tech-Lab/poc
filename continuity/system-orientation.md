@@ -45,6 +45,8 @@ Deep structural anchors.
 **Function:**
 Seeds provide **shared reference points**, not authority.
 
+They are authored in the repository and readable through the public site.
+
 They are not a constitution.  
 They are not doctrine.  
 
@@ -115,9 +117,9 @@ Mandate lenses may be distributed in portable forms
 These forms act as lightweight entry points that allow a lens
 to be applied instantly without installation or setup.
 
-Bridge articles may also act as entry surfaces.
-They can encode register, tone, vocabulary density, audience framing, and an
-immediate starting action.
+Public pages and bridge articles may act as orientation surfaces.
+They can encode register, tone, vocabulary density, audience framing, and a
+clear path toward the first mandate lens.
 
 **Function:**
 - seed the lens into an active context  
@@ -135,7 +137,7 @@ on their primary surface. See:
 
 Portable forms are not authoritative.
 
-They are entry points into the system and must:
+They are runtime entry points into the system and must:
 - reference the evolving source  
 - allow re-seeding as the system evolves  
 - support inspection rather than bypass it  
@@ -210,7 +212,7 @@ They depend on each other without collapsing into one.
 
 The system is designed for federation without central control.
 
-It operates through:
+If it scales into broader federation, it would operate through:
 - shared seeds  
 - independent mandate lenses  
 - visible reasoning  
@@ -291,8 +293,8 @@ materially shapes the decision it accompanies.
 ## Current state
 
 What exists:
-- Seeds as root canon  
-- Practice of Clarity as a public publication surface  
+- Seeds as root canon in the repository, readable through the public site  
+- Practice of Clarity as a public publication surface and primary reading entry  
 - Acts as the early public bridge  
 - Continuity as a root package family  
 - A first mandate lens package and context seeder  
