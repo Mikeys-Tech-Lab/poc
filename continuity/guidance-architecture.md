@@ -85,7 +85,8 @@ flowchart TD
 
 - Public site: canonical human-facing expression, reading surface, and first
   entry
-- Bridge article: public bridge page that can move a reader toward activation
+- Bridge article: public bridge page that can move a reader toward the
+  activation bridge
 - Register: accountable presentation layer that changes readability without
   changing structural meaning
 - Mandate lens: activation bridge that brings the practice toward one workflow
@@ -166,7 +167,8 @@ Different layers evolve for different reasons:
   temporal orientation changes, and records why those decisions were made.
 - Seeders evolve when activation needs change, but remain derivative of
   canonical sources.
-- Bridge articles evolve when the public entry needs to become clearer.
+- Bridge articles evolve when the public explanation and path toward activation
+  need to become clearer.
 - Registers evolve as accountable editions for different readers.
 - The repository mediates change through visible artifacts, commits, and pull
   requests.

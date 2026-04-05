@@ -19,7 +19,7 @@ poc/
 ├── tools/
 │   └── ai-guidance/           # Capability alignment tooling (package: ai-guidance)
 ├── docs/
-│   ├── onboarding/            # Newcomer and evolution entry paths
+│   ├── onboarding/            # Repo-native onboarding and history paths
 │   ├── architecture/          # Canonical workspace diagram
 │   ├── guidance/              # Principles and workflow conventions
 │   ├── practices/             # Derived explainers and bridge docs

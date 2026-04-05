@@ -114,7 +114,7 @@ Every mandate lens must:
 Mandate lenses may be distributed in portable forms  
 (e.g. prompts, context seeders, or shared agent configurations).
 
-These forms act as lightweight entry points that allow a lens
+These forms act as lightweight loading forms that allow a lens
 to be applied instantly without installation or setup.
 
 Public pages and bridge articles may act as orientation surfaces.
@@ -137,7 +137,7 @@ on their primary surface. See:
 
 Portable forms are not authoritative.
 
-They are runtime entry points into the system and must:
+They are runtime loading forms within the system and must:
 - reference the evolving source  
 - allow re-seeding as the system evolves  
 - support inspection rather than bypass it  

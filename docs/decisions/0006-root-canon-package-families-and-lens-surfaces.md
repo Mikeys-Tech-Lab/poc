@@ -15,7 +15,7 @@ The live repo already has a stable root reality:
 
 - `seeds/` exists at the repo root
 - seed formatting and licensing already follow the live PoC conventions
-- `docs/practices/sensible-defaults.md` currently reads like the full lens text
+- `docs/practices/sensible-defaults.md` had been reading like the full lens text
 - there is no nested `root/` directory in the live repo
 
 Without an explicit decision, promotion would leave three kinds of drift:

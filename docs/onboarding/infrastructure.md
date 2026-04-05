@@ -4,15 +4,15 @@ A high-level view of the deployment topology and current workflow coverage. This
 
 ## Environment model
 
-The deployment topology accounts for three environments behind a shared origin hosting server and CDN/proxy layer. Seed and preview are backed by committed workflows in this repo. Production is documented as the intended public environment, but its deploy workflow is not committed here.
+The deployment topology accounts for three environments behind a shared origin hosting server and CDN/proxy layer. Seed, preview, and production are all backed by committed workflows in this repo, but production remains a manual-dispatch path rather than a release-triggered deploy.
 
 | Environment | Purpose | Deployment trigger | Access |
 |---|---|---|---|
 | Seed | Development — operator-only, for verifying changes in a live environment | Published release (automatic) | Restricted to specific IPs |
 | Preview | Stakeholder review — authenticated access for reviewing before production | Published release (automatic) | Email-based authentication at the edge |
-| Production | Intended public site | No committed production deploy workflow in this repo | Public when active |
+| Production | Intended public site | Manual dispatch via committed workflow | Public when active |
 
-Seed and preview deploy automatically when a release is published. Production remains part of the documented topology, but this repo does not currently contain a production deploy workflow.
+Seed and preview deploy automatically when a release is published. Production remains part of the documented topology and has a committed manual-dispatch workflow in this repo.
 
 ## Protection layers
 
@@ -53,7 +53,7 @@ Feature PR → main (squash merge)
       → Seed deploys automatically
       → Preview deploys automatically
         → Operator validates on preview
-          → Optional operator-run production step (not automated in this repo)
+          → Optional operator-run production step (manual dispatch in this repo)
 ```
 
 This ensures every automated deployment in the repo corresponds to a tagged release. If production deployment is used, it should still be validated on preview first.

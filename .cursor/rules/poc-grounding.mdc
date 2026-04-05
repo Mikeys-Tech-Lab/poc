@@ -21,6 +21,16 @@ Canonical source: `AGENTS.md` in the repo root. If this rule conflicts with `AGE
 - Read before editing. Minimize irreversible operations.
 - When uncertain about tool behavior, verify locally (version/help/config). If not checkable, produce a manual checklist and mark unknown. Do not infer capability.
 
+## Layer model
+
+- For repo-native development and agent work, default bootstrap is `AGENTS.md`,
+  `seeds/`, and `continuity/`.
+- Mandate lenses are on-demand overlays, not universal bootstrap.
+- The public site explains the practice and is the canonical human-facing entry
+  surface.
+- Mandate lenses activate the practice in context.
+- The repository supports inspection, operation, and evolution.
+
 ## Safety boundary
 
 This workspace must not be used for surveillance, compliance scoring, performance evaluation, or coercive enforcement. A trace produced under coercion is not valid.
