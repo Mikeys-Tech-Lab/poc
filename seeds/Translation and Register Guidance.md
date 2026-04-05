@@ -38,7 +38,9 @@ Translations, when produced, are AI-assisted and human-reviewed. They are cultur
 
 This guidance also covers **register shifts**. A register shift is when the same core content is rewritten for a different audience or channel, for example beginner orientation, practitioner delivery, institutional interfaces, or public platforms like short video.
 
+
 Here, register means the audience voice: tone, formality, assumed context, and what the text asks the reader to do.
+Registers change how the work is read, not what it means.
 
 Locale and register are two separate axes:
 
@@ -110,18 +112,31 @@ This is not simplification. It is ethical adaptation.
 
 This practice is designed to speak across audiences, not only across languages.
 
-### Register families
+### Register contract (current public state)
 
-These are the main register families this practice will evolve toward.
+The current public register contract consists of two registers:
+
+- **Orientation**: lower assumed context, shorter sentences where needed, slower pacing, and earlier explanation of terms before use.
+- **Practitioner**: denser sentences, higher assumed context, and more operational vocabulary while keeping the same structure and boundaries.
+
+These differences must show up in the writing itself: sentence density, pacing, assumed context, and how quickly the text asks the reader to carry structural terms.
+
+Registers change how the work is read, not what it means.
 
 Registers describe use contexts, not demographics. People may move between registers depending on energy, stress, language comfort, channel constraints, and the amount of shared context available.
 
-- **Orientation**: beginner friendly, low assumed context, short sentences when needed.
-- **Low cognitive load**: high structure, explicit assumptions, low metaphor density. This label describes the edition’s structure, not the reader. It reduces processing overhead without reducing depth or trace.
-- **Practitioner**: operational and precise, assumes basic familiarity with the practice.
-- **Institutional interface**: for documents that need to interface with institutions (for example procurement, risk review, or governance docs). This is an interface layer, not a replacement for the practice. It must retain all boundary statements and safety constraints, including anti surveillance and anti coercion. If an institution requires removing or weakening those constraints, mark that edition as incompatible.
-- **Public**: accessible, punchy, minimal jargon, suited for newsletters and public posts.
-- **Short form**: high signal, low context, designed for formats like short video captions.
+### Non-canonical adaptations (not part of the current contract)
+
+Other register forms may exist as internal or future adaptations, but they are not part of the current public contract and must not be treated as such.
+
+Examples of possible adaptations (non-canonical):
+
+- **Low cognitive load**: high structure, explicit assumptions, low metaphor density. Reduces processing overhead without reducing depth or trace.
+- **Institutional interface**: used to interface with institutions (for example procurement or governance). Must retain all boundary statements and safety constraints. If constraints are weakened, mark as incompatible.
+- **Public**: accessible, punchy, minimal jargon for newsletters and public posts.
+- **Short form**: high signal, low context, for formats like short video captions.
+
+These are illustrative only. They do not define the current system and must not be used as default or canonical registers.
 
 ### What stays stable across registers
 
@@ -189,7 +204,7 @@ Future locales will be added over time as reviewer capacity and community suppor
 3. Preserve intent, not words. Translate the tension and structure, not the surface phrasing.
 4. Avoid calques. If a phrase only makes sense because it was translated word-for-word from English, rewrite it.
 5. Cultural context matters. References, examples, and metaphors should make sense locally. Replace English-centric metaphors with ones that work in the target culture.
-6. Register is explicit. Each translated or rewritten edition needs to state its intended register (orientation, practitioner, institutional, public, short form).
+6. Register is explicit. Each translated or rewritten edition needs to state its intended register. On the live public site, that currently means `orientation` or `practitioner`.
 7. Avoid register drift. Do not accidentally slide into academic, corporate, or influencer tone unless the edition explicitly targets that register.
 
 ---

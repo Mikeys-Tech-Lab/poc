@@ -1,14 +1,14 @@
 # AI Guidance Architecture
 
-How AI agents are guided in this workspace, and why it is designed this way.
+How AI agents are guided in this workspace, and why it is designed this way for contributors and operators working in the repository layer.
 
 ## The problem
 
 AI coding assistants are powerful but directionless by default. Without explicit guidance, they guess at conventions, invent patterns, and produce output that drifts from the repo's actual structure. In a workspace with cross-cutting architecture (canonical docs, adapters, tooling, a frontend, deployment workflows), unguided changes in one area ripple across many.
 
-## The solution: canonical source with adapters
+## The solution: canonical agent source with adapters
 
-One file is the single source of truth: `AGENTS.md` in the repo root. Every AI platform reads from it, directly or through a thin adapter.
+One file is the single source of truth for agent behavior: `AGENTS.md` in the repo root. Every AI platform reads from it, directly or through a thin adapter.
 
 ```
 AGENTS.md (canonical)
@@ -74,7 +74,7 @@ Default workspace bootstrap is repo-native and always-on:
 Mandate lens seeders such as `mandateLenses/SensibleDefaults/context-seeder.md`
 are on-demand overlays, not universal bootstrap.
 
-The repo currently exposes two conversational entry paths:
+For repo-native AI-assisted work, the repo currently exposes two conversational commands:
 
 - `onboard me` for setup, structure, and contribution guidance
 - `Evolution Arc` for the repo's history and reasoning trace

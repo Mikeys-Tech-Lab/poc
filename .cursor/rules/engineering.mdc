@@ -10,7 +10,7 @@ This rule is the universal principles layer. Tech-specific rules (`poc-tooling-t
 
 ## Default posture
 
-Engineering quality is delivery work, not gold-plating. Refactoring, test design, and build stabilization are expected — not optional, not "nice to have." Sensible Defaults (Domain 6.9) makes this explicit: quality activities are real work that must be planned for. Skipping them is a delivery risk, not a shortcut.
+Engineering quality is delivery work, not gold-plating. Refactoring, test design, and build stabilization are expected — not optional, not "nice to have." This aligns with the delivery-realism stance surfaced by `Sensible Defaults` when that lens is explicitly loaded: quality activities are real work that must be planned for. Skipping them is a delivery risk, not a shortcut.
 
 Write code that is readable, modular, and honest about its boundaries. Prefer clarity over cleverness. Every file should have a reason to exist and a single responsibility.
 

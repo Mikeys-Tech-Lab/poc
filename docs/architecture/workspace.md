@@ -11,6 +11,7 @@ This is the canonical architecture document for the Practice of Clarity workspac
 ## What this diagram represents
 
 The diagram shows the current repo architecture: where canonical guidance lives, how adapters derive from it, where tooling and reports sit, and how the frontend relates to the rest.
+The public site is the canonical expression and entry surface. This document maps the repository layer that supports inspection, evolution, and operation behind it.
 
 ## What this diagram does not represent
 

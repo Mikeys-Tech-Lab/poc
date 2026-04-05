@@ -104,7 +104,7 @@ that stays traceable to source artifacts.
 
 This explainer still has value because:
 
-- it gives a readable bridge from repo documentation into the lens package
+- it gives a readable bridge from descriptive explanation into the lens package
 - it names the boundary between description and activation
 - it prevents `docs/practices/` from silently becoming a second source of truth
 

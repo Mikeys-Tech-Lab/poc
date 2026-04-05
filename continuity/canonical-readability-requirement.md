@@ -51,7 +51,9 @@ This requirement applies to canonical artifacts, including:
 - context seeders such as `context-seeder.md`
 - continuity anchors when they are part of runtime grounding
 
-If the repository is the canonical source, the requirement applies there.
+The public site is the canonical human-facing expression and entry surface.
+The readability requirement applies to whichever surface is canonical for runtime
+loading of a given artifact.
 
 If some future surface becomes canonical for those artifacts, the requirement
 follows that surface.
@@ -87,10 +89,11 @@ Purpose:
 These surfaces may overlap.
 They do not have to.
 
-If the repository is canonical, repository readability is non-negotiable.
+If the repository is canonical for runtime loading of an artifact, repository
+readability is non-negotiable for that artifact.
 
-Frontend readability is helpful, but secondary unless the frontend itself is
-chosen as the canonical runtime surface.
+The public site remains the primary reading surface for humans unless some
+future revision changes that contract explicitly.
 
 ---
 
@@ -203,17 +206,18 @@ alone.
 
 ## Current repo reality
 
-The repository is part of the canonical runtime surface.
+The repository is part of the canonical runtime surface for artifacts that are
+loaded from repo-backed canonical paths.
 
 That means:
 
 - local checked-out paths must remain directly readable
 - public canonical repo routes should remain directly retrievable in raw form
-- the article surface may introduce the system, but it does not replace the
-  canonical repo surface
+- the public site may introduce the system, but it does not replace the
+  canonical runtime surface for artifacts that are loaded elsewhere
 
-The article surface may introduce people to the system.
-The canonical repo surface must remain the place the system actually reads.
+The public site may introduce people to the system.
+The runtime surface must remain the place the system actually reads.
 
 ---
 

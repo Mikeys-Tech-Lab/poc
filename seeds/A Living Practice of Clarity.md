@@ -12,11 +12,13 @@
 
 ## What This Is
 
-This is not a protocol, a software standard, a product, or a belief system. It is a living practice of clarity designed for federation.
+This is not a protocol, a software standard, a product, or a belief system you have to adopt. It is a living practice of clarity designed for federation.
 
-Today there is one canonical node: this repository.
+Today the canonical human-facing expression lives on the public site.
+This repository is the inspectable operational node behind it.
 Federation describes the shape this practice can take if others adopt it.
 It is not a claim that a community exists yet.
+You can read and begin from the public site without entering the repository.
 
 It emerged from a simple observation:
 
@@ -41,6 +43,8 @@ From content to trace.
 A trace is a short record of the reasoning path behind a claim: what was decided, what was assumed, what was uncertain, and how it will be checked. Instead of only stating conclusions, this work makes visible the path behind them.
 
 Trace here means the visible reasoning path behind a decision. It does not refer to runtime telemetry, distributed tracing, or operational visibility data.
+
+These definitions are also used as shared context for language models. Seeds are written so they can be read by humans and loaded as context for AI at the same time.
 
 Clarity here does not mean certainty, agreement, or one final truth. It means:
 
@@ -110,7 +114,7 @@ Federated means:
 
 Federation requires accountable trace and explicit adaptation marking, not permissionless aesthetics.
 
-In this release, there is one canonical node.
+In this release, there is one inspectable repository node behind the public site. The site remains the primary reading surface.
 If others adopt the practice, they can publish their own nodes and mark adaptations.
 
 Each person, group, or community can form their own node of practice.
@@ -206,7 +210,7 @@ This practice is held by a small set of seeds:
 - [Voice of Guidance](./Voice of Guidance.md)
 - [Translation and Register Guidance](./Translation and Register Guidance.md)
 
-These seeds define the discipline.
+These seeds define the discipline and act as shared context that can be read, referenced, and loaded into AI systems.
 Nodes and lenses apply it in specific contexts.
 
 ---
@@ -225,7 +229,7 @@ It may grow into:
 
 It may remain small. It may spread.
 
-Nothing here is finished. Everything evolves through participation, but evolution needs to be marked.
+Nothing here is finished. Everything evolves through participation, and evolution is made visible through trace.
 
 This marks a beginning, not a conclusion.
 

@@ -20,6 +20,11 @@ It describes a federated system where any participant can initiate a bridge.
 No central authority is required.
 
 This is a model, not a running community.
+The stewardship and stop-condition sections below describe how this pattern could
+scale if multiple public nodes emerge. They are not a claim that such a layer is
+active now.
+
+All governance, federation, and multi-node dynamics described here are structural possibilities, not a claim of an active system.
 
 ---
 
@@ -142,7 +147,7 @@ When more than two nodes diverge:
 - bridges may fork if integration paths differ
 - no bridge is mandatory
 
-Federation allows multiple bridges to coexist.
+In a federated system, multiple bridges can coexist.
 
 ---
 
@@ -151,7 +156,7 @@ Federation allows multiple bridges to coexist.
 Federation is voluntary.
 Engagement is selective.
 
-Nodes that refuse to provide trace remain outside this practice.
+Nodes that refuse to provide trace remain outside this practice for the purpose of bridge construction and epistemic weighting.
 
 This does not apply to harm reports.
 Harm reports enter through the minimal trace rule and may keep safety boundaries.
@@ -209,7 +214,7 @@ Bandwidth protection is for bad faith escalation, not for silencing accountabili
 
 If a report is verified as fabricated, coordinated flooding, or harassment disguised as harm reporting, the engagement boundary applies immediately.
 
-Verification must itself meet the trace requirement.
+In this model, verification is required to meet the trace standard.
 
 It must include:
 
@@ -218,7 +223,7 @@ It must include:
 - clear boundaries of what has and has not been confirmed
 - a revision pathway if new information emerges
 
-Verification cannot be:
+In this model, verification cannot be:
 
 - an administrative decree
 - a unilateral claim by a power holder
@@ -231,7 +236,7 @@ The evidence of fabrication must be inspectable.
 
 If verification relies on privileged backend data unavailable to general participants, that privilege must be explicitly declared as a boundary.
 
-The trace must state:
+In this model, the trace must state:
 
 - what class of data was used
 - why access is restricted

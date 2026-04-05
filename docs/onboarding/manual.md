@@ -1,6 +1,6 @@
 # Manual Onboarding
 
-This page covers the same ground as the agent-assisted onboarding, written for humans reading directly. If you are using an AI-assisted editor (Cursor, Claude Code, GitHub Copilot), say "onboard me" in chat for setup and workspace orientation, or "Evolution Arc" for the repo's history and reasoning trace.
+This page covers the repo-native contributor and operator onboarding path, written for humans reading directly. It is not the public entry path for understanding the practice itself. If you are using an AI-assisted editor (Cursor, Claude Code, GitHub Copilot), say "onboard me" in chat for setup and workspace orientation, or "Evolution Arc" for the repo's history and reasoning trace.
 
 ## Choose your path
 
