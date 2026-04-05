@@ -60,6 +60,16 @@ Two content collections are defined in `content.config.ts`:
 
 The current site uses a single prefixed locale key, `en-us`. Content lives in symmetric `en-us` directories under both `docs/` and the active `register/orientation/` tree. There is no `root` locale; Astro's `redirects` config handles `/` → `/en-us/` (301 in dev server, meta-refresh HTML in static build). Do not assume additional locales are present unless you verify them in the current tree and config.
 
+Active content files may also declare register metadata in frontmatter for source
+inspectability:
+
+- `docs/**` may use `register: practitioner`
+- `register/orientation/**` may use `register: orientation`
+
+This metadata is descriptive and should stay aligned with the collection/path.
+Do not use it as the primary source of runtime register logic when the path or
+collection already defines the same fact.
+
 ## Known pitfalls
 
 These are known pitfalls we’ve hit in this repo. Do not repeat them.
