@@ -1,6 +1,6 @@
 # Onboarding Topic Index
 
-This directory contains onboarding documentation for the Practice of Clarity workspace.
+This directory contains repo-native onboarding documentation for contributors and operators working inside the Practice of Clarity workspace.
 
 AI agents read this file to discover topics dynamically. Human readers can follow the same index directly or read `manual.md` for a guided walkthrough.
 

@@ -1,6 +1,6 @@
 # AI Guidance Architecture
 
-How AI agents are guided in this workspace, and why it is designed this way.
+How AI agents are guided in this workspace, and why it is designed this way for contributors and operators working in the repository layer.
 
 ## The problem
 

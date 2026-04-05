@@ -1,0 +1,20 @@
+---
+import { getEntry, render } from 'astro:content';
+
+interface Props {
+	source: string;
+}
+
+const { source } = Astro.props;
+
+const match = await getEntry('seedSource', source);
+
+if (!match) {
+	throw new Error(`Seed source not found: ${source}`);
+}
+
+const rendered = await render(match);
+const SeedContent = rendered.Content;
+---
+
+<SeedContent />

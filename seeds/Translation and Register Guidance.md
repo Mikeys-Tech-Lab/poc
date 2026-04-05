@@ -112,13 +112,21 @@ This practice is designed to speak across audiences, not only across languages.
 
 ### Register families
 
-These are the main register families this practice will evolve toward.
+The live public site currently exposes two registers:
+
+- **Orientation**: lower assumed context, shorter sentences where needed, slower pacing, and earlier explanation of terms before use.
+- **Practitioner**: denser sentences, higher assumed context, and more operational vocabulary while keeping the same structure and boundaries.
+
+These differences need to show up in the writing itself: sentence density,
+pacing, assumed context, and how quickly the text asks the reader to carry
+structural terms.
+
+Other register families remain secondary or future-facing until the public site
+exposes them directly.
 
 Registers describe use contexts, not demographics. People may move between registers depending on energy, stress, language comfort, channel constraints, and the amount of shared context available.
 
-- **Orientation**: beginner friendly, low assumed context, short sentences when needed.
 - **Low cognitive load**: high structure, explicit assumptions, low metaphor density. This label describes the edition’s structure, not the reader. It reduces processing overhead without reducing depth or trace.
-- **Practitioner**: operational and precise, assumes basic familiarity with the practice.
 - **Institutional interface**: for documents that need to interface with institutions (for example procurement, risk review, or governance docs). This is an interface layer, not a replacement for the practice. It must retain all boundary statements and safety constraints, including anti surveillance and anti coercion. If an institution requires removing or weakening those constraints, mark that edition as incompatible.
 - **Public**: accessible, punchy, minimal jargon, suited for newsletters and public posts.
 - **Short form**: high signal, low context, designed for formats like short video captions.
@@ -189,7 +197,7 @@ Future locales will be added over time as reviewer capacity and community suppor
 3. Preserve intent, not words. Translate the tension and structure, not the surface phrasing.
 4. Avoid calques. If a phrase only makes sense because it was translated word-for-word from English, rewrite it.
 5. Cultural context matters. References, examples, and metaphors should make sense locally. Replace English-centric metaphors with ones that work in the target culture.
-6. Register is explicit. Each translated or rewritten edition needs to state its intended register (orientation, practitioner, institutional, public, short form).
+6. Register is explicit. Each translated or rewritten edition needs to state its intended register. On the live public site, that currently means `orientation` or `practitioner`.
 7. Avoid register drift. Do not accidentally slide into academic, corporate, or influencer tone unless the edition explicitly targets that register.
 
 ---

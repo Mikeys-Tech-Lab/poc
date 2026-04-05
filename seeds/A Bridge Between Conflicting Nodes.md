@@ -20,6 +20,9 @@ It describes a federated system where any participant can initiate a bridge.
 No central authority is required.
 
 This is a model, not a running community.
+The stewardship and stop-condition sections below describe how this pattern could
+scale if multiple public nodes emerge. They are not a claim that such a layer is
+active now.
 
 ---
 

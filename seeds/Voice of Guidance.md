@@ -186,6 +186,10 @@ No semicolons in published prose. Keep sentences short and clear.
 These constraints apply to what you publish under this practice.
 They do not require you to rewrite someone else's voice.
 
+They also do not define internal operator chat by default.
+If a local operator-facing adaptation exists, it needs to be marked explicitly
+and kept out of public-facing content.
+
 Restraint is not silence. It is choosing to say less, more carefully, so that what you say can actually be used.
 
 ---

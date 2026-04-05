@@ -14,7 +14,8 @@
 
 This is not a protocol, a software standard, a product, or a belief system. It is a living practice of clarity designed for federation.
 
-Today there is one canonical node: this repository.
+Today the canonical human-facing expression lives on the public site.
+This repository is the inspectable operational node behind it.
 Federation describes the shape this practice can take if others adopt it.
 It is not a claim that a community exists yet.
 
@@ -110,7 +111,7 @@ Federated means:
 
 Federation requires accountable trace and explicit adaptation marking, not permissionless aesthetics.
 
-In this release, there is one canonical node.
+In this release, there is one inspectable repository node behind the public site.
 If others adopt the practice, they can publish their own nodes and mark adaptations.
 
 Each person, group, or community can form their own node of practice.

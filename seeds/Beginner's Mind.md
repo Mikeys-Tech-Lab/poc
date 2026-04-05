@@ -118,9 +118,10 @@ A common loop:
 
 ---
 
-## Seeding an AI Context
+## Using the Seed Set in AI Contexts
 
 If you are using an AI assistant, you can seed the conversation with the current seed set for this practice.
+This is a runtime technique, not the public entry path into the work.
 This does not make the assistant correct.
 It makes the definitions and boundaries easier to share and inspect.
 

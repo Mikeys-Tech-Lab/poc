@@ -216,6 +216,9 @@ Refusal is part of care.
 
 ## Interpretation Log
 
+This section defines how such a log would work if the practice needs one.
+It is a stewardship shape, not a claim that a live multi-node log already exists.
+
 Interpretations are documented to make meaning propagation visible.
 
 ### What can be logged
@@ -246,6 +249,9 @@ This log is documentation, not a debate stage.
 ---
 
 ## Misuse Response Posture
+
+This section describes a response shape the practice can use as it travels.
+It is not evidence of an already active governance layer across multiple nodes.
 
 When misuse occurs, responses stay proportional:
 

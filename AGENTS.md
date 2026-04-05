@@ -264,6 +264,10 @@ For authored text in this repo:
 - Use em dashes only when they improve structural clarity. Prefer shorter sentences.
 - Restraint is not silence. Say less, more carefully, so what you say can be used.
 
+Internal operator chat may use a marked local conversational adaptation.
+That adaptation does not define any public register and must not be copied into
+public-facing content, shared components, or reusable text blocks.
+
 ## Adaptation rule
 
 If downstream instructions (rules, skills, adapters) differ from this file, they must declare themselves as an adaptation and link back to this file.

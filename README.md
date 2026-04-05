@@ -4,7 +4,8 @@ A publication surface and usable practice for making reasoning visible.
 
 Start with [practiceofclarity.eu](https://practiceofclarity.eu) if you are new to the work.
 
-This repository is the inspectable node behind it.
+This repository is the inspectable operational layer behind it.
+You do not need the repository to understand the practice or begin using it.
 
 Read the site if you want the condition, the practice, and the writing first.
 
@@ -56,7 +57,10 @@ Then analyze the following task:
 [paste your task here]
 ```
 
-## Repo contributor entry
+## Contributor And Operator Entry
+
+These paths are for repo work and inspection.
+They are not required to understand the practice or begin using it.
 
 If you are using a coding agent in this workspace, these are the main repo-entry
 commands:

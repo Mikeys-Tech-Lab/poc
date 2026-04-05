@@ -20,4 +20,7 @@ export const collections = {
       register: z.literal('orientation').optional(),
     }),
   }),
+  seedSource: defineCollection({
+    loader: glob({ pattern: '*.md', base: '../../seeds' }),
+  }),
 };
