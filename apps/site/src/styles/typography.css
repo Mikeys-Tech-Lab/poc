@@ -31,16 +31,15 @@
   border: 0;
   height: 2px;
   border-radius: 999px;
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      var(--poc-border-hover) 10%,
-      var(--poc-border) 45%,
-      var(--poc-border) 55%,
-      var(--poc-border-hover) 90%,
-      transparent 100%
-    );
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--poc-border-hover) 10%,
+    var(--poc-border) 45%,
+    var(--poc-border) 55%,
+    var(--poc-border-hover) 90%,
+    transparent 100%
+  );
 }
 
 /* Code blocks — scroll within container, no page-level overflow (WCAG 1.4.10) */
