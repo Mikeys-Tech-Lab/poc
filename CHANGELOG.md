@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.9.0...PoC-v1.9.1) (2026-04-05)
+
+
+### Bug Fixes
+
+* align canon surfaces with site-first structure ([#156](https://github.com/Mikeys-Tech-Lab/poc/issues/156)) ([277df17](https://github.com/Mikeys-Tech-Lab/poc/commit/277df17141e7cdc0663e8ff95b592ad1ab276e75))
+
 ## [1.9.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.8.6...PoC-v1.9.0) (2026-04-05)
 
 
