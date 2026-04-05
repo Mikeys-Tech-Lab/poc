@@ -45,7 +45,8 @@ Deep structural anchors.
 **Function:**
 Seeds provide **shared reference points**, not authority.
 
-They are authored in the repository and readable through the public site.
+They are authored in the repository.
+The public site points toward them and introduces their role.
 
 They are not a constitution.  
 They are not doctrine.  
@@ -293,7 +294,8 @@ materially shapes the decision it accompanies.
 ## Current state
 
 What exists:
-- Seeds as root canon in the repository, readable through the public site  
+- Seeds as root canon in the repository, with the public site serving as the
+  primary entry and bridge  
 - Practice of Clarity as a public publication surface and primary reading entry  
 - Acts as the early public bridge  
 - Continuity as a root package family  

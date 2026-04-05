@@ -40,7 +40,7 @@ poc/
 ## Key relationships
 
 - **`AGENTS.md`** is the canonical source for agent behavior. Rules, skills, and adapters derive from it.
-- **`seeds/`** contains the structural seed canon at the repo root. It never becomes site content.
+- **`seeds/`** contains the structural seed canon at the repo root. The site may host short seed orientations that point back to the repository texts, but `seeds/` does not become the site content tree.
 - **`continuity/`** holds temporal anchors that preserve architecture and rollout direction over time.
 - **`mandateLenses/`** holds canonical runtime lens packages. In each package, `lens.md` is canonical and `context-seeder.md` is derivative. These lens surfaces are loaded on demand, not as the default workspace bootstrap.
 - **`apps/site/`** is the Astro Starlight frontend. Its content evolves independently from seeds.
