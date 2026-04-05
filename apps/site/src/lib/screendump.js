@@ -16,7 +16,7 @@ export const CONTENT_PATHS = [
   'writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed',
   'writing/articles/practice-of-clarity/act-3-nodes-bridges-and-drift',
   'writing/articles/practice-of-clarity/act-4-a-public-node-you-can-inspect',
-  'writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load',
+  'mandate-lenses/sensible-defaults-a-lens-you-can-load',
   'licenses/cc-by-4-0',
 ];
 

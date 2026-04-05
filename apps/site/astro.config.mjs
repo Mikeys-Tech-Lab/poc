@@ -180,7 +180,7 @@ export default defineConfig({
             { label: 'Overview', slug: 'mandate-lenses' },
             {
               label: 'Sensible Defaults: A Lens You Can Load',
-              slug: 'writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load',
+              slug: 'mandate-lenses/sensible-defaults-a-lens-you-can-load',
             },
           ],
         },

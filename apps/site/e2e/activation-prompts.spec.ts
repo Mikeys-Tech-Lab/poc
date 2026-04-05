@@ -1,10 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { MINIMAL_ACTIVATION_PROMPT, SEEDER_URL } from '../src/lib/activation-prompts';
 
-const activationPages = [
-  '/en-us/about/what-this-is/',
-  '/en-us/writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load/',
-] as const;
+const activationPages = ['/en-us/mandate-lenses/sensible-defaults-a-lens-you-can-load/'] as const;
 
 const architectureVariants = [
   '/en-us/about/architecture/',
@@ -37,7 +34,7 @@ test.describe('activation prompts', () => {
 
   test('copy minimal prompt writes the canonical prompt text', async ({ page, context }) => {
     await context.grantPermissions(['clipboard-read', 'clipboard-write']);
-    await page.goto('/en-us/about/what-this-is/');
+    await page.goto('/en-us/mandate-lenses/sensible-defaults-a-lens-you-can-load/');
 
     const copyButton = page.getByRole('button', { name: 'Copy minimal activation prompt' });
     await copyButton.click();
@@ -53,10 +50,10 @@ test.describe('activation prompts', () => {
       await page.goto(url);
 
       await expect(
-        page.getByRole('link', { name: 'Go to Sensible Defaults activation' }),
+        page.getByRole('link', { name: 'Sensible Defaults', exact: true }),
       ).toHaveAttribute(
         'href',
-        '/en-us/writing/articles/practice-of-clarity/sensible-defaults-a-lens-you-can-load/#paste-ready-activation',
+        '/en-us/mandate-lenses/sensible-defaults-a-lens-you-can-load/',
       );
     });
   }
