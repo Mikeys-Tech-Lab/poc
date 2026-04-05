@@ -330,6 +330,10 @@ Unit tests for shared modules live in `apps/site/src/lib/__tests__/`.
 - Vitest config: `apps/site/vitest.config.ts`. Default environment is `node`.
 - Pure modules (`locale.ts`, `i18n.ts`) run in `node` environment.
 - DOM modules (`register.ts`, `toc.ts`) opt in to `happy-dom` via `// @vitest-environment happy-dom` per file.
+- File-based content guardrails may also live here when a small declared set of
+  public pages needs structural boundary checks. `register-boundaries.test.ts`
+  keeps the highest-risk paired register pages aligned on required boundary
+  anchors without turning prose review into scoring.
 - Shared test constants in `test-constants.ts` define the locale, path, and register matrix. Both unit and E2E tests import from this single source.
 - DOM helpers in `dom-helpers.ts` provide functional factory functions for test setup.
 

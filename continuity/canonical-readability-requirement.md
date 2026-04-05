@@ -216,6 +216,18 @@ That means:
 - the public site may introduce the system, but it does not replace the
   canonical runtime surface for artifacts that are loaded elsewhere
 
+### Release-stage clarification
+
+For repo-backed canonical artifacts, there are two honest checks:
+
+- before public promotion, directly readable local checked-out paths on the
+  operator's machine satisfy the runtime check
+- once a repo-backed artifact is presented as publicly loadable, that public
+  route must be directly retrievable in raw form or equivalent artifact form
+
+A human-facing repository page may remain a reading or navigation surface.
+It does not replace the runtime surface the system actually loads.
+
 The public site may introduce people to the system.
 The runtime surface must remain the place the system actually reads.
 
