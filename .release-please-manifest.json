@@ -1,5 +1,5 @@
 {
-  ".": "1.8.6",
-  "apps/site": "1.4.3",
-  "tools/ai-guidance": "0.4.2"
+  ".": "1.9.0",
+  "apps/site": "1.5.0",
+  "tools/ai-guidance": "0.5.0"
 }

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.8.6...PoC-v1.9.0) (2026-04-05)
+
+
+### Features
+
+* **astro:** publish clarity release surfaces ([#154](https://github.com/Mikeys-Tech-Lab/poc/issues/154)) ([4146e85](https://github.com/Mikeys-Tech-Lab/poc/commit/4146e853ebe811001649c322cd3f0e124ec974a2))
+
 ## [1.8.6](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.8.5...PoC-v1.8.6) (2026-04-03)
 
 
