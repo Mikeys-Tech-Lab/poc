@@ -11,7 +11,7 @@ const articlePath =
 const infoPath = '/en-us/about/what-this-is/';
 
 const practitionerAnchor =
-  'Integration is the quieter work that makes output meaningful. It involves aligning proposals with intent, verifying assumptions, understanding consequences, and ensuring that new changes actually fit with what already exists.';
+  'Integration is the quieter work that makes output meaningful. It means aligning proposals with intent, checking assumptions, understanding consequences, and ensuring new changes actually fit with what already exists.';
 const orientationAnchor =
   'Understanding takes time. People still need to ask questions, examine assumptions, and see how a decision fits with everything else that already exists.';
 

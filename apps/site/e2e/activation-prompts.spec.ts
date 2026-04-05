@@ -51,10 +51,7 @@ test.describe('activation prompts', () => {
 
       await expect(
         page.getByRole('link', { name: 'Sensible Defaults', exact: true }),
-      ).toHaveAttribute(
-        'href',
-        '/en-us/mandate-lenses/sensible-defaults-a-lens-you-can-load/',
-      );
+      ).toHaveAttribute('href', '/en-us/mandate-lenses/sensible-defaults-a-lens-you-can-load/');
     });
   }
 });
