@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.4.2...ai-guidance-v0.5.0) (2026-04-05)
+
+
+### Features
+
+* **astro:** publish clarity release surfaces ([#154](https://github.com/Mikeys-Tech-Lab/poc/issues/154)) ([4146e85](https://github.com/Mikeys-Tech-Lab/poc/commit/4146e853ebe811001649c322cd3f0e124ec974a2))
+
 ## [0.4.2](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.4.1...ai-guidance-v0.4.2) (2026-03-29)
 
 
