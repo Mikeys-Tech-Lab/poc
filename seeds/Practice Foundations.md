@@ -31,6 +31,7 @@ Do not use it as:
 - a substitute for engineering work  
 
 This is a clarification layer. It exists so meaning survives contact with growth.
+This layer can be understood through the public site. The repository remains an inspectable record of how the practice is authored and evolves.
 
 ---
 
@@ -90,6 +91,7 @@ Many independent nodes can adopt the practice. Federation requires accountable t
 A federated node might be: a team decision log where assumptions are named and checked, a community translation that marks what was adapted and why, or a personal practice journal that records uncertainty alongside conclusions. What makes it federated is not the format. It is visible reasoning and explicit boundaries.
 
 In this release, the practice is authored by one person.
+The public site is the primary reading surface, and the repository is the inspectable node behind it.
 Federation is an option, not a claim of existing adoption.
 
 **Snapshot**  
@@ -150,6 +152,7 @@ Examples include:
 - a lineage note that marks what changed and why across editions
 
 If the artifacts are missing, the practice is not present, even if the words are used.
+These artifacts can be understood from the public site. The repository exists so they can be inspected in depth.
 
 ---
 
@@ -217,7 +220,7 @@ Refusal is part of care.
 ## Interpretation Log
 
 This section defines how such a log would work if the practice needs one.
-It is a stewardship shape, not a claim that a live multi-node log already exists.
+It is a stewardship shape, not a claim that a live multi-node system already exists.
 
 Interpretations are documented to make meaning propagation visible.
 
@@ -252,6 +255,7 @@ This log is documentation, not a debate stage.
 
 This section describes a response shape the practice can use as it travels.
 It is not evidence of an already active governance layer across multiple nodes.
+It describes how clarity is maintained if the practice spreads.
 
 When misuse occurs, responses stay proportional:
 
@@ -329,4 +333,4 @@ https://creativecommons.org/licenses/by/4.0/
 
 This short notice references the full license text and does not replace the complete license terms.
 
-Project context and updates live in this repository. Personal websites may mirror releases, but the license text referenced above is the source for terms.
+The public site is the primary reading surface. The repository remains the inspectable source of authorship, history, and licensing.

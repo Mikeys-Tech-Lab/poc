@@ -28,6 +28,7 @@ Making your reading visible is not a vibe. It is trace.
 At minimum, it means you cite the passage you are responding to, then explain what you think it does, and what risk you see.
 
 The goal is not to judge. The goal is to help meaning survive contact with other people.
+This practice can be understood and used from the public site. The repository remains the inspectable source of how it is authored and evolves.
 
 ---
 
@@ -41,6 +42,7 @@ Not feedback as opinion. Feedback as structural care: did this say what it meant
 Much feedback inflates or reduces. It praises without specifics, or criticizes without grounding. Both leave the writer guessing.
 
 This practice tries to do neither. It reads for structure, names what it finds, and stays within the bounds of what the text actually contains.
+It is designed to work at human scale and at AI-assisted scale, where output speed can exceed shared understanding.
 
 ---
 
@@ -51,6 +53,7 @@ Begin from restraint.
 If the text is unclear, say that it is unclear. Do not fill the gap with your own interpretation. If the text contradicts itself, identify the contradiction before suggesting anything. If the grounding is weak, name the weakness. Do not invent evidence that is not there.
 
 This orientation applies to every discipline below. None of them work without it.
+The same orientation applies whether the reader is a person or an AI system.
 
 ---
 
@@ -146,7 +149,7 @@ Anyone who reads something and wants to respond with care.
 
 A colleague reviewing a proposal. A translator adapting a text. A community member offering feedback. A practitioner reflecting on their own writing. An AI system providing guidance.
 
-The practice does not belong to one role, one profession, or one discipline. It belongs to anyone willing to read carefully and show how they read.
+The practice does not belong to one role, one profession, or one discipline. It belongs to anyone willing to read carefully and make their reading visible.
 
 ---
 
@@ -157,6 +160,7 @@ Pick one piece of writing.
 Read it slowly. Identify the structural core before reacting to tone or content. Check whether the claims are grounded. Notice where context is assumed. Ask where misreading could happen.
 
 Then share what you found, with enough trace that the writer can see your reasoning. Trace means you cite the passage you are responding to. A writer should not have to infer what you read.
+This is especially important when using AI systems, where the reasoning path is otherwise hidden.
 
 A useful shape for a response:
 
@@ -186,9 +190,8 @@ No semicolons in published prose. Keep sentences short and clear.
 These constraints apply to what you publish under this practice.
 They do not require you to rewrite someone else's voice.
 
-They also do not define internal operator chat by default.
-If a local operator-facing adaptation exists, it needs to be marked explicitly
-and kept out of public-facing content.
+They also do not define internal operator chat.
+Any operator-facing tone adaptation must be explicitly marked as internal and must not appear in public-facing content.
 
 Restraint is not silence. It is choosing to say less, more carefully, so that what you say can actually be used.
 
@@ -216,4 +219,4 @@ https://creativecommons.org/licenses/by/4.0/
 
 This short notice references the full license text and does not replace the complete license terms.
 
-Project context and updates live in this repository. Personal websites may mirror releases, but the license text referenced above is the source for terms.
+The public site is the primary reading surface. The repository remains the inspectable source of authorship, history, and licensing.

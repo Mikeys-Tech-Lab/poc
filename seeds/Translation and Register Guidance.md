@@ -38,7 +38,9 @@ Translations, when produced, are AI-assisted and human-reviewed. They are cultur
 
 This guidance also covers **register shifts**. A register shift is when the same core content is rewritten for a different audience or channel, for example beginner orientation, practitioner delivery, institutional interfaces, or public platforms like short video.
 
+
 Here, register means the audience voice: tone, formality, assumed context, and what the text asks the reader to do.
+Registers change how the work is read, not what it means.
 
 Locale and register are two separate axes:
 
@@ -110,26 +112,31 @@ This is not simplification. It is ethical adaptation.
 
 This practice is designed to speak across audiences, not only across languages.
 
-### Register families
+### Register contract (current public state)
 
-The live public site currently exposes two registers:
+The current public register contract consists of two registers:
 
 - **Orientation**: lower assumed context, shorter sentences where needed, slower pacing, and earlier explanation of terms before use.
 - **Practitioner**: denser sentences, higher assumed context, and more operational vocabulary while keeping the same structure and boundaries.
 
-These differences need to show up in the writing itself: sentence density,
-pacing, assumed context, and how quickly the text asks the reader to carry
-structural terms.
+These differences must show up in the writing itself: sentence density, pacing, assumed context, and how quickly the text asks the reader to carry structural terms.
 
-Other register families remain secondary or future-facing until the public site
-exposes them directly.
+Registers change how the work is read, not what it means.
 
 Registers describe use contexts, not demographics. People may move between registers depending on energy, stress, language comfort, channel constraints, and the amount of shared context available.
 
-- **Low cognitive load**: high structure, explicit assumptions, low metaphor density. This label describes the edition’s structure, not the reader. It reduces processing overhead without reducing depth or trace.
-- **Institutional interface**: for documents that need to interface with institutions (for example procurement, risk review, or governance docs). This is an interface layer, not a replacement for the practice. It must retain all boundary statements and safety constraints, including anti surveillance and anti coercion. If an institution requires removing or weakening those constraints, mark that edition as incompatible.
-- **Public**: accessible, punchy, minimal jargon, suited for newsletters and public posts.
-- **Short form**: high signal, low context, designed for formats like short video captions.
+### Non-canonical adaptations (not part of the current contract)
+
+Other register forms may exist as internal or future adaptations, but they are not part of the current public contract and must not be treated as such.
+
+Examples of possible adaptations (non-canonical):
+
+- **Low cognitive load**: high structure, explicit assumptions, low metaphor density. Reduces processing overhead without reducing depth or trace.
+- **Institutional interface**: used to interface with institutions (for example procurement or governance). Must retain all boundary statements and safety constraints. If constraints are weakened, mark as incompatible.
+- **Public**: accessible, punchy, minimal jargon for newsletters and public posts.
+- **Short form**: high signal, low context, for formats like short video captions.
+
+These are illustrative only. They do not define the current system and must not be used as default or canonical registers.
 
 ### What stays stable across registers
 

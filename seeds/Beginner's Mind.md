@@ -20,6 +20,8 @@ It is not self help language.
 
 It is a practical stance that protects clarity from performance, certainty theater, and defensive reasoning.
 
+It can be understood and practiced from the public site without entering the repository.
+
 ---
 
 ## Plain Language Summary
@@ -28,7 +30,7 @@ Beginner’s mind means:
 
 I am allowed to not know yet.
 
-It is the posture that keeps trace honest.
+It is the posture that keeps trace honest under pressure.
 
 Without it, trace becomes a ritual.
 With it, trace becomes a tool for structural truth.
@@ -64,6 +66,7 @@ Because without it:
 - people defend conclusions as identity
 - teams chase being right instead of being coherent
 - AI output gets mistaken for truth
+- fast answers replace shared understanding
 - speed replaces integration
 
 Beginner’s mind breaks that pattern.
@@ -107,6 +110,8 @@ Beginner’s mind increases integration speed.
 
 In this practice, AI is used to generate possibilities, not final truth.
 
+Seeds in this work are written to be both human-readable and usable as shared context for AI systems.
+
 A common loop:
 
 - Generate options quickly.
@@ -120,10 +125,9 @@ A common loop:
 
 ## Using the Seed Set in AI Contexts
 
-If you are using an AI assistant, you can seed the conversation with the current seed set for this practice.
-This is a runtime technique, not the public entry path into the work.
-This does not make the assistant correct.
-It makes the definitions and boundaries easier to share and inspect.
+You can load the seed set into an AI conversation as shared context.
+This is a runtime technique, not the default way to enter the practice.
+It does not make the assistant correct. It makes reasoning easier to inspect.
 
 Current seed set:
 
@@ -133,6 +137,8 @@ Current seed set:
 - [A Bridge Between Conflicting Nodes](./A Bridge Between Conflicting Nodes.md)
 - [Voice of Guidance](./Voice of Guidance.md)
 - [Translation and Register Guidance](./Translation and Register Guidance.md)
+
+The same texts are fully readable on the public site. The repository remains the authored source and inspection layer.
 
 What this tends to improve:
 
@@ -159,7 +165,7 @@ It is incompatible with:
 - status games that reward confidence over coherence
 
 If “I don’t know yet” is punished, trace will be faked.
-Beginner’s mind cannot be mandated. If it is demanded as performance, it will be performed.
+Beginner’s mind cannot be mandated. If it is demanded as performance, it will be simulated.
 
 If an organization requires certainty, it will produce confident errors at volume.
 
@@ -183,6 +189,8 @@ Use these questions in two ways:
 
 If you can answer those, you are practicing beginner’s mind.
 
+If these answers are missing, treat the output as unverified.
+
 ---
 
 ## Status
@@ -194,6 +202,7 @@ It does not work if it evolves away from its core:
 
 Beginner’s mind protects trace.
 Trace protects shared understanding.
+Shared understanding protects action from confident error.
 
 ---
 
