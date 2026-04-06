@@ -197,12 +197,12 @@ const themeCopy =
     grid-template-rows: auto auto 1fr;
     gap: 0.7rem;
     padding: 1rem 1.05rem;
-    border: 1px solid var(--poc-border-faint);
+    border: 1px solid var(--poc-box-border);
     border-radius: 0.9rem;
-    background-color: var(--poc-surface);
+    background-color: var(--poc-box-surface);
     color: var(--poc-text);
     backdrop-filter: blur(var(--poc-blur-sm));
-    box-shadow: var(--poc-shadow-soft);
+    box-shadow: var(--poc-box-shadow);
   }
 
   .home-featured-guide-label {
@@ -222,12 +222,12 @@ const themeCopy =
 
   .home-register-preview,
   .home-theme-option {
-    border: 1px solid var(--poc-border-faint);
+    border: 1px solid var(--poc-box-control-border);
     border-radius: 0.8rem;
-    background-color: var(--poc-surface-mid);
+    background-color: var(--poc-box-control-surface);
     color: var(--poc-text);
     backdrop-filter: blur(var(--poc-blur-sm));
-    box-shadow: var(--poc-shadow-soft);
+    box-shadow: var(--poc-box-control-shadow);
     transition:
       border-color 0.15s ease,
       background-color 0.15s ease,
@@ -236,8 +236,8 @@ const themeCopy =
 
   .home-register-preview:hover,
   .home-theme-option:hover {
-    border-color: var(--poc-border-hover);
-    background-color: var(--poc-surface-raised);
+    border-color: var(--poc-box-control-hover-border);
+    background-color: var(--poc-box-control-hover-surface);
     transform: translateY(-1px);
   }
 
@@ -339,40 +339,13 @@ const themeCopy =
 
   .home-theme-option[aria-pressed='true'],
   .home-theme-option[aria-pressed='true']:hover {
-    border-color: rgb(229 161 163 / 0.5);
-    background-color: rgb(229 161 163 / 0.14);
+    border-color: var(--poc-box-selected-border);
+    background-color: var(--poc-box-selected-surface);
     color: var(--poc-text-strong);
     transform: none;
     box-shadow:
-      inset 0 0 0 1px rgb(229 161 163 / 0.26),
-      var(--poc-shadow-soft);
-  }
-
-  :root[data-theme='light']:not([data-style='solid']) .home-featured-guide,
-  :root[data-theme='light']:not([data-style='solid']) .home-register-preview,
-  :root[data-theme='light']:not([data-style='solid']) .home-theme-option {
-    background-color: rgb(255 255 255 / 0.68);
-    border-color: rgb(var(--poc-overlay) / 0.2);
-    box-shadow:
-      0 3px 10px rgb(0 0 0 / 0.06),
-      0 10px 24px rgb(0 0 0 / 0.04);
-  }
-
-  :root[data-theme='light']:not([data-style='solid']) .home-register-preview:hover,
-  :root[data-theme='light']:not([data-style='solid']) .home-theme-option:hover {
-    background-color: rgb(255 255 255 / 0.82);
-    border-color: rgb(var(--poc-overlay) / 0.24);
-  }
-
-  :root[data-theme='light'] .home-theme-option[aria-pressed='true'],
-  :root[data-theme='light'] .home-theme-option[aria-pressed='true']:hover {
-    border-color: rgb(229 161 163 / 0.5);
-    background-color: rgb(229 161 163 / 0.14);
-    color: var(--poc-text-strong);
-    transform: none;
-    box-shadow:
-      inset 0 0 0 1px rgb(229 161 163 / 0.26),
-      var(--poc-shadow-soft);
+      inset 0 0 0 1px var(--poc-box-selected-ring),
+      var(--poc-box-control-shadow);
   }
 
   @media (min-width: 50rem) {

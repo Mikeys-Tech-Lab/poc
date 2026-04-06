@@ -284,6 +284,20 @@ All files live in `apps/site/src/styles/`. For the design token system and frost
 4. `surfaces.css` applies `backdrop-filter: blur()` to specific UI elements for the frosted glass effect.
 5. The light theme overrides the channel values in `tokens.css`. Most downstream tokens auto-resolve.
 
+### Box token contract
+
+Custom box-like surfaces use shared token families defined in `tokens.css`.
+
+- `--poc-box-*` for calm reusable panels and cards
+- `--poc-box-control-*` for controls inside those boxes
+- `--poc-box-row-*` for neutral row-style controls such as accessibility rows
+- `--poc-box-note-*`, `tip`, `caution`, and `danger` for semantic callouts
+
+When adding a new box, extend the token contract first if needed, then consume
+those tokens from the component. Do not duplicate atmospheric light-mode box
+overrides across multiple components unless the token contract cannot express
+the need.
+
 ### Style variants
 
 Two visual styles exist, controlled by `data-style` on `<html>`:

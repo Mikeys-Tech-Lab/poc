@@ -47,6 +47,90 @@
   /* Reading accents stay softer than the primary theme accent. */
   --poc-reading-accent: rgb(229 161 163 / 0.82);
 
+  /* Box accents stay in one pastel family across themes and styles. */
+  --poc-box-note-accent: #8caaee;
+  --poc-box-note-title: #d5e0ff;
+  --poc-box-note-surface: color-mix(
+    in srgb,
+    var(--poc-surface-mid) 86%,
+    var(--poc-box-note-accent) 14%
+  );
+  --poc-box-note-border: color-mix(
+    in srgb,
+    var(--poc-box-note-accent) 30%,
+    var(--poc-border-faint)
+  );
+  --poc-box-note-rail: color-mix(in srgb, var(--poc-box-note-accent) 78%, white 22%);
+
+  --poc-box-tip-accent: #ca9ee6;
+  --poc-box-tip-title: #ead6f6;
+  --poc-box-tip-surface: color-mix(
+    in srgb,
+    var(--poc-surface-mid) 86%,
+    var(--poc-box-tip-accent) 14%
+  );
+  --poc-box-tip-border: color-mix(in srgb, var(--poc-box-tip-accent) 30%, var(--poc-border-faint));
+  --poc-box-tip-rail: color-mix(in srgb, var(--poc-box-tip-accent) 78%, white 22%);
+
+  --poc-box-caution-accent: #e5c890;
+  --poc-box-caution-title: #f4e5bc;
+  --poc-box-caution-surface: color-mix(
+    in srgb,
+    var(--poc-surface-mid) 88%,
+    var(--poc-box-caution-accent) 12%
+  );
+  --poc-box-caution-border: color-mix(
+    in srgb,
+    var(--poc-box-caution-accent) 30%,
+    var(--poc-border-faint)
+  );
+  --poc-box-caution-rail: color-mix(in srgb, var(--poc-box-caution-accent) 78%, white 22%);
+
+  --poc-box-danger-accent: #e78284;
+  --poc-box-danger-title: #f1b3b4;
+  --poc-box-danger-surface: color-mix(
+    in srgb,
+    var(--poc-surface-mid) 88%,
+    var(--poc-box-danger-accent) 12%
+  );
+  --poc-box-danger-border: color-mix(
+    in srgb,
+    var(--poc-box-danger-accent) 30%,
+    var(--poc-border-faint)
+  );
+  --poc-box-danger-rail: color-mix(in srgb, var(--poc-box-danger-accent) 78%, white 22%);
+
+  /* Reusable calm box families for custom panels, cards, and controls. */
+  --poc-box-surface: var(--poc-surface-mid);
+  --poc-box-border: var(--poc-border-faint);
+  --poc-box-shadow: var(--poc-shadow-soft);
+  --poc-box-hover-surface: var(--poc-surface-raised);
+  --poc-box-hover-border: var(--poc-border-hover);
+
+  --poc-box-control-surface: var(--poc-surface);
+  --poc-box-control-border: var(--poc-border-faint);
+  --poc-box-control-shadow: var(--poc-shadow-soft);
+  --poc-box-control-hover-surface: var(--poc-surface-raised);
+  --poc-box-control-hover-border: var(--poc-border-hover);
+
+  --poc-box-row-surface: var(--poc-surface-faint);
+  --poc-box-row-border: var(--poc-border-subtle);
+  --poc-box-row-hover-border: var(--poc-border-hover);
+  --poc-box-row-control-surface: var(--poc-surface);
+  --poc-box-row-control-border: var(--poc-border);
+
+  --poc-box-selected-surface: color-mix(
+    in srgb,
+    var(--poc-box-control-surface) 82%,
+    var(--poc-reading-accent) 18%
+  );
+  --poc-box-selected-border: color-mix(
+    in srgb,
+    var(--poc-box-control-border) 50%,
+    var(--poc-reading-accent) 50%
+  );
+  --poc-box-selected-ring: rgb(229 161 163 / 0.26);
+
   /* Readability hierarchy */
   --poc-text-strong: #ffffff;
   --poc-text: rgb(255 255 255 / 0.96);
@@ -93,8 +177,48 @@
   --poc-backdrop: rgb(0 0 0 / 0.2);
   --poc-accent-complement: #8839ef;
   --poc-reading-accent: rgb(221 120 120 / 0.68);
+  --poc-box-note-accent: #5b7ed9;
+  --poc-box-note-title: #36559f;
+  --poc-box-tip-accent: #8c5cc7;
+  --poc-box-tip-title: #6f46a4;
+  --poc-box-caution-accent: #b77912;
+  --poc-box-caution-title: #8f5b08;
+  --poc-box-danger-accent: #d6576f;
+  --poc-box-danger-title: #aa3852;
   --poc-text-strong: #303446;
   --poc-text: #4c4f69;
   --poc-text-muted: #5c5f77;
   --poc-text-soft: #6c6f85;
+}
+
+:root[data-theme="light"]:not([data-style="solid"]) {
+  --poc-box-surface: rgb(255 255 255 / 0.68);
+  --poc-box-border: rgb(var(--poc-overlay) / 0.2);
+  --poc-box-shadow: 0 3px 10px rgb(0 0 0 / 0.06), 0 10px 24px rgb(0 0 0 / 0.04);
+  --poc-box-hover-surface: rgb(255 255 255 / 0.82);
+  --poc-box-hover-border: rgb(var(--poc-overlay) / 0.24);
+
+  --poc-box-control-surface: rgb(255 255 255 / 0.82);
+  --poc-box-control-border: rgb(var(--poc-overlay) / 0.2);
+  --poc-box-control-shadow: var(--poc-box-shadow);
+  --poc-box-control-hover-surface: rgb(255 255 255 / 0.9);
+  --poc-box-control-hover-border: rgb(var(--poc-overlay) / 0.24);
+
+  --poc-box-row-surface: rgb(255 255 255 / 0.58);
+  --poc-box-row-border: rgb(var(--poc-overlay) / 0.18);
+  --poc-box-row-hover-border: rgb(var(--poc-overlay) / 0.24);
+  --poc-box-row-control-surface: rgb(255 255 255 / 0.82);
+  --poc-box-row-control-border: rgb(var(--poc-overlay) / 0.22);
+
+  --poc-box-selected-surface: color-mix(
+    in srgb,
+    var(--poc-box-control-surface) 76%,
+    var(--poc-reading-accent) 24%
+  );
+  --poc-box-selected-border: color-mix(
+    in srgb,
+    var(--poc-box-control-border) 48%,
+    var(--poc-reading-accent) 52%
+  );
+  --poc-box-selected-ring: rgb(221 120 120 / 0.22);
 }
