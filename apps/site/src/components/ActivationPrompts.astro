@@ -9,11 +9,12 @@ import {
 } from '../lib/activation-prompts';
 
 interface Props {
-  intro: string;
+  intro?: string;
   title?: string;
   guidedTitle?: string;
   minimalTitle?: string;
   summaryLabel?: string;
+  variant?: 'full' | 'minimal-only';
 }
 
 const {
@@ -22,7 +23,10 @@ const {
   guidedTitle = 'Guided activation prompt',
   minimalTitle = 'Minimal activation prompt',
   summaryLabel = 'Runtime entry',
+  variant = 'full',
 } = Astro.props as Props;
+
+const minimalOnly = variant === 'minimal-only';
 ---
 
 <poc-activation-prompts>
@@ -30,32 +34,34 @@ const {
     <p class="reading-frame-label">{summaryLabel}</p>
     <p class="reading-frame-title">{title}</p>
     <div class="reading-frame-body activation-prompts-body">
-      <p>{intro}</p>
-      <p>{ACTIVATION_COMPATIBILITY}</p>
-      <p class="activation-prompts-note">{ACTIVATION_INCOMPATIBILITY}</p>
-      <p class="activation-prompts-boundary">{ACTIVATION_BOUNDARY}</p>
+      {intro && <p>{intro}</p>}
+      {!minimalOnly && <p>{ACTIVATION_COMPATIBILITY}</p>}
+      {!minimalOnly && <p class="activation-prompts-note">{ACTIVATION_INCOMPATIBILITY}</p>}
+      {!minimalOnly && <p class="activation-prompts-boundary">{ACTIVATION_BOUNDARY}</p>}
 
-      <div class="activation-prompts-card activation-prompts-card-url">
-        <div class="activation-prompts-card-header">
-          <div>
-            <p class="activation-prompts-card-label">Seeder URL</p>
-            <p class="activation-prompts-card-title">Direct runtime entry</p>
+      {!minimalOnly && (
+        <div class="activation-prompts-card activation-prompts-card-url">
+          <div class="activation-prompts-card-header">
+            <div>
+              <p class="activation-prompts-card-label">Seeder URL</p>
+              <p class="activation-prompts-card-title">Direct runtime entry</p>
+            </div>
+            <button
+              type="button"
+              class="activation-prompts-copy"
+              data-copy-target="seeder-url"
+              aria-label="Copy seeder URL"
+            >
+              <span data-copy-default>Copy URL</span>
+              <span data-copy-success hidden>URL copied</span>
+            </button>
           </div>
-          <button
-            type="button"
-            class="activation-prompts-copy"
-            data-copy-target="seeder-url"
-            aria-label="Copy seeder URL"
-          >
-            <span data-copy-default>Copy URL</span>
-            <span data-copy-success hidden>URL copied</span>
-          </button>
+          <p class="activation-prompts-url-link">
+            <a href={SEEDER_URL}>Open the public seeder URL</a>
+          </p>
+          <pre><code data-copy-source="seeder-url">{SEEDER_URL}</code></pre>
         </div>
-        <p class="activation-prompts-url-link">
-          <a href={SEEDER_URL}>Open the public seeder URL</a>
-        </p>
-        <pre><code data-copy-source="seeder-url">{SEEDER_URL}</code></pre>
-      </div>
+      )}
 
       <div class="activation-prompts-card">
         <div class="activation-prompts-card-header">
@@ -76,24 +82,26 @@ const {
         <pre><code data-copy-source="minimal-prompt">{MINIMAL_ACTIVATION_PROMPT}</code></pre>
       </div>
 
-      <div class="activation-prompts-card">
-        <div class="activation-prompts-card-header">
-          <div>
-            <p class="activation-prompts-card-label">Prompt</p>
-            <p class="activation-prompts-card-title">{guidedTitle}</p>
+      {!minimalOnly && (
+        <div class="activation-prompts-card">
+          <div class="activation-prompts-card-header">
+            <div>
+              <p class="activation-prompts-card-label">Prompt</p>
+              <p class="activation-prompts-card-title">{guidedTitle}</p>
+            </div>
+            <button
+              type="button"
+              class="activation-prompts-copy"
+              data-copy-target="guided-prompt"
+              aria-label="Copy guided activation prompt"
+            >
+              <span data-copy-default>Copy guided prompt</span>
+              <span data-copy-success hidden>Guided prompt copied</span>
+            </button>
           </div>
-          <button
-            type="button"
-            class="activation-prompts-copy"
-            data-copy-target="guided-prompt"
-            aria-label="Copy guided activation prompt"
-          >
-            <span data-copy-default>Copy guided prompt</span>
-            <span data-copy-success hidden>Guided prompt copied</span>
-          </button>
+          <pre><code data-copy-source="guided-prompt">{GUIDED_ACTIVATION_PROMPT}</code></pre>
         </div>
-        <pre><code data-copy-source="guided-prompt">{GUIDED_ACTIVATION_PROMPT}</code></pre>
-      </div>
+      )}
     </div>
   </section>
 </poc-activation-prompts>

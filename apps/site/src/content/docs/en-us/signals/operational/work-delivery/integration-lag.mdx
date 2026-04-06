@@ -1,17 +1,195 @@
 ---
-title: Integration Lag
-description: A signal for when output is arriving faster than a team can integrate it into shared understanding.
+title: "Integration Lag: We Started Shipping Faster. We Also Started Understanding Less."
+description: What happens when AI increases output speed faster than teams can integrate changes into shared understanding.
 register: practitioner
 ---
 
 import RegisterContent from '../../../../../../components/RegisterContent.astro';
+import ActivationPrompts from '../../../../../../components/ActivationPrompts.astro';
 import ShareButton from '../../../../../../components/ShareButton.astro';
 
 <RegisterContent register="orientation/en-us/signals/operational/work-delivery/integration-lag">
 
 <ShareButton />
 
-Placeholder. Content coming later.
+We hit a point where velocity went up, but coherence went down.
+
+AI generated code. Tickets moved faster. Delivery pipelines flowed.
+
+Everything looked efficient.  
+But the understanding behind it was thinning.
+
+And still, something stopped adding up.
+
+We kept shipping.  
+We were no longer sure what we were shipping into.
+
+### Integration lag
+
+The bottleneck is no longer production.
+
+It is integration.
+
+Not CI/CD integration.
+
+Integration of understanding:
+
+- what a change actually means
+- what assumptions it relies on
+- what work is hidden behind it
+- what it might break
+
+AI made generation cheap.
+
+It also made it easy to move faster than our ability to make sense of what we are doing.
+
+This is what we call **integration lag**.
+
+Agreement was visible.  
+Understanding was not shared.
+
+### How it shows up
+
+This does not look like failure.
+
+It looks like pressure:
+
+- features that "worked" collide in production
+- dependencies surface too late
+- teams discover missing work after commitment
+- rework happens under time pressure
+- fixes move into nights or weekends
+
+Nothing obviously broken early on.  
+The cost appears later.
+
+### What we changed
+
+We did not introduce a framework.
+
+We changed how we make decisions before committing work.
+
+Before committing, we made reasoning visible.
+
+Not as documentation.  
+Not as a requirement.
+
+As a runtime intervention.
+
+### The intervention
+
+We use a small context seeder.
+
+A shared piece of context loaded into the AI before it starts working.
+
+It forces reasoning to surface while the work is still forming.
+
+In practice:
+
+- the agent does not jump straight to output
+- it surfaces assumptions
+- it identifies missing domains
+- it exposes hidden work
+
+We call this lens **Sensible Defaults**.
+
+It is not a framework.
+
+It is a constraint on how work is approached under AI speed.
+
+### Example
+
+Before:
+
+> "Implement feature X with API Y"
+
+Looks complete. Moves fast.
+
+After running it through the lens:
+
+- data ownership unclear
+- security implications missing
+- deployment dependencies not considered
+- testing scope undefined
+
+Same task.
+
+Rework surfaced before it happens.
+
+### What this actually does
+
+It may feel slower at first.
+
+It shifts effort forward, instead of paying for it later as rework.
+
+It turns:
+
+- implicit -> visible
+- assumed -> inspectable
+- aligned -> understood
+
+This is not about getting more out of AI.
+
+It is about constraining AI so it does not outrun understanding.
+
+### Use it
+
+Don't roll this out.
+
+Try it once.
+
+Take one real, slightly uncomfortable task.
+
+Load the context seeder.  
+Run it through the lens.
+
+See what surfaces.
+
+If it doesn't reduce rework or late surprises, drop it.
+
+If the article gives you enough context already, use this minimal activation prompt:
+
+<ActivationPrompts
+  variant="minimal-only"
+  title="Minimal activation prompt"
+  minimalTitle="Minimal activation prompt"
+  intro="Load the lens directly into a compatible model or agent."
+/>
+
+For the fuller public entry, go to [Sensible Defaults](https://practiceofclarity.eu/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load/).
+
+### This is not a framework
+
+If this turns into process, it fails.
+
+If it becomes a requirement, it fails.
+
+If it becomes something to complete, it fails.
+
+If it is used to control people instead of exposing reality, it fails.
+
+This only works as a practice.
+
+### This is not meant to be done alone
+
+Reasoning is not an individual activity.
+
+It becomes visible between people.
+
+So this only works when it is shared.
+
+Not installed.  
+Practiced together.
+
+### The real goal
+
+Not better output.
+
+Better understanding.
+
+Because under AI speed, that is one of the few things that keeps systems coherent.
+
+Everything else is just faster confusion.
 
 </RegisterContent>
 
