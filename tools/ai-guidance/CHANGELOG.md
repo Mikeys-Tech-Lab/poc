@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.6.0...ai-guidance-v0.6.1) (2026-04-06)
+
+
+### Bug Fixes
+
+* align seeder activation contract ([#164](https://github.com/Mikeys-Tech-Lab/poc/issues/164)) ([34f3b2b](https://github.com/Mikeys-Tech-Lab/poc/commit/34f3b2b75f4b4aea0b51a16f927185da7cc9e6ee))
+
 ## [0.6.0](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.5.0...ai-guidance-v0.6.0) (2026-04-06)
 
 

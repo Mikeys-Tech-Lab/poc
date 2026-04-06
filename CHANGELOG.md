@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.5](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.12.4...PoC-v1.12.5) (2026-04-06)
+
+
+### Bug Fixes
+
+* align seeder activation contract ([#164](https://github.com/Mikeys-Tech-Lab/poc/issues/164)) ([34f3b2b](https://github.com/Mikeys-Tech-Lab/poc/commit/34f3b2b75f4b4aea0b51a16f927185da7cc9e6ee))
+
 ## [1.12.4](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.12.3...PoC-v1.12.4) (2026-04-06)
 
 
