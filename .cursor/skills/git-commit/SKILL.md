@@ -15,7 +15,9 @@ Before staging and committing, verify in this order:
 
 1. **Lint passes**: run `pnpm lint`. If it fails, run `pnpm lint:fix` then `pnpm lint` again. CI runs lint first; failing locally avoids pushing broken checks. See `docs/guidance/agent-pre-commit-verification.md`.
 2. **Build passes**: run `pnpm run build` if you changed assets, config, content structure, or frontmatter.
-3. **Tests pass**: run `pnpm test` if you changed tooling code.
+3. **Tests pass**: run `pnpm test` if you changed tooling code, shared site
+   modules, or `apps/site` content, components, routes, or tests that can trip
+   declared guardrails such as `register-boundaries.test.ts`.
 4. **Internal references are valid**: if you added or changed any markdown link, backtick path, or file reference, verify the target exists. A build catches broken links in site content, but not in skills, rules, or docs outside the Astro site.
 5. **Scope is atomic**: the staged changes do exactly one logical thing. If you need to describe two unrelated changes, split into two commits.
 6. **Nothing unintended is staged**: run `git diff --cached --stat` and review the file list.

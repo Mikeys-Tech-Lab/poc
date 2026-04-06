@@ -64,13 +64,23 @@ const cases = [
     ],
   },
   {
-    name: 'Integration Lag stays an explicit placeholder in both registers',
+    name: 'Integration Lag keeps the self-contained activation handoff visible in both registers',
     practitionerPath:
       'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag.mdx',
     orientationPath:
       'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/integration-lag.mdx',
-    practitionerSnippets: ['Placeholder. Content coming later.'],
-    orientationSnippets: ['Placeholder. Content coming later.'],
+    practitionerSnippets: [
+      'This is what we call **integration lag**.',
+      'If the article gives you enough context already, use this minimal activation prompt:',
+      'For the fuller public entry, go to [Sensible Defaults]',
+      'This only works as a practice.',
+    ],
+    orientationSnippets: [
+      '**Sensible Defaults**',
+      'If the article already gave you enough context, use this minimal activation prompt:',
+      'For the fuller public entry, go to [Sensible Defaults]',
+      'This is about seeing clearly, not doing more.',
+    ],
   },
 ] as const;
 
