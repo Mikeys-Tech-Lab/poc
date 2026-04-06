@@ -4,10 +4,12 @@ import starlight from '@astrojs/starlight';
 import starlightCatppuccin from '@catppuccin/starlight';
 import { defineConfig } from 'astro/config';
 import rehypeMermaid from 'rehype-mermaid';
+import { buildRouteRedirects } from './src/lib/route-map.js';
 export default defineConfig({
   site: process.env.SITE_URL || 'https://practiceofclarity.eu',
   redirects: {
     '/': '/en-us/',
+    ...buildRouteRedirects(),
   },
   devToolbar: {
     enabled: false,
@@ -141,6 +143,7 @@ export default defineConfig({
         { label: 'Home', slug: '' },
         {
           label: 'About',
+          collapsed: true,
           items: [
             { label: 'What This Work Is', slug: 'about/what-this-is' },
             { label: 'Architecture', slug: 'about/architecture' },
@@ -149,64 +152,97 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Writing',
+          label: 'Core System',
+          collapsed: true,
           items: [
             {
               label: 'Practice of Clarity',
+              collapsed: true,
               items: [
                 {
                   label: 'Act I: When Output Outpaces Understanding',
-                  slug: 'writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding',
+                  slug: 'core-system/practice-of-clarity/act-1-when-output-outpaces-understanding',
                 },
                 {
                   label: 'Act II: Practicing Decision Hygiene Under AI Speed',
-                  slug: 'writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed',
+                  slug: 'core-system/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed',
                 },
                 {
                   label: 'Act III: Nodes, Bridges, and Drift',
-                  slug: 'writing/articles/practice-of-clarity/act-3-nodes-bridges-and-drift',
+                  slug: 'core-system/practice-of-clarity/act-3-nodes-bridges-and-drift',
                 },
                 {
                   label: 'Act IV: A Public Node You Can Inspect',
-                  slug: 'writing/articles/practice-of-clarity/act-4-a-public-node-you-can-inspect',
+                  slug: 'core-system/practice-of-clarity/act-4-a-public-node-you-can-inspect',
+                },
+              ],
+            },
+            {
+              label: 'Seeds',
+              collapsed: true,
+              items: [
+                { label: 'Overview', slug: 'core-system/seeds' },
+                {
+                  label: 'A Living Practice of Clarity',
+                  slug: 'core-system/seeds/a-living-practice-of-clarity',
+                },
+                {
+                  label: 'Practice Foundations',
+                  slug: 'core-system/seeds/practice-foundations',
+                },
+                { label: "Beginner's Mind", slug: 'core-system/seeds/beginners-mind' },
+                {
+                  label: 'A Bridge Between Conflicting Nodes',
+                  slug: 'core-system/seeds/bridge-between-conflicting-nodes',
+                },
+                {
+                  label: 'Translation and Register Guidance',
+                  slug: 'core-system/seeds/translation-and-register-guidance',
+                },
+                {
+                  label: 'Voice of Guidance',
+                  slug: 'core-system/seeds/voice-of-guidance',
+                },
+              ],
+            },
+            {
+              label: 'Mandate Lenses',
+              collapsed: true,
+              items: [
+                { label: 'Overview', slug: 'core-system/mandate-lenses' },
+                {
+                  label: 'Sensible Defaults',
+                  slug: 'core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load',
                 },
               ],
             },
           ],
         },
         {
-          label: 'Mandate Lenses',
+          label: 'Signals',
+          collapsed: true,
           items: [
-            { label: 'Overview', slug: 'mandate-lenses' },
             {
-              label: 'Sensible Defaults: A Lens You Can Load',
-              slug: 'mandate-lenses/sensible-defaults-a-lens-you-can-load',
+              label: 'Operational',
+              collapsed: true,
+              items: [
+                {
+                  label: 'Work & Delivery',
+                  collapsed: true,
+                  items: [
+                    {
+                      label: 'Integration Lag',
+                      slug: 'signals/operational/work-delivery/integration-lag',
+                    },
+                  ],
+                },
+              ],
             },
-          ],
-        },
-        {
-          label: 'Seeds',
-          items: [
-            { label: 'Overview', slug: 'seeds' },
-            {
-              label: 'A Living Practice of Clarity',
-              slug: 'seeds/a-living-practice-of-clarity',
-            },
-            { label: 'Practice Foundations', slug: 'seeds/practice-foundations' },
-            { label: "Beginner's Mind", slug: 'seeds/beginners-mind' },
-            {
-              label: 'A Bridge Between Conflicting Nodes',
-              slug: 'seeds/bridge-between-conflicting-nodes',
-            },
-            {
-              label: 'Translation and Register Guidance',
-              slug: 'seeds/translation-and-register-guidance',
-            },
-            { label: 'Voice of Guidance', slug: 'seeds/voice-of-guidance' },
           ],
         },
         {
           label: 'License',
+          collapsed: true,
           items: [{ label: 'CC BY 4.0', slug: 'licenses/cc-by-4-0' }],
         },
       ],

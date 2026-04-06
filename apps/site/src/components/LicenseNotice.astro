@@ -1,11 +1,13 @@
 ---
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import { getLocaleBase } from '../lib/locale';
+import { getLocalizedRoutePath } from '../lib/route-map.js';
 import { GITHUB } from '../consts';
 
 const localeBase = getLocaleBase(Astro.url?.pathname ?? '/');
 const pathname = Astro.url?.pathname ?? '/';
 const isHome = pathname === `${localeBase}/`;
+const licenseHref = getLocalizedRoutePath('license-cc-by-4-0');
 ---
 
 <aside class="license-notice">
@@ -18,7 +20,7 @@ const isHome = pathname === `${localeBase}/`;
   </p>
   <p class="legal">
     © 2026 Mikey Sebastian Drozd.
-    The writing on this site is licensed under <a href={`${localeBase}/licenses/cc-by-4-0/`}>CC BY 4.0</a>.
+    The writing on this site is licensed under <a href={licenseHref}>CC BY 4.0</a>.
   </p>
   <p class="provenance">
     This site is built in the open. The writing is the primary reading surface. <a href={GITHUB}>The repository</a> is the inspectable node behind it.

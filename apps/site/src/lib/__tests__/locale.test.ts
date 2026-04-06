@@ -6,10 +6,7 @@ describe('getLocaleFromPath', () => {
   it.each([
     ['/en-us/', 'en-US'],
     ['/en-us/about/what-this-is/', 'en-US'],
-    [
-      '/en-us/writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding/',
-      'en-US',
-    ],
+    ['/en-us/core-system/practice-of-clarity/act-1-when-output-outpaces-understanding/', 'en-US'],
   ])('resolves %s to %s', (pathname, expected) => {
     expect(getLocaleFromPath(pathname)).toBe(expected);
   });
@@ -37,10 +34,7 @@ describe('getLocaleFromPath', () => {
 describe('getLocaleBase', () => {
   it.each([
     ['/en-us/about/', '/en-us'],
-    [
-      '/en-us/writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding/',
-      '/en-us',
-    ],
+    ['/en-us/core-system/practice-of-clarity/act-1-when-output-outpaces-understanding/', '/en-us'],
   ])('returns base for %s', (pathname, expected) => {
     expect(getLocaleBase(pathname)).toBe(expected);
   });

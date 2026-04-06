@@ -1,6 +1,7 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 import { CONTENT_PATHS, LOCALE_PREFIXES, REGISTERS } from '../src/lib/__tests__/test-constants';
+import { getRouteById } from '../src/lib/route-map.js';
 
 /**
  * Axe scope (runtime-realistic):
@@ -8,8 +9,8 @@ import { CONTENT_PATHS, LOCALE_PREFIXES, REGISTERS } from '../src/lib/__tests__/
  * - 1 "stress" page x both registers = 2
  * Total: 4 axe runs
  */
-const AXE_REPRESENTATIVE_PAGE = CONTENT_PATHS[1]; // about/what-this-is
-const AXE_STRESS_PAGES = [CONTENT_PATHS[4]]; // cc-by-4-0
+const AXE_REPRESENTATIVE_PAGE = getRouteById('about-what-this-is')?.newPath ?? CONTENT_PATHS[1];
+const AXE_STRESS_PAGES = [getRouteById('license-cc-by-4-0')?.newPath ?? 'licenses/cc-by-4-0'];
 
 const axePages = [
   ...LOCALE_PREFIXES.flatMap((locale) =>
