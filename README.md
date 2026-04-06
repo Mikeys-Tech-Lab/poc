@@ -1,4 +1,4 @@
-# Practice of Clarity
+# Practice of Clarity (PoC)
 
 A publication surface and usable practice for making reasoning visible.
 
