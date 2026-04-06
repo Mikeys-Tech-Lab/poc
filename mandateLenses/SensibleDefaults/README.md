@@ -44,7 +44,7 @@ It is not designed for blind training, scraping, or passive ingestion.
 
 ## Direct seeder URL
 
-- https://github.com/Mikeys-Tech-Lab/poc/blob/main/mandateLenses/SensibleDefaults/context-seeder.md
+- https://raw.githubusercontent.com/Mikeys-Tech-Lab/poc/main/mandateLenses/SensibleDefaults/context-seeder.md
 
 ## Ready-to-paste prompts
 
@@ -52,7 +52,7 @@ It is not designed for blind training, scraping, or passive ingestion.
 
 ```text
 Load the Practice of Clarity context seeder from:
-https://github.com/Mikeys-Tech-Lab/poc/blob/main/mandateLenses/SensibleDefaults/context-seeder.md
+https://raw.githubusercontent.com/Mikeys-Tech-Lab/poc/main/mandateLenses/SensibleDefaults/context-seeder.md
 
 Follow its instructions, then apply the loaded posture to my task:
 [paste your task here]
@@ -62,7 +62,7 @@ Follow its instructions, then apply the loaded posture to my task:
 
 ```text
 Load the Practice of Clarity context seeder from:
-https://github.com/Mikeys-Tech-Lab/poc/blob/main/mandateLenses/SensibleDefaults/context-seeder.md
+https://raw.githubusercontent.com/Mikeys-Tech-Lab/poc/main/mandateLenses/SensibleDefaults/context-seeder.md
 
 After loading:
 - make reasoning visible
