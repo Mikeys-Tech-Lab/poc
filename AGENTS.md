@@ -248,9 +248,10 @@ This workspace has structured repo entry paths at `docs/onboarding/`. AI agents 
 
 - Say `onboard me` for setup, workspace orientation, and contribution guidance.
 - Say `Evolution Arc` for repo history, reasoning trace, and how the workspace changed. This path asks which register the reader wants, then follows inspectable repo-local sources.
+- Say `Trace Climb` after non-trivial work to decide whether the branch needs durable learning capture, an `Evolution Record`, or a bounded skip trace.
 - The topic index is at `docs/onboarding/README.md`. It lists available topics with IDs, paths, descriptions, and prerequisites.
-- The Cursor skills at `.cursor/skills/onboarding/SKILL.md` and `.cursor/skills/evolution-arc/SKILL.md` define the agent-driven entry flows.
-- For Claude Code and GitHub Copilot: read the topic index and follow the same structure when a user asks for onboarding or repo history.
+- The Cursor skills at `.cursor/skills/onboarding/SKILL.md`, `.cursor/skills/evolution-arc/SKILL.md`, and `.cursor/skills/trace-climb/SKILL.md` define the agent-driven entry flows.
+- For Claude Code and GitHub Copilot: read the topic index and follow the same structure when a user asks for onboarding, repo history, or durable learning capture.
 - For readers without AI assistance: `docs/onboarding/manual.md` and `docs/onboarding/evolution-arc.md` provide the same starting paths.
 
 Onboarding docs summarize and link to deep docs. They do not duplicate content that lives elsewhere.
@@ -299,7 +300,7 @@ When proposing terminal commands, prefer the tools listed here. If a tool is not
 
 - All work happens on feature branches from `main`. Do not commit on `main`.
 - Pull request with squash merge back to `main`.
-- PRs include: summary, context trace (decisions/evolution/mistakes), assumptions/limits, and test plan.
+- PRs include: summary, context trace (decisions/evolution/mistakes), learning trace, assumptions/limits, and test plan.
 
 ### Feature lifecycle
 
@@ -308,6 +309,37 @@ Every non-trivial piece of work follows: **Start** (branch) → **Work** (atomic
 The Close phase requires reflection before PR creation: audit for build warnings, dead code, missing docs, broken links, and undocumented patterns. Fix findings, bump versions if applicable, then create the PR with a full reasoning trace.
 
 The `github-automation` skill has the detailed lifecycle steps. This summary exists so agents know the lifecycle is expected even without reading the skill.
+
+### Durable learning
+
+Use `Trace Climb` during Close phase for non-trivial work.
+
+Trigger levels:
+
+- `required`
+- `recommended`
+- `skip allowed`
+
+Required cases include:
+
+- messy or failed tasks
+- architecture changes
+- migrations
+- guidance or skill gaps
+- repeated friction with a shared pattern
+- research delta worth preserving
+
+Durable artifacts land by default in `docs/guidance/evolution-records/` as
+`Evolution Records`.
+
+Preserve substantive origin prompts or handovers and material activation steps
+when they shaped the work.
+
+Do not treat raw chat logs as canonical artifacts.
+
+Every durable record ends with a propagation decision. If no guardrail,
+propagation target, or research delta exists, a short skip trace is the correct
+outcome.
 
 ### Atomic commits
 
@@ -372,7 +404,7 @@ If a PR changes behavior, structure, tooling, conventions, or security posture, 
 - **Structural changes** (repo layout, new directories, moved files): update `docs/architecture/workspace.md`. If the diagram and the file tree diverge, the file tree wins and the diagram must be updated.
 - **Structural decisions** that meet the ADR criteria (`docs/decisions/README.md`): write or update an ADR. Not every structural change needs one — only those where the rationale would otherwise be lost.
 - **Onboarding-relevant changes** (setup, workflow, AI guidance, security posture): update the topic index (`docs/onboarding/README.md`) and the affected topic page(s).
-- **Onboarding and Evolution Arc contract changes**: keep the deterministic guidance drift guard coherent in the same PR. The blocking layer validates explicit mappings between skills, entry docs, adapters, and trace maps. It must not depend on inferred expectations.
+- **Repo-entry contract changes** (`onboard me`, `Evolution Arc`, `Trace Climb`): keep the deterministic guidance drift guard coherent in the same PR. The blocking layer validates explicit mappings between skills, entry docs, adapters, trace maps, and related propagation surfaces. It must not depend on inferred expectations.
 - **Infrastructure or security changes**: update `docs/infra/protection-layers.md` and/or relevant runbooks.
 - **Agent behavior changes** (new rules, skills, tool preferences): update `AGENTS.md` and any affected adapters.
 
@@ -382,7 +414,8 @@ Onboarding pages summarize and link. Deep docs hold authoritative procedures. If
 
 ### Guidance drift guard
 
-This workspace uses a two-layer guard for `onboard me` and `Evolution Arc`:
+This workspace uses a two-layer guard for `onboard me`, `Evolution Arc`, and
+`Trace Climb`:
 
 - A **blocking deterministic validator** checks path integrity, topic index consistency, explicit mapping contracts, and referenced guidance surfaces.
 - A **non-blocking advisory review** uses an AI reasoning layer over inspectable repo traces to surface broader drift, missing reflection, or missing guidance evolution.

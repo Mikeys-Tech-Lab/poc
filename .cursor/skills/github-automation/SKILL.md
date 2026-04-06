@@ -65,6 +65,7 @@ Audit the branch for issues the work introduced or exposed:
 - **Dead code**: search for unused exports, unreferenced files, or orphaned config.
 - **Broken or missing links**: check all content pages for unlinked repo references, wrong URLs, or stale paths.
 - **Skill and doc drift**: does the work introduce patterns, conventions, or constraints not yet documented in skills, rules, or `AGENTS.md`?
+- **Trace Climb**: classify the work as `required`, `recommended`, or `skip allowed`. If `required` or chosen, write or update an `Evolution Record` in `docs/guidance/evolution-records/`, preserve substantive origin handovers and material activation steps, and end with a propagation decision.
 - **ADR needed?** Does this work involve a structural decision that meets the ADR criteria (`docs/decisions/README.md`)? If yes, write or update an ADR in the same PR.
 - **Path verification**: verify all doc surface paths referenced in the PR description or plan are still valid. Do not reference files that have moved or do not exist.
 - **Consistency**: are naming conventions, URL patterns, and file organization consistent with the rest of the repo?
@@ -219,8 +220,9 @@ If any appear, replace with generic references. This is a public repository. PR 
    - Mistakes made and corrections applied
    - What was not verified (honest gaps)
 3. **Trace**: assumptions, limits, and what was not checked
-4. **Test plan**: what was verified, what was not
-5. **Checklist**: conventional commits, workspace.md updated, build passes, context included
+4. **Learning trace**: trigger class, durable artifact or skip reason, and propagation choice
+5. **Test plan**: what was verified, what was not
+6. **Checklist**: conventional commits, workspace.md updated, build passes, context included
 
 ### Context section guidance
 
@@ -232,6 +234,7 @@ If any appear, replace with generic references. This is a public repository. PR 
 ### Why this matters
 
 - A diff shows what changed. Context shows why.
+- A learning trace shows whether the branch changed future behavior or only local files.
 - Future contributors (including agents) can reconstruct intent from the PR description.
 - Mistakes documented in PRs become institutional knowledge.
 - This is the Practice of Clarity applied to the development process itself.
@@ -249,6 +252,7 @@ Every time you push one or more commits to a branch that has an open PR. No exce
 - **Summary**: does it list everything the branch now contains?
 - **Context / Evolution**: are new decisions, mistakes, or corrections documented?
 - **Trace assumptions**: are versions, tools, and limits still accurate?
+- **Learning trace**: does it say whether durable learning was preserved, linked, or intentionally skipped?
 - **Skills, files, and directory lists**: do they match the current state?
 - **Checklist**: are all items still correct?
 

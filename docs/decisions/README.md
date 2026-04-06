@@ -88,6 +88,7 @@ Links to seeds, PRs, related ADRs, or external sources. Not a duplication of PR 
 | [0004](0004-renovate-primary-dependency-engine.md) | Renovate as the primary dependency update engine | Accepted | 2026-03-29 |
 | [0005](0005-renovate-automerge-posture.md) | Renovate automerge posture for routine and vulnerability updates | Accepted | 2026-03-29 |
 | [0006](0006-root-canon-package-families-and-lens-surfaces.md) | Root canon package families and lens surfaces | Accepted | 2026-04-03 |
+| [0007](0007-trace-climb-durable-learning-flow.md) | Trace Climb durable learning flow | Accepted | 2026-04-06 |
 
 ---
 © 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).

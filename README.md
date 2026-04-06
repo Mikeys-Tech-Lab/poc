@@ -67,10 +67,12 @@ commands:
 
 - **`onboard me`** for setup, workspace structure, and contribution guidance
 - **`Evolution Arc`** for repo history and reasoning trace
+- **`Trace Climb`** for turning non-trivial work into durable learning and
+  PR-visible learning trace
 - **`Sensible Defaults`** when you explicitly want the first mandate lens loaded
   for delivery-reality analysis
 
-If you prefer the manual path, read the [onboarding guide](docs/onboarding/manual.md), the [onboarding topic index](docs/onboarding/README.md), and [Evolution Arc](docs/onboarding/evolution-arc.md).
+If you prefer the manual path, read the [onboarding guide](docs/onboarding/manual.md), the [onboarding topic index](docs/onboarding/README.md), [Evolution Arc](docs/onboarding/evolution-arc.md), and [Trace Climb](docs/onboarding/trace-climb.md).
 
 ## Quick commands
 

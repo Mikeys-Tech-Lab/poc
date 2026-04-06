@@ -18,7 +18,7 @@ Format: `<type>/<scope>/<short-description>`
 Examples:
 - `feat/astro/add-dark-mode-toggle`
 - `fix/docs/correct-sidebar-link`
-- `docs/ai/update-onboarding`
+- `chore/ai/update-onboarding`
 
 Types: `feat`, `fix`, `chore`, `docs`, `test`, `refactor`
 
@@ -46,6 +46,8 @@ The Close phase matters. Before creating a PR:
 - Search for unused exports, dead code, orphaned config
 - Check that docs, skills, and rules are updated if the work introduced new patterns
 - Verify naming conventions and file organization are consistent
+- Run `Trace Climb` for non-trivial work and classify the branch as `required`, `recommended`, or `skip allowed`
+- If `Trace Climb` is required or chosen, write or update an `Evolution Record` in `docs/guidance/evolution-records/` and carry the bounded learning trace into the PR
 
 The `github-automation` skill (`.cursor/skills/github-automation/SKILL.md`) has the detailed lifecycle.
 
@@ -67,7 +69,8 @@ PRs are reasoning traces, not just changelogs. The description should explain:
 1. **Summary** — what the PR adds or changes
 2. **Context** — how the work evolved, what decisions were made, what went wrong
 3. **Trace** — assumptions, limits, what was not checked
-4. **Test plan** — what was verified, what was not
+4. **Learning trace** — whether durable learning was preserved, linked, or intentionally skipped
+5. **Test plan** — what was verified, what was not
 
 Someone reading the PR should understand the full journey, not just the final state.
 

@@ -31,6 +31,14 @@
 - **Limits**:
 - **Not verified**:
 
+## Learning trace
+
+- **Trigger class**: `required` | `recommended` | `skip allowed`
+- **Origin trace**:
+- **Activation trace**:
+- **Durable artifact**: `No durable learning` | `Evolution Record` | `ADR` | direct surface updates
+- **Propagation**:
+
 ## Test plan
 
 <!-- What was tested? What was not? -->
@@ -48,6 +56,7 @@
 - [ ] Tests pass locally (`pnpm test`)
 - [ ] No gating, scoring, or enforcement language introduced
 - [ ] Context reflection included in PR description
+- [ ] Learning trace included in PR description
 - [ ] PR description updated after final push
 
 <!--

@@ -70,43 +70,72 @@ Use \`mandateLenses/SensibleDefaults/context-seeder.md\` only on demand.
 });
 
 describe('runGuidanceDriftGuard', () => {
-  it('reports contract failures for changed evolution arc surfaces', () => {
-    const files = {
-      'README.md': 'Use onboard me and Evolution Arc.',
-      'AGENTS.md': 'Say `onboard me`. Say `Evolution Arc`.',
-      '.github/copilot-instructions.md': 'Use `onboard me` and `Evolution Arc`.',
-      '.claude/CLAUDE.md': 'Use `onboard me` and `Evolution Arc`.',
-      '.cursor/skills/onboarding/SKILL.md':
-        'Read `docs/onboarding/README.md` and use Evolution Arc.',
-      '.cursor/skills/evolution-arc/SKILL.md':
-        'Ask which register. Read `docs/guidance/evolution-arc.md`.',
-      'docs/onboarding/README.md': `
+  const buildCompleteContractFiles = (): Record<string, string> => ({
+    'README.md': 'Use onboard me, Evolution Arc, and Trace Climb.',
+    'AGENTS.md':
+      'Say `onboard me`. Say `Evolution Arc`. Say `Trace Climb`. Store durable learning in `docs/guidance/evolution-records/`. Do not read populated `.local/config.md`.',
+    '.github/copilot-instructions.md': 'Use `onboard me`, `Evolution Arc`, and `Trace Climb`.',
+    '.github/pull_request_template.md': '## Learning trace\nEvolution Record',
+    '.claude/CLAUDE.md': 'Use `onboard me`, `Evolution Arc`, and `Trace Climb`.',
+    '.cursor/skills/onboarding/SKILL.md':
+      'Read `docs/onboarding/README.md`, use Evolution Arc, and route durable learning questions to Trace Climb.',
+    '.cursor/skills/evolution-arc/SKILL.md':
+      'Ask which register. Read `docs/guidance/evolution-arc.md`.',
+    '.cursor/skills/github-automation/SKILL.md': 'Run Trace Climb. Add Learning trace.',
+    '.cursor/skills/trace-climb/SKILL.md':
+      'Read `docs/guidance/trace-climb.md`. Write an Evolution Record.',
+    'docs/onboarding/README.md': `
 ### evolution-arc
 - **Title:** Evolution Arc
 - **Path:** \`docs/onboarding/evolution-arc.md\`
 - **When to use:** Understand history
 - **Prereqs:** none
-`,
-      'docs/onboarding/manual.md': 'Say "onboard me" or "Evolution Arc".',
-      'docs/onboarding/ai-guidance.md': 'Use `onboard me` and `evolution-arc`.',
-      'docs/onboarding/evolution-arc.md': 'Choose register. Read `docs/guidance/evolution-arc.md`.',
-      'docs/onboarding/workspace-overview.md': 'See `docs/onboarding/`.',
-      'docs/guidance/evolution-arc.md': 'See `docs/onboarding/evolution-arc.md`.',
-      'docs/architecture/workspace.md':
-        '.cursor/skills/evolution-arc/ docs/guidance/evolution-arc.md',
-    };
 
+### trace-climb
+- **Title:** Trace Climb
+- **Path:** \`docs/onboarding/trace-climb.md\`
+- **When to use:** Understand durable learning
+- **Prereqs:** none
+`,
+    'docs/onboarding/manual.md': 'Say "onboard me", "Evolution Arc", or "Trace Climb".',
+    'docs/onboarding/ai-guidance.md': 'Use `onboard me`, `evolution-arc`, and `trace-climb`.',
+    'docs/onboarding/contributing.md': 'Run Trace Climb. Include Learning trace.',
+    'docs/onboarding/evolution-arc.md': 'Choose register. Read `docs/guidance/evolution-arc.md`.',
+    'docs/onboarding/trace-climb.md':
+      'Read `docs/guidance/trace-climb.md` and `docs/guidance/evolution-records/README.md`.',
+    'docs/onboarding/workspace-overview.md':
+      'Template: `.local.example.md`. Use Trace Climb. See `docs/guidance/trace-climb.md` and `docs/onboarding/`.',
+    'docs/guidance/README.md': 'Trace Climb Evolution Records',
+    'docs/guidance/evolution-arc.md': 'See `docs/onboarding/evolution-arc.md`.',
+    'docs/guidance/trace-climb.md':
+      'See `docs/onboarding/trace-climb.md` and `docs/guidance/evolution-records/README.md`.',
+    'docs/guidance/evolution-records/README.md': 'Use `template.md`.',
+    'docs/architecture/workspace.md':
+      '`.local/`, `.cursor/skills/evolution-arc/`, `docs/guidance/evolution-arc.md`, `.cursor/skills/trace-climb/`, and `docs/guidance/evolution-records/`.',
+  });
+
+  const buildRepoFiles = (files: Record<string, string>): Set<string> => {
     const repoFiles = new Set(Object.keys(files));
     repoFiles.add('docs/onboarding/local-setup.md');
+    repoFiles.add('.local.example.md');
+    return repoFiles;
+  };
+
+  const repoDirectories = new Set([
+    'docs/onboarding',
+    'docs/guidance',
+    'docs/guidance/evolution-records',
+    '.cursor/skills/evolution-arc',
+    '.cursor/skills/trace-climb',
+  ]);
+
+  it('reports contract failures for changed evolution arc surfaces', () => {
+    const files = buildCompleteContractFiles();
 
     const result = runGuidanceDriftGuard({
       files,
-      repoFiles,
-      repoDirectories: new Set([
-        'docs/onboarding',
-        'docs/guidance',
-        '.cursor/skills/evolution-arc',
-      ]),
+      repoFiles: buildRepoFiles(files),
+      repoDirectories,
       changedFiles: ['docs/guidance/evolution-arc.md'],
     });
 
@@ -114,115 +143,82 @@ describe('runGuidanceDriftGuard', () => {
     expect(result.failures).toEqual([]);
   });
 
-  it('fails when an onboarding prereq points to an unknown topic', () => {
+  it('reports contract failures for changed trace climb surfaces', () => {
+    const files = buildCompleteContractFiles();
+
     const result = runGuidanceDriftGuard({
-      files: {
-        'README.md': 'Use onboard me and Evolution Arc.',
-        'AGENTS.md': 'Say `onboard me`. Say `Evolution Arc`.',
-        '.github/copilot-instructions.md': 'Use `onboard me` and `Evolution Arc`.',
-        '.claude/CLAUDE.md': 'Use `onboard me` and `Evolution Arc`.',
-        '.cursor/skills/onboarding/SKILL.md':
-          'Read `docs/onboarding/README.md` and use Evolution Arc.',
-        '.cursor/skills/evolution-arc/SKILL.md':
-          'Ask which register. Read `docs/guidance/evolution-arc.md`.',
-        'docs/onboarding/README.md': `
+      files,
+      repoFiles: buildRepoFiles(files),
+      repoDirectories,
+      changedFiles: ['docs/guidance/trace-climb.md'],
+    });
+
+    expect(result.activatedMappings).toEqual(['trace-climb-entry']);
+    expect(result.failures).toEqual([]);
+  });
+
+  it('activates the trace climb contract when the onboarding skill changes', () => {
+    const files = buildCompleteContractFiles();
+
+    const result = runGuidanceDriftGuard({
+      files,
+      repoFiles: buildRepoFiles(files),
+      repoDirectories,
+      changedFiles: ['.cursor/skills/onboarding/SKILL.md'],
+    });
+
+    expect(result.activatedMappings).toEqual([
+      'onboarding-entry',
+      'evolution-arc-entry',
+      'trace-climb-entry',
+    ]);
+    expect(result.failures).toEqual([]);
+  });
+
+  it('fails when an onboarding prereq points to an unknown topic', () => {
+    const files = buildCompleteContractFiles();
+    files['docs/onboarding/README.md'] = `
 ### evolution-arc
 - **Title:** Evolution Arc
 - **Path:** \`docs/onboarding/evolution-arc.md\`
 - **When to use:** Understand history
+- **Prereqs:** none
+
+### trace-climb
+- **Title:** Trace Climb
+- **Path:** \`docs/onboarding/trace-climb.md\`
+- **When to use:** Understand durable learning
 - **Prereqs:** missing-topic
-`,
-        'docs/onboarding/manual.md': 'Say "onboard me" or "Evolution Arc".',
-        'docs/onboarding/ai-guidance.md': 'Use `onboard me` and `evolution-arc`.',
-        'docs/onboarding/evolution-arc.md':
-          'Choose register. Read `docs/guidance/evolution-arc.md`.',
-        'docs/onboarding/workspace-overview.md': 'See `docs/onboarding/`.',
-        'docs/guidance/evolution-arc.md': 'See `docs/onboarding/evolution-arc.md`.',
-        'docs/architecture/workspace.md':
-          '.cursor/skills/evolution-arc/ docs/guidance/evolution-arc.md',
-      },
-      repoFiles: new Set([
-        'README.md',
-        'AGENTS.md',
-        '.github/copilot-instructions.md',
-        '.claude/CLAUDE.md',
-        '.cursor/skills/onboarding/SKILL.md',
-        '.cursor/skills/evolution-arc/SKILL.md',
-        'docs/onboarding/README.md',
-        'docs/onboarding/manual.md',
-        'docs/onboarding/ai-guidance.md',
-        'docs/onboarding/evolution-arc.md',
-        'docs/onboarding/workspace-overview.md',
-        'docs/guidance/evolution-arc.md',
-        'docs/architecture/workspace.md',
-      ]),
-      repoDirectories: new Set([
-        'docs/onboarding',
-        'docs/guidance',
-        '.cursor/skills/evolution-arc',
-      ]),
+`;
+
+    const result = runGuidanceDriftGuard({
+      files,
+      repoFiles: buildRepoFiles(files),
+      repoDirectories,
       changedFiles: [],
     });
 
     expect(result.failures).toEqual([
       {
         scope: 'docs/onboarding/README.md',
-        message: 'Topic "evolution-arc" references unknown prereq "missing-topic".',
+        message: 'Topic "trace-climb" references unknown prereq "missing-topic".',
       },
     ]);
   });
 
   it('allows logical runtime paths that are gitignored or generated', () => {
+    const files = buildCompleteContractFiles();
+    files['docs/onboarding/manual.md'] =
+      'Say "onboard me", "Evolution Arc", or "Trace Climb". Copy `.local.example.md` to `.local/config.md`.';
+    files['docs/onboarding/workspace-overview.md'] =
+      'Template: `.local.example.md`. Do not treat populated `.local/config.md` as a normal agent input. Use Trace Climb. See `docs/guidance/trace-climb.md` and `.dist/poc-snapshot-images/`.';
+    files['docs/architecture/workspace.md'] =
+      '`.local/`, `.cursor/skills/evolution-arc/`, `docs/guidance/evolution-arc.md`, `.cursor/skills/trace-climb/`, `docs/guidance/evolution-records/`, and `.dist/poc-snapshot-images/`.';
+
     const result = runGuidanceDriftGuard({
-      files: {
-        'README.md': 'Use onboard me and Evolution Arc.',
-        'AGENTS.md':
-          'Say `onboard me`. Say `Evolution Arc`. Do not read populated `.local/config.md`. Use `pnpm screendump` to export to `.dist/poc-snapshot-images/`.',
-        '.github/copilot-instructions.md': 'Use `onboard me` and `Evolution Arc`.',
-        '.claude/CLAUDE.md': 'Use `onboard me` and `Evolution Arc`.',
-        '.cursor/skills/onboarding/SKILL.md':
-          'Read `docs/onboarding/README.md`. Check if `.local/config.md` exists. Use Evolution Arc.',
-        '.cursor/skills/evolution-arc/SKILL.md':
-          'Ask which register. Read `docs/guidance/evolution-arc.md`.',
-        'docs/onboarding/README.md': `
-### evolution-arc
-- **Title:** Evolution Arc
-- **Path:** \`docs/onboarding/evolution-arc.md\`
-- **When to use:** Understand history
-- **Prereqs:** none
-`,
-        'docs/onboarding/manual.md':
-          'Say "onboard me" or "Evolution Arc". Copy `.local.example.md` to `.local/config.md`.',
-        'docs/onboarding/ai-guidance.md': 'Use `onboard me` and `evolution-arc`.',
-        'docs/onboarding/evolution-arc.md':
-          'Choose register. Read `docs/guidance/evolution-arc.md`.',
-        'docs/onboarding/workspace-overview.md':
-          'Template: `.local.example.md`. Do not treat populated `.local/config.md` as a normal agent input.',
-        'docs/guidance/evolution-arc.md': 'See `docs/onboarding/evolution-arc.md`.',
-        'docs/architecture/workspace.md':
-          '`.local/`, `.cursor/skills/evolution-arc/`, and `docs/guidance/evolution-arc.md`.',
-      },
-      repoFiles: new Set([
-        'README.md',
-        'AGENTS.md',
-        '.github/copilot-instructions.md',
-        '.claude/CLAUDE.md',
-        '.cursor/skills/onboarding/SKILL.md',
-        '.cursor/skills/evolution-arc/SKILL.md',
-        'docs/onboarding/README.md',
-        'docs/onboarding/manual.md',
-        'docs/onboarding/ai-guidance.md',
-        'docs/onboarding/evolution-arc.md',
-        'docs/onboarding/workspace-overview.md',
-        'docs/guidance/evolution-arc.md',
-        'docs/architecture/workspace.md',
-        '.local.example.md',
-      ]),
-      repoDirectories: new Set([
-        'docs/onboarding',
-        'docs/guidance',
-        '.cursor/skills/evolution-arc',
-      ]),
+      files,
+      repoFiles: buildRepoFiles(files),
+      repoDirectories,
       changedFiles: [],
     });
 

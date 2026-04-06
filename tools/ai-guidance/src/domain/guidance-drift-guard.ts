@@ -124,6 +124,88 @@ const CONTRACT_MAPPINGS: readonly MappingContract[] = [
       },
     ],
   },
+  {
+    name: 'trace-climb-entry',
+    triggers: [
+      'README.md',
+      'AGENTS.md',
+      'docs/onboarding/manual.md',
+      'docs/onboarding/README.md',
+      'docs/onboarding/ai-guidance.md',
+      'docs/onboarding/contributing.md',
+      'docs/onboarding/workspace-overview.md',
+      'docs/onboarding/trace-climb.md',
+      'docs/guidance/README.md',
+      'docs/guidance/trace-climb.md',
+      'docs/guidance/evolution-records/README.md',
+      '.cursor/skills/onboarding/SKILL.md',
+      '.cursor/skills/github-automation/SKILL.md',
+      '.cursor/skills/trace-climb/SKILL.md',
+      '.github/pull_request_template.md',
+      '.github/copilot-instructions.md',
+      '.claude/CLAUDE.md',
+      'docs/architecture/workspace.md',
+    ],
+    checks: [
+      { filePath: 'README.md', expectedSnippets: ['Trace Climb'] },
+      {
+        filePath: 'AGENTS.md',
+        expectedSnippets: ['Trace Climb', 'docs/guidance/evolution-records/'],
+      },
+      { filePath: 'docs/onboarding/manual.md', expectedSnippets: ['Trace Climb'] },
+      { filePath: 'docs/onboarding/README.md', expectedSnippets: ['### trace-climb'] },
+      { filePath: 'docs/onboarding/ai-guidance.md', expectedSnippets: ['`trace-climb`'] },
+      {
+        filePath: 'docs/onboarding/contributing.md',
+        expectedSnippets: ['Trace Climb', 'Learning trace'],
+      },
+      {
+        filePath: 'docs/onboarding/workspace-overview.md',
+        expectedSnippets: ['Trace Climb', 'docs/guidance/trace-climb.md'],
+      },
+      {
+        filePath: 'docs/onboarding/trace-climb.md',
+        expectedSnippets: ['docs/guidance/trace-climb.md', 'docs/guidance/evolution-records/'],
+      },
+      {
+        filePath: 'docs/guidance/README.md',
+        expectedSnippets: ['Trace Climb', 'Evolution Records'],
+      },
+      {
+        filePath: 'docs/guidance/trace-climb.md',
+        expectedSnippets: [
+          'docs/onboarding/trace-climb.md',
+          'docs/guidance/evolution-records/README.md',
+        ],
+      },
+      {
+        filePath: 'docs/guidance/evolution-records/README.md',
+        expectedSnippets: ['template.md'],
+      },
+      {
+        filePath: '.cursor/skills/onboarding/SKILL.md',
+        expectedSnippets: ['Trace Climb'],
+      },
+      {
+        filePath: '.cursor/skills/github-automation/SKILL.md',
+        expectedSnippets: ['Trace Climb', 'Learning trace'],
+      },
+      {
+        filePath: '.cursor/skills/trace-climb/SKILL.md',
+        expectedSnippets: ['docs/guidance/trace-climb.md', 'Evolution Record'],
+      },
+      {
+        filePath: '.github/pull_request_template.md',
+        expectedSnippets: ['## Learning trace', 'Evolution Record'],
+      },
+      { filePath: '.github/copilot-instructions.md', expectedSnippets: ['Trace Climb'] },
+      { filePath: '.claude/CLAUDE.md', expectedSnippets: ['Trace Climb'] },
+      {
+        filePath: 'docs/architecture/workspace.md',
+        expectedSnippets: ['.cursor/skills/trace-climb/', 'docs/guidance/evolution-records/'],
+      },
+    ],
+  },
 ];
 
 const toPosix = (value: string): string => value.replaceAll('\\', '/');
