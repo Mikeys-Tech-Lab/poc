@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.3](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.7.2...site-v1.7.3) (2026-04-06)
+
+
+### Miscellaneous
+
+* **deps:** pin dependencies ([#169](https://github.com/Mikeys-Tech-Lab/poc/issues/169)) ([2652859](https://github.com/Mikeys-Tech-Lab/poc/commit/2652859bfc5a09e49d402fa51dfc596e36187061))
+
 ## [1.7.2](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.7.1...site-v1.7.2) (2026-04-06)
 
 
