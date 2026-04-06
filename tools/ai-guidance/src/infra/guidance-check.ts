@@ -5,6 +5,7 @@ import { type GuidanceCheckInput, runGuidanceDriftGuard } from '../domain/guidan
 const REPO_ROOT = resolve(import.meta.dirname, '../../../../');
 const TARGET_FILES = [
   'README.md',
+  'mandateLenses/SensibleDefaults/README.md',
   'AGENTS.md',
   '.github/copilot-instructions.md',
   '.github/pull_request_template.md',
@@ -25,6 +26,11 @@ const TARGET_FILES = [
   'docs/guidance/trace-climb.md',
   'docs/guidance/evolution-records/README.md',
   'docs/architecture/workspace.md',
+  'apps/site/src/lib/activation-prompts.ts',
+  'apps/site/src/content/docs/en-us/core-system/mandate-lenses/index.mdx',
+  'apps/site/src/content/docs/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
+  'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/index.mdx',
+  'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
 ];
 
 const toPosix = (value: string): string => value.replaceAll('\\', '/');
