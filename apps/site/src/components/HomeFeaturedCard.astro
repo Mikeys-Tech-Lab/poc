@@ -179,6 +179,8 @@ const themeCopy =
     --poc-home-featured-border: var(--poc-box-featured-practitioner-border);
     --poc-home-featured-rail: var(--poc-box-featured-practitioner-rail);
     --poc-home-featured-title: var(--poc-box-featured-practitioner-title);
+    --poc-home-featured-outer-border: var(--poc-home-featured-border);
+    --poc-home-featured-guide-border: var(--poc-box-border);
   }
 
   poc-home-featured-card[data-home-featured-variant='orientation'] {
@@ -189,7 +191,7 @@ const themeCopy =
 
   poc-home-featured-card .card {
     width: 100%;
-    border-color: var(--poc-home-featured-border);
+    border-color: var(--poc-home-featured-outer-border);
     border-inline-start: 0.24rem solid var(--poc-home-featured-rail);
   }
 
@@ -215,7 +217,7 @@ const themeCopy =
     grid-template-rows: auto auto 1fr;
     gap: 0.7rem;
     padding: 1rem 1.05rem;
-    border: var(--poc-box-border-width) solid var(--poc-box-border);
+    border: var(--poc-box-border-width) solid var(--poc-home-featured-guide-border);
     border-radius: 0.9rem;
     background-color: var(--poc-box-surface);
     color: var(--poc-text);
