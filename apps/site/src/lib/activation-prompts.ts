@@ -1,5 +1,5 @@
 export const SEEDER_URL =
-  'https://github.com/Mikeys-Tech-Lab/poc/blob/main/mandateLenses/SensibleDefaults/context-seeder.md';
+  'https://raw.githubusercontent.com/Mikeys-Tech-Lab/poc/main/mandateLenses/SensibleDefaults/context-seeder.md';
 
 export const ACTIVATION_COMPATIBILITY =
   'Paste one of these into any reasoning-capable language model, thinking-capable agent, IDE agent, or comparable execution environment.';
