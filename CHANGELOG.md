@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.11.0...PoC-v1.12.0) (2026-04-06)
+
+
+### Features
+
+* **astro:** refine box theming and add integration lag article ([#165](https://github.com/Mikeys-Tech-Lab/poc/issues/165)) ([e8b46e5](https://github.com/Mikeys-Tech-Lab/poc/commit/e8b46e544160a748e936a9de98cd9073af14b34e))
+
 ## [1.11.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.10.0...PoC-v1.11.0) (2026-04-06)
 
 
