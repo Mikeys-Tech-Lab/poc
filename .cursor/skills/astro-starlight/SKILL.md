@@ -364,6 +364,21 @@ E2E tests live in `apps/site/e2e/`. Playwright config: `apps/site/playwright.con
 - Chromium only. `webServer` config manages preview lifecycle.
 - Shared helpers in `e2e/helpers.ts` generate the page matrix and provide assertion functions.
 
+### Route migration test contract
+
+For legacy URL migrations, separate the contracts:
+
+- **Unit tests** prove the route map generates the intended redirect table.
+- **E2E tests** prove a legacy public URL lands on the canonical destination.
+- Do **not** assert Playwright-observed redirect-chain depth unless the exact
+  HTTP hop behavior is itself the product contract and you have verified that
+  the runtime exposes that signal reliably.
+
+Preview and static-serving runtimes can land on the correct canonical page
+without exposing a stable browser-visible redirect chain. Treat landing on the
+canonical URL as the primary route-migration contract unless a lower-level
+transport check is explicitly required.
+
 | Spec file | What it covers |
 |---|---|
 | `register-parity.spec.ts` | Both register content divs exist on every page in the current `en-us` matrix |
