@@ -242,7 +242,7 @@ const t = getA11yLabels(locale);
 		margin: 0;
 		padding: 0;
 		border: 0;
-		border-inline-start: 1px solid var(--poc-border);
+		border-inline-start: 1px solid var(--poc-box-border);
 		background-color: var(--poc-surface-panel);
 		backdrop-filter: blur(var(--poc-blur-xl));
 		color: var(--sl-color-text);
@@ -286,7 +286,7 @@ const t = getA11yLabels(locale);
 		border-radius: 0.25rem;
 	}
 	.a11y-close:hover {
-		background-color: var(--poc-surface);
+		background-color: var(--poc-box-control-surface);
 	}
 
 	.a11y-controls {
@@ -302,8 +302,8 @@ const t = getA11yLabels(locale);
 		justify-content: space-between;
 		gap: 0.75rem;
 		padding: 0.625rem 0.75rem;
-		background-color: var(--poc-surface-faint);
-		border: 1px solid var(--poc-border-subtle);
+		background-color: var(--poc-box-row-surface);
+		border: 1px solid var(--poc-box-row-border);
 		border-radius: 0.5rem;
 		cursor: pointer;
 		font-size: var(--sl-text-sm);
@@ -311,7 +311,7 @@ const t = getA11yLabels(locale);
 	}
 	.a11y-toggle:hover,
 	.a11y-select:hover {
-		border-color: var(--poc-border-hover);
+		border-color: var(--poc-box-row-hover-border);
 	}
 
 	.a11y-toggle span,
@@ -325,8 +325,8 @@ const t = getA11yLabels(locale);
 		width: 2.5rem;
 		height: 1.375rem;
 		appearance: none;
-		background-color: var(--poc-surface-raised);
-		border: 1px solid var(--poc-border);
+		background-color: var(--poc-box-row-control-surface);
+		border: 1px solid var(--poc-box-row-control-border);
 		border-radius: 1rem;
 		position: relative;
 		cursor: pointer;
@@ -354,9 +354,9 @@ const t = getA11yLabels(locale);
 
 	.a11y-select select {
 		padding: 0.25rem 0.5rem;
-		border: 1px solid var(--poc-border);
+		border: 1px solid var(--poc-box-row-control-border);
 		border-radius: 0.375rem;
-		background-color: var(--poc-surface);
+		background-color: var(--poc-box-row-control-surface);
 		color: var(--sl-color-text);
 		font-size: var(--sl-text-sm);
 		cursor: pointer;
@@ -365,8 +365,8 @@ const t = getA11yLabels(locale);
 	.a11y-reset {
 		margin-top: 0.5rem;
 		padding: 0.5rem 1rem;
-		background-color: transparent;
-		border: 1px solid var(--poc-border);
+		background-color: var(--poc-box-control-surface);
+		border: 1px solid var(--poc-box-control-border);
 		border-radius: 0.5rem;
 		color: var(--sl-color-text);
 		font-size: var(--sl-text-sm);
@@ -374,8 +374,8 @@ const t = getA11yLabels(locale);
 		text-align: center;
 	}
 	.a11y-reset:hover {
-		background-color: var(--poc-surface-faint);
-		border-color: var(--poc-border-hover);
+		background-color: var(--poc-box-control-hover-surface);
+		border-color: var(--poc-box-control-hover-border);
 	}
 
 	/* Focus visibility */

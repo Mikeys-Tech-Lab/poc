@@ -62,6 +62,10 @@ When the work is functionally complete, do not immediately create the PR. First:
 Audit the branch for issues the work introduced or exposed:
 
 - **Build warnings**: run `pnpm run build` and check for zero warnings.
+- **Unit and content guardrails**: run `pnpm test` when the branch changes
+  tooling code, shared site modules, or `apps/site` content, components,
+  routes, or tests covered by declared guardrails such as
+  `register-boundaries.test.ts`.
 - **Dead code**: search for unused exports, unreferenced files, or orphaned config.
 - **Broken or missing links**: check all content pages for unlinked repo references, wrong URLs, or stale paths.
 - **Skill and doc drift**: does the work introduce patterns, conventions, or constraints not yet documented in skills, rules, or `AGENTS.md`?
@@ -105,7 +109,9 @@ If files changed are outside both versioned packages, no version bump occurs.
 #### 3d. Final verification
 
 - `pnpm run build` passes with zero warnings.
-- `pnpm test` passes (if tooling code changed).
+- `pnpm test` passes when the branch changes tooling code, shared site modules,
+  or `apps/site` content, components, routes, or tests covered by declared
+  guardrails.
 - `git status` is clean.
 
 #### 3e. Create PR

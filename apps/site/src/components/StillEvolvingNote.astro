@@ -6,6 +6,17 @@ interface Props {
 }
 ---
 
-<Aside type="note" title="Still evolving">
-  <slot />
-</Aside>
+<div class="still-evolving-note">
+  <Aside type="note" title="Still evolving">
+    <slot />
+  </Aside>
+</div>
+
+<style>
+  .still-evolving-note :global(.starlight-aside) {
+    --poc-box-surface-current: var(--poc-box-still-surface);
+    --poc-box-border-current: var(--poc-box-still-border);
+    --poc-box-rail-current: var(--poc-box-still-rail);
+    --sl-color-asides-text-accent: var(--poc-box-still-title);
+  }
+</style>

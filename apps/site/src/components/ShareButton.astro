@@ -72,11 +72,11 @@
 		align-items: center;
 		gap: 0.35em;
 		padding: 0.42em 0.78em;
-		border: 1px solid var(--poc-border, var(--sl-color-gray-5));
+		border: 1px solid var(--poc-box-control-border);
 		border-radius: 0.6em;
-		background: var(--poc-surface-mid, transparent);
+		background: var(--poc-box-control-surface);
 		backdrop-filter: blur(var(--poc-blur-sm, 8px));
-		box-shadow: var(--poc-shadow-soft, none);
+		box-shadow: var(--poc-box-control-shadow);
 		color: var(--poc-text-strong, var(--sl-color-gray-2));
 		font-size: var(--sl-text-xs);
 		cursor: pointer;
@@ -90,20 +90,9 @@
 
 	poc-share-button button:hover {
 		color: var(--sl-color-text-accent);
-		border-color: var(--sl-color-text-accent);
-		background: var(--poc-surface-raised, transparent);
+		border-color: var(--poc-box-control-hover-border);
+		background: var(--poc-box-control-hover-surface);
 		transform: translateY(-1px);
-	}
-
-	:root[data-theme='light']:not([data-style='solid']) poc-share-button button {
-		background: rgb(255 255 255 / 0.68);
-		border-color: rgb(var(--poc-overlay) / 0.2);
-		box-shadow: 0 3px 10px rgb(0 0 0 / 0.06), 0 10px 24px rgb(0 0 0 / 0.04);
-		color: var(--poc-text, var(--sl-color-text));
-	}
-
-	:root[data-theme='light']:not([data-style='solid']) poc-share-button button:hover {
-		background: rgb(255 255 255 / 0.82);
 	}
 
 	poc-share-button svg {
