@@ -70,8 +70,12 @@ Use \`mandateLenses/SensibleDefaults/context-seeder.md\` only on demand.
 });
 
 describe('runGuidanceDriftGuard', () => {
+  const sensibleDefaultsSeederUrl =
+    'https://raw.githubusercontent.com/Mikeys-Tech-Lab/poc/main/mandateLenses/SensibleDefaults/context-seeder.md';
+
   const buildCompleteContractFiles = (): Record<string, string> => ({
-    'README.md': 'Use onboard me, Evolution Arc, and Trace Climb.',
+    'README.md': `Use onboard me, Evolution Arc, and Trace Climb. Load the seeder from ${sensibleDefaultsSeederUrl}.`,
+    'mandateLenses/SensibleDefaults/README.md': `Direct seeder URL: ${sensibleDefaultsSeederUrl}`,
     'AGENTS.md':
       'Say `onboard me`. Say `Evolution Arc`. Say `Trace Climb`. Store durable learning in `docs/guidance/evolution-records/`. Do not read populated `.local/config.md`.',
     '.github/copilot-instructions.md': 'Use `onboard me`, `Evolution Arc`, and `Trace Climb`.',
@@ -112,6 +116,11 @@ describe('runGuidanceDriftGuard', () => {
     'docs/guidance/evolution-records/README.md': 'Use `template.md`.',
     'docs/architecture/workspace.md':
       '`.local/`, `.cursor/skills/evolution-arc/`, `docs/guidance/evolution-arc.md`, `.cursor/skills/trace-climb/`, and `docs/guidance/evolution-records/`.',
+    'apps/site/src/lib/activation-prompts.ts': `export const SEEDER_URL = '${sensibleDefaultsSeederUrl}';`,
+    'apps/site/src/content/docs/en-us/core-system/mandate-lenses/index.mdx': `Seeder link: ${sensibleDefaultsSeederUrl}`,
+    'apps/site/src/content/docs/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx': `Try it with ${sensibleDefaultsSeederUrl}`,
+    'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/index.mdx': `Seeder text: ${sensibleDefaultsSeederUrl}`,
+    'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx': `Start here: ${sensibleDefaultsSeederUrl}`,
   });
 
   const buildRepoFiles = (files: Record<string, string>): Set<string> => {
@@ -140,6 +149,20 @@ describe('runGuidanceDriftGuard', () => {
     });
 
     expect(result.activatedMappings).toEqual(['evolution-arc-entry']);
+    expect(result.failures).toEqual([]);
+  });
+
+  it('reports contract failures for changed sensible defaults activation surfaces', () => {
+    const files = buildCompleteContractFiles();
+
+    const result = runGuidanceDriftGuard({
+      files,
+      repoFiles: buildRepoFiles(files),
+      repoDirectories,
+      changedFiles: ['mandateLenses/SensibleDefaults/README.md'],
+    });
+
+    expect(result.activatedMappings).toEqual(['sensible-defaults-activation']);
     expect(result.failures).toEqual([]);
   });
 

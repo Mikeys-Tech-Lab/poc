@@ -6,6 +6,7 @@ import {
   GUIDED_ACTIVATION_PROMPT,
   MINIMAL_ACTIVATION_PROMPT,
   SEEDER_URL,
+  SEEDER_VERSION_NOTE,
 } from '../lib/activation-prompts';
 
 interface Props {
@@ -38,6 +39,7 @@ const minimalOnly = variant === 'minimal-only';
       {!minimalOnly && <p>{ACTIVATION_COMPATIBILITY}</p>}
       {!minimalOnly && <p class="activation-prompts-note">{ACTIVATION_INCOMPATIBILITY}</p>}
       {!minimalOnly && <p class="activation-prompts-boundary">{ACTIVATION_BOUNDARY}</p>}
+      <p class="activation-prompts-seeder-note">{SEEDER_VERSION_NOTE}</p>
 
       {!minimalOnly && (
         <div class="activation-prompts-card activation-prompts-card-url">
@@ -168,7 +170,8 @@ const minimalOnly = variant === 'minimal-only';
   }
 
   .activation-prompts-note,
-  .activation-prompts-boundary {
+  .activation-prompts-boundary,
+  .activation-prompts-seeder-note {
     margin: 0;
   }
 
@@ -178,6 +181,10 @@ const minimalOnly = variant === 'minimal-only';
 
   .activation-prompts-boundary {
     color: var(--poc-text-strong);
+  }
+
+  .activation-prompts-seeder-note {
+    color: var(--poc-text-soft);
   }
 
   .activation-prompts .reading-frame-label {

@@ -47,6 +47,8 @@ const ROOT_FILE_REFERENCES = new Set([
   'release-please-config.json',
   '.release-please-manifest.json',
 ]);
+const SENSIBLE_DEFAULTS_SEEDER_URL =
+  'https://raw.githubusercontent.com/Mikeys-Tech-Lab/poc/main/mandateLenses/SensibleDefaults/context-seeder.md';
 const LOGICAL_RUNTIME_PATHS = new Set([
   '.local',
   '.local/config.md',
@@ -56,6 +58,48 @@ const LOGICAL_RUNTIME_PATHS = new Set([
 const LOGICAL_RUNTIME_PREFIXES = ['.local/', '.dist/'];
 
 const CONTRACT_MAPPINGS: readonly MappingContract[] = [
+  {
+    name: 'sensible-defaults-activation',
+    triggers: [
+      'README.md',
+      'mandateLenses/SensibleDefaults/README.md',
+      'apps/site/src/lib/activation-prompts.ts',
+      'apps/site/src/content/docs/en-us/core-system/mandate-lenses/index.mdx',
+      'apps/site/src/content/docs/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
+      'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/index.mdx',
+      'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
+    ],
+    checks: [
+      { filePath: 'README.md', expectedSnippets: [SENSIBLE_DEFAULTS_SEEDER_URL] },
+      {
+        filePath: 'mandateLenses/SensibleDefaults/README.md',
+        expectedSnippets: [SENSIBLE_DEFAULTS_SEEDER_URL],
+      },
+      {
+        filePath: 'apps/site/src/lib/activation-prompts.ts',
+        expectedSnippets: [SENSIBLE_DEFAULTS_SEEDER_URL],
+      },
+      {
+        filePath: 'apps/site/src/content/docs/en-us/core-system/mandate-lenses/index.mdx',
+        expectedSnippets: [SENSIBLE_DEFAULTS_SEEDER_URL],
+      },
+      {
+        filePath:
+          'apps/site/src/content/docs/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
+        expectedSnippets: [SENSIBLE_DEFAULTS_SEEDER_URL],
+      },
+      {
+        filePath:
+          'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/index.mdx',
+        expectedSnippets: [SENSIBLE_DEFAULTS_SEEDER_URL],
+      },
+      {
+        filePath:
+          'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
+        expectedSnippets: [SENSIBLE_DEFAULTS_SEEDER_URL],
+      },
+    ],
+  },
   {
     name: 'onboarding-entry',
     triggers: [
