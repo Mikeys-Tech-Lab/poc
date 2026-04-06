@@ -38,9 +38,16 @@ mobile-starlight-toc .dropdown {
 /* Cards */
 .card {
   background-color: var(--poc-surface-mid);
-  border-color: var(--poc-border);
+  border-color: var(--poc-box-card-border);
+  border-width: var(--poc-box-border-width);
+  border-inline-start: 0.24rem solid var(--poc-box-card-rail);
+  border-radius: 0.9rem;
   backdrop-filter: blur(var(--poc-blur-md));
   box-shadow: var(--poc-shadow-soft);
+}
+
+.card .title {
+  color: var(--poc-box-card-title);
 }
 
 .home-card-featured {
@@ -109,7 +116,7 @@ site-search dialog::backdrop {
   --sl-color-asides-text-accent: var(--poc-text-strong);
   --sl-color-asides-border: var(--poc-box-rail-current);
   background-color: var(--poc-box-surface-current);
-  border: 1px solid var(--poc-box-border-current);
+  border: var(--poc-box-border-width) solid var(--poc-box-border-current);
   border-inline-start: 0.25rem solid var(--poc-box-rail-current);
   border-radius: 0.75rem;
   backdrop-filter: blur(var(--poc-blur-md));

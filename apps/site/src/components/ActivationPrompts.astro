@@ -26,7 +26,7 @@ const {
 ---
 
 <poc-activation-prompts>
-  <section class="reading-frame reading-frame-next activation-prompts">
+  <section class="reading-frame activation-prompts">
     <p class="reading-frame-label">{summaryLabel}</p>
     <p class="reading-frame-title">{title}</p>
     <div class="reading-frame-body activation-prompts-body">
@@ -148,6 +148,9 @@ const {
   .activation-prompts {
     margin: 1.9rem 0;
     min-width: 0;
+    background-color: var(--poc-box-activation-surface);
+    border-color: var(--poc-box-activation-border);
+    border-inline-start: 0.24rem solid var(--poc-box-activation-rail);
   }
 
   .activation-prompts-body {
@@ -169,11 +172,20 @@ const {
     color: var(--poc-text-strong);
   }
 
+  .activation-prompts .reading-frame-label {
+    color: color-mix(in srgb, var(--poc-box-activation-title) 72%, var(--poc-text-soft));
+  }
+
+  .activation-prompts .reading-frame-title,
+  .activation-prompts-card-title {
+    color: var(--poc-box-activation-title);
+  }
+
   .activation-prompts-card {
     display: grid;
     gap: 0.75rem;
     padding: 1rem 1.05rem;
-    border: 1px solid var(--poc-box-border);
+    border: var(--poc-box-border-width) solid var(--poc-box-border);
     border-radius: 0.9rem;
     background-color: var(--poc-box-surface);
     box-shadow: var(--poc-box-shadow);
@@ -213,7 +225,6 @@ const {
 
   .activation-prompts-card-title {
     margin-top: 0.3rem;
-    color: var(--poc-text-strong);
     font-size: 1rem;
     font-weight: 600;
   }

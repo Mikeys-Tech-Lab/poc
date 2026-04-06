@@ -52,15 +52,25 @@ the component first.
 
 Use the shared token families in `tokens.css`:
 
-- `--poc-box-*` for calm reusable panels and cards
+- `--poc-box-*` for the calm shared base surface used by box-like elements in a theme
 - `--poc-box-control-*` for controls that live inside those boxes
 - `--poc-box-row-*` for neutral row-style controls, such as accessibility rows
+- `--poc-box-boundary-*` for boundary frames that need a sober semantic shade
 - `--poc-box-note-*`, `tip`, `caution`, and `danger` for semantic callouts
 
 If a new box needs a different pastel family or emphasis model, extend the token
 contract in `tokens.css` first, then consume those tokens from the component. Do
 not solve light mode by adding one-off `:root[data-theme="light"]` overrides to
 each component unless the contract truly cannot express the need.
+
+Default posture: keep the base box surface broadly shared within a theme, then
+differentiate type through the highlight system (rail, border, title, and
+accent glow), not through unrelated background colors on each component.
+
+Semantic box accents use one restrained pastel system with fixed hues across
+themes. Theme changes should only adjust presentation variables such as title
+contrast, lightness, and opacity for dark vs light contexts. Do not invent a
+new hue family for light mode.
 
 ## Style variants
 
