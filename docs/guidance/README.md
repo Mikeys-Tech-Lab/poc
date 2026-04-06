@@ -20,6 +20,8 @@ This workspace documents reasoning, not people. Reports, traces, and tooling out
 ## Guidance docs
 
 - [Evolution Arc](evolution-arc.md) — curated map of the repo's trace surfaces, source roles, and Mermaid-backed history path.
+- [Trace Climb](trace-climb.md) — repo-native close-phase learning flow for turning non-trivial work into durable learning.
+- [Evolution Records](evolution-records/README.md) — durable learning artifacts produced by `Trace Climb`.
 - [Dependency update operations](dependency-update-operations.md) — target state, policy invariants, queue model, and backlog recovery order for dependency automation.
 - [Licensing surface policy](licensing-surface-policy.md) — how the MIT / CC BY 4.0 split is expressed across tracked markdown-like source files and checked deterministically.
 - [Structural reflection and evolution](structural-reflection-and-evolution.md) — the high-level rule for converting incidents into patterns, guardrails, and workspace changes.
@@ -28,7 +30,7 @@ This workspace documents reasoning, not people. Reports, traces, and tooling out
 ## Change process
 
 - GitHub Flow: feature branches from `main`, PRs with squash merge.
-- PRs include summary, context trace, test plan, and checklist.
+- PRs include summary, context trace, learning trace, test plan, and checklist.
 - Conventional Commits: `type(scope): subject`.
 - Documentation evolution discipline: every PR updates all affected documentation in the same PR. See `AGENTS.md` § Documentation evolution discipline for the full rule and specific obligations by change type.
 - Architecture Decision Records: significant structural decisions are recorded in `docs/decisions/`. See `docs/decisions/README.md` for criteria and template.

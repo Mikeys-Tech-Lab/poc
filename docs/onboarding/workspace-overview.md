@@ -21,13 +21,13 @@ poc/
 ├── docs/
 │   ├── onboarding/            # Repo-native onboarding and history paths
 │   ├── architecture/          # Canonical workspace diagram
-│   ├── guidance/              # Principles and workflow conventions
+│   ├── guidance/              # Principles, workflow conventions, and durable learning records
 │   ├── practices/             # Derived explainers and bridge docs
 │   ├── infra/                 # Environment runbooks and protection layers
 │   └── ai/                    # Generated capability reports
 ├── .cursor/
 │   ├── rules/                 # Always-apply and file-scoped rules
-│   └── skills/                # Per-task agent skills, including onboarding, Evolution Arc, and on-demand lens loading
+│   └── skills/                # Per-task agent skills, including onboarding, Evolution Arc, Trace Climb, and on-demand lens loading
 ├── .claude/                   # Claude Code adapter
 ├── .github/
 │   ├── workflows/             # CI/CD, security scanning, releases
@@ -47,7 +47,7 @@ poc/
 - **`docs/practices/`** is descriptive and derived. It can bridge into a lens package, but it is not the runtime source of truth for that lens.
 - **Default workspace bootstrap** is repo-native: `AGENTS.md`, `seeds/`, and `continuity/` ground fresh development chats before any on-demand lens is loaded.
 - **`tools/ai-guidance/`** produces capability reports written to `docs/ai/`.
-- **`docs/`** is for repo-level documentation. It is not site content. `docs/onboarding/` holds repo-native entry paths such as `onboard me` and `Evolution Arc`, while `docs/guidance/evolution-arc.md` curates the trace surfaces behind the history path.
+- **`docs/`** is for repo-level documentation. It is not site content. `docs/onboarding/` holds repo-native entry paths such as `onboard me`, `Evolution Arc`, and `Trace Climb`, while `docs/guidance/evolution-arc.md` curates the history trace and `docs/guidance/trace-climb.md` defines the durable learning flow.
 - **`.local/config.md`** holds gitignored operator-specific local values. Template: `.local.example.md`. Populated local config is not a normal agent input.
 - **`renovate.json`** drives routine dependency updates across the workspace. `.github/dependabot.yml` is narrowed to security-only behavior.
 

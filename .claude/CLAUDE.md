@@ -4,7 +4,7 @@ This is a thin adapter. Canonical agent guidance lives in `AGENTS.md` at the rep
 
 Read `AGENTS.md` before making changes in this workspace. Follow its discipline, safety boundaries, workflow conventions, and architectural invariants.
 
-For repo-native entry paths, use `onboard me` for setup and workspace orientation, and `Evolution Arc` for repo history and reasoning trace.
+For repo-native entry paths, use `onboard me` for setup and workspace orientation, `Evolution Arc` for repo history and reasoning trace, and `Trace Climb` for durable learning capture after non-trivial work.
 
 This adapter is derived from `AGENTS.md`. If this file conflicts with `AGENTS.md`, `AGENTS.md` wins.
 
