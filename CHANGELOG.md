@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.9.2...PoC-v1.10.0) (2026-04-06)
+
+
+### Features
+
+* **astro:** migrate site IA into core system and signals ([#160](https://github.com/Mikeys-Tech-Lab/poc/issues/160)) ([c252bba](https://github.com/Mikeys-Tech-Lab/poc/commit/c252bba9d9e23e950928487fb1498e1e9e330f86))
+
 ## [1.9.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.9.1...PoC-v1.9.2) (2026-04-05)
 
 
