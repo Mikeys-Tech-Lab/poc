@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.7.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.7.0...site-v1.7.1) (2026-04-06)
+
+
+### Bug Fixes
+
+* **astro:** align home landing card borders ([#167](https://github.com/Mikeys-Tech-Lab/poc/issues/167)) ([44c4977](https://github.com/Mikeys-Tech-Lab/poc/commit/44c49777ab99b8e216f143047cf661a6cc0619e3))
+
+## [1.7.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.6.0...site-v1.7.0) (2026-04-06)
+
+
+### Features
+
+* **astro:** refine box theming and add integration lag article ([#165](https://github.com/Mikeys-Tech-Lab/poc/issues/165)) ([e8b46e5](https://github.com/Mikeys-Tech-Lab/poc/commit/e8b46e544160a748e936a9de98cd9073af14b34e))
+
 ## [1.6.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.5.2...site-v1.6.0) (2026-04-06)
 
 

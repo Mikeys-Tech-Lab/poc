@@ -220,15 +220,15 @@ export default defineConfig({
         },
         {
           label: 'Signals',
-          collapsed: true,
+          collapsed: false,
           items: [
             {
               label: 'Operational',
-              collapsed: true,
+              collapsed: false,
               items: [
                 {
                   label: 'Work & Delivery',
-                  collapsed: true,
+                  collapsed: false,
                   items: [
                     {
                       label: 'Integration Lag',

@@ -84,7 +84,9 @@ Before every commit:
 
 1. Run `pnpm lint`. If it fails, run `pnpm lint:fix` then `pnpm lint` again.
 2. Run `pnpm build` if you changed assets, config, content, or frontmatter.
-3. Run `pnpm test` if you changed tooling code.
+3. Run `pnpm test` if you changed tooling code, shared site modules, or
+   `apps/site` content, components, routes, or tests that can trip declared
+   guardrails such as `register-boundaries.test.ts`.
 4. If you changed accessibility preferences or theme CSS, verify both states manually:
    preference off matches the intended default, preference on matches the intended override, and toggling back off restores the intended default.
 5. If you changed custom theme surfaces or controls, verify both atmospheric themes explicitly:

@@ -45,7 +45,150 @@
   /* Accent complement — Catppuccin mauve */
   --poc-accent-complement: #ca9ee6;
   /* Reading accents stay softer than the primary theme accent. */
-  --poc-reading-accent: rgb(229 161 163 / 0.82);
+  --poc-reading-accent: rgb(200 154 168 / 0.82);
+
+  /* Stable semantic pastel system.
+     Hue stays fixed across themes. Light mode only darkens title contrast. */
+  --poc-box-still-accent: #b9a7e6;
+  --poc-box-still-title: #cdbef3;
+  --poc-box-still-surface: var(--poc-box-surface);
+  --poc-box-still-border: color-mix(
+    in srgb,
+    var(--poc-box-still-accent) 30%,
+    var(--poc-box-border)
+  );
+  --poc-box-still-rail: color-mix(in srgb, var(--poc-box-still-accent) 78%, white 22%);
+
+  --poc-box-note-accent: #9fb9e8;
+  --poc-box-note-title: #bdd0f5;
+  --poc-box-note-surface: var(--poc-box-surface);
+  --poc-box-note-border: color-mix(in srgb, var(--poc-box-note-accent) 30%, var(--poc-box-border));
+  --poc-box-note-rail: color-mix(in srgb, var(--poc-box-note-accent) 78%, white 22%);
+
+  --poc-box-tip-accent: #a9c8b0;
+  --poc-box-tip-title: #c3dec9;
+  --poc-box-tip-surface: var(--poc-box-surface);
+  --poc-box-tip-border: color-mix(in srgb, var(--poc-box-tip-accent) 30%, var(--poc-box-border));
+  --poc-box-tip-rail: color-mix(in srgb, var(--poc-box-tip-accent) 78%, white 22%);
+
+  --poc-box-caution-accent: #d9b38c;
+  --poc-box-caution-title: #e8c7a8;
+  --poc-box-caution-surface: var(--poc-box-surface);
+  --poc-box-caution-border: color-mix(
+    in srgb,
+    var(--poc-box-caution-accent) 30%,
+    var(--poc-box-border)
+  );
+  --poc-box-caution-rail: color-mix(in srgb, var(--poc-box-caution-accent) 78%, white 22%);
+
+  --poc-box-danger-accent: #c98f9e;
+  --poc-box-danger-title: #e0b2bc;
+  --poc-box-danger-surface: var(--poc-box-surface);
+  --poc-box-danger-border: color-mix(
+    in srgb,
+    var(--poc-box-danger-accent) 30%,
+    var(--poc-box-border)
+  );
+  --poc-box-danger-rail: color-mix(in srgb, var(--poc-box-danger-accent) 78%, white 22%);
+
+  --poc-box-example-accent: #b7a6d9;
+  --poc-box-example-title: #d1c2ec;
+  --poc-box-example-surface: var(--poc-box-surface);
+  --poc-box-example-border: color-mix(
+    in srgb,
+    var(--poc-box-example-accent) 30%,
+    var(--poc-box-border)
+  );
+  --poc-box-example-rail: color-mix(in srgb, var(--poc-box-example-accent) 78%, white 22%);
+
+  --poc-box-boundary-accent: #b18baf;
+  --poc-box-boundary-title: #d1b4cf;
+  --poc-box-boundary-surface: var(--poc-box-surface);
+  --poc-box-boundary-border: color-mix(
+    in srgb,
+    var(--poc-box-boundary-accent) 34%,
+    var(--poc-box-border)
+  );
+  --poc-box-boundary-rail: color-mix(in srgb, var(--poc-box-boundary-accent) 78%, white 22%);
+
+  --poc-box-next-accent: #c89aa8;
+  --poc-box-next-title: #e0bcc5;
+  --poc-box-next-surface: var(--poc-box-surface);
+  --poc-box-next-border: color-mix(in srgb, var(--poc-box-next-accent) 30%, var(--poc-box-border));
+  --poc-box-next-rail: color-mix(in srgb, var(--poc-box-next-accent) 78%, white 22%);
+
+  --poc-box-activation-accent: #d8a79d;
+  --poc-box-activation-title: #ebc5be;
+  --poc-box-activation-surface: var(--poc-box-surface);
+  --poc-box-activation-border: color-mix(
+    in srgb,
+    var(--poc-box-activation-accent) 30%,
+    var(--poc-box-border)
+  );
+  --poc-box-activation-rail: color-mix(in srgb, var(--poc-box-activation-accent) 78%, white 22%);
+
+  --poc-box-card-accent: #aeb4c2;
+  --poc-box-card-title: #d7dce6;
+  --poc-box-card-border: color-mix(in srgb, var(--poc-box-card-accent) 28%, var(--poc-box-border));
+  --poc-box-card-rail: color-mix(in srgb, var(--poc-box-card-accent) 74%, white 26%);
+
+  --poc-box-featured-practitioner-accent: #c8a98e;
+  --poc-box-featured-practitioner-title: #e5cbb5;
+  --poc-box-featured-practitioner-border: color-mix(
+    in srgb,
+    var(--poc-box-featured-practitioner-accent) 30%,
+    var(--poc-box-border)
+  );
+  --poc-box-featured-practitioner-rail: color-mix(
+    in srgb,
+    var(--poc-box-featured-practitioner-accent) 78%,
+    white 22%
+  );
+
+  --poc-box-featured-orientation-accent: #afc6b2;
+  --poc-box-featured-orientation-title: #cfe0d1;
+  --poc-box-featured-orientation-border: color-mix(
+    in srgb,
+    var(--poc-box-featured-orientation-accent) 30%,
+    var(--poc-box-border)
+  );
+  --poc-box-featured-orientation-rail: color-mix(
+    in srgb,
+    var(--poc-box-featured-orientation-accent) 78%,
+    white 22%
+  );
+
+  /* Reusable calm box families for custom panels, cards, and controls. */
+  --poc-box-surface: var(--poc-surface-mid);
+  --poc-box-border: var(--poc-border-faint);
+  --poc-box-border-width: 1.5px;
+  --poc-box-shadow: var(--poc-shadow-soft);
+  --poc-box-hover-surface: var(--poc-surface-raised);
+  --poc-box-hover-border: var(--poc-border-hover);
+
+  --poc-box-control-surface: var(--poc-surface);
+  --poc-box-control-border: var(--poc-border-faint);
+  --poc-box-control-shadow: var(--poc-shadow-soft);
+  --poc-box-control-hover-surface: var(--poc-surface-raised);
+  --poc-box-control-hover-border: var(--poc-border-hover);
+
+  --poc-box-row-surface: var(--poc-surface-faint);
+  --poc-box-row-border: var(--poc-border-subtle);
+  --poc-box-row-hover-border: var(--poc-border-hover);
+  --poc-box-row-control-surface: var(--poc-surface);
+  --poc-box-row-control-border: var(--poc-border);
+
+  --poc-box-selected-surface: color-mix(
+    in srgb,
+    var(--poc-box-control-surface) 82%,
+    var(--poc-reading-accent) 18%
+  );
+  --poc-box-selected-border: color-mix(
+    in srgb,
+    var(--poc-box-control-border) 50%,
+    var(--poc-reading-accent) 50%
+  );
+  --poc-box-selected-ring: rgb(229 161 163 / 0.26);
 
   /* Readability hierarchy */
   --poc-text-strong: #ffffff;
@@ -92,9 +235,57 @@
 
   --poc-backdrop: rgb(0 0 0 / 0.2);
   --poc-accent-complement: #8839ef;
-  --poc-reading-accent: rgb(221 120 120 / 0.68);
+  --poc-reading-accent: rgb(200 154 168 / 0.72);
+  --poc-box-still-title: color-mix(in srgb, #cdbef3 44%, var(--poc-text-strong) 56%);
+  --poc-box-note-title: color-mix(in srgb, #bdd0f5 44%, var(--poc-text-strong) 56%);
+  --poc-box-tip-title: color-mix(in srgb, #c3dec9 44%, var(--poc-text-strong) 56%);
+  --poc-box-caution-title: color-mix(in srgb, #e8c7a8 46%, var(--poc-text-strong) 54%);
+  --poc-box-danger-title: color-mix(in srgb, #e0b2bc 44%, var(--poc-text-strong) 56%);
+  --poc-box-example-title: color-mix(in srgb, #d1c2ec 44%, var(--poc-text-strong) 56%);
+  --poc-box-boundary-title: color-mix(in srgb, #d1b4cf 44%, var(--poc-text-strong) 56%);
+  --poc-box-next-title: color-mix(in srgb, #e0bcc5 44%, var(--poc-text-strong) 56%);
+  --poc-box-activation-title: color-mix(in srgb, #ebc5be 46%, var(--poc-text-strong) 54%);
+  --poc-box-card-title: color-mix(in srgb, #d7dce6 40%, var(--poc-text-strong) 60%);
+  --poc-box-featured-practitioner-title: color-mix(
+    in srgb,
+    #e5cbb5 46%,
+    var(--poc-text-strong) 54%
+  );
+  --poc-box-featured-orientation-title: color-mix(in srgb, #cfe0d1 44%, var(--poc-text-strong) 56%);
   --poc-text-strong: #303446;
   --poc-text: #4c4f69;
   --poc-text-muted: #5c5f77;
   --poc-text-soft: #6c6f85;
+}
+
+:root[data-theme="light"]:not([data-style="solid"]) {
+  --poc-box-surface: rgb(255 255 255 / 0.68);
+  --poc-box-border: rgb(var(--poc-overlay) / 0.2);
+  --poc-box-shadow: 0 3px 10px rgb(0 0 0 / 0.06), 0 10px 24px rgb(0 0 0 / 0.04);
+  --poc-box-hover-surface: rgb(255 255 255 / 0.82);
+  --poc-box-hover-border: rgb(var(--poc-overlay) / 0.24);
+
+  --poc-box-control-surface: rgb(255 255 255 / 0.82);
+  --poc-box-control-border: rgb(var(--poc-overlay) / 0.2);
+  --poc-box-control-shadow: var(--poc-box-shadow);
+  --poc-box-control-hover-surface: rgb(255 255 255 / 0.9);
+  --poc-box-control-hover-border: rgb(var(--poc-overlay) / 0.24);
+
+  --poc-box-row-surface: rgb(255 255 255 / 0.58);
+  --poc-box-row-border: rgb(var(--poc-overlay) / 0.18);
+  --poc-box-row-hover-border: rgb(var(--poc-overlay) / 0.24);
+  --poc-box-row-control-surface: rgb(255 255 255 / 0.82);
+  --poc-box-row-control-border: rgb(var(--poc-overlay) / 0.22);
+
+  --poc-box-selected-surface: color-mix(
+    in srgb,
+    var(--poc-box-control-surface) 76%,
+    var(--poc-reading-accent) 24%
+  );
+  --poc-box-selected-border: color-mix(
+    in srgb,
+    var(--poc-box-control-border) 48%,
+    var(--poc-reading-accent) 52%
+  );
+  --poc-box-selected-ring: rgb(221 120 120 / 0.22);
 }
