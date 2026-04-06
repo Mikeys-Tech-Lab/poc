@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.10.0...PoC-v1.11.0) (2026-04-06)
+
+
+### Features
+
+* **ai:** add trace climb durable learning flow ([#162](https://github.com/Mikeys-Tech-Lab/poc/issues/162)) ([dcee052](https://github.com/Mikeys-Tech-Lab/poc/commit/dcee052e58df04049a613d58df31ef91c338ffe6))
+
 ## [1.10.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.9.2...PoC-v1.10.0) (2026-04-06)
 
 

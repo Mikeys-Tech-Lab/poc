@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.5.0...ai-guidance-v0.6.0) (2026-04-06)
+
+
+### Features
+
+* **ai:** add trace climb durable learning flow ([#162](https://github.com/Mikeys-Tech-Lab/poc/issues/162)) ([dcee052](https://github.com/Mikeys-Tech-Lab/poc/commit/dcee052e58df04049a613d58df31ef91c338ffe6))
+
 ## [0.5.0](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.4.2...ai-guidance-v0.5.0) (2026-04-05)
 
 
