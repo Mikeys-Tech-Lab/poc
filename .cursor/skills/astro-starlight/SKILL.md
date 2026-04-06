@@ -43,6 +43,25 @@ For public content under `apps/site/src/content/**`:
 The site explains the practice. Mandate lenses activate it. The repo supports
 its evolution.
 
+### Authorship boundary for public content
+
+Creating or moving a page does not imply permission to write its prose.
+
+On authored content surfaces in `apps/site/src/content/**`:
+
+- if no source text is provided
+- and no explicit drafting request is given
+
+default to:
+
+- title and frontmatter
+- correct route placement
+- placeholder body
+- explicit confirmation before writing prose
+
+The burden is on the agent to justify authorship, not on the operator to forbid
+invented prose after the fact.
+
 ### Register × locale two-axis model
 
 Locale and register are independent axes in the practice model, but the current repo activates only a small subset of that model.
