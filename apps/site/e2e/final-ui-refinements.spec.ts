@@ -7,7 +7,7 @@ const viewports = [
 ] as const;
 
 const articlePath =
-  '/en-us/writing/articles/practice-of-clarity/act-1-when-output-outpaces-understanding/';
+  '/en-us/core-system/practice-of-clarity/act-1-when-output-outpaces-understanding/';
 const infoPath = '/en-us/about/what-this-is/';
 
 const practitionerAnchor =

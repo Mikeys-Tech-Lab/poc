@@ -2,6 +2,7 @@
 import { Card } from '@astrojs/starlight/components';
 import { getRegisterLabels, getThemeLabels } from '../lib/i18n';
 import { getLocaleFromPath } from '../lib/locale';
+import { getLocalizedRoutePath } from '../lib/route-map.js';
 
 interface Props {
   variant?: 'practitioner' | 'orientation';
@@ -11,6 +12,7 @@ const { variant = 'practitioner' } = Astro.props as Props;
 const locale = getLocaleFromPath(Astro.url?.pathname ?? '/');
 const registerLabels = getRegisterLabels(locale);
 const themeLabels = getThemeLabels(locale);
+const startHereHref = getLocalizedRoutePath('about-what-this-is');
 
 const intro =
   variant === 'orientation'
@@ -32,7 +34,7 @@ const themeCopy =
   <Card title="What This Work Is" icon="open-book">
     <p>
       {intro}
-      <a href="/en-us/about/what-this-is/">Start here</a>
+      <a href={startHereHref}>Start here</a>
     </p>
     <div class="home-featured-guides">
       <section class="home-featured-guide">

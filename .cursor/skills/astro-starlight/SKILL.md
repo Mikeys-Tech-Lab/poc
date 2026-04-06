@@ -43,6 +43,25 @@ For public content under `apps/site/src/content/**`:
 The site explains the practice. Mandate lenses activate it. The repo supports
 its evolution.
 
+### Authorship boundary for public content
+
+Creating or moving a page does not imply permission to write its prose.
+
+On authored content surfaces in `apps/site/src/content/**`:
+
+- if no source text is provided
+- and no explicit drafting request is given
+
+default to:
+
+- title and frontmatter
+- correct route placement
+- placeholder body
+- explicit confirmation before writing prose
+
+The burden is on the agent to justify authorship, not on the operator to forbid
+invented prose after the fact.
+
 ### Register × locale two-axis model
 
 Locale and register are independent axes in the practice model, but the current repo activates only a small subset of that model.
@@ -344,6 +363,21 @@ E2E tests live in `apps/site/e2e/`. Playwright config: `apps/site/playwright.con
 - Run against the built static output (`dist/`) via `pnpm preview`.
 - Chromium only. `webServer` config manages preview lifecycle.
 - Shared helpers in `e2e/helpers.ts` generate the page matrix and provide assertion functions.
+
+### Route migration test contract
+
+For legacy URL migrations, separate the contracts:
+
+- **Unit tests** prove the route map generates the intended redirect table.
+- **E2E tests** prove a legacy public URL lands on the canonical destination.
+- Do **not** assert Playwright-observed redirect-chain depth unless the exact
+  HTTP hop behavior is itself the product contract and you have verified that
+  the runtime exposes that signal reliably.
+
+Preview and static-serving runtimes can land on the correct canonical page
+without exposing a stable browser-visible redirect chain. Treat landing on the
+canonical URL as the primary route-migration contract unless a lower-level
+transport check is explicitly required.
 
 | Spec file | What it covers |
 |---|---|

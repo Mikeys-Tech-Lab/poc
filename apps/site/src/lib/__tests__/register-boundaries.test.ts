@@ -16,9 +16,9 @@ const cases = [
   {
     name: 'Act II keeps the anti-performance boundary visible in both registers',
     practitionerPath:
-      'apps/site/src/content/docs/en-us/writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed.mdx',
+      'apps/site/src/content/docs/en-us/core-system/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed.mdx',
     orientationPath:
-      'apps/site/src/content/register/orientation/en-us/writing/articles/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed.mdx',
+      'apps/site/src/content/register/orientation/en-us/core-system/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed.mdx',
     practitionerSnippets: [
       'If teams are asked to "show their reasoning" as a deliverable, it becomes',
       'The purpose is not to record everything.',
@@ -31,9 +31,9 @@ const cases = [
   {
     name: 'Act IV keeps the non-authority boundary visible in both registers',
     practitionerPath:
-      'apps/site/src/content/docs/en-us/writing/articles/practice-of-clarity/act-4-a-public-node-you-can-inspect.mdx',
+      'apps/site/src/content/docs/en-us/core-system/practice-of-clarity/act-4-a-public-node-you-can-inspect.mdx',
     orientationPath:
-      'apps/site/src/content/register/orientation/en-us/writing/articles/practice-of-clarity/act-4-a-public-node-you-can-inspect.mdx',
+      'apps/site/src/content/register/orientation/en-us/core-system/practice-of-clarity/act-4-a-public-node-you-can-inspect.mdx',
     practitionerSnippets: ['a final authority over future nodes', 'challenge and revision.'],
     orientationSnippets: [
       'This repository is not a final authority over future nodes.',
@@ -42,17 +42,18 @@ const cases = [
   },
   {
     name: 'mandate lens index keeps the current-boundary honesty in both registers',
-    practitionerPath: 'apps/site/src/content/docs/en-us/mandate-lenses/index.mdx',
-    orientationPath: 'apps/site/src/content/register/orientation/en-us/mandate-lenses/index.mdx',
+    practitionerPath: 'apps/site/src/content/docs/en-us/core-system/mandate-lenses/index.mdx',
+    orientationPath:
+      'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/index.mdx',
     practitionerSnippets: ['### Current boundary', 'There is only one public lens right now.'],
     orientationSnippets: ['### Current boundary', 'There is only one public lens right now.'],
   },
   {
     name: 'Sensible Defaults keeps the Act IV bridge and load boundary in both registers',
     practitionerPath:
-      'apps/site/src/content/docs/en-us/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
+      'apps/site/src/content/docs/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
     orientationPath:
-      'apps/site/src/content/register/orientation/en-us/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
+      'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
     practitionerSnippets: [
       '### Why this matters after Act IV',
       'If the source cannot be loaded, the lens is not active.',
@@ -61,6 +62,15 @@ const cases = [
       '### Why this matters after Act IV',
       'If the source cannot be loaded, the lens is not active.',
     ],
+  },
+  {
+    name: 'Integration Lag stays an explicit placeholder in both registers',
+    practitionerPath:
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag.mdx',
+    orientationPath:
+      'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/integration-lag.mdx',
+    practitionerSnippets: ['Placeholder. Content coming later.'],
+    orientationSnippets: ['Placeholder. Content coming later.'],
   },
 ] as const;
 
