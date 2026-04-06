@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.12.4](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.12.3...PoC-v1.12.4) (2026-04-06)
+
+
+### Miscellaneous
+
+* **deps:** lock file maintenance ([#173](https://github.com/Mikeys-Tech-Lab/poc/issues/173)) ([0a8d532](https://github.com/Mikeys-Tech-Lab/poc/commit/0a8d53239ed35a1e70cd8436f1b2c22e97b4010e))
+
+## [1.12.3](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.12.2...PoC-v1.12.3) (2026-04-06)
+
+
+### Miscellaneous
+
+* **deps:** pin dependencies ([#169](https://github.com/Mikeys-Tech-Lab/poc/issues/169)) ([2652859](https://github.com/Mikeys-Tech-Lab/poc/commit/2652859bfc5a09e49d402fa51dfc596e36187061))
+
+## [1.12.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.12.1...PoC-v1.12.2) (2026-04-06)
+
+
+### Miscellaneous
+
+* **deps:** update dependency astro to ^6.1.4 ([#170](https://github.com/Mikeys-Tech-Lab/poc/issues/170)) ([2c093c1](https://github.com/Mikeys-Tech-Lab/poc/commit/2c093c1f6a959784a47953b0c5eef8b8134f31a6))
+
 ## [1.12.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.12.0...PoC-v1.12.1) (2026-04-06)
 
 
