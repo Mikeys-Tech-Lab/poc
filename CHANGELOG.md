@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.12.0...PoC-v1.12.1) (2026-04-06)
+
+
+### Bug Fixes
+
+* **astro:** align home landing card borders ([#167](https://github.com/Mikeys-Tech-Lab/poc/issues/167)) ([44c4977](https://github.com/Mikeys-Tech-Lab/poc/commit/44c49777ab99b8e216f143047cf661a6cc0619e3))
+
 ## [1.12.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.11.0...PoC-v1.12.0) (2026-04-06)
 
 
