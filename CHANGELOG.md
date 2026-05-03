@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.8](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.12.7...PoC-v1.12.8) (2026-05-03)
+
+
+### Documentation
+
+* **infra:** record origin boundary behavior ([#181](https://github.com/Mikeys-Tech-Lab/poc/issues/181)) ([5e80e50](https://github.com/Mikeys-Tech-Lab/poc/commit/5e80e508e0d584830f3714ef6bdf8dbac570d96e))
+
 ## [1.12.7](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.12.6...PoC-v1.12.7) (2026-04-21)
 
 
