@@ -5,6 +5,12 @@
 .env
 .env.*
 
+# Certificate and key material
+*.pem
+*.key
+*.p12
+*.pfx
+
 # Dependencies
 node_modules/
 

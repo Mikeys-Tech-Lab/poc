@@ -40,7 +40,14 @@ These details live in:
 
 ### Known limitations
 
-The origin baseline checks a request header to verify CDN provenance. A direct-to-origin request could forge this header. Stronger protections (mutual TLS between CDN and origin, origin firewall restricting to CDN IP ranges) are noted as future improvements in the protection layers doc.
+The origin baseline is hosting-path specific. In this workspace, Infomaniak
+places Apache behind HAProxy. Infomaniak support stated that non-CDN requests
+have the provenance header stripped before Apache, and a manual direct-to-origin
+request with a forged header returned 403 Forbidden.
+
+This should not be generalized to every hosting provider. On architectures
+where the origin receives direct traffic without upstream header stripping,
+mutual TLS or network-level origin firewall rules may still be required.
 
 If an AI agent needs a runtime fact during infrastructure work, disclose only the minimum required non-sensitive value or run the command locally and relay the result.
 

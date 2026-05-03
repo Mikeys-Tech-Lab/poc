@@ -1,12 +1,21 @@
 # Protection Layers
 
-How web traffic reaches each environment and what blocks unauthorized access at each layer.
+How web traffic reaches each environment and what blocks unauthorized access
+at each layer.
 
-The deployment topology uses an Infomaniak managed Cloud Server behind Cloudflare's proxy. Seed and preview are backed by committed workflows in this repo. Production is documented as the intended public environment, but its deploy workflow is not committed here.
+The deployment topology uses an Infomaniak managed Cloud Server behind
+Cloudflare's proxy. Infomaniak places Apache behind HAProxy. Seed, preview,
+and production are all backed by committed workflows in this repo. Production
+uses manual dispatch rather than automatic release-triggered deployment.
 
 ## Shared baseline: direct-to-origin block
 
-Every environment deploys an `.htaccess` file that rejects requests lacking the `CF-Connecting-IP` header. Cloudflare sets this header on every proxied request. If someone discovers the origin server IP and hits it directly, the header is absent and Apache returns 403 Forbidden.
+Every environment deploys an `.htaccess` file that rejects requests lacking
+the `CF-Connecting-IP` header. Cloudflare sets this header on every proxied
+request. Infomaniak support stated that non-Cloudflare requests have this
+header stripped before Apache. A manual direct-to-origin request with a forged
+`CF-Connecting-IP` header returned 403 Forbidden, confirming the boundary on
+this hosting path.
 
 ```apache
 RewriteEngine On
@@ -20,9 +29,16 @@ This baseline is generated during CI/CD and never committed to the repo.
 
 Infomaniak enables `mod_remoteip`, which restores the real visitor IP into `REMOTE_ADDR`. This means `REMOTE_ADDR` is the visitor's IP, not a Cloudflare edge IP. Apache `Order`/`Allow`/`Deny` directives based on Cloudflare IP ranges will not work because the IPs have already been rewritten. The `CF-Connecting-IP` header is the reliable signal for "this request came through Cloudflare."
 
-### Limitation
+### Boundary
 
-A direct-to-origin request could forge the `CF-Connecting-IP` header since Apache does not validate its source. For stronger protection, Cloudflare Authenticated Origin Pulls (mTLS) can be added. This is not yet configured.
+This direct-to-origin boundary depends on the Infomaniak hosting path:
+Cloudflare proxy, then Infomaniak HAProxy, then Apache `.htaccess`. Do not
+generalize it to hosting architectures where Apache receives direct traffic or
+where upstream proxies do not strip forged provenance headers.
+
+Cloudflare Authenticated Origin Pulls (mTLS) is not available on the current
+hosting architecture because Apache is behind HAProxy and cannot directly
+enforce TLS client certificate verification.
 
 ## Per-environment layers
 
@@ -71,9 +87,9 @@ The production deploy workflow (`.github/workflows/deploy-production.yml`) is tr
 ## Traffic flow summary
 
 ```
-Visitor → Cloudflare edge → (Access check, if configured) → Origin server → .htaccess check → Site content
-                                                              ↑
-                              Direct request (no Cloudflare) → blocked by .htaccess (no CF-Connecting-IP)
+Visitor → Cloudflare edge → (Access check, if configured) → Infomaniak HAProxy → Apache .htaccess → Site content
+                                                                        ↑
+                              Direct request (no Cloudflare) → header stripped → blocked by .htaccess
 ```
 
 ## HTTP security headers
@@ -107,9 +123,13 @@ Cloudflare terminates SSL at the edge. The connection between Cloudflare and the
 
 ## Future improvements
 
-- **Cloudflare Authenticated Origin Pulls (mTLS)**: validates at the TLS layer that the connection comes from Cloudflare, eliminating the header-forgery limitation. Setup checklist: [`docs/infra/authenticated-origin-pulls.md`](authenticated-origin-pulls.md). Blocked on verifying Infomaniak support for `SSLVerifyClient` configuration.
 - **Enforce Content-Security-Policy**: promote CSP from report-only to enforcing after verifying no violations on the live site.
-- **Origin firewall rules**: restrict the server's firewall to only accept connections from Cloudflare IP ranges on ports 80/443.
+- **Provider-managed origin firewall rules**: if Infomaniak supports it for
+  default web ports, restrict HTTP(S) ingress to Cloudflare's published IP
+  ranges as another network-level layer.
+- **Authenticated Origin Pulls on another architecture**: revisit Cloudflare
+  Authenticated Origin Pulls only if the hosting path changes to one where the
+  origin server can enforce client certificate verification.
 
 ## Maintenance page assets
 
