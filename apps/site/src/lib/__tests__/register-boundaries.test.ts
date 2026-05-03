@@ -82,6 +82,25 @@ const cases = [
       'This is about seeing clearly, not doing more.',
     ],
   },
+  {
+    name: 'A Path Through Integration Lag keeps the path and non-framework boundary visible in both registers',
+    practitionerPath:
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/a-path-through-integration-lag.mdx',
+    orientationPath:
+      'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/a-path-through-integration-lag.mdx',
+    practitionerSnippets: [
+      'The next question is:',
+      'It is not a framework rollout, a maturity model, or a promise that every team',
+      'The shift is less generation, more visibility.',
+      'How this stays visible here',
+    ],
+    orientationSnippets: [
+      'The next question is:',
+      'Not a system to adopt.',
+      'less generation, more visibility',
+      'An inspectable example',
+    ],
+  },
 ] as const;
 
 describe('register boundary guardrails', () => {
