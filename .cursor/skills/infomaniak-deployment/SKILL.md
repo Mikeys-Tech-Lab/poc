@@ -39,6 +39,10 @@ Each web hosting has its own document root, FTP/SSH credentials, and domain bind
 ### Server details
 
 - Cloud Server type: Managed
+- HTTP(S) request path: Cloudflare proxy to Infomaniak HAProxy to Apache.
+  Infomaniak support stated that non-Cloudflare requests have
+  `CF-Connecting-IP` stripped before Apache; a manual direct-to-origin request
+  with a forged header returned 403 Forbidden.
 - Connection details, IPs, and credentials are in GitHub secrets for CI/CD and may be kept in gitignored local files for operator use. Do not treat populated local config as a normal agent input. Never hardcode them in committed files.
 
 ## Deployment method
@@ -64,7 +68,10 @@ Each environment uses a **GitHub environment** for isolated secrets and variable
 
 ## Defense-in-depth layering
 
-All environments share a baseline: `.htaccess` blocks requests without `CF-Connecting-IP` (direct-to-origin bypass). Each environment adds its own access control layer:
+All environments share a baseline: `.htaccess` blocks requests without
+`CF-Connecting-IP` (direct-to-origin bypass). On this Infomaniak hosting path,
+HAProxy strips forged `CF-Connecting-IP` headers from non-Cloudflare requests
+before they reach Apache. Each environment adds its own access control layer:
 
 - **Seed**: baseline + IP allowlist. Only requests from allowed IPs (via `CF-Connecting-IP` header) are permitted.
 - **Preview**: baseline + Cloudflare Access. All traffic must go through Cloudflare, where Zero Trust enforces email-based authentication (one-time PIN). No IP allowlist needed.
@@ -94,7 +101,10 @@ Cloudflare terminates SSL at the edge. The connection between Cloudflare and the
 
 ### Direct server access
 
-Requests that bypass Cloudflare (hitting the server IP directly) will not have the `CF-Connecting-IP` header. The `.htaccess` rewrite rules block these requests because the empty header does not match any allowed IP.
+Requests that bypass Cloudflare (hitting the origin directly) do not reach
+Apache with a trusted `CF-Connecting-IP` header. Infomaniak support stated that
+HAProxy strips that header for non-Cloudflare sources. The `.htaccess` rewrite
+rules block these requests because the header is empty.
 
 ## IP restriction strategy
 
@@ -122,7 +132,10 @@ If `ALLOWED_IPS` is not set, the deployment fails safely rather than leaving the
 ### Constraints
 
 - `.htaccess` only restricts HTTP(S) access, not SSH.
-- The `CF-Connecting-IP` header is set by Cloudflare and cannot be spoofed through the proxy. However, direct-to-origin requests could forge the header. For stronger protection, restrict origin firewall to Cloudflare IP ranges only.
+- The `CF-Connecting-IP` boundary described here is specific to the current
+  Infomaniak HAProxy-to-Apache hosting path. Do not generalize it to hosting
+  architectures where the origin receives direct traffic without upstream
+  header stripping.
 - SSH deployment bypasses Cloudflare entirely (connects to server IP on port 22).
 
 ## Site URL configuration
@@ -195,6 +208,9 @@ SITE_URL=<SITE_URL> pnpm run build
 
 cat > apps/site/dist/.htaccess <<'EOF'
 RewriteEngine On
+RewriteCond %{HTTP:CF-Connecting-IP} ^$
+RewriteRule ^ - [F,L]
+
 RewriteCond %{HTTP:CF-Connecting-IP} !^<YOUR_IP_ESCAPED>$
 RewriteRule ^ - [F,L]
 EOF
@@ -205,7 +221,9 @@ rsync -avz --delete \
   <USER>@<HOST>:<DEPLOY_PATH>
 ```
 
-Escape dots in IPs for the regex (e.g. `89\.36\.76\.75`). For public environments, omit the `.htaccess` generation.
+Escape dots in IPs for the regex (e.g. `1\.2\.3\.4`). For public
+environments, omit only the IP allowlist block; keep the baseline
+direct-to-origin block and security headers.
 
 ## Troubleshooting
 

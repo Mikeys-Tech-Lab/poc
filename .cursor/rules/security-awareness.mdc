@@ -45,9 +45,18 @@ All environments enforce a shared baseline: `.htaccess` blocks requests without 
 
 - **Seed**: baseline + IP allowlist via `CF-Connecting-IP`
 - **Preview**: baseline + Cloudflare Access (email one-time PIN at the edge)
-- **Production**: baseline only (public) if that environment is active. Verify current workflow support in `.github/workflows/` before assuming deploy automation exists.
+- **Production**: baseline only (public), deployed through the committed
+  manual-dispatch production workflow.
 
-The `CF-Connecting-IP` header is set by Cloudflare's proxy. Direct-to-origin requests lack this header and are blocked. For stronger origin protection, Cloudflare Authenticated Origin Pulls (mTLS) could be added later.
+The `CF-Connecting-IP` header is set by Cloudflare's proxy. On the current
+Infomaniak hosting path, Apache sits behind HAProxy. Infomaniak support stated
+that non-Cloudflare requests have this header stripped before Apache, and a
+manual direct-to-origin request with a forged header returned 403 Forbidden.
+Do not generalize this boundary to other hosting architectures.
+
+Cloudflare Authenticated Origin Pulls (mTLS) is not available on this hosting
+path because Apache cannot directly enforce TLS client certificate
+verification behind HAProxy.
 
 ---
 © 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).  
