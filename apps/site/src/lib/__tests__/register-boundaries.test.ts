@@ -93,12 +93,14 @@ const cases = [
       'It is not a framework rollout, a maturity model, or a promise that every team',
       'The shift is less generation, more visibility.',
       'How this stays visible here',
+      'The next part of this series goes deeper into the first practical move:',
     ],
     orientationSnippets: [
       'The next question is:',
       'Not a system to adopt.',
       'less generation, more visibility',
       'An inspectable example',
+      'The next part of this series goes deeper into forensic onboarding.',
     ],
   },
 ] as const;
