@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.9](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.12.8...PoC-v1.12.9) (2026-05-04)
+
+
+### Documentation
+
+* **docs:** add integration lag path article ([#183](https://github.com/Mikeys-Tech-Lab/poc/issues/183)) ([d2686f4](https://github.com/Mikeys-Tech-Lab/poc/commit/d2686f4c2697ef4abe4339fa7f6dea496a314524))
+
 ## [1.12.8](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.12.7...PoC-v1.12.8) (2026-05-03)
 
 
