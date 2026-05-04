@@ -1,0 +1,216 @@
+---
+title: "A Path Through Integration Lag"
+description: "A simpler entry from the integration lag signal into a path teams can practice."
+register: orientation
+---
+
+import ReadingFrame from '../../../../../../../components/ReadingFrame.astro';
+import ShareButton from '../../../../../../../components/ShareButton.astro';
+
+<ShareButton />
+
+This page begins where Integration Lag leaves off.
+
+Start with [Integration Lag](/en-us/signals/operational/work-delivery/integration-lag/):
+
+work can move faster than shared understanding.
+
+The next question is:
+
+> what can we do once we see it?
+
+Not a system to adopt.
+
+Not a process to roll out.
+
+A way to keep seeing clearly while work is moving.
+
+### Where it starts
+
+It often starts with a feeling:
+
+> something is off
+
+The work may look fine from the outside.
+
+But underneath it, people notice:
+
+- more rework
+- unclear ownership
+- explanations that no longer hold
+- decisions that are hard to trace
+- confidence dropping while output rises
+
+The first move is to name what is happening.
+
+### Name the lag
+
+Integration lag is the gap between output speed and shared understanding.
+
+The phrase helps because it moves the problem away from blame.
+
+It is not only that someone missed something.
+
+It is that the system is producing faster than the team can understand together.
+
+### Ground in reality
+
+The next move is grounding.
+
+Do not begin with what the documentation says, what people remember, or what AI
+summarizes.
+
+Begin with what is actually present.
+
+That means looking at:
+
+- code
+- tests
+- docs
+- decisions
+- workflows
+- current behavior
+
+This is forensic onboarding.
+
+It means replacing assumed understanding with observable reality.
+
+### See misalignment
+
+Once you look closely, gaps become visible.
+
+For example:
+
+- docs say one thing, but the code does another
+- tests cover less than people think
+- decisions exist, but their reasons are hard to find
+- the way AI is guided does not match how the repository actually works
+
+These gaps are not just annoying.
+
+They are risk signals.
+
+### Maintain understanding
+
+Understanding does not maintain itself.
+
+It fades when people leave, work speeds up, docs get stale, or decisions are
+made under pressure.
+
+So understanding needs a place to live.
+
+That place might be:
+
+- a pull request
+- an architecture note
+- a test
+- a validation script
+- a source-of-truth map
+
+The goal is not to document everything.
+
+The goal is to stop forcing people to carry repeatable knowledge in their heads.
+
+### Let constraints emerge
+
+Good constraints come from the system itself.
+
+They come from what repeatedly breaks, hides work, or creates rework.
+
+A useful constraint might become:
+
+- a checklist
+- a rule
+- a test
+- a validation check
+- a clearer review path
+
+The constraint should reduce confusion.
+
+If it only adds pressure, it is not helping.
+
+### Use AI differently
+
+AI can generate more output.
+
+But that is not the important shift here.
+
+AI can also help inspect:
+
+- what changed
+- what conflicts
+- what is missing
+- what needs checking
+
+The shift is:
+
+> less generation, more visibility
+
+### Keep the loop alive
+
+The path is a loop:
+
+1. inspect what is real
+2. find the mismatch
+3. name the risk
+4. decide where the learning belongs
+5. check whether it helped
+6. remove what is stale
+7. repeat
+
+This is how integration lag gets smaller.
+
+Not by moving slower for its own sake.
+
+By making understanding part of the work.
+
+### Where this is visible here
+
+Here, the practice stays small and inspectable.
+
+The signal and this path sit in the same public route structure.
+
+There are also checks that keep important boundaries visible.
+
+<ReadingFrame
+  variant="example"
+  label="Public node"
+  title="An inspectable example"
+>
+  <p>
+    This repository is not the practice. It is one place where the writing,
+    activation surfaces, and checks can be inspected together.
+  </p>
+  <p>
+    For the map of those parts, read the <a href="/en-us/about/architecture/">public
+    architecture page</a>.
+  </p>
+</ReadingFrame>
+
+### What comes next
+
+If the work needs a ready way to try the practice, go to
+[Sensible Defaults](/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load/).
+
+The next part of this series goes deeper into forensic onboarding.
+
+That means:
+
+> understand what is present before trying to change it.
+
+If the work still feels unclear, that is the place to begin.
+
+### Closing
+
+The future of AI-assisted delivery is not only better generation.
+
+It is better integration.
+
+Teams do not only need more output.
+
+They need to keep understanding what the output means.
+
+{/*
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+*/}

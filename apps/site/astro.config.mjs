@@ -234,6 +234,10 @@ export default defineConfig({
                       label: 'Integration Lag',
                       slug: 'signals/operational/work-delivery/integration-lag',
                     },
+                    {
+                      label: 'A Path Through Integration Lag',
+                      slug: 'signals/operational/work-delivery/a-path-through-integration-lag',
+                    },
                   ],
                 },
               ],

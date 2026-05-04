@@ -218,6 +218,16 @@ export const ROUTE_MAP = Object.freeze([
     status: 'verified',
   },
   {
+    id: 'signal-a-path-through-integration-lag',
+    oldPath: null,
+    newPath: 'signals/operational/work-delivery/a-path-through-integration-lag',
+    type: 'signal',
+    section: 'signals-operational-work-delivery',
+    hasRegisterPair: true,
+    redirect: false,
+    status: 'verified',
+  },
+  {
     id: 'license-cc-by-4-0',
     oldPath: 'licenses/cc-by-4-0',
     newPath: 'licenses/cc-by-4-0',

@@ -1,0 +1,312 @@
+---
+title: "A Path Through Integration Lag"
+description: "A practitioner-facing path from the integration lag signal to shared, inspectable understanding."
+register: practitioner
+---
+
+import RegisterContent from '../../../../../../components/RegisterContent.astro';
+import ReadingFrame from '../../../../../../components/ReadingFrame.astro';
+import ShareButton from '../../../../../../components/ShareButton.astro';
+
+<RegisterContent register="orientation/en-us/signals/operational/work-delivery/a-path-through-integration-lag">
+
+<ShareButton />
+
+Start with [Integration Lag](/en-us/signals/operational/work-delivery/integration-lag/):
+
+> output can move faster than shared understanding.
+
+The next question is:
+
+> what do we do once we can name it?
+
+It is not a framework rollout, a maturity model, or a promise that every team
+needs the same workflow.
+
+It is a path for keeping understanding alive while work is still moving.
+
+### The problem underneath the speed
+
+Teams can now produce faster than ever:
+
+- code
+- docs
+- tickets
+- tests
+- plans
+- summaries
+- architecture notes
+
+But shared understanding does not automatically keep pace.
+
+The cost often appears later:
+
+- dependencies surface too late
+- reviews become harder
+- rework increases
+- decisions become harder to trace
+- people rely on output they do not fully understand
+
+This is integration lag.
+
+It is not solved by adding more output.
+
+It is reduced by keeping meaning attached to the work before the work hardens.
+
+### The path in one sentence
+
+Integration lag shrinks when teams repeatedly inspect reality, expose
+misalignment, decide where learning belongs, and verify that the chosen surface
+still matches the work.
+
+That path has eight recurring movements:
+
+1. name the lag
+2. ground in reality
+3. face misalignment
+4. maintain understanding
+5. let constraints emerge
+6. use AI for visibility
+7. make practice executable
+8. keep the loop alive
+
+This is not a strict sequence.
+
+Teams loop through it repeatedly.
+
+### 1. Name the lag
+
+Before improvement, there is orientation.
+
+Integration lag helps distinguish:
+
+- production from understanding
+- output from integration
+- apparent progress from durable progress
+- local success from system coherence
+
+That language matters because it separates structural pressure from individual
+blame.
+
+### 2. Ground in reality
+
+Do not start from what the docs say, what the team remembers, or what the AI
+summarizes.
+
+Start from what is observable.
+
+This is forensic onboarding:
+
+> understanding a system by inspecting what is actually present before trying to
+> change it.
+
+Forensic onboarding compares:
+
+- code
+- documentation
+- tests
+- workflows
+- decisions
+- runtime behavior
+- repository history
+
+The point is not onboarding as social introduction.
+
+The point is onboarding as evidence reconstruction.
+
+### 3. Face misalignment
+
+Misalignment is not noise.
+
+Look for gaps between:
+
+- code and documentation
+- workflows and actual practice
+- tests and behavior
+- decisions and implementation
+- AI instructions and repository reality
+- validation expectations and local development
+
+These gaps are delivery-risk indicators.
+
+Some technical debt is not only messy code.
+
+It is a split between what the system is and what the team believes it is.
+
+### 4. Maintain understanding
+
+Understanding decays.
+
+It fades through staff changes, AI-generated volume, rushed delivery, stale
+docs, partial refactors, hidden assumptions, and unresolved decisions.
+
+So understanding has to become part of delivery.
+
+Move repeatable knowledge into durable surfaces:
+
+- pull request reasoning
+- architecture decision records
+- tests
+- validation scripts
+- source-of-truth maps
+- workflow files
+- review checklists
+
+This does not remove human judgment.
+
+It stops forcing people to carry repeatable process in their heads.
+
+### 5. Let constraints emerge
+
+Good constraints are discovered.
+
+Do not begin by imposing generic rules.
+
+Derive constraints from:
+
+- actual system shape
+- dependency boundaries
+- repeated failure modes
+- review bottlenecks
+- production risks
+- integration friction
+
+Constraints can be advisory, procedural, or enforced.
+
+The distinction matters.
+
+### 6. Use AI differently
+
+AI is not only useful for producing more.
+
+It can help inspect:
+
+- what changed
+- what conflicts
+- what is missing
+- what assumptions are hidden
+- what docs no longer match
+- what workflows are duplicated
+- what checks should exist
+
+The shift is less generation, more visibility.
+
+AI becomes a visibility instrument, not just an output machine.
+
+### 7. Make practice executable
+
+Good intentions are not enough.
+
+A repository changes when practice becomes:
+
+- inspectable
+- repeatable
+- reviewable
+- enforceable where possible
+- visible in the workflow
+- connected to actual delivery
+
+This is where conceptual practice becomes engineering practice.
+
+It is also where this public PoC makes the path inspectable.
+
+<ReadingFrame
+  variant="example"
+  label="Public node"
+  title="How this stays visible here"
+>
+  <p>
+    Here, the connection is small but inspectable: the signal and path follow
+    stable public routes and are checked so essential boundaries remain visible.
+  </p>
+  <p>
+    This repository is not the practice. It is one public node where the writing,
+    activation surfaces, and validation traces can be inspected together.
+  </p>
+  <p>
+    For the structural map, read the <a href="/en-us/about/architecture/">public
+    architecture page</a>.
+  </p>
+</ReadingFrame>
+
+### 8. Keep the loop alive
+
+The path is a loop:
+
+1. inspect reality
+2. find misalignment
+3. name the risk
+4. decide the surface
+5. encode the practice
+6. verify it works
+7. mark what is stale and retire what is safe to remove
+8. repeat
+
+The loop is the practice.
+
+### First practical moves
+
+Start small:
+
+1. identify active governance surfaces
+2. find duplicate or stale instructions
+3. compare docs against actual code
+4. classify checks as advisory, procedural, or enforced
+5. move one repeated review burden into automation
+6. preserve one decision as trace
+7. retire or mark one obsolete authority surface as stale
+
+If the work needs a ready activation surface, use
+[Sensible Defaults](/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load/).
+
+If the work needs diagnosis first, stay with the loop above until the real
+constraint becomes visible.
+
+### What comes next
+
+The next part of this series goes deeper into the first practical move:
+
+> understand what is present before trying to change it.
+
+That practice is forensic onboarding.
+
+It turns "ground in reality" into a way of entering an unfamiliar workspace:
+inspect the evidence, find the mismatch, name what is still unknown, and only
+then decide what should change.
+
+### Non-claims
+
+This does not claim:
+
+- AI governance is solved
+- process replaces judgment
+- every team needs the same workflow
+- all inherited problems come from AI
+- speed is bad
+- documentation alone is enough
+- validation can encode all meaning
+
+### Closing
+
+Speed without shared understanding does not scale.
+
+It only postpones the cost.
+
+A path through integration lag means:
+
+- staying grounded
+- making reasoning visible
+- encoding what can be checked
+- keeping judgment human
+- using AI to increase visibility, not just output
+
+The future of AI-assisted delivery is not just better generation.
+
+It is better integration.
+
+</RegisterContent>
+
+{/*
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+*/}
