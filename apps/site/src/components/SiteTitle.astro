@@ -1,149 +1,480 @@
 ---
 import config from 'virtual:starlight/user-config';
 import { logos } from 'virtual:starlight/user-images';
-import { getLocaleFromPath } from '../lib/locale';
 import { getRegisterLabels } from '../lib/i18n';
+import { getLocaleFromPath } from '../lib/locale';
+import { READING_REGISTERS } from '../lib/register-registry.js';
+import { getRegisterAvailabilityForPath } from '../lib/route-map.js';
 
 const { siteTitle } = Astro.locals.starlightRoute;
 const locale = getLocaleFromPath(Astro.url?.pathname ?? '/');
 const t = getRegisterLabels(locale);
+const availability = getRegisterAvailabilityForPath(Astro.url?.pathname ?? '/');
+const availableRegisters = availability.available as Array<(typeof READING_REGISTERS)[number]>;
+const absentRegisters = availability.absent as Partial<Record<(typeof READING_REGISTERS)[number], string>>;
 ---
 
-<div class="site-title sl-flex" aria-label={`${siteTitle}. Current reading register indicator.`}>
-  {
-    config.logo && logos.dark && (
-      <>
-        <img
-          class:list={{ 'light:sl-hidden print:hidden': !('src' in config.logo) }}
-          alt={config.logo.alt}
-          src={logos.dark.src}
-          width={logos.dark.width}
-          height={logos.dark.height}
-        />
-        {!('src' in config.logo) && (
-          <img
-            class="dark:sl-hidden print:block"
-            alt={config.logo.alt}
-            src={logos.light?.src}
-            width={logos.light?.width}
-            height={logos.light?.height}
-          />
-        )}
-      </>
-    )
-  }
-  <span class:list={{ 'sr-only': config.logo?.replacesTitle, 'title-copy': true }} translate="no">
-    <span class="title-main">
-      {siteTitle}<sup class="register-label"><svg aria-hidden="true" class="register-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="7" opacity="0.6" /><circle cx="15" cy="12" r="7" opacity="0.6" /></svg><span class="label-practitioner">{t.practitioner}</span><span class="label-orientation">{t.orientation}</span><span class="label-everyday">{t.everyday}</span></sup>
-    </span>
-    <span class="register-helper" aria-hidden="true">
-      <span class="helper-practitioner">{t.practitionerHelper}</span>
-      <span class="helper-orientation">{t.orientationHelper}</span>
-      <span class="helper-everyday">{t.everydayHelper}</span>
-    </span>
-  </span>
-</div>
+<poc-register-title-control>
+	<button
+		type="button"
+		class="site-title sl-flex"
+		aria-label={`${siteTitle}. Open reading register selector.`}
+		aria-haspopup="dialog"
+		aria-expanded="false"
+		aria-controls="poc-register-title-panel"
+		data-register-title-trigger
+	>
+		{
+			config.logo && logos.dark && (
+				<>
+					<img
+						class:list={{ 'light:sl-hidden print:hidden': !('src' in config.logo) }}
+						alt={config.logo.alt}
+						src={logos.dark.src}
+						width={logos.dark.width}
+						height={logos.dark.height}
+					/>
+					{!('src' in config.logo) && (
+						<img
+							class="dark:sl-hidden print:block"
+							alt={config.logo.alt}
+							src={logos.light?.src}
+							width={logos.light?.width}
+							height={logos.light?.height}
+						/>
+					)}
+				</>
+			)
+		}
+		<span class:list={{ 'sr-only': config.logo?.replacesTitle, 'title-copy': true }} translate="no">
+			<span class="title-main">
+				{siteTitle}<sup class="register-label"><svg
+						aria-hidden="true"
+						class="register-icon"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"><circle cx="9" cy="12" r="7" opacity="0.6"></circle><circle
+							cx="15"
+							cy="12"
+							r="7"
+							opacity="0.6"></circle></svg><span class="label-practitioner">{t.practitioner}</span><span
+						class="label-orientation">{t.orientation}</span><span class="label-everyday"
+						>{t.everyday}</span></sup
+				>
+			</span>
+			<span class="register-helper" aria-hidden="true">
+				<span class="helper-practitioner">{t.practitionerHelper}</span>
+				<span class="helper-orientation">{t.orientationHelper}</span>
+				<span class="helper-everyday">{t.everydayHelper}</span>
+			</span>
+		</span>
+	</button>
+
+	<div id="poc-register-title-panel" class="register-panel" data-register-panel hidden>
+		<div class="panel-heading">
+			<p class="panel-kicker">{t.selectorLabel}</p>
+			<p class="panel-copy">{t.controlDescription}</p>
+		</div>
+
+		<div class="register-options" role="radiogroup" aria-label={t.selectorLabel}>
+			{
+				READING_REGISTERS.map((register) => {
+					const available = availableRegisters.includes(register);
+					const helper = t[`${register}Helper` as keyof typeof t];
+					const label = t[register as keyof typeof t];
+					const absentMessage = absentRegisters[register] ?? `${label} ${t.unavailableSuffix}`;
+
+					return (
+						<label
+							class:list={{ 'register-option': true, unavailable: !available }}
+							data-register-option={register}
+						>
+							<input
+								type="radio"
+								name="poc-register"
+								value={register}
+								disabled={!available}
+								aria-describedby={!available ? `register-${register}-unavailable` : undefined}
+							/>
+							<span class="option-copy">
+								<span class="option-label">
+									{label}
+									{!available && <span class="option-status"> ({t.unavailableSuffix})</span>}
+								</span>
+								<span
+									class="option-helper"
+									id={!available ? `register-${register}-unavailable` : undefined}
+									>{available ? helper : absentMessage}</span
+								>
+							</span>
+						</label>
+					);
+				})
+			}
+		</div>
+
+		<p class="register-fallback" data-register-fallback hidden></p>
+		<button type="button" class="panel-close" data-register-panel-close>{t.closeControl}</button>
+	</div>
+</poc-register-title-control>
+
+<script>
+	import { getRegister, setRegister, type Register } from '../lib/register';
+	import { rebuildToc } from '../lib/toc';
+
+	class PocRegisterTitleControl extends HTMLElement {
+		trigger: HTMLButtonElement;
+		panel: HTMLElement;
+		closeButton: HTMLButtonElement;
+		fallback: HTMLElement;
+
+		constructor() {
+			super();
+			this.trigger = this.querySelector<HTMLButtonElement>('[data-register-title-trigger]')!;
+			this.panel = this.querySelector<HTMLElement>('[data-register-panel]')!;
+			this.closeButton = this.querySelector<HTMLButtonElement>('[data-register-panel-close]')!;
+			this.fallback = this.querySelector<HTMLElement>('[data-register-fallback]')!;
+
+			this.trigger.addEventListener('click', () => {
+				this.isOpen() ? this.close() : this.open();
+			});
+
+			this.closeButton.addEventListener('click', () => this.close({ returnFocus: true }));
+
+			for (const input of this.querySelectorAll<HTMLInputElement>('input[name="poc-register"]')) {
+				input.addEventListener('change', () => {
+					if (input.checked && !input.disabled) {
+						setRegister(input.value as Register);
+						rebuildToc();
+						this.close();
+					}
+				});
+			}
+
+			document.addEventListener('pointerdown', (event) => {
+				if (!this.isOpen() || this.contains(event.target as Node)) return;
+				this.close();
+			});
+
+			document.addEventListener('keydown', (event) => {
+				if (event.key === 'Escape' && this.isOpen()) this.close({ returnFocus: true });
+			});
+
+			window.addEventListener('poc:register-change', () => this.sync());
+			this.sync();
+		}
+
+		isOpen(): boolean {
+			return this.hasAttribute('data-open');
+		}
+
+		open(): void {
+			this.setAttribute('data-open', 'true');
+			this.trigger.setAttribute('aria-expanded', 'true');
+			this.panel.hidden = false;
+			this.panel.setAttribute('data-pulse', 'true');
+			window.setTimeout(() => this.panel.removeAttribute('data-pulse'), 700);
+			this.sync();
+		}
+
+		close({ returnFocus = false }: { returnFocus?: boolean } = {}): void {
+			this.removeAttribute('data-open');
+			this.trigger.setAttribute('aria-expanded', 'false');
+			this.panel.hidden = true;
+			if (returnFocus) this.trigger.focus();
+		}
+
+		sync(): void {
+			const register = getRegister();
+			for (const input of this.querySelectorAll<HTMLInputElement>('input[name="poc-register"]')) {
+				input.checked = input.value === register;
+			}
+
+			const fallbackMessage = document.documentElement.dataset.registerFallbackMessage;
+			this.fallback.hidden = !fallbackMessage;
+			this.fallback.textContent = fallbackMessage ?? '';
+		}
+	}
+
+	if (!customElements.get('poc-register-title-control')) {
+		customElements.define('poc-register-title-control', PocRegisterTitleControl);
+	}
+</script>
 
 <style>
-  @layer starlight.core {
-    .site-title {
-      align-items: center;
-      gap: var(--sl-nav-gap);
-      font-size: var(--sl-text-h4);
-      font-weight: 600;
-      color: var(--sl-color-text-accent);
-      text-decoration: none;
-      white-space: nowrap;
-      min-width: 0;
-      padding: 0;
-      font-family: var(--sl-font);
-      line-height: normal;
-    }
+	@layer starlight.core {
+		poc-register-title-control {
+			display: contents;
+		}
 
-    span {
-      overflow: visible;
-    }
+		.site-title {
+			align-items: center;
+			gap: var(--sl-nav-gap);
+			font-size: var(--sl-text-h4);
+			font-weight: 600;
+			color: var(--sl-color-text-accent);
+			text-decoration: none;
+			white-space: nowrap;
+			min-width: 0;
+			padding: 0;
+			font-family: var(--sl-font);
+			line-height: normal;
+			background: transparent;
+			border: 0;
+			cursor: pointer;
+			text-align: start;
+		}
 
-    img {
-      height: calc(var(--sl-nav-height) - 2 * var(--sl-nav-pad-y));
-      width: auto;
-      max-width: 100%;
-      object-fit: contain;
-      object-position: 0 50%;
-    }
-  }
+		.site-title:hover,
+		.site-title:focus-visible {
+			color: var(--poc-register-accent);
+		}
 
-  .register-label {
-    font-size: 0.65em;
-    font-weight: 400;
-    color: var(--poc-register-accent);
-    margin-inline-start: 0.4em;
-    vertical-align: super;
-    letter-spacing: 0.02em;
-    transition: color 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25em;
-    line-height: 1;
-    flex-shrink: 1;
-    min-width: 0;
-  }
+		span {
+			overflow: visible;
+		}
 
-  .register-icon {
-    flex-shrink: 0;
-    width: 1.5cap;
-    height: 1.5cap;
-    align-self: center;
-  }
+		img {
+			height: calc(var(--sl-nav-height) - 2 * var(--sl-nav-pad-y));
+			width: auto;
+			max-width: 100%;
+			object-fit: contain;
+			object-position: 0 50%;
+		}
+	}
 
-  .title-copy {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.15rem;
-    min-width: 0;
-  }
+	.register-label {
+		font-size: 0.65em;
+		font-weight: 400;
+		color: var(--poc-register-accent);
+		margin-inline-start: 0.4em;
+		vertical-align: super;
+		letter-spacing: 0.02em;
+		transition: color 0.3s ease;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25em;
+		line-height: 1;
+		flex-shrink: 1;
+		min-width: 0;
+	}
 
-  .title-main {
-    display: inline-block;
-  }
+	.register-icon {
+		flex-shrink: 0;
+		width: 1.5cap;
+		height: 1.5cap;
+		align-self: center;
+	}
 
-  .register-helper {
-    display: block;
-    font-size: 0.48em;
-    font-weight: 400;
-    color: var(--sl-color-gray-3);
-    letter-spacing: 0.01em;
-    line-height: 1.25;
-    white-space: normal;
-    max-width: 22rem;
-  }
+	.title-copy {
+		display: inline-flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.15rem;
+		min-width: 0;
+	}
 
-  .label-orientation,
-  .label-everyday,
-  .helper-orientation,
-  .helper-everyday {
-    display: none;
-  }
+	.title-main {
+		display: inline-block;
+	}
 
-  :global(:root[data-register='orientation']) .label-practitioner,
-  :global(:root[data-register='orientation']) .helper-practitioner,
-  :global(:root[data-register='everyday']) .label-practitioner,
-  :global(:root[data-register='everyday']) .helper-practitioner {
-    display: none;
-  }
+	.register-helper {
+		display: block;
+		font-size: 0.48em;
+		font-weight: 400;
+		color: var(--sl-color-gray-3);
+		letter-spacing: 0.01em;
+		line-height: 1.25;
+		white-space: normal;
+		max-width: 22rem;
+	}
 
-  :global(:root[data-register='orientation']) .label-orientation,
-  :global(:root[data-register='orientation']) .helper-orientation,
-  :global(:root[data-register='everyday']) .label-everyday,
-  :global(:root[data-register='everyday']) .helper-everyday {
-    display: inline;
-  }
+	.register-panel {
+		position: fixed;
+		z-index: 120;
+		top: calc(var(--sl-nav-height) + 0.7rem);
+		left: max(var(--sl-nav-pad-x), env(safe-area-inset-left));
+		width: min(24rem, calc(100vw - 2 * var(--sl-nav-pad-x)));
+		padding: 0.85rem;
+		border: 1px solid color-mix(in srgb, var(--poc-register-accent), transparent 45%);
+		border-radius: 1.15rem;
+		background:
+			linear-gradient(
+				140deg,
+				color-mix(in srgb, var(--poc-register-accent), transparent 88%),
+				transparent 44%
+			),
+			var(--sl-color-bg-nav);
+		box-shadow: 0 1rem 2.25rem color-mix(in srgb, var(--sl-color-black), transparent 72%);
+		color: var(--sl-color-text);
+	}
 
-  @media (max-width: 72rem) {
-    .register-helper {
-      font-size: 0.44em;
-      max-width: min(18rem, 55vw);
-    }
-  }
+	.register-panel[hidden] {
+		display: none;
+	}
+
+	.register-panel[data-pulse='true'] {
+		animation: register-panel-pulse 620ms ease-out;
+	}
+
+	.panel-heading {
+		display: grid;
+		gap: 0.2rem;
+		margin-block-end: 0.75rem;
+	}
+
+	.panel-kicker,
+	.panel-copy,
+	.register-fallback {
+		margin: 0;
+	}
+
+	.panel-kicker {
+		font-size: var(--sl-text-sm);
+		font-weight: 700;
+		letter-spacing: 0.03em;
+		color: var(--poc-register-accent);
+		text-transform: uppercase;
+	}
+
+	.panel-copy,
+	.option-helper,
+	.register-fallback {
+		font-size: var(--sl-text-sm);
+		line-height: 1.35;
+		color: var(--sl-color-gray-2);
+	}
+
+	.register-options {
+		display: grid;
+		gap: 0.45rem;
+	}
+
+	.register-option {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.65rem;
+		align-items: start;
+		padding: 0.72rem 0.8rem;
+		border: 1px solid color-mix(in srgb, var(--sl-color-gray-5), transparent 25%);
+		border-radius: 0.9rem;
+		background: color-mix(in srgb, var(--sl-color-gray-6), transparent 55%);
+		cursor: pointer;
+	}
+
+	.register-option:has(input:checked) {
+		border-color: color-mix(in srgb, var(--poc-register-accent), transparent 25%);
+		background: color-mix(in srgb, var(--poc-register-accent), transparent 84%);
+	}
+
+	.register-option.unavailable {
+		cursor: not-allowed;
+		opacity: 0.68;
+	}
+
+	.register-option input {
+		margin-block-start: 0.2rem;
+		accent-color: var(--poc-register-accent);
+	}
+
+	.option-copy {
+		display: grid;
+		gap: 0.15rem;
+	}
+
+	.option-label {
+		font-weight: 700;
+		color: var(--sl-color-text);
+	}
+
+	.option-status {
+		font-weight: 500;
+		color: var(--sl-color-gray-2);
+	}
+
+	.register-fallback {
+		margin-block-start: 0.75rem;
+		padding: 0.6rem 0.7rem;
+		border-radius: 0.75rem;
+		background: color-mix(in srgb, var(--poc-register-accent), transparent 84%);
+		color: var(--sl-color-text);
+	}
+
+	.panel-close {
+		margin-block-start: 0.75rem;
+		padding: 0.35rem 0;
+		border: 0;
+		background: transparent;
+		color: var(--sl-color-gray-2);
+		font: inherit;
+		font-size: var(--sl-text-sm);
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	.panel-close:hover,
+	.panel-close:focus-visible {
+		color: var(--poc-register-accent);
+	}
+
+	.label-orientation,
+	.label-everyday,
+	.helper-orientation,
+	.helper-everyday {
+		display: none;
+	}
+
+	:global(:root[data-register='orientation']) .label-practitioner,
+	:global(:root[data-register='orientation']) .helper-practitioner,
+	:global(:root[data-register='everyday']) .label-practitioner,
+	:global(:root[data-register='everyday']) .helper-practitioner {
+		display: none;
+	}
+
+	:global(:root[data-register='orientation']) .label-orientation,
+	:global(:root[data-register='orientation']) .helper-orientation,
+	:global(:root[data-register='everyday']) .label-everyday,
+	:global(:root[data-register='everyday']) .helper-everyday {
+		display: inline;
+	}
+
+	@keyframes register-panel-pulse {
+		0% {
+			transform: translateY(-0.25rem) scale(0.98);
+			box-shadow: 0 0 0 0 color-mix(in srgb, var(--poc-register-accent), transparent 45%);
+		}
+		55% {
+			transform: translateY(0) scale(1.015);
+			box-shadow: 0 0 0 0.45rem color-mix(in srgb, var(--poc-register-accent), transparent 78%);
+		}
+		100% {
+			transform: translateY(0) scale(1);
+			box-shadow: 0 1rem 2.25rem color-mix(in srgb, var(--sl-color-black), transparent 72%);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.register-panel[data-pulse='true'] {
+			animation: none;
+		}
+	}
+
+	@media (max-width: 72rem) {
+		.register-helper {
+			font-size: 0.44em;
+			max-width: min(18rem, 55vw);
+		}
+	}
+
+	@media (max-width: 36rem) {
+		.register-panel {
+			top: calc(var(--sl-nav-height) + 0.45rem);
+			left: max(0.75rem, env(safe-area-inset-left));
+			width: calc(100vw - 1.5rem);
+			border-radius: 1rem;
+		}
+	}
 </style>

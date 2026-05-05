@@ -1,15 +1,15 @@
 import { expect, test } from '@playwright/test';
 
-const openRegisterFab = async (page: import('@playwright/test').Page) => {
-  await page.locator('[data-register-fab-trigger]').click();
+const openRegisterPanel = async (page: import('@playwright/test').Page) => {
+  await page.locator('[data-register-title-trigger]').click();
 };
 
 const chooseRegister = async (page: import('@playwright/test').Page, register: string) => {
-  await openRegisterFab(page);
-  await page.locator(`poc-register-fab input[value="${register}"]`).check();
+  await openRegisterPanel(page);
+  await page.locator(`poc-register-title-control input[value="${register}"]`).check();
 };
 
-test.describe('register floating control', () => {
+test.describe('register title control', () => {
   test('choosing a register switches register content', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
 
@@ -25,7 +25,7 @@ test.describe('register floating control', () => {
     await expect(practitionerContent).not.toBeVisible();
   });
 
-  test('floating control updates URL with ?register=orientation', async ({ page }) => {
+  test('title control updates URL with ?register=orientation', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
     await chooseRegister(page, 'orientation');
 
@@ -51,35 +51,36 @@ test.describe('register floating control', () => {
     await page.goto('/en-us/about/what-this-is/?register=everyday');
 
     await expect(page.locator('[data-register-content="practitioner"]')).toBeVisible();
-    await expect(page.locator('[data-register-fab-current]')).toHaveText('Practitioner');
-    await openRegisterFab(page);
-    await expect(page.locator('[data-register-fab-fallback]')).toHaveText(
+    await expect(page.locator('.label-practitioner')).toBeVisible();
+    await openRegisterPanel(page);
+    await expect(page.locator('[data-register-fallback]')).toHaveText(
       'Everyday is not available for this page yet.',
     );
     expect(page.url()).not.toContain('register=everyday');
   });
 
-  test('everyday is visible as unavailable in the floating control', async ({ page }) => {
+  test('everyday is visible as unavailable in the title panel', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
-    await openRegisterFab(page);
+    await openRegisterPanel(page);
 
-    const everyday = page.locator('poc-register-fab input[value="everyday"]');
+    const everyday = page.locator('poc-register-title-control input[value="everyday"]');
     await expect(everyday).toBeDisabled();
     await expect(
-      page.locator('poc-register-fab label').filter({ hasText: 'Everyday' }),
+      page.locator('poc-register-title-control label').filter({ hasText: 'Everyday' }),
     ).toContainText('Everyday (not available yet)');
   });
 
-  test('compact mode quiets the floating button without removing access', async ({ page }) => {
+  test('title tap opens a pulsing panel that closes after selection', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
-    await openRegisterFab(page);
-    await page.locator('[data-register-fab-compact]').check();
+    await openRegisterPanel(page);
 
-    await expect(page.locator('poc-register-fab')).toHaveAttribute('data-compact', 'true');
-    await expect(page.locator('[data-register-fab-trigger]')).toBeVisible();
-    await page.locator('[data-register-fab-close]').click();
-    await page.locator('[data-register-fab-trigger]').click();
-    await expect(page.locator('[data-register-fab-panel]')).toBeVisible();
+    await expect(page.locator('[data-register-panel]')).toBeVisible();
+    await expect(page.locator('[data-register-panel]')).toHaveAttribute('data-pulse', 'true');
+
+    await page.locator('poc-register-title-control input[value="orientation"]').check();
+
+    await expect(page.locator('[data-register-panel]')).toBeHidden();
+    await expect(page.locator('[data-register-content="orientation"]')).toBeVisible();
   });
 
   test('ToC updates when register toggles', async ({ page }) => {

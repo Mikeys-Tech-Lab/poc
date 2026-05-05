@@ -111,8 +111,8 @@ test.describe('final ui refinements', () => {
 
         await expect(page.locator('.helper-practitioner')).toBeVisible();
         await expect(page.locator('.helper-practitioner')).toHaveText(helperCopy.practitioner);
-        await page.locator('[data-register-fab-trigger]').click();
-        await page.locator('poc-register-fab input[value="orientation"]').check();
+        await page.locator('[data-register-title-trigger]').click();
+        await page.locator('poc-register-title-control input[value="orientation"]').check();
         await expect(page.locator('.helper-orientation')).toBeVisible();
         await expect(page.locator('.helper-orientation')).toHaveText(helperCopy.orientation);
 

@@ -89,6 +89,15 @@ const registerAvailability = getRegisterAvailabilityForPath(Astro.url?.pathname 
 		if (urlRegister && typeof localStorage !== 'undefined') {
 			localStorage.setItem('poc-register', resolution.register);
 		}
+		if (urlRegister) {
+			const url = new URL(window.location.href);
+			if (resolution.register === defaultRegister) {
+				url.searchParams.delete('register');
+			} else {
+				url.searchParams.set('register', resolution.register);
+			}
+			history.replaceState(null, '', url);
+		}
 
 		/* ── Accessibility preferences (duplicated from a11y-preferences.ts) ── */
 		const a11yDefaults = { contrast: 'default', text: '100', motion: 'default', links: 'default', font: 'default' };

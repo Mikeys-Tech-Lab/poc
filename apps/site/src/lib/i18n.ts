@@ -18,7 +18,6 @@ export interface RegisterLabels {
   selectorLabel: string;
   unavailableSuffix: string;
   controlDescription: string;
-  compactToggle: string;
   closeControl: string;
 }
 
@@ -40,7 +39,6 @@ const registerLabels: Record<Locale, RegisterLabels> = {
     selectorLabel: 'Reading register',
     unavailableSuffix: 'not available yet',
     controlDescription: 'Choose how this page is written.',
-    compactToggle: 'Minimize floating button',
     closeControl: 'Close register controls',
   },
 };

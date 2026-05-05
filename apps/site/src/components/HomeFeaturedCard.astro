@@ -21,8 +21,8 @@ const intro =
 
 const registerCopy =
   variant === 'orientation'
-    ? 'Use the floating register control near the top right to change how this is written. The ideas stay the same. The voice shifts so you can find your way in.'
-    : 'Use the floating register control near the top right to change the voice without changing the structure. The same thinking can land differently.';
+    ? 'Tap the title register indicator to change how this is written. The ideas stay the same. The voice shifts so you can find your way in.'
+    : 'Tap the title register indicator to change the voice without changing the structure. The same thinking can land differently.';
 
 const themeCopy =
   variant === 'orientation'
@@ -135,7 +135,7 @@ const themeCopy =
   };
 
   const focusRegisterSelect = () => {
-    const trigger = document.querySelector('poc-register-fab [data-register-fab-trigger]');
+    const trigger = document.querySelector('[data-register-title-trigger]');
     if (trigger instanceof HTMLButtonElement) {
       trigger.focus();
       trigger.click();
