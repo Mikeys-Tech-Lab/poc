@@ -17,6 +17,9 @@ export interface RegisterLabels {
   orientationHelper: string;
   selectorLabel: string;
   unavailableSuffix: string;
+  controlDescription: string;
+  compactToggle: string;
+  closeControl: string;
 }
 
 export interface ThemeLabels {
@@ -36,6 +39,9 @@ const registerLabels: Record<Locale, RegisterLabels> = {
     orientationHelper: 'Plain-language introduction',
     selectorLabel: 'Reading register',
     unavailableSuffix: 'not available yet',
+    controlDescription: 'Choose how this page is written.',
+    compactToggle: 'Minimize floating button',
+    closeControl: 'Close register controls',
   },
 };
 

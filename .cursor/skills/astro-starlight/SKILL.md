@@ -207,11 +207,13 @@ Reusable logic lives in `src/lib/` as pure TypeScript modules. Components import
 
 ## Component overrides
 
-Five Starlight components are overridden via the `components` key in `astro.config.mjs`:
+Starlight components are overridden via the `components` key in `astro.config.mjs`.
+Supporting custom components may be mounted from those overrides:
 
 | Override | File | Purpose |
 |---|---|---|
-| `SiteTitle` | `src/components/SiteTitle.astro` | Site title with visible reading-register selector and route-level unavailable states. |
+| `SiteTitle` | `src/components/SiteTitle.astro` | Site title with a non-interactive current register indicator. |
+| `RegisterFab` | `src/components/RegisterFab.astro` | Floating reading-register control with route-level unavailable states and compact mode. |
 | `SocialIcons` | `src/components/SocialIcons.astro` | Renders the public social/profile links shown in the header. |
 | `ThemeProvider` | `src/components/ThemeProvider.astro` | Prevents FOUC for `data-theme`, `data-style`, and `data-register` attributes. |
 | `ThemeSelect` | `src/components/ThemeSelect.astro` | Extends the selector to 4 explicit theme options with locale-aware labels. |
@@ -220,7 +222,7 @@ Five Starlight components are overridden via the `components` key in `astro.conf
 ### Override principles
 
 1. **Minimal surface.** Only override what Starlight cannot configure. Each override is a maintenance contract that must survive Starlight upgrades.
-2. **Single responsibility.** Each component does one thing. SiteTitle handles the register toggle UI. ThemeSelect handles theme selection. LicensePanel composes Pagination with LicenseNotice.
+2. **Single responsibility.** Each component does one thing. SiteTitle shows the register indicator. RegisterFab handles register selection. ThemeSelect handles theme selection. LicensePanel composes Pagination with LicenseNotice.
 3. **Delegate to shared modules.** Components import logic from `src/lib/` instead of inlining state management, locale detection, or i18n lookups.
 4. **Inline scripts only for FOUC prevention.** ThemeProvider uses `is:inline` because it must run before first paint. All other client logic uses regular `<script>` tags processed by Vite, which allows ES imports.
 
@@ -259,14 +261,14 @@ Current content availability is smaller than the known registry:
 2. **Route metadata**: `route-map.js` declares available registers, unavailable registers, and the default register for each route.
 3. **Before paint**: ThemeProvider's inline script reads `?register=` or `localStorage`, resolves it against route availability, and sets `data-register` plus fallback metadata on `<html>`.
 4. **CSS**: Global styles hide inactive variants based on `data-register`.
-5. **Selector**: SiteTitle's `<script>` imports from `register.ts` and `toc.ts`. The visible register selector calls `setRegister()`, which updates state and dispatches `poc:register-change` on `window`.
+5. **Floating control**: `RegisterFab.astro` imports from `register.ts` and `toc.ts`. The bottom-right register control calls `setRegister()`, which updates state and dispatches `poc:register-change` on `window`.
 6. **Listeners**: The `poc:register-change` event triggers UI updates and ToC rebuild.
 
 ### State flow
 
 ```
 ThemeProvider (inline, sync) → resolves route availability → sets data-register → CSS hides inactive content
-SiteTitle (module, deferred) → select → setRegister() → event → UI update + ToC rebuild
+RegisterFab (module, deferred) → select → setRegister() → event → UI update + ToC rebuild
 ```
 
 ### Adding register-aware behavior
@@ -422,7 +424,7 @@ transport check is explicitly required.
 |---|---|
 | `register-parity.spec.ts` | Both register content divs exist on every page in the current `en-us` matrix |
 | `navigation.spec.ts` | All pages return 200, all internal links resolve |
-| `register-toggle.spec.ts` | Toggle content, URL param sync, ToC update |
+| `register-toggle.spec.ts` | Floating register control, URL param sync, unavailable states, compact mode, ToC update |
 | `locale-switching.spec.ts` | Language selector navigation, locale reachability |
 | `installability.spec.ts` | Manifest, icons, maskable, theme-color consistency |
 

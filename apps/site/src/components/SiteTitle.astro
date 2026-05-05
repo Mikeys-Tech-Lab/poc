@@ -3,144 +3,49 @@ import config from 'virtual:starlight/user-config';
 import { logos } from 'virtual:starlight/user-images';
 import { getLocaleFromPath } from '../lib/locale';
 import { getRegisterLabels } from '../lib/i18n';
-import { READING_REGISTERS } from '../lib/register-registry.js';
-import { getRegisterAvailabilityForPath } from '../lib/route-map.js';
 
 const { siteTitle } = Astro.locals.starlightRoute;
 const locale = getLocaleFromPath(Astro.url?.pathname ?? '/');
 const t = getRegisterLabels(locale);
-const registerAvailability = getRegisterAvailabilityForPath(Astro.url?.pathname ?? '/');
-type ReadingRegister = 'everyday' | 'orientation' | 'practitioner';
-const readingRegisters = READING_REGISTERS as readonly ReadingRegister[];
-const absentRegisters = registerAvailability.absent as Partial<Record<ReadingRegister, string>>;
-const registerLabel = {
-  everyday: t.everyday,
-  orientation: t.orientation,
-  practitioner: t.practitioner,
-};
-const registerHelper = {
-  everyday: t.everydayHelper,
-  orientation: t.orientationHelper,
-  practitioner: t.practitionerHelper,
-};
 ---
 
-<div class="site-title-register">
-  <a href="/en-us/" class="site-title sl-flex">
-    {
-      config.logo && logos.dark && (
-        <>
+<div class="site-title sl-flex" aria-label={`${siteTitle}. Current reading register indicator.`}>
+  {
+    config.logo && logos.dark && (
+      <>
+        <img
+          class:list={{ 'light:sl-hidden print:hidden': !('src' in config.logo) }}
+          alt={config.logo.alt}
+          src={logos.dark.src}
+          width={logos.dark.width}
+          height={logos.dark.height}
+        />
+        {!('src' in config.logo) && (
           <img
-            class:list={{ 'light:sl-hidden print:hidden': !('src' in config.logo) }}
+            class="dark:sl-hidden print:block"
             alt={config.logo.alt}
-            src={logos.dark.src}
-            width={logos.dark.width}
-            height={logos.dark.height}
+            src={logos.light?.src}
+            width={logos.light?.width}
+            height={logos.light?.height}
           />
-          {!('src' in config.logo) && (
-            <img
-              class="dark:sl-hidden print:block"
-              alt={config.logo.alt}
-              src={logos.light?.src}
-              width={logos.light?.width}
-              height={logos.light?.height}
-            />
-          )}
-        </>
-      )
-    }
-    <span class:list={{ 'sr-only': config.logo?.replacesTitle, 'title-copy': true }} translate="no">
-      <span class="title-main">{siteTitle}</span>
+        )}
+      </>
+    )
+  }
+  <span class:list={{ 'sr-only': config.logo?.replacesTitle, 'title-copy': true }} translate="no">
+    <span class="title-main">
+      {siteTitle}<sup class="register-label"><svg aria-hidden="true" class="register-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="7" opacity="0.6" /><circle cx="15" cy="12" r="7" opacity="0.6" /></svg><span class="label-practitioner">{t.practitioner}</span><span class="label-orientation">{t.orientation}</span><span class="label-everyday">{t.everyday}</span></sup>
     </span>
-  </a>
-  <poc-register-select>
-    <label class="register-select-label" for="poc-register-select">{t.selectorLabel}</label>
-    <select id="poc-register-select" class="register-select" autocomplete="off">
-      {
-        readingRegisters.map((register) => {
-          const isAvailable = registerAvailability.available.includes(register);
-          const unavailableMessage = absentRegisters[register];
-          const label = registerLabel[register];
-          return (
-            <option
-              value={register}
-              disabled={!isAvailable}
-              data-register-helper={registerHelper[register]}
-              data-register-unavailable-message={unavailableMessage}
-            >
-              {isAvailable ? label : `${label} (${t.unavailableSuffix})`}
-            </option>
-          );
-        })
-      }
-    </select>
-    <span class="register-helper" data-register-helper-output aria-live="polite"></span>
-    <span class="register-fallback" data-register-fallback role="status" hidden></span>
-  </poc-register-select>
+    <span class="register-helper" aria-hidden="true">
+      <span class="helper-practitioner">{t.practitionerHelper}</span>
+      <span class="helper-orientation">{t.orientationHelper}</span>
+      <span class="helper-everyday">{t.everydayHelper}</span>
+    </span>
+  </span>
 </div>
-
-<script>
-  import { getRegister, setRegister } from '../lib/register';
-  import { rebuildToc } from '../lib/toc';
-
-  const syncRegisterControls = () => {
-    const root = document.documentElement;
-    const register = getRegister();
-    document.querySelectorAll('poc-register-select').forEach((control) => {
-      const select = control.querySelector('select');
-      const helper = control.querySelector('[data-register-helper-output]');
-      const fallback = control.querySelector('[data-register-fallback]');
-      if (select instanceof HTMLSelectElement) {
-        select.value = register;
-      }
-      const selectedOption = select instanceof HTMLSelectElement
-        ? select.selectedOptions.item(0)
-        : null;
-      if (helper instanceof HTMLElement) {
-        helper.textContent = selectedOption?.dataset.registerHelper ?? '';
-      }
-      if (fallback instanceof HTMLElement) {
-        const message = root.dataset.registerFallbackMessage;
-        fallback.hidden = !message;
-        fallback.textContent = message ?? '';
-      }
-    });
-  };
-
-  window.addEventListener('poc:register-change', () => {
-    syncRegisterControls();
-    rebuildToc();
-  });
-
-  class PocRegisterSelect extends HTMLElement {
-    connectedCallback() {
-      const select = this.querySelector('select');
-      select?.addEventListener('change', () => {
-        if (select instanceof HTMLSelectElement) {
-          setRegister(select.value as ReturnType<typeof getRegister>);
-        }
-      });
-
-      const requestedRegister = document.documentElement.dataset.registerRequested;
-      setRegister((requestedRegister ?? getRegister()) as ReturnType<typeof getRegister>);
-      syncRegisterControls();
-    }
-  }
-
-  if (!customElements.get('poc-register-select')) {
-    customElements.define('poc-register-select', PocRegisterSelect);
-  }
-</script>
 
 <style>
   @layer starlight.core {
-    .site-title-register {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      min-width: 0;
-    }
-
     .site-title {
       align-items: center;
       gap: var(--sl-nav-gap);
@@ -153,10 +58,6 @@ const registerHelper = {
       padding: 0;
       font-family: var(--sl-font);
       line-height: normal;
-    }
-
-    .site-title:hover {
-      opacity: 0.8;
     }
 
     span {
@@ -172,13 +73,27 @@ const registerHelper = {
     }
   }
 
-  poc-register-select {
+  .register-label {
+    font-size: 0.65em;
+    font-weight: 400;
+    color: var(--poc-register-accent);
+    margin-inline-start: 0.4em;
+    vertical-align: super;
+    letter-spacing: 0.02em;
+    transition: color 0.3s ease;
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    font-size: 0.72rem;
-    line-height: 1.2;
-    color: var(--sl-color-gray-3);
+    gap: 0.25em;
+    line-height: 1;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+
+  .register-icon {
+    flex-shrink: 0;
+    width: 1.5cap;
+    height: 1.5cap;
+    align-self: center;
   }
 
   .title-copy {
@@ -193,49 +108,42 @@ const registerHelper = {
     display: inline-block;
   }
 
-  .register-select-label {
-    font-weight: 600;
-    color: var(--sl-color-text-accent);
-  }
-
-  .register-select {
-    max-width: 10rem;
-    border: 1px solid var(--poc-box-control-border);
-    border-radius: 999px;
-    background-color: var(--poc-box-control-surface);
-    color: var(--poc-text);
-    padding: 0.25rem 1.8rem 0.25rem 0.65rem;
-    font: inherit;
-    box-shadow: var(--poc-box-control-shadow);
-  }
-
-  .register-select:focus-visible {
-    outline: 2px solid var(--sl-color-text-accent);
-    outline-offset: 2px;
-  }
-
-  .register-helper,
-  .register-fallback {
-    max-width: 16rem;
+  .register-helper {
+    display: block;
+    font-size: 0.48em;
+    font-weight: 400;
     color: var(--sl-color-gray-3);
+    letter-spacing: 0.01em;
+    line-height: 1.25;
+    white-space: normal;
+    max-width: 22rem;
+  }
+
+  .label-orientation,
+  .label-everyday,
+  .helper-orientation,
+  .helper-everyday {
+    display: none;
+  }
+
+  :global(:root[data-register='orientation']) .label-practitioner,
+  :global(:root[data-register='orientation']) .helper-practitioner,
+  :global(:root[data-register='everyday']) .label-practitioner,
+  :global(:root[data-register='everyday']) .helper-practitioner {
+    display: none;
+  }
+
+  :global(:root[data-register='orientation']) .label-orientation,
+  :global(:root[data-register='orientation']) .helper-orientation,
+  :global(:root[data-register='everyday']) .label-everyday,
+  :global(:root[data-register='everyday']) .helper-everyday {
+    display: inline;
   }
 
   @media (max-width: 72rem) {
-    .site-title-register {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    poc-register-select {
-      gap: 0.35rem;
-      max-width: min(24rem, 68vw);
-      flex-wrap: wrap;
-    }
-
-    .register-helper,
-    .register-fallback {
-      max-width: min(20rem, 68vw);
+    .register-helper {
+      font-size: 0.44em;
+      max-width: min(18rem, 55vw);
     }
   }
 </style>

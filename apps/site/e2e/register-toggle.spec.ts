@@ -1,7 +1,16 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('register selector', () => {
-  test('changing register selector switches register', async ({ page }) => {
+const openRegisterFab = async (page: import('@playwright/test').Page) => {
+  await page.locator('[data-register-fab-trigger]').click();
+};
+
+const chooseRegister = async (page: import('@playwright/test').Page, register: string) => {
+  await openRegisterFab(page);
+  await page.locator(`poc-register-fab input[value="${register}"]`).check();
+};
+
+test.describe('register floating control', () => {
+  test('choosing a register switches register content', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
 
     const practitionerContent = page.locator('[data-register-content="practitioner"]');
@@ -10,23 +19,23 @@ test.describe('register selector', () => {
     await expect(practitionerContent).toBeVisible();
     await expect(orientationContent).not.toBeVisible();
 
-    await page.locator('poc-register-select select').selectOption('orientation');
+    await chooseRegister(page, 'orientation');
 
     await expect(orientationContent).toBeVisible();
     await expect(practitionerContent).not.toBeVisible();
   });
 
-  test('selector updates URL with ?register=orientation', async ({ page }) => {
+  test('floating control updates URL with ?register=orientation', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
-    await page.locator('poc-register-select select').selectOption('orientation');
+    await chooseRegister(page, 'orientation');
 
     expect(page.url()).toContain('register=orientation');
   });
 
   test('selecting the default register removes register param', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
-    await page.locator('poc-register-select select').selectOption('orientation');
-    await page.locator('poc-register-select select').selectOption('practitioner');
+    await chooseRegister(page, 'orientation');
+    await chooseRegister(page, 'practitioner');
 
     expect(page.url()).not.toContain('register=');
   });
@@ -42,19 +51,35 @@ test.describe('register selector', () => {
     await page.goto('/en-us/about/what-this-is/?register=everyday');
 
     await expect(page.locator('[data-register-content="practitioner"]')).toBeVisible();
-    await expect(page.locator('poc-register-select select')).toHaveValue('practitioner');
-    await expect(page.locator('[data-register-fallback]')).toHaveText(
+    await expect(page.locator('[data-register-fab-current]')).toHaveText('Practitioner');
+    await openRegisterFab(page);
+    await expect(page.locator('[data-register-fab-fallback]')).toHaveText(
       'Everyday is not available for this page yet.',
     );
     expect(page.url()).not.toContain('register=everyday');
   });
 
-  test('everyday is visible as unavailable in the selector', async ({ page }) => {
+  test('everyday is visible as unavailable in the floating control', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
+    await openRegisterFab(page);
 
-    const everyday = page.locator('poc-register-select option[value="everyday"]');
+    const everyday = page.locator('poc-register-fab input[value="everyday"]');
     await expect(everyday).toBeDisabled();
-    await expect(everyday).toHaveText('Everyday (not available yet)');
+    await expect(
+      page.locator('poc-register-fab label').filter({ hasText: 'Everyday' }),
+    ).toContainText('Everyday (not available yet)');
+  });
+
+  test('compact mode quiets the floating button without removing access', async ({ page }) => {
+    await page.goto('/en-us/about/what-this-is/');
+    await openRegisterFab(page);
+    await page.locator('[data-register-fab-compact]').check();
+
+    await expect(page.locator('poc-register-fab')).toHaveAttribute('data-compact', 'true');
+    await expect(page.locator('[data-register-fab-trigger]')).toBeVisible();
+    await page.locator('[data-register-fab-close]').click();
+    await page.locator('[data-register-fab-trigger]').click();
+    await expect(page.locator('[data-register-fab-panel]')).toBeVisible();
   });
 
   test('ToC updates when register toggles', async ({ page }) => {
@@ -63,7 +88,7 @@ test.describe('register selector', () => {
     const tocLinks = page.locator('starlight-toc nav a');
     const initialCount = await tocLinks.count();
 
-    await page.locator('poc-register-select select').selectOption('orientation');
+    await chooseRegister(page, 'orientation');
     await page.waitForTimeout(100);
 
     const afterToggleCount = await tocLinks.count();
@@ -102,7 +127,7 @@ test.describe('register selector', () => {
     expect(practitionerPosition?.hash).toBe('#what-this-is-not');
     expect(practitionerPosition?.top ?? Number.POSITIVE_INFINITY).toBeLessThan(140);
 
-    await page.locator('poc-register-select select').selectOption('orientation');
+    await chooseRegister(page, 'orientation');
     await page
       .locator('starlight-toc nav a')
       .filter({ hasText: 'What this is not' })

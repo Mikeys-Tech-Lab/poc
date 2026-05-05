@@ -109,14 +109,12 @@ test.describe('final ui refinements', () => {
           'https://github.com/Mikeys-Tech-Lab/poc',
         );
 
-        await expect(page.locator('[data-register-helper-output]')).toBeVisible();
-        await expect(page.locator('[data-register-helper-output]')).toHaveText(
-          helperCopy.practitioner,
-        );
-        await page.locator('poc-register-select select').selectOption('orientation');
-        await expect(page.locator('[data-register-helper-output]')).toHaveText(
-          helperCopy.orientation,
-        );
+        await expect(page.locator('.helper-practitioner')).toBeVisible();
+        await expect(page.locator('.helper-practitioner')).toHaveText(helperCopy.practitioner);
+        await page.locator('[data-register-fab-trigger]').click();
+        await page.locator('poc-register-fab input[value="orientation"]').check();
+        await expect(page.locator('.helper-orientation')).toBeVisible();
+        await expect(page.locator('.helper-orientation')).toHaveText(helperCopy.orientation);
 
         const panelTrigger = page.locator('poc-a11y-panel .a11y-trigger:visible').first();
         await panelTrigger.click();

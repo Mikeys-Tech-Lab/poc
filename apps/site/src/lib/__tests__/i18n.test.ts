@@ -23,6 +23,7 @@ describe('getRegisterLabels', () => {
     expect(labels.practitioner).toBe('Practitioner');
     expect(labels.orientation).toBe('Orientation');
     expect(labels.unavailableSuffix).toBe('not available yet');
+    expect(labels.compactToggle).toBe('Minimize floating button');
   });
 
   it('falls back to en-US for unknown locale', () => {

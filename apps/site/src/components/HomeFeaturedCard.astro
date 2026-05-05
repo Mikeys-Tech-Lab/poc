@@ -135,9 +135,10 @@ const themeCopy =
   };
 
   const focusRegisterSelect = () => {
-    const select = document.querySelector('poc-register-select select');
-    if (select instanceof HTMLSelectElement) {
-      select.focus();
+    const trigger = document.querySelector('poc-register-fab [data-register-fab-trigger]');
+    if (trigger instanceof HTMLButtonElement) {
+      trigger.focus();
+      trigger.click();
     }
   };
 
