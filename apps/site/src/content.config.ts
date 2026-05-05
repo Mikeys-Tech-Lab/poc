@@ -17,7 +17,7 @@ export const collections = {
     loader: glob({ pattern: '**/*.mdx', base: './src/content/register' }),
     schema: z.object({
       title: z.string().optional(),
-      register: z.literal('orientation').optional(),
+      register: z.enum(['everyday', 'orientation']).optional(),
     }),
   }),
 };

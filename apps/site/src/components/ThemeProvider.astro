@@ -1,5 +1,8 @@
 ---
 import { Icon } from '@astrojs/starlight/components';
+import { getRegisterAvailabilityForPath } from '../lib/route-map.js';
+
+const registerAvailability = getRegisterAvailabilityForPath(Astro.url?.pathname ?? '/');
 ---
 
 {/*
@@ -11,7 +14,7 @@ import { Icon } from '@astrojs/starlight/components';
   duplicated from src/lib/register.ts. Inline scripts cannot use ES imports.
   If the key or default changes, update both locations.
 */}
-<script is:inline>
+<script is:inline define:vars={{ registerAvailability }}>
 	window.StarlightThemeProvider = (() => {
 		const stored =
 			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
@@ -37,13 +40,54 @@ import { Icon } from '@astrojs/starlight/components';
 			localStorage.setItem('starlight-theme', theme);
 		}
 
+		const readingRegisters = ['everyday', 'orientation', 'practitioner'];
+		const isReadingRegister = (value) => readingRegisters.includes(value);
+		const availableRegisters = Array.isArray(registerAvailability.available)
+			? registerAvailability.available.filter(isReadingRegister)
+			: ['practitioner', 'orientation'];
+		const absentRegisters =
+			registerAvailability.absent && typeof registerAvailability.absent === 'object'
+				? registerAvailability.absent
+				: { everyday: 'Everyday is not available for this page yet.' };
+		const defaultRegister =
+			isReadingRegister(registerAvailability.defaultRegister) &&
+			availableRegisters.includes(registerAvailability.defaultRegister)
+				? registerAvailability.defaultRegister
+				: availableRegisters.includes('practitioner')
+					? 'practitioner'
+					: availableRegisters[0] || 'practitioner';
+		const resolveRegister = (value) => {
+			const requested = isReadingRegister(value) ? value : null;
+			if (requested && availableRegisters.includes(requested)) {
+				return { register: requested, requested, reason: null, message: null };
+			}
+			return {
+				register: defaultRegister,
+				requested,
+				reason: requested ? 'unavailable' : 'unknown',
+				message: requested
+					? absentRegisters[requested] || `${requested} is not available for this page.`
+					: 'Unknown register requested. Showing the default register.',
+			};
+		};
+
 		const urlRegister = new URLSearchParams(window.location.search).get('register');
 		const storedRegister =
 			typeof localStorage !== 'undefined' && localStorage.getItem('poc-register');
-		const register = urlRegister || storedRegister;
-		document.documentElement.dataset.register = register === 'orientation' ? 'orientation' : 'practitioner';
+		const resolution = resolveRegister(urlRegister || storedRegister);
+		document.documentElement.dataset.registerDefault = defaultRegister;
+		document.documentElement.dataset.registerAvailable = availableRegisters.join(',');
+		document.documentElement.dataset.registerAbsent = JSON.stringify(absentRegisters);
+		document.documentElement.dataset.register = resolution.register;
+		if (resolution.reason && resolution.message) {
+			document.documentElement.dataset.registerFallbackReason = resolution.reason;
+			document.documentElement.dataset.registerFallbackMessage = resolution.message;
+			if (resolution.requested) {
+				document.documentElement.dataset.registerRequested = resolution.requested;
+			}
+		}
 		if (urlRegister && typeof localStorage !== 'undefined') {
-			localStorage.setItem('poc-register', register === 'orientation' ? 'orientation' : 'practitioner');
+			localStorage.setItem('poc-register', resolution.register);
 		}
 
 		/* ── Accessibility preferences (duplicated from a11y-preferences.ts) ── */

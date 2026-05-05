@@ -24,7 +24,7 @@ Before relying on any Astro or Starlight feature:
 ## Content boundaries
 
 - Practitioner register (canonical): `apps/site/src/content/docs/` (Starlight-native; `en-us` is the only active locale in the current repo)
-- Register content: `apps/site/src/content/register/<register>/<locale>/...` (currently only `register/orientation/en-us/` is active)
+- Register content: `apps/site/src/content/register/<register>/<locale>/...` (currently only `register/orientation/en-us/` is active; `everyday` is known to the register registry but unavailable until real content exists)
 - Assets (images, fonts): `apps/site/src/assets/`
 - Shared modules: `apps/site/src/lib/`
 - Seeds (`seeds/`) are development-only sources. They are not the site content tree.
@@ -67,7 +67,8 @@ invented prose after the fact.
 Locale and register are independent axes in the practice model, but the current repo activates only a small subset of that model.
 
 - **Practitioner** register is the canonical Starlight content in `src/content/docs/`, with `docs/en-us/` as the active locale tree.
-- **Orientation** is the only active non-practitioner register in the repo today, at `src/content/register/orientation/en-us/`.
+- **Orientation** is the only active non-practitioner content tree in the repo today, at `src/content/register/orientation/en-us/`.
+- **Everyday** is a known reading register in the registry and route metadata, but it is explicitly unavailable on current routes. Do not scaffold a `register/everyday/` tree or preserve empty placeholder content.
 - Other register families may exist conceptually in seeds, but they are not active repo structure. Do not scaffold or preserve them unless the operator explicitly asks.
 
 ### Content collections
@@ -196,7 +197,8 @@ Reusable logic lives in `src/lib/` as pure TypeScript modules. Components import
 |---|---|---|
 | `locale.ts` | Server (frontmatter) | Resolve locale from URL pathname. Single source for locale detection. |
 | `i18n.ts` | Server (frontmatter) | Label maps for register names and theme names per locale. |
-| `register.ts` | Client (`<script>`) | Register state: read, write, localStorage, URL param sync, event dispatch. |
+| `register-registry.js` | Shared server/client | Reading-register registry and availability helpers. Plain JS so Astro config can import route metadata. |
+| `register.ts` | Client (`<script>`) | Register state: read, write, localStorage, URL param sync, fallback metadata, event dispatch. |
 | `toc.ts` | Client (`<script>`) | Rebuild Starlight ToC for the active register's visible headings. |
 
 **Server vs. client**: `locale.ts` and `i18n.ts` run at build time in Astro frontmatter. `register.ts` and `toc.ts` run in the browser via Vite-processed `<script>` tags.
@@ -209,7 +211,7 @@ Five Starlight components are overridden via the `components` key in `astro.conf
 
 | Override | File | Purpose |
 |---|---|---|
-| `SiteTitle` | `src/components/SiteTitle.astro` | Site title with register toggle. Clicking the title switches between Practitioner and Orientation. |
+| `SiteTitle` | `src/components/SiteTitle.astro` | Site title with visible reading-register selector and route-level unavailable states. |
 | `SocialIcons` | `src/components/SocialIcons.astro` | Renders the public social/profile links shown in the header. |
 | `ThemeProvider` | `src/components/ThemeProvider.astro` | Prevents FOUC for `data-theme`, `data-style`, and `data-register` attributes. |
 | `ThemeSelect` | `src/components/ThemeSelect.astro` | Extends the selector to 4 explicit theme options with locale-aware labels. |
@@ -237,26 +239,39 @@ Five Starlight components are overridden via the `components` key in `astro.conf
 
 ## Register system
 
-The register (Practitioner/Orientation) controls which content variant is visible on each page.
+The reading register controls which content variant is visible on each page.
+
+Known registers are:
+
+- `everyday`
+- `orientation`
+- `practitioner`
+
+Current content availability is smaller than the known registry:
+
+- `practitioner` is the default and comes from the Starlight `docs` collection.
+- `orientation` is the active non-practitioner register content tree.
+- `everyday` is known but explicitly unavailable until real content exists.
 
 ### How it works
 
-1. **Build time**: `RegisterContent.astro` renders both variants into the HTML, wrapped in `[data-register-content="practitioner"]` and `[data-register-content="orientation"]` divs.
-2. **Before paint**: ThemeProvider's inline script reads `?register=` URL param or `localStorage`, sets `data-register` on `<html>`.
-3. **CSS**: Global styles hide the inactive variant based on `data-register`.
-4. **Toggle**: SiteTitle's `<script>` imports from `register.ts` and `toc.ts`. Clicking the title calls `setRegister()`, which updates state and dispatches `poc:register-change` on `window`.
-5. **Listeners**: The `poc:register-change` event triggers UI updates (aria-pressed) and ToC rebuild.
+1. **Build time**: `RegisterContent.astro` renders available variants into the HTML, wrapped in `[data-register-content="<register>"]` containers.
+2. **Route metadata**: `route-map.js` declares available registers, unavailable registers, and the default register for each route.
+3. **Before paint**: ThemeProvider's inline script reads `?register=` or `localStorage`, resolves it against route availability, and sets `data-register` plus fallback metadata on `<html>`.
+4. **CSS**: Global styles hide inactive variants based on `data-register`.
+5. **Selector**: SiteTitle's `<script>` imports from `register.ts` and `toc.ts`. The visible register selector calls `setRegister()`, which updates state and dispatches `poc:register-change` on `window`.
+6. **Listeners**: The `poc:register-change` event triggers UI updates and ToC rebuild.
 
 ### State flow
 
 ```
-ThemeProvider (inline, sync) → sets data-register → CSS hides inactive content
-SiteTitle (module, deferred) → click → setRegister() → event → UI update + ToC rebuild
+ThemeProvider (inline, sync) → resolves route availability → sets data-register → CSS hides inactive content
+SiteTitle (module, deferred) → select → setRegister() → event → UI update + ToC rebuild
 ```
 
 ### Adding register-aware behavior
 
-Listen for the `poc:register-change` event on `window`. The event detail contains `{ register: 'practitioner' | 'orientation' }`. Do not read `localStorage` directly from components; use the DOM attribute or the event.
+Listen for the `poc:register-change` event on `window`. The event detail contains the resolved register plus requested/fallback metadata. Do not read `localStorage` directly from components; use the DOM attribute or the event.
 
 ## Site-wide visual system
 
@@ -413,7 +428,7 @@ transport check is explicitly required.
 
 ### Test matrix
 
-The current state matrix is 1 locale x 19 content paths x 2 registers = 38 states, generated from arrays in `test-constants.ts`. Register state is a query parameter (`?register=orientation`), not a route segment. If the repo activates additional locales or routes later, update the arrays first and let the matrix expand from verified repo state.
+The current active content matrix is 1 locale x current content paths x available registers, generated from route metadata and arrays in `test-constants.ts`. Register state is a query parameter for non-default registers, not a route segment. Known but unavailable registers, such as `everyday`, are tested as explicit fallback states rather than content variants.
 
 ## Installability surface
 

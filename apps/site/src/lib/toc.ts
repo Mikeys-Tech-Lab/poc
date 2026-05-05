@@ -12,7 +12,10 @@ export function rebuildToc(): void {
   if (!tocNav) return;
 
   const register = document.documentElement.dataset.register || 'practitioner';
-  const content = document.querySelector(`[data-register-content="${register}"]`);
+  const defaultRegister = document.documentElement.dataset.registerDefault || 'practitioner';
+  const content =
+    document.querySelector(`[data-register-content="${register}"]`) ??
+    document.querySelector(`[data-register-content="${defaultRegister}"]`);
   if (!content) return;
 
   const headings = content.querySelectorAll('h2, h3');

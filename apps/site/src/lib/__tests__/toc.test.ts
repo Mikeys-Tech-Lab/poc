@@ -81,6 +81,22 @@ describe('rebuildToc', () => {
     expect(items[0].querySelector('a')?.textContent).toBe('Orientation Heading');
   });
 
+  it('falls back to the default register content block when active content is absent', () => {
+    createTocNav();
+    const practitioner = createRegisterContent('practitioner', [
+      { tag: 'h2', id: 'p-heading', text: 'Practitioner Heading' },
+    ]);
+    document.body.appendChild(practitioner);
+    setRegisterAttribute('everyday');
+    document.documentElement.dataset.registerDefault = 'practitioner';
+
+    rebuildToc();
+
+    const items = document.querySelectorAll('starlight-toc nav > ul > li');
+    expect(items.length).toBe(1);
+    expect(items[0].querySelector('a')?.textContent).toBe('Practitioner Heading');
+  });
+
   it('skips headings without id or text', () => {
     createTocNav();
     const content = createRegisterContent('practitioner', [

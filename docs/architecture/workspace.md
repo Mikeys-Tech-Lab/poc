@@ -135,7 +135,7 @@ flowchart TD
 | `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks, deterministic guidance drift validation, and license surface validation | Exists |
 | `apps/site/` | Astro Starlight frontend | Exists |
 | `apps/site/src/content/docs/` | Practitioner site content collection | Exists |
-| `apps/site/src/content/register/orientation/` | Active orientation register content collection | Exists |
+| `apps/site/src/content/register/orientation/` | Active orientation register content collection. `everyday` is known in route metadata but has no active content tree yet. | Exists |
 | `docs/infra/` | Infrastructure runbooks (Infomaniak setup, GitHub App setup, protection layers, authenticated origin pulls) and maintenance assets | Exists |
 | `.cursor/skills/infomaniak-deployment/` | Deployment skill for Infomaniak hosting | Exists |
 

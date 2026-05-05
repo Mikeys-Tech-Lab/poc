@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('register toggle', () => {
-  test('clicking site title toggles register', async ({ page }) => {
+test.describe('register selector', () => {
+  test('changing register selector switches register', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
 
     const practitionerContent = page.locator('[data-register-content="practitioner"]');
@@ -10,23 +10,23 @@ test.describe('register toggle', () => {
     await expect(practitionerContent).toBeVisible();
     await expect(orientationContent).not.toBeVisible();
 
-    await page.locator('poc-register-toggle button').click();
+    await page.locator('poc-register-select select').selectOption('orientation');
 
     await expect(orientationContent).toBeVisible();
     await expect(practitionerContent).not.toBeVisible();
   });
 
-  test('toggle updates URL with ?register=orientation', async ({ page }) => {
+  test('selector updates URL with ?register=orientation', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
-    await page.locator('poc-register-toggle button').click();
+    await page.locator('poc-register-select select').selectOption('orientation');
 
     expect(page.url()).toContain('register=orientation');
   });
 
-  test('toggle back removes register param', async ({ page }) => {
+  test('selecting the default register removes register param', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
-    await page.locator('poc-register-toggle button').click();
-    await page.locator('poc-register-toggle button').click();
+    await page.locator('poc-register-select select').selectOption('orientation');
+    await page.locator('poc-register-select select').selectOption('practitioner');
 
     expect(page.url()).not.toContain('register=');
   });
@@ -38,13 +38,32 @@ test.describe('register toggle', () => {
     await expect(orientationContent).toBeVisible();
   });
 
+  test('known unavailable registers fall back visibly to the default', async ({ page }) => {
+    await page.goto('/en-us/about/what-this-is/?register=everyday');
+
+    await expect(page.locator('[data-register-content="practitioner"]')).toBeVisible();
+    await expect(page.locator('poc-register-select select')).toHaveValue('practitioner');
+    await expect(page.locator('[data-register-fallback]')).toHaveText(
+      'Everyday is not available for this page yet.',
+    );
+    expect(page.url()).not.toContain('register=everyday');
+  });
+
+  test('everyday is visible as unavailable in the selector', async ({ page }) => {
+    await page.goto('/en-us/about/what-this-is/');
+
+    const everyday = page.locator('poc-register-select option[value="everyday"]');
+    await expect(everyday).toBeDisabled();
+    await expect(everyday).toHaveText('Everyday (not available yet)');
+  });
+
   test('ToC updates when register toggles', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
 
     const tocLinks = page.locator('starlight-toc nav a');
     const initialCount = await tocLinks.count();
 
-    await page.locator('poc-register-toggle button').click();
+    await page.locator('poc-register-select select').selectOption('orientation');
     await page.waitForTimeout(100);
 
     const afterToggleCount = await tocLinks.count();
@@ -83,7 +102,7 @@ test.describe('register toggle', () => {
     expect(practitionerPosition?.hash).toBe('#what-this-is-not');
     expect(practitionerPosition?.top ?? Number.POSITIVE_INFINITY).toBeLessThan(140);
 
-    await page.locator('poc-register-toggle button').click();
+    await page.locator('poc-register-select select').selectOption('orientation');
     await page
       .locator('starlight-toc nav a')
       .filter({ hasText: 'What this is not' })

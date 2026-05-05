@@ -6,22 +6,28 @@ import { LOCALES } from './test-constants';
 describe('getRegisterLabels', () => {
   it.each(LOCALES)('returns labels for %s', (locale) => {
     const labels = getRegisterLabels(locale);
+    expect(labels).toHaveProperty('everyday');
     expect(labels).toHaveProperty('practitioner');
     expect(labels).toHaveProperty('orientation');
+    expect(typeof labels.everyday).toBe('string');
     expect(typeof labels.practitioner).toBe('string');
     expect(typeof labels.orientation).toBe('string');
+    expect(labels.everyday.length).toBeGreaterThan(0);
     expect(labels.practitioner.length).toBeGreaterThan(0);
     expect(labels.orientation.length).toBeGreaterThan(0);
   });
 
   it('returns en-US labels', () => {
     const labels = getRegisterLabels('en-US');
+    expect(labels.everyday).toBe('Everyday');
     expect(labels.practitioner).toBe('Practitioner');
     expect(labels.orientation).toBe('Orientation');
+    expect(labels.unavailableSuffix).toBe('not available yet');
   });
 
   it('falls back to en-US for unknown locale', () => {
     const labels = getRegisterLabels('fr-FR' as Locale);
+    expect(labels.everyday).toBe('Everyday');
     expect(labels.practitioner).toBe('Practitioner');
     expect(labels.orientation).toBe('Orientation');
   });

@@ -134,11 +134,10 @@ const themeCopy =
     syncThemeOptions();
   };
 
-  const toggleRegister = () => {
-    const titleButton = document.querySelector('poc-register-toggle button');
-    if (titleButton instanceof HTMLButtonElement) {
-      titleButton.focus();
-      titleButton.click();
+  const focusRegisterSelect = () => {
+    const select = document.querySelector('poc-register-select select');
+    if (select instanceof HTMLSelectElement) {
+      select.focus();
     }
   };
 
@@ -146,7 +145,7 @@ const themeCopy =
     class PocHomeFeaturedCard extends HTMLElement {
       connectedCallback() {
         this.querySelector('[data-home-action="register"]')?.addEventListener('click', () => {
-          toggleRegister();
+          focusRegisterSelect();
         });
 
         this.querySelectorAll<HTMLElement>('[data-home-theme]').forEach((button) => {

@@ -4,7 +4,6 @@ import {
   buildPageUrl,
   CONTENT_PATHS,
   createScreendumpPlan,
-  REGISTERS,
   screenshotFileName,
   THEMES,
   VIEWPORTS,
@@ -30,13 +29,13 @@ describe('screendump helpers', () => {
     );
   });
 
-  it('builds the full page x register x theme x viewport plan', () => {
+  it('builds the available page x register x theme x viewport plan', () => {
     const plan = createScreendumpPlan({
       baseUrl: 'http://127.0.0.1:4321/en-us/',
     });
 
     expect(plan).toHaveLength(
-      CONTENT_PATHS.length * REGISTERS.length * THEMES.length * Object.keys(VIEWPORTS).length,
+      CONTENT_PATHS.length * 2 * THEMES.length * Object.keys(VIEWPORTS).length,
     );
     expect(plan[0]).toMatchObject({
       viewportName: 'desktop',
@@ -45,6 +44,21 @@ describe('screendump helpers', () => {
       theme: { name: 'dark-atmo', storageValue: 'dark' },
       fileName: 'home__practitioner__dark-atmo.png',
       url: 'http://127.0.0.1:4321/en-us/',
+    });
+  });
+
+  it('can include unavailable registers when explicitly requested', () => {
+    const plan = createScreendumpPlan({
+      baseUrl: 'http://127.0.0.1:4321/en-us/',
+      paths: ['about/what-this-is'],
+      registers: ['everyday'],
+      themes: [THEMES[0]],
+      viewports: VIEWPORTS,
+    });
+
+    expect(plan[0]).toMatchObject({
+      register: 'everyday',
+      url: 'http://127.0.0.1:4321/en-us/about/what-this-is?register=everyday',
     });
   });
 
