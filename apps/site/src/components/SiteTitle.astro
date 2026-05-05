@@ -304,10 +304,11 @@ const absentRegisters = availability.absent as Partial<Record<(typeof READING_RE
 		background:
 			linear-gradient(
 				140deg,
-				color-mix(in srgb, var(--poc-register-accent), transparent 88%),
+				color-mix(in srgb, var(--poc-register-accent), transparent 92%),
 				transparent 44%
 			),
-			var(--sl-color-bg-nav);
+			rgb(var(--poc-base) / 0.98);
+		backdrop-filter: blur(18px) saturate(1.08);
 		box-shadow: 0 1rem 2.25rem color-mix(in srgb, var(--sl-color-black), transparent 72%);
 		color: var(--sl-color-text);
 	}
@@ -361,13 +362,15 @@ const absentRegisters = availability.absent as Partial<Record<(typeof READING_RE
 		padding: 0.72rem 0.8rem;
 		border: 1px solid color-mix(in srgb, var(--sl-color-gray-5), transparent 25%);
 		border-radius: 0.9rem;
-		background: color-mix(in srgb, var(--sl-color-gray-6), transparent 55%);
+		background: rgb(var(--poc-base) / 0.72);
 		cursor: pointer;
 	}
 
 	.register-option:has(input:checked) {
 		border-color: color-mix(in srgb, var(--poc-register-accent), transparent 25%);
-		background: color-mix(in srgb, var(--poc-register-accent), transparent 84%);
+		background:
+			linear-gradient(color-mix(in srgb, var(--poc-register-accent), transparent 86%), transparent),
+			rgb(var(--poc-base) / 0.78);
 	}
 
 	.register-option.unavailable {
