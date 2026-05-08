@@ -163,8 +163,18 @@ const absentRegisters = availability.absent as Partial<Record<(typeof READING_RE
 				if (event.key === 'Escape' && this.isOpen()) this.close({ returnFocus: true });
 			});
 
-			window.addEventListener('poc:register-change', () => this.sync());
+			const rebuildVisibleToc = () => window.requestAnimationFrame(() => rebuildToc());
+
+			window.addEventListener('poc:register-change', () => {
+				this.sync();
+				rebuildVisibleToc();
+			});
 			this.sync();
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', rebuildVisibleToc, { once: true });
+			} else {
+				rebuildVisibleToc();
+			}
 		}
 
 		isOpen(): boolean {

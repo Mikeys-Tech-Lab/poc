@@ -44,6 +44,24 @@ describe('rebuildToc', () => {
     expect(items[1].querySelector('a')?.getAttribute('href')).toBe('#details');
   });
 
+  it('rebuilds desktop and mobile ToC surfaces', () => {
+    const desktopToc = createTocNav();
+    const mobileToc = createTocNav('mobile-starlight-toc');
+    desktopToc.innerHTML = '<li><a href="#old">Old</a></li>';
+    mobileToc.innerHTML = '<li><a href="#old">Old</a></li>';
+
+    const content = createRegisterContent('orientation', [
+      { tag: 'h2', id: 'orientation-heading', text: 'Orientation Heading' },
+    ]);
+    document.body.appendChild(content);
+    setRegisterAttribute('orientation');
+
+    rebuildToc();
+
+    expect(desktopToc.querySelector('a')?.getAttribute('href')).toBe('#orientation-heading');
+    expect(mobileToc.querySelector('a')?.getAttribute('href')).toBe('#orientation-heading');
+  });
+
   it('nests h3 under preceding h2', () => {
     createTocNav();
     const content = createRegisterContent('practitioner', [

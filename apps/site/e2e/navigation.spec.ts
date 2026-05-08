@@ -43,9 +43,18 @@ test.describe('navigation', () => {
     const brokenPaths: string[] = [];
     const brokenAnchors: string[] = [];
     const variants = [...allPages, ...orientationPages];
+    const checkedPaths = new Set<string>();
 
     for (const url of variants) {
       await page.goto(url);
+      const expectedRegister = url.includes('register=orientation')
+        ? 'orientation'
+        : 'practitioner';
+      await page.waitForFunction(
+        (register) => document.documentElement.dataset.register === register,
+        expectedRegister,
+      );
+      await page.waitForTimeout(100);
 
       const links = await page.locator('a[href]').evaluateAll((anchors) =>
         anchors
@@ -70,6 +79,9 @@ test.describe('navigation', () => {
       for (const href of uniqueLinks) {
         if (href.startsWith('/')) {
           const normalized = href.split('?')[0].split('#')[0];
+          if (checkedPaths.has(normalized)) continue;
+          checkedPaths.add(normalized);
+
           const response = await page.request.get(normalized);
           if (response.status() === 404) {
             brokenPaths.push(`${url} -> ${normalized}`);
@@ -94,8 +106,6 @@ test.describe('navigation', () => {
             anchor.click();
           }
         }, href);
-
-        await page.waitForTimeout(100);
 
         const anchorResult = await page.evaluate((targetHref) => {
           const targetId = targetHref.slice(1);

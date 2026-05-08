@@ -31,6 +31,20 @@ if (registerEntry) {
 	)
 }
 
+<script>
+	import { rebuildToc } from '../lib/toc';
+
+	const rebuildVisibleToc = () => window.requestAnimationFrame(() => rebuildToc());
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', rebuildVisibleToc, { once: true });
+	} else {
+		rebuildVisibleToc();
+	}
+
+	window.addEventListener('poc:register-change', rebuildVisibleToc);
+</script>
+
 <style is:global>
 	[data-register-content] {
 		display: none;
