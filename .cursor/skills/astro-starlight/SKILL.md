@@ -261,7 +261,7 @@ Current content availability is smaller than the known registry:
 3. **Before paint**: ThemeProvider's inline script reads `?register=` or `localStorage`, resolves it against route availability, and sets `data-register` plus fallback metadata on `<html>`.
 4. **CSS**: Global styles hide inactive variants based on `data-register`.
 5. **Title control**: `SiteTitle.astro` imports from `register.ts` and `toc.ts`. Tapping the title register indicator opens a small panel below the header. Selecting a register calls `setRegister()`, which updates state and dispatches `poc:register-change` on `window`.
-6. **Listeners**: The `poc:register-change` event triggers UI updates and ToC rebuild.
+6. **ToC sync**: `RegisterContent.astro` schedules an initial ToC rebuild after the active register is set. The `poc:register-change` event triggers later UI updates and ToC rebuilds.
 
 ### State flow
 
@@ -273,6 +273,19 @@ SiteTitle (module, deferred) → select → setRegister() → event → UI updat
 ### Adding register-aware behavior
 
 Listen for the `poc:register-change` event on `window`. The event detail contains the resolved register plus requested/fallback metadata. Do not read `localStorage` directly from components; use the DOM attribute or the event.
+
+### Register ToC guardrail
+
+Starlight renders separate desktop and mobile ToC surfaces. Register-aware ToC
+logic must keep both in sync:
+
+- rebuild on direct page load after `data-register` has been set
+- rebuild on `poc:register-change`
+- update both `starlight-toc` and `mobile-starlight-toc`
+- cover both surfaces in `toc.test.ts`
+
+Do not validate this only by clicking the register selector. Direct loads such
+as `?register=orientation` are part of the product contract.
 
 ## Site-wide visual system
 
@@ -401,6 +414,9 @@ Unit tests for shared modules live in `apps/site/src/lib/__tests__/`.
 E2E tests live in `apps/site/e2e/`. Playwright config: `apps/site/playwright.config.ts`.
 
 - Run against the built static output (`dist/`) via `pnpm preview`.
+- After source changes, run `pnpm run build` before rerunning Playwright. The
+  preview server serves `dist/`, so stale build output can hide or preserve
+  failures.
 - Chromium only. `webServer` config manages preview lifecycle.
 - Shared helpers in `e2e/helpers.ts` generate the page matrix and provide assertion functions.
 
@@ -422,7 +438,7 @@ transport check is explicitly required.
 | Spec file | What it covers |
 |---|---|
 | `register-parity.spec.ts` | Both register content divs exist on every page in the current `en-us` matrix |
-| `navigation.spec.ts` | All pages return 200, all internal links resolve |
+| `navigation.spec.ts` | All pages return 200, all internal links and visible hash links resolve across register variants |
 | `register-toggle.spec.ts` | Title-triggered register panel, URL param sync, unavailable states, panel close behavior, ToC update |
 | `locale-switching.spec.ts` | Language selector navigation, locale reachability |
 | `installability.spec.ts` | Manifest, icons, maskable, theme-color consistency |

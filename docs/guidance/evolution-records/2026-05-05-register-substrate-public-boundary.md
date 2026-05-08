@@ -3,12 +3,12 @@
 **Status:** draft
 **Date:** 2026-05-05
 **Trigger class:** required
-**Scope:** architecture
+**Scope:** architecture | tooling
 **Origin trace:** Operator request to evolve the public reading-register system
 from a binary model into a substrate for `everyday`, `orientation`, and
 `practitioner`, followed by implementation review and `/trace-climb`.
 **Activation trace:** `/trace-climb`
-**Related PR:** pending
+**Related PR:** https://github.com/Mikeys-Tech-Lab/poc/pull/185
 
 ## Why this record exists
 
@@ -37,15 +37,24 @@ documentation or PR text.
 - Close-phase PR drafting exposed a wording risk: non-public planning boundaries
   can leak through "what this PR does not do" language even when the code itself
   is safe.
+- CI exposed a second register-system assumption: ToC rebuilds must be correct
+  on direct `?register=orientation` loads, not only after an interactive register
+  change.
+- Starlight has both desktop and mobile ToC surfaces. Updating only one can leave
+  stale links visible to navigation tests and readers.
 
 ## Missed assumptions
 
 - A future-navigation boundary could be described in public review text using
-  the same shorthand used during private planning.
+  the same shorthand used during non-public planning.
 - A visible selector was enough of a UX correction without checking whether the
   control still felt attached to the title/register mental model.
 - A control-specific accessibility hide/show preference was warranted before the
   control placement had settled.
+- The register ToC behavior was assumed to be interaction-driven. Direct page
+  loads with a non-default register need the same synchronization guarantee.
+- A single Starlight ToC selector was assumed to cover the page. The mobile ToC
+  is a separate surface and must be treated as part of the same contract.
 
 ## Missed guidance
 
@@ -56,9 +65,17 @@ What was missing was a close-phase habit for PR descriptions and ADRs: when a
 branch prepares future architecture, scan the public wording for non-public
 planning residue, local paths, local tool names, and unreleased naming.
 
+The Astro/Starlight guidance also needed a register-specific ToC lifecycle
+guardrail: register-aware ToC code must handle both initial load and
+`poc:register-change`, and must rebuild both desktop and mobile ToC surfaces.
+
 ## Structural gap
 
 This is public-boundary drift during architecture preparation.
+
+The CI follow-up belongs to a second, narrower pattern: Starlight override
+surfaces are plural. A behavior that appears singular in the DOM model may have
+desktop and mobile instances that must stay in sync.
 
 The failure mode is:
 
@@ -77,6 +94,12 @@ The failure mode is:
   relationships unless a dedicated future ADR establishes sharper public terms.
 - Before PR creation, scan the PR body and changed public docs for non-public
   planning residue, local paths, local tool names, and unreleased naming.
+- For register-aware ToC behavior, rebuild after the active register is set on
+  direct page load and after `poc:register-change`.
+- When changing ToC behavior, update both `starlight-toc` and
+  `mobile-starlight-toc`, and keep a unit guard for both.
+- Before rerunning Playwright against `pnpm preview`, rebuild the site so E2E
+  tests exercise the current source, not stale `dist` output.
 
 ## Research delta
 
@@ -84,19 +107,25 @@ None.
 
 ## Propagation decision
 
-Defer with named boundary.
+Update operational surfaces now.
 
 The branch already updated the ADR and the site skill for the register substrate
-and final title-panel control. The durable lesson does not require a canon
-rewrite now. The boundary is: this PR may describe future navigation readiness,
-but it must not name or expose non-public planning details or unreleased public
-naming.
+and final title-panel control. The CI follow-up added tests for the Starlight
+ToC surfaces and updates the Astro/Starlight skill with the direct-load ToC and
+preview-build guardrails.
+
+This does not require a canon rewrite or a new ADR. The remaining named boundary
+is: this PR may describe future navigation readiness, but it must not name or
+expose non-public planning details or unreleased public naming.
 
 ## Surfaces updated
 
 - `docs/decisions/0008-public-reading-register-substrate.md`
 - `.cursor/skills/astro-starlight/SKILL.md`
 - `docs/guidance/evolution-records/2026-05-05-register-substrate-public-boundary.md`
+- `apps/site/src/lib/toc.ts`
+- `apps/site/src/lib/__tests__/toc.test.ts`
+- `apps/site/e2e/navigation.spec.ts`
 
 ## Verification
 
@@ -105,7 +134,7 @@ Verify with:
 - `pnpm lint`
 - `pnpm test`
 - `pnpm run build`
-- focused register and accessibility E2E tests when the register control changes
+- `pnpm --filter site test:e2e` after register content or ToC behavior changes
 - a public-boundary wording scan before PR creation
 
 The wording scan should check for non-public planning residue, local paths,
@@ -120,6 +149,11 @@ The ADR records the architecture decision. This Evolution Record captures the
 close-phase guardrail: future-navigation readiness may be described publicly,
 but non-public planning details, local paths, local tool names, and unreleased
 naming must stay out of PR text and public repo documentation.
+
+The CI follow-up added a second bounded lesson: register-aware ToC behavior must
+be correct on direct non-default register loads and across both desktop and
+mobile Starlight ToC surfaces. Local verification included lint, unit tests,
+build, and the full Playwright E2E suite.
 
 <!--
 Copyright © 2026 Mikey Sebastian Drozd.
