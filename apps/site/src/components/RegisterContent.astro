@@ -31,16 +31,32 @@ if (registerEntry) {
 	)
 }
 
+<script>
+	import { rebuildToc } from '../lib/toc';
+
+	const rebuildVisibleToc = () => window.requestAnimationFrame(() => rebuildToc());
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', rebuildVisibleToc, { once: true });
+	} else {
+		rebuildVisibleToc();
+	}
+
+	window.addEventListener('poc:register-change', rebuildVisibleToc);
+</script>
+
 <style is:global>
-	[data-register-content='orientation'] {
+	[data-register-content] {
 		display: none;
 	}
 
-	:root[data-register='orientation'] [data-register-content='practitioner'] {
-		display: none;
+	:root:not([data-register]) [data-register-content='practitioner'] {
+		display: contents;
 	}
 
-	:root[data-register='orientation'] [data-register-content='orientation'] {
+	:root[data-register='practitioner'] [data-register-content='practitioner'],
+	:root[data-register='orientation'] [data-register-content='orientation'],
+	:root[data-register='everyday'] [data-register-content='everyday'] {
 		display: contents;
 	}
 </style>

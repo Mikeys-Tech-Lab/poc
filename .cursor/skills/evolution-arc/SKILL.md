@@ -18,8 +18,8 @@ Adaptation of `AGENTS.md` for guided repo history and reasoning trace.
 
 Ask which register the user wants before assuming tone:
 
-- **Practitioner**: technical and architectural language is fine
-- **Orientation**: plainer language, slower pacing, same structure
+- **Practitioner**: working detail and architectural trace are fine
+- **Orientation**: step-by-step pacing through the same structure
 
 The register changes voice, not the facts or the trace.
 

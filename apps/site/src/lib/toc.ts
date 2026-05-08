@@ -8,49 +8,56 @@
  */
 
 export function rebuildToc(): void {
-  const tocNav = document.querySelector('starlight-toc nav > ul');
-  if (!tocNav) return;
+  const tocNavs = document.querySelectorAll(
+    'starlight-toc nav > ul, mobile-starlight-toc nav > ul',
+  );
+  if (tocNavs.length === 0) return;
 
   const register = document.documentElement.dataset.register || 'practitioner';
-  const content = document.querySelector(`[data-register-content="${register}"]`);
+  const defaultRegister = document.documentElement.dataset.registerDefault || 'practitioner';
+  const content =
+    document.querySelector(`[data-register-content="${register}"]`) ??
+    document.querySelector(`[data-register-content="${defaultRegister}"]`);
   if (!content) return;
 
   const headings = content.querySelectorAll('h2, h3');
   if (headings.length === 0) return;
 
-  tocNav.innerHTML = '';
-  let currentH2Li: HTMLLIElement | null = null;
+  tocNavs.forEach((tocNav) => {
+    tocNav.innerHTML = '';
+    let currentH2Li: HTMLLIElement | null = null;
 
-  headings.forEach((h) => {
-    if (!h.id || !h.textContent) return;
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    const targetId = h.id;
-    a.href = `#${targetId}`;
-    a.textContent = h.textContent.trim();
-    a.addEventListener('click', (event) => {
-      event.preventDefault();
+    headings.forEach((h) => {
+      if (!h.id || !h.textContent) return;
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      const targetId = h.id;
+      a.href = `#${targetId}`;
+      a.textContent = h.textContent.trim();
+      a.addEventListener('click', (event) => {
+        event.preventDefault();
 
-      const selector = `#${CSS.escape(targetId)}`;
-      const target = content.querySelector(selector);
-      if (!(target instanceof HTMLElement)) return;
+        const selector = `#${CSS.escape(targetId)}`;
+        const target = content.querySelector(selector);
+        if (!(target instanceof HTMLElement)) return;
 
-      target.scrollIntoView({ block: 'start' });
-      history.replaceState(null, '', `#${targetId}`);
-    });
+        target.scrollIntoView({ block: 'start' });
+        history.replaceState(null, '', `#${targetId}`);
+      });
 
-    if (h.tagName === 'H3' && currentH2Li) {
-      let sub = currentH2Li.querySelector(':scope > ul');
-      if (!sub) {
-        sub = document.createElement('ul');
-        currentH2Li.appendChild(sub);
+      if (h.tagName === 'H3' && currentH2Li) {
+        let sub = currentH2Li.querySelector(':scope > ul');
+        if (!sub) {
+          sub = document.createElement('ul');
+          currentH2Li.appendChild(sub);
+        }
+        li.appendChild(a);
+        sub.appendChild(li);
+      } else {
+        li.appendChild(a);
+        tocNav.appendChild(li);
+        if (h.tagName === 'H2') currentH2Li = li;
       }
-      li.appendChild(a);
-      sub.appendChild(li);
-    } else {
-      li.appendChild(a);
-      tocNav.appendChild(li);
-      if (h.tagName === 'H2') currentH2Li = li;
-    }
+    });
   });
 }

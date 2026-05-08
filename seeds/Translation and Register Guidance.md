@@ -114,16 +114,19 @@ This practice is designed to speak across audiences, not only across languages.
 
 ### Register contract (current public state)
 
-The current public register contract consists of two registers:
+The current public reading-register registry consists of three known registers:
 
-- **Orientation**: lower assumed context, shorter sentences where needed, slower pacing, and earlier explanation of terms before use.
-- **Practitioner**: denser sentences, higher assumed context, and more operational vocabulary while keeping the same structure and boundaries.
+- **Everyday**: starts from familiar situations. This register is known to the public model, but it is not available on current pages until it is written and reviewed.
+- **Orientation**: builds the practice step by step, with slower pacing and terms introduced before the reader is asked to carry them.
+- **Practitioner**: keeps the working detail and trace, including assumptions, boundaries, operational vocabulary, and consequences.
 
 These differences must show up in the writing itself: sentence density, pacing, assumed context, and how quickly the text asks the reader to carry structural terms.
 
 Registers change how the work is read, not what it means.
 
 Registers describe use contexts, not demographics. People may move between registers depending on energy, stress, language comfort, channel constraints, and the amount of shared context available.
+
+Missing register variants are explicit states, not errors. A page may declare that a known register is not available yet. That declaration must not be replaced with empty placeholder content.
 
 ### Non-canonical adaptations (not part of the current contract)
 

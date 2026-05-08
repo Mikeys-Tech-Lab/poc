@@ -17,8 +17,8 @@ export const createRegisterContent = (
   return div;
 };
 
-export const createTocNav = (): HTMLElement => {
-  const starlight = document.createElement('starlight-toc');
+export const createTocNav = (tagName = 'starlight-toc'): HTMLElement => {
+  const starlight = document.createElement(tagName);
   const nav = document.createElement('nav');
   const ul = document.createElement('ul');
   nav.appendChild(ul);

@@ -1,8 +1,9 @@
-import { getActiveContentPaths } from './route-map.js';
+import { READING_REGISTERS } from './register-registry.js';
+import { getActiveContentPaths, getRegisterAvailabilityForPath } from './route-map.js';
 
 export const CONTENT_PATHS = getActiveContentPaths();
 
-export const REGISTERS = ['practitioner', 'orientation'];
+export const REGISTERS = READING_REGISTERS;
 
 export const THEMES = Object.freeze([
   Object.freeze({ name: 'dark-atmo', storageValue: 'dark' }),
@@ -28,9 +29,10 @@ export const zipFileName = (version, baseName = OUTPUT_DIRNAME) =>
 
 export const buildPageUrl = (baseUrl, path, register) => {
   const url = new URL(path, baseUrl);
+  const availability = getRegisterAvailabilityForPath(path);
 
-  if (register === 'orientation') {
-    url.searchParams.set('register', 'orientation');
+  if (register !== availability.defaultRegister) {
+    url.searchParams.set('register', register);
   }
 
   return url.toString();
@@ -42,13 +44,13 @@ export const buildPageUrl = (baseUrl, path, register) => {
 export const createScreendumpPlan = ({
   baseUrl,
   paths = CONTENT_PATHS,
-  registers = REGISTERS,
+  registers,
   themes = THEMES,
   viewports = VIEWPORTS,
 } = {}) =>
   Object.entries(viewports).flatMap(([viewportName, viewport]) =>
     paths.flatMap((path) =>
-      registers.flatMap((register) =>
+      (registers ?? getRegisterAvailabilityForPath(path).available).flatMap((register) =>
         themes.map((theme) => ({
           viewportName,
           viewport,

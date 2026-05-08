@@ -16,8 +16,8 @@ const orientationAnchor =
   'Understanding takes time. People still need to ask questions, examine assumptions, and see how a decision fits with everything else that already exists.';
 
 const helperCopy = {
-  practitioner: 'Deeper reading and working context',
-  orientation: 'Plain-language introduction',
+  practitioner: 'Keeps the working detail and trace',
+  orientation: 'Builds the practice step by step',
 } as const;
 
 const neutralA11yLabels = [
@@ -111,7 +111,8 @@ test.describe('final ui refinements', () => {
 
         await expect(page.locator('.helper-practitioner')).toBeVisible();
         await expect(page.locator('.helper-practitioner')).toHaveText(helperCopy.practitioner);
-        await page.locator('poc-register-toggle button').click();
+        await page.locator('[data-register-title-trigger]').click();
+        await page.locator('poc-register-title-control input[value="orientation"]').check();
         await expect(page.locator('.helper-orientation')).toBeVisible();
         await expect(page.locator('.helper-orientation')).toHaveText(helperCopy.orientation);
 

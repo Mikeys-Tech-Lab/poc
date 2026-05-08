@@ -1,7 +1,16 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('register toggle', () => {
-  test('clicking site title toggles register', async ({ page }) => {
+const openRegisterPanel = async (page: import('@playwright/test').Page) => {
+  await page.locator('[data-register-title-trigger]').click();
+};
+
+const chooseRegister = async (page: import('@playwright/test').Page, register: string) => {
+  await openRegisterPanel(page);
+  await page.locator(`poc-register-title-control input[value="${register}"]`).check();
+};
+
+test.describe('register title control', () => {
+  test('choosing a register switches register content', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
 
     const practitionerContent = page.locator('[data-register-content="practitioner"]');
@@ -10,23 +19,23 @@ test.describe('register toggle', () => {
     await expect(practitionerContent).toBeVisible();
     await expect(orientationContent).not.toBeVisible();
 
-    await page.locator('poc-register-toggle button').click();
+    await chooseRegister(page, 'orientation');
 
     await expect(orientationContent).toBeVisible();
     await expect(practitionerContent).not.toBeVisible();
   });
 
-  test('toggle updates URL with ?register=orientation', async ({ page }) => {
+  test('title control updates URL with ?register=orientation', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
-    await page.locator('poc-register-toggle button').click();
+    await chooseRegister(page, 'orientation');
 
     expect(page.url()).toContain('register=orientation');
   });
 
-  test('toggle back removes register param', async ({ page }) => {
+  test('selecting the default register removes register param', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
-    await page.locator('poc-register-toggle button').click();
-    await page.locator('poc-register-toggle button').click();
+    await chooseRegister(page, 'orientation');
+    await chooseRegister(page, 'practitioner');
 
     expect(page.url()).not.toContain('register=');
   });
@@ -38,13 +47,49 @@ test.describe('register toggle', () => {
     await expect(orientationContent).toBeVisible();
   });
 
+  test('known unavailable registers fall back visibly to the default', async ({ page }) => {
+    await page.goto('/en-us/about/what-this-is/?register=everyday');
+
+    await expect(page.locator('[data-register-content="practitioner"]')).toBeVisible();
+    await expect(page.locator('.label-practitioner')).toBeVisible();
+    await openRegisterPanel(page);
+    await expect(page.locator('[data-register-fallback]')).toHaveText(
+      'Everyday is not available for this page yet.',
+    );
+    expect(page.url()).not.toContain('register=everyday');
+  });
+
+  test('everyday is visible as unavailable in the title panel', async ({ page }) => {
+    await page.goto('/en-us/about/what-this-is/');
+    await openRegisterPanel(page);
+
+    const everyday = page.locator('poc-register-title-control input[value="everyday"]');
+    await expect(everyday).toBeDisabled();
+    await expect(
+      page.locator('poc-register-title-control label').filter({ hasText: 'Everyday' }),
+    ).toContainText('Everyday (not available yet)');
+  });
+
+  test('title tap opens a pulsing panel that closes after selection', async ({ page }) => {
+    await page.goto('/en-us/about/what-this-is/');
+    await openRegisterPanel(page);
+
+    await expect(page.locator('[data-register-panel]')).toBeVisible();
+    await expect(page.locator('[data-register-panel]')).toHaveAttribute('data-pulse', 'true');
+
+    await page.locator('poc-register-title-control input[value="orientation"]').check();
+
+    await expect(page.locator('[data-register-panel]')).toBeHidden();
+    await expect(page.locator('[data-register-content="orientation"]')).toBeVisible();
+  });
+
   test('ToC updates when register toggles', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
 
     const tocLinks = page.locator('starlight-toc nav a');
     const initialCount = await tocLinks.count();
 
-    await page.locator('poc-register-toggle button').click();
+    await chooseRegister(page, 'orientation');
     await page.waitForTimeout(100);
 
     const afterToggleCount = await tocLinks.count();
@@ -83,7 +128,7 @@ test.describe('register toggle', () => {
     expect(practitionerPosition?.hash).toBe('#what-this-is-not');
     expect(practitionerPosition?.top ?? Number.POSITIVE_INFINITY).toBeLessThan(140);
 
-    await page.locator('poc-register-toggle button').click();
+    await chooseRegister(page, 'orientation');
     await page
       .locator('starlight-toc nav a')
       .filter({ hasText: 'What this is not' })

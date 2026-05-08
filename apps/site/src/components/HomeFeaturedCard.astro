@@ -21,8 +21,8 @@ const intro =
 
 const registerCopy =
   variant === 'orientation'
-    ? 'Switch how this is written, not what it says. The ideas stay the same. The voice shifts so you can find your way in.'
-    : 'Switch the voice without changing the structure. Use this when you want the same thinking to land differently.';
+    ? 'Tap the title register indicator to change how this is written. The ideas stay the same. The voice shifts so you can find your way in.'
+    : 'Tap the title register indicator to change the voice without changing the structure. The same thinking can land differently.';
 
 const themeCopy =
   variant === 'orientation'
@@ -134,11 +134,11 @@ const themeCopy =
     syncThemeOptions();
   };
 
-  const toggleRegister = () => {
-    const titleButton = document.querySelector('poc-register-toggle button');
-    if (titleButton instanceof HTMLButtonElement) {
-      titleButton.focus();
-      titleButton.click();
+  const focusRegisterSelect = () => {
+    const trigger = document.querySelector('[data-register-title-trigger]');
+    if (trigger instanceof HTMLButtonElement) {
+      trigger.focus();
+      trigger.click();
     }
   };
 
@@ -146,7 +146,7 @@ const themeCopy =
     class PocHomeFeaturedCard extends HTMLElement {
       connectedCallback() {
         this.querySelector('[data-home-action="register"]')?.addEventListener('click', () => {
-          toggleRegister();
+          focusRegisterSelect();
         });
 
         this.querySelectorAll<HTMLElement>('[data-home-theme]').forEach((button) => {

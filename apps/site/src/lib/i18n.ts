@@ -9,10 +9,16 @@
 import type { Locale } from './locale';
 
 export interface RegisterLabels {
+  everyday: string;
   practitioner: string;
   orientation: string;
+  everydayHelper: string;
   practitionerHelper: string;
   orientationHelper: string;
+  selectorLabel: string;
+  unavailableSuffix: string;
+  controlDescription: string;
+  closeControl: string;
 }
 
 export interface ThemeLabels {
@@ -24,10 +30,16 @@ export interface ThemeLabels {
 
 const registerLabels: Record<Locale, RegisterLabels> = {
   'en-US': {
+    everyday: 'Everyday',
     practitioner: 'Practitioner',
     orientation: 'Orientation',
-    practitionerHelper: 'Deeper reading and working context',
-    orientationHelper: 'Plain-language introduction',
+    everydayHelper: 'Starts from familiar situations',
+    practitionerHelper: 'Keeps the working detail and trace',
+    orientationHelper: 'Builds the practice step by step',
+    selectorLabel: 'Reading register',
+    unavailableSuffix: 'not available yet',
+    controlDescription: 'Choose how this page is written.',
+    closeControl: 'Close register controls',
   },
 };
 

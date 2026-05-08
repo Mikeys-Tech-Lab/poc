@@ -44,6 +44,24 @@ describe('rebuildToc', () => {
     expect(items[1].querySelector('a')?.getAttribute('href')).toBe('#details');
   });
 
+  it('rebuilds desktop and mobile ToC surfaces', () => {
+    const desktopToc = createTocNav();
+    const mobileToc = createTocNav('mobile-starlight-toc');
+    desktopToc.innerHTML = '<li><a href="#old">Old</a></li>';
+    mobileToc.innerHTML = '<li><a href="#old">Old</a></li>';
+
+    const content = createRegisterContent('orientation', [
+      { tag: 'h2', id: 'orientation-heading', text: 'Orientation Heading' },
+    ]);
+    document.body.appendChild(content);
+    setRegisterAttribute('orientation');
+
+    rebuildToc();
+
+    expect(desktopToc.querySelector('a')?.getAttribute('href')).toBe('#orientation-heading');
+    expect(mobileToc.querySelector('a')?.getAttribute('href')).toBe('#orientation-heading');
+  });
+
   it('nests h3 under preceding h2', () => {
     createTocNav();
     const content = createRegisterContent('practitioner', [
@@ -79,6 +97,22 @@ describe('rebuildToc', () => {
     const items = document.querySelectorAll('starlight-toc nav > ul > li');
     expect(items.length).toBe(1);
     expect(items[0].querySelector('a')?.textContent).toBe('Orientation Heading');
+  });
+
+  it('falls back to the default register content block when active content is absent', () => {
+    createTocNav();
+    const practitioner = createRegisterContent('practitioner', [
+      { tag: 'h2', id: 'p-heading', text: 'Practitioner Heading' },
+    ]);
+    document.body.appendChild(practitioner);
+    setRegisterAttribute('everyday');
+    document.documentElement.dataset.registerDefault = 'practitioner';
+
+    rebuildToc();
+
+    const items = document.querySelectorAll('starlight-toc nav > ul > li');
+    expect(items.length).toBe(1);
+    expect(items[0].querySelector('a')?.textContent).toBe('Practitioner Heading');
   });
 
   it('skips headings without id or text', () => {

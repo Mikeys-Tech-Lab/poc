@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest';
 
-import { buildRouteRedirects, LOCALE_PREFIX, ROUTE_MAP } from '../route-map.js';
+import {
+  buildRouteRedirects,
+  getRegisterAvailabilityForPath,
+  getRegisterAvailabilityForRouteId,
+  LOCALE_PREFIX,
+  ROUTE_MAP,
+} from '../route-map.js';
 
 describe('route map', () => {
   it('keeps route ids unique', () => {
@@ -22,5 +28,33 @@ describe('route map', () => {
       expect(redirects[oldWithoutSlash]).toBe(target);
       expect(redirectSources.has(target)).toBe(false);
     }
+  });
+
+  it('declares register availability for every route', () => {
+    for (const entry of ROUTE_MAP) {
+      expect(entry).not.toHaveProperty('hasRegisterPair');
+      expect(entry.registerAvailability.defaultRegister).toBe('practitioner');
+      expect(entry.registerAvailability.available).toEqual(['practitioner', 'orientation']);
+      expect(entry.registerAvailability.absent).toEqual({
+        everyday: 'Everyday is not available for this page yet.',
+      });
+    }
+  });
+
+  it('resolves register availability by route id', () => {
+    expect(getRegisterAvailabilityForRouteId('about-what-this-is')).toMatchObject({
+      defaultRegister: 'practitioner',
+      available: ['practitioner', 'orientation'],
+    });
+  });
+
+  it('resolves register availability by localized path', () => {
+    expect(getRegisterAvailabilityForPath('/en-us/about/what-this-is/')).toMatchObject({
+      defaultRegister: 'practitioner',
+      available: ['practitioner', 'orientation'],
+      absent: {
+        everyday: 'Everyday is not available for this page yet.',
+      },
+    });
   });
 });
