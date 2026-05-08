@@ -244,9 +244,9 @@ The reading register controls which content variant is visible on each page.
 
 Known registers are:
 
-- `everyday`
-- `orientation`
-- `practitioner`
+- `everyday`: starts from familiar situations
+- `orientation`: builds the practice step by step
+- `practitioner`: keeps the working detail and trace
 
 Current content availability is smaller than the known registry:
 

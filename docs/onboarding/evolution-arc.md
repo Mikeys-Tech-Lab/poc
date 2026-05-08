@@ -4,8 +4,8 @@ Use this path when you want to understand how the workspace became what it is.
 
 If you are using an AI-assisted editor, say `Evolution Arc` in chat. The agent will first ask which register you want to use:
 
-- **Practitioner** for more technical and architectural language
-- **Orientation** for plainer language with the same structure
+- **Practitioner** for working detail and architectural trace
+- **Orientation** for a step-by-step path through the same structure
 
 Then it will ask which part of the arc you want to follow.
 

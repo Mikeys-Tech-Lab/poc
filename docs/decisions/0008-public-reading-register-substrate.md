@@ -19,9 +19,9 @@ entry in `RegisterContent.astro`, a `hasRegisterPair` route flag, and
 The next public content direction needs a smaller substrate before adding more
 content. The site should know about the future reading-register set:
 
-- `everyday`
-- `orientation`
-- `practitioner`
+- `everyday`: starts from familiar situations
+- `orientation`: builds the practice step by step
+- `practitioner`: keeps the working detail and trace
 
 It should also preserve the current content reality: practitioner and
 orientation exist today, while everyday has not been written. Missing register
