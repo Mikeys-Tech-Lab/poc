@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.0.0...site-v2.1.0) (2026-05-08)
+
+
+### Features
+
+* **astro:** add public reading register substrate ([#185](https://github.com/Mikeys-Tech-Lab/poc/issues/185)) ([5aeca56](https://github.com/Mikeys-Tech-Lab/poc/commit/5aeca56b68419f7f6c96c414f083f029412c2c03))
+
 ## [2.0.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v1.7.5...site-v2.0.0) (2026-05-04)
 
 

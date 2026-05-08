@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.12.9...PoC-v1.13.0) (2026-05-08)
+
+
+### Features
+
+* **astro:** add public reading register substrate ([#185](https://github.com/Mikeys-Tech-Lab/poc/issues/185)) ([5aeca56](https://github.com/Mikeys-Tech-Lab/poc/commit/5aeca56b68419f7f6c96c414f083f029412c2c03))
+
 ## [1.12.9](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.12.8...PoC-v1.12.9) (2026-05-04)
 
 
