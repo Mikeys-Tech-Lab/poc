@@ -7,8 +7,8 @@ register: orientation
 import ShareButton from '../../../../../../components/ShareButton.astro';
 import AnchorMap from '../../../../../../components/AnchorMap.astro';
 import {
-  ESSAY_HREF,
-} from '../../../../../../lib/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor';
+  buildEssayHref,
+} from '../../../../../../lib/structural-essays/essay-route';
 import {
   essayAnchors,
 } from '../../../../../structural-essays/en-us/ai-is-not-magic-it-is-a-mirror-with-a-motor.data';
@@ -47,7 +47,7 @@ setting, not something to adopt because the page says so.
 ### First essay
 
 The first structural essay is now available:
-<a href={`${ESSAY_HREF}?register=orientation`}>AI Is Not Magic. It Is a Mirror With a Motor.</a>
+<a href={buildEssayHref('orientation')}>AI Is Not Magic. It Is a Mirror With a Motor.</a>
 
 It asks what AI amplifies, who controls that amplification, and what record is
 left for people affected by it.

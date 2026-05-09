@@ -1,10 +1,8 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { extname } from 'node:path';
 import { expect, test } from '@playwright/test';
-import {
-  directSourceEntries,
-  ESSAY_HREF,
-} from '../src/lib/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor';
+import { directSourceEntries } from '../src/content/structural-essays/en-us/ai-is-not-magic-it-is-a-mirror-with-a-motor.data';
+import { ESSAY_HREF } from '../src/lib/structural-essays/essay-route';
 
 const distRoot = new URL('../dist/', import.meta.url);
 interface LeakPattern {

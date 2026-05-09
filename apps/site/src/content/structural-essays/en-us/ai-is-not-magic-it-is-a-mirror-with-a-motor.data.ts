@@ -1,35 +1,6 @@
-import {
-  buildEssayHref,
-  ESSAY_ROUTE_ID,
-  type EssayRegister,
-} from '../../../lib/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor';
-
-export interface DirectSourceEntry {
-  readonly id: string;
-  readonly label: string;
-  readonly title: string;
-  readonly href: string;
-  readonly supports: string;
-  readonly limits: string;
-}
-
-export interface FurtherReadingEntry {
-  readonly id: string;
-  readonly title: string;
-  readonly href: string;
-  readonly note: string;
-}
-
-export interface EssayAnchor {
-  readonly anchorId: string;
-  readonly routeId: typeof ESSAY_ROUTE_ID;
-  readonly targetRegister: EssayRegister;
-  readonly href: string;
-  readonly title: string;
-  readonly signal: string;
-  readonly question: string;
-  readonly entryLabel: string;
-}
+import type { EssayRegister } from '../../../lib/structural-essays/essay-route';
+import { buildEssayHref, ESSAY_ROUTE_ID } from '../../../lib/structural-essays/essay-route';
+import type { DirectSourceEntry, EssayAnchor, FurtherReadingEntry } from '../types';
 
 export const directSourceEntries: readonly DirectSourceEntry[] = Object.freeze([
   {

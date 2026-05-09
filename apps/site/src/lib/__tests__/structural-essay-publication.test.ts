@@ -7,10 +7,7 @@ import {
   furtherReadingEntries,
 } from '../../content/structural-essays/en-us/ai-is-not-magic-it-is-a-mirror-with-a-motor.data';
 import { getRegisterAvailabilityForRouteId, getRouteById } from '../route-map.js';
-import {
-  buildEssayHref,
-  ESSAY_ROUTE_ID,
-} from '../structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor';
+import { buildEssayHref, ESSAY_ROUTE_ID } from '../structural-essays/essay-route';
 
 const repoRoot = new URL('../../../../../', import.meta.url);
 interface LeakPattern {
@@ -23,6 +20,10 @@ const firstEssayContentPaths = [
   'apps/site/src/content/docs/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor.mdx',
   'apps/site/src/content/register/orientation/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor.mdx',
   'apps/site/src/content/register/everyday/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor.mdx',
+] as const;
+const relatedPublicRepoDocPaths = [
+  'docs/architecture/workspace.md',
+  'docs/guidance/evolution-records/2026-05-09-structural-essay-publication-boundary-and-module-ownership.md',
 ] as const;
 
 const allowedFrontmatterKeys = new Set(['title', 'description', 'register']);
@@ -188,15 +189,16 @@ describe('first structural essay publication contract', () => {
     }
   });
 
-  it('keeps public source content free of private paths and draft metadata', () => {
+  it('keeps public source content and related repo docs free of private paths and draft metadata', () => {
     const contentFiles = collectFiles(new URL('apps/site/src/content/', repoRoot), [
       '.mdx',
       '.md',
       '.ts',
     ]);
+    const repoDocFiles = relatedPublicRepoDocPaths.map((path) => new URL(path, repoRoot));
     const failures: string[] = [];
 
-    for (const filePath of contentFiles) {
+    for (const filePath of [...contentFiles, ...repoDocFiles]) {
       const content = readFileSync(filePath, 'utf8');
       for (const pattern of sourceLeakPatterns) {
         if (pattern.pattern.test(content)) {
