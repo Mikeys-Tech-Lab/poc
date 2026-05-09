@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
+import { getRegisterAvailabilityForPath } from '../route-map.js';
 import {
   buildPageUrl,
   CONTENT_PATHS,
@@ -33,9 +34,13 @@ describe('screendump helpers', () => {
     const plan = createScreendumpPlan({
       baseUrl: 'http://127.0.0.1:4321/en-us/',
     });
+    const availableRegisterCount = CONTENT_PATHS.reduce(
+      (count, path) => count + getRegisterAvailabilityForPath(path).available.length,
+      0,
+    );
 
     expect(plan).toHaveLength(
-      CONTENT_PATHS.length * 2 * THEMES.length * Object.keys(VIEWPORTS).length,
+      availableRegisterCount * THEMES.length * Object.keys(VIEWPORTS).length,
     );
     expect(plan[0]).toMatchObject({
       viewportName: 'desktop',

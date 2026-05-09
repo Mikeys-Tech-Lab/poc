@@ -12,7 +12,7 @@ import {
 
 /**
  * @typedef {'home' | 'about' | 'act' | 'seed' | 'lens' | 'signal' | 'license'} RouteType
- * @typedef {'about' | 'core-system-practice-of-clarity' | 'core-system-seeds' | 'core-system-mandate-lenses' | 'signals-operational-work-delivery' | 'license' | 'home'} RouteSection
+ * @typedef {'about' | 'core-system-practice-of-clarity' | 'core-system-seeds' | 'core-system-mandate-lenses' | 'signals-structural-essays' | 'signals-operational-work-delivery' | 'license' | 'home'} RouteSection
  * @typedef {'pending' | 'migrated' | 'verified'} RouteStatus
  *
  * @typedef {object} RouteMapEntry
@@ -28,6 +28,12 @@ import {
 
 export const LOCALE_PREFIX = '/en-us';
 export const WRITING_SECTION_DECISION = 'removed';
+
+const THREE_REGISTER_AVAILABILITY = Object.freeze({
+  defaultRegister: 'practitioner',
+  available: Object.freeze(['everyday', 'orientation', 'practitioner']),
+  absent: Object.freeze({}),
+});
 
 const withDefaultRegisterAvailability = (entry) =>
   Object.freeze({
@@ -204,6 +210,16 @@ export const ROUTE_MAP = Object.freeze(
       status: 'verified',
     },
     {
+      id: 'signal-structural-essays',
+      oldPath: null,
+      newPath: 'signals/structural-essays',
+      type: 'signal',
+      section: 'signals-structural-essays',
+      registerAvailability: THREE_REGISTER_AVAILABILITY,
+      redirect: false,
+      status: 'verified',
+    },
+    {
       id: 'signal-integration-lag',
       oldPath: null,
       newPath: 'signals/operational/work-delivery/integration-lag',
@@ -241,6 +257,7 @@ export const MIGRATION_SECTION_ORDER = Object.freeze([
   'core-system-practice-of-clarity',
   'core-system-seeds',
   'core-system-mandate-lenses',
+  'signals-structural-essays',
   'signals-operational-work-delivery',
 ]);
 

@@ -3,18 +3,27 @@ import { getEntry, render } from 'astro:content';
 
 interface Props {
 	register?: string;
+	registers?: Partial<Record<'everyday' | 'orientation', string>>;
 }
 
-const { register: registerEntry } = Astro.props;
+const { register: registerEntry, registers = {} } = Astro.props;
 
-let RegisterEntryContent: any = null;
+const registerEntryPaths = {
+	...(registerEntry ? { orientation: registerEntry } : {}),
+	...registers,
+};
 
-if (registerEntry) {
-	const match = await getEntry('register', registerEntry)
-		?? await getEntry('register', registerEntry.replace(/\/index$/, ''));
+const renderedRegisterEntries: Array<{ register: 'everyday' | 'orientation'; Content: any }> = [];
+
+for (const register of ['everyday', 'orientation'] as const) {
+	const entryPath = registerEntryPaths[register];
+	if (!entryPath) continue;
+
+	const match = await getEntry('register', entryPath)
+		?? await getEntry('register', entryPath.replace(/\/index$/, ''));
 	if (match) {
 		const rendered = await render(match);
-		RegisterEntryContent = rendered.Content;
+		renderedRegisterEntries.push({ register, Content: rendered.Content });
 	}
 }
 ---
@@ -23,13 +32,11 @@ if (registerEntry) {
 	<slot />
 </div>
 
-{
-	RegisterEntryContent && (
-		<div data-register-content="orientation">
-			<RegisterEntryContent />
-		</div>
-	)
-}
+{renderedRegisterEntries.map(({ register, Content }) => (
+	<div data-register-content={register}>
+		<Content />
+	</div>
+))}
 
 <script>
 	import { rebuildToc } from '../lib/toc';

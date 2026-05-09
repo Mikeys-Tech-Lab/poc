@@ -5,8 +5,8 @@ import { getRouteById } from '../src/lib/route-map.js';
 
 /**
  * Axe scope (runtime-realistic):
- * - 1 representative page x both registers = 2
- * - 1 "stress" page x both registers = 2
+ * - 1 representative page x baseline register pair = 2
+ * - 1 "stress" page x baseline register pair = 2
  * Total: 4 axe runs
  */
 const AXE_REPRESENTATIVE_PAGE = getRouteById('about-what-this-is')?.newPath ?? CONTENT_PATHS[1];

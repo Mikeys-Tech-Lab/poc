@@ -1,11 +1,11 @@
 import { test } from '@playwright/test';
-import { allPages, expectBothRegisters } from './helpers';
+import { contentPages, expectAvailableRegisters } from './helpers';
 
 test.describe('register parity', () => {
-  for (const page of allPages) {
-    test(`${page} has both register content divs`, async ({ page: p }) => {
-      await p.goto(page);
-      await expectBothRegisters(p);
+  for (const contentPage of contentPages) {
+    test(`${contentPage.url} has available register content divs`, async ({ page }) => {
+      await page.goto(contentPage.url);
+      await expectAvailableRegisters(page, contentPage.path);
     });
   }
 });
