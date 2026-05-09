@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.1.0...site-v2.2.0) (2026-05-09)
+
+
+### Features
+
+* **astro:** add structural essays surface ([#187](https://github.com/Mikeys-Tech-Lab/poc/issues/187)) ([f0e5adb](https://github.com/Mikeys-Tech-Lab/poc/commit/f0e5adb4e84167d5789498ccc4d03ddb17175835))
+
 ## [2.1.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.0.0...site-v2.1.0) (2026-05-08)
 
 
