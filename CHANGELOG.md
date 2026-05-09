@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.13.0...PoC-v1.14.0) (2026-05-09)
+
+
+### Features
+
+* **astro:** add structural essays surface ([#187](https://github.com/Mikeys-Tech-Lab/poc/issues/187)) ([f0e5adb](https://github.com/Mikeys-Tech-Lab/poc/commit/f0e5adb4e84167d5789498ccc4d03ddb17175835))
+
 ## [1.13.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.12.9...PoC-v1.13.0) (2026-05-08)
 
 
