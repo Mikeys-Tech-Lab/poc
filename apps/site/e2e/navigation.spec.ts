@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { allPages, orientationPages } from './helpers';
+import { allPages, registerVariantPages } from './helpers';
 
 test.describe('navigation', () => {
   test('all pages return 200', async ({ page }) => {
@@ -39,20 +39,20 @@ test.describe('navigation', () => {
     expect(broken, 'broken internal links found').toEqual([]);
   });
 
-  test('visible same-origin links and hash links work in both registers', async ({ page }) => {
+  test('visible same-origin links and hash links work in available registers', async ({ page }) => {
     const brokenPaths: string[] = [];
     const brokenAnchors: string[] = [];
-    const variants = [...allPages, ...orientationPages];
     const checkedPaths = new Set<string>();
 
-    for (const url of variants) {
+    await page.addInitScript(() => {
+      window.localStorage.removeItem('poc-register');
+    });
+
+    for (const { url, register } of registerVariantPages) {
       await page.goto(url);
-      const expectedRegister = url.includes('register=orientation')
-        ? 'orientation'
-        : 'practitioner';
       await page.waitForFunction(
-        (register) => document.documentElement.dataset.register === register,
-        expectedRegister,
+        (expectedRegister) => document.documentElement.dataset.register === expectedRegister,
+        register,
       );
       await page.waitForTimeout(100);
 

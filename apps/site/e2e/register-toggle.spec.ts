@@ -47,6 +47,14 @@ test.describe('register title control', () => {
     await expect(orientationContent).toBeVisible();
   });
 
+  test('?register=everyday activates everyday when the route provides it', async ({ page }) => {
+    await page.goto('/en-us/signals/structural-essays/?register=everyday');
+
+    await expect(page.locator('[data-register-content="everyday"]')).toBeVisible();
+    await expect(page.locator('[data-register-content="practitioner"]')).not.toBeVisible();
+    expect(page.url()).toContain('register=everyday');
+  });
+
   test('known unavailable registers fall back visibly to the default', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/?register=everyday');
 
@@ -68,6 +76,20 @@ test.describe('register title control', () => {
     await expect(
       page.locator('poc-register-title-control label').filter({ hasText: 'Everyday' }),
     ).toContainText('Everyday (not available yet)');
+  });
+
+  test('everyday is selectable on structural essay routes', async ({ page }) => {
+    await page.goto('/en-us/signals/structural-essays/');
+    await openRegisterPanel(page);
+
+    const everyday = page.locator('poc-register-title-control input[value="everyday"]');
+    await expect(everyday).toBeEnabled();
+
+    await everyday.check();
+
+    await expect(page.locator('[data-register-content="everyday"]')).toBeVisible();
+    await expect(page.locator('.label-everyday')).toBeVisible();
+    expect(page.url()).toContain('register=everyday');
   });
 
   test('title tap opens a pulsing panel that closes after selection', async ({ page }) => {

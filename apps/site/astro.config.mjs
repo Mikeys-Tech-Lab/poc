@@ -223,6 +223,16 @@ export default defineConfig({
           collapsed: false,
           items: [
             {
+              label: 'Structural Essays',
+              collapsed: false,
+              items: [
+                {
+                  label: 'Overview',
+                  slug: 'signals/structural-essays',
+                },
+              ],
+            },
+            {
               label: 'Operational',
               collapsed: false,
               items: [

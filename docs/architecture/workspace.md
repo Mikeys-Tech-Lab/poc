@@ -60,7 +60,8 @@ flowchart TD
   Dependabot[".github/dependabot.yml"] -.->|"security-only updates"| Tooling
 
   AstroSite[apps/site/] -->|"practitioner content"| SiteDocs["apps/site/src/content/docs/"]
-  AstroSite -->|"active register content"| SiteRegister["apps/site/src/content/register/orientation/"]
+  AstroSite -->|"active orientation register content"| SiteRegisterOrientation["apps/site/src/content/register/orientation/"]
+  AstroSite -->|"route-scoped everyday register content"| SiteRegisterEveryday["apps/site/src/content/register/everyday/"]
 
   subgraph "CI/CD (GitHub Actions)"
     DeployDev[".github/workflows/deploy-dev.yml"]
@@ -135,7 +136,8 @@ flowchart TD
 | `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks, deterministic guidance drift validation, and license surface validation | Exists |
 | `apps/site/` | Astro Starlight frontend | Exists |
 | `apps/site/src/content/docs/` | Practitioner site content collection | Exists |
-| `apps/site/src/content/register/orientation/` | Active orientation register content collection. `everyday` is known in route metadata but has no active content tree yet. | Exists |
+| `apps/site/src/content/register/orientation/` | Active orientation register content collection | Exists |
+| `apps/site/src/content/register/everyday/` | Route-scoped everyday register content collection. Only routes that declare everyday availability expose it. | Exists |
 | `docs/infra/` | Infrastructure runbooks (Infomaniak setup, GitHub App setup, protection layers, authenticated origin pulls) and maintenance assets | Exists |
 | `.cursor/skills/infomaniak-deployment/` | Deployment skill for Infomaniak hosting | Exists |
 

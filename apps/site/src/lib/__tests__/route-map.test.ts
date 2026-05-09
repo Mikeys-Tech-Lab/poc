@@ -34,6 +34,16 @@ describe('route map', () => {
     for (const entry of ROUTE_MAP) {
       expect(entry).not.toHaveProperty('hasRegisterPair');
       expect(entry.registerAvailability.defaultRegister).toBe('practitioner');
+      if (entry.id === 'signal-structural-essays') {
+        expect(entry.registerAvailability.available).toEqual([
+          'everyday',
+          'orientation',
+          'practitioner',
+        ]);
+        expect(entry.registerAvailability.absent).toEqual({});
+        continue;
+      }
+
       expect(entry.registerAvailability.available).toEqual(['practitioner', 'orientation']);
       expect(entry.registerAvailability.absent).toEqual({
         everyday: 'Everyday is not available for this page yet.',
@@ -55,6 +65,14 @@ describe('route map', () => {
       absent: {
         everyday: 'Everyday is not available for this page yet.',
       },
+    });
+  });
+
+  it('enables all three registers for the structural essays overview', () => {
+    expect(getRegisterAvailabilityForPath('/en-us/signals/structural-essays/')).toEqual({
+      defaultRegister: 'practitioner',
+      available: ['everyday', 'orientation', 'practitioner'],
+      absent: {},
     });
   });
 });

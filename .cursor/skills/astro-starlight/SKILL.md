@@ -24,7 +24,7 @@ Before relying on any Astro or Starlight feature:
 ## Content boundaries
 
 - Practitioner register (canonical): `apps/site/src/content/docs/` (Starlight-native; `en-us` is the only active locale in the current repo)
-- Register content: `apps/site/src/content/register/<register>/<locale>/...` (currently only `register/orientation/en-us/` is active; `everyday` is known to the register registry but unavailable until real content exists)
+- Register content: `apps/site/src/content/register/<register>/<locale>/...` (`orientation` is broadly active; `everyday` is route-scoped and only exposed where real content exists)
 - Assets (images, fonts): `apps/site/src/assets/`
 - Shared modules: `apps/site/src/lib/`
 - Seeds (`seeds/`) are development-only sources. They are not the site content tree.
@@ -67,8 +67,8 @@ invented prose after the fact.
 Locale and register are independent axes in the practice model, but the current repo activates only a small subset of that model.
 
 - **Practitioner** register is the canonical Starlight content in `src/content/docs/`, with `docs/en-us/` as the active locale tree.
-- **Orientation** is the only active non-practitioner content tree in the repo today, at `src/content/register/orientation/en-us/`.
-- **Everyday** is a known reading register in the registry and route metadata, but it is explicitly unavailable on current routes. Do not scaffold a `register/everyday/` tree or preserve empty placeholder content.
+- **Orientation** is the broadly active non-practitioner content tree in the repo today, at `src/content/register/orientation/en-us/`.
+- **Everyday** is route-scoped. It exists only for routes with real `src/content/register/everyday/en-us/...` content and matching route metadata. Do not scaffold empty everyday placeholders.
 - Other register families may exist conceptually in seeds, but they are not active repo structure. Do not scaffold or preserve them unless the operator explicitly asks.
 
 ### Content collections
@@ -78,13 +78,14 @@ Two content collections are defined in `content.config.ts`:
 - `docs`: Starlight's native collection. Uses `docsLoader()` and `docsSchema()`.
 - `register`: Custom collection for non-practitioner register content. Uses Astro's `glob` loader for `**/*.mdx` files in `src/content/register/`.
 
-The current site uses a single prefixed locale key, `en-us`. Content lives in symmetric `en-us` directories under both `docs/` and the active `register/orientation/` tree. There is no `root` locale; Astro's `redirects` config handles `/` → `/en-us/` (301 in dev server, meta-refresh HTML in static build). Do not assume additional locales are present unless you verify them in the current tree and config.
+The current site uses a single prefixed locale key, `en-us`. Content lives in symmetric `en-us` directories under `docs/` and active non-practitioner register trees. There is no `root` locale; Astro's `redirects` config handles `/` → `/en-us/` (301 in dev server, meta-refresh HTML in static build). Do not assume additional locales are present unless you verify them in the current tree and config.
 
 Active content files may also declare register metadata in frontmatter for source
 inspectability:
 
 - `docs/**` may use `register: practitioner`
 - `register/orientation/**` may use `register: orientation`
+- `register/everyday/**` may use `register: everyday`
 
 This metadata is descriptive and should stay aligned with the collection/path.
 Do not use it as the primary source of runtime register logic when the path or
@@ -108,7 +109,7 @@ Never assume a path alias works in all contexts. Aliases that resolve in module 
 
 ### MDX headings with icons
 
-When you need an icon next to an MDX heading (e.g. `### Accessibility` with an icon), do **not** use a component inside the heading. `### <Component />` can lose the heading anchor (`id`) or flatten the component output. Use inline HTML instead: `### <span style="..."><span>Accessibility</span><svg>...</svg></span>`. Duplicate the markup across registers if the heading appears in both practitioner and orientation content. See `docs/guidance/agent-pre-commit-verification.md` for the reasoning trace.
+When you need an icon next to an MDX heading (e.g. `### Accessibility` with an icon), do **not** use a component inside the heading. `### <Component />` can lose the heading anchor (`id`) or flatten the component output. Use inline HTML instead: `### <span style="..."><span>Accessibility</span><svg>...</svg></span>`. Duplicate the markup across every active register variant where the heading appears. See `docs/guidance/agent-pre-commit-verification.md` for the reasoning trace.
 
 ### Accessibility preference contracts must be explicit
 
@@ -251,8 +252,8 @@ Known registers are:
 Current content availability is smaller than the known registry:
 
 - `practitioner` is the default and comes from the Starlight `docs` collection.
-- `orientation` is the active non-practitioner register content tree.
-- `everyday` is known but explicitly unavailable until real content exists.
+- `orientation` is the broadly active non-practitioner register content tree.
+- `everyday` is route-scoped and available only on routes that provide real everyday content and route metadata.
 
 ### How it works
 
@@ -285,7 +286,8 @@ logic must keep both in sync:
 - cover both surfaces in `toc.test.ts`
 
 Do not validate this only by clicking the register selector. Direct loads such
-as `?register=orientation` are part of the product contract.
+as `?register=orientation` and route-available `?register=everyday` are part of
+the product contract.
 
 ## Site-wide visual system
 
@@ -437,7 +439,7 @@ transport check is explicitly required.
 
 | Spec file | What it covers |
 |---|---|
-| `register-parity.spec.ts` | Both register content divs exist on every page in the current `en-us` matrix |
+| `register-parity.spec.ts` | Available register content divs exist for every page in the current `en-us` matrix |
 | `navigation.spec.ts` | All pages return 200, all internal links and visible hash links resolve across register variants |
 | `register-toggle.spec.ts` | Title-triggered register panel, URL param sync, unavailable states, panel close behavior, ToC update |
 | `locale-switching.spec.ts` | Language selector navigation, locale reachability |
@@ -445,7 +447,7 @@ transport check is explicitly required.
 
 ### Test matrix
 
-The current active content matrix is 1 locale x current content paths x available registers, generated from route metadata and arrays in `test-constants.ts`. Register state is a query parameter for non-default registers, not a route segment. Known but unavailable registers, such as `everyday`, are tested as explicit fallback states rather than content variants.
+The current active content matrix is 1 locale x current content paths x route-available registers, generated from route metadata and arrays in `test-constants.ts`. Register state is a query parameter for non-default registers, not a route segment. Known but unavailable route/register combinations, such as `everyday` on routes without everyday content, are tested as explicit fallback states rather than content variants.
 
 ## Installability surface
 
