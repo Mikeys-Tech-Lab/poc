@@ -1,13 +1,15 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { extname } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import {
+  directSourceEntries,
+  essayAnchors,
+  furtherReadingEntries,
+} from '../../content/structural-essays/en-us/ai-is-not-magic-it-is-a-mirror-with-a-motor.data';
 import { getRegisterAvailabilityForRouteId, getRouteById } from '../route-map.js';
 import {
   buildEssayHref,
-  directSourceEntries,
   ESSAY_ROUTE_ID,
-  essayAnchors,
-  furtherReadingEntries,
 } from '../structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor';
 
 const repoRoot = new URL('../../../../../', import.meta.url);
@@ -187,7 +189,11 @@ describe('first structural essay publication contract', () => {
   });
 
   it('keeps public source content free of private paths and draft metadata', () => {
-    const contentFiles = collectFiles(new URL('apps/site/src/content/', repoRoot), ['.mdx', '.md']);
+    const contentFiles = collectFiles(new URL('apps/site/src/content/', repoRoot), [
+      '.mdx',
+      '.md',
+      '.ts',
+    ]);
     const failures: string[] = [];
 
     for (const filePath of contentFiles) {
