@@ -6,6 +6,7 @@ register: everyday
 
 import ShareButton from '../../../../../../components/ShareButton.astro';
 import AnchorMap from '../../../../../../components/AnchorMap.astro';
+import EssayRegisterLinks from '../../../../../../components/EssayRegisterLinks.astro';
 import {
   buildEssayHref,
 } from '../../../../../../lib/structural-essays/essay-route';
@@ -257,10 +258,13 @@ This everyday version is the doorway.
 The orientation version is the next layer for readers who want more context,
 terms, and stakes before entering the longer practitioner essay.
 
-<p>
-  Continue with <a href={buildEssayHref('orientation')}>the orientation version</a>, or go
-  straight to <a href={buildEssayHref('practitioner')}>the full source-grounded essay</a>.
-</p>
+<EssayRegisterLinks
+  label="Continue in a different register"
+  links={[
+    { href: buildEssayHref('orientation'), label: 'Orientation' },
+    { href: buildEssayHref('practitioner', { explicit: true }), label: 'Practitioner' },
+  ]}
+/>
 
 <AnchorMap
   anchors={essayAnchors.slice(0, 4)}

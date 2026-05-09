@@ -13,7 +13,14 @@ export const ESSAY_HREF = getLocalizedRoutePath(ESSAY_ROUTE_ID);
 
 export type EssayRegister = 'everyday' | 'orientation' | 'practitioner';
 
-export const buildEssayHref = (register: EssayRegister = 'practitioner') => {
-  if (register === 'practitioner') return ESSAY_HREF;
+interface BuildEssayHrefOptions {
+  readonly explicit?: boolean;
+}
+
+export const buildEssayHref = (
+  register: EssayRegister = 'practitioner',
+  options: BuildEssayHrefOptions = {},
+) => {
+  if (register === 'practitioner' && !options.explicit) return ESSAY_HREF;
   return `${ESSAY_HREF}?register=${register}`;
 };

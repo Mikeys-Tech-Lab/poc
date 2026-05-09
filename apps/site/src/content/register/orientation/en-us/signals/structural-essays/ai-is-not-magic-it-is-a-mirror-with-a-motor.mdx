@@ -6,6 +6,7 @@ register: orientation
 
 import ShareButton from '../../../../../../components/ShareButton.astro';
 import AnchorMap from '../../../../../../components/AnchorMap.astro';
+import EssayRegisterLinks from '../../../../../../components/EssayRegisterLinks.astro';
 import {
   buildEssayHref,
 } from '../../../../../../lib/structural-essays/essay-route';
@@ -296,11 +297,13 @@ It is a mirror with a motor.
 The work is to decide what the motor accelerates, who can inspect it, and who
 has enough power to change where it goes.
 
-<p>
-  For the full source-grounded version, open <a href={buildEssayHref('practitioner')}>the
-  practitioner essay</a>. For the plainest doorway, open <a href={buildEssayHref('everyday')}>the
-  everyday version</a>.
-</p>
+<EssayRegisterLinks
+  label="Continue in a different register"
+  links={[
+    { href: buildEssayHref('practitioner', { explicit: true }), label: 'Practitioner' },
+    { href: buildEssayHref('everyday'), label: 'Everyday' },
+  ]}
+/>
 
 <AnchorMap
   anchors={essayAnchors.slice(0, 4)}

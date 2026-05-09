@@ -9,6 +9,7 @@ import ShareButton from '../../../../../components/ShareButton.astro';
 import SourceHook from '../../../../../components/SourceHook.astro';
 import SourceLedger from '../../../../../components/SourceLedger.astro';
 import AnchorMap from '../../../../../components/AnchorMap.astro';
+import EssayRegisterLinks from '../../../../../components/EssayRegisterLinks.astro';
 import {
   buildEssayHref,
 } from '../../../../../lib/structural-essays/essay-route';
@@ -109,7 +110,7 @@ justice, but because legal definitions force the fog to take shape.
 The EU AI Act defines an AI system, in part, as a machine-based system that can
 infer how to generate outputs such as predictions, content, recommendations, or
 decisions, and that can influence physical or virtual environments.
-<SourceHook sourceId="ai-act-definition" />
+<SourceHook sourceId="ai-act-definition" sources={directSourceEntries} />
 
 That sentence is boring in the most useful way.
 
@@ -171,10 +172,10 @@ That fear should not be mocked.
 
 Stanford's 2026 AI Index reports that nearly two-thirds of Americans, 64 percent,
 expect AI to lead to fewer jobs over the next 20 years.
-<SourceHook sourceId="stanford-ai-index-public-opinion" />
+<SourceHook sourceId="stanford-ai-index-public-opinion" sources={directSourceEntries} />
 Pew Research Center found in 2025 that about half of U.S. workers, 52 percent,
 feel worried about how AI may be used in the workplace in the future.
-<SourceHook sourceId="pew-workplace-worry" />
+<SourceHook sourceId="pew-workplace-worry" sources={directSourceEntries} />
 
 Even though those figures are U.S.-specific, they capture an anxiety that is
 visible far beyond one survey context. People can feel that something big is
@@ -247,7 +248,7 @@ The International Labour Organization's 2025 update is useful here because it
 does not reduce the issue to simple replacement. It found that one in four jobs
 worldwide is potentially exposed to generative AI, while emphasizing that
 transformation, not simple replacement, is the more likely pattern.
-<SourceHook sourceId="ilo-genai-jobs-update" />
+<SourceHook sourceId="ilo-genai-jobs-update" sources={directSourceEntries} />
 
 Exposure is not the same as displacement.
 
@@ -282,7 +283,7 @@ It has a body.
 The International Energy Agency projects that global electricity consumption
 from data centers could roughly double to around 945 terawatt-hours by 2030 in
 its base case. That figure refers to data centers overall, not AI alone, but AI
-is one driver of the growth. <SourceHook sourceId="iea-energy-and-ai" />
+is one driver of the growth. <SourceHook sourceId="iea-energy-and-ai" sources={directSourceEntries} />
 
 That does not mean every use of AI is equally wasteful.
 
@@ -345,7 +346,7 @@ Hachette, Macmillan, and McGraw Hill sued Meta, alleging unauthorized use of
 books and journal articles to train its Llama AI model. Reuters also reported
 that Meta said it would fight the lawsuit aggressively and that it argues AI
 training can fall under fair use.
-<SourceHook sourceId="reuters-meta-publisher-lawsuit" />
+<SourceHook sourceId="reuters-meta-publisher-lawsuit" sources={directSourceEntries} />
 
 That detail matters.
 
@@ -432,7 +433,7 @@ The European Commission says the General-Purpose AI Code of Practice is designed
 to help providers demonstrate or support compliance with AI Act obligations on
 safety, transparency, and copyright. It also says the code contains chapters on
 Transparency, Copyright, and Safety and Security.
-<SourceHook sourceId="ec-gpai-code-of-practice" />
+<SourceHook sourceId="ec-gpai-code-of-practice" sources={directSourceEntries} />
 
 Movement is not the same as justice.
 
@@ -482,9 +483,9 @@ Safety is not only a content filter.
 Safety is also whether the system can be understood, challenged, documented,
 bounded, audited, stopped, and governed.
 
-The U.S. National Institute of Standards and Technology says documentation can
-"enhance transparency, improve human review processes, and bolster
-accountability." <SourceHook sourceId="nist-ai-rmf-documentation" />
+NIST's AI RMF and related guidance treat documentation, transparency, human
+review, and accountability as part of trustworthy AI governance.
+<SourceHook sourceId="nist-ai-rmf-documentation" sources={directSourceEntries} />
 
 That sentence is not glamorous.
 
@@ -819,10 +820,13 @@ Clarity.
   intro="Start from the pressure you already recognize, then choose how much context you want next."
 />
 
-<p>
-  Need a shorter bridge first? Open the <a href={buildEssayHref('orientation')}>orientation version</a>.
-  Need the plainest doorway? Open the <a href={buildEssayHref('everyday')}>everyday version</a>.
-</p>
+<EssayRegisterLinks
+  label="Continue in a different register"
+  links={[
+    { href: buildEssayHref('orientation'), label: 'Orientation' },
+    { href: buildEssayHref('everyday'), label: 'Everyday' },
+  ]}
+/>
 
 </RegisterContent>
 

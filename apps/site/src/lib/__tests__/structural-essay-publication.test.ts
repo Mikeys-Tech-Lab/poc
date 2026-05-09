@@ -244,6 +244,17 @@ describe('first structural essay publication contract', () => {
     }
   });
 
+  it('uses explicit practitioner links when cross-register endings point back to practitioner', () => {
+    const orientationEssay = read(firstEssayContentPaths[1]);
+    const everydayEssay = read(firstEssayContentPaths[2]);
+
+    expect(buildEssayHref('practitioner', { explicit: true })).toBe(
+      `${buildEssayHref()}?register=practitioner`,
+    );
+    expect(orientationEssay).toContain("buildEssayHref('practitioner', { explicit: true })");
+    expect(everydayEssay).toContain("buildEssayHref('practitioner', { explicit: true })");
+  });
+
   it('keeps anchors unique and pointed at available public registers', () => {
     const route = getRouteById(ESSAY_ROUTE_ID);
     const availability = getRegisterAvailabilityForRouteId(ESSAY_ROUTE_ID);
@@ -278,8 +289,12 @@ describe('first structural essay publication contract', () => {
   });
 
   it('keeps source and anchor labels reader-facing', () => {
+    const sourceHook = read('apps/site/src/components/SourceHook.astro');
     const sourceLedger = read('apps/site/src/components/SourceLedger.astro');
     const anchorMap = read('apps/site/src/components/AnchorMap.astro');
+
+    expect(sourceHook).not.toContain('ai-is-not-magic-it-is-a-mirror-with-a-motor.data');
+    expect(sourceHook).toContain('const { sourceId, sources = [], label }');
 
     for (const label of [
       'Sources',

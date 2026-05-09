@@ -1,13 +1,14 @@
 ---
-import { directSourceEntries } from '../content/structural-essays/en-us/ai-is-not-magic-it-is-a-mirror-with-a-motor.data';
+import type { DirectSourceEntry } from '../content/structural-essays/types';
 
 interface Props {
-  sourceId: string;
-  label?: string;
+  readonly sourceId: string;
+  readonly sources?: readonly DirectSourceEntry[];
+  readonly label?: string;
 }
 
-const { sourceId, label } = Astro.props as Props;
-const source = directSourceEntries.find((entry) => entry.id === sourceId);
+const { sourceId, sources = [], label } = Astro.props as Props;
+const source = sources.find((entry) => entry.id === sourceId);
 const href = `#source-${sourceId}`;
 const accessibleLabel = source ? `Open source: ${source.title}` : 'Open source details';
 const renderedLabel = label ?? source?.label ?? 'Source';
