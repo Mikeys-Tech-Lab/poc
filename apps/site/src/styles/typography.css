@@ -82,6 +82,10 @@
   margin: 0;
 }
 
+.sl-markdown-content .essay-intro > poc-share-button {
+  justify-self: end;
+}
+
 .sl-markdown-content blockquote.reading-lede {
   padding: 1rem 1.15rem;
   background: color-mix(in srgb, var(--poc-box-surface) 82%, var(--poc-reading-accent) 18%);
