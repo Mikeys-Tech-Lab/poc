@@ -1,0 +1,56 @@
+---
+import type { EssayAnchor } from '../lib/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor';
+import AnchorCard from './AnchorCard.astro';
+
+interface Props {
+  anchors: readonly EssayAnchor[];
+  title?: string;
+  intro?: string;
+}
+
+const {
+  anchors,
+  title = 'Ways into this essay',
+  intro = 'Choose the doorway that matches the pressure you already recognize.',
+} = Astro.props as Props;
+---
+
+<section class="poc-anchor-map" aria-labelledby="ways-into-this-essay">
+  <div class="poc-anchor-map-heading">
+    <h2 id="ways-into-this-essay">{title}</h2>
+    <p>{intro}</p>
+  </div>
+  <div class="poc-anchor-grid">
+    {anchors.map((anchor) => <AnchorCard anchor={anchor} />)}
+  </div>
+</section>
+
+<style>
+  .poc-anchor-map {
+    margin-block: 2.2rem;
+  }
+
+  .poc-anchor-map-heading {
+    margin-block-end: 1rem;
+  }
+
+  .poc-anchor-map-heading h2 {
+    margin-block-end: 0.35rem;
+  }
+
+  .poc-anchor-map-heading p {
+    margin: 0;
+    color: var(--poc-text-soft, var(--sl-color-gray-3));
+  }
+
+  .poc-anchor-grid {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  @media (min-width: 44rem) {
+    .poc-anchor-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

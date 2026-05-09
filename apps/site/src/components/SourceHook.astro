@@ -1,0 +1,42 @@
+---
+import { directSourceEntries } from '../lib/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor';
+
+interface Props {
+  sourceId: string;
+  label?: string;
+}
+
+const { sourceId, label } = Astro.props as Props;
+const source = directSourceEntries.find((entry) => entry.id === sourceId);
+const href = `#source-${sourceId}`;
+const accessibleLabel = source ? `Open source: ${source.title}` : 'Open source details';
+const renderedLabel = label ?? source?.label ?? 'Source';
+---
+
+<a class="poc-source-reference" href={href} aria-label={accessibleLabel}>
+  <slot>{renderedLabel}</slot>
+</a>
+
+<style>
+  .poc-source-reference {
+    display: inline-flex;
+    align-items: center;
+    margin-inline: 0.18em;
+    padding: 0.1em 0.42em;
+    border: 1px solid var(--poc-box-control-border);
+    border-radius: 999px;
+    background: var(--poc-box-control-surface);
+    color: var(--sl-color-text-accent);
+    font-size: 0.72em;
+    font-weight: 700;
+    line-height: 1.35;
+    text-decoration: none;
+    vertical-align: 0.08em;
+  }
+
+  .poc-source-reference:hover {
+    border-color: var(--poc-box-control-hover-border);
+    background: var(--poc-box-control-hover-surface);
+    text-decoration: underline;
+  }
+</style>

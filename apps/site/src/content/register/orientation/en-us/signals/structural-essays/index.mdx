@@ -5,6 +5,11 @@ register: orientation
 ---
 
 import ShareButton from '../../../../../../components/ShareButton.astro';
+import AnchorMap from '../../../../../../components/AnchorMap.astro';
+import {
+  ESSAY_HREF,
+  essayAnchors,
+} from '../../../../../../lib/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor';
 
 <ShareButton />
 
@@ -37,11 +42,19 @@ Then look for the distinction it offers.
 If it points to a practice, treat that practice as something to test in a real
 setting, not something to adopt because the page says so.
 
-### Current boundary
+### First essay
 
-This section is ready as a home for structural essays.
+The first structural essay is now available:
+<a href={`${ESSAY_HREF}?register=orientation`}>AI Is Not Magic. It Is a Mirror With a Motor.</a>
 
-Individual essays will appear here when they are ready for public reading.
+It asks what AI amplifies, who controls that amplification, and what record is
+left for people affected by it.
+
+<AnchorMap
+  anchors={essayAnchors}
+  title="Ways into the first essay"
+  intro="Choose the part of the AI debate that already feels close, then follow that doorway in."
+/>
 
 {/*
 Copyright © 2026 Mikey Sebastian Drozd.

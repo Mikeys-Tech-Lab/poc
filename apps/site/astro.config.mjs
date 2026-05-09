@@ -230,6 +230,10 @@ export default defineConfig({
                   label: 'Overview',
                   slug: 'signals/structural-essays',
                 },
+                {
+                  label: 'AI Is Not Magic',
+                  slug: 'signals/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor',
+                },
               ],
             },
             {

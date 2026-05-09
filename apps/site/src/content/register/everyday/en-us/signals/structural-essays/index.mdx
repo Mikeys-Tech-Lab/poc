@@ -5,6 +5,11 @@ register: everyday
 ---
 
 import ShareButton from '../../../../../../components/ShareButton.astro';
+import AnchorMap from '../../../../../../components/AnchorMap.astro';
+import {
+  ESSAY_HREF,
+  essayAnchors,
+} from '../../../../../../lib/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor';
 
 <ShareButton />
 
@@ -41,11 +46,18 @@ happening.
 
 If it does, you have something you can bring back into conversation.
 
-### Current boundary
+### First essay
 
-This section is ready as a place for these essays.
+The first essay is ready:
+<a href={`${ESSAY_HREF}?register=everyday`}>AI Is Not Magic. It Is a Mirror With a Motor.</a>
 
-The first individual essays will appear here when they are ready.
+It starts with a plain question: what is AI speeding up, and who gets to decide?
+
+<AnchorMap
+  anchors={essayAnchors}
+  title="Ways into the first essay"
+  intro="Begin from the part that feels familiar, then follow the essay from there."
+/>
 
 {/*
 Copyright © 2026 Mikey Sebastian Drozd.

@@ -1,0 +1,121 @@
+---
+import type {
+  DirectSourceEntry,
+  FurtherReadingEntry,
+} from '../lib/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor';
+
+interface Props {
+  sources: readonly DirectSourceEntry[];
+  furtherReading?: readonly FurtherReadingEntry[];
+}
+
+const { sources, furtherReading = [] } = Astro.props as Props;
+---
+
+<section class="poc-sources" aria-labelledby="sources">
+  <h2 id="sources">Sources</h2>
+  <p class="poc-sources-intro">
+    These entries show what each linked source supports and where its limits are.
+  </p>
+  <div class="poc-source-list">
+    {sources.map((source) => (
+      <article class="poc-source-card" id={`source-${source.id}`}>
+        <h3>
+          <a href={source.href}>{source.title}</a>
+        </h3>
+        <dl>
+          <div>
+            <dt>What this supports</dt>
+            <dd>{source.supports}</dd>
+          </div>
+          <div>
+            <dt>Limits</dt>
+            <dd>{source.limits}</dd>
+          </div>
+        </dl>
+      </article>
+    ))}
+  </div>
+  {furtherReading.length > 0 && (
+    <section class="poc-further-reading" aria-labelledby="further-reading">
+      <h2 id="further-reading">Further reading</h2>
+      <p class="poc-sources-intro">
+        Deeper context that shaped the frame, without treating each entry as a direct factual anchor.
+      </p>
+      <div class="poc-source-list">
+        {furtherReading.map((entry) => (
+          <article class="poc-source-card poc-source-card-secondary" id={`further-reading-${entry.id}`}>
+            <h3>
+              <a href={entry.href}>{entry.title}</a>
+            </h3>
+            <p>{entry.note}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+</section>
+
+<style>
+  .poc-sources {
+    margin-block: 3rem 2rem;
+  }
+
+  .poc-sources-intro {
+    color: var(--poc-text-soft, var(--sl-color-gray-3));
+  }
+
+  .poc-source-list {
+    display: grid;
+    gap: 0.9rem;
+    margin-block: 1rem 1.5rem;
+  }
+
+  .poc-source-card {
+    padding: 1rem 1.1rem;
+    border: var(--poc-box-border-width) solid var(--poc-box-note-border);
+    border-inline-start: 0.24rem solid var(--poc-box-note-rail);
+    border-radius: 0.9rem;
+    background: var(--poc-box-note-surface);
+    backdrop-filter: blur(var(--poc-blur-sm));
+    box-shadow: var(--poc-box-shadow);
+  }
+
+  .poc-source-card-secondary {
+    border-color: var(--poc-box-card-border);
+    border-inline-start-color: var(--poc-box-card-rail);
+  }
+
+  .poc-source-card h3 {
+    margin-block-start: 0;
+    color: var(--poc-box-note-title);
+    font-size: 1rem;
+  }
+
+  .poc-source-card-secondary h3 {
+    color: var(--poc-box-card-title);
+  }
+
+  .poc-source-card dl {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+  }
+
+  .poc-source-card dt {
+    margin-block-end: 0.15rem;
+    color: var(--poc-text-strong, var(--sl-color-gray-2));
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .poc-source-card dd {
+    margin: 0;
+  }
+
+  .poc-source-card p:last-child {
+    margin-block-end: 0;
+  }
+</style>

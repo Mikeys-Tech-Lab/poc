@@ -124,15 +124,15 @@ describe('register boundary guardrails', () => {
     }
   });
 
-  it('Structural Essays keeps the unpublished boundary visible in all three registers', () => {
+  it('Structural Essays keeps the first essay entry visible in all three registers', () => {
     expect(read('apps/site/src/content/docs/en-us/signals/structural-essays/index.mdx')).toContain(
-      'This section is being prepared before individual essays are added here.',
+      'The first structural essay is now available:',
     );
     expect(
       read('apps/site/src/content/register/orientation/en-us/signals/structural-essays/index.mdx'),
-    ).toContain('Individual essays will appear here when they are ready for public reading.');
+    ).toContain('The first structural essay is now available:');
     expect(
       read('apps/site/src/content/register/everyday/en-us/signals/structural-essays/index.mdx'),
-    ).toContain('The first individual essays will appear here when they are ready.');
+    ).toContain('The first essay is ready:');
   });
 });

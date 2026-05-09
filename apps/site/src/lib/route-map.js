@@ -220,6 +220,16 @@ export const ROUTE_MAP = Object.freeze(
       status: 'verified',
     },
     {
+      id: 'signal-ai-is-not-magic-it-is-a-mirror-with-a-motor',
+      oldPath: null,
+      newPath: 'signals/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor',
+      type: 'signal',
+      section: 'signals-structural-essays',
+      registerAvailability: THREE_REGISTER_AVAILABILITY,
+      redirect: false,
+      status: 'verified',
+    },
+    {
       id: 'signal-integration-lag',
       oldPath: null,
       newPath: 'signals/operational/work-delivery/integration-lag',

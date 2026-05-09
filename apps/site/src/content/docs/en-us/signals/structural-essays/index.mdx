@@ -6,6 +6,11 @@ register: practitioner
 
 import RegisterContent from '../../../../../components/RegisterContent.astro';
 import ShareButton from '../../../../../components/ShareButton.astro';
+import AnchorMap from '../../../../../components/AnchorMap.astro';
+import {
+  ESSAY_HREF,
+  essayAnchors,
+} from '../../../../../lib/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor';
 
 <RegisterContent registers={{
   everyday: 'everyday/en-us/signals/structural-essays',
@@ -52,11 +57,19 @@ between observation and interpretation visible.
 If a piece points toward practice, the activation belongs after the reader has
 enough context to judge whether the practice fits.
 
-### Current boundary
+### First essay
 
-This section is being prepared before individual essays are added here.
+The first structural essay is now available:
+<a href={ESSAY_HREF}>AI Is Not Magic. It Is a Mirror With a Motor.</a>
 
-For now, this page defines the shelf and the reading contract.
+It begins from the public noise around AI and asks what is being amplified, who
+controls that amplification, and what trace remains for people affected by it.
+
+<AnchorMap
+  anchors={essayAnchors}
+  title="Ways into the first essay"
+  intro="Start from the pressure you already recognize, then choose the route into the essay that fits."
+/>
 
 </RegisterContent>
 
