@@ -125,7 +125,7 @@ export const furtherReadingEntries: readonly FurtherReadingEntry[] = Object.free
   {
     id: 'eubanks-automating-inequality',
     title: 'Virginia Eubanks, Automating Inequality',
-    href: 'https://virginiaeubanks.com/books/automating-inequality/',
+    href: 'https://virginia-eubanks.com/automating-inequality/',
     note: 'A deeper context entry for data systems that profile, police, and punish poor and working-class people.',
   },
   {

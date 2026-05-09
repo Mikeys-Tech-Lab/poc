@@ -22,21 +22,26 @@ const renderedLabel = label ?? source?.label ?? 'Source';
     display: inline-flex;
     align-items: center;
     margin-inline: 0.18em;
-    padding: 0.1em 0.42em;
-    border: 1px solid var(--poc-box-control-border);
+    padding: 0.12em 0.48em;
+    border: 1px solid color-mix(in srgb, var(--poc-reading-accent) 34%, var(--poc-box-control-border));
     border-radius: 999px;
-    background: var(--poc-box-control-surface);
-    color: var(--sl-color-text-accent);
-    font-size: 0.72em;
+    background: color-mix(in srgb, var(--poc-box-control-surface) 84%, var(--poc-reading-accent) 16%);
+    color: var(--poc-text-strong, var(--sl-color-text-accent));
+    font-size: 0.76em;
     font-weight: 700;
     line-height: 1.35;
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 42%, transparent);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
     vertical-align: 0.08em;
   }
 
-  .poc-source-reference:hover {
-    border-color: var(--poc-box-control-hover-border);
-    background: var(--poc-box-control-hover-surface);
-    text-decoration: underline;
+  .poc-source-reference:hover,
+  .poc-source-reference:focus-visible {
+    border-color: color-mix(in srgb, var(--poc-reading-accent) 48%, var(--poc-box-control-hover-border));
+    background: color-mix(in srgb, var(--poc-box-control-hover-surface) 78%, var(--poc-reading-accent) 22%);
+    color: var(--poc-text-strong, var(--sl-color-text-accent));
+    text-decoration-color: currentColor;
   }
 </style>

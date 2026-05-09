@@ -19,14 +19,14 @@ const { anchor } = Astro.props as Props;
 <style>
   .poc-anchor-card {
     display: grid;
-    gap: 0.62rem;
-    padding: 1rem 1.05rem;
-    border: var(--poc-box-border-width) solid var(--poc-box-card-border);
-    border-inline-start: 0.24rem solid var(--poc-box-card-rail);
-    border-radius: 0.9rem;
-    background: var(--poc-box-surface);
+    gap: 0.58rem;
+    padding: 0.95rem 1rem;
+    border: 1px solid color-mix(in srgb, var(--poc-box-card-border) 72%, var(--poc-box-border));
+    border-inline-start: 0.16rem solid color-mix(in srgb, var(--poc-box-card-rail) 62%, var(--poc-border));
+    border-radius: 0.8rem;
+    background: var(--poc-box-row-surface);
     backdrop-filter: blur(var(--poc-blur-sm));
-    box-shadow: var(--poc-box-shadow);
+    box-shadow: none;
   }
 
   .poc-anchor-card > * {
@@ -34,16 +34,16 @@ const { anchor } = Astro.props as Props;
   }
 
   .poc-anchor-entry {
-    color: var(--poc-text-strong, var(--sl-color-gray-2));
+    color: var(--poc-text-soft, var(--sl-color-gray-3));
     font-size: 0.78rem;
-    font-weight: 700;
+    font-weight: 650;
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 
   .poc-anchor-card h3 {
     color: var(--poc-box-card-title);
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
 
   .poc-anchor-signal {
@@ -54,7 +54,7 @@ const { anchor } = Astro.props as Props;
 
   .poc-anchor-question {
     color: var(--poc-text-strong, var(--sl-color-gray-2));
-    font-weight: 650;
+    font-weight: 600;
   }
 
   .poc-anchor-card a {
