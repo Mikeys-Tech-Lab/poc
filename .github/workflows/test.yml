@@ -57,6 +57,9 @@ jobs:
       - name: Guidance drift guard
         run: pnpm guidance:check -- --changed-files .tmp/guidance-changed-files.txt
 
+      - name: License surface check
+        run: pnpm license:check
+
       - name: Unit tests
         run: pnpm -r test
 
