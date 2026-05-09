@@ -70,9 +70,19 @@
   margin-top: 0;
 }
 
+.sl-markdown-content .essay-intro {
+  display: grid;
+  justify-items: start;
+  gap: 0.85rem;
+  margin: 0 0 1.85rem;
+}
+
+.sl-markdown-content .essay-intro > poc-share-button,
+.sl-markdown-content .essay-intro > .reading-lede {
+  margin: 0;
+}
+
 .sl-markdown-content blockquote.reading-lede {
-  margin-top: 1.25rem;
-  margin-bottom: 1.85rem;
   padding: 1rem 1.15rem;
   background: color-mix(in srgb, var(--poc-box-surface) 82%, var(--poc-reading-accent) 18%);
   box-shadow: 0 2px 10px rgb(0 0 0 / 0.08);
@@ -81,6 +91,12 @@
 .sl-markdown-content blockquote.reading-lede p {
   font-size: 1.06rem;
   line-height: 1.65;
+}
+
+@media (min-width: 50rem) {
+  .sl-markdown-content .essay-intro {
+    gap: 1rem;
+  }
 }
 
 /* Code blocks — scroll within container, no page-level overflow (WCAG 1.4.10) */
