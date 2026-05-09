@@ -26,6 +26,14 @@ public essay support data moved into the content layer.
 - Publishing a structural essay activates more than content writing. It also
   activates route wiring, register parity, source presentation, anchor reuse,
   leak prevention, QA review, and documentation evolution.
+- The branch was mostly atomic, not cleanly atomic. The initial feature commit
+  `4fd6967` was large but still mostly coherent around first publication, while
+  later commits mixed in correction classes unevenly.
+- Several follow-up commits were clean single-purpose corrections:
+  `fd76952`, `6bfe4c7`, `3accada`, and `2a0b491`.
+- At least two commits were overloaded across concerns, `52535d9` and
+  `328b5dc`, and `f23c8c1` landed as a mixed corrective pass rather than a
+  single isolated lesson.
 - Public source and anchor data needed to be reusable across the practitioner
   page, alternate registers, and overview surfaces.
 - Deterministic leak guards were necessary and useful, but they only held
@@ -33,6 +41,9 @@ public essay support data moved into the content layer.
   than public repo content.
 - The initial module placement worked technically, but it mixed public support
   data with site mechanics in `src/lib/structural-essays/`.
+- Technical verification came earlier than enough QA and readability review.
+  Layout instability and later source-grounding corrections proved that "it
+  passes" was not the same as "it is publication-ready."
 - The later refactor clarified the right ownership split:
   - `apps/site/src/content/structural-essays/<locale>/*.data.ts` for shared
     public essay support data
@@ -51,8 +62,17 @@ public essay support data moved into the content layer.
   inputs.
 - It was easy to underestimate how much QA and readability work would still be
   required after the first implementation technically passed.
+- It was also easy to underestimate layout stability work. The branch treated
+  early rendering success as stronger evidence than it was, then needed later
+  layout fixes.
+- The source-grounding pass arrived late. NIST and related support material
+  needed a dedicated review earlier instead of appearing as a late corrective
+  adjustment.
 - The branch risked treating a passing verification suite as evidence that the
   publication layer itself was finished. It was not.
+- The branch also assumed atomicity would emerge naturally from iterative
+  cleanup. It did not. Without explicit commit boundaries, correction classes
+  started to bundle together.
 
 ## Missed guidance
 
@@ -70,7 +90,8 @@ up front.
 
 ## Structural gap
 
-This belongs to a module-ownership and publication-boundary gap.
+This belongs to a module-ownership, publication-boundary, and commit-discipline
+gap.
 
 The failure mode is:
 
@@ -79,6 +100,10 @@ The failure mode is:
 - the implementation works
 - future essays inherit a muddled boundary between public content data and site
   plumbing
+- the branch then accumulates layout, QA/readability, and source-grounding
+  corrections
+- those corrections are not always split by concern, so the commit history
+  becomes only mostly atomic instead of cleanly reviewable
 
 The same branch also exposed a delivery-shape gap. "Publish the essay" sounded
 like content work, but in practice it required coordinated changes across
@@ -98,6 +123,12 @@ description.
   with deterministic tests scanning both source and generated output.
 - Keep QA review explicitly separate from deterministic CI. CI proves structure.
   QA/source review still owns readability, grounding, and public fit.
+- For future essay branches, isolate correction classes into separate commits:
+  module ownership, layout stability, source-grounding, and QA/readability
+  should not share a cleanup commit unless the dependency is inseparable.
+- Treat large initial publication commits as acceptable only when the scope is
+  still coherent. After that point, prefer smaller corrective commits that map
+  one lesson to one reviewable change.
 
 ## Research delta
 
@@ -144,13 +175,25 @@ Verify the boundary through deterministic checks and explicit review:
 ## PR-visible learning trace
 
 This branch added the first structural essay and then had to clean up the
-boundary it exposed.
+boundary, layout, and grounding issues the publication exposed.
 
 The durable lesson is that shared public essay support data belongs in the
 content layer, while route mechanics belong in `src/lib/`. The branch also
 confirmed that private leak guards should stay deterministic but secret-backed,
 and that passing CI is necessary structural evidence, not proof that the public
 essay is fully reviewed.
+
+The commit audit adds a second lesson. The branch was mostly atomic, not
+cleanly atomic. `4fd6967` was a large but mostly coherent feature commit, and
+`fd76952`, `6bfe4c7`, `3accada`, and `2a0b491` were clean single-purpose
+corrections. But `52535d9` and `328b5dc` bundled concerns, and `f23c8c1` mixed
+corrective work that would have been easier to review as separated passes.
+
+The concrete misses to preserve are plain: public support data was first placed
+in the wrong module layer, QA/readability was underestimated after technical
+verification, layout stability needed later fixes, and source-grounding needed a
+late NIST correction. Future essay branches should preserve the same structural
+lessons in both the file layout and the commit history.
 
 <!--
 Copyright © 2026 Mikey Sebastian Drozd.
