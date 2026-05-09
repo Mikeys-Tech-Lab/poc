@@ -13,35 +13,42 @@ const accessibleLabel = source ? `Open source: ${source.title}` : 'Open source d
 const renderedLabel = label ?? source?.label ?? 'Source';
 ---
 
-<a class="poc-source-reference" href={href} aria-label={accessibleLabel}>
-  <slot>{renderedLabel}</slot>
-</a>
+<sup class="poc-source-reference">
+  <a class="poc-source-reference__link" href={href} aria-label={accessibleLabel}>
+    <slot>{renderedLabel}</slot>
+  </a>
+</sup>
 
 <style>
   .poc-source-reference {
-    display: inline-flex;
-    align-items: center;
-    margin-inline: 0.18em;
-    padding: 0.12em 0.48em;
-    border: 1px solid color-mix(in srgb, var(--poc-reading-accent) 34%, var(--poc-box-control-border));
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--poc-box-control-surface) 84%, var(--poc-reading-accent) 16%);
-    color: var(--poc-text-strong, var(--sl-color-text-accent));
-    font-size: 0.76em;
-    font-weight: 700;
-    line-height: 1.35;
-    text-decoration: underline;
-    text-decoration-color: color-mix(in srgb, currentColor 42%, transparent);
-    text-decoration-thickness: 0.08em;
-    text-underline-offset: 0.16em;
-    vertical-align: 0.08em;
+    margin-inline-start: 0.16em;
+    font-size: 0.68em;
+    line-height: 0;
+    vertical-align: super;
   }
 
-  .poc-source-reference:hover,
-  .poc-source-reference:focus-visible {
-    border-color: color-mix(in srgb, var(--poc-reading-accent) 48%, var(--poc-box-control-hover-border));
-    background: color-mix(in srgb, var(--poc-box-control-hover-surface) 78%, var(--poc-reading-accent) 22%);
+  .poc-source-reference__link {
+    display: inline;
     color: var(--poc-text-strong, var(--sl-color-text-accent));
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    opacity: 0.68;
+    text-decoration: none;
+    text-underline-offset: 0.12em;
+    text-decoration-thickness: 0.08em;
+    white-space: nowrap;
+  }
+
+  .poc-source-reference__link:hover,
+  .poc-source-reference__link:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
     text-decoration-color: currentColor;
+  }
+
+  .poc-source-reference__link:focus-visible {
+    outline: 1px solid color-mix(in srgb, var(--poc-reading-accent) 55%, currentColor);
+    outline-offset: 0.14em;
+    border-radius: 0.18em;
   }
 </style>
