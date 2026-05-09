@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.14.0...PoC-v1.14.1) (2026-05-09)
+
+
+### Documentation
+
+* **guidance:** define testing verification boundary ([#189](https://github.com/Mikeys-Tech-Lab/poc/issues/189)) ([4ceb7c1](https://github.com/Mikeys-Tech-Lab/poc/commit/4ceb7c19abc69611525fb4af9b14aac9e2681ac0))
+
 ## [1.14.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.13.0...PoC-v1.14.0) (2026-05-09)
 
 
