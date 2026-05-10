@@ -74,6 +74,16 @@ export const ROUTE_MAP = Object.freeze(
       status: 'verified',
     },
     {
+      id: 'about-how-to-inspect-this-node',
+      oldPath: null,
+      newPath: 'about/how-to-inspect-this-node',
+      type: 'about',
+      section: 'about',
+      registerAvailability: THREE_REGISTER_AVAILABILITY,
+      redirect: false,
+      status: 'verified',
+    },
+    {
       id: 'about-glossary',
       oldPath: 'about/glossary',
       newPath: 'about/glossary',

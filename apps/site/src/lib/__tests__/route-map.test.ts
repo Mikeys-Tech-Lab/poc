@@ -10,6 +10,7 @@ import {
 
 const repoRoot = new URL('../../../../../', import.meta.url);
 const threeRegisterRouteIds = [
+  'about-how-to-inspect-this-node',
   'signal-structural-essays',
   'signal-ai-is-not-magic-it-is-a-mirror-with-a-motor',
 ] as const;
@@ -71,6 +72,14 @@ describe('route map', () => {
       absent: {
         everyday: 'Everyday is not available for this page yet.',
       },
+    });
+  });
+
+  it('enables all three registers for the node inspection about page', () => {
+    expect(getRegisterAvailabilityForPath('/en-us/about/how-to-inspect-this-node/')).toEqual({
+      defaultRegister: 'practitioner',
+      available: ['everyday', 'orientation', 'practitioner'],
+      absent: {},
     });
   });
 

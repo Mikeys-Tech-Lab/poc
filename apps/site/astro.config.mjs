@@ -147,6 +147,10 @@ export default defineConfig({
           items: [
             { label: 'What This Work Is', slug: 'about/what-this-is' },
             { label: 'Architecture', slug: 'about/architecture' },
+            {
+              label: 'How to Inspect This Node',
+              slug: 'about/how-to-inspect-this-node',
+            },
             { label: 'Glossary', slug: 'about/glossary' },
             { label: 'About the Author', slug: 'about/about-the-author' },
           ],
