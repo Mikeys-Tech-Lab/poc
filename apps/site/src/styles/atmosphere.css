@@ -106,4 +106,3 @@ body {
 :root[data-theme="dark"]:not([data-style="solid"]) .card .title {
   color: var(--poc-text-strong);
 }
-
