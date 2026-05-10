@@ -125,6 +125,7 @@ test.describe('register title control', () => {
   test('ToC links jump to the visible heading in practitioner and orientation', async ({
     page,
   }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto('/en-us/about/what-this-is/');
 
     await page
@@ -132,7 +133,24 @@ test.describe('register title control', () => {
       .filter({ hasText: 'What this is not' })
       .first()
       .click();
-    await page.waitForTimeout(100);
+    await page.waitForFunction(() => {
+      const visibleHeading = [...document.querySelectorAll('#what-this-is-not')].find((element) => {
+        if (!(element instanceof HTMLElement)) return false;
+        const style = window.getComputedStyle(element);
+        if (
+          style.display === 'none' ||
+          style.visibility === 'hidden' ||
+          element.offsetParent === null
+        ) {
+          return false;
+        }
+
+        const top = element.getBoundingClientRect().top;
+        return window.location.hash === '#what-this-is-not' && top >= -64 && top < 140;
+      });
+
+      return Boolean(visibleHeading);
+    });
 
     const practitionerPosition = await page.evaluate(() => {
       const visibleHeading = [...document.querySelectorAll('#what-this-is-not')].find((element) => {
@@ -159,7 +177,24 @@ test.describe('register title control', () => {
       .filter({ hasText: 'What this is not' })
       .first()
       .click();
-    await page.waitForTimeout(100);
+    await page.waitForFunction(() => {
+      const visibleHeading = [...document.querySelectorAll('#what-this-is-not')].find((element) => {
+        if (!(element instanceof HTMLElement)) return false;
+        const style = window.getComputedStyle(element);
+        if (
+          style.display === 'none' ||
+          style.visibility === 'hidden' ||
+          element.offsetParent === null
+        ) {
+          return false;
+        }
+
+        const top = element.getBoundingClientRect().top;
+        return window.location.hash === '#what-this-is-not' && top >= -64 && top < 140;
+      });
+
+      return Boolean(visibleHeading);
+    });
 
     const orientationPosition = await page.evaluate(() => {
       const visibleHeading = [...document.querySelectorAll('#what-this-is-not')].find((element) => {
