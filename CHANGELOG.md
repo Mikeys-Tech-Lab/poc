@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.14.3...PoC-v1.15.0) (2026-05-10)
+
+
+### Features
+
+* **astro:** introduce register color arc and per-register highlights ([#196](https://github.com/Mikeys-Tech-Lab/poc/issues/196)) ([2417e68](https://github.com/Mikeys-Tech-Lab/poc/commit/2417e6817ba59bbd1d7d3e0c81ca1a344e4fee56))
+
 ## [1.14.3](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.14.2...PoC-v1.14.3) (2026-05-10)
 
 
