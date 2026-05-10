@@ -16,8 +16,8 @@ const orientationAnchor =
   'Understanding takes time. People still need to ask questions, examine assumptions, and see how a decision fits with everything else that already exists.';
 
 const helperCopy = {
-  practitioner: 'Keeps the working detail and trace',
-  orientation: 'Builds the practice step by step',
+  practitioner: 'Carries the fullest trace and detail',
+  orientation: 'Builds the structure step by step',
 } as const;
 
 const neutralA11yLabels = [
