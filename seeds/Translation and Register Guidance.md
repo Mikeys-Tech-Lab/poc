@@ -116,9 +116,9 @@ This practice is designed to speak across audiences, not only across languages.
 
 The current public reading-register registry consists of three known registers:
 
-- **Everyday**: starts from familiar situations. This register is known to the public model, but it is not available on current pages until it is written and reviewed.
-- **Orientation**: builds the practice step by step, with slower pacing and terms introduced before the reader is asked to carry them.
-- **Practitioner**: keeps the working detail and trace, including assumptions, boundaries, operational vocabulary, and consequences.
+- **Everyday**: starts from what people can already recognize in lived situations, direct pressure, and visible consequences. It is route-scoped in the current public site and appears only where it has been written and reviewed.
+- **Orientation**: builds the practice step by step, with slower pacing and terms introduced as the structure becomes visible.
+- **Practitioner**: keeps the fullest working detail and trace, including assumptions, boundaries, operational vocabulary, and consequences.
 
 These differences must show up in the writing itself: sentence density, pacing, assumed context, and how quickly the text asks the reader to carry structural terms.
 

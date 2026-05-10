@@ -73,4 +73,6 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: E2E tests
+        env:
+          POC_PRIVATE_LEAK_PATTERNS: ${{ secrets.POC_PRIVATE_LEAK_PATTERNS }}
         run: pnpm --filter site test:e2e

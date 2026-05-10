@@ -62,6 +62,8 @@ flowchart TD
   AstroSite[apps/site/] -->|"practitioner content"| SiteDocs["apps/site/src/content/docs/"]
   AstroSite -->|"active orientation register content"| SiteRegisterOrientation["apps/site/src/content/register/orientation/"]
   AstroSite -->|"route-scoped everyday register content"| SiteRegisterEveryday["apps/site/src/content/register/everyday/"]
+  AstroSite -->|"locale-scoped essay support data"| SiteStructuralEssayData["apps/site/src/content/structural-essays/"]
+  AstroSite -->|"essay route mechanics"| SiteStructuralEssayLib["apps/site/src/lib/structural-essays/"]
 
   subgraph "CI/CD (GitHub Actions)"
     DeployDev[".github/workflows/deploy-dev.yml"]
@@ -138,6 +140,8 @@ flowchart TD
 | `apps/site/src/content/docs/` | Practitioner site content collection | Exists |
 | `apps/site/src/content/register/orientation/` | Active orientation register content collection | Exists |
 | `apps/site/src/content/register/everyday/` | Route-scoped everyday register content collection. Only routes that declare everyday availability expose it. | Exists |
+| `apps/site/src/content/structural-essays/` | Locale-scoped shared public essay support data, such as source ledgers, further reading, and anchor maps reused across registers and overview surfaces | Exists |
+| `apps/site/src/lib/structural-essays/` | Structural essay route mechanics and other non-prose helpers kept separate from public essay support data | Exists |
 | `docs/infra/` | Infrastructure runbooks (Infomaniak setup, GitHub App setup, protection layers, authenticated origin pulls) and maintenance assets | Exists |
 | `.cursor/skills/infomaniak-deployment/` | Deployment skill for Infomaniak hosting | Exists |
 

@@ -1,0 +1,58 @@
+---
+import type { DirectSourceEntry } from '../content/structural-essays/types';
+
+interface Props {
+  readonly sourceId: string;
+  readonly sources?: readonly DirectSourceEntry[];
+  readonly label?: string;
+}
+
+const { sourceId, sources = [], label } = Astro.props as Props;
+const sourceIndex = sources.findIndex((entry) => entry.id === sourceId);
+const source = sourceIndex >= 0 ? sources[sourceIndex] : undefined;
+const href = `#source-${sourceId}`;
+const accessibleLabel = source ? `Open source: ${source.title}` : 'Open source details';
+const number = sourceIndex >= 0 ? sourceIndex + 1 : undefined;
+const sourceTitle = source?.title;
+const sourceLabel = source?.label;
+const renderedLabel =
+  label ??
+  (number !== undefined && sourceTitle
+    ? `${number}. ${sourceTitle}`
+    : number !== undefined
+      ? String(number)
+      : (sourceLabel ?? sourceTitle ?? 'Source'));
+---
+
+<sup class="poc-source-reference" id={`ref-${sourceId}`}><a class="poc-source-reference__link" href={href} aria-label={accessibleLabel}><slot>{renderedLabel}</slot></a></sup>
+
+<style>
+  .poc-source-reference {
+    margin-inline-start: 0.08em;
+    font-size: 0.72em;
+    line-height: 1.05;
+    vertical-align: super;
+    scroll-margin-block-start: 6rem;
+  }
+
+  .poc-source-reference__link {
+    color: var(--sl-color-text-accent);
+    text-decoration: none;
+    font-weight: inherit;
+    letter-spacing: 0;
+  }
+
+  .poc-source-reference__link:hover,
+  .poc-source-reference__link:focus-visible {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: 0.06em;
+  }
+
+  .poc-source-reference__link:focus-visible {
+    outline: 1px solid color-mix(in srgb, var(--sl-color-text-accent) 55%, currentColor);
+    outline-offset: 0.14em;
+    border-radius: 0.18em;
+  }
+</style>

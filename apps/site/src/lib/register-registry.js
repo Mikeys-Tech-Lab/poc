@@ -11,6 +11,8 @@ export const READING_REGISTERS = Object.freeze(['everyday', 'orientation', 'prac
 export const DEFAULT_REGISTER = 'practitioner';
 
 export const EVERYDAY_UNAVAILABLE_MESSAGE = 'Everyday is not available for this page yet.';
+export const EVERYDAY_TO_ORIENTATION_FALLBACK_MESSAGE =
+  'Everyday is not available for this page yet. Showing Orientation instead.';
 
 export const DEFAULT_REGISTER_AVAILABILITY = Object.freeze({
   defaultRegister: DEFAULT_REGISTER,
@@ -48,16 +50,38 @@ export const normalizeRegisterAvailability = (availability = DEFAULT_REGISTER_AV
   });
 };
 
+const createResolution = ({ register, requested, reason, message, availability }) =>
+  Object.freeze({
+    register,
+    resolved: register,
+    requested,
+    reason,
+    fallbackReason: reason,
+    message,
+    fallbackMessage: message,
+    availability,
+  });
+
 export const resolveRegister = (value, availability = DEFAULT_REGISTER_AVAILABILITY) => {
   const normalizedAvailability = normalizeRegisterAvailability(availability);
   const requested = isReadingRegister(value) ? value : null;
 
   if (requested && normalizedAvailability.available.includes(requested)) {
-    return Object.freeze({
+    return createResolution({
       register: requested,
       requested,
       reason: null,
       message: null,
+      availability: normalizedAvailability,
+    });
+  }
+
+  if (requested === 'everyday' && normalizedAvailability.available.includes('orientation')) {
+    return createResolution({
+      register: 'orientation',
+      requested,
+      reason: 'unavailable',
+      message: EVERYDAY_TO_ORIENTATION_FALLBACK_MESSAGE,
       availability: normalizedAvailability,
     });
   }
@@ -68,7 +92,7 @@ export const resolveRegister = (value, availability = DEFAULT_REGISTER_AVAILABIL
     ? (normalizedAvailability.absent[requested] ?? `${requested} is not available for this page.`)
     : 'Unknown register requested. Showing the default register.';
 
-  return Object.freeze({
+  return createResolution({
     register,
     requested,
     reason,

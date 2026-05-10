@@ -55,16 +55,19 @@ test.describe('register title control', () => {
     expect(page.url()).toContain('register=everyday');
   });
 
-  test('known unavailable registers fall back visibly to the default', async ({ page }) => {
+  test('unavailable everyday requests render orientation and preserve the request', async ({
+    page,
+  }) => {
     await page.goto('/en-us/about/what-this-is/?register=everyday');
 
-    await expect(page.locator('[data-register-content="practitioner"]')).toBeVisible();
-    await expect(page.locator('.label-practitioner')).toBeVisible();
+    await expect(page.locator('[data-register-content="orientation"]')).toBeVisible();
+    await expect(page.locator('[data-register-content="practitioner"]')).not.toBeVisible();
+    await expect(page.locator('.label-orientation')).toBeVisible();
     await openRegisterPanel(page);
     await expect(page.locator('[data-register-fallback]')).toHaveText(
-      'Everyday is not available for this page yet.',
+      'Everyday is not available for this page yet. Showing Orientation instead.',
     );
-    expect(page.url()).not.toContain('register=everyday');
+    expect(page.url()).toContain('register=everyday');
   });
 
   test('everyday is visible as unavailable in the title panel', async ({ page }) => {
@@ -122,6 +125,7 @@ test.describe('register title control', () => {
   test('ToC links jump to the visible heading in practitioner and orientation', async ({
     page,
   }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto('/en-us/about/what-this-is/');
 
     await page
@@ -129,7 +133,24 @@ test.describe('register title control', () => {
       .filter({ hasText: 'What this is not' })
       .first()
       .click();
-    await page.waitForTimeout(100);
+    await page.waitForFunction(() => {
+      const visibleHeading = [...document.querySelectorAll('#what-this-is-not')].find((element) => {
+        if (!(element instanceof HTMLElement)) return false;
+        const style = window.getComputedStyle(element);
+        if (
+          style.display === 'none' ||
+          style.visibility === 'hidden' ||
+          element.offsetParent === null
+        ) {
+          return false;
+        }
+
+        const top = element.getBoundingClientRect().top;
+        return window.location.hash === '#what-this-is-not' && top >= -64 && top < 140;
+      });
+
+      return Boolean(visibleHeading);
+    });
 
     const practitionerPosition = await page.evaluate(() => {
       const visibleHeading = [...document.querySelectorAll('#what-this-is-not')].find((element) => {
@@ -156,7 +177,24 @@ test.describe('register title control', () => {
       .filter({ hasText: 'What this is not' })
       .first()
       .click();
-    await page.waitForTimeout(100);
+    await page.waitForFunction(() => {
+      const visibleHeading = [...document.querySelectorAll('#what-this-is-not')].find((element) => {
+        if (!(element instanceof HTMLElement)) return false;
+        const style = window.getComputedStyle(element);
+        if (
+          style.display === 'none' ||
+          style.visibility === 'hidden' ||
+          element.offsetParent === null
+        ) {
+          return false;
+        }
+
+        const top = element.getBoundingClientRect().top;
+        return window.location.hash === '#what-this-is-not' && top >= -64 && top < 140;
+      });
+
+      return Boolean(visibleHeading);
+    });
 
     const orientationPosition = await page.evaluate(() => {
       const visibleHeading = [...document.querySelectorAll('#what-this-is-not')].find((element) => {

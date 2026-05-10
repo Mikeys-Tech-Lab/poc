@@ -1,18 +1,27 @@
 ---
 title: "Structural Essays"
-description: "Plain-language essays for noticing patterns that are already shaping the work."
+description: "Essays that begin from pressure people can already recognize and carry it toward structure."
 register: everyday
 ---
 
 import ShareButton from '../../../../../../components/ShareButton.astro';
+import AnchorMap from '../../../../../../components/AnchorMap.astro';
+import {
+  buildEssayHref,
+} from '../../../../../../lib/structural-essays/essay-route';
+import {
+  essayAnchors,
+} from '../../../../../structural-essays/en-us/ai-is-not-magic-it-is-a-cognitive-amplifier.data';
 
 <ShareButton />
 
 Sometimes work starts to feel faster and less clear at the same time.
 
-People are busy. Tools are producing. Decisions are moving.
+People are still expected to respond. Tools are producing. Decisions are
+moving.
 
-Still, something underneath the work may not feel settled.
+A workplace, classroom, or public service can change before anyone has had time
+to name what changed.
 
 Structural essays are for that moment.
 
@@ -28,24 +37,35 @@ That may be:
 - a gap between speed and understanding
 - a decision that seems clear until people try to explain it
 - a process that creates output but loses meaning
-- a new tool changing the work faster than the team can absorb
+- a new tool changing what people are expected to do before anyone understands
+  what changed
 
 ### How to read them
 
-You do not need special vocabulary to begin.
+You do not need the project vocabulary to begin.
 
 Start with the part that feels familiar.
 
 Then follow the essay far enough to see whether it helps you name what is
 happening.
 
-If it does, you have something you can bring back into conversation.
+If it does, you have language you can bring back into conversation with other
+people.
 
-### Current boundary
+### First essay
 
-This section is ready as a place for these essays.
+The first essay is ready:
+<a href={buildEssayHref('everyday')}>AI Is Not Magic. It Is a Cognitive Amplifier.</a>
 
-The first individual essays will appear here when they are ready.
+It starts with a direct question: what kinds of writing, sorting, explaining,
+comparing, recommending, and deciding is AI amplifying, who gets to decide, and
+who has to live with the consequences?
+
+<AnchorMap
+  anchors={essayAnchors}
+  title="Ways into the first essay"
+  intro="Begin from the part that already feels close, then follow the structure from there."
+/>
 
 {/*
 Copyright © 2026 Mikey Sebastian Drozd.

@@ -19,6 +19,7 @@ export interface RegisterLabels {
   unavailableSuffix: string;
   controlDescription: string;
   closeControl: string;
+  dismissNotice: string;
 }
 
 export interface ThemeLabels {
@@ -33,13 +34,14 @@ const registerLabels: Record<Locale, RegisterLabels> = {
     everyday: 'Everyday',
     practitioner: 'Practitioner',
     orientation: 'Orientation',
-    everydayHelper: 'Starts from familiar situations',
-    practitionerHelper: 'Keeps the working detail and trace',
-    orientationHelper: 'Builds the practice step by step',
+    everydayHelper: 'Starts from what people already recognize',
+    practitionerHelper: 'Carries the fullest trace and detail',
+    orientationHelper: 'Builds the structure step by step',
     selectorLabel: 'Reading register',
     unavailableSuffix: 'not available yet',
     controlDescription: 'Choose how this page is written.',
     closeControl: 'Close register controls',
+    dismissNotice: 'Dismiss',
   },
 };
 
@@ -62,6 +64,8 @@ export interface A11yLabels {
   solidShortcut: string;
   underlineLinks: string;
   altFont: string;
+  showRegisterFallbackNotices: string;
+  registerFallbackNoticeHint: string;
   reset: string;
   close: string;
   openPanel: string;
@@ -78,6 +82,8 @@ const a11yLabels: Record<Locale, A11yLabels> = {
     solidShortcut: 'Solid background for higher contrast',
     underlineLinks: 'Underline links',
     altFont: 'Alternate font',
+    showRegisterFallbackNotices: 'Show register fallback notices',
+    registerFallbackNoticeHint: 'Manage these notices in Accessibility settings.',
     reset: 'Reset to defaults',
     close: 'Close',
     openPanel: 'Accessibility settings',

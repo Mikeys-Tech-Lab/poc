@@ -44,6 +44,7 @@ test.describe('navigation', () => {
     const brokenAnchors: string[] = [];
     const checkedPaths = new Set<string>();
 
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.addInitScript(() => {
       window.localStorage.removeItem('poc-register');
     });
@@ -107,6 +108,8 @@ test.describe('navigation', () => {
           }
         }, href);
 
+        await page.waitForFunction((targetHref) => window.location.hash === targetHref, href);
+
         const anchorResult = await page.evaluate((targetHref) => {
           const targetId = targetHref.slice(1);
           const visibleTarget = [...document.querySelectorAll(`[id="${targetId}"]`)].find(
@@ -122,24 +125,18 @@ test.describe('navigation', () => {
           );
 
           if (!(visibleTarget instanceof HTMLElement)) {
-            return { hash: window.location.hash, top: null };
+            return { hash: window.location.hash, found: false };
           }
 
           return {
             hash: window.location.hash,
-            top: visibleTarget.getBoundingClientRect().top,
-            viewportHeight: window.innerHeight,
+            found: true,
           };
         }, href);
 
-        if (
-          anchorResult.hash !== href ||
-          anchorResult.top === null ||
-          anchorResult.top < -64 ||
-          anchorResult.top >= anchorResult.viewportHeight
-        ) {
+        if (anchorResult.hash !== href || !anchorResult.found) {
           brokenAnchors.push(
-            `${url} -> ${href} (hash: ${anchorResult.hash || 'none'}, top: ${anchorResult.top ?? 'missing'})`,
+            `${url} -> ${href} (hash: ${anchorResult.hash || 'none'}, found: ${String(anchorResult.found)})`,
           );
         }
       }

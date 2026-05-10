@@ -1,0 +1,258 @@
+---
+import type {
+  DirectSourceEntry,
+  FurtherReadingEntry,
+} from '../content/structural-essays/types';
+
+interface Props {
+  sources: readonly DirectSourceEntry[];
+  furtherReading?: readonly FurtherReadingEntry[];
+}
+
+const { sources, furtherReading = [] } = Astro.props as Props;
+---
+
+<section class="poc-sources" aria-labelledby="sources">
+  <h2 id="sources">Sources</h2>
+  <p class="poc-sources-intro">
+    These entries show what each linked source hook supports and where its limits are.
+  </p>
+  <div class="poc-source-list">
+    {sources.map((source, index) => (
+      <article class="poc-source-card" id={`source-${source.id}`}>
+        <h3>
+          <a
+            class="poc-source-card__title-link"
+            href={`#ref-${source.id}`}
+            aria-label={`Jump back to reference ${index + 1} in the text`}
+          >
+            {`${index + 1}. ${source.title}`}
+          </a>
+        </h3>
+        <dl>
+          <div>
+            <dt>What this supports</dt>
+            <dd>{source.supports}</dd>
+          </div>
+          <div>
+            <dt>Limits</dt>
+            <dd>{source.limits}</dd>
+          </div>
+        </dl>
+        <div class="poc-source-card__actions">
+          <a
+            class="poc-source-card__cta"
+            href={source.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>Go to source</span>
+            <svg
+              aria-hidden="true"
+              class="poc-source-card__cta-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M14 5h5v5" />
+              <path d="M19 5l-9 9" />
+              <path d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5" />
+            </svg>
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+  {furtherReading.length > 0 && (
+    <section class="poc-further-reading" aria-labelledby="further-reading">
+      <h2 id="further-reading">Further reading</h2>
+      <p class="poc-sources-intro">
+        Deeper context that shaped the frame, without treating each entry as a direct factual anchor.
+      </p>
+      <div class="poc-source-list">
+        {furtherReading.map((entry, index) => (
+          <article class="poc-source-card poc-source-card-secondary" id={`further-reading-${entry.id}`}>
+            <h3>
+              <span class="poc-source-card__title-group">{`${index + 1}. ${entry.title}`}</span>
+            </h3>
+            <p>{entry.note}</p>
+            <div class="poc-source-card__actions">
+              <a
+                class="poc-source-card__cta"
+                href={entry.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>Go to source</span>
+                <svg
+                  aria-hidden="true"
+                  class="poc-source-card__cta-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M14 5h5v5" />
+                  <path d="M19 5l-9 9" />
+                  <path d="M19 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+</section>
+
+<style>
+  .poc-sources {
+    margin-block: 3rem 2rem;
+  }
+
+  .poc-sources-intro {
+    color: var(--poc-text-soft, var(--sl-color-gray-3));
+  }
+
+  .poc-source-list {
+    display: grid;
+    gap: 0.9rem;
+    margin-block: 1rem 1.5rem;
+  }
+
+  .poc-source-card {
+    --poc-source-hook-border: color-mix(in srgb, var(--sl-color-text-accent) 50%, transparent);
+    padding: 1rem 1.1rem;
+    border: var(--poc-box-border-width) solid var(--poc-source-hook-border);
+    border-inline-start: 0.24rem solid var(--poc-source-hook-border);
+    border-radius: 0.9rem;
+    background: var(--poc-box-note-surface);
+    backdrop-filter: blur(var(--poc-blur-sm));
+    box-shadow: var(--poc-box-shadow);
+    scroll-margin-block-start: 6rem;
+  }
+
+  .poc-source-card-secondary {
+    border-color: var(--poc-source-hook-border);
+    border-inline-start-color: var(--poc-source-hook-border);
+  }
+
+  .poc-source-card h3 {
+    margin: 0 0 0.85rem;
+    color: var(--sl-color-text-accent);
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .poc-source-card__title-link,
+  .poc-source-card__title-group {
+    color: var(--sl-color-text-accent);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+
+  .poc-source-card__title-link {
+    text-decoration: none;
+  }
+
+  .poc-source-card__title-link:hover,
+  .poc-source-card__title-link:focus-visible {
+    text-decoration: underline;
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.2em;
+  }
+
+  .poc-source-card__title-link:focus-visible {
+    outline: 2px solid var(--sl-color-text-accent);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  .poc-source-card-secondary h3 {
+    color: var(--sl-color-text-accent);
+  }
+
+  .poc-source-card dl {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+  }
+
+  .poc-source-card dt {
+    margin-block-end: 0.15rem;
+    color: var(--poc-text-strong, var(--sl-color-gray-2));
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .poc-source-card dd {
+    margin: 0;
+  }
+
+  .poc-source-card p:last-child {
+    margin-block-end: 0;
+  }
+
+  .poc-source-card__actions {
+    margin-block-start: 0.9rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .poc-source-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.85rem;
+    border: 1px solid var(--poc-box-control-border);
+    border-radius: 0.7rem;
+    background-color: var(--poc-box-control-surface);
+    color: var(--sl-color-text-accent);
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+    backdrop-filter: blur(var(--poc-blur-sm));
+    box-shadow: var(--poc-box-control-shadow);
+    transition:
+      border-color 0.15s ease,
+      background-color 0.15s ease,
+      transform 0.15s ease;
+  }
+
+  .poc-source-card__cta:hover {
+    border-color: var(--poc-box-control-hover-border);
+    background-color: var(--poc-box-control-hover-surface);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  .poc-source-card__cta:focus-visible {
+    outline: 2px solid var(--sl-color-text-accent);
+    outline-offset: 2px;
+  }
+
+  .poc-source-card__cta-icon {
+    width: 0.95em;
+    height: 0.95em;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 30rem) {
+    .poc-source-card__actions {
+      justify-content: stretch;
+    }
+
+    .poc-source-card__cta {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

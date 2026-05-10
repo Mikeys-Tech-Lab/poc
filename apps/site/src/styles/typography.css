@@ -3,6 +3,13 @@
    Reflow: code blocks may scroll horizontally; page-level horizontal
    scroll is disallowed for prose (WCAG 1.4.10). */
 
+/* Smooth scroll for in-page anchor jumps (e.g. SourceHook ↔ source card).
+   Reduced-motion handling lives in a11y.css and overrides this when the
+   user has the OS preference set or has chosen the explicit toggle. */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Inline code — subtle tint, no visible border */
 .sl-markdown-content :not(pre) > code {
   background-color: var(--poc-surface-faint);
@@ -40,6 +47,67 @@
     var(--poc-border-hover) 90%,
     transparent 100%
   );
+}
+
+/* Quotes — visible, quiet reading surfaces across atmospheric themes */
+.sl-markdown-content blockquote {
+  margin: 1.65rem 0;
+  padding: 0.95rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--poc-reading-accent) 34%, var(--poc-box-border));
+  border-inline-start: 0.2rem solid
+    color-mix(in srgb, var(--poc-reading-accent) 72%, var(--poc-border));
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--poc-box-surface) 86%, var(--poc-reading-accent) 14%);
+  color: var(--poc-text-strong);
+  box-shadow: none;
+}
+
+:root:not([data-style="solid"]) .sl-markdown-content blockquote {
+  backdrop-filter: blur(var(--poc-blur-sm));
+}
+
+.sl-markdown-content blockquote p {
+  margin: 0.55rem 0 0;
+  color: inherit;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.sl-markdown-content blockquote p:first-child {
+  margin-top: 0;
+}
+
+.sl-markdown-content .essay-intro {
+  display: grid;
+  justify-items: start;
+  gap: 0.85rem;
+  margin: 0 0 1.85rem;
+}
+
+.sl-markdown-content .essay-intro > poc-share-button,
+.sl-markdown-content .essay-intro > .reading-lede {
+  margin: 0;
+}
+
+.sl-markdown-content .essay-intro > poc-share-button {
+  justify-self: end;
+}
+
+.sl-markdown-content blockquote.reading-lede {
+  padding: 1rem 1.15rem;
+  background: color-mix(in srgb, var(--poc-box-surface) 82%, var(--poc-reading-accent) 18%);
+  box-shadow: 0 2px 10px rgb(0 0 0 / 0.08);
+}
+
+.sl-markdown-content blockquote.reading-lede p {
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+
+@media (min-width: 50rem) {
+  .sl-markdown-content .essay-intro {
+    gap: 1rem;
+  }
 }
 
 /* Code blocks — scroll within container, no page-level overflow (WCAG 1.4.10) */

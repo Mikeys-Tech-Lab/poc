@@ -1,5 +1,5 @@
+import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-
 import {
   buildRouteRedirects,
   getRegisterAvailabilityForPath,
@@ -7,6 +7,13 @@ import {
   LOCALE_PREFIX,
   ROUTE_MAP,
 } from '../route-map.js';
+
+const repoRoot = new URL('../../../../../', import.meta.url);
+const threeRegisterRouteIds = [
+  'about-how-to-inspect-this-node',
+  'signal-structural-essays',
+  'signal-ai-is-not-magic-it-is-a-cognitive-amplifier',
+] as const;
 
 describe('route map', () => {
   it('keeps route ids unique', () => {
@@ -34,7 +41,7 @@ describe('route map', () => {
     for (const entry of ROUTE_MAP) {
       expect(entry).not.toHaveProperty('hasRegisterPair');
       expect(entry.registerAvailability.defaultRegister).toBe('practitioner');
-      if (entry.id === 'signal-structural-essays') {
+      if (threeRegisterRouteIds.includes(entry.id as (typeof threeRegisterRouteIds)[number])) {
         expect(entry.registerAvailability.available).toEqual([
           'everyday',
           'orientation',
@@ -68,11 +75,68 @@ describe('route map', () => {
     });
   });
 
+  it('enables all three registers for the node inspection about page', () => {
+    expect(getRegisterAvailabilityForPath('/en-us/about/how-to-inspect-this-node/')).toEqual({
+      defaultRegister: 'practitioner',
+      available: ['everyday', 'orientation', 'practitioner'],
+      absent: {},
+    });
+  });
+
   it('enables all three registers for the structural essays overview', () => {
     expect(getRegisterAvailabilityForPath('/en-us/signals/structural-essays/')).toEqual({
       defaultRegister: 'practitioner',
       available: ['everyday', 'orientation', 'practitioner'],
       absent: {},
     });
+  });
+
+  it('enables all three registers for the first structural essay', () => {
+    expect(
+      getRegisterAvailabilityForPath(
+        '/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-cognitive-amplifier/',
+      ),
+    ).toEqual({
+      defaultRegister: 'practitioner',
+      available: ['everyday', 'orientation', 'practitioner'],
+      absent: {},
+    });
+  });
+
+  it('keeps three-register routes backed by real content entries', () => {
+    for (const id of threeRegisterRouteIds) {
+      const entry = ROUTE_MAP.find((route) => route.id === id);
+      expect(entry, `${id} should exist`).toBeDefined();
+      if (!entry) continue;
+
+      const practitionerPath = new URL(
+        `apps/site/src/content/docs/en-us/${entry.newPath}/index.mdx`,
+        repoRoot,
+      );
+      const practitionerFilePath = new URL(
+        `apps/site/src/content/docs/en-us/${entry.newPath}.mdx`,
+        repoRoot,
+      );
+      const orientationPath = new URL(
+        `apps/site/src/content/register/orientation/en-us/${entry.newPath}/index.mdx`,
+        repoRoot,
+      );
+      const orientationFilePath = new URL(
+        `apps/site/src/content/register/orientation/en-us/${entry.newPath}.mdx`,
+        repoRoot,
+      );
+      const everydayPath = new URL(
+        `apps/site/src/content/register/everyday/en-us/${entry.newPath}/index.mdx`,
+        repoRoot,
+      );
+      const everydayFilePath = new URL(
+        `apps/site/src/content/register/everyday/en-us/${entry.newPath}.mdx`,
+        repoRoot,
+      );
+
+      expect(existsSync(practitionerPath) || existsSync(practitionerFilePath)).toBe(true);
+      expect(existsSync(orientationPath) || existsSync(orientationFilePath)).toBe(true);
+      expect(existsSync(everydayPath) || existsSync(everydayFilePath)).toBe(true);
+    }
   });
 });

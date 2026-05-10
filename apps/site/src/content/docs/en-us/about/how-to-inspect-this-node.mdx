@@ -1,0 +1,127 @@
+---
+title: How to Inspect This Node
+description: A reader-facing way to inspect this public node without mistaking the repository for proof by itself.
+register: practitioner
+---
+
+import RegisterContent from '../../../../components/RegisterContent.astro';
+import ReadingBeat from '../../../../components/ReadingBeat.astro';
+import ReadingFrame from '../../../../components/ReadingFrame.astro';
+
+<RegisterContent registers={{
+  everyday: 'everyday/en-us/about/how-to-inspect-this-node',
+  orientation: 'orientation/en-us/about/how-to-inspect-this-node'
+}}>
+
+This page is about inspection, not trust.
+
+The Practice of Clarity asks a claim to carry its path: what it rests on, what it does not know, what changed, and where a reader can check the boundary. This public node is one place where that path is made visible.
+
+The repository matters because it gives the work a trace surface. It is not proof by itself. A visible file tree, public history, or rendered page can still be incomplete, mistaken, or read too quickly. Inspection means comparing surfaces and asking what each one can actually show.
+
+### What a public node can show
+
+A public node can show the materials that carry the work, the guidance that shapes how those materials are used, and the visible history of change.
+
+That matters because clarity is not only a finished statement. It is also the discipline of keeping the statement inspectable after it moves.
+
+In this node, a reader can see:
+
+- the public pages that explain the practice
+- the seed texts that hold core language steady
+- the mandate lenses that carry the practice into a context
+- the guidance that tells agents how to behave in this workspace
+- the route, register, and licensing surfaces that keep the public site coherent
+- the history through which the work has been revised
+
+Those surfaces do not all have the same authority. Public pages orient the reader. Seeds hold core language. Mandate lenses activate the practice in context. Guidance governs workspace behavior. History shows movement over time.
+
+Inspection works by respecting those differences.
+
+### What to inspect first
+
+Start with the claim the page is making.
+
+Then ask what surface would let that claim be checked.
+
+If the claim is about the public practice, the relevant surface is usually the public page and its surrounding section. If the claim is about how agents behave in this workspace, the relevant surface is the agent guidance. If the claim is about site structure, the relevant surface is the route map, sidebar, and content files that make the page reachable.
+
+Selected inspection hooks in the public repository include:
+
+- [`AGENTS.md`](https://github.com/Mikeys-Tech-Lab/poc/blob/main/AGENTS.md), for the agent behavior and workspace discipline
+- [`seeds/`](https://github.com/Mikeys-Tech-Lab/poc/tree/main/seeds), for the core texts that stabilize the practice
+- [`mandateLenses/`](https://github.com/Mikeys-Tech-Lab/poc/tree/main/mandateLenses), for mandate-specific activation surfaces
+- [`docs/architecture/workspace.md`](https://github.com/Mikeys-Tech-Lab/poc/blob/main/docs/architecture/workspace.md), for the workspace architecture map
+- [`apps/site/src/content/`](https://github.com/Mikeys-Tech-Lab/poc/tree/main/apps/site/src/content), for the public content surfaces
+- [`apps/site/src/lib/route-map.js`](https://github.com/Mikeys-Tech-Lab/poc/blob/main/apps/site/src/lib/route-map.js), for the public route and register map
+
+The public repository is available at [github.com/Mikeys-Tech-Lab/poc](https://github.com/Mikeys-Tech-Lab/poc).
+
+These hooks are starting points for inspection. They are not a demand that every reader become a maintainer, and they are not a shortcut around judgment.
+
+### How inspection stays honest
+
+Inspection becomes dishonest when the existence of a surface is treated as the same thing as verification.
+
+A repository can show that a page exists. It cannot, by itself, prove that the page is wise, complete, or correctly understood.
+
+A history can show that something changed. It cannot, by itself, prove that the change was enough.
+
+A guidance file can show an intended discipline. It cannot, by itself, prove that every future action followed it.
+
+The honest move is narrower:
+
+1. name the claim
+2. name the surface that can bear on it
+3. compare the claim with that surface
+4. mark what remains uncertain
+5. decide whether the remaining uncertainty matters for the reader's use
+
+That is inspection in the practice's sense. It keeps trace visible without pretending trace has ended the need for judgment.
+
+### What not to expect
+
+This page is not a developer guide.
+
+It does not ask the reader to operate the repository, reproduce the site locally, or turn inspection into a technical ritual. The public node is available because some readers will want a deeper trace, and because public practice should leave enough surface for challenge.
+
+Most readers can stay with the public pages. The repository is there when the question becomes structural: Where is this claim held? What governs this behavior? What changed? What boundary is declared?
+
+<ReadingBeat>
+  The repository is a trace surface. The practice is still tested by whether its
+  claims can be followed, questioned, revised, and used without losing their
+  boundaries.
+</ReadingBeat>
+
+### A bounded way to read the node
+
+Read from the public claim back toward its support.
+
+Do not start by treating every file as equally important. That creates noise, not clarity.
+
+The useful path is usually:
+
+1. read the page that made the claim
+2. identify the term, boundary, or structural promise you want to inspect
+3. look for the surface that is supposed to hold that promise
+4. compare what the surface says with what the page implied
+5. keep any mismatch visible
+
+When there is a mismatch, the practice does not require a quick defense. It requires a trace: what differs, what may explain the difference, what would need to change, and what should not be claimed until it is checked.
+
+<ReadingFrame
+  variant="next"
+  label="Continue"
+  title="Read the architecture map"
+>
+  <p>
+    To see how the public writing, seeds, mandate lenses, context seeders, and public node relate, continue to <a href="/en-us/about/architecture/">Architecture</a>.
+  </p>
+</ReadingFrame>
+
+</RegisterContent>
+
+{/*
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+*/}

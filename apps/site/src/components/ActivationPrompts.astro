@@ -2,6 +2,7 @@
 import {
   ACTIVATION_BOUNDARY,
   ACTIVATION_COMPATIBILITY,
+  ACTIVATION_DATA_BOUNDARY,
   ACTIVATION_INCOMPATIBILITY,
   GUIDED_ACTIVATION_PROMPT,
   MINIMAL_ACTIVATION_PROMPT,
@@ -36,6 +37,9 @@ const minimalOnly = variant === 'minimal-only';
     <p class="reading-frame-title">{title}</p>
     <div class="reading-frame-body activation-prompts-body">
       {intro && <p>{intro}</p>}
+      <p class="activation-prompts-warning">
+        <strong>Before you paste anything:</strong> {ACTIVATION_DATA_BOUNDARY}
+      </p>
       {!minimalOnly && <p>{ACTIVATION_COMPATIBILITY}</p>}
       {!minimalOnly && <p class="activation-prompts-note">{ACTIVATION_INCOMPATIBILITY}</p>}
       {!minimalOnly && <p class="activation-prompts-boundary">{ACTIVATION_BOUNDARY}</p>}
@@ -171,8 +175,27 @@ const minimalOnly = variant === 'minimal-only';
 
   .activation-prompts-note,
   .activation-prompts-boundary,
-  .activation-prompts-seeder-note {
+  .activation-prompts-seeder-note,
+  .activation-prompts-warning {
     margin: 0;
+  }
+
+  .activation-prompts-warning {
+    padding: 0.85rem 0.95rem;
+    border: var(--poc-box-border-width) solid var(--poc-box-boundary-border);
+    border-radius: 0.85rem;
+    border-inline-start: 0.24rem solid var(--poc-box-boundary-rail);
+    background-color: var(--poc-box-boundary-surface);
+    box-shadow: var(--poc-box-shadow);
+    color: var(--poc-text-strong);
+  }
+
+  :root:not([data-style='solid']) .activation-prompts-warning {
+    backdrop-filter: blur(var(--poc-blur-sm));
+  }
+
+  .activation-prompts-warning strong {
+    color: var(--poc-box-boundary-title);
   }
 
   .activation-prompts-note {

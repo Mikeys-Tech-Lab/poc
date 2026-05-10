@@ -25,6 +25,7 @@ export interface A11yPreferences {
   motion: A11yMotion;
   links: A11yLinks;
   font: A11yFont;
+  showRegisterFallbackNotices: boolean;
 }
 
 export const STORAGE_KEY = 'poc-a11y';
@@ -35,6 +36,7 @@ export const DEFAULTS: Readonly<A11yPreferences> = {
   motion: 'default',
   links: 'default',
   font: 'default',
+  showRegisterFallbackNotices: true,
 };
 
 export function parsePreferences(raw: unknown): A11yPreferences {
@@ -55,6 +57,7 @@ export function parsePreferences(raw: unknown): A11yPreferences {
     motion: obj.motion === 'reduce' ? 'reduce' : 'default',
     links: obj.links === 'underline' ? 'underline' : 'default',
     font: obj.font === 'alt' ? 'alt' : 'default',
+    showRegisterFallbackNotices: obj.showRegisterFallbackNotices !== false,
   };
 }
 
@@ -75,6 +78,7 @@ export function applyToDocument(prefs: A11yPreferences): void {
   el.dataset.a11yMotion = prefs.motion;
   el.dataset.a11yLinks = prefs.links;
   el.dataset.a11yFont = prefs.font;
+  el.dataset.a11yShowRegisterFallbackNotices = prefs.showRegisterFallbackNotices ? 'true' : 'false';
 }
 
 export function setPreferences(prefs: A11yPreferences): void {

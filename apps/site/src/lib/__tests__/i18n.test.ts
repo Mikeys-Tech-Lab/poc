@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getRegisterLabels, getThemeLabels } from '../i18n';
+import { getA11yLabels, getRegisterLabels, getThemeLabels } from '../i18n';
 import type { Locale } from '../locale';
 import { LOCALES } from './test-constants';
 
@@ -22,10 +22,11 @@ describe('getRegisterLabels', () => {
     expect(labels.everyday).toBe('Everyday');
     expect(labels.practitioner).toBe('Practitioner');
     expect(labels.orientation).toBe('Orientation');
-    expect(labels.everydayHelper).toBe('Starts from familiar situations');
-    expect(labels.orientationHelper).toBe('Builds the practice step by step');
-    expect(labels.practitionerHelper).toBe('Keeps the working detail and trace');
+    expect(labels.everydayHelper).toBe('Starts from what people already recognize');
+    expect(labels.orientationHelper).toBe('Builds the structure step by step');
+    expect(labels.practitionerHelper).toBe('Carries the fullest trace and detail');
     expect(labels.unavailableSuffix).toBe('not available yet');
+    expect(labels.dismissNotice).toBe('Dismiss');
   });
 
   it('falls back to en-US for unknown locale', () => {
@@ -54,5 +55,28 @@ describe('getThemeLabels', () => {
   it('falls back to en-US for unknown locale', () => {
     const labels = getThemeLabels('fr-FR' as Locale);
     expect(labels.darkAtmospheric).toBe('Dark Atmospheric');
+  });
+});
+
+describe('getA11yLabels', () => {
+  it.each(LOCALES)('returns accessibility labels for %s', (locale) => {
+    const labels = getA11yLabels(locale);
+    expect(labels).toHaveProperty('showRegisterFallbackNotices');
+    expect(labels).toHaveProperty('registerFallbackNoticeHint');
+    expect(labels).toHaveProperty('openPanel');
+  });
+
+  it('returns en-US accessibility labels', () => {
+    const labels = getA11yLabels('en-US');
+    expect(labels.showRegisterFallbackNotices).toBe('Show register fallback notices');
+    expect(labels.registerFallbackNoticeHint).toBe(
+      'Manage these notices in Accessibility settings.',
+    );
+    expect(labels.openPanel).toBe('Accessibility settings');
+  });
+
+  it('falls back to en-US for unknown locale', () => {
+    const labels = getA11yLabels('fr-FR' as Locale);
+    expect(labels.showRegisterFallbackNotices).toBe('Show register fallback notices');
   });
 });

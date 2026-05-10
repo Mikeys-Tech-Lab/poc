@@ -111,7 +111,7 @@ Guardrails:
 
 - **Calm, not performative**: avoid visual noise, attention traps, and novelty for its own sake.
 - **Generous navigation**: keep the context triad intact (sidebar = place, center = reading, right rail = structure).
-- **No epistemic hierarchy**: the register system (Practitioner/Orientation) must never hide structure. Only voice changes.
+- **No epistemic hierarchy**: the register system (Everyday/Orientation/Practitioner) must never hide structure. Only entry, pacing, and voice change.
 
 ### Density and spacing
 
@@ -127,7 +127,7 @@ Prefer a clear, repeatable vertical rhythm over one-off margin tweaks.
 - If you changed custom surfaces or controls, tune both atmospheric themes explicitly. Dark done and light inherited is not complete.
 - If the same choice appears in more than one UI surface, check that each surface exposes the same option model and selected state.
 - If a control label names an action, check that the behavior still matches the label.
-- Toggle **register**: Practitioner ↔ Orientation (confirm parity and no layout glitches).
+- Toggle **register**: check all available registers on the changed page. At minimum confirm Practitioner ↔ Orientation parity, and include Everyday on route-scoped pages where it exists.
 - Spot-check the active locale surface: `/en-us/` for the changed page or component.
 
 ## Site-wide atmospheric background

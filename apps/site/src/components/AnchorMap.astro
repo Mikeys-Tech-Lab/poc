@@ -1,0 +1,62 @@
+---
+import type { EssayAnchor } from '../content/structural-essays/types';
+import AnchorCard from './AnchorCard.astro';
+
+interface Props {
+  anchors: readonly EssayAnchor[];
+  title?: string;
+  intro?: string;
+}
+
+const {
+  anchors,
+  title = 'Ways into this essay',
+  intro = 'Choose the doorway that matches the pressure you already recognize.',
+} = Astro.props as Props;
+---
+
+<section class="poc-anchor-map" aria-labelledby="ways-into-this-essay">
+  <div class="poc-anchor-map-heading">
+    <h2 id="ways-into-this-essay">{title}</h2>
+    <p>{intro}</p>
+  </div>
+  <div class="poc-anchor-grid">
+    {anchors.map((anchor) => <AnchorCard anchor={anchor} />)}
+  </div>
+</section>
+
+<style>
+  .poc-anchor-map {
+    margin-block: 2.2rem;
+    box-sizing: border-box;
+    padding-inline: 0.12rem;
+  }
+
+  .poc-anchor-map-heading {
+    margin-block-end: 1rem;
+  }
+
+  .poc-anchor-map-heading h2 {
+    margin-block-end: 0.35rem;
+  }
+
+  .poc-anchor-map-heading p {
+    margin: 0;
+    color: var(--poc-text-soft, var(--sl-color-gray-3));
+  }
+
+  .poc-anchor-grid {
+    column-width: 21rem;
+    column-gap: 0.9rem;
+    min-width: 0;
+  }
+
+  .poc-anchor-grid > * {
+    min-width: 0;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    display: block;
+    margin-block-end: 0.9rem;
+  }
+</style>
