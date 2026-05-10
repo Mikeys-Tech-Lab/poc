@@ -24,8 +24,9 @@ flowchart TD
 
 The command asks which register the reader wants:
 
-- **Practitioner** for working detail and architectural trace
+- **Everyday** for a doorway path that starts from what people can already recognize
 - **Orientation** for a step-by-step path through the same structure
+- **Practitioner** for working detail and architectural trace
 
 The register changes the voice, not the evidence.
 

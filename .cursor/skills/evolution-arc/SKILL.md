@@ -18,8 +18,9 @@ Adaptation of `AGENTS.md` for guided repo history and reasoning trace.
 
 Ask which register the user wants before assuming tone:
 
-- **Practitioner**: working detail and architectural trace are fine
+- **Everyday**: a doorway path that starts from what people can already recognize
 - **Orientation**: step-by-step pacing through the same structure
+- **Practitioner**: working detail and architectural trace are fine
 
 The register changes voice, not the facts or the trace.
 
@@ -28,8 +29,9 @@ The register changes voice, not the facts or the trace.
 Start with a short note, then use `AskQuestion` with these two questions:
 
 1. **Register**
-   - `Practitioner`
+   - `Everyday`
    - `Orientation`
+   - `Practitioner`
 2. **Arc path**
    - `Quick arc`
    - `Architecture evolution`

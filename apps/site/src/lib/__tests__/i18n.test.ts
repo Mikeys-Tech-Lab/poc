@@ -22,9 +22,9 @@ describe('getRegisterLabels', () => {
     expect(labels.everyday).toBe('Everyday');
     expect(labels.practitioner).toBe('Practitioner');
     expect(labels.orientation).toBe('Orientation');
-    expect(labels.everydayHelper).toBe('Starts from familiar situations');
-    expect(labels.orientationHelper).toBe('Builds the practice step by step');
-    expect(labels.practitionerHelper).toBe('Keeps the working detail and trace');
+    expect(labels.everydayHelper).toBe('Starts from what people already recognize');
+    expect(labels.orientationHelper).toBe('Builds the structure step by step');
+    expect(labels.practitionerHelper).toBe('Carries the fullest trace and detail');
     expect(labels.unavailableSuffix).toBe('not available yet');
     expect(labels.dismissNotice).toBe('Dismiss');
   });
