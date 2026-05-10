@@ -6,10 +6,6 @@ register: everyday
 
 import ShareButton from '../../../../../../components/ShareButton.astro';
 import AnchorMap from '../../../../../../components/AnchorMap.astro';
-import EssayRegisterLinks from '../../../../../../components/EssayRegisterLinks.astro';
-import {
-  buildEssayHref,
-} from '../../../../../../lib/structural-essays/essay-route';
 import {
   essayAnchors,
 } from '../../../../../structural-essays/en-us/ai-is-not-magic-it-is-a-mirror-with-a-motor.data';
@@ -262,14 +258,6 @@ The orientation version names more of the structure step by step.
 
 The practitioner version keeps the full trace, source surface, and working
 detail.
-
-<EssayRegisterLinks
-  label="Continue in a different register"
-  links={[
-    { href: buildEssayHref('orientation'), label: 'Orientation' },
-    { href: buildEssayHref('practitioner', { explicit: true }), label: 'Practitioner' },
-  ]}
-/>
 
 <AnchorMap
   anchors={essayAnchors.slice(0, 4)}
