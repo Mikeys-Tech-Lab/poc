@@ -94,7 +94,7 @@ describe('route map', () => {
   it('enables all three registers for the first structural essay', () => {
     expect(
       getRegisterAvailabilityForPath(
-        '/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor/',
+        '/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-cognitive-amplifier/',
       ),
     ).toEqual({
       defaultRegister: 'practitioner',

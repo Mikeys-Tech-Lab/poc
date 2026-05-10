@@ -5,7 +5,7 @@ import {
   directSourceEntries,
   essayAnchors,
   furtherReadingEntries,
-} from '../../content/structural-essays/en-us/ai-is-not-magic-it-is-a-mirror-with-a-motor.data';
+} from '../../content/structural-essays/en-us/ai-is-not-magic-it-is-a-cognitive-amplifier.data';
 import { getRegisterAvailabilityForRouteId, getRouteById } from '../route-map.js';
 import { buildEssayHref, ESSAY_ROUTE_ID } from '../structural-essays/essay-route';
 
@@ -17,9 +17,9 @@ interface LeakPattern {
 }
 
 const firstEssayContentPaths = [
-  'apps/site/src/content/docs/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor.mdx',
-  'apps/site/src/content/register/orientation/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor.mdx',
-  'apps/site/src/content/register/everyday/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor.mdx',
+  'apps/site/src/content/docs/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-cognitive-amplifier.mdx',
+  'apps/site/src/content/register/orientation/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-cognitive-amplifier.mdx',
+  'apps/site/src/content/register/everyday/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-cognitive-amplifier.mdx',
 ] as const;
 const relatedPublicRepoDocPaths = [
   'docs/architecture/workspace.md',
@@ -277,7 +277,7 @@ describe('first structural essay publication contract', () => {
     const sourceLedger = read('apps/site/src/components/SourceLedger.astro');
     const anchorMap = read('apps/site/src/components/AnchorMap.astro');
 
-    expect(sourceHook).not.toContain('ai-is-not-magic-it-is-a-mirror-with-a-motor.data');
+    expect(sourceHook).not.toContain('ai-is-not-magic-it-is-a-cognitive-amplifier.data');
     expect(sourceHook).toContain('const { sourceId, sources = [], label }');
 
     for (const label of [

@@ -231,12 +231,12 @@ export const ROUTE_MAP = Object.freeze(
     },
     {
       id: 'signal-ai-is-not-magic-it-is-a-mirror-with-a-motor',
-      oldPath: null,
-      newPath: 'signals/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor',
+      oldPath: 'signals/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor',
+      newPath: 'signals/structural-essays/ai-is-not-magic-it-is-a-cognitive-amplifier',
       type: 'signal',
       section: 'signals-structural-essays',
       registerAvailability: THREE_REGISTER_AVAILABILITY,
-      redirect: false,
+      redirect: true,
       status: 'verified',
     },
     {

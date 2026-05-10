@@ -235,8 +235,8 @@ export default defineConfig({
                   slug: 'signals/structural-essays',
                 },
                 {
-                  label: 'AI Is Not Magic',
-                  slug: 'signals/structural-essays/ai-is-not-magic-it-is-a-mirror-with-a-motor',
+                  label: 'AI Is Not Magic. It Is a Cognitive Amplifier.',
+                  slug: 'signals/structural-essays/ai-is-not-magic-it-is-a-cognitive-amplifier',
                 },
               ],
             },

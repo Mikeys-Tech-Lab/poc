@@ -152,7 +152,7 @@ The right propagation is:
 
 ## Surfaces updated
 
-- `apps/site/src/content/structural-essays/en-us/ai-is-not-magic-it-is-a-mirror-with-a-motor.data.ts`
+- `apps/site/src/content/structural-essays/en-us/ai-is-not-magic-it-is-a-cognitive-amplifier.data.ts`
 - `apps/site/src/content/structural-essays/types.ts`
 - `apps/site/src/lib/structural-essays/essay-route.ts`
 - `apps/site/src/lib/__tests__/structural-essay-publication.test.ts`

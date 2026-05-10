@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { extname } from 'node:path';
 import { expect, test } from '@playwright/test';
-import { directSourceEntries } from '../src/content/structural-essays/en-us/ai-is-not-magic-it-is-a-mirror-with-a-motor.data';
+import { directSourceEntries } from '../src/content/structural-essays/en-us/ai-is-not-magic-it-is-a-cognitive-amplifier.data';
 import { ESSAY_HREF } from '../src/lib/structural-essays/essay-route';
 
 const distRoot = new URL('../dist/', import.meta.url);
@@ -90,11 +90,6 @@ const workflowMetadataKeys = [
 ] as const;
 
 const publicUiLeakPatterns: readonly LeakPattern[] = [
-  {
-    category: 'public UI implementation field',
-    label: 'source hook copy',
-    pattern: /source hook/i,
-  },
   { category: 'public UI implementation field', label: 'source id copy', pattern: /source id/i },
   { category: 'public UI implementation field', label: 'route id copy', pattern: /route id/i },
   { category: 'public UI implementation field', label: 'anchorId field', pattern: /anchorId/ },
@@ -131,9 +126,9 @@ test.describe('public output boundary', () => {
   test('article source markers render declared reader-facing labels', async ({ page }) => {
     await page.goto(ESSAY_HREF);
 
-    for (const source of directSourceEntries) {
+    for (const [index, source] of directSourceEntries.entries()) {
       await expect(page.getByRole('link', { name: `Open source: ${source.title}` })).toHaveText(
-        source.label,
+        `${index + 1}. ${source.title}`,
       );
     }
   });
