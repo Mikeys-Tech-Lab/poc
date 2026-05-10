@@ -182,7 +182,7 @@ export const essayAnchors: readonly EssayAnchor[] = Object.freeze([
     'When AI Enters Public Services',
     'Welfare systems, hiring tools, border systems, insurance risk scoring, health care triage, and appeal barriers.',
     'If a system affects your life, can you appeal it?',
-    'See the sources',
+    'See the source hooks',
   ),
   makeAnchor(
     'ai-faster-pressure',
@@ -198,7 +198,7 @@ export const essayAnchors: readonly EssayAnchor[] = Object.freeze([
     'When Regulation Gets Called Anti-Innovation',
     'AI Act debate, codes of practice, compliance language, startup burden claims, corporate lobbying, and innovation rhetoric.',
     'If there are no public rules, who writes the private ones?',
-    'See the sources',
+    'See the source hooks',
   ),
   makeAnchor(
     'ai-feels-like-magic',

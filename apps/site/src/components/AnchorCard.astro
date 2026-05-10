@@ -24,8 +24,8 @@ const { anchor } = Astro.props as Props;
     flex-direction: column;
     gap: 0.8rem;
     padding: 0.95rem 1rem;
-    border: 1px solid color-mix(in srgb, var(--poc-box-card-border) 72%, var(--poc-box-border));
-    border-inline-start: 0.16rem solid color-mix(in srgb, var(--poc-box-card-rail) 62%, var(--poc-border));
+    border: 0.5px solid color-mix(in srgb, var(--poc-box-card-border) 72%, var(--poc-box-border));
+    border-inline-start: 0.08rem solid color-mix(in srgb, var(--poc-box-card-rail) 62%, var(--poc-border));
     border-radius: 0.8rem;
     background: var(--poc-box-row-surface);
     backdrop-filter: blur(var(--poc-blur-sm));
@@ -72,6 +72,7 @@ const { anchor } = Astro.props as Props;
 
   .poc-anchor-card-cta {
     width: fit-content;
-    margin-block-start: auto;
+    align-self: flex-end;
+    text-align: right;
   }
 </style>

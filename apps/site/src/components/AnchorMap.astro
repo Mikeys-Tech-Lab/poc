@@ -46,19 +46,17 @@ const {
   }
 
   .poc-anchor-grid {
-    display: grid;
-    gap: 0.9rem;
+    column-width: 21rem;
+    column-gap: 0.9rem;
     min-width: 0;
-    align-items: stretch;
   }
 
   .poc-anchor-grid > * {
     min-width: 0;
-  }
-
-  @media (min-width: 44rem) {
-    .poc-anchor-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    display: block;
+    margin-block-end: 0.9rem;
   }
 </style>

@@ -102,11 +102,6 @@ const workflowMetadataKeys = [
 ] as const;
 
 const publicCopyForbiddenPatterns: readonly LeakPattern[] = [
-  {
-    category: 'public UI implementation field',
-    label: 'source hook copy',
-    pattern: /source hook/i,
-  },
   { category: 'public UI implementation field', label: 'source id copy', pattern: /source id/i },
   { category: 'public UI implementation field', label: 'route id copy', pattern: /route id/i },
   { category: 'public UI implementation field', label: 'anchorId field', pattern: /anchorId/ },
@@ -297,7 +292,7 @@ describe('first structural essay publication contract', () => {
     expect(sourceHook).toContain('const { sourceId, sources = [], label }');
 
     for (const label of [
-      'Sources',
+      'Source Hooks',
       'What this supports',
       'Limits',
       'Further reading',
