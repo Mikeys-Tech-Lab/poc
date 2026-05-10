@@ -14,6 +14,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Validate squash-merge title for Release Please
+        env:
+          HEAD_COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+        run: |
+          first_line=$(printf '%s\n' "$HEAD_COMMIT_MESSAGE" | head -n 1)
+          pattern='^(feat|fix|chore|docs|test|refactor)(\([a-z][a-z0-9-]*\))?(!)?: [a-z0-9].*( \(#[0-9]+\))?$'
+
+          if [[ ! "$first_line" =~ $pattern ]]; then
+            echo "::error title=Release Please needs a Conventional Commit title::Pushes to main are squash-merged, and Release Please parses the resulting main commit title. Got: $first_line"
+            echo "Use a PR title or merge title like: fix(infra): guard release merge titles"
+            exit 1
+          fi
+
       - name: Generate GitHub App token
         id: app-token
         if: vars.RELEASE_APP_ID != ''

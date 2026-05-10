@@ -50,6 +50,7 @@
 
 ## Checklist
 
+- [ ] PR title follows Conventional Commits (`type(scope): subject`) because squash merge feeds Release Please
 - [ ] Commits follow Conventional Commits (`type(scope): subject`)
 - [ ] Updated `docs/architecture/workspace.md` if repo structure changed
 - [ ] Build passes locally (`pnpm run build`)

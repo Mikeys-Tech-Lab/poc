@@ -56,9 +56,12 @@ The App token is the canonical approach recommended by both GitHub and Release P
 ### 5. Verify
 
 1. Push a commit to `main` (or merge a PR).
-2. Check the Release workflow run in the Actions tab.
-3. If `RELEASE_APP_ID` is set, the workflow uses the App token. Release Please PRs should now trigger CI checks (gitleaks, Shai-Hulud, CodeQL).
-4. If the variable is missing, the workflow falls back to `GITHUB_TOKEN` (status quo behavior, checks will not trigger on Release PRs).
+2. If the push came from a squash-merged PR, make sure the squash-merge title on
+   `main` is a Conventional Commit. Release Please parses that title, not the
+   branch commits in isolation.
+3. Check the Release workflow run in the Actions tab.
+4. If `RELEASE_APP_ID` is set, the workflow uses the App token. Release Please PRs should now trigger CI checks (gitleaks, Shai-Hulud, CodeQL).
+5. If the variable is missing, the workflow falls back to `GITHUB_TOKEN` (status quo behavior, checks will not trigger on Release PRs).
 
 ## Fallback behavior
 
@@ -86,6 +89,7 @@ When the App is not configured, `steps.app-token.outputs.token` is empty, so the
 | Symptom | Cause | Fix |
 |---|---|---|
 | Release Please runs but CI checks don't appear on its PR | `RELEASE_APP_ID` variable not set or App not installed | Follow setup steps above |
+| Release workflow succeeds but no Release PR or published GitHub Release appears | The squash-merge title on `main` is not a Conventional Commit, so Release Please finds no parseable release commit | Use a Conventional Commit PR title or merge title, then re-run the release path from a corrected merge or manual operator recovery |
 | "Resource not accessible by integration" | App permissions too narrow | Verify Contents, Pull requests, Issues are all Read & write |
 | "Could not create installation token" | Private key mismatch or wrong App ID | Re-generate the private key, update the secret |
 | CI checks run but `enforce_admins` blocks merge | Unrelated: checks pass, admin merge works normally | Verify all required checks are green |

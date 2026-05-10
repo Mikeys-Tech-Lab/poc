@@ -29,7 +29,8 @@ If an adapter conflicts with `AGENTS.md`, the canonical file wins. Adapters must
 - **Local operator data boundary** — populated local config is not a normal agent input; operator-mediated disclosure is the fallback when runtime facts are needed
 - **Writing constraints** — no hype, short paragraphs, precise language
 - **Tool preferences** — pnpm, Vitest, `gh` CLI, GPG signing, branch naming
-- **Workflow conventions** — GitHub Flow, Conventional Commits, feature lifecycle
+- **Workflow conventions** — GitHub Flow, Conventional Commits, squash-merge
+  safe PR titles, feature lifecycle
 - **Structural awareness** — orient before acting, ripple check, no flattening
 - **Bootstrap posture** — default workspace grounding comes from `seeds/` and `continuity/`; mandate lens seeders are loaded on demand
 - **Documentation evolution discipline** — every PR updates all affected docs, no exceptions
