@@ -21,7 +21,7 @@ const renderedLabel =
     ? `${number}. ${sourceTitle}`
     : number !== undefined
       ? String(number)
-      : (sourceTitle ?? sourceLabel ?? 'Source'));
+      : (sourceLabel ?? sourceTitle ?? 'Source'));
 ---
 
 <sup class="poc-source-reference" id={`ref-${sourceId}`}><a class="poc-source-reference__link" href={href} aria-label={accessibleLabel}><slot>{renderedLabel}</slot></a></sup>

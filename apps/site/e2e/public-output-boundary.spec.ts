@@ -1,10 +1,11 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { extname } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { expect, test } from '@playwright/test';
 import { directSourceEntries } from '../src/content/structural-essays/en-us/ai-is-not-magic-it-is-a-cognitive-amplifier.data';
 import { ESSAY_HREF } from '../src/lib/structural-essays/essay-route';
 
-const distRoot = new URL('../dist/', import.meta.url);
+const distRoot = new URL('dist/', `${pathToFileURL(process.cwd()).href}/`);
 interface LeakPattern {
   readonly category: string;
   readonly label: string;

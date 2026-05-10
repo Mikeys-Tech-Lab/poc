@@ -1,6 +1,6 @@
 import { getLocalizedRoutePath, getRouteById } from '../route-map.js';
 
-export const ESSAY_ROUTE_ID = 'signal-ai-is-not-magic-it-is-a-mirror-with-a-motor';
+export const ESSAY_ROUTE_ID = 'signal-ai-is-not-magic-it-is-a-cognitive-amplifier';
 
 const essayRoute = getRouteById(ESSAY_ROUTE_ID);
 

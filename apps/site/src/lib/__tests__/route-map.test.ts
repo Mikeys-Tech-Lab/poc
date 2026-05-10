@@ -12,7 +12,7 @@ const repoRoot = new URL('../../../../../', import.meta.url);
 const threeRegisterRouteIds = [
   'about-how-to-inspect-this-node',
   'signal-structural-essays',
-  'signal-ai-is-not-magic-it-is-a-mirror-with-a-motor',
+  'signal-ai-is-not-magic-it-is-a-cognitive-amplifier',
 ] as const;
 
 describe('route map', () => {

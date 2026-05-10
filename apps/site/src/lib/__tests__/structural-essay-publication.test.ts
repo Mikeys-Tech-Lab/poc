@@ -281,7 +281,7 @@ describe('first structural essay publication contract', () => {
     expect(sourceHook).toContain('const { sourceId, sources = [], label }');
 
     for (const label of [
-      'Source Hooks',
+      'Sources',
       'What this supports',
       'Limits',
       'Further reading',
