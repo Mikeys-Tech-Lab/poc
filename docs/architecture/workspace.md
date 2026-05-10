@@ -78,6 +78,7 @@ flowchart TD
     ScoreCard["scorecard.yml\n(OSSF)"]
     LiveScan["security-scan-live.yml\n(Nuclei)"]
     GuidanceReview["guidance-drift-review.yml\n(advisory AI reasoning layer)"]
+    PRTitleGuard["pr-title-conventional.yml\n(Conventional PR title guard)"]
   end
 
   subgraph "Release Automation"
@@ -100,6 +101,7 @@ flowchart TD
   GuidanceReview -.->|"comments on PRs"| Onboarding
   GuidanceReview -.->|"surfaces drift"| EvolutionArcGuide
   GuidanceReview -.->|"surfaces drift"| TraceClimbGuide
+  PRTitleGuard -.->|"guards squash-merge title contract"| ReleasePlease
   AppToken -->|"installation token"| ReleasePlease
   RPConfig -.->|"package definitions"| ReleasePlease
   RPManifest -.->|"current versions"| ReleasePlease
@@ -125,7 +127,7 @@ flowchart TD
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
 | `.github/` | PR template, Copilot instructions, Dependabot security config, prompt files for advisory automation | Exists |
 | `renovate.json` | Renovate routine dependency policy, grouping, automerge, and dashboard behavior | Exists |
-| `.github/workflows/` | CI/CD (deploy-dev, deploy-preview, deploy-production, release), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard, Nuclei live scan), guidance drift review | Exists |
+| `.github/workflows/` | CI/CD (deploy-dev, deploy-preview, deploy-production, release), merge-title guard (`pr-title-conventional`), security scanning (gitleaks, Shai-Hulud, CodeQL, Scorecard, Nuclei live scan), guidance drift review | Exists |
 | `release-please-config.json` | Release Please package definitions and changelog sections | Exists |
 | `.release-please-manifest.json` | Tracks current version of each versioned package | Exists |
 | `.local/` | Operator-specific local config (gitignored), not a normal agent input. Template: `.local.example.md` | Exists |

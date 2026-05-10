@@ -1,0 +1,27 @@
+name: PR Title · Conventional Commit
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, edited, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  conventional-pr-title:
+    name: Conventional PR title
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate PR title for squash-merge releases
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          title="$PR_TITLE"
+          pattern='^(feat|fix|chore|docs|test|refactor)(\([a-z][a-z0-9-]*\))?(!)?: [a-z0-9].+$'
+
+          if [[ ! "$title" =~ $pattern ]]; then
+            echo "::error title=PR title must be a Conventional Commit::This repo squash-merges to main, and Release Please parses the resulting main commit title. Set the PR title to a Conventional Commit such as: fix(infra): guard release merge titles"
+            exit 1
+          fi

@@ -30,6 +30,11 @@ Every commit message follows the format: `<type>(<scope>): <subject>`
 
 Each commit does one thing. If you need to explain two unrelated changes, split them into separate commits.
 
+Because this repo squash-merges PRs to `main`, PR titles should also use
+Conventional Commit format. The default squash-merge title becomes the commit on
+`main` that Release Please parses. Keep the title short and let the PR body
+carry the longer reasoning trace.
+
 The `git-commit` skill (`.cursor/skills/git-commit/SKILL.md`) has the full commit discipline. AI agents read it before every commit.
 
 ## Feature lifecycle
@@ -84,7 +89,7 @@ Full PR conventions: [`AGENTS.md` § Repo workflow conventions](../../AGENTS.md)
 
 You do not need to bump versions manually. Release Please handles it:
 
-1. Your PR merges to `main` with Conventional Commit messages
+1. Your PR title and the final squash-merge title on `main` use Conventional Commit format
 2. Release Please creates a version bump PR automatically
 3. When CI passes, the bump PR auto-merges
 4. GitHub Releases are published with tags

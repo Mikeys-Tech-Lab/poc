@@ -65,6 +65,11 @@ Feature PR → main (squash merge)
 
 This ensures every automated deployment in the repo corresponds to a tagged release. If production deployment is used, it should still be validated on preview first.
 
+One boundary matters here. Release Please parses the squash-merge commit title
+that lands on `main`, not the branch commits in isolation. In practice, PR
+titles need to use Conventional Commit format unless the merge title is edited
+deliberately at merge time.
+
 ## Runbook reference
 
 | Document | What it covers |

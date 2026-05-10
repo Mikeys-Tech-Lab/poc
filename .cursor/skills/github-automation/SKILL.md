@@ -117,6 +117,9 @@ If files changed are outside both versioned packages, no version bump occurs.
 #### 3e. Create PR
 
 - Push all remaining commits.
+- Title the PR as a Conventional Commit. Because this repo squash-merges to
+  `main`, the default squash-merge title becomes the commit that Release Please
+  parses.
 - Create the PR with a full reasoning trace (see PR sections below).
 - Return the PR URL to the operator.
 
@@ -138,7 +141,10 @@ Version bumps, CHANGELOGs, and GitHub Releases are automated via [Release Please
 
 **How it works:**
 
-1. Commits land on `main` via squash-merged PRs (with Conventional Commit messages).
+1. Commits land on `main` via squash-merged PRs (with Conventional Commit
+   messages). The parsed commit on `main` is the squash-merge title, so PR
+   titles must also be Conventional Commit format unless the merge title is
+   edited explicitly at merge time.
 2. Release Please analyzes the commits and determines which packages need a version bump based on which files changed.
 3. It creates or updates a **Release PR** with version bumps in `package.json` and CHANGELOG updates.
 4. When the GitHub App token is configured, auto-merge is enabled on the Release PR. CI checks run (triggered by the App token), and the PR merges automatically when all required checks pass. Without the App token, the operator merges manually.

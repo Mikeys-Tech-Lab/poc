@@ -300,6 +300,8 @@ When proposing terminal commands, prefer the tools listed here. If a tool is not
 
 - All work happens on feature branches from `main`. Do not commit on `main`.
 - Pull request with squash merge back to `main`.
+- PR titles must also use Conventional Commit format. With squash merge, the
+  default merge title becomes the commit on `main` that Release Please parses.
 - PRs include: summary, context trace (decisions/evolution/mistakes), learning trace, assumptions/limits, and test plan.
 
 ### Feature lifecycle
@@ -363,6 +365,11 @@ Optional later scopes: `release`, `website`
 ### Automated releases
 
 Version bumps, CHANGELOGs, and GitHub Releases are handled by [Release Please](https://github.com/googleapis/release-please). It reads Conventional Commits on `main`, creates a Release PR with version bumps and CHANGELOG updates, and creates GitHub Releases when the PR is merged.
+
+Because this repo uses squash merge, the Conventional Commit that matters to
+Release Please is the squash-merge title that lands on `main`. In practice,
+that means PR titles must already be Conventional Commit-safe unless the merge
+title is edited explicitly at merge time.
 
 Three packages are tracked: root `PoC` (CI/CD, security, agent guidance, docs, repo config), `apps/site` (component: `site`), and `tools/ai-guidance` (component: `ai-guidance`). Commits are attributed to packages based on which files they change.
 
