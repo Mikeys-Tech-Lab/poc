@@ -6,7 +6,7 @@
 **Scope:** content | architecture | tooling
 **Origin trace:** Operator request to publish the first structural essay across practitioner, orientation, and everyday registers without leaking private intake paths or draft workflow metadata, followed by iterative corrections around source presentation, leak-guard posture, and module placement.
 **Activation trace:** Sensible Defaults lens loaded during the final rename, review, and reflection pass. The lens was used to expose hidden delivery work across QA, security, documentation, and module-boundary cleanup.
-**Related PR:** pending
+**Related PR:** https://github.com/Mikeys-Tech-Lab/poc/pull/191
 
 ## Why this record exists
 
@@ -20,6 +20,13 @@ It also exposed a second pattern. A working implementation can still place data
 in the wrong layer. The essay initially shipped with public support data in
 `src/lib/`, then had to be refactored so route mechanics stayed in `lib` while
 public essay support data moved into the content layer.
+
+It later exposed a third pattern. Close-phase publication cleanup can still
+surface durable lessons after the main architecture fix looks complete. In this
+branch that meant deciding whether the retired essay frame should survive in
+redirect and route-id compatibility surfaces, and tightening a flaky
+hash-navigation check so CI measured the navigation contract rather than smooth
+scroll timing.
 
 ## What was observed
 
@@ -52,6 +59,16 @@ public essay support data moved into the content layer.
 - A remaining essay-specific helper filename also became misleading after the
   data was moved. Renaming it to `essay-route.ts` made the residual
   responsibility explicit.
+- The later concept migration showed that public framing changes can leave
+  residue outside prose. The old essay frame still existed in the redirect path
+  and stable internal route id until a separate keep-or-remove decision was
+  made.
+- The final failing PR check came from navigation-test scope, not a broken
+  public page. The broad hash-link sweep was treating scroll landing under
+  smooth scrolling as a generic integrity check.
+- The correction worked best when the responsibilities were split cleanly:
+  broad navigation verifies hash resolution and visible target existence, while
+  focused ToC tests verify landed heading position under reduced motion.
 
 ## Missed assumptions
 
@@ -73,6 +90,13 @@ public essay support data moved into the content layer.
 - The branch also assumed atomicity would emerge naturally from iterative
   cleanup. It did not. Without explicit commit boundaries, correction classes
   started to bundle together.
+- It was also assumed the old essay redirect and internal route id could remain
+  as neutral compatibility scaffolding after the public concept changed. In this
+  branch they still carried the retired frame and needed an explicit operator
+  decision.
+- It was assumed a broad navigation sweep could safely assert scroll landing
+  across smooth-scrolling pages. That overfit the test to motion timing instead
+  of the structural navigation contract.
 
 ## Missed guidance
 
@@ -88,10 +112,17 @@ What was missing at execution time was an explicit essay-support-data pattern:
 The branch resolved that pattern concretely even though the rule was not named
 up front.
 
+The branch also lacked an explicit navigation-test scope rule:
+
+- broad navigation sweeps should verify path or hash resolution plus target
+  existence
+- focused specs should own scroll landing behavior, ideally under reduced
+  motion when the product already supports that accessibility contract
+
 ## Structural gap
 
-This belongs to a module-ownership, publication-boundary, and commit-discipline
-gap.
+This belongs to a module-ownership, migration-completeness,
+publication-boundary, navigation-test-scope, and commit-discipline gap.
 
 The failure mode is:
 
@@ -110,6 +141,15 @@ like content work, but in practice it required coordinated changes across
 content, components, tests, secrets posture, review, and architecture
 description.
 
+A later close-phase pass exposed a second reusable failure mode:
+
+- copy and file renames land
+- compatibility redirects and internal ids still carry the retired frame
+- CI then fails in a broad navigation sweep because the test is asserting
+  motion semantics rather than structural navigation integrity
+- close-phase energy gets spent triaging false-negative timing behavior instead
+  of simply confirming the publication contract
+
 ## Proposed evolution
 
 - Treat each structural essay as a publication unit with its own locale-scoped
@@ -119,10 +159,19 @@ description.
   longer essay-specific.
 - Keep source ledgers, further reading, and anchor maps as shared public support
   data, not MDX frontmatter and not `src/lib/` payloads.
+- When a public concept migration changes titles, slugs, or canonical framing,
+  decide explicitly whether redirects and stable internal ids are compatibility
+  surfaces to keep or conceptual residue to remove. Do not leave the branch
+  half-migrated by accident.
 - Keep private leak patterns secret-backed in CI and operator-local contexts,
   with deterministic tests scanning both source and generated output.
 - Keep QA review explicitly separate from deterministic CI. CI proves structure.
   QA/source review still owns readability, grounding, and public fit.
+- Keep broad navigation sweeps structural: same-origin paths resolve, hashes
+  update, and visible targets exist.
+- Keep scroll-landing assertions in focused specs, and run them under reduced
+  motion when the product already exposes that path as a first-class
+  accessibility contract.
 - For future essay branches, isolate correction classes into separate commits:
   module ownership, layout stability, source-grounding, and QA/readability
   should not share a cleanup commit unless the dependency is inseparable.
@@ -155,14 +204,18 @@ The right propagation is:
 - `apps/site/src/content/structural-essays/en-us/ai-is-not-magic-it-is-a-cognitive-amplifier.data.ts`
 - `apps/site/src/content/structural-essays/types.ts`
 - `apps/site/src/lib/structural-essays/essay-route.ts`
+- `apps/site/src/lib/route-map.js`
 - `apps/site/src/lib/__tests__/structural-essay-publication.test.ts`
+- `apps/site/e2e/navigation.spec.ts`
+- `apps/site/e2e/register-toggle.spec.ts`
 - `apps/site/e2e/public-output-boundary.spec.ts`
 - `docs/architecture/workspace.md`
 - `docs/guidance/evolution-records/2026-05-09-structural-essay-publication-boundary-and-module-ownership.md`
 
 ## Verification
 
-Verify the boundary through deterministic checks and explicit review:
+Verify the boundary and navigation contract through deterministic checks and
+explicit review:
 
 - `pnpm lint`
 - `pnpm test`
@@ -175,7 +228,8 @@ Verify the boundary through deterministic checks and explicit review:
 ## PR-visible learning trace
 
 This branch added the first structural essay and then had to clean up the
-boundary, layout, and grounding issues the publication exposed.
+boundary, layout, grounding, migration-residue, and navigation-test-scope
+issues the publication exposed.
 
 The durable lesson is that shared public essay support data belongs in the
 content layer, while route mechanics belong in `src/lib/`. The branch also
@@ -194,6 +248,13 @@ in the wrong module layer, QA/readability was underestimated after technical
 verification, layout stability needed later fixes, and source-grounding needed a
 late NIST correction. Future essay branches should preserve the same structural
 lessons in both the file layout and the commit history.
+
+The late close pass added two more reusable lessons. First, concept migrations
+need an explicit keep-or-retire decision for redirects and internal ids. Second,
+broad navigation E2E sweeps should verify hash resolution and target presence,
+while scroll landing belongs in focused reduced-motion specs. That split turned
+the red PR check back into a trustworthy guardrail instead of a smooth-scroll
+timing trap.
 
 <!--
 Copyright © 2026 Mikey Sebastian Drozd.
