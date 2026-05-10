@@ -42,6 +42,7 @@ If this guidance is used to police workers, evaluate individuals, or create over
 - Prefer asking for missing context using structured questions over guessing.
 - Follow repo licensing (MIT for code/tooling, CC BY 4.0 for authored content).
 - When uncertain about a tool, command, or API, verify the local version/config/help output before asserting. If not checkable, produce a manual checklist and mark the result unknown. Do not infer capability.
+- Load the governing skill before performing actions it governs. A skill being listed as available is not the same as having read it. Before any `git commit`, load `.cursor/skills/git-commit/SKILL.md` and follow its pre-commit checklist (lint first, then build/tests as scoped). Before opening a PR, load `.cursor/skills/github-automation/SKILL.md`. Before deployment work, load `.cursor/skills/infomaniak-deployment/SKILL.md`. The workspace deliberately does not enforce these via blocking hooks (see Safety boundary), so the loading discipline must be carried by the agent.
 
 ## Licensing surfaces
 
