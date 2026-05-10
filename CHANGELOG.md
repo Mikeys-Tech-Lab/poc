@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.14.1...PoC-v1.14.2) (2026-05-10)
+
+
+### Bug Fixes
+
+* **infra:** guard release automation merge titles ([#192](https://github.com/Mikeys-Tech-Lab/poc/issues/192)) ([476f66f](https://github.com/Mikeys-Tech-Lab/poc/commit/476f66f94746b3f158c4a28a2e72f8827d3832a0))
+
 ## [1.14.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.14.0...PoC-v1.14.1) (2026-05-09)
 
 
