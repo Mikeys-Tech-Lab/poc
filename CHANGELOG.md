@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.3](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.14.2...PoC-v1.14.3) (2026-05-10)
+
+
+### Bug Fixes
+
+* **astro:** keep anchor cards intact across columns ([#194](https://github.com/Mikeys-Tech-Lab/poc/issues/194)) ([204e5d0](https://github.com/Mikeys-Tech-Lab/poc/commit/204e5d0805012353a968e38f5abd15d3803f6faa))
+
 ## [1.14.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.14.1...PoC-v1.14.2) (2026-05-10)
 
 
