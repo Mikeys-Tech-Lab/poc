@@ -196,24 +196,55 @@
   --poc-text-muted: rgb(255 255 255 / 0.88);
   --poc-text-soft: rgb(255 255 255 / 0.76);
 
-  /* Register atmospheric tint — practitioner uses the base palette,
-     orientation shifts to a greenish pastel. Only the tint channel changes;
-     surfaces, borders, and blur stay the same. */
+  /* Register atmospheric tint — same intensity across registers, hue rotates
+     sage → teal → sapphire to suggest arriving, settling, going deeper.
+     Only tint and accent change; surfaces, borders, and blur stay the same.
+     Practitioner overrides below so the depth cue is deliberate, not implicit. */
   --poc-register-tint: var(--poc-base);
   /* Register control accent should be distinct from the theme control. */
   --poc-register-accent: var(--sl-color-blue-high);
 }
 
+:root[data-register="everyday"] {
+  /* Frappé sage — arrival, calm garden */
+  --poc-register-tint: 50 58 64;
+  --poc-register-accent: #b5cf95;
+  --poc-reading-accent: rgb(166 209 137 / 0.55);
+}
+
+:root[data-register="everyday"][data-theme="light"] {
+  /* Latte sage — soft pastel green */
+  --poc-register-tint: 235 240 236;
+  --poc-register-accent: #5ea04e;
+  --poc-reading-accent: rgb(94 160 78 / 0.42);
+}
+
 :root[data-register="orientation"] {
-  /* Catppuccin Frappé green channel: soft sage */
-  --poc-register-tint: 56 70 56;
-  --poc-register-accent: #a6d189;
+  /* Frappé teal — clearing, looking around */
+  --poc-register-tint: 48 58 68;
+  --poc-register-accent: #81c8be;
+  --poc-reading-accent: rgb(129 200 190 / 0.55);
 }
 
 :root[data-register="orientation"][data-theme="light"] {
-  /* Catppuccin Latte green channel: warm pastel */
-  --poc-register-tint: 225 240 225;
-  --poc-register-accent: #40a02b;
+  /* Latte teal — pale lagoon */
+  --poc-register-tint: 232 238 240;
+  --poc-register-accent: #179299;
+  --poc-reading-accent: rgb(23 146 153 / 0.38);
+}
+
+:root[data-register="practitioner"] {
+  /* Frappé sapphire — study, depth */
+  --poc-register-tint: 47 54 75;
+  --poc-register-accent: #8caaee;
+  --poc-reading-accent: rgb(140 170 238 / 0.55);
+}
+
+:root[data-register="practitioner"][data-theme="light"] {
+  /* Latte sapphire — quiet study light */
+  --poc-register-tint: 233 237 244;
+  --poc-register-accent: #2d5fa3;
+  --poc-reading-accent: rgb(45 95 163 / 0.34);
 }
 
 :root[data-theme="light"] {

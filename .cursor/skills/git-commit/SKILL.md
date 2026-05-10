@@ -7,7 +7,12 @@ description: Enforces proper Conventional Commits, atomic commit discipline, and
 
 ## When to use
 
-Before every `git commit`. No exceptions.
+Before every `git commit`. No exceptions. This skill must be loaded
+(not merely listed as available) before staging or committing — see
+`AGENTS.md` § How agents should behave in this repo. Skipping it after
+running only `pnpm build` is a known recurring failure mode; see
+`docs/guidance/evolution-records/2026-05-10-pre-commit-lint-skill-load-recurrence.md`
+and `docs/guidance/agent-pre-commit-verification.md`.
 
 ## Pre-commit checklist
 

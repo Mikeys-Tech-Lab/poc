@@ -106,7 +106,3 @@ body {
 :root[data-theme="dark"]:not([data-style="solid"]) .card .title {
   color: var(--poc-text-strong);
 }
-
-:root[data-theme="dark"]:not([data-style="solid"]) .sidebar-content [aria-current="page"] {
-  color: #303446;
-}

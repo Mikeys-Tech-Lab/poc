@@ -71,6 +71,21 @@ mobile-starlight-toc .dropdown {
   backdrop-filter: blur(var(--poc-blur-xl));
 }
 
+/* Active sidebar item — register-aware highlight.
+   Starlight's default uses the global accent (Catppuccin pink/maroon family);
+   we replace it with the current register's accent so "you are here" is told
+   in the same hue family as the rest of the register's atmosphere. Applies
+   across all themes, styles, and viewports because it consumes only register
+   tokens (which are themed). */
+.sidebar-content a[aria-current="page"] {
+  background-color: color-mix(in srgb, var(--poc-register-accent) 45%, transparent);
+  color: rgb(255 255 255 / 0.96);
+}
+
+:root[data-theme="light"] .sidebar-content a[aria-current="page"] {
+  color: #4c4f69;
+}
+
 .mobile-preferences {
   border-top-color: transparent;
 }

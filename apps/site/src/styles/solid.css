@@ -61,46 +61,139 @@
   --poc-border-hover: #bcc0cc;
 }
 
-/* ── Orientation register — solid dark ── */
+/* Register-tinted solid surfaces follow the same hue arc as the atmospheric
+   tints in tokens.css: everyday = sage, orientation = teal, practitioner =
+   sapphire. Intensity is matched across registers so the depth cue comes from
+   hue rotation, not saturation jumps. */
+
+/* ── Everyday register — solid dark (sage) ── */
+:root[data-style="solid"][data-register="everyday"] body {
+  --sl-color-bg: #303746;
+  --sl-color-bg-nav: #2a3038;
+  --sl-color-bg-sidebar: #2a3038;
+}
+
+:root[data-style="solid"][data-register="everyday"] {
+  --poc-surface-faint: #363c46;
+  --poc-surface: #3c4448;
+  --poc-surface-mid: #3c4448;
+  --poc-surface-raised: #475052;
+  --poc-surface-heavy: #3c4448;
+  --poc-surface-dense: #475052;
+  --poc-surface-panel: #3c4448;
+
+  --poc-border: #475052;
+  --poc-border-subtle: #3c4448;
+  --poc-border-faint: #3c4448;
+  --poc-border-hover: #525b5c;
+}
+
+/* ── Everyday register — solid light (sage) ── */
+:root[data-style="solid"][data-register="everyday"][data-theme="light"] body {
+  --sl-color-bg: #ebefea;
+  --sl-color-bg-nav: #e2e8e1;
+  --sl-color-bg-sidebar: #e2e8e1;
+}
+
+:root[data-style="solid"][data-register="everyday"][data-theme="light"] {
+  --poc-surface-faint: #e2e8e1;
+  --poc-surface: #d8e0d6;
+  --poc-surface-mid: #d8e0d6;
+  --poc-surface-raised: #cad4c8;
+  --poc-surface-heavy: #d8e0d6;
+  --poc-surface-dense: #cad4c8;
+  --poc-surface-panel: #d8e0d6;
+
+  --poc-border: #cad4c8;
+  --poc-border-subtle: #d8e0d6;
+  --poc-border-faint: #d8e0d6;
+  --poc-border-hover: #b8c4b6;
+}
+
+/* ── Orientation register — solid dark (teal) ── */
 :root[data-style="solid"][data-register="orientation"] body {
-  --sl-color-bg: #2e3a2e;
-  --sl-color-bg-nav: #283228;
-  --sl-color-bg-sidebar: #283228;
+  --sl-color-bg: #2e3640;
+  --sl-color-bg-nav: #282f38;
+  --sl-color-bg-sidebar: #282f38;
 }
 
 :root[data-style="solid"][data-register="orientation"] {
-  --poc-surface-faint: #344034;
-  --poc-surface: #3a4a3a;
-  --poc-surface-mid: #3a4a3a;
-  --poc-surface-raised: #445544;
-  --poc-surface-heavy: #3a4a3a;
-  --poc-surface-dense: #445544;
-  --poc-surface-panel: #3a4a3a;
+  --poc-surface-faint: #333d48;
+  --poc-surface: #39444f;
+  --poc-surface-mid: #39444f;
+  --poc-surface-raised: #44505c;
+  --poc-surface-heavy: #39444f;
+  --poc-surface-dense: #44505c;
+  --poc-surface-panel: #39444f;
 
-  --poc-border: #445544;
-  --poc-border-subtle: #3a4a3a;
-  --poc-border-faint: #3a4a3a;
-  --poc-border-hover: #506050;
+  --poc-border: #44505c;
+  --poc-border-subtle: #39444f;
+  --poc-border-faint: #39444f;
+  --poc-border-hover: #4f5c69;
 }
 
-/* ── Orientation register — solid light ── */
+/* ── Orientation register — solid light (teal) ── */
 :root[data-style="solid"][data-register="orientation"][data-theme="light"] body {
-  --sl-color-bg: #e8f0e8;
-  --sl-color-bg-nav: #dde8dd;
-  --sl-color-bg-sidebar: #dde8dd;
+  --sl-color-bg: #e6ecee;
+  --sl-color-bg-nav: #dde4e6;
+  --sl-color-bg-sidebar: #dde4e6;
 }
 
 :root[data-style="solid"][data-register="orientation"][data-theme="light"] {
-  --poc-surface-faint: #dde8dd;
-  --poc-surface: #d0ddd0;
-  --poc-surface-mid: #d0ddd0;
-  --poc-surface-raised: #c2d2c2;
-  --poc-surface-heavy: #d0ddd0;
-  --poc-surface-dense: #c2d2c2;
-  --poc-surface-panel: #d0ddd0;
+  --poc-surface-faint: #dde4e6;
+  --poc-surface: #d2dadd;
+  --poc-surface-mid: #d2dadd;
+  --poc-surface-raised: #c2ccd0;
+  --poc-surface-heavy: #d2dadd;
+  --poc-surface-dense: #c2ccd0;
+  --poc-surface-panel: #d2dadd;
 
-  --poc-border: #c2d2c2;
-  --poc-border-subtle: #d0ddd0;
-  --poc-border-faint: #d0ddd0;
-  --poc-border-hover: #b0c4b0;
+  --poc-border: #c2ccd0;
+  --poc-border-subtle: #d2dadd;
+  --poc-border-faint: #d2dadd;
+  --poc-border-hover: #aebac0;
+}
+
+/* ── Practitioner register — solid dark (sapphire) ── */
+:root[data-style="solid"][data-register="practitioner"] body {
+  --sl-color-bg: #2f3346;
+  --sl-color-bg-nav: #292d3c;
+  --sl-color-bg-sidebar: #292d3c;
+}
+
+:root[data-style="solid"][data-register="practitioner"] {
+  --poc-surface-faint: #353a4f;
+  --poc-surface: #3b4056;
+  --poc-surface-mid: #3b4056;
+  --poc-surface-raised: #474d65;
+  --poc-surface-heavy: #3b4056;
+  --poc-surface-dense: #474d65;
+  --poc-surface-panel: #3b4056;
+
+  --poc-border: #474d65;
+  --poc-border-subtle: #3b4056;
+  --poc-border-faint: #3b4056;
+  --poc-border-hover: #525874;
+}
+
+/* ── Practitioner register — solid light (sapphire) ── */
+:root[data-style="solid"][data-register="practitioner"][data-theme="light"] body {
+  --sl-color-bg: #e6e9f0;
+  --sl-color-bg-nav: #dce0ea;
+  --sl-color-bg-sidebar: #dce0ea;
+}
+
+:root[data-style="solid"][data-register="practitioner"][data-theme="light"] {
+  --poc-surface-faint: #dce0ea;
+  --poc-surface: #d0d6e2;
+  --poc-surface-mid: #d0d6e2;
+  --poc-surface-raised: #c0c8d8;
+  --poc-surface-heavy: #d0d6e2;
+  --poc-surface-dense: #c0c8d8;
+  --poc-surface-panel: #d0d6e2;
+
+  --poc-border: #c0c8d8;
+  --poc-border-subtle: #d0d6e2;
+  --poc-border-faint: #d0d6e2;
+  --poc-border-hover: #aab3c8;
 }
