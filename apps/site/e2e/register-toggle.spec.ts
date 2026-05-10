@@ -55,16 +55,19 @@ test.describe('register title control', () => {
     expect(page.url()).toContain('register=everyday');
   });
 
-  test('known unavailable registers fall back visibly to the default', async ({ page }) => {
+  test('unavailable everyday requests render orientation and preserve the request', async ({
+    page,
+  }) => {
     await page.goto('/en-us/about/what-this-is/?register=everyday');
 
-    await expect(page.locator('[data-register-content="practitioner"]')).toBeVisible();
-    await expect(page.locator('.label-practitioner')).toBeVisible();
+    await expect(page.locator('[data-register-content="orientation"]')).toBeVisible();
+    await expect(page.locator('[data-register-content="practitioner"]')).not.toBeVisible();
+    await expect(page.locator('.label-orientation')).toBeVisible();
     await openRegisterPanel(page);
     await expect(page.locator('[data-register-fallback]')).toHaveText(
-      'Everyday is not available for this page yet.',
+      'Everyday is not available for this page yet. Showing Orientation instead.',
     );
-    expect(page.url()).not.toContain('register=everyday');
+    expect(page.url()).toContain('register=everyday');
   });
 
   test('everyday is visible as unavailable in the title panel', async ({ page }) => {

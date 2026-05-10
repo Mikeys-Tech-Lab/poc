@@ -4,6 +4,7 @@ import { getA11yLabels } from '../lib/i18n';
 
 const locale = getLocaleFromPath(Astro.url?.pathname ?? '/');
 const t = getA11yLabels(locale);
+const dialogTitleId = 'poc-a11y-dialog-title';
 ---
 
 <poc-a11y-panel>
@@ -17,10 +18,10 @@ const t = getA11yLabels(locale);
 		</svg>
 	</button>
 
-	<dialog class="a11y-dialog">
+	<dialog class="a11y-dialog" aria-labelledby={dialogTitleId}>
 		<div class="a11y-dialog-inner">
 			<div class="a11y-header">
-				<h2>{t.panelTitle}</h2>
+				<h2 id={dialogTitleId}>{t.panelTitle}</h2>
 				<button type="button" class="a11y-close" aria-label={t.close}>
 					<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 						<line x1="18" y1="6" x2="6" y2="18" />
@@ -59,6 +60,11 @@ const t = getA11yLabels(locale);
 				<label class="a11y-toggle">
 					<span>{t.underlineLinks}</span>
 					<input type="checkbox" data-a11y-control="links" />
+				</label>
+
+				<label class="a11y-toggle">
+					<span>{t.showRegisterFallbackNotices}</span>
+					<input type="checkbox" data-a11y-control="showRegisterFallbackNotices" />
 				</label>
 
 				<label class="a11y-toggle">
@@ -165,6 +171,14 @@ const t = getA11yLabels(locale);
 				const key = input.dataset.a11yControl!;
 				if (key === 'solid') {
 					input.addEventListener('change', () => setSolidTheme(input.checked));
+				} else if (key === 'showRegisterFallbackNotices') {
+					input.addEventListener('change', () => {
+						this.prefs = {
+							...this.prefs,
+							showRegisterFallbackNotices: input.checked,
+						};
+						setPreferences(this.prefs);
+					});
 				} else if (input.type === 'checkbox') {
 					input.addEventListener('change', () => {
 						this.prefs = {
@@ -202,6 +216,8 @@ const t = getA11yLabels(locale);
 				const key = input.dataset.a11yControl!;
 				if (key === 'solid') {
 					input.checked = isSolidTheme();
+				} else if (key === 'showRegisterFallbackNotices') {
+					input.checked = this.prefs.showRegisterFallbackNotices;
 				} else if (key === 'text') {
 					continue;
 				} else if (input.type === 'checkbox') {

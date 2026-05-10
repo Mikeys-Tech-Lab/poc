@@ -41,8 +41,9 @@ individual essays early or exposing preparation context.
    alternate register entry while existing orientation-only pages continue to
    work.
 7. Preserve the query-parameter fallback contract. If a reader asks for
-   `?register=everyday` on a route where everyday is not available, the site
-   falls back to practitioner and shows the unavailable state.
+   `?register=everyday` on a route where everyday is not available and
+   orientation exists, the site renders orientation, preserves
+   `?register=everyday`, and shows the visible fallback state.
 
 ## Alternatives considered
 

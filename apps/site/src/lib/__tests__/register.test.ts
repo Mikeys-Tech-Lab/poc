@@ -4,13 +4,42 @@ import {
   DEFAULT_REGISTER,
   getRegister,
   getRegisterAvailability,
+  getRegisterClientMetadata,
   loadRegister,
   parseRegister,
   READING_REGISTERS,
   resolveRegister,
   STORAGE_KEY,
   setRegister,
+  shouldShowRegisterFallbackNotice,
 } from '../register';
+
+const EVERYDAY_BASE_MESSAGE = 'Everyday is not available for this page yet.';
+const EVERYDAY_FALLBACK_MESSAGE =
+  'Everyday is not available for this page yet. Showing Orientation instead.';
+
+const ORIENTATION_FALLBACK_AVAILABILITY = {
+  defaultRegister: 'practitioner',
+  available: ['orientation', 'practitioner'],
+  absent: {
+    everyday: EVERYDAY_BASE_MESSAGE,
+  },
+} as const;
+
+const ALL_REGISTER_AVAILABILITY = {
+  defaultRegister: 'practitioner',
+  available: ['everyday', 'orientation', 'practitioner'],
+  absent: {},
+} as const;
+
+const PRACTITIONER_ONLY_AVAILABILITY = {
+  defaultRegister: 'practitioner',
+  available: ['practitioner'],
+  absent: {
+    everyday: EVERYDAY_BASE_MESSAGE,
+    orientation: 'Orientation is not available for this page yet.',
+  },
+} as const;
 
 const store = new Map<string, string>();
 const mockLocalStorage = {
@@ -19,17 +48,29 @@ const mockLocalStorage = {
   removeItem: (key: string) => store.delete(key),
 };
 
+const setAvailabilityOnDocument = (availability: {
+  defaultRegister: string;
+  available: readonly string[];
+  absent: Record<string, string>;
+}): void => {
+  document.documentElement.dataset.registerDefault = availability.defaultRegister;
+  document.documentElement.dataset.registerAvailable = availability.available.join(',');
+  document.documentElement.dataset.registerAbsent = JSON.stringify(availability.absent);
+};
+
 beforeEach(() => {
   store.clear();
   vi.stubGlobal('localStorage', mockLocalStorage);
   history.replaceState(null, '', '/en-us/about/what-this-is/');
   delete document.documentElement.dataset.register;
+  delete document.documentElement.dataset.registerResolved;
   delete document.documentElement.dataset.registerDefault;
   delete document.documentElement.dataset.registerAvailable;
   delete document.documentElement.dataset.registerAbsent;
   delete document.documentElement.dataset.registerFallbackReason;
   delete document.documentElement.dataset.registerFallbackMessage;
   delete document.documentElement.dataset.registerRequested;
+  delete document.documentElement.dataset.a11yShowRegisterFallbackNotices;
 });
 
 describe('parseRegister', () => {
@@ -76,7 +117,7 @@ describe('getRegisterAvailability', () => {
       defaultRegister: 'practitioner',
       available: ['practitioner', 'orientation'],
       absent: {
-        everyday: 'Everyday is not available for this page yet.',
+        everyday: EVERYDAY_BASE_MESSAGE,
       },
     });
   });
@@ -103,13 +144,44 @@ describe('resolveRegister', () => {
     expect(resolveRegister('orientation').register).toBe('orientation');
   });
 
-  it('falls back visibly for a known unavailable register', () => {
-    const result = resolveRegister('everyday');
+  it('keeps everyday when it is available', () => {
+    const result = resolveRegister('everyday', ALL_REGISTER_AVAILABILITY);
 
-    expect(result.register).toBe('practitioner');
-    expect(result.requested).toBe('everyday');
-    expect(result.reason).toBe('unavailable');
-    expect(result.message).toBe('Everyday is not available for this page yet.');
+    expect(result).toMatchObject({
+      register: 'everyday',
+      resolved: 'everyday',
+      requested: 'everyday',
+      fallbackReason: null,
+      fallbackMessage: null,
+    });
+  });
+
+  it('uses orientation when everyday is unavailable but orientation exists', () => {
+    const result = resolveRegister('everyday', ORIENTATION_FALLBACK_AVAILABILITY);
+
+    expect(result).toMatchObject({
+      register: 'orientation',
+      resolved: 'orientation',
+      requested: 'everyday',
+      reason: 'unavailable',
+      fallbackReason: 'unavailable',
+      message: EVERYDAY_FALLBACK_MESSAGE,
+      fallbackMessage: EVERYDAY_FALLBACK_MESSAGE,
+    });
+  });
+
+  it('falls back to the default register when orientation is also unavailable', () => {
+    const result = resolveRegister('everyday', PRACTITIONER_ONLY_AVAILABILITY);
+
+    expect(result).toMatchObject({
+      register: 'practitioner',
+      resolved: 'practitioner',
+      requested: 'everyday',
+      reason: 'unavailable',
+      fallbackReason: 'unavailable',
+      message: EVERYDAY_BASE_MESSAGE,
+      fallbackMessage: EVERYDAY_BASE_MESSAGE,
+    });
   });
 
   it('falls back visibly for an unknown register', () => {
@@ -118,12 +190,19 @@ describe('resolveRegister', () => {
     expect(result.register).toBe('practitioner');
     expect(result.requested).toBeNull();
     expect(result.reason).toBe('unknown');
+    expect(result.fallbackReason).toBe('unknown');
   });
 });
 
 describe('getRegister', () => {
   it('reads from data-register attribute', () => {
     document.documentElement.dataset.register = 'orientation';
+    expect(getRegister()).toBe('orientation');
+  });
+
+  it('prefers the resolved metadata when present', () => {
+    document.documentElement.dataset.register = 'practitioner';
+    document.documentElement.dataset.registerResolved = 'orientation';
     expect(getRegister()).toBe('orientation');
   });
 
@@ -142,9 +221,10 @@ describe('loadRegister', () => {
     expect(loadRegister()).toBe('practitioner');
   });
 
-  it('falls back when localStorage points to an unavailable register', () => {
+  it('resolves stored everyday to orientation when that is the route fallback', () => {
+    setAvailabilityOnDocument(ORIENTATION_FALLBACK_AVAILABILITY);
     store.set(STORAGE_KEY, 'everyday');
-    expect(loadRegister()).toBe('practitioner');
+    expect(loadRegister()).toBe('orientation');
   });
 });
 
@@ -159,7 +239,7 @@ describe('setRegister', () => {
     expect(store.get(STORAGE_KEY)).toBe('orientation');
   });
 
-  it('dispatches poc:register-change event', () => {
+  it('dispatches poc:register-change event with requested and resolved metadata', () => {
     const handler = vi.fn();
     window.addEventListener('poc:register-change', handler);
 
@@ -169,9 +249,12 @@ describe('setRegister', () => {
     const event = handler.mock.calls[0][0] as CustomEvent;
     expect(event.detail).toMatchObject({
       register: 'orientation',
+      resolved: 'orientation',
       requested: 'orientation',
       reason: null,
+      fallbackReason: null,
       message: null,
+      fallbackMessage: null,
     });
 
     window.removeEventListener('poc:register-change', handler);
@@ -188,15 +271,50 @@ describe('setRegister', () => {
     expect(window.location.search).not.toContain('register');
   });
 
-  it('falls back visibly when setting an unavailable register', () => {
+  it('preserves requested everyday in the URL when orientation is rendered instead', () => {
+    setAvailabilityOnDocument(ORIENTATION_FALLBACK_AVAILABILITY);
+
     setRegister('everyday');
 
-    expect(document.documentElement.dataset.register).toBe('practitioner');
+    expect(document.documentElement.dataset.register).toBe('orientation');
+    expect(document.documentElement.dataset.registerResolved).toBe('orientation');
     expect(document.documentElement.dataset.registerRequested).toBe('everyday');
     expect(document.documentElement.dataset.registerFallbackReason).toBe('unavailable');
     expect(document.documentElement.dataset.registerFallbackMessage).toBe(
-      'Everyday is not available for this page yet.',
+      EVERYDAY_FALLBACK_MESSAGE,
     );
-    expect(window.location.search).not.toContain('register=');
+    expect(window.location.search).toContain('register=everyday');
+    expect(store.get(STORAGE_KEY)).toBe('everyday');
+    expect(getRegisterClientMetadata()).toEqual({
+      requested: 'everyday',
+      resolved: 'orientation',
+      fallbackReason: 'unavailable',
+      fallbackMessage: EVERYDAY_FALLBACK_MESSAGE,
+    });
+  });
+});
+
+describe('shouldShowRegisterFallbackNotice', () => {
+  it('shows notices when a fallback message exists and the preference is enabled', () => {
+    document.documentElement.dataset.registerFallbackMessage = EVERYDAY_FALLBACK_MESSAGE;
+
+    expect(shouldShowRegisterFallbackNotice()).toBe(true);
+  });
+
+  it('hides notices when the preference is disabled', () => {
+    document.documentElement.dataset.registerFallbackMessage = EVERYDAY_FALLBACK_MESSAGE;
+    document.documentElement.dataset.a11yShowRegisterFallbackNotices = 'false';
+
+    expect(shouldShowRegisterFallbackNotice()).toBe(false);
+  });
+
+  it('hides the current notice after it is dismissed', () => {
+    expect(
+      shouldShowRegisterFallbackNotice({
+        fallbackMessage: EVERYDAY_FALLBACK_MESSAGE,
+        showRegisterFallbackNotices: true,
+        dismissedMessage: EVERYDAY_FALLBACK_MESSAGE,
+      }),
+    ).toBe(false);
   });
 });

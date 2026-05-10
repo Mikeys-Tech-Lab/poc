@@ -29,6 +29,32 @@ export interface RegisterAvailability {
   absent: Partial<Record<Register, string>>;
 }
 
+export type RegisterFallbackReason = 'unknown' | 'unavailable';
+
+export interface RegisterResolution {
+  register: Register;
+  resolved: Register;
+  requested: Register | null;
+  reason: RegisterFallbackReason | null;
+  fallbackReason: RegisterFallbackReason | null;
+  message: string | null;
+  fallbackMessage: string | null;
+  availability: RegisterAvailability;
+}
+
+export interface RegisterClientMetadata {
+  requested: Register | null;
+  resolved: Register;
+  fallbackReason: RegisterFallbackReason | null;
+  fallbackMessage: string | null;
+}
+
+export interface RegisterNoticeVisibilityOptions {
+  fallbackMessage?: string | null;
+  showRegisterFallbackNotices?: boolean;
+  dismissedMessage?: string | null;
+}
+
 export const STORAGE_KEY = 'poc-register';
 export { DEFAULT_REGISTER, READING_REGISTERS };
 
@@ -39,13 +65,10 @@ const normalizeAvailability = normalizeRegisterAvailability as (
 const resolveRegisteredAvailability = resolveRegisteredValue as (
   value: unknown,
   availability: RegisterAvailability,
-) => {
-  register: Register;
-  requested: Register | null;
-  reason: 'unknown' | 'unavailable' | null;
-  message: string | null;
-  availability: RegisterAvailability;
-};
+) => RegisterResolution;
+
+const isEverydayOrientationFallback = (resolution: RegisterResolution): boolean =>
+  resolution.requested === 'everyday' && resolution.resolved === 'orientation';
 
 export const parseRegister = (value: unknown): Register =>
   typeof value === 'string' && isReadingRegister(value)
@@ -95,15 +118,30 @@ export const resolveRegister = (value: unknown, availability = getRegisterAvaila
   resolveRegisteredAvailability(value, availability);
 
 export const getRegister = (): Register =>
-  resolveRegister(document.documentElement.dataset.register).register;
+  resolveRegister(
+    document.documentElement.dataset.registerResolved ?? document.documentElement.dataset.register,
+  ).resolved;
 
 export const loadRegister = (): Register =>
   resolveRegister(typeof localStorage !== 'undefined' && localStorage.getItem(STORAGE_KEY))
-    .register;
+    .resolved;
 
-function syncUrlParam(register: Register, availability: RegisterAvailability): void {
+const isRegisterFallbackReason = (value: string | undefined): value is RegisterFallbackReason =>
+  value === 'unknown' || value === 'unavailable';
+
+const readPositiveBoolean = (value: string | undefined, fallback = true): boolean => {
+  if (value === 'true') return true;
+  if (value === 'false') return false;
+  return fallback;
+};
+
+const getPreferredRegisterValue = (resolution: RegisterResolution): Register =>
+  isEverydayOrientationFallback(resolution) ? 'everyday' : resolution.resolved;
+
+function syncUrlParam(resolution: RegisterResolution): void {
   const url = new URL(window.location.href);
-  if (register === availability.defaultRegister) {
+  const register = getPreferredRegisterValue(resolution);
+  if (register === resolution.availability.defaultRegister) {
     url.searchParams.delete('register');
   } else {
     url.searchParams.set('register', register);
@@ -111,31 +149,66 @@ function syncUrlParam(register: Register, availability: RegisterAvailability): v
   history.replaceState(null, '', url);
 }
 
-function syncFallbackMetadata(resolution: ReturnType<typeof resolveRegister>): void {
+function syncRegisterMetadata(resolution: RegisterResolution): void {
   const dataset = document.documentElement.dataset;
-  if (resolution.reason && resolution.message) {
-    dataset.registerFallbackReason = resolution.reason;
-    dataset.registerFallbackMessage = resolution.message;
-    if (resolution.requested) {
-      dataset.registerRequested = resolution.requested;
-    } else {
-      delete dataset.registerRequested;
-    }
+  dataset.registerResolved = resolution.resolved;
+  if (resolution.requested) {
+    dataset.registerRequested = resolution.requested;
+  } else {
+    delete dataset.registerRequested;
+  }
+  if (resolution.fallbackReason && resolution.fallbackMessage) {
+    dataset.registerFallbackReason = resolution.fallbackReason;
+    dataset.registerFallbackMessage = resolution.fallbackMessage;
     return;
   }
 
   delete dataset.registerFallbackReason;
   delete dataset.registerFallbackMessage;
-  delete dataset.registerRequested;
 }
+
+export const getRegisterClientMetadata = (): RegisterClientMetadata => {
+  const dataset = document.documentElement.dataset;
+
+  return {
+    requested:
+      typeof dataset.registerRequested === 'string' && isReadingRegister(dataset.registerRequested)
+        ? asRegister(dataset.registerRequested)
+        : null,
+    resolved:
+      typeof dataset.registerResolved === 'string' && isReadingRegister(dataset.registerResolved)
+        ? asRegister(dataset.registerResolved)
+        : getRegister(),
+    fallbackReason: isRegisterFallbackReason(dataset.registerFallbackReason)
+      ? dataset.registerFallbackReason
+      : null,
+    fallbackMessage:
+      typeof dataset.registerFallbackMessage === 'string' && dataset.registerFallbackMessage.trim()
+        ? dataset.registerFallbackMessage
+        : null,
+  };
+};
+
+export const shouldShowRegisterFallbackNotice = ({
+  fallbackMessage = getRegisterClientMetadata().fallbackMessage,
+  showRegisterFallbackNotices = readPositiveBoolean(
+    document.documentElement.dataset.a11yShowRegisterFallbackNotices,
+    true,
+  ),
+  dismissedMessage = null,
+}: RegisterNoticeVisibilityOptions = {}): boolean =>
+  Boolean(fallbackMessage && showRegisterFallbackNotices && fallbackMessage !== dismissedMessage);
+
+const syncPreferredRegister = (resolution: RegisterResolution): void => {
+  if (typeof localStorage === 'undefined') return;
+  localStorage.setItem(STORAGE_KEY, getPreferredRegisterValue(resolution));
+};
 
 export function setRegister(register: Register): void {
   const resolution = resolveRegister(register);
-  document.documentElement.dataset.register = resolution.register;
-  syncFallbackMetadata(resolution);
-  if (typeof localStorage !== 'undefined') {
-    localStorage.setItem(STORAGE_KEY, resolution.register);
-  }
-  syncUrlParam(resolution.register, resolution.availability);
+  document.documentElement.dataset.register = resolution.resolved;
+  syncRegisterMetadata(resolution);
+  syncPreferredRegister(resolution);
+  syncUrlParam(resolution);
   window.dispatchEvent(new CustomEvent('poc:register-change', { detail: resolution }));
 }

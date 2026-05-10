@@ -1,7 +1,7 @@
 ---
 import config from 'virtual:starlight/user-config';
 import { logos } from 'virtual:starlight/user-images';
-import { getRegisterLabels } from '../lib/i18n';
+import { getA11yLabels, getRegisterLabels } from '../lib/i18n';
 import { getLocaleFromPath } from '../lib/locale';
 import { READING_REGISTERS } from '../lib/register-registry.js';
 import { getRegisterAvailabilityForPath } from '../lib/route-map.js';
@@ -9,6 +9,7 @@ import { getRegisterAvailabilityForPath } from '../lib/route-map.js';
 const { siteTitle } = Astro.locals.starlightRoute;
 const locale = getLocaleFromPath(Astro.url?.pathname ?? '/');
 const t = getRegisterLabels(locale);
+const a11y = getA11yLabels(locale);
 const availability = getRegisterAvailabilityForPath(Astro.url?.pathname ?? '/');
 const availableRegisters = availability.available as Array<(typeof READING_REGISTERS)[number]>;
 const absentRegisters = availability.absent as Partial<Record<(typeof READING_REGISTERS)[number], string>>;
@@ -73,6 +74,34 @@ const absentRegisters = availability.absent as Partial<Record<(typeof READING_RE
 		</span>
 	</button>
 
+	<div class="register-notice" data-register-notice hidden aria-live="polite">
+		<div class="register-notice-body">
+			<p class="register-notice-copy" data-register-fallback></p>
+			<p class="register-notice-hint">
+				<svg
+					aria-hidden="true"
+					class="register-notice-hint-icon"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.9"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<circle cx="12" cy="4.5" r="2.5"></circle>
+					<path d="m4.5 9.5 3 1 4.5 1 4.5-1 3-1"></path>
+					<path d="M8 14.5 7 22"></path>
+					<path d="m16 14.5 1 7.5"></path>
+					<path d="M12 12.5v4"></path>
+				</svg>
+				<span>{a11y.registerFallbackNoticeHint}</span>
+			</p>
+		</div>
+		<button type="button" class="register-notice-dismiss" data-register-notice-dismiss>
+			{t.dismissNotice}
+		</button>
+	</div>
+
 	<div id="poc-register-title-panel" class="register-panel" data-register-panel hidden>
 		<div class="panel-heading">
 			<p class="panel-kicker">{t.selectorLabel}</p>
@@ -115,31 +144,47 @@ const absentRegisters = availability.absent as Partial<Record<(typeof READING_RE
 				})
 			}
 		</div>
-
-		<p class="register-fallback" data-register-fallback hidden></p>
 		<button type="button" class="panel-close" data-register-panel-close>{t.closeControl}</button>
 	</div>
 </poc-register-title-control>
 
 <script>
-	import { getRegister, setRegister, type Register } from '../lib/register';
+	import {
+		getRegister,
+		getRegisterClientMetadata,
+		setRegister,
+		shouldShowRegisterFallbackNotice,
+		type Register,
+	} from '../lib/register';
 	import { rebuildToc } from '../lib/toc';
 
 	class PocRegisterTitleControl extends HTMLElement {
 		trigger: HTMLButtonElement;
+		notice: HTMLElement;
 		panel: HTMLElement;
+		dismissButton: HTMLButtonElement;
 		closeButton: HTMLButtonElement;
 		fallback: HTMLElement;
+		dismissedMessage: string | null;
 
 		constructor() {
 			super();
 			this.trigger = this.querySelector<HTMLButtonElement>('[data-register-title-trigger]')!;
+			this.notice = this.querySelector<HTMLElement>('[data-register-notice]')!;
 			this.panel = this.querySelector<HTMLElement>('[data-register-panel]')!;
+			this.dismissButton = this.querySelector<HTMLButtonElement>('[data-register-notice-dismiss]')!;
 			this.closeButton = this.querySelector<HTMLButtonElement>('[data-register-panel-close]')!;
 			this.fallback = this.querySelector<HTMLElement>('[data-register-fallback]')!;
+			this.dismissedMessage = null;
 
 			this.trigger.addEventListener('click', () => {
 				this.isOpen() ? this.close() : this.open();
+			});
+
+			this.dismissButton.addEventListener('click', () => {
+				const { fallbackMessage } = getRegisterClientMetadata();
+				this.dismissedMessage = fallbackMessage;
+				this.sync();
 			});
 
 			this.closeButton.addEventListener('click', () => this.close({ returnFocus: true }));
@@ -169,6 +214,7 @@ const absentRegisters = availability.absent as Partial<Record<(typeof READING_RE
 				this.sync();
 				rebuildVisibleToc();
 			});
+			window.addEventListener('poc:a11y-change', () => this.sync());
 			this.sync();
 			if (document.readyState === 'loading') {
 				document.addEventListener('DOMContentLoaded', rebuildVisibleToc, { once: true });
@@ -194,6 +240,7 @@ const absentRegisters = availability.absent as Partial<Record<(typeof READING_RE
 			this.removeAttribute('data-open');
 			this.trigger.setAttribute('aria-expanded', 'false');
 			this.panel.hidden = true;
+			this.sync();
 			if (returnFocus) this.trigger.focus();
 		}
 
@@ -203,8 +250,16 @@ const absentRegisters = availability.absent as Partial<Record<(typeof READING_RE
 				input.checked = input.value === register;
 			}
 
-			const fallbackMessage = document.documentElement.dataset.registerFallbackMessage;
-			this.fallback.hidden = !fallbackMessage;
+			const { fallbackMessage } = getRegisterClientMetadata();
+			if (!fallbackMessage || fallbackMessage !== this.dismissedMessage) {
+				this.dismissedMessage = null;
+			}
+			this.notice.hidden =
+				this.isOpen() ||
+				!shouldShowRegisterFallbackNotice({
+					fallbackMessage,
+					dismissedMessage: this.dismissedMessage,
+				});
 			this.fallback.textContent = fallbackMessage ?? '';
 		}
 	}
@@ -339,7 +394,7 @@ const absentRegisters = availability.absent as Partial<Record<(typeof READING_RE
 
 	.panel-kicker,
 	.panel-copy,
-	.register-fallback {
+	.register-notice-copy {
 		margin: 0;
 	}
 
@@ -353,10 +408,84 @@ const absentRegisters = availability.absent as Partial<Record<(typeof READING_RE
 
 	.panel-copy,
 	.option-helper,
-	.register-fallback {
+	.register-notice-copy {
 		font-size: var(--sl-text-sm);
 		line-height: 1.35;
 		color: var(--sl-color-gray-2);
+	}
+
+	.register-notice {
+		position: fixed;
+		z-index: 115;
+		top: calc(var(--sl-nav-height) + 0.45rem);
+		left: max(var(--sl-nav-pad-x), env(safe-area-inset-left));
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 0.45rem;
+		align-items: start;
+		width: min(23rem, calc(100vw - 2 * var(--sl-nav-pad-x)));
+		padding: 0.55rem 0.7rem;
+		border: 1px solid color-mix(in srgb, var(--poc-register-accent), transparent 58%);
+		border-radius: 0.95rem;
+		background:
+			linear-gradient(
+				140deg,
+				color-mix(in srgb, var(--poc-register-accent), transparent 89%),
+				transparent 58%
+			),
+			rgb(var(--poc-base) / 0.94);
+		backdrop-filter: blur(16px) saturate(1.05);
+		box-shadow: 0 0.75rem 1.65rem color-mix(in srgb, var(--sl-color-black), transparent 78%);
+		color: var(--sl-color-text);
+	}
+
+	.register-notice[hidden] {
+		display: none;
+	}
+
+	.register-notice-body {
+		display: grid;
+		gap: 0.28rem;
+		min-width: 0;
+	}
+
+	.register-notice-copy {
+		color: var(--sl-color-text);
+	}
+
+	.register-notice-hint {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		align-items: center;
+		column-gap: 0.35rem;
+		margin: 0;
+		font-size: var(--sl-text-xs);
+		line-height: 1.35;
+		color: var(--sl-color-gray-2);
+	}
+
+	.register-notice-hint-icon {
+		width: 1rem;
+		height: 1rem;
+		align-self: center;
+	}
+
+	.register-notice-dismiss {
+		justify-self: end;
+		align-self: end;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		color: var(--sl-color-gray-2);
+		font: inherit;
+		font-size: var(--sl-text-xs);
+		text-decoration: underline;
+		cursor: pointer;
+	}
+
+	.register-notice-dismiss:hover,
+	.register-notice-dismiss:focus-visible {
+		color: var(--poc-register-accent);
 	}
 
 	.register-options {
@@ -406,14 +535,6 @@ const absentRegisters = availability.absent as Partial<Record<(typeof READING_RE
 	.option-status {
 		font-weight: 500;
 		color: var(--sl-color-gray-2);
-	}
-
-	.register-fallback {
-		margin-block-start: 0.75rem;
-		padding: 0.6rem 0.7rem;
-		border-radius: 0.75rem;
-		background: color-mix(in srgb, var(--poc-register-accent), transparent 84%);
-		color: var(--sl-color-text);
 	}
 
 	.panel-close {
@@ -483,6 +604,12 @@ const absentRegisters = availability.absent as Partial<Record<(typeof READING_RE
 	}
 
 	@media (max-width: 36rem) {
+		.register-notice {
+			top: calc(var(--sl-nav-height) + 0.35rem);
+			left: max(0.75rem, env(safe-area-inset-left));
+			width: calc(100vw - 1.5rem);
+		}
+
 		.register-panel {
 			top: calc(var(--sl-nav-height) + 0.45rem);
 			left: max(0.75rem, env(safe-area-inset-left));
