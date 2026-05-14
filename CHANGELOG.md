@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.8](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.15.7...PoC-v1.15.8) (2026-05-14)
+
+
+### Miscellaneous
+
+* **deps:** update dependency astro to ^6.3.2 ([#213](https://github.com/Mikeys-Tech-Lab/poc/issues/213)) ([9f9ce89](https://github.com/Mikeys-Tech-Lab/poc/commit/9f9ce891f511ae85a90da1ef99cf06bdb2d7e54e))
+
 ## [1.15.7](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.15.6...PoC-v1.15.7) (2026-05-14)
 
 
