@@ -99,6 +99,7 @@ Setup details are in `docs/infra/renovate-app-setup.md`.
 - `renovate.json`
 - `.github/dependabot.yml`
 - `docs/decisions/0004-renovate-primary-dependency-engine.md`
+- `docs/decisions/0005-renovate-automerge-posture.md`
 
 ---
 © 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).

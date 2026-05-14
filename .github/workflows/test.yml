@@ -70,7 +70,7 @@ jobs:
         run: pnpm --filter site check
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+        run: pnpm --filter site exec playwright install --with-deps chromium
 
       - name: E2E tests
         env:
