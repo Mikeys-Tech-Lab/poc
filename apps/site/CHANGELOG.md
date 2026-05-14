@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.2](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.3.1...site-v2.3.2) (2026-05-14)
+
+
+### Miscellaneous
+
+* **deps:** update test tooling non-major ([#205](https://github.com/Mikeys-Tech-Lab/poc/issues/205)) ([794437a](https://github.com/Mikeys-Tech-Lab/poc/commit/794437a46ed5f28eb8a8ec235865f69d9e4416e6))
+
 ## [2.3.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.3.0...site-v2.3.1) (2026-05-14)
 
 
