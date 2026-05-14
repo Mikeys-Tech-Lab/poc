@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.15.0...PoC-v1.15.1) (2026-05-14)
+
+
+### Bug Fixes
+
+* **infra:** use site Playwright for CI browser install ([#200](https://github.com/Mikeys-Tech-Lab/poc/issues/200)) ([dfa8766](https://github.com/Mikeys-Tech-Lab/poc/commit/dfa87668fe732920287739e7af6602ccb3e8377a))
+
 ## [1.15.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.14.3...PoC-v1.15.0) (2026-05-10)
 
 
