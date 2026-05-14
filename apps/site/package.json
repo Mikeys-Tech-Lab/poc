@@ -1,7 +1,7 @@
 {
   "name": "site",
   "type": "module",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -23,10 +23,10 @@
   "devDependencies": {
     "@astrojs/check": "0.9.9",
     "@axe-core/playwright": "4.11.3",
-    "@playwright/test": "1.59.1",
+    "@playwright/test": "1.60.0",
     "happy-dom": "20.9.0",
     "playwright": "1.60.0",
     "rehype-mermaid": "3.0.0",
-    "vitest": "4.1.5"
+    "vitest": "4.1.6"
   }
 }
