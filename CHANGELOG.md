@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.15.18](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.15.17...PoC-v1.15.18) (2026-05-14)
+
+
+### Miscellaneous
+
+* **deps:** lock file maintenance ([#235](https://github.com/Mikeys-Tech-Lab/poc/issues/235)) ([ee8c915](https://github.com/Mikeys-Tech-Lab/poc/commit/ee8c9153de4fed8294d86980ad696cec08a01e44))
+
+## [1.15.17](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.15.16...PoC-v1.15.17) (2026-05-14)
+
+
+### Miscellaneous
+
+* **deps:** update dependency astro to ^6.3.3 ([#232](https://github.com/Mikeys-Tech-Lab/poc/issues/232)) ([f965417](https://github.com/Mikeys-Tech-Lab/poc/commit/f965417acc27e53788d0ddb9e573ca1c4892e130))
+
 ## [1.15.16](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.15.15...PoC-v1.15.16) (2026-05-14)
 
 
