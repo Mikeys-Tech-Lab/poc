@@ -5,7 +5,7 @@ import { getLocaleFromPath } from '../lib/locale';
 import { getLocalizedRoutePath } from '../lib/route-map.js';
 
 interface Props {
-  variant?: 'practitioner' | 'orientation';
+  variant?: 'everyday' | 'practitioner' | 'orientation';
 }
 
 const { variant = 'practitioner' } = Astro.props as Props;
@@ -14,20 +14,35 @@ const registerLabels = getRegisterLabels(locale);
 const themeLabels = getThemeLabels(locale);
 const startHereHref = getLocalizedRoutePath('about-what-this-is');
 
-const intro =
-  variant === 'orientation'
-    ? 'If you are new, begin here. This page shows what is happening, what this practice responds to, and how to move through it.'
-    : 'Begin here. This page grounds the practice, shows what it responds to, and offers a clear way in.';
+const introByVariant = {
+  everyday:
+    'If you are new, begin here. This page explains what the Practice of Clarity is and why it exists.',
+  orientation:
+    'If you are new, begin here. This page shows what is happening, what this practice responds to, and how to move through it.',
+  practitioner:
+    'Begin here. This page grounds the practice, shows what it responds to, and offers a clear way in.',
+};
 
-const registerCopy =
-  variant === 'orientation'
-    ? 'Tap the title register indicator to change how this is written. The ideas stay the same. The voice shifts so you can find your way in.'
-    : 'Tap the title register indicator to change the voice without changing the structure. The same thinking can land differently.';
+const registerCopyByVariant = {
+  everyday:
+    'You can change how the site explains things. The meaning stays the same, but the page can be shorter, more guided, or more detailed.',
+  orientation:
+    'Tap the title register indicator to change how this is written. The ideas stay the same. The voice shifts so you can find your way in.',
+  practitioner:
+    'Tap the title register indicator to change the voice without changing the structure. The same thinking can land differently.',
+};
 
-const themeCopy =
-  variant === 'orientation'
-    ? 'Choose the version that is easiest to stay with. This does not change the content, only how it feels to read.'
-    : 'Adjust how this feels to read. The content stays the same.';
+const themeCopyByVariant = {
+  everyday:
+    'Choose the version that feels easiest to read. This only changes the look of the page.',
+  orientation:
+    'Choose the version that is easiest to stay with. This does not change the content, only how it feels to read.',
+  practitioner: 'Adjust how this feels to read. The content stays the same.',
+};
+
+const intro = introByVariant[variant];
+const registerCopy = registerCopyByVariant[variant];
+const themeCopy = themeCopyByVariant[variant];
 ---
 
 <poc-home-featured-card data-home-featured-variant={variant}>
@@ -61,6 +76,9 @@ const themeCopy =
                 <span class="home-register-label-practitioner">
                   {registerLabels.practitioner}
                 </span>
+                <span class="home-register-label-everyday">
+                  {registerLabels.everyday}
+                </span>
                 <span class="home-register-label-orientation">
                   {registerLabels.orientation}
                 </span>
@@ -69,6 +87,9 @@ const themeCopy =
             <span class="home-register-preview-helper" aria-hidden="true">
               <span class="home-register-helper-practitioner">
                 {registerLabels.practitionerHelper}
+              </span>
+              <span class="home-register-helper-everyday">
+                {registerLabels.everydayHelper}
               </span>
               <span class="home-register-helper-orientation">
                 {registerLabels.orientationHelper}
@@ -184,6 +205,12 @@ const themeCopy =
   }
 
   poc-home-featured-card[data-home-featured-variant='orientation'] {
+    --poc-home-featured-border: var(--poc-box-featured-orientation-border);
+    --poc-home-featured-rail: var(--poc-box-featured-orientation-rail);
+    --poc-home-featured-title: var(--poc-box-featured-orientation-title);
+  }
+
+  poc-home-featured-card[data-home-featured-variant='everyday'] {
     --poc-home-featured-border: var(--poc-box-featured-orientation-border);
     --poc-home-featured-rail: var(--poc-box-featured-orientation-rail);
     --poc-home-featured-title: var(--poc-box-featured-orientation-title);
@@ -313,6 +340,8 @@ const themeCopy =
     flex-shrink: 0;
   }
 
+  .home-register-label-everyday,
+  .home-register-helper-everyday,
   .home-register-label-orientation,
   .home-register-helper-orientation {
     display: none;
@@ -323,6 +352,16 @@ const themeCopy =
     font-size: 0.8rem;
     line-height: 1.35;
     white-space: normal;
+  }
+
+  :root[data-register='everyday'] .home-register-label-practitioner,
+  :root[data-register='everyday'] .home-register-helper-practitioner {
+    display: none;
+  }
+
+  :root[data-register='everyday'] .home-register-label-everyday,
+  :root[data-register='everyday'] .home-register-helper-everyday {
+    display: inline;
   }
 
   :root[data-register='orientation'] .home-register-label-practitioner,

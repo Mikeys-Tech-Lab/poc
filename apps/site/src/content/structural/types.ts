@@ -1,4 +1,4 @@
-import type { EssayRegister } from '../../lib/structural-essays/essay-route';
+import type { EssayRegister } from '../../lib/structural/essay-route';
 
 export interface DirectSourceEntry {
   readonly id: string;

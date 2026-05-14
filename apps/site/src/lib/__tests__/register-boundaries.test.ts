@@ -10,8 +10,8 @@ const cases = [
     name: 'glossary keeps the seed grounding visible in both registers',
     practitionerPath: 'apps/site/src/content/docs/en-us/about/glossary.mdx',
     orientationPath: 'apps/site/src/content/register/orientation/en-us/about/glossary.mdx',
-    practitionerSnippets: ['They are what keeps the practice structurally grounded as it moves.'],
-    orientationSnippets: ['what keeps the work consistent as it moves'],
+    practitionerSnippets: ['They keep the practice structurally grounded as it moves.'],
+    orientationSnippets: ['what keeps the work consistent'],
   },
   {
     name: 'Act II keeps the anti-performance boundary visible in both registers',
@@ -71,13 +71,13 @@ const cases = [
       'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/integration-lag.mdx',
     practitionerSnippets: [
       'This is what we call **integration lag**.',
-      'If the article gives you enough context already, use this minimal activation prompt:',
+      'If this public entry gives you enough context already, use this minimal activation prompt:',
       'For the fuller public entry, go to [Sensible Defaults]',
       'This only works as a practice.',
     ],
     orientationSnippets: [
       '**Sensible Defaults**',
-      'If the article already gave you enough context, use this minimal activation prompt:',
+      'If this public entry already gave you enough context, use this minimal activation prompt:',
       'For the fuller public entry, go to [Sensible Defaults]',
       'This is about seeing clearly, not doing more.',
     ],
@@ -124,15 +124,15 @@ describe('register boundary guardrails', () => {
     }
   });
 
-  it('Structural Essays keeps the first essay entry visible in all three registers', () => {
-    expect(read('apps/site/src/content/docs/en-us/signals/structural-essays/index.mdx')).toContain(
-      'The first structural essay is now available:',
+  it('Structural keeps the AI and cognitive amplification entry visible in all three registers', () => {
+    expect(read('apps/site/src/content/docs/en-us/signals/structural/index.mdx')).toContain(
+      'The first structural signal cluster begins with:',
     );
     expect(
-      read('apps/site/src/content/register/orientation/en-us/signals/structural-essays/index.mdx'),
-    ).toContain('The first structural essay is now available:');
+      read('apps/site/src/content/register/orientation/en-us/signals/structural/index.mdx'),
+    ).toContain('The first structural signal cluster begins with:');
     expect(
-      read('apps/site/src/content/register/everyday/en-us/signals/structural-essays/index.mdx'),
-    ).toContain('The first essay is ready:');
+      read('apps/site/src/content/register/everyday/en-us/signals/structural/index.mdx'),
+    ).toContain('The first signal in this cluster is ready:');
   });
 });

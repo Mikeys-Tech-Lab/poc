@@ -6,19 +6,20 @@ register: practitioner
 
 import RegisterContent from '../../../../components/RegisterContent.astro';
 
-<RegisterContent register="orientation/en-us/about/glossary">
+<RegisterContent registers={{
+  everyday: 'everyday/en-us/about/glossary',
+  orientation: 'orientation/en-us/about/glossary'
+}}>
 
-This page holds the shared language of the work.
+This glossary keeps recurring terms short and findable.
 
-It is here to keep meaning clear while you read and work with it.
-
-It covers two things:
+It holds two kinds of language:
 
 - the main parts that shape the work
 - the smaller words that keep returning while you read or think with it
 
-Definitions here are minimal by design. They are kept short on purpose. They
-keep meaning clear while you read and work with it.
+Definitions are minimal by design. They protect meaning without turning the
+glossary into another essay.
 
 ---
 
@@ -31,8 +32,7 @@ They hold how reasoning is made visible, where boundaries sit, and how the pract
 They are written to be read by people and loaded into AI systems.  
 They shape how both think and respond.
 
-You do not need them to begin.  
-They are what keeps the practice structurally grounded as it moves.
+They keep the practice structurally grounded as it moves.
 
 ### Mandate lenses
 
@@ -64,7 +64,7 @@ It exists for inspection, verification, and extension.
 
 ### Registers
 
-Registers are controlled variations in presentation.
+Registers are controlled entry depths into the same reasoning path.
 
 They change language, pacing, and entry point while preserving the structural
 meaning of core terms, the main claims, and the reasoning path behind them.
@@ -75,10 +75,12 @@ meaning. Orientation helps a reader move through the structure step by step.
 Practitioner carries the fullest trace, grounding, and working detail.
 
 Register is not the same as language or locale. Locale changes the language of
-the page. Register changes how the same structure is presented.
+the writing. Register changes how the same structure is presented.
 
 They must not diverge in meaning.
 They provide different ways into the same work.
+
+For the fuller contract, read [Registers](/en-us/about/registers/).
 
 ### Practice of Clarity
 
@@ -105,13 +107,38 @@ Tracing is the activity of making that record visible.
 
 If a summary loses that path, it has lost the trace.
 
+#### Inspection
+
+You encounter inspection when a claim is checked against the path it leaves
+behind.
+
+Inspection is not blind distrust and it is not endless research. It is the
+practice of asking whether a claim can be followed, questioned, bounded, and
+corrected.
+
+#### Structural truth
+
+Structural truth is not a final truth owned by an authority.
+
+It is the kind of truth that becomes more reliable when reasoning, assumptions,
+limits, and corrections remain visible enough for others to inspect and revise.
+
+#### Public reasoning infrastructure
+
+Public reasoning infrastructure is the visible set of practices, records,
+boundaries, and inspection paths that lets people follow how claims are formed,
+where they stop, and how they can be challenged.
+
 #### Node
 
-You encounter a node when the practice is actually being carried somewhere, not only described there.
+You encounter a node when the practice has a bounded place to be carried with
+visible reasoning, explicit limits, and trace others can inspect.
 
-A node can be a team, a project, a community, a translation, or another place where the work is used under pressure and its reasoning can be followed.
+A team, project, community, translation, or repository can host a node. The team
+itself is not the node by default.
 
-What makes it a node is not the format. It is the fact that the practice is being carried there with visible reasoning and explicit boundaries.
+What makes it a node is not the format. It is the fact that the practice is
+being carried there with visible reasoning and explicit boundaries.
 
 A public node is what you get when that work becomes inspectable on a public surface, such as a repository.
 

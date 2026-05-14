@@ -5,9 +5,9 @@ import {
   directSourceEntries,
   essayAnchors,
   furtherReadingEntries,
-} from '../../content/structural-essays/en-us/ai-is-not-magic-it-is-a-cognitive-amplifier.data';
+} from '../../content/structural/en-us/ai-is-not-magic-it-is-a-cognitive-amplifier.data';
 import { getRegisterAvailabilityForRouteId, getRouteById } from '../route-map.js';
-import { buildEssayHref, ESSAY_ROUTE_ID } from '../structural-essays/essay-route';
+import { buildEssayHref, ESSAY_ROUTE_ID } from '../structural/essay-route';
 
 const repoRoot = new URL('../../../../../', import.meta.url);
 interface LeakPattern {
@@ -17,9 +17,9 @@ interface LeakPattern {
 }
 
 const firstEssayContentPaths = [
-  'apps/site/src/content/docs/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-cognitive-amplifier.mdx',
-  'apps/site/src/content/register/orientation/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-cognitive-amplifier.mdx',
-  'apps/site/src/content/register/everyday/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-cognitive-amplifier.mdx',
+  'apps/site/src/content/docs/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.mdx',
+  'apps/site/src/content/register/orientation/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.mdx',
+  'apps/site/src/content/register/everyday/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.mdx',
 ] as const;
 const relatedPublicRepoDocPaths = [
   'docs/architecture/workspace.md',
@@ -27,6 +27,7 @@ const relatedPublicRepoDocPaths = [
 ] as const;
 
 const allowedFrontmatterKeys = new Set(['title', 'description', 'register']);
+const metadataKey = (...parts: string[]) => parts.join('_');
 const forbiddenDraftMetadataKeys = [
   'article_type',
   'locale',
@@ -37,8 +38,8 @@ const forbiddenDraftMetadataKeys = [
   'authorship',
   'license_notice',
   'zeitgeist_grounding',
-  'source_intake',
-  'canonical_source_repo_path',
+  metadataKey('source', 'intake'),
+  metadataKey('canonical', 'source', 'repo', 'path'),
   'canonical_relation',
   'canonical_target_path',
   'canonical_register',
@@ -46,9 +47,9 @@ const forbiddenDraftMetadataKeys = [
   'source_register',
   'source_draft',
   'register_set',
-  'promotion_targets',
-  'distribution_channels',
-  'register_routes',
+  metadataKey('promotion', 'targets'),
+  metadataKey('distribution', 'channels'),
+  metadataKey('register', 'routes'),
 ] as const;
 
 const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -95,9 +96,9 @@ const privatePathPatterns: readonly LeakPattern[] = [
 ];
 
 const workflowMetadataKeys = [
-  'distribution_channels',
-  'promotion_targets',
-  'register_routes',
+  metadataKey('distribution', 'channels'),
+  metadataKey('promotion', 'targets'),
+  metadataKey('register', 'routes'),
   'zeitgeist_grounding',
 ] as const;
 
@@ -251,7 +252,7 @@ describe('first structural essay publication contract', () => {
       expect(anchor.routeId).toBe(ESSAY_ROUTE_ID);
       expect(availability.available).toContain(anchor.targetRegister);
       expect(anchor.href).toBe(buildEssayHref(anchor.targetRegister));
-      expect(anchor.href).toMatch(/^\/en-us\/signals\/structural-essays\//);
+      expect(anchor.href).toMatch(/^\/en-us\/signals\/structural\//);
     }
   });
 

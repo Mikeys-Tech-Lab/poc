@@ -48,7 +48,7 @@ test.describe('register title control', () => {
   });
 
   test('?register=everyday activates everyday when the route provides it', async ({ page }) => {
-    await page.goto('/en-us/signals/structural-essays/?register=everyday');
+    await page.goto('/en-us/signals/structural/?register=everyday');
 
     await expect(page.locator('[data-register-content="everyday"]')).toBeVisible();
     await expect(page.locator('[data-register-content="practitioner"]')).not.toBeVisible();
@@ -58,7 +58,7 @@ test.describe('register title control', () => {
   test('unavailable everyday requests render orientation and preserve the request', async ({
     page,
   }) => {
-    await page.goto('/en-us/about/what-this-is/?register=everyday');
+    await page.goto('/en-us/licenses/cc-by-4-0/?register=everyday');
 
     await expect(page.locator('[data-register-content="orientation"]')).toBeVisible();
     await expect(page.locator('[data-register-content="practitioner"]')).not.toBeVisible();
@@ -71,7 +71,7 @@ test.describe('register title control', () => {
   });
 
   test('everyday is visible as unavailable in the title panel', async ({ page }) => {
-    await page.goto('/en-us/about/what-this-is/');
+    await page.goto('/en-us/licenses/cc-by-4-0/');
     await openRegisterPanel(page);
 
     const everyday = page.locator('poc-register-title-control input[value="everyday"]');
@@ -81,8 +81,8 @@ test.describe('register title control', () => {
     ).toContainText('Everyday (not available yet)');
   });
 
-  test('everyday is selectable on structural essay routes', async ({ page }) => {
-    await page.goto('/en-us/signals/structural-essays/');
+  test('everyday is selectable on structural routes', async ({ page }) => {
+    await page.goto('/en-us/signals/structural/');
     await openRegisterPanel(page);
 
     const everyday = page.locator('poc-register-title-control input[value="everyday"]');

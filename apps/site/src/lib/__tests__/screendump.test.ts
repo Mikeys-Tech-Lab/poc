@@ -45,10 +45,10 @@ describe('screendump helpers', () => {
     expect(plan[0]).toMatchObject({
       viewportName: 'desktop',
       path: '',
-      register: 'practitioner',
+      register: 'everyday',
       theme: { name: 'dark-atmo', storageValue: 'dark' },
-      fileName: 'home__practitioner__dark-atmo.png',
-      url: 'http://127.0.0.1:4321/en-us/',
+      fileName: 'home__everyday__dark-atmo.png',
+      url: 'http://127.0.0.1:4321/en-us/?register=everyday',
     });
   });
 

@@ -10,8 +10,14 @@ import {
 
 const repoRoot = new URL('../../../../../', import.meta.url);
 const threeRegisterRouteIds = [
+  'home',
+  'about-what-this-is',
+  'about-architecture',
   'about-how-to-inspect-this-node',
-  'signal-structural-essays',
+  'about-glossary',
+  'about-registers',
+  'about-the-author',
+  'signal-structural',
   'signal-ai-is-not-magic-it-is-a-cognitive-amplifier',
 ] as const;
 
@@ -61,17 +67,15 @@ describe('route map', () => {
   it('resolves register availability by route id', () => {
     expect(getRegisterAvailabilityForRouteId('about-what-this-is')).toMatchObject({
       defaultRegister: 'practitioner',
-      available: ['practitioner', 'orientation'],
+      available: ['everyday', 'orientation', 'practitioner'],
     });
   });
 
   it('resolves register availability by localized path', () => {
     expect(getRegisterAvailabilityForPath('/en-us/about/what-this-is/')).toMatchObject({
       defaultRegister: 'practitioner',
-      available: ['practitioner', 'orientation'],
-      absent: {
-        everyday: 'Everyday is not available for this page yet.',
-      },
+      available: ['everyday', 'orientation', 'practitioner'],
+      absent: {},
     });
   });
 
@@ -83,18 +87,18 @@ describe('route map', () => {
     });
   });
 
-  it('enables all three registers for the structural essays overview', () => {
-    expect(getRegisterAvailabilityForPath('/en-us/signals/structural-essays/')).toEqual({
+  it('enables all three registers for the structural overview', () => {
+    expect(getRegisterAvailabilityForPath('/en-us/signals/structural/')).toEqual({
       defaultRegister: 'practitioner',
       available: ['everyday', 'orientation', 'practitioner'],
       absent: {},
     });
   });
 
-  it('enables all three registers for the first structural essay', () => {
+  it('enables all three registers for the first structural signal', () => {
     expect(
       getRegisterAvailabilityForPath(
-        '/en-us/signals/structural-essays/ai-is-not-magic-it-is-a-cognitive-amplifier/',
+        '/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier/',
       ),
     ).toEqual({
       defaultRegister: 'practitioner',

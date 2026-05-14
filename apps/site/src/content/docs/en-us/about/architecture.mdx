@@ -8,17 +8,25 @@ import RegisterContent from '../../../../components/RegisterContent.astro';
 import ReadingBeat from '../../../../components/ReadingBeat.astro';
 import ReadingFrame from '../../../../components/ReadingFrame.astro';
 
-<RegisterContent register="orientation/en-us/about/architecture">
+<RegisterContent registers={{
+  everyday: 'everyday/en-us/about/architecture',
+  orientation: 'orientation/en-us/about/architecture'
+}}>
 
-You do not need this page first.
+This map shows how the main parts of the practice relate without collapsing
+them into one thing.
 
-It is here for when you want a map of how the public writing, mandate lenses,
-context seeders, and public node relate.
+Each part matters because public reasoning needs more than finished writing. It
+needs entry points, stable language, ways to move into use, and inspectable
+surfaces where change can be followed.
 
 ### The parts
 
 **Public writing**  
 Where the condition and the practice can be entered.
+
+**Registers**
+Where the same reasoning path is entered at different depths.
 
 **Seeds**  
 Where the core texts of the practice are held in stable form.
@@ -31,13 +39,22 @@ Where a lens is brought into a working environment.
 
 **Public node**  
 Where the work can be inspected, evolved further, and made visible over time.  
-One example is the [repository](https://github.com/Mikeys-Tech-Lab/poc), but a node can take different forms depending on where the practice is carried.
+One example is the [repository](https://github.com/Mikeys-Tech-Lab/poc). A
+team, project, or community can host a node, but the node is the bounded trace
+surface, not the people by default.
 
 ### What each part does
 
 #### Public writing
 
 It is where the condition, the language, and the practice can be encountered without requiring anything from the reader yet. Its job is not activation. Its job is orientation, recognition, and enough clarity for the work to become legible.
+
+#### Registers
+
+They keep the public writing connected across everyday, orientation, and
+practitioner depths. The register changes language, pacing, and inspection
+depth without changing the claim. The full contract is named in
+[Registers](/en-us/about/registers/).
 
 #### Seeds
 
@@ -69,16 +86,18 @@ place it can exist.
 
 These parts are connected, but they do different work.
 
-Public writing is for reading. Mandate lenses are for application. Context seeders are for activation. The public node is for inspection, evolution, and trace.
+Public writing is for reading. Registers keep entry and inspection connected.
+Mandate lenses are for application. Context seeders are for activation. The
+public node is for inspection, evolution, and trace.
 
 <ReadingBeat>
-  This page is for seeing the structure clearly. The work itself still has to be
+  This map is for seeing the structure clearly. The work itself still has to be
   read, tried, and followed in use.
 </ReadingBeat>
 
 ### Continue
 
-If you are starting fresh, begin with [Act I](/en-us/core-system/practice-of-clarity/act-1-when-output-outpaces-understanding/). If you want to see how this becomes visible in practice, continue to [Act IV](/en-us/core-system/practice-of-clarity/act-4-a-public-node-you-can-inspect/).
+For the pressure that begins the practice, read [Act I](/en-us/core-system/practice-of-clarity/act-1-when-output-outpaces-understanding/). For the public inspection layer, continue to [Act IV](/en-us/core-system/practice-of-clarity/act-4-a-public-node-you-can-inspect/).
 
 <ReadingFrame
   variant="example"
@@ -86,7 +105,8 @@ If you are starting fresh, begin with [Act I](/en-us/core-system/practice-of-cla
   title="More detail lives in the repository workspace map"
 >
   <p>
-    This page stays with the map. More of how this is built and evolves is documented in the repository workspace map.
+    The repository workspace map carries deeper build and evolution detail for
+    readers inspecting the node.
   </p>
   <p>
     <a href="https://github.com/Mikeys-Tech-Lab/poc/blob/main/docs/architecture/workspace.md">

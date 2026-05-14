@@ -1,5 +1,5 @@
-import type { EssayRegister } from '../../../lib/structural-essays/essay-route';
-import { buildEssayHref, ESSAY_ROUTE_ID } from '../../../lib/structural-essays/essay-route';
+import type { EssayRegister } from '../../../lib/structural/essay-route';
+import { buildEssayHref, ESSAY_ROUTE_ID } from '../../../lib/structural/essay-route';
 import type { DirectSourceEntry, EssayAnchor, FurtherReadingEntry } from '../types';
 
 export const directSourceEntries: readonly DirectSourceEntry[] = Object.freeze([
