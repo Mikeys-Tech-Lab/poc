@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.16](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.15.15...PoC-v1.15.16) (2026-05-14)
+
+
+### Miscellaneous
+
+* **deps:** update googleapis/release-please-action action to v5 ([#227](https://github.com/Mikeys-Tech-Lab/poc/issues/227)) ([bbecc46](https://github.com/Mikeys-Tech-Lab/poc/commit/bbecc46fa7ec88b6b8ffb6f80172b8d2cf295c6c))
+
 ## [1.15.15](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.15.14...PoC-v1.15.15) (2026-05-14)
 
 
