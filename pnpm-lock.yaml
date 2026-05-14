@@ -21,7 +21,7 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1(@astrojs/starlight@0.39.2(astro@6.3.2(@types/node@25.6.0)(rollup@4.60.3)(tsx@4.21.0)(yaml@2.8.3))(typescript@6.0.3))(astro@6.3.2(@types/node@25.6.0)(rollup@4.60.3)(tsx@4.21.0)(yaml@2.8.3))
       astro:
-        specifier: ^6.3.1
+        specifier: ^6.3.2
         version: 6.3.2(@types/node@25.6.0)(rollup@4.60.3)(tsx@4.21.0)(yaml@2.8.3)
       sharp:
         specifier: ^0.34.5
