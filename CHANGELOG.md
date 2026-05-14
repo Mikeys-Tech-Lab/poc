@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.5](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.15.4...PoC-v1.15.5) (2026-05-14)
+
+
+### Miscellaneous
+
+* **deps:** update test tooling non-major ([#205](https://github.com/Mikeys-Tech-Lab/poc/issues/205)) ([794437a](https://github.com/Mikeys-Tech-Lab/poc/commit/794437a46ed5f28eb8a8ec235865f69d9e4416e6))
+
 ## [1.15.4](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.15.3...PoC-v1.15.4) (2026-05-14)
 
 
