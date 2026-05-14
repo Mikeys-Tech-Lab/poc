@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.6](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.6.5...ai-guidance-v0.6.6) (2026-05-14)
+
+
+### Miscellaneous
+
+* **deps:** update dependency tsx to v4.22.0 ([#233](https://github.com/Mikeys-Tech-Lab/poc/issues/233)) ([553c331](https://github.com/Mikeys-Tech-Lab/poc/commit/553c3317afe730663f3560b88916f41b2e175c56))
+
 ## [0.6.5](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.6.4...ai-guidance-v0.6.5) (2026-05-14)
 
 
