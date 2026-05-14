@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.11](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.15.10...PoC-v1.15.11) (2026-05-14)
+
+
+### Miscellaneous
+
+* **deps:** update pnpm/action-setup action to v6 ([#221](https://github.com/Mikeys-Tech-Lab/poc/issues/221)) ([4163215](https://github.com/Mikeys-Tech-Lab/poc/commit/4163215484153c2019f06898194b1d7b5686ad3e))
+
 ## [1.15.10](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.15.9...PoC-v1.15.10) (2026-05-14)
 
 
