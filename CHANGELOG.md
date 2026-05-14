@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.15](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.15.14...PoC-v1.15.15) (2026-05-14)
+
+
+### Miscellaneous
+
+* **deps:** update actions/github-script action to v9 ([#226](https://github.com/Mikeys-Tech-Lab/poc/issues/226)) ([71c76b7](https://github.com/Mikeys-Tech-Lab/poc/commit/71c76b76e677b204790f9c3c00c5b8362f6808dd))
+
 ## [1.15.14](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.15.13...PoC-v1.15.14) (2026-05-14)
 
 
