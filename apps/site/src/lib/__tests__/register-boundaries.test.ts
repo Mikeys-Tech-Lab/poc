@@ -10,7 +10,7 @@ const cases = [
     name: 'glossary keeps the seed grounding visible in both registers',
     practitionerPath: 'apps/site/src/content/docs/en-us/about/glossary.mdx',
     orientationPath: 'apps/site/src/content/register/orientation/en-us/about/glossary.mdx',
-    practitionerSnippets: ['They keep the practice structurally grounded as it moves.'],
+    practitionerSnippets: ['They hold the commitments that keep the practice grounded:'],
     orientationSnippets: ['what keeps the work consistent'],
   },
   {
@@ -20,7 +20,7 @@ const cases = [
     orientationPath:
       'apps/site/src/content/register/orientation/en-us/core-system/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed.mdx',
     practitionerSnippets: [
-      'If teams are asked to "show their reasoning" as a deliverable, it becomes',
+      'If teams are asked to "show their reasoning" as a deliverable, they will',
       'The purpose is not to record everything.',
     ],
     orientationSnippets: [
@@ -34,7 +34,7 @@ const cases = [
       'apps/site/src/content/docs/en-us/core-system/practice-of-clarity/act-4-a-public-node-you-can-inspect.mdx',
     orientationPath:
       'apps/site/src/content/register/orientation/en-us/core-system/practice-of-clarity/act-4-a-public-node-you-can-inspect.mdx',
-    practitionerSnippets: ['a final authority over future nodes', 'challenge and revision.'],
+    practitionerSnippets: ['a final authority over future use', 'challenge and revision.'],
     orientationSnippets: [
       'This repository is not a final authority over future nodes.',
       'challenge and revision.',
@@ -45,18 +45,21 @@ const cases = [
     practitionerPath: 'apps/site/src/content/docs/en-us/core-system/mandate-lenses/index.mdx',
     orientationPath:
       'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/index.mdx',
-    practitionerSnippets: ['### Current boundary', 'There is only one public lens right now.'],
+    practitionerSnippets: [
+      '### Current boundary',
+      'There is only one public lens starting point right now.',
+    ],
     orientationSnippets: ['### Current boundary', 'There is only one public lens right now.'],
   },
   {
-    name: 'Sensible Defaults keeps the Act IV bridge and load boundary in both registers',
+    name: 'Sensible Defaults keeps the Act IV starting point and load boundary visible',
     practitionerPath:
       'apps/site/src/content/docs/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
     orientationPath:
       'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
     practitionerSnippets: [
-      '### Why this matters after Act IV',
-      'If the source cannot be loaded, the lens is not active.',
+      'first public starting point from that',
+      'If the source context is not loaded, the lens is not active.',
     ],
     orientationSnippets: [
       '### Why this matters after Act IV',
@@ -71,7 +74,7 @@ const cases = [
       'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/integration-lag.mdx',
     practitionerSnippets: [
       'This is what we call **integration lag**.',
-      'If this public entry gives you enough context already, use this minimal activation prompt:',
+      'If this public entry gives you enough context already, this prompt points toward activation:',
       'For the fuller public entry, go to [Sensible Defaults]',
       'This only works as a practice.',
     ],
@@ -90,7 +93,7 @@ const cases = [
       'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/a-path-through-integration-lag.mdx',
     practitionerSnippets: [
       'The next question is:',
-      'It is not a framework rollout, a maturity model, or a promise that every team',
+      'It is not a framework rollout, a maturity model, or a promise that every person',
       'The shift is less generation, more visibility.',
       'How this stays visible here',
       'The next part of this series goes deeper into the first practical move:',
