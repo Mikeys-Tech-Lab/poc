@@ -16,8 +16,8 @@ This seed demonstrates how differing claims can maintain connection without forc
 
 It shows how contradiction becomes data.
 
-It describes a federated system where any participant can initiate a bridge.
-No central authority is required.
+It describes a possible federated pattern where any participant can initiate a bridge.
+No central authority is required for the pattern to work.
 
 This is a model, not a running community.
 The stewardship and stop-condition sections below describe how this pattern could
@@ -60,7 +60,7 @@ All governance, federation, and multi-node dynamics described here are structura
 
 ## Who Builds the Bridge
 
-In a federated system, anyone can initiate a bridge.
+If multiple public nodes emerge, anyone can initiate a bridge.
 
 Bridge building is not owned.
 It is not assigned.
@@ -70,7 +70,7 @@ A bridge may be initiated by:
 
 - one of the conflicting nodes
 - a third participant observing divergence
-- a community member seeking clarity
+- a participant seeking clarity
 
 The initiator does not control the outcome.
 They make the divergence visible.
@@ -98,7 +98,7 @@ It needs to be time-boxed and acknowledged as work.
 1. Place both traces side by side.
 2. Identify shared assumptions.
 3. Identify divergence points.
-4. Identify measurable uncertainty.
+4. Identify measurable uncertainty or an observable condition.
 5. Define the next bounded action.
 6. Set a revision date.
 
@@ -112,9 +112,9 @@ A bridge does not merge claims.
 
 Instead of forced agreement, the bridge produces:
 
-- a bounded experiment
-- a measurable variable
-- a declared risk threshold
+- a bounded experiment or next check
+- a measurable variable or observable condition
+- a declared risk threshold or boundary
 - a revision timestamp
 
 Contradiction remains visible.
@@ -128,8 +128,8 @@ Federation does not permit endless escalation.
 
 Every bridge needs to produce, at minimum:
 
-- a bounded experiment
-- a measurable variable
+- a bounded experiment or next check
+- a measurable variable or observable condition
 - a revision timestamp
 
 If no action is defined, the bridge is incomplete.
@@ -144,10 +144,10 @@ When more than two nodes diverge:
 
 - each node publishes its trace independently
 - any participant may initiate a comparative bridge
-- bridges may fork if integration paths differ
+- bridges may split if integration paths differ
 - no bridge is mandatory
 
-In a federated system, multiple bridges can coexist.
+If a federated layer emerges, multiple bridges can coexist.
 
 ---
 
@@ -245,6 +245,8 @@ In this model, the trace must state:
 
 Backend access does not replace trace discipline.
 
+Privileged data cannot decide the bridge by itself. It can only support a boundary when the public trace also surfaces pattern-level indicators, states what cannot be disclosed, and leaves a revision pathway if new inspectable information emerges.
+
 ### Privacy-constrained evidence rule
 
 Inspectable evidence must map structural behavior, not expose personal identity.
@@ -328,4 +330,4 @@ https://creativecommons.org/licenses/by/4.0/
 
 This short notice references the full license text and does not replace the complete license terms.
 
-Project context and updates live in this repository. Personal websites may mirror releases, but the license text referenced above is the source for terms.
+The public site is the primary reading surface. The repository remains the deeper inspectable source of authorship, history, and licensing.
