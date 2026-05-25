@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.3.6...site-v2.4.0) (2026-05-25)
+
+
+### Features
+
+* **docs:** promote finalized en-us public content ([#238](https://github.com/Mikeys-Tech-Lab/poc/issues/238)) ([4f8a89f](https://github.com/Mikeys-Tech-Lab/poc/commit/4f8a89fc637040142bce3ef34108c63969fdd402))
+
 ## [2.3.6](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.3.5...site-v2.3.6) (2026-05-14)
 
 

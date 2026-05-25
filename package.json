@@ -1,6 +1,6 @@
 {
   "name": "@poc/workspace",
-  "version": "1.15.19",
+  "version": "1.16.0",
   "private": true,
   "type": "module",
   "engines": {
