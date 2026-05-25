@@ -44,7 +44,7 @@ A trace is a short record of the reasoning path behind a claim: what was decided
 
 Trace here means the visible reasoning path behind a decision. It does not refer to runtime telemetry, distributed tracing, or operational visibility data.
 
-These definitions are also used as shared context for language models. Seeds are written so they can be read by humans and loaded as context for AI at the same time.
+These definitions are also used as source context for language models. Seeds are written so they can be read by humans and loaded as part of a source context for AI at the same time.
 
 Clarity here does not mean certainty, agreement, or one final truth. It means:
 
@@ -81,6 +81,8 @@ Non-negotiables when AI assists:
 - Name what you checked, how you checked it, and what you did not verify yet.
 - If you cannot verify a claim, do not present it as fact. Mark it as uncertainty.
 - In high stakes contexts, do not rely on AI output without independent verification.
+
+High stakes means any context where an error could materially affect safety, health, housing, money, legal status, employment, access to services, public reputation, or someone else's rights.
 
 AI may assist in tracing. Human responsibility for verification remains.
 
@@ -122,7 +124,7 @@ Each person, group, or community can form their own node of practice.
 A node might be a team decision log that names assumptions and checks them, a community translation that marks what was adapted, or a personal journal that records uncertainty alongside conclusions. What makes it a node is not the format. It is visible reasoning and explicit boundaries.
 
 Nodes do not need to merge or agree. They may connect through bridges: shared traces, shared definitions, shared translations.
-Fork-first does not mean isolation. If you need shared action, write a bridge: name the divergence point and the next check you will run together.
+Separation does not mean isolation. If you need shared action, write a bridge: name the divergence point and the next check you will run together.
 
 A bridge is not possession. It is mutual visibility. Connection without ownership.
 
@@ -197,6 +199,8 @@ If you want to begin a node of practice, the smallest usable shape is:
 
 Everything beyond that is optional.
 
+This shape is not a mandatory template, checklist, or compliance form. If it is used to monitor people rather than make reasoning inspectable, it has left the practice.
+
 ---
 
 ## Core Seed Set
@@ -210,7 +214,7 @@ This practice is held by a small set of seeds:
 - [Voice of Guidance](./Voice of Guidance.md)
 - [Translation and Register Guidance](./Translation and Register Guidance.md)
 
-These seeds define the discipline and act as shared context that can be read, referenced, and loaded into AI systems.
+These seeds define the discipline and act as source context that can be read, referenced, and loaded into AI systems.
 Nodes and lenses apply it in specific contexts.
 
 ---
@@ -222,7 +226,7 @@ Today, this is a seed.
 It may grow into:
 
 - Articles connected by shared definitions  
-- A graph of traceable meaning  
+- Public paths of traceable meaning  
 - Translation layers across languages  
 - Domain-specific lenses  
 - Open communities of reflective practice  
