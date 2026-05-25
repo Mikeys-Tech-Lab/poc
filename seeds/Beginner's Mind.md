@@ -16,7 +16,7 @@ This page defines the internal posture that makes the practice work under pressu
 
 It is not spirituality.
 It is not personal branding.
-It is not self help language.
+It is not self-help language.
 
 It is a practical stance that protects clarity from performance, certainty theater, and defensive reasoning.
 
@@ -110,7 +110,7 @@ Beginner’s mind increases integration speed.
 
 In this practice, AI is used to generate possibilities, not final truth.
 
-Seeds in this work are written to be both human-readable and usable as shared context for AI systems.
+Seeds in this work are written to be both human-readable and usable as source context for AI systems.
 
 A common loop:
 
@@ -125,9 +125,10 @@ A common loop:
 
 ## Using the Seed Set in AI Contexts
 
-You can load the seed set into an AI conversation as shared context.
+You can load the seed set into an AI conversation as source context.
 This is a runtime technique, not the default way to enter the practice.
 It does not make the assistant correct. It makes reasoning easier to inspect.
+It does not replace verification.
 
 Current seed set:
 
@@ -138,7 +139,7 @@ Current seed set:
 - [Voice of Guidance](./Voice of Guidance.md)
 - [Translation and Register Guidance](./Translation and Register Guidance.md)
 
-The same texts are fully readable on the public site. The repository remains the authored source and inspection layer.
+The same texts are fully readable on the public site. The public site is the primary reading surface, and the repository remains the deeper inspectable source of authorship, history, and licensing.
 
 What this tends to improve:
 
@@ -169,7 +170,7 @@ Beginner’s mind cannot be mandated. If it is demanded as performance, it will 
 
 If an organization requires certainty, it will produce confident errors at volume.
 
-Beginner’s mind is how teams resist that pressure without stalling.
+Beginner’s mind is how people and teams resist that pressure without stalling.
 
 ---
 
@@ -228,4 +229,4 @@ https://creativecommons.org/licenses/by/4.0/
 
 This short notice references the full license text and does not replace the complete license terms.
 
-Project context and updates live in this repository. Personal websites may mirror releases, but the license text referenced above is the source for terms.
+The public site is the primary reading surface. The repository remains the deeper inspectable source of authorship, history, and licensing.
