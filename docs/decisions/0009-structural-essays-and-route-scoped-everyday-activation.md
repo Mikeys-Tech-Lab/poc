@@ -1,4 +1,4 @@
-# 0009 — Structural essays and route-scoped everyday activation
+# 0009 — Structural signals and route-scoped everyday activation
 
 **Status:** accepted
 **Date:** 2026-05-09
@@ -8,9 +8,8 @@
 ## Context
 
 The public site already has a `Signals` area for named conditions and practice
-paths. It does not yet have a neutral shelf for essay-shaped public readings
-that are signal-like but not operational notes, release notes, or repository
-updates.
+paths. It does not yet have a neutral shelf for structural public signals that
+are not operational notes, release notes, or repository updates.
 
 The register substrate also knows three reading registers:
 
@@ -23,16 +22,16 @@ That preserved honesty, but it also meant the three-register model was not yet
 exercised by any route.
 
 The next content surface needs a place that can be prepared without publishing
-individual essays early or exposing preparation context.
+individual structural signals early or exposing preparation context.
 
 ## Decision
 
-1. Add `Signals > Structural Essays` as the public information architecture
-   home for essay-shaped signals.
-2. Use `signals/structural-essays/` as the stable overview route.
+1. Add `Signals > Structural` as the public information architecture home for
+   structural signals.
+2. Use `signals/structural/` as the stable overview route.
 3. Keep the page generic. It defines the shelf and reading contract, not any
-   specific future essay.
-4. Activate `everyday` only for the Structural Essays overview route by adding
+   specific future signal.
+4. Activate `everyday` only for the Structural overview route by adding
    real `everyday`, `orientation`, and `practitioner` content for that route.
 5. Keep the global default register availability unchanged:
    `practitioner` and `orientation` available, `everyday` explicitly
@@ -54,23 +53,23 @@ model before the content structure needs one.
 
 **`Signals > Publications`.** Rejected. It mixes the conceptual category
 (`Signals`) with a publishing channel label. That would become ambiguous once
-the section contains signal definitions, paths, structural essays, and possible
-mirrors of external publications.
+the section contains signal definitions, paths, structural signals, and
+possible mirrors of external publications.
 
 **Activate `everyday` globally.** Rejected. Most existing routes do not have
 everyday content. Making everyday globally available would create false content
 presence and break the explicit-unavailable contract from ADR 0008.
 
-**Wait until individual essays are ready.** Rejected. The route and register
+**Wait until individual signals are ready.** Rejected. The route and register
 contract can be prepared honestly with a generic overview. This lets the public
-surface and tests carry the intended structure before individual essays are
+surface and tests carry the intended structure before individual signals are
 added.
 
 ## Consequences
 
 What improves:
 
-- The site gains a clear public shelf for essay-shaped signals.
+- The site gains a clear public shelf for structural signals.
 - The three-register model is exercised by one real route.
 - Existing routes keep their current fallback behavior for unavailable
   everyday content.
@@ -87,7 +86,7 @@ What becomes harder:
 
 What remains deferred:
 
-- Individual structural essays.
+- Additional structural signals.
 - Any external publication mirror strategy.
 - Any graph, constellation, or anchor-entry navigation model.
 

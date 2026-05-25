@@ -20,11 +20,11 @@ const cases = [
     orientationPath:
       'apps/site/src/content/register/orientation/en-us/core-system/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed.mdx',
     practitionerSnippets: [
-      'If teams are asked to "show their reasoning" as a deliverable, they will',
+      'If people are asked to "show their reasoning" as a deliverable,',
       'The purpose is not to record everything.',
     ],
     orientationSnippets: [
-      'If teams are asked to "show their reasoning" as a deliverable, it becomes',
+      'If people are asked to "show their reasoning" as a deliverable,',
       'The purpose is not to record everything.',
     ],
   },
@@ -36,7 +36,7 @@ const cases = [
       'apps/site/src/content/register/orientation/en-us/core-system/practice-of-clarity/act-4-a-public-node-you-can-inspect.mdx',
     practitionerSnippets: ['a final authority over future use', 'challenge and revision.'],
     orientationSnippets: [
-      'This repository is not a final authority over future nodes.',
+      'This public node is not a final authority over future nodes.',
       'challenge and revision.',
     ],
   },
@@ -47,9 +47,12 @@ const cases = [
       'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/index.mdx',
     practitionerSnippets: [
       '### Current boundary',
-      'There is only one public lens starting point right now.',
+      'There is only one usable runtime guidance surface in this public node right now.',
     ],
-    orientationSnippets: ['### Current boundary', 'There is only one public lens right now.'],
+    orientationSnippets: [
+      '### Current boundary',
+      'There is only one usable runtime guidance surface in this public node right now.',
+    ],
   },
   {
     name: 'Sensible Defaults keeps the Act IV starting point and load boundary visible',
@@ -58,12 +61,12 @@ const cases = [
     orientationPath:
       'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
     practitionerSnippets: [
-      'first public starting point from that',
+      'first usable runtime guidance surface in',
       'If the source context is not loaded, the lens is not active.',
     ],
     orientationSnippets: [
-      '### Why this matters after Act IV',
-      'If the source cannot be loaded, the lens is not active.',
+      'first usable runtime guidance surface in',
+      'If the source context cannot be loaded, the lens is not active.',
     ],
   },
   {
@@ -80,7 +83,7 @@ const cases = [
     ],
     orientationSnippets: [
       '**Sensible Defaults**',
-      'If this public entry already gave you enough context, use this minimal activation prompt:',
+      'If this public entry already gave you enough context, use this minimal activation prompt in a compatible model or agent:',
       'For the fuller public entry, go to [Sensible Defaults]',
       'This is about seeing clearly, not doing more.',
     ],

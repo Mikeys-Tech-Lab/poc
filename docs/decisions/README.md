@@ -90,7 +90,7 @@ Links to seeds, PRs, related ADRs, or external sources. Not a duplication of PR 
 | [0006](0006-root-canon-package-families-and-lens-surfaces.md) | Root canon package families and lens surfaces | Accepted | 2026-04-03 |
 | [0007](0007-trace-climb-durable-learning-flow.md) | Trace Climb durable learning flow | Accepted | 2026-04-06 |
 | [0008](0008-public-reading-register-substrate.md) | Public reading register substrate | Accepted | 2026-05-05 |
-| [0009](0009-structural-essays-and-route-scoped-everyday-activation.md) | Structural essays and route-scoped everyday activation | Accepted | 2026-05-09 |
+| [0009](0009-structural-essays-and-route-scoped-everyday-activation.md) | Structural signals and route-scoped everyday activation | Accepted | 2026-05-09 |
 
 ---
 © 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).
