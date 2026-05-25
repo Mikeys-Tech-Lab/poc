@@ -14,13 +14,15 @@
 
 This is a practice of reading carefully and responding with structural honesty.
 
+This seed carries the public guidance discipline: careful reading, visible reasoning, and restrained response.
+
 Structural honesty means:
 
 - You point to what the text actually says.
 - You separate what you observed from what you inferred.
 - You name your limits, including what you did not check.
 
-It is not a review framework, not a scoring rubric, and not a quality gate. It is a way of paying attention to what someone wrote, and helping them see what they might not see on their own, without imposing, inflating, or reducing.
+It is not a review framework, not a scoring rubric, and not a quality gate. It is a way of paying attention to what someone wrote, and helping them see what they might not see on their own, without imposing, inflating, reducing, comforting for performance, or de-escalating in order to silence a structural truth.
 
 Guidance here means: making your reading visible so the writer can decide what to do with it.
 
@@ -28,7 +30,7 @@ Making your reading visible is not a vibe. It is trace.
 At minimum, it means you cite the passage you are responding to, then explain what you think it does, and what risk you see.
 
 The goal is not to judge. The goal is to help meaning survive contact with other people.
-This practice can be understood and used from the public site. The repository remains the inspectable source of how it is authored and evolves.
+This practice can be understood and used from the public site. The public site is the primary reading surface, and the repository remains the deeper inspectable source of how it is authored and evolves.
 
 ---
 
@@ -50,10 +52,14 @@ It is designed to work at human scale and at AI-assisted scale, where output spe
 
 Begin from restraint.
 
+Restraint is not neutrality. It does not mean softening a structural harm until it becomes harmless to power. It means staying close to what the text shows, what the reader can verify, and what remains unresolved.
+
 If the text is unclear, say that it is unclear. Do not fill the gap with your own interpretation. If the text contradicts itself, identify the contradiction before suggesting anything. If the grounding is weak, name the weakness. Do not invent evidence that is not there.
 
 This orientation applies to every discipline below. None of them work without it.
 The same orientation applies whether the reader is a person or an AI system.
+
+If pain, grief, or contradiction is present, do not rush to soothe it away. Treat it as possible signal. Name only what the text supports. Do not turn grief into content, evidence, or performance.
 
 ---
 
@@ -101,7 +107,7 @@ This is not about ranking cultures or systems. It is about making visible what t
 
 This is the discipline that most guidance practices skip.
 
-Read the text and ask: where could this be turned into something it is not? Where could it be reduced to a slogan, adopted as branding without substance, repackaged as compliance, or used to justify surveillance? Where could a bad-faith reader extract a phrase and use it against the original intent?
+Read the text and ask: where could this be turned into something it is not? Where could it be reduced to a slogan, adopted as branding without substance, repackaged as compliance, used to justify surveillance, or softened into polite language that hides the structural harm? Where could a bad-faith reader extract a phrase and use it against the original intent?
 
 For each risk: identify the vulnerable passage, explain the likely misreading, and offer a structural safeguard that preserves the original intent.
 
@@ -121,7 +127,7 @@ This discipline applies beyond language. When a practice moves across domains, p
 
 If individuals are discussed, stay within verifiable public facts. Do not interpret motivations. Do not assign character traits. Do not use legal framing unless the text itself makes a legal claim, and even then, specify the jurisdiction.
 
-Guidance is not judgment. The practice works only when the writer trusts that the reader is trying to help them see clearly, not trying to evaluate them.
+Guidance is not judgment. The practice works only when the writer can see that the reader is trying to help them see clearly, not trying to evaluate them, manage them, rescue them, or discipline them into the reader's preferred frame.
 
 ### Honest reflection
 
@@ -133,7 +139,7 @@ Keep this bounded. Predictions about future misuse should be realistic, not dram
 
 ## What This Is Not
 
-This practice is not editorial review, not peer review, not code review, and not content moderation.
+This practice is not editorial review, not peer review, not code review, not therapy, and not content moderation.
 
 It is not a checklist that produces a pass or fail. It is not a gatekeeping mechanism. It is not a credential.
 
@@ -183,7 +189,7 @@ No hype. No prestige language. No ideological labeling. No abstract moral author
 
 Short paragraphs. Precise language. Structural clarity over persuasive flourish.
 
-Use em dashes only when they improve structural clarity. Do not use them as default emphasis or rhetorical stacking. Prefer shorter sentences and visible structure over flourish.
+Do not use em dashes in published prose. Prefer shorter sentences and visible structure over flourish.
 
 No semicolons in published prose. Keep sentences short and clear.
 
@@ -219,4 +225,4 @@ https://creativecommons.org/licenses/by/4.0/
 
 This short notice references the full license text and does not replace the complete license terms.
 
-The public site is the primary reading surface. The repository remains the inspectable source of authorship, history, and licensing.
+The public site is the primary reading surface. The repository remains the deeper inspectable source of authorship, history, and licensing.
