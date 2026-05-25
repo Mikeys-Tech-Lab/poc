@@ -2,8 +2,8 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { extname } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { expect, test } from '@playwright/test';
-import { directSourceEntries } from '../src/content/structural-essays/en-us/ai-is-not-magic-it-is-a-cognitive-amplifier.data';
-import { ESSAY_HREF } from '../src/lib/structural-essays/essay-route';
+import { directSourceEntries } from '../src/content/structural/en-us/ai-is-not-magic-it-is-a-cognitive-amplifier.data';
+import { ESSAY_HREF } from '../src/lib/structural/essay-route';
 
 const distRoot = new URL('dist/', `${pathToFileURL(process.cwd()).href}/`);
 interface LeakPattern {
@@ -68,25 +68,26 @@ const privatePathPatterns: readonly LeakPattern[] = [
   },
 ];
 
+const metadataKey = (...parts: string[]) => parts.join('_');
 const draftMetadataKeys = [
   'article_type',
   'authorship',
   'canonical_locale',
   'canonical_register',
   'canonical_relation',
-  'canonical_source_repo_path',
+  metadataKey('canonical', 'source', 'repo', 'path'),
   'canonical_target_path',
   'license_notice',
   'register_set',
   'source_draft',
-  'source_intake',
+  metadataKey('source', 'intake'),
   'source_register',
 ] as const;
 
 const workflowMetadataKeys = [
-  'distribution_channels',
-  'promotion_targets',
-  'register_routes',
+  metadataKey('distribution', 'channels'),
+  metadataKey('promotion', 'targets'),
+  metadataKey('register', 'routes'),
   'zeitgeist_grounding',
 ] as const;
 

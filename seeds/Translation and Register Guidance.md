@@ -62,7 +62,7 @@ Translation here means: preserve intent and structure, while letting language, r
 
 - Definitions of structural terms (trace, seed, node, lens)
 - Boundary statements (what the practice is not)
-- Safety constraints (anti surveillance, anti coercion)
+- Safety constraints (anti-surveillance, anti-coercion)
 - Core claims and reasoning paths
 
 ### Harm reports, evidence, and privacy
@@ -92,7 +92,7 @@ Structural definitions live in the seeds:
 
 ### Phase one: English as initiation
 
-All content begins in English as a shared container for development, testing, and shared understanding. English is a practical starting point. It is not the endpoint.
+All content begins in English as a shared development container for testing and shared understanding. English is a practical starting point. It is not the endpoint.
 
 ### Phase two: multilingual resonance
 
@@ -114,7 +114,7 @@ This practice is designed to speak across audiences, not only across languages.
 
 ### Register contract (current public state)
 
-The current public reading-register registry consists of three known registers:
+The current public reading-register registry consists of three known entry depths:
 
 - **Everyday**: starts from what people can already recognize in lived situations, direct pressure, and visible consequences. It is route-scoped in the current public site and appears only where it has been written and reviewed.
 - **Orientation**: builds the practice step by step, with slower pacing and terms introduced as the structure becomes visible.
@@ -124,7 +124,7 @@ These differences must show up in the writing itself: sentence density, pacing, 
 
 Registers change how the work is read, not what it means.
 
-Registers describe use contexts, not demographics. People may move between registers depending on energy, stress, language comfort, channel constraints, and the amount of shared context available.
+Registers describe use contexts, not demographics. People may move between registers depending on energy, stress, language comfort, channel constraints, and the amount of source context available.
 
 Missing register variants are explicit states, not errors. A page may declare that a known register is not available yet. That declaration must not be replaced with empty placeholder content.
 
@@ -207,7 +207,7 @@ Future locales will be added over time as reviewer capacity and community suppor
 3. Preserve intent, not words. Translate the tension and structure, not the surface phrasing.
 4. Avoid calques. If a phrase only makes sense because it was translated word-for-word from English, rewrite it.
 5. Cultural context matters. References, examples, and metaphors should make sense locally. Replace English-centric metaphors with ones that work in the target culture.
-6. Register is explicit. Each translated or rewritten edition needs to state its intended register. On the live public site, that currently means `orientation` or `practitioner`.
+6. Register is explicit. Each translated or rewritten edition needs to state its intended register. On the live public site, that currently means `everyday`, `orientation`, or `practitioner` where those surfaces have been written and reviewed.
 7. Avoid register drift. Do not accidentally slide into academic, corporate, or influencer tone unless the edition explicitly targets that register.
 
 ---
@@ -303,7 +303,7 @@ Before publishing any translation, ask:
 5. Structural fidelity: do headings, lists, and trace prompts stay in the same order unless an adaptation note says otherwise?
 6. Terminology stability: are core terms either preserved or mapped once in a glossary note (trace, assumption, interpretation, misuse, federation)?
 7. Back check: can you translate a short excerpt back into English and confirm the meaning did not drift?
-8. Co-option check: does any wording shift boundaries into corporate compliance language or redefine safety as liability? If yes, rewrite and record an adaptation note. If public documentation is unsafe, record it privately and publish only a non identifying, high level warning.
+8. Co-option check: does any wording shift boundaries into corporate compliance language or redefine safety as liability? If yes, rewrite and record an adaptation note. If public documentation is unsafe, record it privately and publish only a non-identifying, high-level warning.
 
 If any answer is no, rewrite.
 
@@ -339,4 +339,4 @@ https://creativecommons.org/licenses/by/4.0/
 
 This short notice references the full license text and does not replace the complete license terms.
 
-Project context and updates live in this repository. Personal websites may mirror releases, but the license text referenced above is the source for terms.
+The public site is the primary reading surface. The repository remains the deeper inspectable source of authorship, history, and licensing.

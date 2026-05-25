@@ -35,7 +35,7 @@ Use these stages consistently:
 - `draft` - forming, incomplete, not ready to rely on
 - `review` - structurally coherent, still under active critique
 - `ready` - stable enough to promote or export
-- `published` - promoted into the public PoC surface
+- `published` - promoted into the public site surface
 
 ## What belongs here
 

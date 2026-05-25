@@ -10,8 +10,8 @@ const cases = [
     name: 'glossary keeps the seed grounding visible in both registers',
     practitionerPath: 'apps/site/src/content/docs/en-us/about/glossary.mdx',
     orientationPath: 'apps/site/src/content/register/orientation/en-us/about/glossary.mdx',
-    practitionerSnippets: ['They are what keeps the practice structurally grounded as it moves.'],
-    orientationSnippets: ['what keeps the work consistent as it moves'],
+    practitionerSnippets: ['They hold the commitments that keep the practice grounded:'],
+    orientationSnippets: ['what keeps the work consistent'],
   },
   {
     name: 'Act II keeps the anti-performance boundary visible in both registers',
@@ -20,11 +20,11 @@ const cases = [
     orientationPath:
       'apps/site/src/content/register/orientation/en-us/core-system/practice-of-clarity/act-2-practicing-decision-hygiene-under-ai-speed.mdx',
     practitionerSnippets: [
-      'If teams are asked to "show their reasoning" as a deliverable, it becomes',
+      'If people are asked to "show their reasoning" as a deliverable,',
       'The purpose is not to record everything.',
     ],
     orientationSnippets: [
-      'If teams are asked to "show their reasoning" as a deliverable, it becomes',
+      'If people are asked to "show their reasoning" as a deliverable,',
       'The purpose is not to record everything.',
     ],
   },
@@ -34,9 +34,9 @@ const cases = [
       'apps/site/src/content/docs/en-us/core-system/practice-of-clarity/act-4-a-public-node-you-can-inspect.mdx',
     orientationPath:
       'apps/site/src/content/register/orientation/en-us/core-system/practice-of-clarity/act-4-a-public-node-you-can-inspect.mdx',
-    practitionerSnippets: ['a final authority over future nodes', 'challenge and revision.'],
+    practitionerSnippets: ['a final authority over future use', 'challenge and revision.'],
     orientationSnippets: [
-      'This repository is not a final authority over future nodes.',
+      'This public node is not a final authority over future nodes.',
       'challenge and revision.',
     ],
   },
@@ -45,22 +45,28 @@ const cases = [
     practitionerPath: 'apps/site/src/content/docs/en-us/core-system/mandate-lenses/index.mdx',
     orientationPath:
       'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/index.mdx',
-    practitionerSnippets: ['### Current boundary', 'There is only one public lens right now.'],
-    orientationSnippets: ['### Current boundary', 'There is only one public lens right now.'],
+    practitionerSnippets: [
+      '### Current boundary',
+      'There is only one usable runtime guidance surface in this public node right now.',
+    ],
+    orientationSnippets: [
+      '### Current boundary',
+      'There is only one usable runtime guidance surface in this public node right now.',
+    ],
   },
   {
-    name: 'Sensible Defaults keeps the Act IV bridge and load boundary in both registers',
+    name: 'Sensible Defaults keeps the Act IV starting point and load boundary visible',
     practitionerPath:
       'apps/site/src/content/docs/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
     orientationPath:
       'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
     practitionerSnippets: [
-      '### Why this matters after Act IV',
-      'If the source cannot be loaded, the lens is not active.',
+      'first usable runtime guidance surface in',
+      'If the source context is not loaded, the lens is not active.',
     ],
     orientationSnippets: [
-      '### Why this matters after Act IV',
-      'If the source cannot be loaded, the lens is not active.',
+      'first usable runtime guidance surface in',
+      'If the source context cannot be loaded, the lens is not active.',
     ],
   },
   {
@@ -71,13 +77,13 @@ const cases = [
       'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/integration-lag.mdx',
     practitionerSnippets: [
       'This is what we call **integration lag**.',
-      'If the article gives you enough context already, use this minimal activation prompt:',
+      'If this public entry gives you enough context already, this prompt points toward activation:',
       'For the fuller public entry, go to [Sensible Defaults]',
       'This only works as a practice.',
     ],
     orientationSnippets: [
       '**Sensible Defaults**',
-      'If the article already gave you enough context, use this minimal activation prompt:',
+      'If this public entry already gave you enough context, use this minimal activation prompt in a compatible model or agent:',
       'For the fuller public entry, go to [Sensible Defaults]',
       'This is about seeing clearly, not doing more.',
     ],
@@ -90,7 +96,7 @@ const cases = [
       'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/a-path-through-integration-lag.mdx',
     practitionerSnippets: [
       'The next question is:',
-      'It is not a framework rollout, a maturity model, or a promise that every team',
+      'It is not a framework rollout, a maturity model, or a promise that every person',
       'The shift is less generation, more visibility.',
       'How this stays visible here',
       'The next part of this series goes deeper into the first practical move:',
@@ -124,15 +130,15 @@ describe('register boundary guardrails', () => {
     }
   });
 
-  it('Structural Essays keeps the first essay entry visible in all three registers', () => {
-    expect(read('apps/site/src/content/docs/en-us/signals/structural-essays/index.mdx')).toContain(
-      'The first structural essay is now available:',
+  it('Structural keeps the AI and cognitive amplification entry visible in all three registers', () => {
+    expect(read('apps/site/src/content/docs/en-us/signals/structural/index.mdx')).toContain(
+      'The first structural signal cluster begins with:',
     );
     expect(
-      read('apps/site/src/content/register/orientation/en-us/signals/structural-essays/index.mdx'),
-    ).toContain('The first structural essay is now available:');
+      read('apps/site/src/content/register/orientation/en-us/signals/structural/index.mdx'),
+    ).toContain('The first structural signal cluster begins with:');
     expect(
-      read('apps/site/src/content/register/everyday/en-us/signals/structural-essays/index.mdx'),
-    ).toContain('The first essay is ready:');
+      read('apps/site/src/content/register/everyday/en-us/signals/structural/index.mdx'),
+    ).toContain('The first signal in this cluster is ready:');
   });
 });

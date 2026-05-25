@@ -146,6 +146,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             { label: 'What This Work Is', slug: 'about/what-this-is' },
+            { label: 'Registers', slug: 'about/registers' },
             { label: 'Architecture', slug: 'about/architecture' },
             {
               label: 'How to Inspect This Node',
@@ -227,16 +228,22 @@ export default defineConfig({
           collapsed: false,
           items: [
             {
-              label: 'Structural Essays',
+              label: 'Structural',
               collapsed: false,
               items: [
                 {
                   label: 'Overview',
-                  slug: 'signals/structural-essays',
+                  slug: 'signals/structural',
                 },
                 {
-                  label: 'AI Is Not Magic. It Is a Cognitive Amplifier.',
-                  slug: 'signals/structural-essays/ai-is-not-magic-it-is-a-cognitive-amplifier',
+                  label: 'AI & Cognitive Amplification',
+                  collapsed: false,
+                  items: [
+                    {
+                      label: 'AI Is Not Magic. It Is a Cognitive Amplifier.',
+                      slug: 'signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier',
+                    },
+                  ],
                 },
               ],
             },

@@ -1,6 +1,6 @@
 ---
 title: "Integration Lag: We Started Shipping Faster. We Also Started Understanding Less."
-description: What happens when AI increases output speed faster than teams can integrate changes into shared understanding.
+description: What happens when AI-assisted output moves faster than people can inspect and integrate the work.
 register: practitioner
 ---
 
@@ -41,7 +41,7 @@ Integration of understanding:
 
 AI made generation cheap.
 
-It also made it easy to move faster than our ability to make sense of what we are doing.
+It also made it easy to move faster than our ability to inspect, review, and make sense of what we are doing.
 
 This is what we call **integration lag**.
 
@@ -78,11 +78,13 @@ As a working intervention while the decision is still forming.
 
 ### The intervention
 
-We use a small context seeder.
+We use a source context that can guide how an LLM or agent reasons during work.
 
-A shared piece of context loaded into the AI before it starts working.
+That context is not only a prompt. It relies on the reasoning-contract seeds
+behind the practice, the lens text, and the context seeder that carries relevant
+source context into use.
 
-It forces reasoning to surface while the work is still forming.
+It makes reasoning surface while the work is still forming.
 
 In practice:
 
@@ -90,12 +92,16 @@ In practice:
 - it surfaces assumptions
 - it identifies missing domains
 - it exposes hidden work
+- it keeps the next check visible
 
 We call this lens **Sensible Defaults**.
 
 It is not a framework.
 
-It is a constraint on how work is approached under AI speed.
+It is the first usable runtime guidance surface in this public node, built for
+LLM-assisted coding.
+
+It is usable now, but it is not presented as finished.
 
 ### Example
 
@@ -140,20 +146,20 @@ Try it once.
 
 Take one real, slightly uncomfortable task.
 
-Load the context seeder.  
-Run it through the lens.
+Use the Sensible Defaults source context.  
+Run the task through the lens.
 
-See what surfaces.
+See what assumptions, missing domains, and next checks surface.
 
 If it doesn't reduce rework or late surprises, drop it.
 
-If the article gives you enough context already, use this minimal activation prompt:
+If this public entry gives you enough context already, this prompt points toward activation:
 
 <ActivationPrompts
   variant="minimal-only"
   title="Minimal activation prompt"
   minimalTitle="Minimal activation prompt"
-  intro="Load the lens directly into a compatible model or agent."
+  intro="Use this only with the relevant Sensible Defaults source context. The lens is not active without that context."
 />
 
 For the fuller public entry, go to [Sensible Defaults](/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load/).
@@ -170,16 +176,17 @@ If it is used to control people instead of exposing reality, it fails.
 
 This only works as a practice.
 
-### This is not meant to be done alone
+### This should not stay private
 
-Reasoning is not an individual activity.
+Reasoning can begin with one person and an AI system.
 
-It becomes visible between people.
+But if the work affects other people, the reasoning cannot stay private.
 
-So this only works when it is shared.
+It has to become visible enough for others to inspect, question, and carry
+forward.
 
 Not installed.  
-Practiced together.
+Practiced with trace.
 
 ### The real goal
 
@@ -193,12 +200,12 @@ Everything else is just faster confusion.
 
 ### Continue the path
 
-Integration lag names the condition and points to one activation lens.
+Integration lag names the condition and points to the first public runtime reasoning lens.
 
 The broader practice loop is here:
 [A Path Through Integration Lag](/en-us/signals/operational/work-delivery/a-path-through-integration-lag/).
 
-That path follows what happens before and after a lens is used: how teams keep
+That path follows what happens before and after a lens is used: how people keep
 work grounded, surface misalignment, preserve learning, and keep shared
 understanding connected to delivery.
 

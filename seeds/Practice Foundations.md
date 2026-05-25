@@ -31,7 +31,7 @@ Do not use it as:
 - a substitute for engineering work  
 
 This is a clarification layer. It exists so meaning survives contact with growth.
-This layer can be understood through the public site. The repository remains an inspectable record of how the practice is authored and evolves.
+This layer can be understood through the public site. In this release, the public site and repository together form the current public node: the site is the primary reading surface, and the repository remains the deeper inspectable record of how the practice is authored and evolves.
 
 ---
 
@@ -91,8 +91,8 @@ Many independent nodes can adopt the practice. Federation requires accountable t
 A federated node might be: a team decision log where assumptions are named and checked, a community translation that marks what was adapted and why, or a personal practice journal that records uncertainty alongside conclusions. What makes it federated is not the format. It is visible reasoning and explicit boundaries.
 
 In this release, the practice is authored by one person.
-The public site is the primary reading surface, and the repository is the inspectable node behind it.
-Federation is an option, not a claim of existing adoption.
+The public site and repository together form the current public node: the site is the primary reading surface, and the repository is the deeper inspectable source behind it.
+Federation is a possible future shape, not a claim of existing adoption.
 
 **Snapshot**  
 A stable public state of the practice text at a point in time. New snapshots replace old ones only when a pattern of ambiguity or misuse makes refinement necessary.
@@ -152,7 +152,7 @@ Examples include:
 - a lineage note that marks what changed and why across editions
 
 If the artifacts are missing, the practice is not present, even if the words are used.
-These artifacts can be understood from the public site. The repository exists so they can be inspected in depth.
+These artifacts can be understood from the public site. The repository exists so they can be inspected in greater depth.
 
 ---
 
@@ -187,9 +187,10 @@ Drift is not always bad.
 Unmarked drift breaks bridges.
 
 Do not guess intent.
-Ask for artifacts.
+Where it is safe to do so, ask for artifacts.
 If artifacts appear, you have something to connect to.
 If artifacts do not appear, you have a boundary.
+If asking would create retaliation risk, protect yourself first and keep the boundary private or abstracted.
 
 If trace disappears, the practice disappears.
 
@@ -238,7 +239,7 @@ Interpretations are documented to make meaning propagation visible.
 - private disputes  
 - performative outrage without substance  
 
-### Entry format
+### Possible entry format
 
 **Date:**  
 **Source / context:**  
@@ -247,7 +248,7 @@ Interpretations are documented to make meaning propagation visible.
 **Impact:** low | medium | high  
 **Status:** open | resolved | integrated  
 
-This log is documentation, not a debate stage.
+This format is illustrative. If an interpretation log is used later, it should remain documentation, not a debate stage.
 
 ---
 
@@ -257,7 +258,7 @@ This section describes a response shape the practice can use as it travels.
 It is not evidence of an already active governance layer across multiple nodes.
 It describes how clarity is maintained if the practice spreads.
 
-When misuse occurs, responses stay proportional:
+If misuse needs a public response, responses stay proportional:
 
 - First occurrence: log a clarification  
 - Repeated pattern: add a short public note in this page  
@@ -289,7 +290,7 @@ If you do:
 - keep the definitions and misuse boundary intact, or state explicitly why you removed them  
 - do not claim equivalence if you removed trace requirements  
 
-Federation is encouraged. Silent mutation is not.
+Adaptation is permitted. Federation is possible when trace, boundaries, and adaptation marking are preserved. Silent mutation is not.
 
 ---
 
@@ -333,4 +334,4 @@ https://creativecommons.org/licenses/by/4.0/
 
 This short notice references the full license text and does not replace the complete license terms.
 
-The public site is the primary reading surface. The repository remains the inspectable source of authorship, history, and licensing.
+The public site is the primary reading surface. The repository remains the deeper inspectable source of authorship, history, and licensing.

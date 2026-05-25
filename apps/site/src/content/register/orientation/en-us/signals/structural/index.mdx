@@ -1,6 +1,6 @@
 ---
-title: "Structural Essays"
-description: "Public essays that help readers move from a named pressure to a usable distinction."
+title: "Structural"
+description: "Public signals that help readers move from a named pressure to a usable distinction."
 register: orientation
 ---
 
@@ -8,22 +8,22 @@ import ShareButton from '../../../../../../components/ShareButton.astro';
 import AnchorMap from '../../../../../../components/AnchorMap.astro';
 import {
   buildEssayHref,
-} from '../../../../../../lib/structural-essays/essay-route';
+} from '../../../../../../lib/structural/essay-route';
 import {
   essayAnchors,
-} from '../../../../../structural-essays/en-us/ai-is-not-magic-it-is-a-cognitive-amplifier.data';
+} from '../../../../../structural/en-us/ai-is-not-magic-it-is-a-cognitive-amplifier.data';
 
 <ShareButton />
 
-This section is for essays that help a reader slow down and see what is
-happening underneath a familiar pressure.
+Structural signals help a reader slow down and see what is happening
+underneath a familiar pressure.
 
 The pressure may come from AI, delivery speed, unclear decisions, or work that
 looks complete before people understand it together.
 
-### What these essays do
+### What these signals do
 
-Each essay should help you:
+Each signal should help you:
 
 1. recognize the situation
 2. see the structure underneath it
@@ -35,26 +35,31 @@ The goal is not to persuade you quickly.
 The goal is to make the path clear enough that you can follow it, question it,
 or adapt it.
 
-### How to use them
-
-Start with the situation the essay names.
+Start with the situation the signal names.
 
 Then look for the distinction it offers.
 
 If it points to a practice, treat that practice as something to test in a real
 setting, not something to adopt because the page says so.
 
-### First essay
+### AI & Cognitive Amplification
 
-The first structural essay is now available:
+The first structural signal cluster begins with:
 <a href={buildEssayHref('orientation')}>AI Is Not Magic. It Is a Cognitive Amplifier.</a>
 
 It argues that AI works as a cognitive amplifier, then asks who controls that
 amplification and what record is left for people affected by it.
 
+That signal opens the cluster. Later signals can deepen it without
+overloading the first signal: labor and time, extraction and memory,
+infrastructure cost, safety and trace, public services, regulation, and the
+reasoning layer as public infrastructure.
+
+The sequence should stay grounded in public practice, trace, and revision.
+
 <AnchorMap
   anchors={essayAnchors}
-  title="Ways into the first essay"
+  title="Ways into the first signal"
   intro="Choose the part of the AI debate that already feels close, then follow that doorway in."
 />
 

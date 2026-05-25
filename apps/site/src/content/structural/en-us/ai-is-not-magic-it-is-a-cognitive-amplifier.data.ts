@@ -1,5 +1,5 @@
-import type { EssayRegister } from '../../../lib/structural-essays/essay-route';
-import { buildEssayHref, ESSAY_ROUTE_ID } from '../../../lib/structural-essays/essay-route';
+import type { EssayRegister } from '../../../lib/structural/essay-route';
+import { buildEssayHref, ESSAY_ROUTE_ID } from '../../../lib/structural/essay-route';
 import type { DirectSourceEntry, EssayAnchor, FurtherReadingEntry } from '../types';
 
 export const directSourceEntries: readonly DirectSourceEntry[] = Object.freeze([
@@ -55,14 +55,14 @@ export const directSourceEntries: readonly DirectSourceEntry[] = Object.freeze([
       'The projection refers to data centers overall, not AI alone. It should ground material concern without turning every AI use into the same infrastructure claim.',
   },
   {
-    id: 'reuters-meta-publisher-lawsuit',
+    id: 'ap-meta-publisher-lawsuit',
     label: 'Copyright dispute',
-    title: 'Reuters, major publishers sue Meta over AI training',
-    href: 'https://www.reuters.com/sustainability/boards-policy-regulation/major-publishers-sue-meta-copyright-infringement-over-ai-training-2026-05-05/',
+    title: 'Associated Press, major publishers sue Meta over AI training',
+    href: 'https://apnews.com/article/5609846d4d840014974a847b01079c32',
     supports:
       'Grounds the claim that AI training is part of a live conflict over ownership, consent, extraction, and fair use.',
     limits:
-      'The lawsuit is active. Allegations reported by Reuters are not legal findings, and Meta disputes the claims.',
+      'The lawsuit is active. Allegations reported by AP are not legal findings, and Meta disputes the claims.',
   },
   {
     id: 'ec-gpai-code-of-practice',

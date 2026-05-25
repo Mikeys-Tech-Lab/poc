@@ -1,33 +1,60 @@
 ---
 import { Card } from '@astrojs/starlight/components';
-import { getRegisterLabels, getThemeLabels } from '../lib/i18n';
+import { getA11yLabels, getRegisterLabels, getThemeLabels } from '../lib/i18n';
 import { getLocaleFromPath } from '../lib/locale';
 import { getLocalizedRoutePath } from '../lib/route-map.js';
 
 interface Props {
-  variant?: 'practitioner' | 'orientation';
+  variant?: 'everyday' | 'practitioner' | 'orientation';
 }
 
 const { variant = 'practitioner' } = Astro.props as Props;
 const locale = getLocaleFromPath(Astro.url?.pathname ?? '/');
+const a11yLabels = getA11yLabels(locale);
 const registerLabels = getRegisterLabels(locale);
 const themeLabels = getThemeLabels(locale);
 const startHereHref = getLocalizedRoutePath('about-what-this-is');
 
-const intro =
-  variant === 'orientation'
-    ? 'If you are new, begin here. This page shows what is happening, what this practice responds to, and how to move through it.'
-    : 'Begin here. This page grounds the practice, shows what it responds to, and offers a clear way in.';
+const introByVariant = {
+  everyday:
+    'If you are new, begin here. This page explains what the Practice of Clarity is and why it exists.',
+  orientation:
+    'If you are new, begin here. This page shows what is happening, what this practice responds to, and how to move through it.',
+  practitioner:
+    'Begin here. This page grounds the practice, shows what it responds to, and offers a clear way in.',
+};
 
-const registerCopy =
-  variant === 'orientation'
-    ? 'Tap the title register indicator to change how this is written. The ideas stay the same. The voice shifts so you can find your way in.'
-    : 'Tap the title register indicator to change the voice without changing the structure. The same thinking can land differently.';
+const registerCopyByVariant = {
+  everyday:
+    'You can change how the site explains things. The meaning stays the same, but the page can be shorter, more guided, or more detailed.',
+  orientation:
+    'Tap the title register indicator to change how this is written. The ideas stay the same. The voice shifts so you can find your way in.',
+  practitioner:
+    'Tap the title register indicator to change the voice without changing the structure. The same thinking can land differently.',
+};
 
-const themeCopy =
-  variant === 'orientation'
-    ? 'Choose the version that is easiest to stay with. This does not change the content, only how it feels to read.'
-    : 'Adjust how this feels to read. The content stays the same.';
+const themeCopyByVariant = {
+  everyday: {
+    intro: 'Choose the version that feels easiest to read. This only changes the look of the page.',
+    accessibility:
+      'Accessibility options are available too. Open the panel from the accessibility button in the title bar or here.',
+  },
+  orientation: {
+    intro:
+      'Choose the version that is easiest to stay with. This changes the look of the page, not the content.',
+    accessibility:
+      'Accessibility options are available too. Open the panel from the accessibility button in the title bar or here.',
+  },
+  practitioner: {
+    intro: 'Adjust how this feels to read. The content stays the same.',
+    accessibility:
+      'Accessibility options are available too. Open the panel from the accessibility button in the title bar or here.',
+  },
+};
+
+const intro = introByVariant[variant];
+const registerCopy = registerCopyByVariant[variant];
+const themeCopy = themeCopyByVariant[variant];
 ---
 
 <poc-home-featured-card data-home-featured-variant={variant}>
@@ -61,6 +88,9 @@ const themeCopy =
                 <span class="home-register-label-practitioner">
                   {registerLabels.practitioner}
                 </span>
+                <span class="home-register-label-everyday">
+                  {registerLabels.everyday}
+                </span>
                 <span class="home-register-label-orientation">
                   {registerLabels.orientation}
                 </span>
@@ -70,6 +100,9 @@ const themeCopy =
               <span class="home-register-helper-practitioner">
                 {registerLabels.practitionerHelper}
               </span>
+              <span class="home-register-helper-everyday">
+                {registerLabels.everydayHelper}
+              </span>
               <span class="home-register-helper-orientation">
                 {registerLabels.orientationHelper}
               </span>
@@ -78,8 +111,39 @@ const themeCopy =
         </button>
       </section>
       <section class="home-featured-guide">
-        <p class="home-featured-guide-label">Theme</p>
-        <p class="home-featured-guide-body">{themeCopy}</p>
+        <p class="home-featured-guide-label">Theme & Accessibility</p>
+        <div class="home-featured-guide-body">
+          <p>{themeCopy.intro}</p>
+          <div class="home-a11y-inline-callout">
+            <p class="home-a11y-inline-copy">
+              {themeCopy.accessibility}
+            </p>
+            <button
+              type="button"
+              class="home-a11y-inline-button"
+              data-home-action="accessibility"
+              aria-label={a11yLabels.openPanel}
+              aria-haspopup="dialog"
+              title={a11yLabels.openPanel}
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="4.5" r="2.5" />
+                <path d="m4.5 9.5 3 1 4.5 1 4.5-1 3-1" />
+                <path d="M8 14.5 7 22" />
+                <path d="m16 14.5 1 7.5" />
+                <path d="M12 12.5v4" />
+              </svg>
+            </button>
+          </div>
+        </div>
         <div class="home-theme-grid" role="group" aria-label="Choose a theme">
           <button type="button" class="home-theme-option" data-home-theme="dark">
             {themeLabels.darkAtmospheric}
@@ -142,11 +206,33 @@ const themeCopy =
     }
   };
 
+  const visibleA11yTrigger = () => {
+    const triggers = [...document.querySelectorAll('.a11y-trigger')];
+    return (
+      triggers.find(
+        (element) => element instanceof HTMLButtonElement && element.getClientRects().length > 0,
+      ) ??
+      triggers.find((element) => element instanceof HTMLButtonElement) ??
+      null
+    );
+  };
+
+  const openAccessibilityPanel = () => {
+    const trigger = visibleA11yTrigger();
+    if (trigger instanceof HTMLButtonElement) {
+      trigger.click();
+    }
+  };
+
   if (!customElements.get('poc-home-featured-card')) {
     class PocHomeFeaturedCard extends HTMLElement {
       connectedCallback() {
         this.querySelector('[data-home-action="register"]')?.addEventListener('click', () => {
           focusRegisterSelect();
+        });
+
+        this.querySelector('[data-home-action="accessibility"]')?.addEventListener('click', () => {
+          openAccessibilityPanel();
         });
 
         this.querySelectorAll<HTMLElement>('[data-home-theme]').forEach((button) => {
@@ -184,6 +270,12 @@ const themeCopy =
   }
 
   poc-home-featured-card[data-home-featured-variant='orientation'] {
+    --poc-home-featured-border: var(--poc-box-featured-orientation-border);
+    --poc-home-featured-rail: var(--poc-box-featured-orientation-rail);
+    --poc-home-featured-title: var(--poc-box-featured-orientation-title);
+  }
+
+  poc-home-featured-card[data-home-featured-variant='everyday'] {
     --poc-home-featured-border: var(--poc-box-featured-orientation-border);
     --poc-home-featured-rail: var(--poc-box-featured-orientation-rail);
     --poc-home-featured-title: var(--poc-box-featured-orientation-title);
@@ -240,6 +332,25 @@ const themeCopy =
     line-height: 1.55;
   }
 
+  .home-featured-guide-body p {
+    margin: 0;
+  }
+
+  .home-featured-guide-body p + p {
+    margin-top: 0.65rem;
+  }
+
+  .home-a11y-inline-callout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 0.55rem;
+  }
+
+  .home-a11y-inline-copy {
+    min-width: 0;
+  }
+
   .home-register-preview,
   .home-theme-option {
     border: 1px solid var(--poc-box-control-border);
@@ -255,14 +366,16 @@ const themeCopy =
   }
 
   .home-register-preview:hover,
-  .home-theme-option:hover {
+  .home-theme-option:hover,
+  .home-a11y-inline-button:hover {
     border-color: var(--poc-box-control-hover-border);
     background-color: var(--poc-box-control-hover-surface);
     transform: translateY(-1px);
   }
 
   .home-register-preview:focus-visible,
-  .home-theme-option:focus-visible {
+  .home-theme-option:focus-visible,
+  .home-a11y-inline-button:focus-visible {
     outline: 2px solid var(--sl-color-text-accent);
     outline-offset: 2px;
   }
@@ -313,6 +426,8 @@ const themeCopy =
     flex-shrink: 0;
   }
 
+  .home-register-label-everyday,
+  .home-register-helper-everyday,
   .home-register-label-orientation,
   .home-register-helper-orientation {
     display: none;
@@ -323,6 +438,16 @@ const themeCopy =
     font-size: 0.8rem;
     line-height: 1.35;
     white-space: normal;
+  }
+
+  :root[data-register='everyday'] .home-register-label-practitioner,
+  :root[data-register='everyday'] .home-register-helper-practitioner {
+    display: none;
+  }
+
+  :root[data-register='everyday'] .home-register-label-everyday,
+  :root[data-register='everyday'] .home-register-helper-everyday {
+    display: inline;
   }
 
   :root[data-register='orientation'] .home-register-label-practitioner,
@@ -355,6 +480,22 @@ const themeCopy =
     align-items: center;
     justify-content: center;
     cursor: pointer;
+  }
+
+  .home-a11y-inline-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    align-self: end;
+    cursor: pointer;
+  }
+
+  .home-a11y-inline-button svg {
+    width: 1rem;
+    height: 1rem;
   }
 
   .home-theme-option[aria-pressed='true'],

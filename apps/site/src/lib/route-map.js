@@ -12,7 +12,7 @@ import {
 
 /**
  * @typedef {'home' | 'about' | 'act' | 'seed' | 'lens' | 'signal' | 'license'} RouteType
- * @typedef {'about' | 'core-system-practice-of-clarity' | 'core-system-seeds' | 'core-system-mandate-lenses' | 'signals-structural-essays' | 'signals-operational-work-delivery' | 'license' | 'home'} RouteSection
+ * @typedef {'about' | 'core-system-practice-of-clarity' | 'core-system-seeds' | 'core-system-mandate-lenses' | 'signals-structural' | 'signals-operational-work-delivery' | 'license' | 'home'} RouteSection
  * @typedef {'pending' | 'migrated' | 'verified'} RouteStatus
  *
  * @typedef {object} RouteMapEntry
@@ -52,6 +52,7 @@ export const ROUTE_MAP = Object.freeze(
       newPath: '',
       type: 'home',
       section: 'home',
+      registerAvailability: THREE_REGISTER_AVAILABILITY,
       redirect: false,
       status: 'verified',
     },
@@ -61,6 +62,7 @@ export const ROUTE_MAP = Object.freeze(
       newPath: 'about/what-this-is',
       type: 'about',
       section: 'about',
+      registerAvailability: THREE_REGISTER_AVAILABILITY,
       redirect: false,
       status: 'verified',
     },
@@ -70,6 +72,7 @@ export const ROUTE_MAP = Object.freeze(
       newPath: 'about/architecture',
       type: 'about',
       section: 'about',
+      registerAvailability: THREE_REGISTER_AVAILABILITY,
       redirect: false,
       status: 'verified',
     },
@@ -89,6 +92,17 @@ export const ROUTE_MAP = Object.freeze(
       newPath: 'about/glossary',
       type: 'about',
       section: 'about',
+      registerAvailability: THREE_REGISTER_AVAILABILITY,
+      redirect: false,
+      status: 'verified',
+    },
+    {
+      id: 'about-registers',
+      oldPath: null,
+      newPath: 'about/registers',
+      type: 'about',
+      section: 'about',
+      registerAvailability: THREE_REGISTER_AVAILABILITY,
       redirect: false,
       status: 'verified',
     },
@@ -98,6 +112,7 @@ export const ROUTE_MAP = Object.freeze(
       newPath: 'about/about-the-author',
       type: 'about',
       section: 'about',
+      registerAvailability: THREE_REGISTER_AVAILABILITY,
       redirect: false,
       status: 'verified',
     },
@@ -220,11 +235,11 @@ export const ROUTE_MAP = Object.freeze(
       status: 'verified',
     },
     {
-      id: 'signal-structural-essays',
+      id: 'signal-structural',
       oldPath: null,
-      newPath: 'signals/structural-essays',
+      newPath: 'signals/structural',
       type: 'signal',
-      section: 'signals-structural-essays',
+      section: 'signals-structural',
       registerAvailability: THREE_REGISTER_AVAILABILITY,
       redirect: false,
       status: 'verified',
@@ -232,9 +247,9 @@ export const ROUTE_MAP = Object.freeze(
     {
       id: 'signal-ai-is-not-magic-it-is-a-cognitive-amplifier',
       oldPath: null,
-      newPath: 'signals/structural-essays/ai-is-not-magic-it-is-a-cognitive-amplifier',
+      newPath: 'signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier',
       type: 'signal',
-      section: 'signals-structural-essays',
+      section: 'signals-structural',
       registerAvailability: THREE_REGISTER_AVAILABILITY,
       redirect: false,
       status: 'verified',
@@ -277,7 +292,7 @@ export const MIGRATION_SECTION_ORDER = Object.freeze([
   'core-system-practice-of-clarity',
   'core-system-seeds',
   'core-system-mandate-lenses',
-  'signals-structural-essays',
+  'signals-structural',
   'signals-operational-work-delivery',
 ]);
 
