@@ -27,6 +27,6 @@
     "happy-dom": "20.9.0",
     "playwright": "1.60.0",
     "rehype-mermaid": "3.0.0",
-    "vitest": "4.1.6"
+    "vitest": "4.1.7"
   }
 }
