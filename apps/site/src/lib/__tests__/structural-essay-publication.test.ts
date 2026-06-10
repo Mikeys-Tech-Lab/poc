@@ -3,9 +3,9 @@ import { extname } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
   directSourceEntries,
-  essayAnchors,
   furtherReadingEntries,
-} from '../../content/structural/en-us/ai-is-not-magic-it-is-a-cognitive-amplifier.data';
+} from '../../content/sources/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.sources';
+import { essayAnchors } from '../../content/structural/en-us/ai-is-not-magic-it-is-a-cognitive-amplifier.data';
 import { getRegisterAvailabilityForRouteId, getRouteById } from '../route-map.js';
 import { buildEssayHref, ESSAY_ROUTE_ID } from '../structural/essay-route';
 

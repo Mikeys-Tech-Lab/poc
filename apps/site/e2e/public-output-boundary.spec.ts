@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { extname } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { expect, test } from '@playwright/test';
-import { directSourceEntries } from '../src/content/structural/en-us/ai-is-not-magic-it-is-a-cognitive-amplifier.data';
+import { directSourceEntries } from '../src/content/sources/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.sources';
 import { ESSAY_HREF } from '../src/lib/structural/essay-route';
 
 const distRoot = new URL('dist/', `${pathToFileURL(process.cwd()).href}/`);
