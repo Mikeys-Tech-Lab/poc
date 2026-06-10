@@ -1,4 +1,4 @@
-import type { DirectSourceEntry, FurtherReadingEntry } from '../../../../types';
+import type { DirectSourceEntry, FurtherReadingEntry } from '../../../types';
 
 export const directSourceEntries: readonly DirectSourceEntry[] = Object.freeze([
   {

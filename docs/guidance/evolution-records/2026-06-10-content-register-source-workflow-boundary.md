@@ -43,6 +43,10 @@ Lag practitioner pages used Markdown tables for "Ways into this signal" while
 the AI signal used the shared `AnchorMap` card format. That made the entry
 surface inconsistent even after the source ledger work was aligned.
 
+The PR then failed remote CI because the local verification gate had not run
+`pnpm --filter site check`. `pnpm build` and Vitest passed, but `astro check`
+caught bad type-only import paths in the new source modules.
+
 ## Missed assumptions
 
 The work initially assumed that publication readiness was mostly a page, route,
@@ -61,6 +65,10 @@ The follow-up review also showed that source parity was not enough. Repeated
 reader-entry surfaces need the same presentation contract as source-heavy
 evidence surfaces when the pattern already exists.
 
+Another missed assumption was that a passing build meant the new TypeScript
+content modules were type-clean. Type-only imports can be erased during build and
+still fail Astro's explicit type check.
+
 ## Missed guidance
 
 The repo had good local examples and tests for the first structural essay, but
@@ -76,6 +84,8 @@ The missing guidance was:
 - when source-heavy pages should use `SourceHook` and `SourceLedger`
 - when repeated "Ways into this signal" sections should use shared entry-card
   components instead of ad hoc Markdown tables
+- that PR close for site content/module changes must run the site type check,
+  not only lint, tests, and build
 
 ## Structural gap
 
@@ -106,6 +116,9 @@ points when the page provides "Ways into this signal" links.
 Separate deterministic source contracts from live source reachability and local
 browser inspection.
 
+Include `pnpm --filter site check` in the site-content PR close gate so local
+verification matches the CI job that runs `astro check`.
+
 ## Research delta
 
 None.
@@ -134,6 +147,7 @@ currently a scoped content ownership model, not a repo-wide structural decision.
 - `docs/guidance/testing-strategy.md`
 - `.cursor/skills/public-content-intake/SKILL.md`
 - `.cursor/skills/astro-starlight/SKILL.md`
+- `.cursor/skills/github-automation/SKILL.md`
 
 ## Verification
 
@@ -147,6 +161,8 @@ The new contract is checked through deterministic tests for:
 - absence of private drafting metadata from public content frontmatter
 - use of the shared `AnchorMap` format for repeated Integration Lag entry
   points, with the old Markdown entry table blocked
+- explicit site type checking through `pnpm --filter site check` for site
+  content/module changes before PR readiness
 
 Publication readiness still requires live source URL reachability and local
 browser inspection of source hook loops and register switching.
@@ -158,9 +174,12 @@ content intake must preserve register shape, keep source-heavy evidence in
 page-scoped locale source modules, exclude private drafting metadata, and split
 deterministic source contracts from live source reachability. Follow-up review
 also added the repeated entry-point presentation contract after the old Markdown
-table format diverged from the AI signal's `AnchorMap` cards. This branch
-updates the source architecture, adds a `public-content-intake` skill, documents
-the workflow, and captures the learning here.
+table format diverged from the AI signal's `AnchorMap` cards. Remote CI then
+exposed a local verification gap: the PR close gate must include
+`pnpm --filter site check` for site module changes, because build can miss
+type-only import errors. This branch updates the source architecture, adds a
+`public-content-intake` skill, documents the workflow, and captures the learning
+here.
 
 <!--
 Copyright © 2026 Mikey Sebastian Drozd.

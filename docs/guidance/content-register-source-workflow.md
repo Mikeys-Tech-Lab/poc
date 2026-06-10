@@ -118,8 +118,10 @@ For promoted public-bound content:
 4. Keep orientation and everyday pages lightweight unless a claim needs a source.
 5. Put practitioner source-heavy claims behind inline source hooks and a ledger.
 6. Run deterministic checks first.
-7. Then verify source reachability and local browser behavior.
-8. Only call the branch publishable after both structural checks and reader-facing
+7. Run `pnpm --filter site check` for site content/module changes. A build can
+   pass while type-only imports still fail Astro's type check.
+8. Then verify source reachability and local browser behavior.
+9. Only call the branch publishable after both structural checks and reader-facing
    inspection pass.
 
 <!--
