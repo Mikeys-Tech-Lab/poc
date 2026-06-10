@@ -106,19 +106,19 @@ export const furtherReadingEntries: readonly FurtherReadingEntry[] = Object.free
   {
     id: 'kellogg-algorithmic-control',
     title: 'Kellogg, Valentine, and Christin on algorithms at work',
-    href: 'https://journals.aom.org/doi/10.5465/annals.2018.0174',
+    href: 'https://angelechristin.com/wp-content/uploads/2020/01/Algorithms-at-Work_Annals.pdf',
     note: 'A deeper context entry for algorithmic control, management, and workplace power.',
   },
   {
     id: 'selbst-fairness-abstraction-traps',
     title: 'Selbst et al., Fairness and Abstraction in Sociotechnical Systems',
-    href: 'https://dl.acm.org/doi/10.1145/3287560.3287598',
+    href: 'https://sorelle.friedler.net/papers/sts_fat2019.pdf',
     note: 'A deeper context entry for why abstract fairness work can miss social and institutional conditions.',
   },
   {
     id: 'raji-actionable-auditing',
     title: 'Raji et al., Closing the AI Accountability Gap',
-    href: 'https://dl.acm.org/doi/10.1145/3306618.3314244',
+    href: 'https://ainowinstitute.org/publications/closing-the-ai-accountability-gap-defining-an-end-to-end-framework-for',
     note: 'A deeper context entry for auditing and accountability gaps around automated systems.',
   },
 ]);
