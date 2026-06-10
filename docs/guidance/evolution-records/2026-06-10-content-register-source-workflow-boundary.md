@@ -47,6 +47,10 @@ The PR then failed remote CI because the local verification gate had not run
 `pnpm --filter site check`. `pnpm build` and Vitest passed, but `astro check`
 caught bad type-only import paths in the new source modules.
 
+The operator then named a broader Trace Climb gap: reasoning-time corrections
+must evolve the agent operating architecture, not merely appear as runtime
+narration in the PR.
+
 ## Missed assumptions
 
 The work initially assumed that publication readiness was mostly a page, route,
@@ -69,6 +73,11 @@ Another missed assumption was that a passing build meant the new TypeScript
 content modules were type-clean. Type-only imports can be erased during build and
 still fail Astro's explicit type check.
 
+The final missed assumption was that writing the Evolution Record and PR trace
+was enough after each correction. That preserved the story but did not fully
+evolve the skill path that future agents would load before making the same
+mistake.
+
 ## Missed guidance
 
 The repo had good local examples and tests for the first structural essay, but
@@ -86,6 +95,8 @@ The missing guidance was:
   components instead of ad hoc Markdown tables
 - that PR close for site content/module changes must run the site type check,
   not only lint, tests, and build
+- that Trace Climb itself must capture reasoning-time evolution and propagate it
+  into the runtime skill or check that should guide the next agent
 
 ## Structural gap
 
@@ -119,6 +130,11 @@ browser inspection.
 Include `pnpm --filter site check` in the site-content PR close gate so local
 verification matches the CI job that runs `astro check`.
 
+Make reasoning-time evolution a first-class Trace Climb input. When an operator
+correction, failed check, or implementation surprise reveals an incomplete agent
+contract, update the skill or guidance surface that future agents will load
+before the same decision point.
+
 ## Research delta
 
 None.
@@ -150,6 +166,9 @@ currently a scoped content ownership model, not a repo-wide structural decision.
 - `.cursor/skills/git-commit/SKILL.md`
 - `.cursor/skills/github-automation/SKILL.md`
 - `docs/guidance/agent-pre-commit-verification.md`
+- `.cursor/skills/trace-climb/SKILL.md`
+- `docs/guidance/trace-climb.md`
+- `docs/guidance/structural-reflection-and-evolution.md`
 
 ## Verification
 
@@ -165,6 +184,8 @@ The new contract is checked through deterministic tests for:
   points, with the old Markdown entry table blocked
 - explicit site type checking through `pnpm --filter site check` for site
   content/module changes before PR readiness
+- reasoning-time corrections are captured in Trace Climb and propagated to the
+  operational guidance surface that should change future agent behavior
 
 Publication readiness still requires live source URL reachability and local
 browser inspection of source hook loops and register switching.
@@ -179,9 +200,11 @@ also added the repeated entry-point presentation contract after the old Markdown
 table format diverged from the AI signal's `AnchorMap` cards. Remote CI then
 exposed a local verification gap: the PR close gate must include
 `pnpm --filter site check` for site module changes, because build can miss
-type-only import errors. This branch updates the source architecture, adds a
-`public-content-intake` skill, documents the workflow, and captures the learning
-here.
+type-only import errors. The final reflection extended the Trace Climb contract
+itself: reasoning-time corrections must evolve the agent operating architecture,
+not only narrate what happened. This branch updates the source architecture, adds
+a `public-content-intake` skill, documents the workflow, and captures the
+learning here.
 
 <!--
 Copyright © 2026 Mikey Sebastian Drozd.

@@ -16,6 +16,11 @@ A reflection is incomplete if it stops at the local bug, the local file, or the 
 
 This is how the workspace becomes evolutionary architecture rather than a pile of patches.
 
+This applies during reasoning time, not only after the task appears complete. If
+an operator correction, failed check, or implementation surprise changes the
+understanding of how future agents should work, the reflection must update the
+operating surface that should have guided the agent before the mistake.
+
 ## Required shape
 
 When writing a reflection, retrospective, or evolution note, include:
@@ -26,12 +31,18 @@ When writing a reflection, retrospective, or evolution note, include:
 4. **Surface updates**: which canonical docs, skills, rules, tests, or checks must change
 5. **Verification**: how the new rule will be checked in future work
 
+If the incident happened during the work, include the reasoning-time correction:
+what the agent believed, what contradicted it, and which guidance or check now
+prevents the same mistaken path.
+
 ## What this prevents
 
 - Local fixes that do not change future behavior
 - Tests that protect the wrong requirement
 - Guidance that records anecdotes without extracting principles
 - Repeated mistakes with different file paths
+- Runtime learning that is narrated in a PR but never changes the agent's next
+  decision path
 
 ## Example
 
