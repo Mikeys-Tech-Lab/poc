@@ -1,9 +1,9 @@
 ---
-import type { EssayAnchor } from '../content/structural/types';
+import type { AnchorMapEntry } from './anchor-map-types';
 import AnchorCard from './AnchorCard.astro';
 
 interface Props {
-  anchors: readonly EssayAnchor[];
+  anchors: readonly AnchorMapEntry[];
   title?: string;
   intro?: string;
 }

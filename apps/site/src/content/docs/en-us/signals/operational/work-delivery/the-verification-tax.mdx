@@ -9,8 +9,10 @@ series_label: "Part 3"
 
 import RegisterContent from '../../../../../../components/RegisterContent.astro';
 import ShareButton from '../../../../../../components/ShareButton.astro';
+import AnchorMap from '../../../../../../components/AnchorMap.astro';
 import SourceHook from '../../../../../../components/SourceHook.astro';
 import SourceLedger from '../../../../../../components/SourceLedger.astro';
+import { waysIntoThisSignal } from '../../../../../operational/en-us/signals/work-delivery/the-verification-tax.data';
 import {
   directSourceEntries,
   furtherReadingEntries,
@@ -958,20 +960,11 @@ The next signal gives that practice a name:
 
 ---
 
-## Ways Into This Signal
-
-| Entry | Register | Reader Question |
-|---|---|---|
-| When AI helps but creates more checking work | practitioner | Did the work disappear, or did it move into verification? |
-| When a generated answer sounds right too early | practitioner | What evidence does this draft actually stand on? |
-| When review feels heavier after AI adoption | practitioner | Is the team reviewing code, or reconstructing missing context? |
-| When managers see speed but developers feel fragility | practitioner | Are we measuring time to draft or time to confidence? |
-| When developers are accused of resisting AI | orientation | Is this resistance, or accountability under weak evidence? |
-| When generated code passes but still feels unsafe | practitioner | What assumptions, uncertainty, and checks are still invisible? |
-| When every developer learns AI failure patterns alone | practitioner | Which verification lessons should become shared trace? |
-| When the next prompt asks for implementation | practitioner | Should the agent inspect before it writes? |
-| When the agent writes code but not the reasoning | practitioner | Can it also draft the verification trace? |
-| When trust becomes the adoption goal | orientation | What conditions would make confidence earned instead of performed? |
+<AnchorMap
+  anchors={waysIntoThisSignal}
+  title="Ways into this signal"
+  intro="Start from the pressure you already recognize, then choose how much context you want next."
+/>
 
 </RegisterContent>
 

@@ -9,8 +9,10 @@ series_label: "Part 1"
 
 import RegisterContent from '../../../../../../components/RegisterContent.astro';
 import ShareButton from '../../../../../../components/ShareButton.astro';
+import AnchorMap from '../../../../../../components/AnchorMap.astro';
 import SourceHook from '../../../../../../components/SourceHook.astro';
 import SourceLedger from '../../../../../../components/SourceLedger.astro';
+import { waysIntoThisSignal } from '../../../../../operational/en-us/signals/work-delivery/integration-lag.data';
 import { directSourceEntries } from '../../../../../sources/en-us/signals/operational/work-delivery/integration-lag.sources';
 
 <RegisterContent registers={{
@@ -383,18 +385,11 @@ That is the verification tax.
 
 ---
 
-## Ways Into This Signal
-
-| Entry | Register | Reader Question |
-|---|---|---|
-| When the team is shipping faster but reviews feel heavier | practitioner | Is output moving faster than shared understanding? |
-| When AI helps but creates more checking work | practitioner | What has to become visible before a generated draft is safe enough to use? |
-| When velocity looks good but coherence feels thin | everyday | What cost is arriving later? |
-| When a task looks complete but hidden work keeps surfacing | practitioner | Which assumptions were invisible at commitment time? |
-| When teams blame individuals for late surprises | orientation | Is this a skill issue, or is production outrunning integration? |
-| When AI becomes part of delivery pressure | practitioner | How do we keep AI from outrunning meaning? |
-| When agents generate output but not trace | practitioner | Can the agent also surface evidence, uncertainty, and reviewer focus? |
-| When a team wants to try without rolling out a framework | practitioner | What is the smallest task where this practice can reduce hidden rework? |
+<AnchorMap
+  anchors={waysIntoThisSignal}
+  title="Ways into this signal"
+  intro="Start from the pressure you already recognize, then choose how much context you want next."
+/>
 
 </RegisterContent>
 

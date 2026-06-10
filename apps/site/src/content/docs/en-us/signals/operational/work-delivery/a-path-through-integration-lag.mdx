@@ -9,8 +9,10 @@ series_label: "Part 2"
 
 import RegisterContent from '../../../../../../components/RegisterContent.astro';
 import ShareButton from '../../../../../../components/ShareButton.astro';
+import AnchorMap from '../../../../../../components/AnchorMap.astro';
 import SourceHook from '../../../../../../components/SourceHook.astro';
 import SourceLedger from '../../../../../../components/SourceLedger.astro';
+import { waysIntoThisSignal } from '../../../../../operational/en-us/signals/work-delivery/a-path-through-integration-lag.data';
 import { directSourceEntries } from '../../../../../sources/en-us/signals/operational/work-delivery/a-path-through-integration-lag.sources';
 
 <RegisterContent registers={{
@@ -501,20 +503,11 @@ That is where the next signal begins.
 
 ---
 
-## Ways Into This Signal
-
-| Entry | Register | Reader Question |
-|---|---|---|
-| When naming the lag is not enough | practitioner | What loop helps keep understanding attached to work? |
-| When docs and code disagree | practitioner | Which surface is current truth? |
-| When onboarding into an unfamiliar repository | practitioner | What is actually present before change? |
-| When AI output looks plausible but ungrounded | practitioner | What evidence was inspected? |
-| When team memory carries too much | practitioner | What should move into durable surfaces? |
-| When checks become process theatre | practitioner | Which checks are advisory, procedural, or enforced? |
-| When the team wants AI to help safely | practitioner | Can AI make reality visible before it generates more output? |
-| When delivery pressure rewards speed first | everyday | What would make the next step safer without creating a new framework? |
-| When agents generate work but not trace | practitioner | Can the agent draft what it verified, inferred, and could not know? |
-| When the review keeps reconstructing context | practitioner | What trace would make the reviewer's work lighter? |
+<AnchorMap
+  anchors={waysIntoThisSignal}
+  title="Ways into this signal"
+  intro="Start from the pressure you already recognize, then choose how much context you want next."
+/>
 
 </RegisterContent>
 
