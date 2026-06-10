@@ -1,0 +1,98 @@
+---
+title: "The Verification Tax: AI Helps, But We Still Check Everything"
+description: "A plain-language doorway into the hidden checking work that often follows AI-generated drafts."
+register: everyday
+series: "Integration Lag"
+series_part: 3
+series_label: "Part 3"
+---
+
+import ShareButton from '../../../../../../../components/ShareButton.astro';
+
+<ShareButton />
+
+## The problem people keep running into
+
+AI can help you start faster.
+
+It can write a draft.
+
+It can suggest code.
+
+It can explain something.
+
+But then you still have to check it.
+
+That checking can become the real work.
+
+## What moved
+
+Before AI, much of the visible work was writing the first version.
+
+With AI, the first version may arrive quickly.
+
+But now someone has to ask:
+
+- is this true here?
+- does this fit this codebase?
+- did it make something up?
+- what did it miss?
+- what could break?
+
+The work did not always disappear.
+
+Sometimes it moved from writing into checking.
+
+## The verification tax
+
+The verification tax is the hidden work of making an AI draft safe enough to use.
+
+It includes checking, correcting, re-reading, debugging, rebuilding context, and reviewing.
+
+This does not mean AI is bad.
+
+It means a fast draft is not the same as reliable confidence.
+
+## A better question than trust
+
+Do not start with:
+
+> should I trust AI?
+
+Start with:
+
+> what would make this answer easier to check?
+
+A useful answer should show:
+
+- what it looked at
+- what it assumed
+- what it is unsure about
+- what still needs checking
+- what decision belongs to a person
+
+## A small prompt to try
+
+Before asking AI to implement something, ask:
+
+```text
+Inspect first. Do not write the change yet.
+Tell me what is verified, what is inferred, what is uncertain, and what should not change yet.
+```
+
+This will not make AI perfect.
+
+It can make the work easier to inspect before it becomes a finished-looking draft.
+
+## Where to go next
+
+The next practice is forensic onboarding:
+
+> understand what is already present before trying to change it.
+
+That is how teams start reducing the verification tax without pretending review can disappear.
+
+{/*
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+*/}

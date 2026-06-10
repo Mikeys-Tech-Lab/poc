@@ -70,22 +70,22 @@ const cases = [
     ],
   },
   {
-    name: 'Integration Lag keeps the self-contained activation handoff visible in both registers',
+    name: 'Integration Lag keeps the output-understanding gap visible in both registers',
     practitionerPath:
       'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag.mdx',
     orientationPath:
       'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/integration-lag.mdx',
     practitionerSnippets: [
       'This is what we call **integration lag**.',
-      'If this public entry gives you enough context already, this prompt points toward activation:',
-      'For the fuller public entry, go to [Sensible Defaults]',
+      'Integration lag is the delay between producing change and integrating that change into shared understanding',
+      'The danger is that AI can make unresolved uncertainty look finished.',
       'This only works as a practice.',
     ],
     orientationSnippets: [
-      '**Sensible Defaults**',
-      'If this public entry already gave you enough context, use this minimal activation prompt in a compatible model or agent:',
-      'For the fuller public entry, go to [Sensible Defaults]',
-      'This is about seeing clearly, not doing more.',
+      'Integration lag is the delay between producing change and integrating that change into shared understanding.',
+      'The issue is that AI can make unresolved uncertainty look complete.',
+      'Can we name what this change stands on?',
+      'That is the verification tax.',
     ],
   },
   {
@@ -96,17 +96,36 @@ const cases = [
       'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/a-path-through-integration-lag.mdx',
     practitionerSnippets: [
       'The next question is:',
-      'It is not a framework rollout, a maturity model, or a promise that every person',
+      'Not as a framework rollout.',
       'The shift is less generation, more visibility.',
-      'How this stays visible here',
-      'The next part of this series goes deeper into the first practical move:',
+      'Human in the loop should not mean human as hidden cleanup layer.',
+      'That hidden checking, correcting, re-reading, and context reconstruction work is',
     ],
     orientationSnippets: [
       'The next question is:',
-      'Not a system to adopt.',
-      'less generation, more visibility',
-      'An inspectable example',
-      'The next part of this series goes deeper into forensic onboarding.',
+      'Not a framework.',
+      'ask it to help inspect what already exists.',
+      'This does not replace human judgment.',
+      'That pressure is [The Verification Tax]',
+    ],
+  },
+  {
+    name: 'The Verification Tax keeps evidence-grounded confidence visible in both registers',
+    practitionerPath:
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/the-verification-tax.mdx',
+    orientationPath:
+      'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/the-verification-tax.mdx',
+    practitionerSnippets: [
+      'The verification tax is the extra checking, correcting, re-reading, debugging,',
+      'confidence should not come from belief.',
+      'The agent can draft the verification trace.',
+      'This signal is not an argument against AI-assisted development.',
+    ],
+    orientationSnippets: [
+      'The verification tax is the checking, correcting, re-reading, debugging,',
+      'Confidence should come from conditions, not belief.',
+      'Before asking AI to write code, ask it to inspect.',
+      'The human still owns the decision.',
     ],
   },
 ] as const;

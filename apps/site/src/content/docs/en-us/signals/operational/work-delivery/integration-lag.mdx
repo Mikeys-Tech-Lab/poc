@@ -1,36 +1,58 @@
 ---
 title: "Integration Lag: We Started Shipping Faster. We Also Started Understanding Less."
-description: What happens when AI-assisted output moves faster than people can inspect and integrate the work.
+description: "What happens when AI increases output speed faster than teams can integrate changes into shared understanding."
 register: practitioner
+series: "Integration Lag"
+series_part: 1
+series_label: "Part 1"
 ---
 
 import RegisterContent from '../../../../../../components/RegisterContent.astro';
-import ActivationPrompts from '../../../../../../components/ActivationPrompts.astro';
 import ShareButton from '../../../../../../components/ShareButton.astro';
+import SourceHook from '../../../../../../components/SourceHook.astro';
+import SourceLedger from '../../../../../../components/SourceLedger.astro';
+import { directSourceEntries } from '../../../../../sources/en-us/signals/operational/work-delivery/integration-lag.sources';
 
-<RegisterContent register="orientation/en-us/signals/operational/work-delivery/integration-lag">
+<RegisterContent registers={{
+  everyday: 'everyday/en-us/signals/operational/work-delivery/integration-lag',
+  orientation: 'orientation/en-us/signals/operational/work-delivery/integration-lag'
+}}>
 
 <ShareButton />
 
+> AI made output faster.
+>
+> It did not automatically make understanding faster.
+>
+> That gap is integration lag.
+
 We hit a point where velocity went up, but coherence went down.
 
-AI generated code. Tickets moved faster. Delivery pipelines flowed.
+AI generated code.
 
-Everything looked efficient.  
+Tickets moved faster.
+
+Delivery pipelines flowed.
+
+Everything looked efficient.
+
 But the understanding behind it was thinning.
 
 And still, something stopped adding up.
 
-We kept shipping.  
+We kept shipping.
+
 We were no longer sure what we were shipping into.
 
-### Integration lag
+---
 
-The bottleneck is no longer production.
+## Integration Lag
+
+The bottleneck is no longer only production.
 
 It is integration.
 
-Not CI/CD integration.
+Not only CI/CD integration.<SourceHook sourceId="continuous-integration-lineage" sources={directSourceEntries} />
 
 Integration of understanding:
 
@@ -38,53 +60,139 @@ Integration of understanding:
 - what assumptions it relies on
 - what work is hidden behind it
 - what it might break
+- what evidence it stands on
+- what decision still belongs to a human
 
 AI made generation cheap.
 
-It also made it easy to move faster than our ability to inspect, review, and make sense of what we are doing.
+It also made it easy to move faster than our ability to make sense of what we are doing.
 
 This is what we call **integration lag**.
 
-Agreement was visible.  
+Integration lag is the delay between producing change and integrating that change into shared understanding, evidence, checks, and accountable decision-making.
+
+Agreement was visible.
+
 Understanding was not.
 
-### How it shows up
+One practical test is simple:
 
-This does not look like failure.
+> can the people involved name the evidence, assumptions, risks, and human
+> decision behind the change in roughly the same way?
 
-It looks like pressure:
+If not, the team may have agreement without shared understanding.
+
+That distinction matters because teams can appear aligned while still carrying very different assumptions about what the work means.
+
+---
+
+## How It Shows Up
+
+This does not look like failure at first.
+
+It looks like pressure.
+
+It looks like delivery working.
+
+It looks like teams keeping up.
+
+Then the hidden cost starts to surface:<SourceHook sourceId="technical-debt-lineage" sources={directSourceEntries} />
 
 - features that "worked" collide in production
-- dependencies surface too late
+- dependencies appear too late
 - teams discover missing work after commitment
+- reviews become heavier than expected
 - rework happens under time pressure
 - fixes move into nights or weekends
+- senior developers become the hidden integration layer
+- AI-generated drafts create more checking work than expected
 
-Nothing obviously broken early on.  
+Nothing obviously breaks early on.
+
 The cost appears later.
 
-### What we changed
+That is why integration lag is dangerous.
 
-We did not introduce a framework.
+It hides inside apparently successful delivery.
 
-We changed how we make decisions before committing work.
+---
+
+## Why AI Makes This Easier To Miss
+
+AI does not create every delivery problem.
+
+Teams already had stale docs, unclear ownership, hidden dependencies, weak tests, inherited architecture, and tacit knowledge before AI-assisted coding arrived.
+
+AI changes the speed and volume of plausible output.
+
+Current developer survey data already shows the tension: AI use and AI distrust
+can coexist.<SourceHook sourceId="developer-trust-gap" sources={directSourceEntries} />
+
+AI behaves less like a fix and more like an amplifier of the system it enters.<SourceHook sourceId="ai-as-amplifier" sources={directSourceEntries} />
+
+That matters.
+
+A generated answer can look coherent before the system has been inspected.
+
+A generated implementation can look complete before ownership is clear.
+
+A generated test can look reassuring before it proves the right behavior.
+
+A generated explanation can sound confident before the evidence is visible.<SourceHook sourceId="ai-collaboration-friction" sources={directSourceEntries} />
+
+For generated code, security research is one reason fluency cannot stand in for
+checks.<SourceHook sourceId="ai-generated-code-security-risk" sources={directSourceEntries} />
+
+So the danger is not only that AI can be wrong.
+
+The danger is that AI can make unresolved uncertainty look finished.
+
+Under AI speed, teams need better ways to tell the difference between:
+
+- output and evidence
+- agreement and understanding
+- generated confidence and grounded confidence
+- fast drafting and safe integration
+
+This is the first structural pressure this series names.
+
+---
+
+## What We Changed
+
+We did not start by introducing a framework.
+
+We changed one moment in the work:
+
+> the moment before a task turns into a commitment.
 
 Before committing, we made reasoning visible.
 
-Not as documentation.  
-Not as a requirement.
+Not as documentation theater.
+
+Not as a compliance requirement.
 
 As a working intervention while the decision is still forming.
 
-### The intervention
+The practical question became:
 
-We use a source context that can guide how an LLM or agent reasons during work.
+> what has to become visible before faster output can become safe enough to use?
 
-That context is not only a prompt. It relies on the reasoning-contract seeds
-behind the practice, the lens text, and the context seeder that carries relevant
-source context into use.
+That question is small.
 
-It makes reasoning surface while the work is still forming.
+But it changes the work.
+
+It asks the team to inspect the ground before trusting the draft.
+
+---
+
+## The Intervention
+
+We use a small context seeder.
+
+A shared piece of context loaded into the AI before it starts working.
+
+It asks reasoning to surface while the work is still forming.
 
 In practice:
 
@@ -92,24 +200,30 @@ In practice:
 - it surfaces assumptions
 - it identifies missing domains
 - it exposes hidden work
-- it keeps the next check visible
+- it separates what is known from what is inferred
+- it helps name what still needs human confirmation
 
 We call this lens **Sensible Defaults**.
 
 It is not a framework.
 
-It is the first usable runtime guidance surface in this public node, built for
-LLM-assisted coding.
+It is a constraint on how work is approached under AI speed.
 
-It is usable now, but it is not presented as finished.
+The point is not to make humans do more process.
 
-### Example
+The point is to let the agent help surface the trace, while humans stay responsible for judgment.
+
+---
+
+## Example
 
 Before:
 
-> "Implement feature X with API Y"
+> "Implement feature X with API Y."
 
-Looks complete. Moves fast.
+Looks complete.
+
+Moves fast.
 
 After running it through the lens:
 
@@ -117,54 +231,81 @@ After running it through the lens:
 - security implications missing
 - deployment dependencies not considered
 - testing scope undefined
+- API authority not verified
+- reviewer focus unclear
 
 Same task.
 
+Different visibility.
+
 Rework surfaced before it happens.
 
-### What this actually does
+---
+
+## What This Actually Does
 
 It may feel slower at first.
+
+That is not automatically a problem.
 
 It shifts effort forward, instead of paying for it later as rework.
 
 It turns:
 
-- implicit -> visible
-- assumed -> inspectable
-- aligned -> understood
+- implicit into visible
+- assumed into inspectable
+- aligned into understood
+- plausible into reviewable
+- generated into grounded enough to challenge
 
-This is not about getting more out of AI.
+This is not about getting more output from AI.
+
+It is about adding enough structure for the work to stay inspectable.
+
+That structure should stay disposable.
+
+Keep it only while it reduces hidden work, review uncertainty, or late rework.
 
 It is about constraining AI so it does not outrun understanding.
 
-### Use it
+The point is not to trust the output harder.
 
-Don't roll this out.
+The point is to make the work easier to inspect before it hardens.
+
+---
+
+## Use It
+
+Do not roll this out.
 
 Try it once.
 
+Keep it small.
+
 Take one real, slightly uncomfortable task.
 
-Use the Sensible Defaults source context.  
-Run the task through the lens.
+Load the context seeder.
 
-See what assumptions, missing domains, and next checks surface.
+Run it through the lens.
 
-If it doesn't reduce rework or late surprises, drop it.
+Ask the agent to surface:
 
-If this public entry gives you enough context already, this prompt points toward activation:
+- what it inspected
+- what it inferred
+- what remains uncertain
+- what hidden work is likely
+- what checks matter
+- what decision still belongs to a human
 
-<ActivationPrompts
-  variant="minimal-only"
-  title="Minimal activation prompt"
-  minimalTitle="Minimal activation prompt"
-  intro="Use this only with the relevant Sensible Defaults source context. The lens is not active without that context."
-/>
+Then decide whether the output is useful.
 
-For the fuller public entry, go to [Sensible Defaults](/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load/).
+If it does not reduce rework, review uncertainty, or late surprises, drop it.
 
-### This is not a framework
+If it helps, keep the smallest part that worked.
+
+---
+
+## This Is Not A Framework
 
 If this turns into process, it fails.
 
@@ -174,21 +315,41 @@ If it becomes something to complete, it fails.
 
 If it is used to control people instead of exposing reality, it fails.
 
+If it makes humans write more paperwork while agents produce more output, it fails.
+
 This only works as a practice.
 
-### This should not stay private
+And a practice should reduce hidden labour, not rename it.
 
-Reasoning can begin with one person and an AI system.
+---
 
-But if the work affects other people, the reasoning cannot stay private.
+## This Is Not Meant To Be Done Alone
 
-It has to become visible enough for others to inspect, question, and carry
-forward.
+Reasoning is not an individual activity.
 
-Not installed.  
-Practiced with trace.
+It becomes visible between people.
 
-### The real goal
+So this only works when it is shared.
+
+Not installed.
+
+Practiced together.
+
+The agent can draft the trace.
+
+The human can correct it.
+
+The team can challenge it.
+
+That is the point.
+
+Shared understanding does not appear because a tool generated more text.
+
+It appears when evidence, assumptions, uncertainty, and decisions become inspectable together.
+
+---
+
+## The Real Goal
 
 Not better output.
 
@@ -198,16 +359,42 @@ Because under AI speed, that is one of the few things that keeps systems coheren
 
 Everything else is just faster confusion.
 
-### Continue the path
+---
 
-Integration lag names the condition and points to the first public runtime reasoning lens.
+## Next Signal
 
-The broader practice loop is here:
-[A Path Through Integration Lag](/en-us/signals/operational/work-delivery/a-path-through-integration-lag/).
+> This signal names the condition:
+>
+> output can move faster than shared understanding.
+>
+> The next signal gives the path through that condition.
+>
+> It asks how teams can keep work grounded, surface misalignment, preserve learning, and keep shared understanding attached to delivery.
+>
+> That path is [A Path Through Integration Lag](/en-us/signals/operational/work-delivery/a-path-through-integration-lag/).
 
-That path follows what happens before and after a lens is used: how people keep
-work grounded, surface misalignment, preserve learning, and keep shared
-understanding connected to delivery.
+After that path, the series names the pressure many developers already know:
+
+> AI helps, but I still have to check everything.
+
+That is the verification tax.
+
+<SourceLedger sources={directSourceEntries} />
+
+---
+
+## Ways Into This Signal
+
+| Entry | Register | Reader Question |
+|---|---|---|
+| When the team is shipping faster but reviews feel heavier | practitioner | Is output moving faster than shared understanding? |
+| When AI helps but creates more checking work | practitioner | What has to become visible before a generated draft is safe enough to use? |
+| When velocity looks good but coherence feels thin | everyday | What cost is arriving later? |
+| When a task looks complete but hidden work keeps surfacing | practitioner | Which assumptions were invisible at commitment time? |
+| When teams blame individuals for late surprises | orientation | Is this a skill issue, or is production outrunning integration? |
+| When AI becomes part of delivery pressure | practitioner | How do we keep AI from outrunning meaning? |
+| When agents generate output but not trace | practitioner | Can the agent also surface evidence, uncertainty, and reviewer focus? |
+| When a team wants to try without rolling out a framework | practitioner | What is the smallest task where this practice can reduce hidden rework? |
 
 </RegisterContent>
 

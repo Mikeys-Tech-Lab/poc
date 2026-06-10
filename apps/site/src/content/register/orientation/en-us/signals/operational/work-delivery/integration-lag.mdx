@@ -1,145 +1,93 @@
 ---
 title: "Integration Lag: Work Got Faster. Something Stopped Adding Up."
-description: "A simpler entry into integration lag: work speeds up, but shared understanding fails to keep pace."
+description: "A bridge into integration lag: work speeds up, but shared understanding fails to keep pace."
 register: orientation
+series: "Integration Lag"
+series_part: 1
+series_label: "Part 1"
 ---
 
-import ActivationPrompts from '../../../../../../../components/ActivationPrompts.astro';
 import ShareButton from '../../../../../../../components/ShareButton.astro';
 
 <ShareButton />
 
-AI made it easier to produce work.
+## A shorter way in
 
-Code, tickets, changes, plans, and decisions.
+Work can move faster than understanding.
 
-Everything moved faster.
+That is the beginning of integration lag.
 
-But something stopped adding up.
+A team may be shipping, closing tickets, writing code, and producing more with AI assistance. From the outside, it can look like momentum.
 
-Work increased.  
-Understanding didn't.
+Inside the work, people may still feel something else:
 
-### The real issue
+- reviews are heavier
+- hidden assumptions appear late
+- decisions are harder to explain
+- people agree without understanding the same thing
+- AI drafts create more checking work than expected
 
-The problem is not creating work.
+Integration lag names that gap.
 
-It is understanding it.
+## What the gap is
 
-We started missing things like:
+Integration lag is the delay between producing change and integrating that change into shared understanding.
 
-- hidden work
-- unstated assumptions
-- dependencies we didn't name
+It is not only about CI/CD.
 
-Everything looked aligned.  
-But it wasn't fully understood.
+It is about whether the people involved can name the evidence, assumptions, risk, and human decision behind the work in roughly the same way.
 
-### How it shows up
+If they cannot, the team may have visible agreement without shared understanding.
 
-Not as big failures.
+## Why AI makes it easier to miss
 
-As pressure:
+AI can make drafts arrive quickly.
 
-- things break later than expected
-- work comes back unexpectedly
-- small issues pile up
-- stress increases
+That is useful.
 
-Nothing clearly wrong at first.  
-But harder over time.
+But a fluent draft can look finished before the system has been inspected.
 
-### What we changed
+A generated answer can sound confident before the evidence is visible.
 
-We didn't add a new process.
+A generated test can look reassuring before it proves the right behavior.
 
-We changed how we approach decisions.
+So the issue is not only whether AI is wrong.
 
-Before starting work, we ask one question:
+The issue is that AI can make unresolved uncertainty look complete.
 
-**What are we not seeing yet?**
+## A practical test
 
-### A simple way to do it
+Before the work hardens, ask:
 
-We use a small source-context shift.
+> Can we name what this change stands on?
 
-A shared lens that helps surface:
+That means:
 
-- missing work
-- hidden risks
-- assumptions
+- what evidence was inspected
+- what assumptions were made
+- what remains uncertain
+- what checks matter
+- what decision still belongs to a human
 
-We call this:
+The goal is not more process.
 
-**Sensible Defaults**
+The goal is to make the work easier to inspect before it becomes expensive to change.
 
-### Example
+## What comes next
 
-A task looks simple.
+This signal names the condition:
 
-After applying this approach:
+> output can move faster than shared understanding.
 
-- important work appears
-- risks become visible
-- effort changes
+The next signal gives the path through it:
 
-Nothing new was invented.
-
-It was made visible earlier.
-
-### Try it
-
-No adoption is required.
-
-Just try it once.
-
-Take one task.
-
-Before starting, ask:
-
-- what might we be missing?
-- what are we assuming?
-
-If this public entry already gave you enough context, use this minimal activation prompt in a compatible model or agent:
-
-<ActivationPrompts
-  variant="minimal-only"
-  title="Minimal activation prompt"
-  minimalTitle="Minimal activation prompt"
-  intro="Use this only in a compatible model or agent that can work with source context."
-/>
-
-For the fuller public entry, go to [Sensible Defaults](/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load/).
-
-### This is not more process
-
-If it becomes more work, it stops working.
-
-This is about seeing clearly, not doing more.
-
-### This is shared work
-
-This only works with others.
-
-Understanding is something people and teams build together.
-
-### Why this matters
-
-Speed is not the problem.
-
-Losing understanding is.
-
-This is one way to keep it.
-
-### Continue the path
-
-Integration lag names the problem and gives one way to try the practice.
-
-For the larger path, continue here:
 [A Path Through Integration Lag](/en-us/signals/operational/work-delivery/a-path-through-integration-lag/).
 
-The path shows how people and teams can keep work grounded, notice mismatch
-earlier, and keep learning connected to the work as it moves.
+After that path, the series names the pressure many developers already know:
+
+> AI helps, but I still have to check everything.
+
+That is the verification tax.
 
 {/*
 Copyright © 2026 Mikey Sebastian Drozd.

@@ -19,6 +19,9 @@ const threeRegisterRouteIds = [
   'about-the-author',
   'signal-structural',
   'signal-ai-is-not-magic-it-is-a-cognitive-amplifier',
+  'signal-integration-lag',
+  'signal-a-path-through-integration-lag',
+  'signal-the-verification-tax',
 ] as const;
 
 describe('route map', () => {
