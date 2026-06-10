@@ -30,6 +30,9 @@ when needed, and uses the right source presentation for its register.
 
 Practitioner pages carry the most trace. They may include detailed evidence,
 limits, source hooks, source ledgers, and implementation-facing specificity.
+When a practitioner signal includes a repeated "Ways into this signal" entry
+surface, use the shared `AnchorMap` card format rather than a raw Markdown
+table. This keeps entry points visually consistent across signal families.
 
 Orientation pages bridge the concept step by step. They should not inherit
 practitioner source density unless a factual claim would become unsafe without
@@ -73,6 +76,9 @@ Use the repo's lightweight schema layer:
 - `apps/site/src/lib/__tests__/route-map.test.ts` checks route/register integrity.
 - `apps/site/src/lib/__tests__/register-boundaries.test.ts` protects named register boundaries.
 - `apps/site/src/lib/__tests__/source-contract.test.ts` checks source module structure and hook declarations.
+- The same source contract test may protect repeated presentation boundaries
+  such as the `AnchorMap` entry-card format when a promoted signal family has an
+  established pattern.
 - `pnpm license:check` checks markdown-like source license surfaces.
 
 Do not add JSON schemas only to formalize internal TypeScript data. Add a JSON
@@ -88,6 +94,8 @@ Deterministic tests may check:
 - non-empty bounded `supports`, `limits`, and `note` fields
 - every inline `SourceHook` `sourceId` is declared
 - private drafting metadata is absent from public content frontmatter
+- repeated entry-point sections use the established shared component format
+  instead of drifting back to ad hoc tables
 
 Deterministic tests must not claim:
 

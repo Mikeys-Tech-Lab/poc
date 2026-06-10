@@ -38,6 +38,11 @@ The public content tree also needed a more explicit boundary against private
 drafting metadata such as `status`, `source_draft`, `promotion_targets`,
 `register_routes`, and `distribution_channels`.
 
+After the first PR draft, review found another boundary miss: the Integration
+Lag practitioner pages used Markdown tables for "Ways into this signal" while
+the AI signal used the shared `AnchorMap` card format. That made the entry
+surface inconsistent even after the source ledger work was aligned.
+
 ## Missed assumptions
 
 The work initially assumed that publication readiness was mostly a page, route,
@@ -52,6 +57,10 @@ structural ownership. The migration showed that only reusable source-entry types
 should move to shared ownership. Structural-only anchor types should remain with
 the structural article model.
 
+The follow-up review also showed that source parity was not enough. Repeated
+reader-entry surfaces need the same presentation contract as source-heavy
+evidence surfaces when the pattern already exists.
+
 ## Missed guidance
 
 The repo had good local examples and tests for the first structural essay, but
@@ -65,6 +74,8 @@ The missing guidance was:
 - which source checks belong in Vitest
 - which source checks must remain live publication verification
 - when source-heavy pages should use `SourceHook` and `SourceLedger`
+- when repeated "Ways into this signal" sections should use shared entry-card
+  components instead of ad hoc Markdown tables
 
 ## Structural gap
 
@@ -89,6 +100,9 @@ Keep practitioner source-heavy claims behind inline `SourceHook` references and
 one `SourceLedger`. Keep orientation and everyday registers lightweight unless a
 claim would be unsafe without a citation.
 
+Use the shared `AnchorMap` card format for repeated practitioner signal entry
+points when the page provides "Ways into this signal" links.
+
 Separate deterministic source contracts from live source reachability and local
 browser inspection.
 
@@ -110,6 +124,10 @@ currently a scoped content ownership model, not a repo-wide structural decision.
 - `apps/site/src/content/sources/types.ts`
 - `apps/site/src/content/sources/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.sources.ts`
 - `apps/site/src/content/sources/en-us/signals/operational/work-delivery/*.sources.ts`
+- `apps/site/src/content/operational/en-us/signals/work-delivery/*.data.ts`
+- `apps/site/src/components/AnchorMap.astro`
+- `apps/site/src/components/AnchorCard.astro`
+- `apps/site/src/components/anchor-map-types.ts`
 - `apps/site/src/lib/__tests__/source-contract.test.ts`
 - `docs/guidance/content-register-source-workflow.md`
 - `docs/guidance/README.md`
@@ -127,6 +145,8 @@ The new contract is checked through deterministic tests for:
 - bounded `supports`, `limits`, and `note` fields
 - declared and used inline `SourceHook` source IDs
 - absence of private drafting metadata from public content frontmatter
+- use of the shared `AnchorMap` format for repeated Integration Lag entry
+  points, with the old Markdown entry table blocked
 
 Publication readiness still requires live source URL reachability and local
 browser inspection of source hook loops and register switching.
@@ -136,9 +156,11 @@ browser inspection of source hook loops and register switching.
 The Integration Lag promotion exposed a reusable publication boundary: public
 content intake must preserve register shape, keep source-heavy evidence in
 page-scoped locale source modules, exclude private drafting metadata, and split
-deterministic source contracts from live source reachability. This branch updates
-the source architecture, adds a `public-content-intake` skill, documents the
-workflow, and captures the learning here.
+deterministic source contracts from live source reachability. Follow-up review
+also added the repeated entry-point presentation contract after the old Markdown
+table format diverged from the AI signal's `AnchorMap` cards. This branch
+updates the source architecture, adds a `public-content-intake` skill, documents
+the workflow, and captures the learning here.
 
 <!--
 Copyright © 2026 Mikey Sebastian Drozd.

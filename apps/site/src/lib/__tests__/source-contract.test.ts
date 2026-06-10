@@ -66,6 +66,12 @@ const sourcePageCases: readonly SourcePageCase[] = [
   },
 ] as const;
 
+const integrationLagPractitionerPaths = [
+  'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag.mdx',
+  'apps/site/src/content/docs/en-us/signals/operational/work-delivery/a-path-through-integration-lag.mdx',
+  'apps/site/src/content/docs/en-us/signals/operational/work-delivery/the-verification-tax.mdx',
+] as const;
+
 const read = (relativePath: string) => readFileSync(new URL(relativePath, repoRoot), 'utf8');
 
 const ids = (entries: readonly { readonly id: string }[]) => entries.map((entry) => entry.id);
@@ -175,5 +181,16 @@ describe('public source contracts', () => {
     }
 
     expect(failures, 'private public-content frontmatter keys found').toEqual([]);
+  });
+
+  it('keeps Integration Lag entry points in the shared AnchorMap card format', () => {
+    for (const path of integrationLagPractitionerPaths) {
+      const content = read(path);
+
+      expect(content, `${path} should render the shared entry-card map`).toContain('<AnchorMap');
+      expect(content, `${path} should not use the old entry table`).not.toContain(
+        '| Entry | Register | Reader Question |',
+      );
+    }
   });
 });
