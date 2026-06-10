@@ -147,7 +147,9 @@ currently a scoped content ownership model, not a repo-wide structural decision.
 - `docs/guidance/testing-strategy.md`
 - `.cursor/skills/public-content-intake/SKILL.md`
 - `.cursor/skills/astro-starlight/SKILL.md`
+- `.cursor/skills/git-commit/SKILL.md`
 - `.cursor/skills/github-automation/SKILL.md`
+- `docs/guidance/agent-pre-commit-verification.md`
 
 ## Verification
 

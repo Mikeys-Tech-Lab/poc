@@ -61,6 +61,7 @@ Deterministic checks protect structure:
 - register-boundary tests
 - source-contract tests
 - `pnpm build`
+- `pnpm --filter site check`
 
 Live source reachability and browser behavior are publication checks, not unit
 test claims.
