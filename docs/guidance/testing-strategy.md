@@ -63,6 +63,15 @@ and other phrases where loss of the wording would change the public contract.
 Avoid adding tests that pin ordinary article paragraphs. If a test cannot name
 the boundary it protects, it is probably testing for tests' sake.
 
+Source contract tests may verify source data structure, source ID declarations,
+public `https://` href shape, and absence of private drafting metadata from
+public content frontmatter. They must not claim that a source proves an article,
+that source interpretation is correct, or that a page is publishable.
+
+Live source URL reachability belongs to publication verification, not normal
+Vitest checks. See `content-register-source-workflow.md` for the public content
+intake boundary.
+
 ## Advisory AI boundary
 
 The workspace may use advisory AI review for broader drift, missing reflection,

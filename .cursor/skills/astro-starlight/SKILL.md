@@ -30,6 +30,11 @@ Before relying on any Astro or Starlight feature:
 - Seeds (`seeds/`) are development-only sources. They are not the site content tree.
 - The site may reference seeds but must not import them as pages.
 
+For promoted public-bound content, load the `public-content-intake` skill and
+use `docs/guidance/content-register-source-workflow.md` as the operational
+boundary for register shape, public metadata, source hooks, and source
+verification.
+
 ### Public practice-first boundary
 
 For public content under `apps/site/src/content/**`:
