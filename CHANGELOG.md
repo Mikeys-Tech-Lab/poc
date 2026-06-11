@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.17.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.17.1...PoC-v1.17.2) (2026-06-11)
+
+
+### Miscellaneous
+
+* **deps:** update astro ecosystem non-major ([#243](https://github.com/Mikeys-Tech-Lab/poc/issues/243)) ([634c484](https://github.com/Mikeys-Tech-Lab/poc/commit/634c4841b0b02cce629e8b9e2c8fc79a4cdef3ff))
+* **deps:** update dev tooling non-major ([#244](https://github.com/Mikeys-Tech-Lab/poc/issues/244)) ([fd1d061](https://github.com/Mikeys-Tech-Lab/poc/commit/fd1d061bc8cd37d725854e194e9ee854626539ef))
+
 ## [1.17.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.17.0...PoC-v1.17.1) (2026-06-11)
 
 
