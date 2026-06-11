@@ -1,14 +1,14 @@
-# Trace Climb
+# Trace, Reflect and Evolve
 
 This topic explains how non-trivial work becomes durable learning in the
 workspace.
 
 It summarizes the workflow. The authoritative procedure lives in
-`docs/guidance/trace-climb.md`.
+`docs/guidance/trace-reflect-and-evolve.md`.
 
 ## What it is
 
-Use `Trace Climb` after non-trivial work when the branch exposed a lesson that
+Use `Trace, Reflect and Evolve` after non-trivial work when the branch exposed a lesson that
 should be inspectable after the chat is gone.
 
 The command classifies the work as:
@@ -44,7 +44,7 @@ Typical `skip allowed` cases:
 
 ## What it produces
 
-`Trace Climb` can produce:
+`Trace, Reflect and Evolve` can produce:
 
 - a short skip or no-op learning trace
 - an `Evolution Record`
@@ -59,7 +59,7 @@ Typical `skip allowed` cases:
 
 ## Read next
 
-- `docs/guidance/trace-climb.md`
+- `docs/guidance/trace-reflect-and-evolve.md`
 - `docs/guidance/evolution-records/README.md`
 - `docs/onboarding/contributing.md`
 - `docs/decisions/README.md`

@@ -57,7 +57,7 @@ Two different questions are in play. Keep them distinct:
 - **Propagation classification** decides which layers should be touched at all.
   Choose the cheapest effective layer that reliably prevents recurrence:
   `archive-only`, `on-demand`, `canon`, or `enforced`. See
-  `docs/guidance/trace-climb.md`.
+  `docs/guidance/trace-reflect-and-evolve.md`.
 - **Surface authority order** tells contributors how to keep the layers they do
   touch coherent.
 

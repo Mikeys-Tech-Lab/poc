@@ -175,7 +175,7 @@ When documenting a mistake, correction, or retrospective:
 4. **Update the right surfaces.** Classify runtime propagation first to decide which layers to touch at all, then keep each touched surface coherent in authority order (canonical guidance, then affected skills, rules, docs, and tests).
 5. **Verify the contract.** Tests and checks must protect the intended behavior, not the accidental implementation that caused the bug.
 
-Trace Climb is not complete when a lesson is archived. Each `Evolution Record` must declare its **Runtime propagation**: the cheapest effective layer where the lesson changes future behavior, or `archive-only` when no runtime change is warranted. Prefer pointers over payload so always-loaded context stays small. See `docs/guidance/trace-climb.md`.
+Trace, Reflect and Evolve is not complete when a lesson is archived. Each `Evolution Record` must declare its **Runtime propagation**: the cheapest effective layer where the lesson changes future behavior, or `archive-only` when no runtime change is warranted. Prefer pointers over payload so always-loaded context stays small. See `docs/guidance/trace-reflect-and-evolve.md`.
 
 ### Anti-pattern
 
@@ -251,9 +251,9 @@ This workspace has structured repo entry paths at `docs/onboarding/`. AI agents 
 
 - Say `onboard me` for setup, workspace orientation, and contribution guidance.
 - Say `Evolution Arc` for repo history, reasoning trace, and how the workspace changed. This path asks which register the reader wants, then follows inspectable repo-local sources.
-- Say `Trace Climb` after non-trivial work to decide whether the branch needs durable learning capture, an `Evolution Record`, or a bounded skip trace.
+- Say `Trace, Reflect and Evolve` after non-trivial work to decide whether the branch needs durable learning capture, an `Evolution Record`, or a bounded skip trace.
 - The topic index is at `docs/onboarding/README.md`. It lists available topics with IDs, paths, descriptions, and prerequisites.
-- The Cursor skills at `.cursor/skills/onboarding/SKILL.md`, `.cursor/skills/evolution-arc/SKILL.md`, and `.cursor/skills/trace-climb/SKILL.md` define the agent-driven entry flows.
+- The Cursor skills at `.cursor/skills/onboarding/SKILL.md`, `.cursor/skills/evolution-arc/SKILL.md`, and `.cursor/skills/trace-reflect-and-evolve/SKILL.md` define the agent-driven entry flows.
 - For Claude Code and GitHub Copilot: read the topic index and follow the same structure when a user asks for onboarding, repo history, or durable learning capture.
 - For readers without AI assistance: `docs/onboarding/manual.md` and `docs/onboarding/evolution-arc.md` provide the same starting paths.
 
@@ -317,7 +317,7 @@ The `github-automation` skill has the detailed lifecycle steps. This summary exi
 
 ### Durable learning
 
-Use `Trace Climb` during Close phase for non-trivial work.
+Use `Trace, Reflect and Evolve` during Close phase for non-trivial work.
 
 Trigger levels:
 
@@ -414,7 +414,7 @@ If a PR changes behavior, structure, tooling, conventions, or security posture, 
 - **Structural changes** (repo layout, new directories, moved files): update `docs/architecture/workspace.md`. If the diagram and the file tree diverge, the file tree wins and the diagram must be updated.
 - **Structural decisions** that meet the ADR criteria (`docs/decisions/README.md`): write or update an ADR. Not every structural change needs one — only those where the rationale would otherwise be lost.
 - **Onboarding-relevant changes** (setup, workflow, AI guidance, security posture): update the topic index (`docs/onboarding/README.md`) and the affected topic page(s).
-- **Repo-entry contract changes** (`onboard me`, `Evolution Arc`, `Trace Climb`): keep the deterministic guidance drift guard coherent in the same PR. The blocking layer validates explicit mappings between skills, entry docs, adapters, trace maps, and related propagation surfaces. It must not depend on inferred expectations.
+- **Repo-entry contract changes** (`onboard me`, `Evolution Arc`, `Trace, Reflect and Evolve`): keep the deterministic guidance drift guard coherent in the same PR. The blocking layer validates explicit mappings between skills, entry docs, adapters, trace maps, and related propagation surfaces. It must not depend on inferred expectations.
 - **Infrastructure or security changes**: update `docs/infra/protection-layers.md` and/or relevant runbooks.
 - **Agent behavior changes** (new rules, skills, tool preferences): update `AGENTS.md` and any affected adapters.
 
@@ -425,7 +425,7 @@ Onboarding pages summarize and link. Deep docs hold authoritative procedures. If
 ### Guidance drift guard
 
 This workspace uses a two-layer guard for `onboard me`, `Evolution Arc`, and
-`Trace Climb`:
+`Trace, Reflect and Evolve`:
 
 - A **blocking deterministic validator** checks path integrity, topic index consistency, explicit mapping contracts, and referenced guidance surfaces.
 - A **non-blocking advisory review** uses an AI reasoning layer over inspectable repo traces to surface broader drift, missing reflection, or missing guidance evolution.

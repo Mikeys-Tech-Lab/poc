@@ -40,10 +40,10 @@ Each entry below describes one onboarding topic. Agents parse the entries to bui
 - **When to use:** Understanding how the workspace evolved, which trace surfaces explain it, and where to ask follow-up questions
 - **Prereqs:** none
 
-### trace-climb
+### trace-reflect-and-evolve
 
-- **Title:** Trace Climb
-- **Path:** `docs/onboarding/trace-climb.md`
+- **Title:** Trace, Reflect and Evolve
+- **Path:** `docs/onboarding/trace-reflect-and-evolve.md`
 - **When to use:** Understanding how non-trivial work becomes durable learning, when to preserve an Evolution Record, and how learning becomes visible in PRs
 - **Prereqs:** ai-guidance, contributing
 

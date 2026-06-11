@@ -1,6 +1,6 @@
 # Evolution Records
 
-This directory holds durable learning artifacts produced by `Trace Climb`.
+This directory holds durable learning artifacts produced by `Trace, Reflect and Evolve`.
 
 The current working artifact name is `Evolution Record`.
 
@@ -47,12 +47,12 @@ climb.
 Distill the smallest reusable lesson and carry only that, plus a pointer back to
 the record, onto the chosen runtime surface (pointer-not-payload). The archive
 holds the full trace, the record holds the distilled lesson, and runtime surfaces
-hold the smallest reusable constraint. `docs/guidance/trace-climb.md` defines the
+hold the smallest reusable constraint. `docs/guidance/trace-reflect-and-evolve.md` defines the
 ladder and the decision rule.
 
 ## Relationship to other surfaces
 
-- **`docs/guidance/trace-climb.md`** defines when to write a record and what it
+- **`docs/guidance/trace-reflect-and-evolve.md`** defines when to write a record and what it
   must contain.
 - **PR descriptions** carry the bounded learning trace and link here when a
   record exists.

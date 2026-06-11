@@ -78,8 +78,8 @@ jobs:
               ("AGENTS.md", "### Durable learning"),
               ("AGENTS.md", "### Guidance drift guard"),
               ("docs/guidance/evolution-arc.md", "## What each surface contributes"),
-              ("docs/guidance/trace-climb.md", "## Trigger model"),
-              ("docs/guidance/trace-climb.md", "## Propagation decision"),
+              ("docs/guidance/trace-reflect-and-evolve.md", "## Trigger model"),
+              ("docs/guidance/trace-reflect-and-evolve.md", "## Propagation decision"),
               ("docs/onboarding/ai-guidance.md", "## Cursor: rules and skills"),
               (".github/pull_request_template.md", "## Learning trace"),
           ]
