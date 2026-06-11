@@ -184,13 +184,43 @@ describe('resolveRegister', () => {
     });
   });
 
-  it('falls back visibly for an unknown register', () => {
+  it('falls back visibly for an actually requested unknown register', () => {
     const result = resolveRegister('unknown');
 
     expect(result.register).toBe('practitioner');
     expect(result.requested).toBeNull();
     expect(result.reason).toBe('unknown');
     expect(result.fallbackReason).toBe('unknown');
+  });
+
+  it('defaults silently when no register is requested (null)', () => {
+    const result = resolveRegister(null);
+
+    expect(result).toMatchObject({
+      register: 'practitioner',
+      resolved: 'practitioner',
+      requested: null,
+      reason: null,
+      fallbackReason: null,
+      message: null,
+      fallbackMessage: null,
+    });
+  });
+
+  it('defaults silently for a localStorage miss (false)', () => {
+    const result = resolveRegister(false);
+
+    expect(result.reason).toBeNull();
+    expect(result.fallbackReason).toBeNull();
+    expect(result.fallbackMessage).toBeNull();
+  });
+
+  it('defaults silently for an empty string', () => {
+    const result = resolveRegister('');
+
+    expect(result.reason).toBeNull();
+    expect(result.fallbackReason).toBeNull();
+    expect(result.fallbackMessage).toBeNull();
   });
 });
 
