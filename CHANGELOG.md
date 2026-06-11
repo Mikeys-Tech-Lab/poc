@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.18.0...PoC-v1.18.1) (2026-06-11)
+
+
+### Code Refactoring
+
+* **ai:** rename Trace Climb command to Trace, Reflect and Evolve ([#253](https://github.com/Mikeys-Tech-Lab/poc/issues/253)) ([a1e8853](https://github.com/Mikeys-Tech-Lab/poc/commit/a1e8853d199b232c6d373c490023daa531348c45))
+
 ## [1.18.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.17.4...PoC-v1.18.0) (2026-06-11)
 
 
