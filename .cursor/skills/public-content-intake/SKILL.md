@@ -14,13 +14,17 @@ that boundary.
 ## Intake Order
 
 1. Identify the target public route, locale, and register surfaces.
-2. Strip private drafting or handoff metadata before writing public content.
-3. Verify public frontmatter against `apps/site/src/content.config.ts`.
-4. Verify route/register availability in `apps/site/src/lib/route-map.js`.
-5. Keep practitioner, orientation, and everyday roles distinct.
-6. For source-heavy practitioner pages, use `SourceHook` and `SourceLedger`.
-7. Keep orientation and everyday pages lightweight unless a claim needs a source.
-8. Run deterministic checks before browser or live-source review.
+2. When editing an existing public page, compare against `main` for visible
+   render surfaces before and after the rewrite: examples, callout boxes,
+   activation prompts, imports, and reader actions.
+3. Strip private drafting or handoff metadata before writing public content.
+4. Verify public frontmatter against `apps/site/src/content.config.ts`.
+5. Verify route/register availability in `apps/site/src/lib/route-map.js`.
+6. Keep practitioner, orientation, and everyday roles distinct.
+7. Keep repeated practitioner entry maps in colocated `*.ways.ts` sidecars.
+8. For source-heavy practitioner pages, use `SourceHook` and `SourceLedger`.
+9. Keep orientation and everyday pages lightweight unless a claim needs a source.
+10. Run deterministic checks before browser or live-source review.
 
 ## Public Metadata Boundary
 
@@ -50,6 +54,17 @@ apps/site/src/content/sources/<locale>/<content-path>/<page>.sources.ts
 
 Do not create a central source registry. Do not use English source modules as
 silent fallback for future locales.
+
+Declare `directSourceEntries` in first-citation order. The footnote number is
+the source's array position, so a declaration order that does not match the
+reading order makes footnotes jump in the text. When adding an inline source
+hook, insert its entry at the matching position, not at the end. This breaks
+most easily when sources are migrated out of a Markdown table.
+
+Any practitioner page that renders "Ways into this signal" should keep that
+page-owned editorial map in a colocated `*.ways.ts` sidecar next to the
+practitioner page. Do not move it into a parallel
+`apps/site/src/content/operational/**` tree or a generic `src/lib/**` drawer.
 
 ## Verification Routing
 

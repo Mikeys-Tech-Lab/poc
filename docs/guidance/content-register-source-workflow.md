@@ -15,6 +15,13 @@ Drafting and handoff state belongs outside that tree. A handoff source may say
 PoC public content tree must not copy that metadata unless the public content
 schema intentionally changes.
 
+Do not create parallel helper data trees under `apps/site/src/content/**` just
+because the helpers support content rendering. Public content pages live in the
+content collections, source ledgers live in
+`apps/site/src/content/sources/**`, page-owned editorial entry maps live as
+colocated sidecars beside the page they serve, and shared reusable logic stays
+under `apps/site/src/lib/**`.
+
 Public PoC content should be:
 
 - source-clean
@@ -30,9 +37,12 @@ when needed, and uses the right source presentation for its register.
 
 Practitioner pages carry the most trace. They may include detailed evidence,
 limits, source hooks, source ledgers, and implementation-facing specificity.
-When a practitioner signal includes a repeated "Ways into this signal" entry
-surface, use the shared `AnchorMap` card format rather than a raw Markdown
-table. This keeps entry points visually consistent across signal families.
+Any practitioner signal page that renders a repeated "Ways into this signal"
+entry surface should use the shared `AnchorMap` card format rather than a raw
+Markdown table. Keep the card data in a colocated `*.ways.ts` sidecar next to
+the practitioner MDX page so the editorial map stays with its owning page. This
+keeps entry points visually consistent across signal families without creating a
+second content authority.
 
 Orientation pages bridge the concept step by step. They should not inherit
 practitioner source density unless a factual claim would become unsafe without
@@ -66,6 +76,16 @@ is legitimate and traceable.
 Source IDs are unique within a page module. Do not create a central source
 registry unless a real retrieval or publishing need appears.
 
+Declare direct source entries in the order they are first cited in the page.
+The footnote number a reader sees is the source's position in the
+`directSourceEntries` array, and the ledger numbers the same way. If the array
+order does not match the citation order, footnotes read out of sequence in the
+text. This is easy to break during migration, when sources are lifted from a
+Markdown table that carried a different order. When you add a new inline
+`SourceHook`, place its entry at the matching position in the array, not at the
+end. Further reading entries are numbered independently and are not cited
+inline, so they follow their own intended order.
+
 ## Contract Surfaces
 
 Use the repo's lightweight schema layer:
@@ -76,9 +96,15 @@ Use the repo's lightweight schema layer:
 - `apps/site/src/lib/__tests__/route-map.test.ts` checks route/register integrity.
 - `apps/site/src/lib/__tests__/register-boundaries.test.ts` protects named register boundaries.
 - `apps/site/src/lib/__tests__/source-contract.test.ts` checks source module structure and hook declarations.
+- The same source contract test asserts footnote numbering reads in order: the
+  first-citation order of inline `sourceId`s must match the declared
+  `directSourceEntries` order.
 - The same source contract test may protect repeated presentation boundaries
   such as the `AnchorMap` entry-card format when a promoted signal family has an
-  established pattern.
+  established pattern, including the requirement that page-owned entry maps stay
+  in local `*.ways.ts` sidecars.
+- It also guards against accidental parallel content-helper trees such as
+  `apps/site/src/content/operational/**`.
 - `pnpm license:check` checks markdown-like source license surfaces.
 
 Do not add JSON schemas only to formalize internal TypeScript data. Add a JSON
@@ -93,6 +119,7 @@ Deterministic tests may check:
 - public `https://` href shape
 - non-empty bounded `supports`, `limits`, and `note` fields
 - every inline `SourceHook` `sourceId` is declared
+- inline citation order matches declared source order so footnotes ascend in the text
 - private drafting metadata is absent from public content frontmatter
 - repeated entry-point sections use the established shared component format
   instead of drifting back to ad hoc tables
@@ -113,15 +140,21 @@ reader-facing behaviors, not only data contracts.
 For promoted public-bound content:
 
 1. Identify the public route, locale, and register surfaces.
-2. Remove private drafting or handoff metadata before writing public content.
-3. Verify the route/register model and sidebar entry if the page is public.
-4. Keep orientation and everyday pages lightweight unless a claim needs a source.
-5. Put practitioner source-heavy claims behind inline source hooks and a ledger.
-6. Run deterministic checks first.
-7. Run `pnpm --filter site check` for site content/module changes. A build can
+2. If an existing public page is being rewritten, compare it against `main`
+   before and after editing for visible render surfaces: examples, callout boxes,
+   activation prompts, imports, and reader actions. Do not let a prose rewrite
+   silently flatten a component-backed affordance into plain text or remove it.
+3. Remove private drafting or handoff metadata before writing public content.
+4. Verify the route/register model and sidebar entry if the page is public.
+5. Keep orientation and everyday pages lightweight unless a claim needs a source.
+6. Put repeated practitioner "Ways into this signal" sections behind the shared
+   `AnchorMap` fed by a colocated `*.ways.ts` sidecar.
+7. Put practitioner source-heavy claims behind inline source hooks and a ledger.
+8. Run deterministic checks first.
+9. Run `pnpm --filter site check` for site content/module changes. A build can
    pass while type-only imports still fail Astro's type check.
-8. Then verify source reachability and local browser behavior.
-9. Only call the branch publishable after both structural checks and reader-facing
+10. Then verify source reachability and local browser behavior.
+11. Only call the branch publishable after both structural checks and reader-facing
    inspection pass.
 
 <!--

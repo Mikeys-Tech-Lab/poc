@@ -51,6 +51,26 @@ The operator then named a broader Trace Climb gap: reasoning-time corrections
 must evolve the agent operating architecture, not merely appear as runtime
 narration in the PR.
 
+The operator also caught that the entry-card data had been placed under
+`apps/site/src/content/operational/**`, creating a misleading parallel content
+authority beside the real practitioner pages under
+`apps/site/src/content/docs/en-us/signals/operational/**`.
+
+While reading the published Integration Lag article, the operator then noticed
+the footnotes ran out of order in the body text. The footnote number is derived
+from a source's position in the `directSourceEntries` array, and the three
+operational pages had been declared in their old Markdown-table order, not the
+order the sources were cited. So the inline numbers jumped, for example 1, 2, 4,
+5, 3, 6. The original structural AI article was unaffected because it was
+authored in citation order from the start.
+
+A later reading pass found a different regression: existing public pages on
+`main` had component-backed examples, activation prompts, and public-node
+callout boxes that had been flattened or removed during the rewrite. The new
+branch preserved many headings and added stronger source architecture, but some
+reader affordances disappeared because the migration compared prose intent
+rather than rendered surfaces.
+
 ## Missed assumptions
 
 The work initially assumed that publication readiness was mostly a page, route,
@@ -67,7 +87,8 @@ the structural article model.
 
 The follow-up review also showed that source parity was not enough. Repeated
 reader-entry surfaces need the same presentation contract as source-heavy
-evidence surfaces when the pattern already exists.
+evidence surfaces whenever practitioner pages expose that same "Ways into this
+signal" surface.
 
 Another missed assumption was that a passing build meant the new TypeScript
 content modules were type-clean. Type-only imports can be erased during build and
@@ -77,6 +98,18 @@ The final missed assumption was that writing the Evolution Record and PR trace
 was enough after each correction. That preserved the story but did not fully
 evolve the skill path that future agents would load before making the same
 mistake.
+
+Another missed assumption was that any page-supporting data should either stay
+somewhere under `src/content` or move into `src/lib`. The better boundary is
+narrower: rendered public pages and their page-owned editorial sidecars stay
+together, source ledger data lives in `src/content/sources`, and shared
+reusable behavior stays in `src/lib`.
+
+Another missed assumption was that preserving the conceptual content was enough
+when rewriting existing public pages. That is incomplete. Component-backed
+examples, activation prompts, and callout boxes are part of the reader-facing
+article, not decoration. They must be compared against the current public branch
+before a rewrite is called publishable.
 
 ## Missed guidance
 
@@ -97,6 +130,13 @@ The missing guidance was:
   not only lint, tests, and build
 - that Trace Climb itself must capture reasoning-time evolution and propagate it
   into the runtime skill or check that should guide the next agent
+- that non-content helper data must not create parallel authority trees under
+  `apps/site/src/content/**`
+- that `directSourceEntries` must be declared in first-citation order, because
+  the footnote number is the array position and migration from a Markdown table
+  silently carries the wrong order
+- that existing public pages need branch-to-`main` comparison for visible render
+  surfaces, not only prose headings and route shape
 
 ## Structural gap
 
@@ -135,6 +175,23 @@ correction, failed check, or implementation surprise reveals an incomplete agent
 contract, update the skill or guidance surface that future agents will load
 before the same decision point.
 
+Keep repeated entry-card maps in page-colocated `*.ways.ts` sidecars next to
+their practitioner pages. Do not create parallel pseudo-authority trees such as
+`apps/site/src/content/operational/**`, and do not scatter page-owned editorial
+maps into generic `src/lib` drawers.
+
+Declare `directSourceEntries` in first-citation order so footnote numbers ascend
+as the reader moves down the page. Name this convention in the workflow guidance
+and the intake skill, and enforce it with a deterministic test, because the
+failure mode is invisible at authoring time and arrives silently through Markdown
+table migration.
+
+When rewriting an existing public page, compare the branch against `main` for
+reader-facing render surfaces: examples, callout boxes, activation prompts,
+imports, and links that create actions. Protect high-risk surfaces with
+deterministic snippets in `register-boundaries.test.ts` when they define the
+article's usable shape.
+
 ## Research delta
 
 None.
@@ -152,8 +209,10 @@ currently a scoped content ownership model, not a repo-wide structural decision.
 
 - `apps/site/src/content/sources/types.ts`
 - `apps/site/src/content/sources/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.sources.ts`
-- `apps/site/src/content/sources/en-us/signals/operational/work-delivery/*.sources.ts`
-- `apps/site/src/content/operational/en-us/signals/work-delivery/*.data.ts`
+- `apps/site/src/content/sources/en-us/signals/operational/work-delivery/*.sources.ts` (reordered to first-citation order)
+- `apps/site/src/content/docs/en-us/signals/operational/work-delivery/*.ways.ts`
+- `apps/site/src/content/docs/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.ways.ts`
+- `apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/*.mdx`
 - `apps/site/src/components/AnchorMap.astro`
 - `apps/site/src/components/AnchorCard.astro`
 - `apps/site/src/components/anchor-map-types.ts`
@@ -181,11 +240,20 @@ The new contract is checked through deterministic tests for:
 - declared and used inline `SourceHook` source IDs
 - absence of private drafting metadata from public content frontmatter
 - use of the shared `AnchorMap` format for repeated Integration Lag entry
-  points, with the old Markdown entry table blocked
+  points and any other practitioner page with "Ways into this signal", with the
+  old Markdown entry table blocked
+- local `*.ways.ts` sidecar imports for practitioner entry maps where that
+  surface exists
+- footnote numbering reads in order: first-citation order of inline `sourceId`s
+  matches declared `directSourceEntries` order on every source-hooked page
+- existing Integration Lag examples, activation prompts, and public-node boxes
+  remain visible through `register-boundaries.test.ts`
 - explicit site type checking through `pnpm --filter site check` for site
   content/module changes before PR readiness
 - reasoning-time corrections are captured in Trace Climb and propagated to the
   operational guidance surface that should change future agent behavior
+- the source contract test rejects accidental helper files under
+  `apps/site/src/content/operational/**`
 
 Publication readiness still requires live source URL reachability and local
 browser inspection of source hook loops and register switching.
@@ -202,9 +270,24 @@ exposed a local verification gap: the PR close gate must include
 `pnpm --filter site check` for site module changes, because build can miss
 type-only import errors. The final reflection extended the Trace Climb contract
 itself: reasoning-time corrections must evolve the agent operating architecture,
-not only narrate what happened. This branch updates the source architecture, adds
-a `public-content-intake` skill, documents the workflow, and captures the
-learning here.
+not only narrate what happened. A later correction rejected both a mistaken
+`src/content/operational` tree and an over-generic `src/lib` placement, landing
+instead on page-colocated `*.ways.ts` sidecars beside practitioner pages that
+actually render "Ways into this signal", including the earlier structural AI
+signal. That preserves a single content authority while keeping page-owned
+editorial maps close to the page they shape. A final reading-time catch found
+footnotes numbering out of order on the migrated operational pages, because
+declaration order had drifted from citation order. The fix reordered the three
+source modules to first-citation order, named the convention in the workflow
+guidance and intake skill, and added a deterministic test so the next runtime is
+guided before authoring rather than corrected after. Another reading pass found
+that the rewrite had flattened or removed component-backed examples, activation
+prompts, and public-node boxes from existing pages. Those affordances were
+restored and protected with register-boundary snippets, and the intake workflow
+now requires branch-to-`main` comparison for visible reader surfaces before
+publishability. This branch updates the source architecture, adds a
+`public-content-intake` skill, documents the workflow, and captures the learning
+here.
 
 <!--
 Copyright © 2026 Mikey Sebastian Drozd.
