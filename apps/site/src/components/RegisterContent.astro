@@ -28,6 +28,12 @@ for (const register of ['everyday', 'orientation'] as const) {
 }
 ---
 
+<noscript>
+	<p class="register-noscript-note">
+		Showing the practitioner register. Register switching requires JavaScript.
+	</p>
+</noscript>
+
 <div data-register-content="practitioner">
 	<slot />
 </div>
@@ -55,6 +61,15 @@ for (const register of ['everyday', 'orientation'] as const) {
 <style is:global>
 	[data-register-content] {
 		display: none;
+	}
+
+	.register-noscript-note {
+		margin-block: 0 1rem;
+		padding: 0.75rem 0.9rem;
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 0.75rem;
+		color: var(--sl-color-gray-2);
+		font-size: var(--sl-text-sm);
 	}
 
 	:root:not([data-register]) [data-register-content='practitioner'] {
