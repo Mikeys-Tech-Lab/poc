@@ -6,6 +6,7 @@
 **Scope:** workspace | tooling
 **Origin trace:** Operator asked why seed and preview did not deploy automatically after PR #191 merged. Investigation traced the break to the non-Conventional squash-merge title `Publish the first structural essay and harden route-scoped public boundaries (#191)`, then the operator directed that the incident receive a Trace Climb on a new branch and PR.
 **Activation trace:** none
+**Runtime propagation:** enforced — the pr-title-conventional workflow blocks non-conforming titles. No new propagation in this backfill.
 **Related PR:** pending
 
 ## Why this record exists

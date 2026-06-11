@@ -8,6 +8,7 @@
 surfaces still pointed the Sensible Defaults seeder at GitHub `blob/` URLs
 instead of a direct runtime-readable artifact URL
 **Activation trace:** none
+**Runtime propagation:** enforced — the guidance drift guard sensible-defaults-activation mapping pins the seeder contract. No new propagation in this backfill.
 **Related PR:** pending
 
 ## Why this record exists

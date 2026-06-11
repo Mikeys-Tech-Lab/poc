@@ -6,6 +6,7 @@
 **Scope:** content | migration | guidance
 **Origin trace:** operator request to make the locally promoted Integration Lag register triad publishable, then refine and execute the Source Register Alignment plan
 **Activation trace:** Trace Climb requested by the operator because the work exposed a missing promotion workflow boundary
+**Runtime propagation:** enforced — source contract tests pin source integrity, with content-register-source-workflow guidance and the public-content-intake skill on-demand. No new propagation in this backfill.
 **Related PR:** pending
 
 ## Why this record exists

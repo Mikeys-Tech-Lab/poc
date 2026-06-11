@@ -7,6 +7,7 @@
 **Origin trace:** forensic leakage audit follow-up for direct-to-origin exposure
 risk, provider support clarification, manual verification, and `/trace-climb`.
 **Activation trace:** `/trace-climb`
+**Runtime propagation:** on-demand — the infomaniak-deployment skill and infra docs carry the corrected origin boundary. No new propagation in this backfill.
 **Related PR:** https://github.com/Mikeys-Tech-Lab/poc/pull/181
 
 ## Why this record exists

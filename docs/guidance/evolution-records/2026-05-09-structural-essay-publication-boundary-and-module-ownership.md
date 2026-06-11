@@ -6,6 +6,7 @@
 **Scope:** content | architecture | tooling
 **Origin trace:** Operator request to publish the first structural essay across practitioner, orientation, and everyday registers without leaking private intake paths or draft workflow metadata, followed by iterative corrections around source presentation, leak-guard posture, and module placement.
 **Activation trace:** Sensible Defaults lens loaded during the final rename, review, and reflection pass. The lens was used to expose hidden delivery work across QA, security, documentation, and module-boundary cleanup.
+**Runtime propagation:** enforced — structural-essay-publication.test.ts pins the publication boundary. No new propagation in this backfill.
 **Related PR:** https://github.com/Mikeys-Tech-Lab/poc/pull/191
 
 ## Why this record exists
