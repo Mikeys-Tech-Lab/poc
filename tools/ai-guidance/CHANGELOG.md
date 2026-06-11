@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.6.8...ai-guidance-v0.7.0) (2026-06-11)
+
+
+### Features
+
+* **ai:** make trace climb propagation runtime-cost aware ([#250](https://github.com/Mikeys-Tech-Lab/poc/issues/250)) ([28380b9](https://github.com/Mikeys-Tech-Lab/poc/commit/28380b94074911035a64e3b7214c9398339c6e5b))
+
 ## [0.6.8](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.6.7...ai-guidance-v0.6.8) (2026-06-11)
 
 
