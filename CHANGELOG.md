@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.3](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.17.2...PoC-v1.17.3) (2026-06-11)
+
+
+### Miscellaneous
+
+* **deps:** update test tooling non-major ([#245](https://github.com/Mikeys-Tech-Lab/poc/issues/245)) ([23c7f81](https://github.com/Mikeys-Tech-Lab/poc/commit/23c7f81eaaa6e594036c038b1c68595c25a2feda))
+
 ## [1.17.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.17.1...PoC-v1.17.2) (2026-06-11)
 
 
