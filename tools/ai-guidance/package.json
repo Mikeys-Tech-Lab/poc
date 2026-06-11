@@ -1,6 +1,6 @@
 {
   "name": "@poc/ai-guidance",
-  "version": "0.6.6",
+  "version": "0.6.8",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,9 +13,9 @@
     "coverage": "vitest run --coverage"
   },
   "devDependencies": {
-    "@vitest/coverage-v8": "4.1.6",
-    "tsx": "4.22.0",
+    "@vitest/coverage-v8": "4.1.8",
+    "tsx": "4.22.4",
     "typescript": "6.0.3",
-    "vitest": "4.1.6"
+    "vitest": "4.1.8"
   }
 }

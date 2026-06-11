@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.5.2](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.5.1...site-v2.5.2) (2026-06-11)
+
+
+### Miscellaneous
+
+* **deps:** update test tooling non-major ([#245](https://github.com/Mikeys-Tech-Lab/poc/issues/245)) ([23c7f81](https://github.com/Mikeys-Tech-Lab/poc/commit/23c7f81eaaa6e594036c038b1c68595c25a2feda))
+
+## [2.5.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.5.0...site-v2.5.1) (2026-06-11)
+
+
+### Miscellaneous
+
+* **deps:** update astro ecosystem non-major ([#243](https://github.com/Mikeys-Tech-Lab/poc/issues/243)) ([634c484](https://github.com/Mikeys-Tech-Lab/poc/commit/634c4841b0b02cce629e8b9e2c8fc79a4cdef3ff))
+
 ## [2.5.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.4.0...site-v2.5.0) (2026-06-11)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@poc/workspace",
-  "version": "1.17.0",
+  "version": "1.17.3",
   "private": true,
   "type": "module",
   "engines": {
@@ -23,6 +23,6 @@
     "fresh:start": "lsof -ti:4321 | xargs kill -9 2>/dev/null; pnpm run fresh && pnpm run local"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.15"
+    "@biomejs/biome": "2.4.16"
   }
 }
