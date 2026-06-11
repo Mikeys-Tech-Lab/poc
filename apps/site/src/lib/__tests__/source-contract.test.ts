@@ -35,6 +35,13 @@ interface SourcePageCase {
   readonly furtherReadingEntries: readonly FurtherReadingEntry[];
 }
 
+interface PractitionerWaysCase {
+  readonly name: string;
+  readonly practitionerPath: string;
+  readonly waysSidecarPath: string;
+  readonly waysImport: string;
+}
+
 const sourcePageCases: readonly SourcePageCase[] = [
   {
     name: 'AI Is Not Magic',
@@ -66,10 +73,39 @@ const sourcePageCases: readonly SourcePageCase[] = [
   },
 ] as const;
 
-const integrationLagPractitionerPaths = [
-  'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag.mdx',
-  'apps/site/src/content/docs/en-us/signals/operational/work-delivery/a-path-through-integration-lag.mdx',
-  'apps/site/src/content/docs/en-us/signals/operational/work-delivery/the-verification-tax.mdx',
+const practitionerWaysCases: readonly PractitionerWaysCase[] = [
+  {
+    name: 'AI Is Not Magic',
+    practitionerPath:
+      'apps/site/src/content/docs/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.mdx',
+    waysSidecarPath:
+      'apps/site/src/content/docs/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.ways.ts',
+    waysImport: './ai-is-not-magic-it-is-a-cognitive-amplifier.ways',
+  },
+  {
+    name: 'Integration Lag',
+    practitionerPath:
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag.mdx',
+    waysSidecarPath:
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag.ways.ts',
+    waysImport: './integration-lag.ways',
+  },
+  {
+    name: 'A Path Through Integration Lag',
+    practitionerPath:
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/a-path-through-integration-lag.mdx',
+    waysSidecarPath:
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/a-path-through-integration-lag.ways.ts',
+    waysImport: './a-path-through-integration-lag.ways',
+  },
+  {
+    name: 'The Verification Tax',
+    practitionerPath:
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/the-verification-tax.mdx',
+    waysSidecarPath:
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/the-verification-tax.ways.ts',
+    waysImport: './the-verification-tax.ways',
+  },
 ] as const;
 
 const read = (relativePath: string) => readFileSync(new URL(relativePath, repoRoot), 'utf8');
@@ -167,6 +203,28 @@ describe('public source contracts', () => {
     }
   });
 
+  it.each(sourcePageCases)('$name numbers footnotes in reading order', ({
+    directSourceEntries,
+    practitionerPath,
+    name,
+  }) => {
+    const content = read(practitionerPath);
+    const seen = new Set<string>();
+    const firstCitationOrder: string[] = [];
+    for (const match of content.matchAll(/sourceId="([^"]+)"/g)) {
+      const id = match[1];
+      if (!seen.has(id)) {
+        seen.add(id);
+        firstCitationOrder.push(id);
+      }
+    }
+
+    expect(
+      firstCitationOrder,
+      `${name} declares sources in the order they are first cited so footnote numbers ascend in the text`,
+    ).toEqual(ids(directSourceEntries));
+  });
+
   it('keeps private drafting metadata out of public content frontmatter', () => {
     const contentFiles = collectFiles(new URL('apps/site/src/content/', repoRoot), ['.mdx', '.md']);
     const failures: string[] = [];
@@ -183,14 +241,49 @@ describe('public source contracts', () => {
     expect(failures, 'private public-content frontmatter keys found').toEqual([]);
   });
 
-  it('keeps Integration Lag entry points in the shared AnchorMap card format', () => {
-    for (const path of integrationLagPractitionerPaths) {
-      const content = read(path);
+  it.each(
+    practitionerWaysCases,
+  )('$name keeps Ways into this signal in the shared AnchorMap card format', ({
+    practitionerPath,
+    name,
+  }) => {
+    const content = read(practitionerPath);
 
-      expect(content, `${path} should render the shared entry-card map`).toContain('<AnchorMap');
-      expect(content, `${path} should not use the old entry table`).not.toContain(
-        '| Entry | Register | Reader Question |',
-      );
-    }
+    expect(content, `${name} should render the shared entry-card map`).toContain('<AnchorMap');
+    expect(content, `${name} should label the section consistently`).toContain(
+      'title="Ways into this signal"',
+    );
+    expect(content, `${name} should not use the old entry table`).not.toContain(
+      '| Entry | Register | Reader Question |',
+    );
+  });
+
+  it.each(
+    practitionerWaysCases,
+  )('$name keeps page-owned entry data in a colocated .ways sidecar', ({
+    practitionerPath,
+    waysImport,
+    waysSidecarPath,
+    name,
+  }) => {
+    const content = read(practitionerPath);
+    const hasLocalImport =
+      content.includes(`from '${waysImport}'`) || content.includes(`from "${waysImport}"`);
+
+    expect(hasLocalImport, `${name} should import its local .ways sidecar`).toBe(true);
+    expect(
+      existsSync(new URL(waysSidecarPath, repoRoot)),
+      `${name} should keep its entry data beside the practitioner page`,
+    ).toBe(true);
+  });
+
+  it('keeps operational entry-card helper data out of the content tree', () => {
+    const accidentalContentDataRoot = new URL('apps/site/src/content/operational/', repoRoot);
+    const accidentalContentFiles = collectFiles(accidentalContentDataRoot, ['.ts', '.md', '.mdx']);
+
+    expect(
+      accidentalContentFiles.map(toRepoRelativePath),
+      'entry-card helper data belongs in page-colocated .ways sidecars, not a parallel src/content/operational tree',
+    ).toEqual([]);
   });
 });

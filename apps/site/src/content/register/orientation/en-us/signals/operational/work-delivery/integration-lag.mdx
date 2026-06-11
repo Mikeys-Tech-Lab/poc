@@ -7,6 +7,7 @@ series_part: 1
 series_label: "Part 1"
 ---
 
+import ActivationPrompts from '../../../../../../../components/ActivationPrompts.astro';
 import ShareButton from '../../../../../../../components/ShareButton.astro';
 
 <ShareButton />
@@ -72,6 +73,44 @@ That means:
 The goal is not more process.
 
 The goal is to make the work easier to inspect before it becomes expensive to change.
+
+## Example
+
+A task looks simple.
+
+After applying this approach:
+
+- important work appears
+- risks become visible
+- effort changes
+
+Nothing new was invented.
+
+It was made visible earlier.
+
+## Try it
+
+No adoption is required.
+
+Just try it once.
+
+Take one task.
+
+Before starting, ask:
+
+- what might we be missing?
+- what are we assuming?
+
+If this public entry already gave you enough context, use this minimal activation prompt in a compatible model or agent:
+
+<ActivationPrompts
+  variant="minimal-only"
+  title="Minimal activation prompt"
+  minimalTitle="Minimal activation prompt"
+  intro="Use this in a compatible model or agent that can work with source context. In another project, bring only the relevant source context. Do not load the whole PoC posture unless the work is actually about this PoC node."
+/>
+
+For the fuller public entry, go to [Sensible Defaults](/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load/).
 
 ## What comes next
 

@@ -1,6 +1,6 @@
-import type { EssayRegister } from '../../../lib/structural/essay-route';
-import { buildEssayHref, ESSAY_ROUTE_ID } from '../../../lib/structural/essay-route';
-import type { EssayAnchor } from '../types';
+import type { EssayRegister } from '../../../../../lib/structural/essay-route';
+import { buildEssayHref, ESSAY_ROUTE_ID } from '../../../../../lib/structural/essay-route';
+import type { EssayAnchor } from '../../../../structural/types';
 
 const makeAnchor = (
   anchorId: string,

@@ -10,9 +10,10 @@ series_label: "Part 3"
 import RegisterContent from '../../../../../../components/RegisterContent.astro';
 import ShareButton from '../../../../../../components/ShareButton.astro';
 import AnchorMap from '../../../../../../components/AnchorMap.astro';
+import ReadingFrame from '../../../../../../components/ReadingFrame.astro';
 import SourceHook from '../../../../../../components/SourceHook.astro';
 import SourceLedger from '../../../../../../components/SourceLedger.astro';
-import { waysIntoThisSignal } from '../../../../../operational/en-us/signals/work-delivery/the-verification-tax.data';
+import { waysIntoThisSignal } from './the-verification-tax.ways';
 import {
   directSourceEntries,
   furtherReadingEntries,
@@ -503,24 +504,30 @@ Not for every tiny task.
 
 But whenever the work touches an existing system where local reality matters.
 
-Use a prompt like this:
+<ReadingFrame
+  variant="example"
+  label="Small shift"
+  title="Ask for inspection before generation"
+>
+  <p>Use a prompt like this:</p>
 
-```text
-Before writing code, inspect the relevant files and repository context.
+  ```text
+  Before writing code, inspect the relevant files and repository context.
 
-Do not implement yet.
+  Do not implement yet.
 
-List:
+  List:
 
-1. what you can verify from the repository
-2. what you are inferring
-3. what remains uncertain
-4. which files or checks matter
-5. what could break if this is changed
-6. what questions need human confirmation
+  1. what you can verify from the repository
+  2. what you are inferring
+  3. what remains uncertain
+  4. which files or checks matter
+  5. what could break if this is changed
+  6. what questions need human confirmation
 
-Only after that, propose the smallest safe next step.
-```
+  Only after that, propose the smallest safe next step.
+  ```
+</ReadingFrame>
 
 This is not magic.
 
@@ -720,24 +727,30 @@ Then the human corrects it.
 
 A useful pull request note can be very small:
 
-```markdown
-## Verification Trace
+<ReadingFrame
+  variant="example"
+  label="Review trace"
+  title="A small pull request note"
+>
+  ```markdown
+  ## Verification Trace
 
-### Verified
-- [What the agent checked directly in the repository.]
+  ### Verified
+  - [What the agent checked directly in the repository.]
 
-### Inferred
-- [What appears likely but was not directly proven.]
+  ### Inferred
+  - [What appears likely but was not directly proven.]
 
-### Uncertain
-- [What still needs review, testing, or human confirmation.]
+  ### Uncertain
+  - [What still needs review, testing, or human confirmation.]
 
-### Checks Run
-- [Commands, tests, manual checks, or not run.]
+  ### Checks Run
+  - [Commands, tests, manual checks, or not run.]
 
-### Human Decision Needed
-- [What should not be silently delegated to the model.]
-```
+  ### Human Decision Needed
+  - [What should not be silently delegated to the model.]
+  ```
+</ReadingFrame>
 
 The agent can prepare this.
 

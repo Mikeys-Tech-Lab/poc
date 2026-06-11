@@ -22,16 +22,6 @@ export const directSourceEntries: readonly DirectSourceEntry[] = Object.freeze([
       'Technical debt is not identical to integration lag. Integration lag also includes trace, shared understanding, AI-generated output pressure, and decision accountability.',
   },
   {
-    id: 'ai-collaboration-friction',
-    label: 'AI friction',
-    title: 'Martin Fowler site, Patterns for Reducing Friction in AI-Assisted Development',
-    href: 'https://martinfowler.com/articles/reduce-friction-ai/',
-    supports:
-      'Supports the claim that AI-assisted development works better when context, design, team standards, and feedback loops are made explicit before generation.',
-    limits:
-      'This is a compatible source hook, not the origin of Practice of Clarity terms or the integration lag concept.',
-  },
-  {
     id: 'developer-trust-gap',
     label: 'Trust gap',
     title: 'Stack Overflow Developer Survey 2025, AI',
@@ -50,6 +40,16 @@ export const directSourceEntries: readonly DirectSourceEntry[] = Object.freeze([
       'Supports the claim that AI amplifies existing organizational strengths and weaknesses rather than automatically fixing delivery systems.',
     limits:
       'DORA does not define integration lag. This signal applies the amplifier frame to shared understanding and delivery coherence.',
+  },
+  {
+    id: 'ai-collaboration-friction',
+    label: 'AI friction',
+    title: 'Martin Fowler site, Patterns for Reducing Friction in AI-Assisted Development',
+    href: 'https://martinfowler.com/articles/reduce-friction-ai/',
+    supports:
+      'Supports the claim that AI-assisted development works better when context, design, team standards, and feedback loops are made explicit before generation.',
+    limits:
+      'This is a compatible source hook, not the origin of Practice of Clarity terms or the integration lag concept.',
   },
   {
     id: 'ai-generated-code-security-risk',

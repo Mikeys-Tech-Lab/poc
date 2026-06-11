@@ -10,9 +10,10 @@ series_label: "Part 1"
 import RegisterContent from '../../../../../../components/RegisterContent.astro';
 import ShareButton from '../../../../../../components/ShareButton.astro';
 import AnchorMap from '../../../../../../components/AnchorMap.astro';
+import ActivationPrompts from '../../../../../../components/ActivationPrompts.astro';
 import SourceHook from '../../../../../../components/SourceHook.astro';
 import SourceLedger from '../../../../../../components/SourceLedger.astro';
-import { waysIntoThisSignal } from '../../../../../operational/en-us/signals/work-delivery/integration-lag.data';
+import { waysIntoThisSignal } from './integration-lag.ways';
 import { directSourceEntries } from '../../../../../sources/en-us/signals/operational/work-delivery/integration-lag.sources';
 
 <RegisterContent registers={{
@@ -194,6 +195,21 @@ We use a small context seeder.
 
 A shared piece of context loaded into the AI before it starts working.
 
+In this public node, that context points to PoC-specific source surfaces: the
+Practice of Clarity seeds, the Sensible Defaults lens, and the seeder that
+carries the relevant parts into a live reasoning environment.
+
+That does not mean every project should load the whole PoC posture.
+
+Most projects do not need that.
+
+Use the smallest relevant slice:
+
+- the delivery pressure you are trying to make visible
+- the boundary that should guide the agent
+- the checks or evidence the work should inspect
+- the local project facts the agent must not invent
+
 It asks reasoning to surface while the work is still forming.
 
 In practice:
@@ -286,7 +302,16 @@ Keep it small.
 
 Take one real, slightly uncomfortable task.
 
-Load the context seeder.
+Load the relevant source context.
+
+If you are working inside this PoC node, that may mean the Sensible Defaults
+context seeder and its linked source surfaces.
+
+If you are working in another project, slim the context down to what that project
+actually needs. Do not copy the whole PoC posture just to try the move.
+
+A smaller universal seed pack can come later. For now, treat this node as an
+inspectable example, not a package every project must inherit whole.
 
 Run it through the lens.
 
@@ -304,6 +329,17 @@ Then decide whether the output is useful.
 If it does not reduce rework, review uncertainty, or late surprises, drop it.
 
 If it helps, keep the smallest part that worked.
+
+If this public entry gives you enough context already, this prompt points toward activation:
+
+<ActivationPrompts
+  variant="minimal-only"
+  title="Minimal activation prompt"
+  minimalTitle="Minimal activation prompt"
+  intro="Use this with the relevant Sensible Defaults source context. In this PoC node, the full source surfaces are inspectable. In another project, slim the context to the local work instead of loading the whole PoC posture."
+/>
+
+For the fuller public entry, go to [Sensible Defaults](/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load/).
 
 ---
 

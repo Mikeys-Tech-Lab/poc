@@ -10,9 +10,10 @@ series_label: "Part 2"
 import RegisterContent from '../../../../../../components/RegisterContent.astro';
 import ShareButton from '../../../../../../components/ShareButton.astro';
 import AnchorMap from '../../../../../../components/AnchorMap.astro';
+import ReadingFrame from '../../../../../../components/ReadingFrame.astro';
 import SourceHook from '../../../../../../components/SourceHook.astro';
 import SourceLedger from '../../../../../../components/SourceLedger.astro';
-import { waysIntoThisSignal } from '../../../../../operational/en-us/signals/work-delivery/a-path-through-integration-lag.data';
+import { waysIntoThisSignal } from './a-path-through-integration-lag.ways';
 import { directSourceEntries } from '../../../../../sources/en-us/signals/operational/work-delivery/a-path-through-integration-lag.sources';
 
 <RegisterContent registers={{
@@ -346,15 +347,25 @@ This is where conceptual practice becomes engineering practice.
 
 It is also where this public Practice of Clarity node makes the path inspectable.
 
-Here, the connection is small but traceable: the signal and path follow stable
-public routes and are checked so essential boundaries remain visible.
-
-This repository is not the practice.
-
-It is one public node where the writing, activation surfaces, and validation
-traces can be inspected together.
-
-For the structural map, read the public architecture page.
+<ReadingFrame
+  variant="example"
+  label="Public node"
+  title="How this stays visible here"
+>
+  <p>
+    Here, the connection is small but traceable: the signal and path follow
+    stable public routes and are checked so essential boundaries remain visible.
+  </p>
+  <p>
+    This public site and repository are not the practice itself. Together, they
+    form one public node where writing, reasoning contracts, activation
+    surfaces, and validation traces can be inspected together.
+  </p>
+  <p>
+    For the grounded structure, read the <a href="/en-us/about/architecture/">public
+    architecture page</a>.
+  </p>
+</ReadingFrame>
 
 ---
 

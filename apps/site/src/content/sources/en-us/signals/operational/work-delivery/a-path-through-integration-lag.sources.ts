@@ -12,16 +12,6 @@ export const directSourceEntries: readonly DirectSourceEntry[] = Object.freeze([
       'Continuous integration is technical integration. This signal applies the discipline more broadly to understanding, evidence, assumptions, and decision-making.',
   },
   {
-    id: 'refactoring-lineage',
-    label: 'Small safe change',
-    title: 'Martin Fowler, Refactoring',
-    href: 'https://martinfowler.com/tags/refactoring.html',
-    supports:
-      'Supports the idea that safer change often happens through small, behavior-preserving steps rather than large speculative rewrites.',
-    limits:
-      'Refactoring is about code structure. This signal applies the incremental discipline more broadly to delivery understanding and AI-assisted work.',
-  },
-  {
     id: 'technical-debt-lineage',
     label: 'Hidden future cost',
     title: 'Martin Fowler, Technical Debt',
@@ -52,16 +42,6 @@ export const directSourceEntries: readonly DirectSourceEntry[] = Object.freeze([
       'This is compatible lineage, not the origin of Practice of Clarity terms or the eight movements in this signal.',
   },
   {
-    id: 'developer-trust-gap',
-    label: 'Trust gap',
-    title: 'Stack Overflow Developer Survey 2025, AI',
-    href: 'https://survey.stackoverflow.co/2025/ai',
-    supports:
-      'Grounds the claim that AI use and AI distrust coexist in current developer practice.',
-    limits:
-      'Survey data does not explain every cause of distrust. This signal interprets it through delivery practice.',
-  },
-  {
     id: 'ai-as-amplifier',
     label: 'Amplifier',
     title: 'DORA, State of AI-assisted Software Development 2025',
@@ -70,6 +50,26 @@ export const directSourceEntries: readonly DirectSourceEntry[] = Object.freeze([
       'Supports the claim that AI does not fix delivery systems by itself, but amplifies the underlying organizational system.',
     limits:
       'DORA does not define the eight movements in this signal. It supports the system-level framing.',
+  },
+  {
+    id: 'refactoring-lineage',
+    label: 'Small safe change',
+    title: 'Martin Fowler, Refactoring',
+    href: 'https://martinfowler.com/tags/refactoring.html',
+    supports:
+      'Supports the idea that safer change often happens through small, behavior-preserving steps rather than large speculative rewrites.',
+    limits:
+      'Refactoring is about code structure. This signal applies the incremental discipline more broadly to delivery understanding and AI-assisted work.',
+  },
+  {
+    id: 'developer-trust-gap',
+    label: 'Trust gap',
+    title: 'Stack Overflow Developer Survey 2025, AI',
+    href: 'https://survey.stackoverflow.co/2025/ai',
+    supports:
+      'Grounds the claim that AI use and AI distrust coexist in current developer practice.',
+    limits:
+      'Survey data does not explain every cause of distrust. This signal interprets it through delivery practice.',
   },
   {
     id: 'ai-generated-code-security-risk',

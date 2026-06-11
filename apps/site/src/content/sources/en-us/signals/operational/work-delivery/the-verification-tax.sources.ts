@@ -2,6 +2,16 @@ import type { DirectSourceEntry, FurtherReadingEntry } from '../../../../types';
 
 export const directSourceEntries: readonly DirectSourceEntry[] = Object.freeze([
   {
+    id: 'current-developer-ai-adoption',
+    label: 'Developer adoption',
+    title: 'JetBrains, State of Developer Ecosystem 2025, Artificial Intelligence',
+    href: 'https://devecosystem-2025.jetbrains.com/artificial-intelligence',
+    supports:
+      'Supports the wider field signal that AI is already part of developer workflows and tool ecosystems.',
+    limits:
+      'Vendor ecosystem research should be treated as a field signal, not neutral proof of every team practice.',
+  },
+  {
     id: 'developer-trust-gap',
     label: 'Trust gap',
     title: 'Stack Overflow Developer Survey 2025, AI',
@@ -10,6 +20,16 @@ export const directSourceEntries: readonly DirectSourceEntry[] = Object.freeze([
       'Grounds the claim that many developers use or plan to use AI tools while trust in output accuracy remains low.',
     limits:
       'Survey data describes respondents, not every developer or team. It supports the trust and verification pressure, not the whole Practice of Clarity framing.',
+  },
+  {
+    id: 'ai-generated-code-security-risk',
+    label: 'Security risk',
+    title: 'Veracode, October 2025 Update: GenAI Code Security Report',
+    href: 'https://www.veracode.com/resources/analyst-reports/2025-genai-code-security-report/',
+    supports:
+      'Grounds the claim that AI-generated code can introduce security risk and that checks remain necessary before production confidence.',
+    limits:
+      'Veracode is a security vendor and the report is security-focused. It does not mean all AI-generated code is unsafe or unusable.',
   },
   {
     id: 'ai-collaboration-friction',
@@ -30,26 +50,6 @@ export const directSourceEntries: readonly DirectSourceEntry[] = Object.freeze([
       'Supports the claim that AI amplifies existing organizational strengths and weaknesses, and that returns depend on the underlying system rather than tools alone.',
     limits:
       'DORA does not define the verification tax. This article applies the amplifier finding to AI-assisted delivery confidence.',
-  },
-  {
-    id: 'ai-generated-code-security-risk',
-    label: 'Security risk',
-    title: 'Veracode, October 2025 Update: GenAI Code Security Report',
-    href: 'https://www.veracode.com/resources/analyst-reports/2025-genai-code-security-report/',
-    supports:
-      'Grounds the claim that AI-generated code can introduce security risk and that checks remain necessary before production confidence.',
-    limits:
-      'Veracode is a security vendor and the report is security-focused. It does not mean all AI-generated code is unsafe or unusable.',
-  },
-  {
-    id: 'current-developer-ai-adoption',
-    label: 'Developer adoption',
-    title: 'JetBrains, State of Developer Ecosystem 2025, Artificial Intelligence',
-    href: 'https://devecosystem-2025.jetbrains.com/artificial-intelligence',
-    supports:
-      'Supports the wider field signal that AI is already part of developer workflows and tool ecosystems.',
-    limits:
-      'Vendor ecosystem research should be treated as a field signal, not neutral proof of every team practice.',
   },
 ]);
 

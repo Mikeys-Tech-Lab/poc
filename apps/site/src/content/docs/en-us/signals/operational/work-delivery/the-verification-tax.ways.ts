@@ -1,4 +1,4 @@
-import type { AnchorMapEntry } from '../../../../../components/anchor-map-types';
+import type { AnchorMapEntry } from '../../../../../../components/anchor-map-types';
 
 export const waysIntoThisSignal: readonly AnchorMapEntry[] = Object.freeze([
   {
