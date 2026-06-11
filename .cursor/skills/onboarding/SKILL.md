@@ -40,7 +40,7 @@ Then present the depth question.
 2. Select topics based on the chosen depth:
    - **Fast path**: `local-setup` only
    - **Medium path**: `workspace-overview`, `ai-guidance`, `security`
-   - **Deep path**: all topics in prereq order from the index. Current default sequence includes `local-setup`, `workspace-overview`, `ai-guidance`, `security`, `infrastructure`, `contributing`, and `trace-climb`
+   - **Deep path**: all topics in prereq order from the index. Current default sequence includes `local-setup`, `workspace-overview`, `ai-guidance`, `security`, `infrastructure`, `contributing`, and `trace-reflect-and-evolve`
    - **Specific topic**: present the topic list from the index, let the user choose
 3. For each topic, read the topic doc and walk the user through it conversationally.
 4. At each step, offer to go deeper or move on to the next topic.
@@ -87,7 +87,7 @@ Respect prereq ordering when presenting topics in sequence.
 - Do not duplicate deep doc content. Summarize and link. Read the no-duplication rule in the topic index.
 - Deployment procedures are out of scope for onboarding. Point to `docs/infra/` runbooks if asked.
 - If the user asks how the workspace evolved over time, use `Evolution Arc` instead of stretching onboarding into repo history.
-- If the user asks how the workspace turns non-trivial work into durable learning, use `Trace Climb` instead of stretching onboarding into a workflow review.
+- If the user asks how the workspace turns non-trivial work into durable learning, use `Trace, Reflect and Evolve` instead of stretching onboarding into a workflow review.
 - If the user asks about something not covered by a topic, answer from the repo docs (AGENTS.md, docs/guidance/, docs/architecture/) but note that the answer came from outside the onboarding path.
 
 ---

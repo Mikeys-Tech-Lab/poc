@@ -74,20 +74,22 @@ describe('runGuidanceDriftGuard', () => {
     'https://raw.githubusercontent.com/Mikeys-Tech-Lab/poc/main/mandateLenses/SensibleDefaults/context-seeder.md';
 
   const buildCompleteContractFiles = (): Record<string, string> => ({
-    'README.md': `Use onboard me, Evolution Arc, and Trace Climb. Load the seeder from ${sensibleDefaultsSeederUrl}.`,
+    'README.md': `Use onboard me, Evolution Arc, and Trace, Reflect and Evolve. Load the seeder from ${sensibleDefaultsSeederUrl}.`,
     'mandateLenses/SensibleDefaults/README.md': `Direct seeder URL: ${sensibleDefaultsSeederUrl}`,
     'AGENTS.md':
-      'Say `onboard me`. Say `Evolution Arc`. Say `Trace Climb`. Store durable learning in `docs/guidance/evolution-records/`. Do not read populated `.local/config.md`.',
-    '.github/copilot-instructions.md': 'Use `onboard me`, `Evolution Arc`, and `Trace Climb`.',
+      'Say `onboard me`. Say `Evolution Arc`. Say `Trace, Reflect and Evolve`. Store durable learning in `docs/guidance/evolution-records/`. Do not read populated `.local/config.md`.',
+    '.github/copilot-instructions.md':
+      'Use `onboard me`, `Evolution Arc`, and `Trace, Reflect and Evolve`.',
     '.github/pull_request_template.md': '## Learning trace\nEvolution Record',
-    '.claude/CLAUDE.md': 'Use `onboard me`, `Evolution Arc`, and `Trace Climb`.',
+    '.claude/CLAUDE.md': 'Use `onboard me`, `Evolution Arc`, and `Trace, Reflect and Evolve`.',
     '.cursor/skills/onboarding/SKILL.md':
-      'Read `docs/onboarding/README.md`, use Evolution Arc, and route durable learning questions to Trace Climb.',
+      'Read `docs/onboarding/README.md`, use Evolution Arc, and route durable learning questions to Trace, Reflect and Evolve.',
     '.cursor/skills/evolution-arc/SKILL.md':
       'Ask which register. Read `docs/guidance/evolution-arc.md`.',
-    '.cursor/skills/github-automation/SKILL.md': 'Run Trace Climb. Add Learning trace.',
-    '.cursor/skills/trace-climb/SKILL.md':
-      'Read `docs/guidance/trace-climb.md`. Write an Evolution Record.',
+    '.cursor/skills/github-automation/SKILL.md':
+      'Run Trace, Reflect and Evolve. Add Learning trace.',
+    '.cursor/skills/trace-reflect-and-evolve/SKILL.md':
+      'Read `docs/guidance/trace-reflect-and-evolve.md`. Write an Evolution Record.',
     'docs/onboarding/README.md': `
 ### evolution-arc
 - **Title:** Evolution Arc
@@ -95,27 +97,29 @@ describe('runGuidanceDriftGuard', () => {
 - **When to use:** Understand history
 - **Prereqs:** none
 
-### trace-climb
-- **Title:** Trace Climb
-- **Path:** \`docs/onboarding/trace-climb.md\`
+### trace-reflect-and-evolve
+- **Title:** Trace, Reflect and Evolve
+- **Path:** \`docs/onboarding/trace-reflect-and-evolve.md\`
 - **When to use:** Understand durable learning
 - **Prereqs:** none
 `,
-    'docs/onboarding/manual.md': 'Say "onboard me", "Evolution Arc", or "Trace Climb".',
-    'docs/onboarding/ai-guidance.md': 'Use `onboard me`, `evolution-arc`, and `trace-climb`.',
-    'docs/onboarding/contributing.md': 'Run Trace Climb. Include Learning trace.',
+    'docs/onboarding/manual.md':
+      'Say "onboard me", "Evolution Arc", or "Trace, Reflect and Evolve".',
+    'docs/onboarding/ai-guidance.md':
+      'Use `onboard me`, `evolution-arc`, and `trace-reflect-and-evolve`.',
+    'docs/onboarding/contributing.md': 'Run Trace, Reflect and Evolve. Include Learning trace.',
     'docs/onboarding/evolution-arc.md': 'Choose register. Read `docs/guidance/evolution-arc.md`.',
-    'docs/onboarding/trace-climb.md':
-      'Read `docs/guidance/trace-climb.md` and `docs/guidance/evolution-records/README.md`.',
+    'docs/onboarding/trace-reflect-and-evolve.md':
+      'Read `docs/guidance/trace-reflect-and-evolve.md` and `docs/guidance/evolution-records/README.md`.',
     'docs/onboarding/workspace-overview.md':
-      'Template: `.local.example.md`. Use Trace Climb. See `docs/guidance/trace-climb.md` and `docs/onboarding/`.',
-    'docs/guidance/README.md': 'Trace Climb Evolution Records',
+      'Template: `.local.example.md`. Use Trace, Reflect and Evolve. See `docs/guidance/trace-reflect-and-evolve.md` and `docs/onboarding/`.',
+    'docs/guidance/README.md': 'Trace, Reflect and Evolve Evolution Records',
     'docs/guidance/evolution-arc.md': 'See `docs/onboarding/evolution-arc.md`.',
-    'docs/guidance/trace-climb.md':
-      'See `docs/onboarding/trace-climb.md` and `docs/guidance/evolution-records/README.md`.',
+    'docs/guidance/trace-reflect-and-evolve.md':
+      'See `docs/onboarding/trace-reflect-and-evolve.md` and `docs/guidance/evolution-records/README.md`.',
     'docs/guidance/evolution-records/README.md': 'Use `template.md`.',
     'docs/architecture/workspace.md':
-      '`.local/`, `.cursor/skills/evolution-arc/`, `docs/guidance/evolution-arc.md`, `.cursor/skills/trace-climb/`, and `docs/guidance/evolution-records/`.',
+      '`.local/`, `.cursor/skills/evolution-arc/`, `docs/guidance/evolution-arc.md`, `.cursor/skills/trace-reflect-and-evolve/`, and `docs/guidance/evolution-records/`.',
     'apps/site/src/lib/activation-prompts.ts': `export const SEEDER_URL = '${sensibleDefaultsSeederUrl}';`,
     'apps/site/src/content/docs/en-us/core-system/mandate-lenses/index.mdx': `Seeder link: ${sensibleDefaultsSeederUrl}`,
     'apps/site/src/content/docs/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx': `Try it with ${sensibleDefaultsSeederUrl}`,
@@ -135,7 +139,7 @@ describe('runGuidanceDriftGuard', () => {
     'docs/guidance',
     'docs/guidance/evolution-records',
     '.cursor/skills/evolution-arc',
-    '.cursor/skills/trace-climb',
+    '.cursor/skills/trace-reflect-and-evolve',
   ]);
 
   it('reports contract failures for changed evolution arc surfaces', () => {
@@ -168,7 +172,7 @@ describe('runGuidanceDriftGuard', () => {
     expect(result.failures).toEqual([]);
   });
 
-  it('reports contract failures for changed trace climb surfaces', () => {
+  it('reports contract failures for changed trace reflect and evolve surfaces', () => {
     const files = buildCompleteContractFiles();
 
     const result = runGuidanceDriftGuard({
@@ -176,14 +180,14 @@ describe('runGuidanceDriftGuard', () => {
       repoFiles: buildRepoFiles(files),
       repoDirectories,
       evolutionRecords: {},
-      changedFiles: ['docs/guidance/trace-climb.md'],
+      changedFiles: ['docs/guidance/trace-reflect-and-evolve.md'],
     });
 
-    expect(result.activatedMappings).toEqual(['trace-climb-entry']);
+    expect(result.activatedMappings).toEqual(['trace-reflect-and-evolve-entry']);
     expect(result.failures).toEqual([]);
   });
 
-  it('activates the trace climb contract when the onboarding skill changes', () => {
+  it('activates the trace reflect and evolve contract when the onboarding skill changes', () => {
     const files = buildCompleteContractFiles();
 
     const result = runGuidanceDriftGuard({
@@ -197,7 +201,7 @@ describe('runGuidanceDriftGuard', () => {
     expect(result.activatedMappings).toEqual([
       'onboarding-entry',
       'evolution-arc-entry',
-      'trace-climb-entry',
+      'trace-reflect-and-evolve-entry',
     ]);
     expect(result.failures).toEqual([]);
   });
@@ -211,9 +215,9 @@ describe('runGuidanceDriftGuard', () => {
 - **When to use:** Understand history
 - **Prereqs:** none
 
-### trace-climb
-- **Title:** Trace Climb
-- **Path:** \`docs/onboarding/trace-climb.md\`
+### trace-reflect-and-evolve
+- **Title:** Trace, Reflect and Evolve
+- **Path:** \`docs/onboarding/trace-reflect-and-evolve.md\`
 - **When to use:** Understand durable learning
 - **Prereqs:** missing-topic
 `;
@@ -229,7 +233,7 @@ describe('runGuidanceDriftGuard', () => {
     expect(result.failures).toEqual([
       {
         scope: 'docs/onboarding/README.md',
-        message: 'Topic "trace-climb" references unknown prereq "missing-topic".',
+        message: 'Topic "trace-reflect-and-evolve" references unknown prereq "missing-topic".',
       },
     ]);
   });
@@ -237,11 +241,11 @@ describe('runGuidanceDriftGuard', () => {
   it('allows logical runtime paths that are gitignored or generated', () => {
     const files = buildCompleteContractFiles();
     files['docs/onboarding/manual.md'] =
-      'Say "onboard me", "Evolution Arc", or "Trace Climb". Copy `.local.example.md` to `.local/config.md`.';
+      'Say "onboard me", "Evolution Arc", or "Trace, Reflect and Evolve". Copy `.local.example.md` to `.local/config.md`.';
     files['docs/onboarding/workspace-overview.md'] =
-      'Template: `.local.example.md`. Do not treat populated `.local/config.md` as a normal agent input. Use Trace Climb. See `docs/guidance/trace-climb.md` and `.dist/poc-snapshot-images/`.';
+      'Template: `.local.example.md`. Do not treat populated `.local/config.md` as a normal agent input. Use Trace, Reflect and Evolve. See `docs/guidance/trace-reflect-and-evolve.md` and `.dist/poc-snapshot-images/`.';
     files['docs/architecture/workspace.md'] =
-      '`.local/`, `.cursor/skills/evolution-arc/`, `docs/guidance/evolution-arc.md`, `.cursor/skills/trace-climb/`, `docs/guidance/evolution-records/`, and `.dist/poc-snapshot-images/`.';
+      '`.local/`, `.cursor/skills/evolution-arc/`, `docs/guidance/evolution-arc.md`, `.cursor/skills/trace-reflect-and-evolve/`, `docs/guidance/evolution-records/`, and `.dist/poc-snapshot-images/`.';
 
     const result = runGuidanceDriftGuard({
       files,

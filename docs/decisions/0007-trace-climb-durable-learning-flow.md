@@ -5,6 +5,23 @@
 **Supersedes:** none
 **PR:** pending
 
+## Amendment — 2026-06-11
+
+The command adopted here as `Trace Climb` was renamed to `Trace, Reflect and
+Evolve`. The decision, rationale, and naming below are preserved as the
+historical record of the original adoption on 2026-04-06. The rename carried its
+own trace, exactly as Decision item 2 and the Consequences section anticipated.
+
+The living surfaces moved with the rename:
+
+- `docs/guidance/trace-reflect-and-evolve.md`
+- `docs/onboarding/trace-reflect-and-evolve.md`
+- `.cursor/skills/trace-reflect-and-evolve/SKILL.md`
+
+The artifact name `Evolution Record` is unchanged. This ADR keeps its filename
+and historical title so the original decision stays inspectable. The dated
+durable record for the rename lives in `docs/guidance/evolution-records/`.
+
 ## Context
 
 The workspace already had several pieces of reflective discipline:
@@ -87,12 +104,12 @@ manual path later proves insufficient.
 ## References
 
 - [`AGENTS.md`](../../AGENTS.md)
-- [`docs/guidance/trace-climb.md`](../guidance/trace-climb.md)
+- [`docs/guidance/trace-reflect-and-evolve.md`](../guidance/trace-reflect-and-evolve.md)
 - [`docs/guidance/evolution-records/README.md`](../guidance/evolution-records/README.md)
 - [`docs/guidance/evolution-records/template.md`](../guidance/evolution-records/template.md)
 - [`docs/guidance/evolution-records/2026-04-06-guidance-system-audit-and-trace-climb-rollout.md`](../guidance/evolution-records/2026-04-06-guidance-system-audit-and-trace-climb-rollout.md)
-- [`docs/onboarding/trace-climb.md`](../onboarding/trace-climb.md)
-- [`.cursor/skills/trace-climb/SKILL.md`](../../.cursor/skills/trace-climb/SKILL.md)
+- [`docs/onboarding/trace-reflect-and-evolve.md`](../onboarding/trace-reflect-and-evolve.md)
+- [`.cursor/skills/trace-reflect-and-evolve/SKILL.md`](../../.cursor/skills/trace-reflect-and-evolve/SKILL.md)
 - [`.cursor/skills/github-automation/SKILL.md`](../../.cursor/skills/github-automation/SKILL.md)
 - [`.github/pull_request_template.md`](../../.github/pull_request_template.md)
 

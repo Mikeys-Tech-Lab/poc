@@ -176,7 +176,7 @@ const CONTRACT_MAPPINGS: readonly MappingContract[] = [
     ],
   },
   {
-    name: 'trace-climb-entry',
+    name: 'trace-reflect-and-evolve-entry',
     triggers: [
       'README.md',
       'AGENTS.md',
@@ -185,47 +185,59 @@ const CONTRACT_MAPPINGS: readonly MappingContract[] = [
       'docs/onboarding/ai-guidance.md',
       'docs/onboarding/contributing.md',
       'docs/onboarding/workspace-overview.md',
-      'docs/onboarding/trace-climb.md',
+      'docs/onboarding/trace-reflect-and-evolve.md',
       'docs/guidance/README.md',
-      'docs/guidance/trace-climb.md',
+      'docs/guidance/trace-reflect-and-evolve.md',
       'docs/guidance/evolution-records/README.md',
       '.cursor/skills/onboarding/SKILL.md',
       '.cursor/skills/github-automation/SKILL.md',
-      '.cursor/skills/trace-climb/SKILL.md',
+      '.cursor/skills/trace-reflect-and-evolve/SKILL.md',
       '.github/pull_request_template.md',
       '.github/copilot-instructions.md',
       '.claude/CLAUDE.md',
       'docs/architecture/workspace.md',
     ],
     checks: [
-      { filePath: 'README.md', expectedSnippets: ['Trace Climb'] },
+      { filePath: 'README.md', expectedSnippets: ['Trace, Reflect and Evolve'] },
       {
         filePath: 'AGENTS.md',
-        expectedSnippets: ['Trace Climb', 'docs/guidance/evolution-records/'],
+        expectedSnippets: ['Trace, Reflect and Evolve', 'docs/guidance/evolution-records/'],
       },
-      { filePath: 'docs/onboarding/manual.md', expectedSnippets: ['Trace Climb'] },
-      { filePath: 'docs/onboarding/README.md', expectedSnippets: ['### trace-climb'] },
-      { filePath: 'docs/onboarding/ai-guidance.md', expectedSnippets: ['`trace-climb`'] },
+      { filePath: 'docs/onboarding/manual.md', expectedSnippets: ['Trace, Reflect and Evolve'] },
+      {
+        filePath: 'docs/onboarding/README.md',
+        expectedSnippets: ['### trace-reflect-and-evolve'],
+      },
+      {
+        filePath: 'docs/onboarding/ai-guidance.md',
+        expectedSnippets: ['`trace-reflect-and-evolve`'],
+      },
       {
         filePath: 'docs/onboarding/contributing.md',
-        expectedSnippets: ['Trace Climb', 'Learning trace'],
+        expectedSnippets: ['Trace, Reflect and Evolve', 'Learning trace'],
       },
       {
         filePath: 'docs/onboarding/workspace-overview.md',
-        expectedSnippets: ['Trace Climb', 'docs/guidance/trace-climb.md'],
+        expectedSnippets: [
+          'Trace, Reflect and Evolve',
+          'docs/guidance/trace-reflect-and-evolve.md',
+        ],
       },
       {
-        filePath: 'docs/onboarding/trace-climb.md',
-        expectedSnippets: ['docs/guidance/trace-climb.md', 'docs/guidance/evolution-records/'],
+        filePath: 'docs/onboarding/trace-reflect-and-evolve.md',
+        expectedSnippets: [
+          'docs/guidance/trace-reflect-and-evolve.md',
+          'docs/guidance/evolution-records/',
+        ],
       },
       {
         filePath: 'docs/guidance/README.md',
-        expectedSnippets: ['Trace Climb', 'Evolution Records'],
+        expectedSnippets: ['Trace, Reflect and Evolve', 'Evolution Records'],
       },
       {
-        filePath: 'docs/guidance/trace-climb.md',
+        filePath: 'docs/guidance/trace-reflect-and-evolve.md',
         expectedSnippets: [
-          'docs/onboarding/trace-climb.md',
+          'docs/onboarding/trace-reflect-and-evolve.md',
           'docs/guidance/evolution-records/README.md',
         ],
       },
@@ -235,25 +247,31 @@ const CONTRACT_MAPPINGS: readonly MappingContract[] = [
       },
       {
         filePath: '.cursor/skills/onboarding/SKILL.md',
-        expectedSnippets: ['Trace Climb'],
+        expectedSnippets: ['Trace, Reflect and Evolve'],
       },
       {
         filePath: '.cursor/skills/github-automation/SKILL.md',
-        expectedSnippets: ['Trace Climb', 'Learning trace'],
+        expectedSnippets: ['Trace, Reflect and Evolve', 'Learning trace'],
       },
       {
-        filePath: '.cursor/skills/trace-climb/SKILL.md',
-        expectedSnippets: ['docs/guidance/trace-climb.md', 'Evolution Record'],
+        filePath: '.cursor/skills/trace-reflect-and-evolve/SKILL.md',
+        expectedSnippets: ['docs/guidance/trace-reflect-and-evolve.md', 'Evolution Record'],
       },
       {
         filePath: '.github/pull_request_template.md',
         expectedSnippets: ['## Learning trace', 'Evolution Record'],
       },
-      { filePath: '.github/copilot-instructions.md', expectedSnippets: ['Trace Climb'] },
-      { filePath: '.claude/CLAUDE.md', expectedSnippets: ['Trace Climb'] },
+      {
+        filePath: '.github/copilot-instructions.md',
+        expectedSnippets: ['Trace, Reflect and Evolve'],
+      },
+      { filePath: '.claude/CLAUDE.md', expectedSnippets: ['Trace, Reflect and Evolve'] },
       {
         filePath: 'docs/architecture/workspace.md',
-        expectedSnippets: ['.cursor/skills/trace-climb/', 'docs/guidance/evolution-records/'],
+        expectedSnippets: [
+          '.cursor/skills/trace-reflect-and-evolve/',
+          'docs/guidance/evolution-records/',
+        ],
       },
     ],
   },

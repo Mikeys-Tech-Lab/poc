@@ -69,7 +69,7 @@ Audit the branch for issues the work introduced or exposed:
 - **Dead code**: search for unused exports, unreferenced files, or orphaned config.
 - **Broken or missing links**: check all content pages for unlinked repo references, wrong URLs, or stale paths.
 - **Skill and doc drift**: does the work introduce patterns, conventions, or constraints not yet documented in skills, rules, or `AGENTS.md`?
-- **Trace Climb**: classify the work as `required`, `recommended`, or `skip allowed`. If `required` or chosen, write or update an `Evolution Record` in `docs/guidance/evolution-records/`, preserve substantive origin handovers and material activation steps, and end with a propagation decision.
+- **Trace, Reflect and Evolve**: classify the work as `required`, `recommended`, or `skip allowed`. If `required` or chosen, write or update an `Evolution Record` in `docs/guidance/evolution-records/`, preserve substantive origin handovers and material activation steps, and end with a propagation decision.
 - **ADR needed?** Does this work involve a structural decision that meets the ADR criteria (`docs/decisions/README.md`)? If yes, write or update an ADR in the same PR.
 - **Path verification**: verify all doc surface paths referenced in the PR description or plan are still valid. Do not reference files that have moved or do not exist.
 - **Consistency**: are naming conventions, URL patterns, and file organization consistent with the rest of the repo?

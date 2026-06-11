@@ -20,8 +20,8 @@ This workspace documents reasoning, not people. Reports, traces, and tooling out
 ## Guidance docs
 
 - [Evolution Arc](evolution-arc.md) — curated map of the repo's trace surfaces, source roles, and Mermaid-backed history path.
-- [Trace Climb](trace-climb.md) — repo-native close-phase learning flow for turning non-trivial work into durable learning.
-- [Evolution Records](evolution-records/README.md) — durable learning artifacts produced by `Trace Climb`.
+- [Trace, Reflect and Evolve](trace-reflect-and-evolve.md) — repo-native close-phase learning flow for turning non-trivial work into durable learning.
+- [Evolution Records](evolution-records/README.md) — durable learning artifacts produced by `Trace, Reflect and Evolve`.
 - [Dependency update operations](dependency-update-operations.md) — target state, policy invariants, queue model, and backlog recovery order for dependency automation.
 - [Licensing surface policy](licensing-surface-policy.md) — how the MIT / CC BY 4.0 split is expressed across tracked markdown-like source files and checked deterministically.
 - [Content register source workflow](content-register-source-workflow.md) — intake boundary for promoted public content, register shape, public metadata, source hooks, and live source verification.

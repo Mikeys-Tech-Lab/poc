@@ -44,11 +44,11 @@ Cursor uses two mechanisms:
 
 **Rules** (`.cursor/rules/*.mdc`) fire automatically. Some apply to every interaction (always-apply), others fire when matching file patterns (file-scoped). Rules handle cross-cutting concerns: Practice grounding, security awareness, writing conventions, visual design.
 
-**Skills** (`.cursor/skills/*/SKILL.md`) are invoked per task. When the agent recognizes a relevant task, it reads the skill file and follows its instructions. Skills handle domain-specific workflows: Astro development, deployment, git commits, GitHub automation, dependency management, Renovate operations, onboarding, guided repo history via `evolution-arc`, and durable learning capture via `trace-climb`.
+**Skills** (`.cursor/skills/*/SKILL.md`) are invoked per task. When the agent recognizes a relevant task, it reads the skill file and follows its instructions. Skills handle domain-specific workflows: Astro development, deployment, git commits, GitHub automation, dependency management, Renovate operations, onboarding, guided repo history via `evolution-arc`, and durable learning capture via `trace-reflect-and-evolve`.
 
 The repo also keeps the guidance layer from drifting silently:
 
-- a **blocking deterministic validator** in `tools/ai-guidance/` checks repo-entry contracts such as onboarding, Evolution Arc, and Trace Climb using explicit mappings
+- a **blocking deterministic validator** in `tools/ai-guidance/` checks repo-entry contracts such as onboarding, Evolution Arc, and Trace, Reflect and Evolve using explicit mappings
 - a **blocking license surface check** in `tools/ai-guidance/` verifies that tracked markdown-like source files expose the repo's license split explicitly
 - a **non-blocking advisory review** in GitHub Actions uses an AI reasoning layer over inspectable repo traces to surface broader drift
 
@@ -79,7 +79,7 @@ For repo-native AI-assisted work, the repo currently exposes three conversationa
 
 - `onboard me` for setup, structure, and contribution guidance
 - `Evolution Arc` for the repo's history and reasoning trace
-- `Trace Climb` for turning non-trivial work into durable learning and PR-visible learning trace
+- `Trace, Reflect and Evolve` for turning non-trivial work into durable learning and PR-visible learning trace
 
 Current skills:
 
@@ -87,7 +87,7 @@ Current skills:
 |---|---|
 | `onboarding` | Newcomer onboarding and repo orientation |
 | `evolution-arc` | Guided repo history, reasoning trace, and workspace evolution |
-| `trace-climb` | Post-task reflection, durable learning capture, and propagation decisions for non-trivial work |
+| `trace-reflect-and-evolve` | Post-task reflection, durable learning capture, and propagation decisions for non-trivial work |
 | `sensible-defaults` | On-demand delivery realism lens loading for explicit Sensible Defaults work |
 | `astro-starlight` | Docs site development |
 | `node-tooling` | Scripts, tests, TypeScript tooling |
@@ -113,7 +113,7 @@ To add a new rule: create a `.mdc` file in `.cursor/rules/`. Declare it as an ad
 
 To add a new skill: create a directory in `.cursor/skills/` with a `SKILL.md` file. Follow the structure of existing skills (frontmatter with name and description, "When to use" section, capability alignment checks).
 
-If the new skill changes repo-entry contracts such as onboarding, Evolution Arc, or Trace Climb, update the mapped docs and guidance surfaces in the same PR so the deterministic guard still reflects reality.
+If the new skill changes repo-entry contracts such as onboarding, Evolution Arc, or Trace, Reflect and Evolve, update the mapped docs and guidance surfaces in the same PR so the deterministic guard still reflects reality.
 
 To change agent behavior: edit `AGENTS.md`. Adapters follow. If an adapter needs to diverge, it declares the divergence explicitly.
 

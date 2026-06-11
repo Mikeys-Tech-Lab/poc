@@ -1,15 +1,16 @@
-# Trace Climb
+# Trace, Reflect and Evolve
 
 This document defines the current working command for turning post-task reflection
 into durable learning in this workspace.
 
-`Trace Climb` and `Evolution Record` are strong current recommendations. They are
-not beyond revision. If the workspace renames them later, the rename carries its
-own trace.
+`Trace, Reflect and Evolve` and `Evolution Record` are strong current
+recommendations, not beyond revision. This command was previously named
+`Trace Climb`. That rename carried its own trace: see ADR
+`docs/decisions/0007-trace-climb-durable-learning-flow.md`.
 
 ## What this is
 
-`Trace Climb` is the repo-native close-phase learning flow for non-trivial work.
+`Trace, Reflect and Evolve` is the repo-native close-phase learning flow for non-trivial work.
 
 It exists to answer:
 
@@ -32,7 +33,7 @@ Classify the work before writing anything durable.
 
 ### Required
 
-Use `Trace Climb` when the work exposed a durable lesson that should change
+Use `Trace, Reflect and Evolve` when the work exposed a durable lesson that should change
 future behavior.
 
 Typical cases:
@@ -47,7 +48,7 @@ Typical cases:
 
 ### Recommended
 
-Use `Trace Climb` when the work is non-trivial and likely to help future
+Use `Trace, Reflect and Evolve` when the work is non-trivial and likely to help future
 contributors, even if it may not require immediate guardrail changes.
 
 Typical cases:
@@ -71,7 +72,7 @@ In those cases, a short skip or no-op learning trace is the correct outcome.
 
 ## Trace taxonomy
 
-`Trace Climb` works with five trace types:
+`Trace, Reflect and Evolve` works with five trace types:
 
 - **Origin trace**: the initiating prompt, handover, issue, or task artifact
 - **Activation trace**: a governance-loading or lens-loading step that materially
@@ -222,7 +223,7 @@ substance but rename it into repo-native language before canonizing it.
 
 ## See also
 
-- `docs/onboarding/trace-climb.md`
+- `docs/onboarding/trace-reflect-and-evolve.md`
 - `docs/guidance/evolution-records/README.md`
 - `docs/guidance/structural-reflection-and-evolution.md`
 - `.cursor/skills/github-automation/SKILL.md`

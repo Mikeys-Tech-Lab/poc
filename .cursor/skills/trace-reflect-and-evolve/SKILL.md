@@ -1,16 +1,16 @@
 ---
-name: trace-climb
-description: Turns non-trivial work into durable learning. Use when the operator says "Trace Climb", during close phase for meaningful work, after messy or failed tasks, or before a PR needs a bounded learning trace and possible Evolution Record.
+name: trace-reflect-and-evolve
+description: Turns non-trivial work into durable learning. Use when the operator says "Trace, Reflect and Evolve" (formerly "Trace Climb"), during close phase for meaningful work, after messy or failed tasks, or before a PR needs a bounded learning trace and possible Evolution Record.
 ---
 
-# Trace Climb
+# Trace, Reflect and Evolve
 
 Adaptation of `AGENTS.md` for post-task reflection, durable learning capture,
 and propagation.
 
 ## When to use
 
-- The operator says `Trace Climb`
+- The operator says `Trace, Reflect and Evolve`
 - A non-trivial task is entering Close phase
 - The work was messy, failed, architectural, migratory, or exposed guidance gaps
 - A PR needs an inspectable learning trace beyond ordinary context
@@ -24,7 +24,7 @@ Classify the work before writing anything durable.
 
 ### Required
 
-Use `Trace Climb` when the work exposed a durable lesson that should change
+Use `Trace, Reflect and Evolve` when the work exposed a durable lesson that should change
 future behavior.
 
 Examples:
@@ -145,7 +145,7 @@ propagation decision names the action taken now. This is how the skill prevents
 
 ## Boundaries
 
-- `Trace Climb` is not a generic retrospective ritual.
+- `Trace, Reflect and Evolve` is not a generic retrospective ritual.
 - It is not required for every tiny edit.
 - Preserve durable learning. Do not narrate every task.
 - If no guardrail, propagation target, or research delta exists, a short skip
@@ -153,11 +153,11 @@ propagation decision names the action taken now. This is how the skill prevents
 
 ## Related surfaces
 
-- `docs/guidance/trace-climb.md`
+- `docs/guidance/trace-reflect-and-evolve.md`
 - `docs/guidance/evolution-records/README.md`
 - `.cursor/skills/github-automation/SKILL.md`
 - `.github/pull_request_template.md`
 
 ---
 © 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).  
-Source: https://github.com/Mikeys-Tech-Lab/poc/blob/main/.cursor/skills/trace-climb/SKILL.md
+Source: https://github.com/Mikeys-Tech-Lab/poc/blob/main/.cursor/skills/trace-reflect-and-evolve/SKILL.md

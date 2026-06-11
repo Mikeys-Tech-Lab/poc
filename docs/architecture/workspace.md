@@ -38,7 +38,7 @@ flowchart TD
   Tooling -->|"informs"| CursorSkills
   Tooling -->|"guidance drift validator"| Onboarding
   Tooling -->|"guidance drift validator"| EvolutionArcGuide
-  Tooling -->|"guidance drift validator"| TraceClimbGuide
+  Tooling -->|"guidance drift validator"| TraceReflectAndEvolveGuide
   Tooling -->|"license surface validator"| Guidance
 
   Guidance[docs/guidance/] -.->|"describes"| Agents
@@ -47,8 +47,8 @@ flowchart TD
   Onboarding[docs/onboarding/] -.->|"newcomer paths"| Agents
   OnboardSkill[".cursor/skills/onboarding/"] -->|"reads index"| Onboarding
   EvolutionArcSkill[".cursor/skills/evolution-arc/"] -->|"reads trace map"| EvolutionArcGuide["docs/guidance/evolution-arc.md"]
-  TraceClimbSkill[".cursor/skills/trace-climb/"] -->|"reads flow guide"| TraceClimbGuide["docs/guidance/trace-climb.md"]
-  TraceClimbGuide -->|"stores durable learning in"| GuidanceRecords["docs/guidance/evolution-records/"]
+  TraceReflectAndEvolveSkill[".cursor/skills/trace-reflect-and-evolve/"] -->|"reads flow guide"| TraceReflectAndEvolveGuide["docs/guidance/trace-reflect-and-evolve.md"]
+  TraceReflectAndEvolveGuide -->|"stores durable learning in"| GuidanceRecords["docs/guidance/evolution-records/"]
   SensibleDefaultsSkill[".cursor/skills/sensible-defaults/"] -->|"loads on demand"| MandateLenses
   EvolutionArcGuide -.->|"curates"| Decisions
   EvolutionArcGuide -.->|"curates"| Architecture
@@ -100,7 +100,7 @@ flowchart TD
   Renovate -.->|"action version updates"| CodeQL
   GuidanceReview -.->|"comments on PRs"| Onboarding
   GuidanceReview -.->|"surfaces drift"| EvolutionArcGuide
-  GuidanceReview -.->|"surfaces drift"| TraceClimbGuide
+  GuidanceReview -.->|"surfaces drift"| TraceReflectAndEvolveGuide
   PRTitleGuard -.->|"guards squash-merge title contract"| ReleasePlease
   AppToken -->|"installation token"| ReleasePlease
   RPConfig -.->|"package definitions"| ReleasePlease
@@ -123,7 +123,7 @@ flowchart TD
 | `docs/practices/` | Derived explainers and bridge docs for canonical lens packages | Exists |
 | `AGENTS.md` | Canonical agent guidance (single source of truth) | Exists |
 | `.cursor/rules/` | Cursor always-apply and file-scoped rules (includes security-awareness) | Exists |
-| `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, renovate-operations, infomaniak-deployment, onboarding, evolution-arc, trace-climb, sensible-defaults) | Exists |
+| `.cursor/skills/` | Cursor project skills (astro-starlight, node-tooling, git-commit, github-automation, dependency-management, renovate-operations, infomaniak-deployment, onboarding, evolution-arc, trace-reflect-and-evolve, sensible-defaults) | Exists |
 | `.claude/` | Claude Code adapter (thin pointer to AGENTS.md) | Exists |
 | `.github/` | PR template, Copilot instructions, Dependabot security config, prompt files for advisory automation | Exists |
 | `renovate.json` | Renovate routine dependency policy, grouping, automerge, and dashboard behavior | Exists |
@@ -131,9 +131,9 @@ flowchart TD
 | `release-please-config.json` | Release Please package definitions and changelog sections | Exists |
 | `.release-please-manifest.json` | Tracks current version of each versioned package | Exists |
 | `.local/` | Operator-specific local config (gitignored), not a normal agent input. Template: `.local.example.md` | Exists |
-| `docs/onboarding/` | Newcomer and repo-history entry paths (topic index, local setup, AI guidance, workspace, evolution arc, trace-climb, security, infra, contributing) | Exists |
-| `docs/guidance/` | Descriptive guidance docs (conventions, change process, evolution trace map, Trace Climb flow) | Exists |
-| `docs/guidance/evolution-records/` | Durable learning artifacts produced by Trace Climb | Exists |
+| `docs/onboarding/` | Newcomer and repo-history entry paths (topic index, local setup, AI guidance, workspace, evolution arc, trace-reflect-and-evolve, security, infra, contributing) | Exists |
+| `docs/guidance/` | Descriptive guidance docs (conventions, change process, evolution trace map, Trace, Reflect and Evolve flow) | Exists |
+| `docs/guidance/evolution-records/` | Durable learning artifacts produced by Trace, Reflect and Evolve | Exists |
 | `docs/architecture/` | Architecture docs + this canonical diagram | Exists |
 | `docs/decisions/` | Architecture Decision Records (ADRs) — structural rationale with trace | Exists |
 | `docs/ai/` | Capability alignment reports (generated) | Exists |
