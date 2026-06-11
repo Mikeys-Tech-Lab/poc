@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.16.0...PoC-v1.17.0) (2026-06-11)
+
+
+### Features
+
+* **docs:** promote integration lag register triad ([#240](https://github.com/Mikeys-Tech-Lab/poc/issues/240)) ([385f328](https://github.com/Mikeys-Tech-Lab/poc/commit/385f3289e3d4a291187854c78a9552291a30626d))
+
 ## [1.16.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.15.19...PoC-v1.16.0) (2026-05-25)
 
 
