@@ -145,6 +145,7 @@ describe('runGuidanceDriftGuard', () => {
       files,
       repoFiles: buildRepoFiles(files),
       repoDirectories,
+      evolutionRecords: {},
       changedFiles: ['docs/guidance/evolution-arc.md'],
     });
 
@@ -159,6 +160,7 @@ describe('runGuidanceDriftGuard', () => {
       files,
       repoFiles: buildRepoFiles(files),
       repoDirectories,
+      evolutionRecords: {},
       changedFiles: ['mandateLenses/SensibleDefaults/README.md'],
     });
 
@@ -173,6 +175,7 @@ describe('runGuidanceDriftGuard', () => {
       files,
       repoFiles: buildRepoFiles(files),
       repoDirectories,
+      evolutionRecords: {},
       changedFiles: ['docs/guidance/trace-climb.md'],
     });
 
@@ -187,6 +190,7 @@ describe('runGuidanceDriftGuard', () => {
       files,
       repoFiles: buildRepoFiles(files),
       repoDirectories,
+      evolutionRecords: {},
       changedFiles: ['.cursor/skills/onboarding/SKILL.md'],
     });
 
@@ -218,6 +222,7 @@ describe('runGuidanceDriftGuard', () => {
       files,
       repoFiles: buildRepoFiles(files),
       repoDirectories,
+      evolutionRecords: {},
       changedFiles: [],
     });
 
@@ -242,6 +247,62 @@ describe('runGuidanceDriftGuard', () => {
       files,
       repoFiles: buildRepoFiles(files),
       repoDirectories,
+      evolutionRecords: {},
+      changedFiles: [],
+    });
+
+    expect(result.failures).toEqual([]);
+  });
+
+  it('passes when every evolution record declares runtime propagation', () => {
+    const files = buildCompleteContractFiles();
+
+    const result = runGuidanceDriftGuard({
+      files,
+      repoFiles: buildRepoFiles(files),
+      repoDirectories,
+      evolutionRecords: {
+        'docs/guidance/evolution-records/2026-01-01-example.md':
+          'A record.\n**Runtime propagation:** archive-only.',
+      },
+      changedFiles: [],
+    });
+
+    expect(result.failures).toEqual([]);
+  });
+
+  it('fails when an evolution record is missing the runtime propagation field', () => {
+    const files = buildCompleteContractFiles();
+
+    const result = runGuidanceDriftGuard({
+      files,
+      repoFiles: buildRepoFiles(files),
+      repoDirectories,
+      evolutionRecords: {
+        'docs/guidance/evolution-records/2026-01-01-example.md': 'A record with no classification.',
+      },
+      changedFiles: [],
+    });
+
+    expect(result.failures).toEqual([
+      {
+        scope: 'docs/guidance/evolution-records/2026-01-01-example.md',
+        message: 'Evolution record is missing a "Runtime propagation" field.',
+      },
+    ]);
+  });
+
+  it('excludes README and template from the runtime propagation check', () => {
+    const files = buildCompleteContractFiles();
+
+    const result = runGuidanceDriftGuard({
+      files,
+      repoFiles: buildRepoFiles(files),
+      repoDirectories,
+      evolutionRecords: {
+        'docs/guidance/evolution-records/README.md': 'No field here.',
+        'docs/guidance/evolution-records/template.md': 'No field here either.',
+      },
       changedFiles: [],
     });
 

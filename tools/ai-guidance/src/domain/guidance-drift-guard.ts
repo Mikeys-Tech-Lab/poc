@@ -18,6 +18,7 @@ export interface GuidanceCheckInput {
   readonly repoFiles: ReadonlySet<string>;
   readonly repoDirectories: ReadonlySet<string>;
   readonly changedFiles: readonly string[];
+  readonly evolutionRecords: Readonly<Record<string, string>>;
 }
 
 export interface GuidanceCheckResult {
@@ -56,6 +57,12 @@ const LOGICAL_RUNTIME_PATHS = new Set([
   '.dist/poc-snapshot-images',
 ]);
 const LOGICAL_RUNTIME_PREFIXES = ['.local/', '.dist/'];
+const EVOLUTION_RECORDS_DIR = 'docs/guidance/evolution-records/';
+const EVOLUTION_RECORDS_EXCLUDED = new Set([
+  'docs/guidance/evolution-records/README.md',
+  'docs/guidance/evolution-records/template.md',
+]);
+const RUNTIME_PROPAGATION_FIELD = 'Runtime propagation';
 
 const CONTRACT_MAPPINGS: readonly MappingContract[] = [
   {
@@ -531,6 +538,25 @@ const validateContractMapping = (
   return failures;
 };
 
+const validateEvolutionRecords = (
+  records: Readonly<Record<string, string>>,
+): readonly GuidanceFailure[] => {
+  const failures: GuidanceFailure[] = [];
+
+  for (const [filePath, content] of Object.entries(records)) {
+    if (!filePath.startsWith(EVOLUTION_RECORDS_DIR) || !filePath.endsWith('.md')) continue;
+    if (EVOLUTION_RECORDS_EXCLUDED.has(filePath)) continue;
+    if (!content.includes(RUNTIME_PROPAGATION_FIELD)) {
+      failures.push({
+        scope: filePath,
+        message: `Evolution record is missing a "${RUNTIME_PROPAGATION_FIELD}" field.`,
+      });
+    }
+  }
+
+  return failures;
+};
+
 export const runGuidanceDriftGuard = (input: GuidanceCheckInput): GuidanceCheckResult => {
   const failures: GuidanceFailure[] = [];
   const onboardingIndex = input.files[ONBOARDING_INDEX_PATH];
@@ -551,6 +577,8 @@ export const runGuidanceDriftGuard = (input: GuidanceCheckInput): GuidanceCheckR
       ...validateFileReferences(filePath, content, input.repoFiles, input.repoDirectories),
     );
   }
+
+  failures.push(...validateEvolutionRecords(input.evolutionRecords));
 
   const activatedMappings = CONTRACT_MAPPINGS.filter((mapping) =>
     triggeredByChange(input.changedFiles, mapping.triggers),

@@ -10,6 +10,7 @@ editorial judgment.
 **Activation trace:** Sensible Defaults lens loaded for delivery-reality
 framing. Industry testing research was used to compare external patterns against
 the repo's actual structure.
+**Runtime propagation:** on-demand — testing-strategy.md carries the deterministic-vs-live test boundary. No new propagation in this backfill.
 **Related PR:** pending
 
 ## Why this record exists

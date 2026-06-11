@@ -6,6 +6,7 @@
 **Scope:** content
 **Origin trace:** Branch close phase after the finalized public-content rewrite across registers and seeds. Operator request: get the branch to a coherent production state by fixing the remaining findings.
 **Activation trace:** none
+**Runtime propagation:** enforced — register-boundaries.test.ts pins the close-phase content boundaries. No new propagation in this backfill.
 **Related PR:** pending
 
 ## Why this record exists

@@ -6,6 +6,7 @@
 **Scope:** workspace
 **Origin trace:** Operator invoked `/trace-climb` after PR #196 CI failed on Biome formatting because `pnpm lint` was not run before commit. Operator's exact framing: "we always need to run lint before committing checks are failing".
 **Activation trace:** none
+**Runtime propagation:** canon — AGENTS.md carries the skill-loading invariant, reinforced in the git-commit skill. No new propagation in this backfill.
 **Related PR:** https://github.com/Mikeys-Tech-Lab/poc/pull/196
 
 ## Why this record exists

@@ -8,6 +8,7 @@
 `integration-lag` article import. Operator follow-up: "tests are failing" and
 `/trace-climb`.
 **Activation trace:** `/trace-climb`
+**Runtime propagation:** on-demand — the git-commit and github-automation skills carry the close-phase verification behavior. No new propagation in this backfill.
 **Related PR:** https://github.com/Mikeys-Tech-Lab/poc/pull/165
 
 ## Why this record exists

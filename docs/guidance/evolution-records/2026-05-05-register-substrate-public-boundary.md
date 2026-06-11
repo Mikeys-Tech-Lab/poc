@@ -8,6 +8,7 @@
 from a binary model into a substrate for `everyday`, `orientation`, and
 `practitioner`, followed by implementation review and `/trace-climb`.
 **Activation trace:** `/trace-climb`
+**Runtime propagation:** on-demand — the astro-starlight skill carries the register substrate and ToC guardrails. No new propagation in this backfill.
 **Related PR:** https://github.com/Mikeys-Tech-Lab/poc/pull/185
 
 ## Why this record exists

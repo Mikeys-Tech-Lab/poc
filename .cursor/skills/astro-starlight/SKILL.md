@@ -294,6 +294,18 @@ Do not validate this only by clicking the register selector. Direct loads such
 as `?register=orientation` and route-available `?register=everyday` are part of
 the product contract.
 
+### Register fallback resolver guardrail
+
+In fallback or notice resolvers, absence of input and invalid input are different
+states. A fresh visitor with no `?register=` param and no stored preference must
+resolve to the silent default. Reserve a visible notice for an actually provided
+value that does not match an available option.
+
+When the same resolution logic is duplicated between the inline bootstrap and a
+shared module, the parity test must exercise the same input matrix through both,
+including the absent case. See
+`docs/guidance/evolution-records/2026-06-11-register-fallback-notice-absence-vs-invalid.md`.
+
 ## Site-wide visual system
 
 The atmospheric background and frosted glass treatment apply to **all pages**, not just the landing page.

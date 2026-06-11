@@ -109,6 +109,60 @@ Use this filename pattern:
 
 The current template lives at `docs/guidance/evolution-records/template.md`.
 
+## Runtime propagation
+
+Archive preserves memory. Propagation changes future behavior. A lesson is not
+durable because it was recorded. It is durable when a future fresh **reasoning
+runtime** is shaped differently without rereading the whole archive.
+
+A reasoning runtime is the live context in which an AI agent forms, checks, and
+revises an answer or action, shaped by the model, prompt, loaded source context,
+tools, skills, rules, and checks active in that moment. Runtime propagation means
+a captured lesson changes that future context without requiring the agent to
+reread the whole archive.
+
+### The propagation ladder
+
+Each record declares one primary class. The ladder is an escalation order, least
+intrusive first:
+
+1. `archive-only` — preserve the trace; no runtime change warranted.
+2. `on-demand` — load the lesson through a skill, rule, or domain guidance when
+   the task enters that area.
+3. `canon` — carry a small invariant in always-loaded guidance when it must shape
+   many contexts.
+4. `enforced` — add a deterministic check when the failure is mechanically
+   detectable and worth blocking.
+
+Decision rule: choose the lowest runtime-load layer that reliably prevents
+recurrence. `archive-only` is a valid outcome, not a failed climb. The class is
+not enum-strict — one lesson can be `enforced` by a test and also carry an
+`on-demand` heuristic.
+
+### Distillation
+
+Before propagating, distill the **smallest reusable lesson**. The flow is:
+capture the event, distill the smallest reusable lesson, classify runtime
+propagation, propagate to the cheapest effective layer, then verify fresh-context
+behavior changed or mark `archive-only`. Do not propagate the whole incident.
+
+A meaningful lesson should either reduce the chance of recurrence in the next
+relevant reasoning runtime, or be explicitly recorded as `archive-only`. The
+system reduces recurrence. It does not guarantee perfect prevention.
+
+### Pointer-not-payload
+
+Loaded runtime surfaces carry the smallest reusable behavioral rule and a pointer
+back to the evolution record, not the full incident history.
+
+- The archive stores the full trace.
+- The evolution record stores the distilled lesson.
+- Runtime surfaces carry the smallest reusable constraint plus a pointer back to
+  the record.
+
+This prevents skills, `AGENTS.md`, and always-loaded guidance from becoming
+mini-archives.
+
 ## Record sections
 
 Keep records concise. Preserve the lesson, not the whole conversation.
@@ -124,10 +178,11 @@ At minimum, an `Evolution Record` should cover:
 7. structural gap or pattern
 8. proposed evolution
 9. research delta, if any
-10. propagation decision
-11. surfaces updated or to update
-12. verification
-13. PR-visible learning trace
+10. runtime propagation classification
+11. propagation decision
+12. surfaces updated or to update
+13. verification
+14. PR-visible learning trace
 
 If a section does not apply, say `None.` or remove it. Do not pad the record.
 
@@ -143,8 +198,9 @@ Allowed outcomes:
 - defer with a named boundary
 - no-op with reason
 
-This section exists to prevent the failure mode `learning captured but not
-propagated`.
+The runtime propagation class names where the lesson lives and how it loads. The
+propagation decision names the action taken now. This section exists to prevent
+the failure mode `learning captured but not propagated`.
 
 ## Relationship to other surfaces
 

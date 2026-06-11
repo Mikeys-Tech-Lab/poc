@@ -52,7 +52,17 @@ prevents the same mistaken path.
 
 ## Surface order
 
-When a structural lesson is discovered, update in this order:
+Two different questions are in play. Keep them distinct:
+
+- **Propagation classification** decides which layers should be touched at all.
+  Choose the cheapest effective layer that reliably prevents recurrence:
+  `archive-only`, `on-demand`, `canon`, or `enforced`. See
+  `docs/guidance/trace-climb.md`.
+- **Surface authority order** tells contributors how to keep the layers they do
+  touch coherent.
+
+Authority order is not "start at canon." Classify first. Then, for whichever
+surfaces the classification says to touch, keep them coherent in this order:
 
 1. `AGENTS.md` if the lesson affects agent behavior or workspace-wide discipline
 2. affected rules or skills that operationalize the behavior
