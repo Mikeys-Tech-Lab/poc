@@ -59,10 +59,16 @@ learning trace instead.
    checks, operator interventions, and plan changes that happened during the
    work and changed future behavior.
 5. Decide whether the work produced durable learning.
-6. If yes, write or update an `Evolution Record` in
+6. **Distill the smallest reusable lesson.** Reduce the incident to the smallest
+   behavioral constraint a future runtime would need. Do not propagate the whole
+   incident.
+7. **Classify runtime propagation** using the ladder below.
+8. If durable, write or update an `Evolution Record` in
    `docs/guidance/evolution-records/`.
-7. End the record with a propagation decision.
-8. Carry a bounded summary or link into the PR learning trace.
+9. **Propagate to the chosen layer**, carrying the smallest rule plus a pointer
+   back to the record (pointer-not-payload).
+10. End the record with a propagation decision.
+11. Carry a bounded summary or link into the PR learning trace.
 
 ## Record rules
 
@@ -90,10 +96,38 @@ At minimum, cover:
 - missed guidance
 - structural gap
 - proposed evolution
+- runtime propagation classification
 - propagation decision
 - surfaces updated
 - verification
 - PR-visible learning trace
+
+## Runtime propagation
+
+Archive preserves memory. Propagation changes future behavior. A lesson is
+durable when a future fresh **reasoning runtime** is shaped differently without
+rereading the whole archive. A reasoning runtime is the live context in which an
+agent forms, checks, and revises an action, shaped by the model, prompt, loaded
+source context, tools, skills, rules, and checks active in that moment.
+
+Classify each record with one primary class, cheapest effective layer first:
+
+- `archive-only` — preserve the trace; no runtime change warranted.
+- `on-demand` — load the lesson through a skill, rule, or domain guidance when the
+  task enters that area.
+- `canon` — carry a small invariant in always-loaded guidance when it must shape
+  many contexts.
+- `enforced` — add a deterministic check when the failure is mechanically
+  detectable and worth blocking.
+
+Decision rule: choose the lowest runtime-load layer that reliably prevents
+recurrence. The class is not enum-strict — one lesson can be `enforced` by a test
+and also carry an `on-demand` heuristic.
+
+**Pointer-not-payload.** Loaded runtime surfaces carry the smallest reusable rule
+plus a pointer back to the record, not the full incident history. The archive
+holds the full trace, the record holds the distilled lesson, the runtime surface
+holds the smallest constraint.
 
 ## Propagation decision
 
@@ -105,7 +139,9 @@ Every durable record must end by choosing one of these outcomes:
 - defer with named boundary
 - no-op with reason
 
-This is how the skill prevents `learning captured but not propagated`.
+The runtime propagation class names where the lesson lives and how it loads. The
+propagation decision names the action taken now. This is how the skill prevents
+`learning captured but not propagated`.
 
 ## Boundaries
 

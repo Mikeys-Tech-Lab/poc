@@ -38,6 +38,7 @@
 - **Activation trace**:
 - **Durable artifact**: `No durable learning` | `Evolution Record` | `ADR` | direct surface updates
 - **Propagation**:
+- **Runtime propagation, if applicable**: `enforced` | `on-demand` | `canon` | `archive-only` — name the surface or link the Evolution Record
 
 ## Test plan
 

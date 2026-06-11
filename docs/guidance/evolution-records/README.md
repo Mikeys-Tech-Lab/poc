@@ -37,6 +37,19 @@ changed.
 Start from `template.md` when creating a new record. It defines the minimum
 shape without turning the directory into a ritual logbook.
 
+## Runtime propagation
+
+Every record declares a `Runtime propagation` field: the cheapest effective layer
+where the lesson changes a future reasoning runtime, or `archive-only` when no
+runtime change is warranted. `archive-only` is a valid outcome, not a failed
+climb.
+
+Distill the smallest reusable lesson and carry only that, plus a pointer back to
+the record, onto the chosen runtime surface (pointer-not-payload). The archive
+holds the full trace, the record holds the distilled lesson, and runtime surfaces
+hold the smallest reusable constraint. `docs/guidance/trace-climb.md` defines the
+ladder and the decision rule.
+
 ## Relationship to other surfaces
 
 - **`docs/guidance/trace-climb.md`** defines when to write a record and what it

@@ -172,8 +172,10 @@ When documenting a mistake, correction, or retrospective:
 1. **Name the incident.** What happened in concrete terms?
 2. **Name the underlying pattern.** What class of failure does this belong to?
 3. **Name the structural rule.** What principle or invariant should prevent recurrence?
-4. **Update the right surfaces.** Canonical guidance first, then affected skills, rules, docs, and tests.
+4. **Update the right surfaces.** Classify runtime propagation first to decide which layers to touch at all, then keep each touched surface coherent in authority order (canonical guidance, then affected skills, rules, docs, and tests).
 5. **Verify the contract.** Tests and checks must protect the intended behavior, not the accidental implementation that caused the bug.
+
+Trace Climb is not complete when a lesson is archived. Each `Evolution Record` must declare its **Runtime propagation**: the cheapest effective layer where the lesson changes future behavior, or `archive-only` when no runtime change is warranted. Prefer pointers over payload so always-loaded context stays small. See `docs/guidance/trace-climb.md`.
 
 ### Anti-pattern
 

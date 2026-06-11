@@ -6,6 +6,7 @@
 **Scope:** workspace | content | architecture | migration | tooling
 **Origin trace:** prompt, handover, issue, or task artifact
 **Activation trace:** none | command or lens that materially changed framing
+**Runtime propagation:** enforced | on-demand | canon | archive-only — short note naming the surface and load trigger
 **Related PR:** link | pending | none
 
 ## Why this record exists
@@ -31,6 +32,13 @@ What class of failure this belongs to.
 ## Proposed evolution
 
 What should change in future behavior.
+
+## Runtime propagation
+
+The cheapest effective layer where this lesson changes a future reasoning
+runtime, or `archive-only`. Name the concrete surface and its load trigger. One
+primary class, with an optional short note. Carry the smallest reusable rule to
+that surface plus a pointer back to this record (pointer-not-payload).
 
 ## Research delta
 
