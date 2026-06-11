@@ -1,8 +1,8 @@
 ---
-import type { EssayAnchor } from '../content/structural/types';
+import type { AnchorMapEntry } from './anchor-map-types';
 
 interface Props {
-  anchor: EssayAnchor;
+  anchor: AnchorMapEntry;
 }
 
 const { anchor } = Astro.props as Props;
@@ -10,10 +10,10 @@ const { anchor } = Astro.props as Props;
 
 <article class="poc-anchor-card">
   <div class="poc-anchor-card-copy">
-    <p class="poc-anchor-entry">{anchor.entryLabel}</p>
+    {anchor.entryLabel && <p class="poc-anchor-entry">{anchor.entryLabel}</p>}
     <h3>{anchor.title}</h3>
-    <p class="poc-anchor-signal">{anchor.signal}</p>
-    <p class="poc-anchor-question">{anchor.question}</p>
+    {anchor.signal && <p class="poc-anchor-signal">{anchor.signal}</p>}
+    {anchor.question && <p class="poc-anchor-question">{anchor.question}</p>}
   </div>
   <a class="poc-anchor-card-cta" href={anchor.href}>Start here</a>
 </article>

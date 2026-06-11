@@ -23,10 +23,13 @@ Before staging and committing, verify in this order:
 3. **Tests pass**: run `pnpm test` if you changed tooling code, shared site
    modules, or `apps/site` content, components, routes, or tests that can trip
    declared guardrails such as `register-boundaries.test.ts`.
-4. **Internal references are valid**: if you added or changed any markdown link, backtick path, or file reference, verify the target exists. A build catches broken links in site content, but not in skills, rules, or docs outside the Astro site.
-5. **Scope is atomic**: the staged changes do exactly one logical thing. If you need to describe two unrelated changes, split into two commits.
-6. **Nothing unintended is staged**: run `git diff --cached --stat` and review the file list.
-7. **GPG signing is active**: this repo requires signed commits. If you cannot sign, output the commands for the operator to run. Do not use `--no-gpg-sign`.
+4. **Site type check passes**: run `pnpm --filter site check` if you changed
+   `apps/site` content, components, routes, or TypeScript modules. Build can
+   pass while type-only imports fail Astro's type check.
+5. **Internal references are valid**: if you added or changed any markdown link, backtick path, or file reference, verify the target exists. A build catches broken links in site content, but not in skills, rules, or docs outside the Astro site.
+6. **Scope is atomic**: the staged changes do exactly one logical thing. If you need to describe two unrelated changes, split into two commits.
+7. **Nothing unintended is staged**: run `git diff --cached --stat` and review the file list.
+8. **GPG signing is active**: this repo requires signed commits. If you cannot sign, output the commands for the operator to run. Do not use `--no-gpg-sign`.
 
 ## Post-commit: PR description upkeep
 

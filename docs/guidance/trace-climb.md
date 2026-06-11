@@ -15,6 +15,7 @@ It exists to answer:
 
 - what the work exposed
 - what was missed
+- what changed during reasoning and implementation
 - what should change in future behavior
 - where that change needs to land
 
@@ -41,6 +42,7 @@ Typical cases:
 - migrations
 - guidance or skill gaps
 - repeated friction that points to a shared pattern
+- reasoning-time corrections that reveal missing runtime guidance
 - research delta worth preserving
 
 ### Recommended
@@ -74,8 +76,9 @@ In those cases, a short skip or no-op learning trace is the correct outcome.
 - **Origin trace**: the initiating prompt, handover, issue, or task artifact
 - **Activation trace**: a governance-loading or lens-loading step that materially
   changed the framing, such as `/sensible-defaults`
-- **Evolution trace**: the audit, decisions, corrections, and design movement
-  that followed
+- **Reasoning-time evolution trace**: the audit, decisions, corrections,
+  operator interventions, failed checks, and design movement that happened while
+  the work was still underway
 - **Durable learning trace**: the preserved artifact plus its propagation
   decision
 - **PR-visible trace**: the bounded summary or link that makes the learning
@@ -88,6 +91,10 @@ Record activation trace only when it changed framing or scope. Do not turn
 command invocation into a ritual log line.
 
 Raw chat logs are not the canonical artifact.
+
+Reasoning-time evolution is not a transcript dump. Preserve the structural
+movement: what changed, why the earlier assumption failed, and which future
+surface should now behave differently.
 
 ## Durable artifact
 
@@ -111,15 +118,16 @@ At minimum, an `Evolution Record` should cover:
 1. origin trace
 2. activation trace, if material
 3. what was observed
-4. missed assumptions
-5. missed guidance
-6. structural gap or pattern
-7. proposed evolution
-8. research delta, if any
-9. propagation decision
-10. surfaces updated or to update
-11. verification
-12. PR-visible learning trace
+4. reasoning-time evolution, if it changed the work
+5. missed assumptions
+6. missed guidance
+7. structural gap or pattern
+8. proposed evolution
+9. research delta, if any
+10. propagation decision
+11. surfaces updated or to update
+12. verification
+13. PR-visible learning trace
 
 If a section does not apply, say `None.` or remove it. Do not pad the record.
 

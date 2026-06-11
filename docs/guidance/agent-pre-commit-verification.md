@@ -15,6 +15,12 @@ Commits were pushed without running `pnpm lint`. CI failed on Biome formatting i
 
 Later in the same area, an accessibility refinement for "Underline links" overreached. A global default-off CSS rule (`:root:not([data-a11y-links="underline"]) a`) was added in `a11y.css`. That did not merely keep the preference inactive; it erased the site's normal link styling across the page. The dev server was healthy. The regression was self-inflicted by an over-broad selector and a bad assumption about what "default off" should mean.
 
+During the Integration Lag register triad promotion, CI failed again after the
+branch was pushed. This time the local gate ran lint, tests, and build, but not
+`pnpm --filter site check`. `astro check` caught broken type-only imports in
+new site source modules. The build had passed because those imports were erased
+before runtime bundling.
+
 ## Assumptions made (and why they were wrong)
 
 1. **Build pass implies CI pass.**  
@@ -37,6 +43,11 @@ Later in the same area, an accessibility refinement for "Underline links" overre
 2. **No local CI alignment.**  
    We did not run the same sequence CI runs: lint → unit tests → build → type check → E2E. Running that sequence locally before push would have caught the lint failure.
 
+2a. **Build was treated as a substitute for site type check.**  
+   In the Integration Lag branch, source modules had invalid type-only import
+   paths. Build and Vitest passed. `pnpm --filter site check` failed in CI. The
+   missing local step was the site type check, not another content review.
+
 3. **Inline HTML duplication.**  
    The accessibility icon markup is duplicated in both practitioner and orientation `what-this-is.mdx` files. A shared component was abandoned when it didn't render correctly in the heading context. The duplication is acceptable for a one-off but could be revisited if the pattern recurs.
 
@@ -49,6 +60,10 @@ Later in the same area, an accessibility refinement for "Underline links" overre
 ## Evolution (what we changed)
 
 1. **git-commit skill:** Added "Lint passes" to the pre-commit checklist. Run `pnpm lint` before commit. If format issues exist, run `pnpm lint:fix` then `pnpm lint` to verify.
+
+1a. **git-commit skill:** Added `pnpm --filter site check` for changes to
+`apps/site` content, components, routes, or TypeScript modules. Build is not a
+type-check substitute.
 
 2. **astro-starlight skill:** Added "MDX headings with icons" to Known pitfalls. When an icon is needed in an MDX heading, use inline HTML (`### <span>...</span>` with SVG). Component-in-heading can lose the anchor or flatten. Duplicate across registers if needed.
 
@@ -87,11 +102,14 @@ Before every commit:
 3. Run `pnpm test` if you changed tooling code, shared site modules, or
    `apps/site` content, components, routes, or tests that can trip declared
    guardrails such as `register-boundaries.test.ts`.
-4. If you changed accessibility preferences or theme CSS, verify both states manually:
+4. Run `pnpm --filter site check` if you changed `apps/site` content,
+   components, routes, or TypeScript modules. Type-only imports can fail this
+   check even when build passes.
+5. If you changed accessibility preferences or theme CSS, verify both states manually:
    preference off matches the intended default, preference on matches the intended override, and toggling back off restores the intended default.
-5. If you changed custom theme surfaces or controls, verify both atmospheric themes explicitly:
+6. If you changed custom theme surfaces or controls, verify both atmospheric themes explicitly:
    dark and light must each be tuned on purpose. Do not treat "light inherited from dark tokens" as a completed design pass.
-6. If the same preference or action appears in multiple UI surfaces, verify the model and label semantics stay aligned:
+7. If the same preference or action appears in multiple UI surfaces, verify the model and label semantics stay aligned:
    do not expose four options in one place and five in another, and do not label a clipboard-first action as sharing.
 
 CI runs lint first. Align local verification with CI so you fail fast and avoid pushing broken checks.

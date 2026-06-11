@@ -1,0 +1,989 @@
+---
+title: "The Verification Tax: AI Helps, But We Still Check Everything"
+description: "A practitioner-facing signal on the hidden checking, correction, review, and context reconstruction work created when AI-generated output moves faster than grounded confidence."
+register: practitioner
+series: "Integration Lag"
+series_part: 3
+series_label: "Part 3"
+---
+
+import RegisterContent from '../../../../../../components/RegisterContent.astro';
+import ShareButton from '../../../../../../components/ShareButton.astro';
+import AnchorMap from '../../../../../../components/AnchorMap.astro';
+import ReadingFrame from '../../../../../../components/ReadingFrame.astro';
+import SourceHook from '../../../../../../components/SourceHook.astro';
+import SourceLedger from '../../../../../../components/SourceLedger.astro';
+import { waysIntoThisSignal } from './the-verification-tax.ways';
+import {
+  directSourceEntries,
+  furtherReadingEntries,
+} from '../../../../../sources/en-us/signals/operational/work-delivery/the-verification-tax.sources';
+
+<RegisterContent registers={{
+  everyday: 'everyday/en-us/signals/operational/work-delivery/the-verification-tax',
+  orientation: 'orientation/en-us/signals/operational/work-delivery/the-verification-tax'
+}}>
+
+<ShareButton />
+
+> AI-assisted coding did not simply remove work. In many teams, it moved work
+> from writing into checking. The draft appears faster. The confidence does not.
+> That gap is where the verification tax begins.
+
+Many developers are not refusing AI.
+
+They are already using it.
+
+They use it for boilerplate, small functions, test scaffolds, explanations,
+documentation drafts, API examples, refactoring ideas, and the awkward first
+version of something they do not want to start from an empty page.
+
+The problem is not that AI is useless.
+
+The problem is that usefulness arrives before confidence.
+
+The answer appears.
+
+The work is not done.
+
+Now the developer has to check:
+
+- does this fit the codebase?
+- does this match the architecture?
+- did it invent an API?
+- did it miss an edge case?
+- did it ignore a convention?
+- did it silently change behavior?
+- did it make the test pass for the wrong reason?
+- did it solve the local problem, or only the generic version of the problem?
+
+That checking work is often invisible.
+
+It does not look like delivery.
+
+It looks like hesitation.
+
+It looks like being slow.
+
+It looks like the developer is "not using AI properly."
+
+But that is too flat.
+
+A lot of what looks like skepticism is actually accountability.
+
+A lot of what looks like slowness is actually integration work.
+
+A lot of what looks like babysitting is the human trying to keep the system from
+accepting a plausible draft as grounded truth.
+
+This signal names that hidden labour:
+
+> the verification tax
+
+The verification tax is the extra checking, correcting, re-reading, debugging,
+context reconstruction, and review work developers pay after AI has generated a
+draft faster than the team can trust, integrate, or explain it.
+
+It is not proof that AI is bad.
+
+It is proof that output speed and confidence speed are not the same thing.
+
+---
+
+## The Current Developer Baseline
+
+The current developer baseline is not simple rejection.
+
+It is much more interesting.
+
+Many developers use AI tools.<SourceHook sourceId="current-developer-ai-adoption" sources={directSourceEntries} />
+
+Many also distrust their accuracy.
+
+The 2025 Stack Overflow Developer Survey found that 84 percent of respondents
+were using or planning to use AI tools in their development process. The chart
+for that question reports 33,662 responses. The same AI section found that more
+developers actively distrusted the accuracy of AI tools than trusted it, and
+only a small fraction reported highly trusting AI output.<SourceHook sourceId="developer-trust-gap" sources={directSourceEntries} />
+
+This is survey evidence, not a universal law.
+
+It is enough to ground the baseline: usage and distrust now coexist.
+
+That contradiction matters.
+
+It means the dominant pattern is not:
+
+> developers reject AI
+
+It is closer to:
+
+> developers use AI, but still do not trust it enough to stop checking
+
+That is a much better starting point.
+
+It does not shame people for skepticism.
+
+It does not pretend adoption means confidence.
+
+It does not confuse usage with maturity.
+
+It starts where many teams actually are:
+
+AI is already in the workflow.
+
+The workflow has not yet adapted around it.
+
+---
+
+## The Labour Moved
+
+Before AI-assisted coding, the visible work was often writing.
+
+You read the ticket.
+
+You opened the code.
+
+You found the pattern.
+
+You wrote the change.
+
+You ran tests.
+
+You asked for review.
+
+AI changed part of that.
+
+It can generate a first version quickly.
+
+Sometimes that first version is useful.
+
+Sometimes it is close.
+
+Sometimes it is wrong in ways that look correct until you know the system.
+
+That means the labour did not disappear.
+
+Much of it moved.
+
+From:
+
+> writing the first draft
+
+To:
+
+> verifying whether the draft belongs
+
+That sounds small.
+
+It is not.
+
+Verification is not one action.
+
+It can include:
+
+- reading generated code line by line
+- comparing it with local patterns
+- checking package versions
+- finding invented imports
+- correcting naming conventions
+- checking whether tests prove the right behavior
+- looking for missed edge cases
+- checking security implications<SourceHook sourceId="ai-generated-code-security-risk" sources={directSourceEntries} />
+- checking whether generated documentation overstates certainty
+- asking why a suggestion was made
+- reconstructing context the model did not inspect
+- deciding whether to accept, edit, regenerate, or throw away the output
+
+This is work.
+
+It is cognitive work.
+
+It is delivery work.
+
+It is risk work.
+
+But it often remains unpaid in the mental accounting of AI adoption.
+
+The tool gets credit for the fast draft.
+
+The human absorbs the cost of making it safe enough to use.
+
+That is the tax.
+
+---
+
+## Babysitting Is A Signal
+
+People often describe this feeling as babysitting AI.
+
+That phrase can sound dismissive.
+
+It can also name something real.
+
+Babysitting is what happens when the system can act, but cannot yet be trusted
+to hold the consequences of its action.
+
+A developer asks for a change.
+
+The model produces something plausible.
+
+Then the developer watches it.
+
+Corrects it.
+
+Stops it.
+
+Asks again.
+
+Adds missing context.
+
+Rejects generic patterns.
+
+Repairs the output.
+
+Checks the diff.
+
+Runs tests.
+
+Reads the code again.
+
+That loop can be exhausting.
+
+The point is not that developers are too skeptical.
+
+The point is that the collaboration structure is weak.
+
+If the model is asked to produce before it has inspected enough context, the
+developer becomes the integration layer after the fact.
+
+That is the wrong place to put all the safety.
+
+It is like reviewing the reasoning only after the diff has already taken shape.
+
+Review still matters.
+
+But the cost is higher because the work has already started to harden around an
+ungrounded first answer.
+
+---
+
+## Why The Tax Appears
+
+The verification tax appears when generation happens before grounding.
+
+That can happen in several ways.
+
+### 1. The model answers before the system is inspected
+
+A model can produce a plausible answer from general patterns.
+
+That does not mean it inspected this repository.
+
+It may know a common way to write a service.
+
+It may not know this team's service boundary.
+
+It may know a typical testing pattern.
+
+It may not know which tests in this repository are meaningful, stale, brittle,
+or missing.
+
+It may know a framework API.
+
+It may not know the exact version in use.
+
+The answer can be syntactically correct and locally wrong.
+
+### 2. Generic patterns collide with local reality
+
+Most production systems are not generic.
+
+They have history.
+
+They have conventions.
+
+They have partial migrations.
+
+They have old decisions.
+
+They have constraints that were never written down.
+
+They have tests that encode behavior nobody remembers clearly.
+
+They have documentation that was true once.
+
+They have workflows that reveal what the team actually enforces.
+
+When AI generates from a general pattern, the developer has to check whether the
+local reality agrees.
+
+This is one reason Martin Fowler's site is useful as a source hook here. The
+article "Patterns for Reducing Friction in AI-Assisted Development" names a
+similar friction: developers often skip the collaboration rituals they would use
+with a human teammate, such as onboarding, design discussion, shared standards,
+and context setting. The result is output that may be fast but does not fit.<SourceHook sourceId="ai-collaboration-friction" sources={directSourceEntries} />
+
+That source is not the origin of this practice.
+
+It is a strong software-practice hook for the same structural pressure.
+
+### 3. The draft sounds more confident than the evidence allows
+
+AI-generated output often arrives in a fluent shape.
+
+Fluency creates pressure.
+
+A clean answer feels more complete than a messy uncertainty.
+
+A confident explanation feels like evidence.
+
+A passing test feels like proof.
+
+But in this practice, output is not evidence.
+
+A model can assist reasoning.
+
+It can help inspect.
+
+It can summarize.
+
+It can compare.
+
+It can propose.
+
+But the draft itself is not the ground.
+
+The ground is what can be inspected.
+
+Code.
+
+Tests.
+
+Docs.
+
+Runtime behavior.
+
+Workflows.
+
+Versions.
+
+Architecture decisions.
+
+Security constraints.
+
+Human intent.
+
+If the model cannot show what it inspected, the developer has to reconstruct the
+ground manually.
+
+That is the tax again.
+
+### 4. Accountability stays human
+
+The model does not carry the consequences of the merge.
+
+The developer does.
+
+The reviewer does.
+
+The team does.
+
+The user may do so too.
+
+In some systems, the patient, worker, customer, tenant, student, or affected
+person may carry the cost as well.
+
+This is why distrust can be rational.
+
+In accountable work, a plausible answer is not enough.
+
+The person accepting the change needs confidence that can survive contact with
+the actual system.
+
+---
+
+## Trust Is The Wrong Target
+
+A lot of AI adoption language asks the wrong question:
+
+> how do we get developers to trust AI?
+
+That framing is dangerous.
+
+It implies that distrust is the problem.
+
+It implies that the desired end state is more belief.
+
+But in software delivery, confidence should not come from belief.
+
+It should come from conditions.
+
+Better question:
+
+> what conditions would make an AI-generated draft easier to inspect, constrain,
+> reject, or accept?
+
+That question changes the work.
+
+It moves us away from trust as attitude.
+
+It moves us toward confidence as evidence.
+
+Trust says:
+
+> I believe the tool.
+
+Evidence-grounded confidence says:
+
+> I can see what the tool inspected, what it inferred, what it did not know, and
+> what checks still have to pass.
+
+Those are not the same thing.
+
+The first can become automation theater: the performance of confidence without
+enough visible evidence to challenge the result.
+
+The second can become practice.
+
+---
+
+## Confidence Has A Shape
+
+Confidence is not a mood.
+
+It has a structure.
+
+A generated draft becomes easier to trust when the work around it makes several
+things visible:
+
+- what evidence was inspected
+- what assumptions were made
+- what was inferred rather than verified
+- what remains uncertain
+- what local conventions matter
+- what tests or checks are relevant
+- what could break
+- what decision still belongs to a human
+
+That is why the next step is not better prompting in the generic sense.
+
+The next step is changing the order of work.
+
+Do not begin with:
+
+> write the implementation
+
+Begin with:
+
+> inspect the relevant evidence
+
+This is the first move out of the verification tax.
+
+Not because it removes verification.
+
+It does not.
+
+But it moves part of the work earlier, while the shape is still flexible.
+
+It asks the agent to help build the ground before it builds the answer.
+
+---
+
+## The Smallest Useful Shift
+
+The smallest useful shift is this:
+
+> before asking AI to write code, ask it to inspect.
+
+Not forever.
+
+Not as ceremony.
+
+Not for every tiny task.
+
+But whenever the work touches an existing system where local reality matters.
+
+<ReadingFrame
+  variant="example"
+  label="Small shift"
+  title="Ask for inspection before generation"
+>
+  <p>Use a prompt like this:</p>
+
+  ```text
+  Before writing code, inspect the relevant files and repository context.
+
+  Do not implement yet.
+
+  List:
+
+  1. what you can verify from the repository
+  2. what you are inferring
+  3. what remains uncertain
+  4. which files or checks matter
+  5. what could break if this is changed
+  6. what questions need human confirmation
+
+  Only after that, propose the smallest safe next step.
+  ```
+</ReadingFrame>
+
+This is not magic.
+
+It will not make the model reliable by itself.
+
+It will not remove the need for review.
+
+It does something narrower and more useful:
+
+It makes the gap visible before the draft hardens.
+
+Now the developer can see whether the model actually inspected anything useful.
+
+Now the reviewer can see which assumptions shaped the suggestion.
+
+Now uncertainty has a place to appear.
+
+Now the team can decide whether to proceed, narrow scope, ask a human, or stop.
+
+That is already a different collaboration pattern.
+
+---
+
+## This Requires The Right AI Surface
+
+A plain autocomplete tool is not enough.
+
+Autocomplete can suggest the next line.
+
+It cannot reliably inspect a repository, compare source surfaces, draft a
+verification trace, or explain what evidence a change stands on.
+
+This practice belongs in a reasoning-capable assistant or coding agent workflow:
+one where the agent can read relevant context, inspect files, sustain the task,
+expose uncertainty, and produce a draft reasoning surface for the human to
+review.
+
+That may be an agentic coding environment.
+
+It may be a chat-based reasoning workflow with repository context.
+
+It may be a longer-context thinking model used before implementation.
+
+The vendor matters less than the capability:
+
+> can this tool inspect before it writes, and can it show the human what it used?
+
+If not, narrow the task.
+
+Ask:
+
+> what context would you need before this answer could be trusted?
+
+That is still useful.
+
+It turns the tool from answer machine into context detector.
+
+---
+
+## Let The Agent Draft The Trace
+
+This does not mean the human has to do all the trace work manually.
+
+That would miss the point.
+
+The point of cognitive amplification is not only that an agent can draft code
+faster.
+
+It is that an agent can help surface the reasoning around the code:
+
+- what it inspected
+- what it found
+- what it inferred
+- what it could not verify
+- what checks seem relevant
+- what risks still need human judgment
+- what a reviewer should pay attention to
+
+The human stays in the loop.
+
+But being in the loop should not mean doing all the cognitive cleanup alone.
+
+A better pattern is:
+
+> the agent can draft a reasoning surface, the human reviews and corrects it, and
+> the human owns the decision.
+
+That is different from babysitting.
+
+Babysitting means watching output because the system acted without enough
+grounding.
+
+Cognitive amplification means asking the system to help make its own grounding
+visible before the human accepts the work.
+
+The agent can help draft a verification trace.
+
+The agent can help draft the pull request description around that trace.
+
+The agent can help separate verified, inferred, and uncertain claims.
+
+The agent can propose checks.
+
+The agent can point to files it inspected.
+
+But generated trace is still generated work. It can be incomplete, wrong, or too
+confident. The human still decides whether that trace is honest, sufficient, and
+safe enough for the change being made.
+
+This is human in the loop without making the human the hidden integration engine.
+
+---
+
+## What This Changes In Review
+
+Without grounding, review often becomes a hunt.
+
+The reviewer has to ask:
+
+- where did this come from?
+- why was this pattern chosen?
+- what did the agent assume?
+- what did the developer check?
+- is this test meaningful?
+- is this behavior intended?
+- is this change local or systemic?
+
+With grounding, review can become more targeted.
+
+The reviewer can inspect the trace:
+
+- verified from these files
+- inferred from this pattern
+- uncertain because this behavior is undocumented
+- risk in this boundary
+- check still needed here
+
+That does not make review easy.
+
+But it makes review less mystical.
+
+The reviewer is no longer forced to reverse-engineer the reasoning from the
+final diff alone.
+
+The draft has a visible path.
+
+That path can be challenged.
+
+And if the path does not hold, the draft should not be accepted.
+
+---
+
+## What This Means For Teams
+
+The verification tax is not only an individual developer problem.
+
+It becomes a team problem when every person pays it privately.
+
+One developer learns which prompts work.
+
+Another learns which generated patterns fail.
+
+A reviewer notices the same recurring issue.
+
+A tech lead sees AI-generated changes drifting away from architecture.
+
+A security reviewer sees the same missing checks.
+
+But if those lessons remain private, the team pays the same tax again and again.
+
+The practice begins when repeated verification work becomes shared trace.
+
+That can be small:
+
+- a pull request note that separates verified, inferred, and uncertain
+- a team prompt that asks for inspection before generation
+- a short "do not generate yet" rule for risky areas
+- a source-of-truth note for active architecture decisions
+- a review checklist for AI-assisted changes
+- a test or script for checks that should not depend on memory
+- a record of recurring AI failure patterns
+
+None of this should become process theater.
+
+The goal is not to create more paperwork.
+
+The goal is to stop making each developer rediscover the same risk alone.
+
+---
+
+## A Small Pull Request Pattern
+
+For AI-assisted changes, do not make the human write the whole trace from
+scratch.
+
+Ask the agent to draft a first version of it.
+
+Then the human corrects it.
+
+A useful pull request note can be very small:
+
+<ReadingFrame
+  variant="example"
+  label="Review trace"
+  title="A small pull request note"
+>
+  ```markdown
+  ## Verification Trace
+
+  ### Verified
+  - [What the agent checked directly in the repository.]
+
+  ### Inferred
+  - [What appears likely but was not directly proven.]
+
+  ### Uncertain
+  - [What still needs review, testing, or human confirmation.]
+
+  ### Checks Run
+  - [Commands, tests, manual checks, or not run.]
+
+  ### Human Decision Needed
+  - [What should not be silently delegated to the model.]
+  ```
+</ReadingFrame>
+
+The agent can prepare a first version.
+
+The developer should not treat it as truth.
+
+The developer should treat it as a draft trace: something to inspect, correct,
+shorten, reject, or approve.
+
+Use it where it reduces reviewer uncertainty.
+
+If a few uses show that nobody reads it, nobody challenges it, or it does not
+change the review, drop it or make it smaller.
+
+---
+
+## The Economic Clarity
+
+There is a simple distinction teams should protect:
+
+> time to draft is not time to confidence
+
+AI can reduce time to draft.
+
+That is useful.
+
+But if time to confidence grows, the team may not actually be moving faster.
+
+It may only be moving uncertainty downstream.
+
+This is the trap.
+
+A manager sees output.
+
+A developer sees review debt.
+
+A delivery report sees velocity.
+
+A team feels fragility.
+
+All can be true at the same time.
+
+The question is not whether AI saved time at the first output.
+
+The question is where the cost moved.
+
+Did it move into review?
+
+Debugging?
+
+Security checks?
+
+Context reconstruction?
+
+Senior developer interruptions?
+
+Late rework?
+
+Production risk?
+
+If so, the saved time was not free.
+
+It was redistributed.
+
+The verification tax is the developer-side labour created when that cost lands
+after generation as checking, correction, context reconstruction, and review.
+
+---
+
+## This Is Not Anti-AI
+
+This signal is not an argument against AI-assisted development.
+
+It is an argument against pretending the draft is the work.
+
+AI can help.
+
+It can reduce blank-page friction.
+
+It can expose missing assumptions.
+
+It can compare files.
+
+It can summarize repeated patterns.
+
+It can draft tests.
+
+It can draft pull request notes.
+
+It can help draft verification traces.
+
+It can help explain unfamiliar code.
+
+It can help a tired developer get started.
+
+But the more powerful the tool becomes, the more important the surrounding
+practice becomes.
+
+DORA's 2025 AI-assisted software development report is useful here because it
+frames AI as an amplifier of existing organizational strengths and weaknesses,
+not as a replacement for the underlying system. The returns come from the system
+around the tool, not from the tool alone.<SourceHook sourceId="ai-as-amplifier" sources={directSourceEntries} />
+
+That is exactly the point.
+
+If the team has weak context, AI amplifies weak context.
+
+If the team has hidden conventions, AI amplifies hidden convention problems.
+
+If the team has stale docs, AI may follow stale docs.
+
+If the team has no authority map, AI may treat every surface as equally current.
+
+If the team has no verification discipline, AI output becomes more material to
+verify after the fact.
+
+But if the team makes evidence, assumptions, uncertainty, and checks visible,
+AI can amplify that too.
+
+The question is what we let it amplify.
+
+---
+
+## Non-Claims
+
+This signal does not claim:
+
+- AI coding tools are useless
+- developers should stop using AI
+- all AI-generated code is wrong
+- every generated draft needs heavy process
+- every team needs the same workflow
+- plain autocomplete can do repository inspection
+- skepticism is always correct
+- human-written code is automatically safer
+- verification can be fully automated
+- confidence can be reduced to a checklist
+- source hooks from Stack Overflow, DORA, Martin Fowler, JetBrains, or Veracode are responsible for this practice
+
+The claim is narrower:
+
+> when AI-generated output moves faster than grounded confidence, the missing
+> work does not disappear. It becomes verification labour.
+
+Name that labour.
+
+Move some of it earlier.
+
+Let the agent help draft the trace as a reviewable surface.
+
+Make the trace visible.
+
+Keep the human decision human.
+
+---
+
+## Closing
+
+The next step is not blind trust.
+
+It is not better vibes.
+
+It is not telling developers to get over their skepticism.
+
+The next step is evidence-grounded confidence.
+
+That starts by changing what we ask AI to do first.
+
+Not:
+
+> write the code
+
+But:
+
+> inspect the system
+
+Not:
+
+> give me the answer
+
+But:
+
+> show me what the answer would have to stand on
+
+And when the agent helps produce the work, ask it to help produce the trace.
+
+That shift matters because the verification tax is not only about bad output.
+
+It is about output that arrives without enough ground around it.
+
+Once we can see that, the next move becomes obvious.
+
+Before asking AI to change a repository, ask it to inspect what is actually
+there.
+
+The next signal gives that practice a name:
+
+> forensic onboarding.
+
+---
+
+## Next Signal
+
+> This signal names the verification tax: the hidden checking, correction,
+> review, and context reconstruction work that appears when AI-generated drafts
+> arrive faster than confidence.
+>
+> The next signal turns the first response into a practice:
+>
+> understand what is present before trying to change it.
+>
+> That practice is forensic onboarding.
+>
+> It asks AI to inspect the repository before it writes code, compare source
+> surfaces before it recommends changes, separate observation from inference,
+> and make uncertainty visible before the work hardens into a diff.
+
+---
+
+<SourceLedger sources={directSourceEntries} furtherReading={furtherReadingEntries} />
+
+---
+
+<AnchorMap
+  anchors={waysIntoThisSignal}
+  title="Ways into this signal"
+  intro="Start from the pressure you already recognize, then choose how much context you want next."
+/>
+
+</RegisterContent>
+
+{/*
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+*/}

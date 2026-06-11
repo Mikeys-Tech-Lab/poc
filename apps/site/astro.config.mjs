@@ -263,6 +263,10 @@ export default defineConfig({
                       label: 'A Path Through Integration Lag',
                       slug: 'signals/operational/work-delivery/a-path-through-integration-lag',
                     },
+                    {
+                      label: 'The Verification Tax',
+                      slug: 'signals/operational/work-delivery/the-verification-tax',
+                    },
                   ],
                 },
               ],

@@ -96,4 +96,14 @@ describe('ThemeProvider bootstrap', () => {
     expect(window.location.search).toContain('register=everyday');
     expect(store.get('poc-register')).toBe('everyday');
   });
+
+  it('defaults silently for a fresh visitor with no stored register or URL param', () => {
+    runThemeProviderBootstrap(ORIENTATION_FALLBACK_AVAILABILITY);
+
+    expect(document.documentElement.dataset.register).toBe('practitioner');
+    expect(document.documentElement.dataset.registerResolved).toBe('practitioner');
+    expect(document.documentElement.dataset.registerRequested).toBeUndefined();
+    expect(document.documentElement.dataset.registerFallbackReason).toBeUndefined();
+    expect(document.documentElement.dataset.registerFallbackMessage).toBeUndefined();
+  });
 });

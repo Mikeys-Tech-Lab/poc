@@ -87,10 +87,17 @@ export const resolveRegister = (value, availability = DEFAULT_REGISTER_AVAILABIL
   }
 
   const register = normalizedAvailability.defaultRegister;
-  const reason = requested ? 'unavailable' : 'unknown';
+  // A fresh visitor provides no register (no `?register=` and no stored value).
+  // That is the normal default, not an error, so it stays silent. Only an
+  // actually provided, non-empty value that is not a reading register is
+  // genuinely "unknown" and earns a visible notice.
+  const hasUnknownRequest = !requested && typeof value === 'string' && value.trim() !== '';
+  const reason = requested ? 'unavailable' : hasUnknownRequest ? 'unknown' : null;
   const message = requested
     ? (normalizedAvailability.absent[requested] ?? `${requested} is not available for this page.`)
-    : 'Unknown register requested. Showing the default register.';
+    : hasUnknownRequest
+      ? 'Unknown register requested. Showing the default register.'
+      : null;
 
   return createResolution({
     register,

@@ -14,6 +14,9 @@ and propagation.
 - A non-trivial task is entering Close phase
 - The work was messy, failed, architectural, migratory, or exposed guidance gaps
 - A PR needs an inspectable learning trace beyond ordinary context
+- Reasoning-time corrections during the work changed the plan, revealed a
+  missing guardrail, or showed that the agent's own operating contract was
+  incomplete
 
 ## Trigger classification
 
@@ -31,6 +34,7 @@ Examples:
 - migrations
 - guidance or skill gaps
 - repeated friction with a shared pattern
+- reasoning-time corrections that expose missing runtime guidance
 - research delta worth preserving
 
 ### Recommended
@@ -51,11 +55,14 @@ learning trace instead.
    that started the work.
 3. Capture **activation trace** only if a command or lens materially changed the
    framing, such as `/sensible-defaults`.
-4. Decide whether the work produced durable learning.
-5. If yes, write or update an `Evolution Record` in
+4. Capture **reasoning-time evolution**: mistakes, review corrections, failed
+   checks, operator interventions, and plan changes that happened during the
+   work and changed future behavior.
+5. Decide whether the work produced durable learning.
+6. If yes, write or update an `Evolution Record` in
    `docs/guidance/evolution-records/`.
-6. End the record with a propagation decision.
-7. Carry a bounded summary or link into the PR learning trace.
+7. End the record with a propagation decision.
+8. Carry a bounded summary or link into the PR learning trace.
 
 ## Record rules
 
@@ -65,6 +72,9 @@ learning trace instead.
 - Rename preserved origin artifacts into repo-native language when needed.
 - Do not treat raw chat logs as canonical artifacts.
 - Do not move task-level learning into `continuity/` by default.
+- Do not flatten reasoning-time corrections into "fixed during review." If a
+  correction changed the agent's future operating contract, update the skill,
+  guidance, or check that should have prevented it.
 
 ## Required sections
 
@@ -74,6 +84,7 @@ At minimum, cover:
 
 - origin trace
 - activation trace, if material
+- reasoning-time evolution, if it changed the work
 - what was observed
 - missed assumptions
 - missed guidance

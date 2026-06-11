@@ -112,6 +112,9 @@ If files changed are outside both versioned packages, no version bump occurs.
 - `pnpm test` passes when the branch changes tooling code, shared site modules,
   or `apps/site` content, components, routes, or tests covered by declared
   guardrails.
+- `pnpm --filter site check` passes when the branch changes `apps/site`
+  content, components, or TypeScript modules. The build can pass while
+  type-only imports still fail `astro check`.
 - `git status` is clean.
 
 #### 3e. Create PR

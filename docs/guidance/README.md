@@ -24,6 +24,7 @@ This workspace documents reasoning, not people. Reports, traces, and tooling out
 - [Evolution Records](evolution-records/README.md) — durable learning artifacts produced by `Trace Climb`.
 - [Dependency update operations](dependency-update-operations.md) — target state, policy invariants, queue model, and backlog recovery order for dependency automation.
 - [Licensing surface policy](licensing-surface-policy.md) — how the MIT / CC BY 4.0 split is expressed across tracked markdown-like source files and checked deterministically.
+- [Content register source workflow](content-register-source-workflow.md) — intake boundary for promoted public content, register shape, public metadata, source hooks, and live source verification.
 - [Testing strategy](testing-strategy.md) — the boundary between deterministic CI structure checks, human/source review of meaning, and non-authoritative advisory AI review.
 - [Structural reflection and evolution](structural-reflection-and-evolution.md) — the high-level rule for converting incidents into patterns, guardrails, and workspace changes.
 - [Agent pre-commit verification](agent-pre-commit-verification.md) — reflection on lint-before-commit, accessibility override regressions, assumptions, and mistakes from publication refinements.

@@ -1,34 +1,60 @@
 ---
 title: "A Path Through Integration Lag"
-description: "A practitioner-facing path for keeping AI-assisted work grounded, inspectable, and connected to shared understanding."
+description: "A practitioner-facing path from the integration lag signal to shared, inspectable understanding under AI-assisted delivery."
 register: practitioner
+series: "Integration Lag"
+series_part: 2
+series_label: "Part 2"
 ---
 
 import RegisterContent from '../../../../../../components/RegisterContent.astro';
-import ReadingFrame from '../../../../../../components/ReadingFrame.astro';
 import ShareButton from '../../../../../../components/ShareButton.astro';
+import AnchorMap from '../../../../../../components/AnchorMap.astro';
+import ReadingFrame from '../../../../../../components/ReadingFrame.astro';
+import SourceHook from '../../../../../../components/SourceHook.astro';
+import SourceLedger from '../../../../../../components/SourceLedger.astro';
+import { waysIntoThisSignal } from './a-path-through-integration-lag.ways';
+import { directSourceEntries } from '../../../../../sources/en-us/signals/operational/work-delivery/a-path-through-integration-lag.sources';
 
-<RegisterContent register="orientation/en-us/signals/operational/work-delivery/a-path-through-integration-lag">
+<RegisterContent registers={{
+  everyday: 'everyday/en-us/signals/operational/work-delivery/a-path-through-integration-lag',
+  orientation: 'orientation/en-us/signals/operational/work-delivery/a-path-through-integration-lag'
+}}>
 
 <ShareButton />
 
 Start with [Integration Lag](/en-us/signals/operational/work-delivery/integration-lag/):
 
-**output can move faster than shared understanding.**
+> output can move faster than shared understanding.
 
 The next question is:
 
-**what do we do once we can name it?**
+> what do we do once we can name it?
 
-It is not a framework rollout, a maturity model, or a promise that every person
-or team needs the same workflow.
+Not as a framework rollout.
 
-It is a path for keeping understanding alive while AI-assisted work is still
-moving.
+Not as a maturity model.
 
-### The problem underneath the speed
+Not as a promise that every team needs the same workflow.
 
-AI-assisted work can now produce output faster than ever:
+A path is smaller than that.
+
+
+A path is a repeatable way to keep understanding alive while work is still moving.
+
+It has structure.
+
+But it is not a universal operating model.
+
+Use the parts that reduce hidden work.
+
+Drop the parts that become ceremony.
+
+---
+
+## The Problem Underneath The Speed
+
+Teams can now produce faster than ever:
 
 - code
 - docs
@@ -37,7 +63,8 @@ AI-assisted work can now produce output faster than ever:
 - plans
 - summaries
 - architecture notes
-- plausible explanations of work that has not been fully inspected
+- pull request descriptions
+- implementation options
 
 But shared understanding does not automatically keep pace.
 
@@ -48,6 +75,8 @@ The cost often appears later:
 - rework increases
 - decisions become harder to trace
 - people rely on output they do not fully understand
+- AI-generated drafts require hidden checking work
+- context gets reconstructed privately instead of shared
 
 This is integration lag.
 
@@ -55,11 +84,21 @@ It is not solved by adding more output.
 
 It is reduced by keeping meaning attached to the work before the work hardens.
 
-### The path in one sentence
+The question is not:
 
-> Integration lag shrinks when people repeatedly inspect reality, expose
-misalignment, decide where learning belongs, and verify that the chosen surface
-still matches the work.
+> how do we produce more?
+
+The question is:
+
+> how do we keep output connected to evidence, assumptions, checks, and human decisions?
+
+---
+
+## The Path In One Sentence
+
+Integration lag shrinks when teams repeatedly inspect reality, expose
+misalignment, decide where learning belongs, use AI for visibility, and verify
+that the chosen surface still matches the work.<SourceHook sourceId="continuous-integration-lineage" sources={directSourceEntries} />
 
 That path has eight recurring movements:
 
@@ -74,9 +113,25 @@ That path has eight recurring movements:
 
 This is not a strict sequence.
 
-People and teams loop through it repeatedly.
+Teams loop through it repeatedly.
 
-### 1. Name the lag
+
+The loop is more important than the diagram.
+
+A useful trigger is any moment where confidence becomes more expensive than
+drafting:
+
+- reviewers keep asking where a claim came from
+- docs and code disagree
+- an AI-generated answer looks plausible but nobody can name its evidence
+- the same uncertainty appears in multiple pull requests
+- a change is ready to merge, but the team cannot explain the risk in plain language
+
+That is when the loop should start.
+
+---
+
+## 1. Name The Lag
 
 Before improvement, there is orientation.
 
@@ -86,23 +141,30 @@ Integration lag helps distinguish:
 - output from integration
 - apparent progress from durable progress
 - local success from system coherence
+- generated confidence from grounded confidence
+- agreement from shared understanding
 
 That language matters because it separates structural pressure from individual
 blame.
 
-### 2. Ground in reality
+If a team is shipping faster but reviewing harder, that is not automatically a
+skill problem.
 
-Do not start from what the docs say, what people remember, or what the AI
-summarizes.
+It may be a signal that output is outrunning shared meaning.
+
+---
+
+## 2. Ground In Reality
+
+Do not start from what the docs say.
+
+Do not start from what the team remembers.
+
+Do not start from what the AI summarizes.
 
 Start from what is observable.
 
-This is forensic onboarding:
-
-> understanding a system by inspecting what is actually present before trying to
-> change it.
-
-Forensic onboarding compares:
+Observable surfaces include:
 
 - code
 - documentation
@@ -111,12 +173,22 @@ Forensic onboarding compares:
 - decisions
 - runtime behavior
 - repository history
+- pull requests
+- review comments
+- release notes
 
-The point is not onboarding as social introduction.
+The point is not to distrust people.
 
-The point is onboarding as evidence reconstruction.
+The point is to stop asking memory to carry what the repository can expose.
 
-### 3. Face misalignment
+Before a team asks AI to produce more work, it can ask AI to inspect what is
+already present.
+
+That is the first move from output machine toward visibility instrument.
+
+---
+
+## 3. Face Misalignment
 
 Misalignment is not noise.
 
@@ -128,14 +200,27 @@ Look for gaps between:
 - decisions and implementation
 - AI instructions and repository reality
 - validation expectations and local development
+- generated explanations and inspected evidence
+- pull request claims and actual changes
 
 These gaps are delivery-risk indicators.
 
 Some technical debt is not only messy code.
 
-It is a split between what the system is and what people believe it is.
+It is a split between what the system is and what the team believes it is.<SourceHook sourceId="technical-debt-lineage" sources={directSourceEntries} />
 
-### 4. Maintain understanding
+That split is not only technical. Software systems and communication structures
+shape each other.<SourceHook sourceId="socio-technical-architecture" sources={directSourceEntries} />
+
+AI can make that split louder if it generates from stale docs, old assumptions,
+or generic patterns.
+
+But AI can also help reveal the split if it is asked to compare surfaces before
+it writes.<SourceHook sourceId="ai-collaboration-friction" sources={directSourceEntries} />
+
+---
+
+## 4. Maintain Understanding
 
 Understanding decays.
 
@@ -151,15 +236,28 @@ Move repeatable knowledge into durable surfaces:
 - tests
 - validation scripts
 - source-of-truth maps
-- authority surfaces that show where decisions are allowed to come from
 - workflow files
 - review checklists
+- agent instructions
+- source ledgers
+- stale-surface notes
 
 This does not remove human judgment.
 
 It stops forcing people to carry repeatable process in their heads.
 
-### 5. Let constraints emerge
+The agent can draft some of this trace as a reasoning surface.
+
+That draft can be incomplete or wrong. The human still reviews it, corrects it,
+and owns the decision.
+
+That distinction matters.
+
+Human in the loop should not mean human as hidden cleanup layer.
+
+---
+
+## 5. Let Constraints Emerge
 
 Good constraints are discovered.
 
@@ -173,12 +271,26 @@ Derive constraints from:
 - review bottlenecks
 - production risks
 - integration friction
+- recurring AI failure patterns
+- recurring reviewer questions
 
 Constraints can be advisory, procedural, or enforced.
 
 The distinction matters.
 
-### 6. Use AI differently
+Advisory constraints guide judgment.
+
+Procedural constraints shape the workflow.
+
+Enforced constraints block unsafe change.
+
+Do not enforce what the team does not yet understand.
+
+Do not leave as advice what repeatedly causes harm.
+
+---
+
+## 6. Use AI Differently
 
 AI is not only useful for producing more.
 
@@ -191,12 +303,35 @@ It can help inspect:
 - what docs no longer match
 - what workflows are duplicated
 - what checks should exist
+- what evidence a draft stands on
+- what uncertainty still needs human judgment
 
 The shift is less generation, more visibility.
 
 AI becomes a visibility instrument, not just an output machine.
 
-### 7. Make practice executable
+That matters because AI tends to amplify the system it enters, not replace the
+need for one.<SourceHook sourceId="ai-as-amplifier" sources={directSourceEntries} />
+
+That does not mean the agent becomes authority.
+
+It means the agent helps surface the trace so humans can challenge it earlier.
+
+A useful agent does not only draft the answer.
+
+It drafts the reasoning surface around the answer:
+
+- verified
+- inferred
+- uncertain
+- checks needed
+- human decision needed
+
+That is cognitive amplification with accountability still attached.
+
+---
+
+## 7. Make Practice Executable
 
 Good intentions are not enough.
 
@@ -205,15 +340,13 @@ A repository changes when practice becomes:
 - inspectable
 - repeatable
 - reviewable
-- checkable where possible
+- enforceable where possible
 - visible in the workflow
 - connected to actual delivery
 
-This is where conceptual practice becomes work practice.
+This is where conceptual practice becomes engineering practice.
 
-It is also where this public node makes the path inspectable through public
-signals, reasoning-contract seeds, mandate lenses, source context, and
-repository trace.
+It is also where this public Practice of Clarity node makes the path inspectable.
 
 <ReadingFrame
   variant="example"
@@ -221,7 +354,7 @@ repository trace.
   title="How this stays visible here"
 >
   <p>
-    Here, the connection is small but inspectable: the signal and path follow
+    Here, the connection is small but traceable: the signal and path follow
     stable public routes and are checked so essential boundaries remain visible.
   </p>
   <p>
@@ -235,7 +368,9 @@ repository trace.
   </p>
 </ReadingFrame>
 
-### 8. Keep the loop alive
+---
+
+## 8. Keep The Loop Alive
 
 The path is a loop:
 
@@ -250,49 +385,91 @@ The path is a loop:
 
 The loop is the practice.
 
-### First practical moves
+Not the template.
+
+Not the tool.
+
+Not the model.
+
+The loop.
+
+---
+
+## First Practical Moves
 
 Start small:
 
-1. identify active authority surfaces
+1. identify active governance surfaces
 2. find duplicate or stale instructions
 3. compare docs against actual code
 4. classify checks as advisory, procedural, or enforced
-5. move one repeated review burden into automation where safe
-6. preserve one decision as trace
-7. retire or mark one obsolete authority surface as stale
+5. ask the agent to draft a verified / inferred / uncertain trace
+6. move one repeated review burden into automation or shared guidance
+7. preserve one decision as trace
+8. retire or mark one obsolete authority surface as stale
 
-If AI-assisted coding needs runtime reasoning guidance, start with
-[Sensible Defaults](/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load/).
+If the work needs a ready activation surface, use Sensible Defaults.
 
 If the work needs diagnosis first, stay with the loop above until the real
 constraint becomes visible.
 
-### What comes next
+Do not roll this out as a program.
 
-The next part of this series goes deeper into the first practical move:
+Try it on one real task.
+
+Keep the smallest part that reduces hidden work.<SourceHook sourceId="refactoring-lineage" sources={directSourceEntries} />
+
+---
+
+## What Comes Next
+
+This path eventually leads to forensic onboarding:
 
 > understand what is present before trying to change it.
 
-That practice is forensic onboarding.
+But there is one pressure to name first.
 
-It turns "ground in reality" into a way of entering unfamiliar work: inspect the
-evidence, find the mismatch, name what is still unknown, and only then decide
-what should change.
+Many developers are not refusing AI.
 
-### Non-claims
+They are already using it.
+
+The problem is that trust has not caught up with output.<SourceHook sourceId="developer-trust-gap" sources={directSourceEntries} />
+
+AI helps them move faster, but they still have to check everything.
+
+That hidden checking, correcting, re-reading, and context reconstruction work is
+the verification tax.
+
+The next part of this series names that tax before moving into forensic
+onboarding.
+
+It asks how teams can build confidence in AI-generated drafts without turning
+every developer into a permanent babysitter for generated code.<SourceHook sourceId="ai-generated-code-security-risk" sources={directSourceEntries} />
+
+It also makes one thing explicit:
+
+> the agent can draft a reasoning surface, but the human reviews, corrects, and
+> owns the decision.
+
+---
+
+## Non-Claims
 
 This does not claim:
 
 - AI governance is solved
 - process replaces judgment
-- every person or team needs the same workflow
+- every team needs the same workflow
 - all inherited problems come from AI
 - speed is bad
 - documentation alone is enough
 - validation can encode all meaning
+- agents should be trusted without review
+- source hooks from Martin Fowler, DORA, Stack Overflow, JetBrains, or Veracode are responsible for this practice
 
-### Closing
+---
+
+## Closing
 
 Speed without shared understanding does not scale.
 
@@ -304,11 +481,46 @@ A path through integration lag means:
 - making reasoning visible
 - encoding what can be checked
 - keeping judgment human
+- letting agents draft trace where useful
 - using AI to increase visibility, not just output
 
-The future of AI-assisted work is not just better generation.
+The future of AI-assisted delivery is not just better generation.
 
 It is better integration.
+
+And before teams can get there, we have to name the labour already happening in
+silence: the checking, correcting, re-reading, and context reconstruction that
+happens after AI has already generated the draft.
+
+That is where the next signal begins.
+
+---
+
+## Next Signal
+
+> This signal maps the path through integration lag:
+>
+> inspect reality, expose misalignment, preserve learning, constrain the work,
+> and keep the loop alive.
+>
+> The next signal names the hidden labour that makes this necessary in everyday
+> AI-assisted development:
+>
+> AI helps, but I still have to check everything.
+>
+> That labour is the verification tax.
+>
+> [The Verification Tax: AI Helps, But We Still Check Everything](/en-us/signals/operational/work-delivery/the-verification-tax/)
+
+<SourceLedger sources={directSourceEntries} />
+
+---
+
+<AnchorMap
+  anchors={waysIntoThisSignal}
+  title="Ways into this signal"
+  intro="Start from the pressure you already recognize, then choose how much context you want next."
+/>
 
 </RegisterContent>
 

@@ -82,18 +82,25 @@ const registerAvailability = getRegisterAvailabilityForPath(Astro.url?.pathname 
 					fallbackMessage: everydayToOrientationFallbackMessage,
 				};
 			}
+			// A fresh visitor provides no register (no `?register=` and no stored
+			// value). That is the normal default, not an error, so it stays silent.
+			// Only an actually provided, non-empty value that is not a reading
+			// register is genuinely "unknown" and earns a visible notice.
+			const hasUnknownRequest = !requested && typeof value === 'string' && value.trim() !== '';
+			const fallbackReason = requested ? 'unavailable' : hasUnknownRequest ? 'unknown' : null;
+			const fallbackMessage = requested
+				? absentRegisters[requested] || `${requested} is not available for this page.`
+				: hasUnknownRequest
+					? 'Unknown register requested. Showing the default register.'
+					: null;
 			return {
 				register: defaultRegister,
 				resolved: defaultRegister,
 				requested,
-				reason: requested ? 'unavailable' : 'unknown',
-				fallbackReason: requested ? 'unavailable' : 'unknown',
-				message: requested
-					? absentRegisters[requested] || `${requested} is not available for this page.`
-					: 'Unknown register requested. Showing the default register.',
-				fallbackMessage: requested
-					? absentRegisters[requested] || `${requested} is not available for this page.`
-					: 'Unknown register requested. Showing the default register.',
+				reason: fallbackReason,
+				fallbackReason,
+				message: fallbackMessage,
+				fallbackMessage,
 			};
 		};
 		const isEverydayOrientationFallback = (resolution) =>

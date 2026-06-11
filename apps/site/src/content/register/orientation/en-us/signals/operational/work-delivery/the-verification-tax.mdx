@@ -1,0 +1,162 @@
+---
+title: "The Verification Tax: AI Helps, But We Still Check Everything"
+description: "A bridge into the hidden checking work created when AI drafts arrive faster than grounded confidence."
+register: orientation
+series: "Integration Lag"
+series_part: 3
+series_label: "Part 3"
+---
+
+import ShareButton from '../../../../../../../components/ShareButton.astro';
+import AnchorMap from '../../../../../../../components/AnchorMap.astro';
+import { waysIntoThisSignal } from '../../../../../../docs/en-us/signals/operational/work-delivery/the-verification-tax.ways';
+
+<ShareButton />
+
+## A shorter way in
+
+Many developers are not refusing AI.
+
+They are already using it.
+
+They use it to draft, explain, scaffold, summarize, refactor, and get unstuck.
+
+The problem is not that AI is useless.
+
+The problem is that the draft often arrives before confidence does.
+
+## The work moved
+
+AI can make the first version faster.
+
+But then someone still has to check:
+
+- does this fit the codebase?
+- did it invent an API?
+- did it miss an edge case?
+- did it ignore a local convention?
+- does the test prove the right thing?
+- what did the model assume?
+
+That work is often invisible.
+
+It may look like hesitation from the outside.
+
+But much of it is accountability.
+
+## The verification tax
+
+The verification tax is the checking, correcting, re-reading, debugging, context
+reconstruction, and review work developers pay after AI generates a draft faster
+than the team can trust or explain it.
+
+It is not proof that AI is bad.
+
+It is proof that output speed and confidence speed are not the same thing.
+
+## Trust is the wrong target
+
+A weak adoption question is:
+
+> how do we get developers to trust AI?
+
+A better question is:
+
+> what would make an AI-generated draft easier to inspect, challenge, reject, or accept?
+
+Confidence should come from conditions, not belief.
+
+Those conditions include visible evidence, visible assumptions, named
+uncertainty, relevant checks, and clear human decision points.
+
+## The smallest useful shift
+
+Before asking AI to write code, ask it to inspect.
+
+Use a prompt like:
+
+```text
+Before implementation, inspect the relevant files and repository context.
+Do not implement yet.
+List what is verified, what is inferred, what remains uncertain, which checks matter, and what should not change yet.
+Only after that, propose the smallest safe next step.
+```
+
+This does not remove review.
+
+It moves some of the work earlier, before the draft hardens.
+
+If the agent has access to the relevant source surfaces, use that access as part
+of the inspection.
+
+If it does not, provide the important traces manually: files, constraints,
+decisions, checks, boundaries, and anything that should not change yet.
+
+The point is not to give every agent every tool.
+
+The point is to make the evidence path visible enough for a human to challenge.
+
+## What changes in review
+
+Without grounding, review becomes a hunt.
+
+The reviewer has to reconstruct where the suggestion came from and what the
+developer checked.
+
+With a visible trace, review can be more targeted:
+
+- verified from these files
+- inferred from this pattern
+- uncertain because this behavior is undocumented
+- check still needed here
+- human decision needed here
+
+The trace is still a draft.
+
+The human still owns the decision.
+
+## Where the fuller signal goes
+
+The fuller signal carries the source grounding and field context for why usage
+and distrust can coexist. It shows how checking work moves, why trust is the
+wrong target, how agents can draft trace, and why review burden should become
+reviewable evidence.
+
+This orientation entry does not add new factual claims beyond that public
+grounding.
+
+It keeps the claim simple:
+
+a fast draft is not the same as grounded confidence.
+
+The structural work is to make evidence, assumptions, uncertainty, checks, and
+human decision visible before the draft becomes too easy to accept.
+
+That is also why this work uses registers. Everyday begins close to recognizable
+pressure. Orientation names the structure. Practitioner keeps the fuller trace
+available for inspection.
+
+## What comes next
+
+> This signal names the verification tax:
+>
+> AI helps, but someone still has to check whether the draft belongs.
+>
+> The next move is forensic onboarding:
+>
+> understand what is present before trying to change it.
+>
+> That means asking AI to inspect the repository before it writes code, compare
+> source surfaces before recommending changes, and make uncertainty visible
+> before the work hardens into a diff.
+
+<AnchorMap
+  anchors={waysIntoThisSignal.slice(0, 4)}
+  title="Ways into this signal"
+  intro="If one part of AI-assisted review already feels heavy, start there."
+/>
+
+{/*
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+*/}

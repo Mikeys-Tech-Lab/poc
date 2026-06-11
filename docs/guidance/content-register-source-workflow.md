@@ -1,0 +1,179 @@
+# Content Register Source Workflow
+
+This guidance describes how promoted public-bound content enters the PoC site
+without carrying private drafting state, register drift, or weak source shape.
+
+It is a guidance surface, not a gate. The deterministic checks protect structure.
+Human and source review still own meaning.
+
+## Boundary Model
+
+Public content lives under `apps/site/src/content/**`.
+
+Drafting and handoff state belongs outside that tree. A handoff source may say
+`status: published`, name promotion targets, or carry distribution notes. The
+PoC public content tree must not copy that metadata unless the public content
+schema intentionally changes.
+
+Do not create parallel helper data trees under `apps/site/src/content/**` just
+because the helpers support content rendering. Public content pages live in the
+content collections, source ledgers live in
+`apps/site/src/content/sources/**`, page-owned editorial entry maps live as
+colocated sidecars beside the page they serve, and shared reusable logic stays
+under `apps/site/src/lib/**`.
+
+Public PoC content should be:
+
+- source-clean
+- route-clean
+- license-clean
+- register-clean
+
+That means the page is placed in the right collection, exposes only public
+frontmatter, has a valid license notice, appears in the route/register model
+when needed, and uses the right source presentation for its register.
+
+## Register Shape
+
+Practitioner pages carry the most trace. They may include detailed evidence,
+limits, source hooks, source ledgers, and implementation-facing specificity.
+Any practitioner signal page that renders a repeated "Ways into this signal"
+entry surface should use the shared `AnchorMap` card format rather than a raw
+Markdown table. Keep the card data in a colocated `*.ways.ts` sidecar next to
+the practitioner MDX page so the editorial map stays with its owning page. This
+keeps entry points visually consistent across signal families without creating a
+second content authority.
+
+Orientation pages bridge the concept step by step. They should not inherit
+practitioner source density unless a factual claim would become unsafe without
+the citation.
+
+Everyday pages start from recognizable situations. They should stay light,
+plain, and usable. Do not turn everyday register pages into citation tables.
+
+Missing register variants are explicit states. Do not scaffold empty placeholder
+pages just to satisfy a shape.
+
+Glossary links should reduce conceptual load without turning prose into a link
+cloud. Link the first meaningful occurrence of a glossary term on a page, or in
+a long page section, when the term is doing conceptual work. Do not auto-link
+every matching word. Prefer anchors in `/en-us/about/glossary/` for recurring
+practice terms such as source context, context seeder, public node, registers,
+trace, seeds, and mandate lenses.
+
+## Source Shape
+
+Source-heavy practitioner pages use inline `SourceHook` references and one
+`SourceLedger`, not raw Markdown source tables.
+
+Source data lives in locale-owned, page-scoped modules:
+
+```text
+apps/site/src/content/sources/<locale>/<content-path>/<page>.sources.ts
+```
+
+The source module is a public evidence surface for that locale. It is not an
+English-owned appendix.
+
+Future locale source modules are peer editions. If a locale reuses an
+English-language source, make that reuse explicit in the locale module. If a
+locale substitutes a culturally, legally, or institutionally local source, that
+is legitimate and traceable.
+
+Time-bound claims need a maintenance posture. When a source-heavy page cites a
+dated survey, annual report, legal update, or fast-moving field signal, keep the
+claim explicitly scoped to that source and year. Treat it as a future refresh
+surface, not permanent background truth.
+
+Source IDs are unique within a page module. Do not create a central source
+registry unless a real retrieval or publishing need appears.
+
+Declare direct source entries in the order they are first cited in the page.
+The footnote number a reader sees is the source's position in the
+`directSourceEntries` array, and the ledger numbers the same way. If the array
+order does not match the citation order, footnotes read out of sequence in the
+text. This is easy to break during migration, when sources are lifted from a
+Markdown table that carried a different order. When you add a new inline
+`SourceHook`, place its entry at the matching position in the array, not at the
+end. Further reading entries are numbered independently and are not cited
+inline, so they follow their own intended order.
+
+## Contract Surfaces
+
+Use the repo's lightweight schema layer:
+
+- `apps/site/src/content.config.ts` defines public content frontmatter shape.
+- `apps/site/src/lib/route-map.js` defines route and register availability.
+- `apps/site/src/content/sources/types.ts` defines shared source entry shape.
+- `apps/site/src/lib/__tests__/route-map.test.ts` checks route/register integrity.
+- `apps/site/src/lib/__tests__/register-boundaries.test.ts` protects named register boundaries.
+- `apps/site/src/lib/__tests__/source-contract.test.ts` checks source module structure and hook declarations.
+- The same source contract test asserts footnote numbering reads in order: the
+  first-citation order of inline `sourceId`s must match the declared
+  `directSourceEntries` order.
+- The same source contract test may protect repeated presentation boundaries
+  such as the `AnchorMap` entry-card format when a promoted signal family has an
+  established pattern, including the requirement that page-owned entry maps stay
+  in local `*.ways.ts` sidecars.
+- It also guards against accidental parallel content-helper trees such as
+  `apps/site/src/content/operational/**`.
+- `pnpm license:check` checks markdown-like source license surfaces.
+
+Do not add JSON schemas only to formalize internal TypeScript data. Add a JSON
+schema only if an external consumer needs one.
+
+## Verification Boundary
+
+Deterministic tests may check:
+
+- unique direct source IDs within a page module
+- further reading IDs distinct from direct source IDs
+- public `https://` href shape
+- non-empty bounded `supports`, `limits`, and `note` fields
+- every inline `SourceHook` `sourceId` is declared
+- inline citation order matches declared source order so footnotes ascend in the text
+- private drafting metadata is absent from public content frontmatter
+- repeated entry-point sections use the established shared component format
+  instead of drifting back to ad hoc tables
+
+Deterministic tests must not claim:
+
+- a source proves an article
+- an article is publishable
+- source interpretation is correct
+- live URLs are always reachable
+
+Live source reachability is a publication verification step. Browser inspection
+is also required for source-hook loops and register switching because those are
+reader-facing behaviors, not only data contracts.
+
+## Intake Checklist
+
+For promoted public-bound content:
+
+1. Identify the public route, locale, and register surfaces.
+2. If an existing public page is being rewritten, compare it against `main`
+   before and after editing for visible render surfaces: examples, callout boxes,
+   activation prompts, imports, and reader actions. Do not let a prose rewrite
+   silently flatten a component-backed affordance into plain text or remove it.
+3. Remove private drafting or handoff metadata before writing public content.
+4. Verify the route/register model and sidebar entry if the page is public.
+5. Keep orientation and everyday pages lightweight unless a claim needs a source.
+6. Add restrained glossary links for first meaningful uses of recurring practice
+   terms when they reduce conceptual load.
+7. Mark dated claims mentally as future refresh surfaces; keep the claim scoped
+   to its source and year.
+8. Put repeated practitioner "Ways into this signal" sections behind the shared
+   `AnchorMap` fed by a colocated `*.ways.ts` sidecar.
+9. Put practitioner source-heavy claims behind inline source hooks and a ledger.
+10. Run deterministic checks first.
+11. Run `pnpm --filter site check` for site content/module changes. A build can
+   pass while type-only imports still fail Astro's type check.
+12. Then verify source reachability and local browser behavior.
+13. Only call the branch publishable after both structural checks and reader-facing
+   inspection pass.
+
+<!--
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+-->

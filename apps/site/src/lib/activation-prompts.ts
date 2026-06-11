@@ -2,16 +2,16 @@ export const SEEDER_URL =
   'https://raw.githubusercontent.com/Mikeys-Tech-Lab/poc/main/mandateLenses/SensibleDefaults/context-seeder.md';
 
 export const ACTIVATION_COMPATIBILITY =
-  'Paste one of these into any reasoning-capable language model, thinking-capable agent, IDE agent, or comparable execution environment.';
+  'Paste one of these into a reasoning-capable model, thinking-capable agent, IDE agent, or comparable environment that can sustain context, inspect source material, follow extended guidance, and expose uncertainty.';
 
 export const ACTIVATION_INCOMPATIBILITY =
   'This is for runtime loading, not blind training, scraping, or passive ingestion.';
 
 export const ACTIVATION_BOUNDARY =
-  'Reading about the system is not activation. Operational grounding begins only when the seeder and canonical artifacts are loaded.';
+  'Reading about the system is not activation. Operational grounding begins only when the seeder and canonical artifacts are loaded into a tool that can actually work with that context.';
 
 export const ACTIVATION_DATA_BOUNDARY =
-  'If you are using a third-party model or agent, do not paste secrets, sensitive internal data, or operator-specific values. Describe the task in safe terms and keep private values outside the prompt.';
+  'If you are using a third-party model or agent, do not paste secrets, sensitive internal data, client details, private URLs, credentials, internal hostnames, or operator-specific values. Describe the task in safe terms and keep private values outside the prompt.';
 
 export const SEEDER_VERSION_NOTE =
   'This seeder points to the current version of the work. It may evolve over time and can be inspected directly.';
