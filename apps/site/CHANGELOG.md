@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.4.0...site-v2.5.0) (2026-06-11)
+
+
+### Features
+
+* **docs:** promote integration lag register triad ([#240](https://github.com/Mikeys-Tech-Lab/poc/issues/240)) ([385f328](https://github.com/Mikeys-Tech-Lab/poc/commit/385f3289e3d4a291187854c78a9552291a30626d))
+
 ## [2.4.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.3.6...site-v2.4.0) (2026-05-25)
 
 
