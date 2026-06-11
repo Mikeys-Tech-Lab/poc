@@ -6,6 +6,7 @@
 **Scope:** architecture | guidance
 **Origin trace:** operator reported a live-site bug: opening the site in a fresh Chrome or DuckDuckGo session showed an "Unknown register requested. Showing the default register." notice
 **Activation trace:** none
+**Runtime propagation:** enforced — shipped tests pin the absent-vs-invalid register fallback. On-demand caution lives in `.cursor/skills/astro-starlight/SKILL.md`
 **Related PR:** #240 (fix shipped); this record pending its own PR
 
 ## Why this record exists
@@ -82,6 +83,22 @@ copies share the same defect.
 2. When logic is intentionally duplicated between an inline bootstrap and a
    shared module, the parity test should exercise the same input matrix through
    both, including the empty/absent case, not just one representative scenario.
+
+## Runtime propagation
+
+`enforced` plus `on-demand`.
+
+- `enforced` — the regression tests shipped in #240 pin both the silent-default
+  path and the still-visible invalid path, so this specific defect cannot recur
+  unnoticed.
+- `on-demand` — the generalizable heuristic (absence is not invalidity) lives as
+  a caution in `.cursor/skills/astro-starlight/SKILL.md`, loaded when work enters
+  Astro or Starlight resolver territory.
+
+This demonstrates a mixed class: one lesson can be both enforced by a test and
+carried as an on-demand heuristic. The full trace stays in this record. The skill
+carries only the smallest reusable rule plus a pointer back here
+(pointer-not-payload).
 
 ## Research delta
 
