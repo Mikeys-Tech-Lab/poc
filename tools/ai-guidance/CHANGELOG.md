@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.1](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.7.0...ai-guidance-v0.7.1) (2026-06-11)
+
+
+### Code Refactoring
+
+* **ai:** rename Trace Climb command to Trace, Reflect and Evolve ([#253](https://github.com/Mikeys-Tech-Lab/poc/issues/253)) ([a1e8853](https://github.com/Mikeys-Tech-Lab/poc/commit/a1e8853d199b232c6d373c490023daa531348c45))
+
 ## [0.7.0](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.6.8...ai-guidance-v0.7.0) (2026-06-11)
 
 
