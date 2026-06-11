@@ -54,6 +54,13 @@ plain, and usable. Do not turn everyday register pages into citation tables.
 Missing register variants are explicit states. Do not scaffold empty placeholder
 pages just to satisfy a shape.
 
+Glossary links should reduce conceptual load without turning prose into a link
+cloud. Link the first meaningful occurrence of a glossary term on a page, or in
+a long page section, when the term is doing conceptual work. Do not auto-link
+every matching word. Prefer anchors in `/en-us/about/glossary/` for recurring
+practice terms such as source context, context seeder, public node, registers,
+trace, seeds, and mandate lenses.
+
 ## Source Shape
 
 Source-heavy practitioner pages use inline `SourceHook` references and one
@@ -72,6 +79,11 @@ Future locale source modules are peer editions. If a locale reuses an
 English-language source, make that reuse explicit in the locale module. If a
 locale substitutes a culturally, legally, or institutionally local source, that
 is legitimate and traceable.
+
+Time-bound claims need a maintenance posture. When a source-heavy page cites a
+dated survey, annual report, legal update, or fast-moving field signal, keep the
+claim explicitly scoped to that source and year. Treat it as a future refresh
+surface, not permanent background truth.
 
 Source IDs are unique within a page module. Do not create a central source
 registry unless a real retrieval or publishing need appears.
@@ -147,14 +159,18 @@ For promoted public-bound content:
 3. Remove private drafting or handoff metadata before writing public content.
 4. Verify the route/register model and sidebar entry if the page is public.
 5. Keep orientation and everyday pages lightweight unless a claim needs a source.
-6. Put repeated practitioner "Ways into this signal" sections behind the shared
+6. Add restrained glossary links for first meaningful uses of recurring practice
+   terms when they reduce conceptual load.
+7. Mark dated claims mentally as future refresh surfaces; keep the claim scoped
+   to its source and year.
+8. Put repeated practitioner "Ways into this signal" sections behind the shared
    `AnchorMap` fed by a colocated `*.ways.ts` sidecar.
-7. Put practitioner source-heavy claims behind inline source hooks and a ledger.
-8. Run deterministic checks first.
-9. Run `pnpm --filter site check` for site content/module changes. A build can
+9. Put practitioner source-heavy claims behind inline source hooks and a ledger.
+10. Run deterministic checks first.
+11. Run `pnpm --filter site check` for site content/module changes. A build can
    pass while type-only imports still fail Astro's type check.
-10. Then verify source reachability and local browser behavior.
-11. Only call the branch publishable after both structural checks and reader-facing
+12. Then verify source reachability and local browser behavior.
+13. Only call the branch publishable after both structural checks and reader-facing
    inspection pass.
 
 <!--

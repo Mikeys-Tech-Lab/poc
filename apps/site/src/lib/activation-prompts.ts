@@ -11,7 +11,7 @@ export const ACTIVATION_BOUNDARY =
   'Reading about the system is not activation. Operational grounding begins only when the seeder and canonical artifacts are loaded.';
 
 export const ACTIVATION_DATA_BOUNDARY =
-  'If you are using a third-party model or agent, do not paste secrets, sensitive internal data, or operator-specific values. Describe the task in safe terms and keep private values outside the prompt.';
+  'If you are using a third-party model or agent, do not paste secrets, sensitive internal data, client details, private URLs, credentials, internal hostnames, or operator-specific values. Describe the task in safe terms and keep private values outside the prompt.';
 
 export const SEEDER_VERSION_NOTE =
   'This seeder points to the current version of the work. It may evolve over time and can be inspected directly.';

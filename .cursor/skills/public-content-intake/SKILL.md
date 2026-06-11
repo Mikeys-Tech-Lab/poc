@@ -24,7 +24,11 @@ that boundary.
 7. Keep repeated practitioner entry maps in colocated `*.ways.ts` sidecars.
 8. For source-heavy practitioner pages, use `SourceHook` and `SourceLedger`.
 9. Keep orientation and everyday pages lightweight unless a claim needs a source.
-10. Run deterministic checks before browser or live-source review.
+10. Add restrained glossary links for first meaningful uses of recurring
+    practice terms when they reduce conceptual load.
+11. Keep dated survey, report, legal, and field-signal claims scoped to their
+    source and year so they remain visible as future refresh surfaces.
+12. Run deterministic checks before browser or live-source review.
 
 ## Public Metadata Boundary
 
@@ -65,6 +69,14 @@ Any practitioner page that renders "Ways into this signal" should keep that
 page-owned editorial map in a colocated `*.ways.ts` sidecar next to the
 practitioner page. Do not move it into a parallel
 `apps/site/src/content/operational/**` tree or a generic `src/lib/**` drawer.
+
+## Glossary Boundary
+
+Use glossary links to lower conceptual load, not to decorate prose. Link the
+first meaningful occurrence of a recurring term on a page or long section when
+the term is doing conceptual work. Do not auto-link every match. Prefer
+`/en-us/about/glossary/` anchors for terms such as source context, context
+seeder, public node, registers, trace, seeds, and mandate lenses.
 
 ## Verification Routing
 
