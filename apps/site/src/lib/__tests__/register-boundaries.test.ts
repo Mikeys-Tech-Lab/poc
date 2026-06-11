@@ -62,11 +62,11 @@ const cases = [
       'apps/site/src/content/register/orientation/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
     practitionerSnippets: [
       'first usable runtime guidance surface in',
-      'If the source context is not loaded, the lens is not active.',
+      'If the source context is not loaded, or the tool cannot work with it',
     ],
     orientationSnippets: [
       'first usable runtime guidance surface in',
-      'If the source context cannot be loaded, the lens is not active.',
+      'If the source context cannot be loaded, or the tool cannot work with it',
     ],
   },
   {
@@ -86,8 +86,9 @@ const cases = [
       'Integration lag is the delay between producing change and integrating that change into shared understanding.',
       'The issue is that AI can make unresolved uncertainty look complete.',
       'Can we name what this change stands on?',
-      '<ActivationPrompts',
-      'That is the verification tax.',
+      'The practice is to make the trace inspectable before the draft becomes too easy',
+      'Everyday begins close to recognizable',
+      '<AnchorMap',
     ],
   },
   {
@@ -107,10 +108,11 @@ const cases = [
     orientationSnippets: [
       'The next question is:',
       'Not a framework.',
-      'ask it to help inspect what already exists.',
+      'That inspection can include a source inventory',
       'This does not replace human judgment.',
       '<ReadingFrame',
-      'If the work needs a ready way to try the practice',
+      'Everyday begins close to recognizable',
+      '<AnchorMap',
       'That pressure is [The Verification Tax]',
     ],
   },
@@ -124,14 +126,16 @@ const cases = [
       'The verification tax is the extra checking, correcting, re-reading, debugging,',
       'confidence should not come from belief.',
       '<ReadingFrame',
-      'The agent can draft the verification trace.',
+      'The agent can help draft a verification trace.',
       'This signal is not an argument against AI-assisted development.',
     ],
     orientationSnippets: [
       'The verification tax is the checking, correcting, re-reading, debugging,',
       'Confidence should come from conditions, not belief.',
       'Before asking AI to write code, ask it to inspect.',
+      'If the agent has access to the relevant source surfaces',
       'The human still owns the decision.',
+      '<AnchorMap',
     ],
   },
 ] as const;

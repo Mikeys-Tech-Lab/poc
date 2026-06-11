@@ -8,6 +8,8 @@ series_label: "Part 2"
 ---
 
 import ShareButton from '../../../../../../../components/ShareButton.astro';
+import AnchorMap from '../../../../../../../components/AnchorMap.astro';
+import { waysIntoThisSignal } from '../../../../../../docs/en-us/signals/operational/work-delivery/a-path-through-integration-lag.ways';
 
 <ShareButton />
 
@@ -20,6 +22,11 @@ Once you can name integration lag, the next question is simple:
 The answer is not to create a big new system.
 
 The answer is to keep understanding attached to the work while the work is moving.
+
+That can be small.
+
+It can start before the next prompt, the next ticket, the next pull request, or
+the next meeting.
 
 ## The loop
 
@@ -52,9 +59,16 @@ That can mean looking at:
 
 This helps separate what is known from what is guessed.
 
+It also changes the role of the tool.
+
+The tool is no longer only producing an answer.
+
+It is helping the team see what the answer would have to stand on.
+
 ## Keep the learning outside one person's head
 
-If the same problem keeps coming back, the team should not make every person rediscover it alone.
+If the same problem keeps coming back, the team should not make every person
+rediscover it alone.
 
 The learning can live in:
 
@@ -67,6 +81,9 @@ The learning can live in:
 The goal is not more paperwork.
 
 The goal is less hidden work.
+
+When the learning has a place to live, the next person does not have to rebuild
+the whole situation from memory.
 
 ## Use AI differently
 
@@ -82,13 +99,43 @@ It can also help make things visible:
 
 That is a better starting point than asking for a full answer too early.
 
-## Where to go next
+It also protects the human decision.
 
-The next doorway names a pressure many developers already know:
+The agent can draft a trace surface.
 
+That draft can be wrong or incomplete. The person still decides whether the
+trace is honest, useful, and enough for the work at hand.
+
+## The next register
+
+This is the doorway into the path.
+
+It starts with a plain loop: look, notice, name, place, check, prune, repeat.
+
+The next layer names more of the structure: observable surfaces, mismatch,
+learning surfaces, and the use of AI for visibility.
+
+The fullest layer keeps the full trace, source surface, and working detail.
+
+The claim should stay connected across all three. The language changes so people
+can enter at different depths; the responsibility to leave a visible path does
+not.
+
+## What comes next
+
+> This signal gives a path through integration lag.
+>
+> The next signal names a pressure many developers already know:
+>
 > AI helps, but I still have to check everything.
+>
+> That pressure is the verification tax.
 
-That is [The Verification Tax](/en-us/signals/operational/work-delivery/the-verification-tax/).
+<AnchorMap
+  anchors={waysIntoThisSignal.slice(0, 4)}
+  title="Ways into this signal"
+  intro="Start from the part of the path that would reduce hidden work first."
+/>
 
 {/*
 Copyright © 2026 Mikey Sebastian Drozd.

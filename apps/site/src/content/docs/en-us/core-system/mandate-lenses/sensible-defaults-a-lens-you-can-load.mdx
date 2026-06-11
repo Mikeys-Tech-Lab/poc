@@ -56,6 +56,11 @@ This lens only starts working when its [source context](/en-us/about/glossary/#s
 is brought into a live LLM reasoning environment with a model or agent capable
 of following extended guidance and sustaining a longer reasoning task.
 
+If the model or agent cannot sustain context, inspect source material, follow
+extended guidance, or expose uncertainty, the lens is not active in the intended
+sense. It may still help with a small question, but it is not carrying this
+practice.
+
 That context is not only the seeder. It relies on the reasoning-contract seeds
 behind the practice, the lens text, and the context seeder that carries relevant
 source context into use.
@@ -108,7 +113,8 @@ starting point.
 If you want to try it in another project, do not load the whole set by default.
 Extract the relevant parts and pair them with the project's own source context.
 
-If the source context is not loaded, the lens is not active.
+If the source context is not loaded, or the tool cannot work with it in the
+bounded way described above, the lens is not active.
 
 ### Activation prompts
 

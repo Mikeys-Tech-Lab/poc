@@ -561,8 +561,9 @@ It cannot reliably inspect a repository, compare source surfaces, draft a
 verification trace, or explain what evidence a change stands on.
 
 This practice belongs in a reasoning-capable assistant or coding agent workflow:
-one where the agent can read relevant context, inspect files, reason across the
-task, and produce a draft trace for the human to review.
+one where the agent can read relevant context, inspect files, sustain the task,
+expose uncertainty, and produce a draft reasoning surface for the human to
+review.
 
 That may be an agentic coding environment.
 
@@ -611,8 +612,8 @@ But being in the loop should not mean doing all the cognitive cleanup alone.
 
 A better pattern is:
 
-> the agent drafts the trace, the human reviews the trace, and the human owns the
-> decision.
+> the agent can draft a reasoning surface, the human reviews and corrects it, and
+> the human owns the decision.
 
 That is different from babysitting.
 
@@ -622,18 +623,19 @@ grounding.
 Cognitive amplification means asking the system to help make its own grounding
 visible before the human accepts the work.
 
-The agent can draft the verification trace.
+The agent can help draft a verification trace.
 
-The agent can draft the pull request description around that trace.
+The agent can help draft the pull request description around that trace.
 
-The agent can separate verified, inferred, and uncertain claims.
+The agent can help separate verified, inferred, and uncertain claims.
 
 The agent can propose checks.
 
 The agent can point to files it inspected.
 
-But the human still decides whether that trace is honest, sufficient, and safe
-enough for the change being made.
+But generated trace is still generated work. It can be incomplete, wrong, or too
+confident. The human still decides whether that trace is honest, sufficient, and
+safe enough for the change being made.
 
 This is human in the loop without making the human the hidden integration engine.
 
@@ -721,7 +723,7 @@ The goal is to stop making each developer rediscover the same risk alone.
 For AI-assisted changes, do not make the human write the whole trace from
 scratch.
 
-Ask the agent to draft it.
+Ask the agent to draft a first version of it.
 
 Then the human corrects it.
 
@@ -752,7 +754,7 @@ A useful pull request note can be very small:
   ```
 </ReadingFrame>
 
-The agent can prepare this.
+The agent can prepare a first version.
 
 The developer should not treat it as truth.
 
@@ -839,7 +841,7 @@ It can draft tests.
 
 It can draft pull request notes.
 
-It can draft verification traces.
+It can help draft verification traces.
 
 It can help explain unfamiliar code.
 
@@ -898,7 +900,7 @@ Name that labour.
 
 Move some of it earlier.
 
-Let the agent draft the trace.
+Let the agent help draft the trace as a reviewable surface.
 
 Make the trace visible.
 

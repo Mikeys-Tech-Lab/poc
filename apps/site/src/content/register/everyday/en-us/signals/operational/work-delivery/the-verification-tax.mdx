@@ -8,6 +8,8 @@ series_label: "Part 3"
 ---
 
 import ShareButton from '../../../../../../../components/ShareButton.astro';
+import AnchorMap from '../../../../../../../components/AnchorMap.astro';
+import { waysIntoThisSignal } from '../../../../../../docs/en-us/signals/operational/work-delivery/the-verification-tax.ways';
 
 <ShareButton />
 
@@ -24,6 +26,12 @@ It can explain something.
 But then you still have to check it.
 
 That checking can become the real work.
+
+This is why a person can use AI every day and still feel tired by it.
+
+The help is real.
+
+The extra checking is real too.
 
 ## What moved
 
@@ -43,11 +51,19 @@ The work did not always disappear.
 
 Sometimes it moved from writing into checking.
 
+That checking may not show up in a planning board.
+
+It may not look like progress.
+
+But it is often the work that keeps a plausible answer from becoming an unsafe
+decision.
+
 ## The verification tax
 
 The verification tax is the hidden work of making an AI draft safe enough to use.
 
-It includes checking, correcting, re-reading, debugging, rebuilding context, and reviewing.
+It includes checking, correcting, re-reading, debugging, rebuilding context, and
+reviewing.
 
 This does not mean AI is bad.
 
@@ -71,6 +87,9 @@ A useful answer should show:
 - what still needs checking
 - what decision belongs to a person
 
+That question protects the human from becoming the hidden integration layer
+after the draft has already hardened.
+
 ## A small prompt to try
 
 Before asking AI to implement something, ask:
@@ -84,13 +103,48 @@ This will not make AI perfect.
 
 It can make the work easier to inspect before it becomes a finished-looking draft.
 
-## Where to go next
+If the agent has access to the right source context, ask it to use that access
+before it writes.
 
-The next practice is forensic onboarding:
+If it does not, give it the relevant traces manually: files, constraints,
+decisions, checks, and anything that should not change yet.
 
+The point is not tool access for its own sake.
+
+The point is that the answer should stand on something visible.
+
+## The next register
+
+This is the doorway into the signal.
+
+It starts from the common feeling: AI helps, but now someone has to check
+everything.
+
+The next layer names more of the structure: moved labor, earned confidence,
+visible trace, and human decision.
+
+The fullest layer keeps the full trace, source surface, and working detail.
+
+The claim should stay connected across all three. The language changes so people
+can enter at different depths; the responsibility to leave a visible path does
+not.
+
+## What comes next
+
+> This signal names the verification tax:
+>
+> the hidden checking work that appears when AI drafts arrive faster than
+> confidence.
+>
+> The next practice is forensic onboarding:
+>
 > understand what is already present before trying to change it.
 
-That is how teams start reducing the verification tax without pretending review can disappear.
+<AnchorMap
+  anchors={waysIntoThisSignal.slice(0, 4)}
+  title="Ways into this signal"
+  intro="Start from the part of AI-assisted work where checking already feels heavy."
+/>
 
 {/*
 Copyright © 2026 Mikey Sebastian Drozd.

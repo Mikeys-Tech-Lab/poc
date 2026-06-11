@@ -7,8 +7,9 @@ series_part: 1
 series_label: "Part 1"
 ---
 
-import ActivationPrompts from '../../../../../../../components/ActivationPrompts.astro';
 import ShareButton from '../../../../../../../components/ShareButton.astro';
+import AnchorMap from '../../../../../../../components/AnchorMap.astro';
+import { waysIntoThisSignal } from '../../../../../../docs/en-us/signals/operational/work-delivery/integration-lag.ways';
 
 <ShareButton />
 
@@ -74,61 +75,76 @@ The goal is not more process.
 
 The goal is to make the work easier to inspect before it becomes expensive to change.
 
-## Example
+## What this changes
 
-A task looks simple.
+This does not mean every task needs a heavy ritual.
 
-After applying this approach:
+It means the team has a small test for whether shared understanding is present.
 
-- important work appears
-- risks become visible
-- effort changes
+If people can name the evidence, assumptions, checks, and human decision in
+roughly the same way, the work has a visible path.
 
-Nothing new was invented.
+If they cannot, the team has found the lag before it becomes hidden rework.
 
-It was made visible earlier.
+That matters because AI can make plausible output arrive before the path around
+that output is visible.
 
-## Try it
+## The small practice
 
-No adoption is required.
+Try this once on a real change.
 
-Just try it once.
+Before asking for implementation, ask the person or agent to inspect first.
 
-Take one task.
+Ask for a short trace:
 
-Before starting, ask:
+- what evidence was inspected
+- what was inferred
+- what remains uncertain
+- which checks matter
+- what decision still belongs to a human
 
-- what might we be missing?
-- what are we assuming?
+Then decide whether to proceed, narrow the task, ask a question, or stop.
 
-If this public entry already gave you enough context, use this minimal activation
-prompt with relevant [source context](/en-us/about/glossary/#source-context) in a
-compatible model or agent:
+The practice is not to trust the trace automatically.
 
-<ActivationPrompts
-  variant="minimal-only"
-  title="Minimal activation prompt"
-  minimalTitle="Minimal activation prompt"
-  intro="Use this in a compatible model or agent that can work with source context. In another project, bring only the relevant source context. Do not load the whole PoC posture unless the work is actually about this PoC node."
-/>
+The practice is to make the trace inspectable before the draft becomes too easy
+to accept.
 
-For the fuller public entry, go to [Sensible Defaults](/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load/).
+## Where the fuller signal goes
+
+The fuller signal carries the source grounding and delivery context. It connects
+integration lag to CI/CD lineage, technical debt, developer trust gaps, AI as
+amplifier, and the difference between produced output and grounded confidence.
+
+This orientation entry does not add new factual claims beyond that public
+grounding.
+
+It keeps the claim simple:
+
+work can move faster than understanding.
+
+The structural work is to keep evidence, assumptions, checks, and human decision
+visible before agreement becomes a substitute for shared understanding.
+
+That is also why this work uses registers. Everyday begins close to recognizable
+pressure. Orientation names the structure. Practitioner keeps the fuller trace
+available for inspection.
 
 ## What comes next
 
-This signal names the condition:
-
+> This signal names the condition:
+>
 > output can move faster than shared understanding.
+>
+> The next signal gives the path through it:
+>
+> [A Path Through Integration Lag](/en-us/signals/operational/work-delivery/a-path-through-integration-lag/).
 
-The next signal gives the path through it:
-
-[A Path Through Integration Lag](/en-us/signals/operational/work-delivery/a-path-through-integration-lag/).
-
-After that path, the series names the pressure many developers already know:
-
-> AI helps, but I still have to check everything.
-
-That is the verification tax.
+<AnchorMap
+  anchors={waysIntoThisSignal.slice(0, 4)}
+  title="Ways into this signal"
+  intro="If one part of delivery pressure is already touching your work, start there."
+/>
 
 {/*
 Copyright © 2026 Mikey Sebastian Drozd.

@@ -9,6 +9,8 @@ series_label: "Part 2"
 
 import ReadingFrame from '../../../../../../../components/ReadingFrame.astro';
 import ShareButton from '../../../../../../../components/ShareButton.astro';
+import AnchorMap from '../../../../../../../components/AnchorMap.astro';
+import { waysIntoThisSignal } from '../../../../../../docs/en-us/signals/operational/work-delivery/a-path-through-integration-lag.ways';
 
 <ShareButton />
 
@@ -45,6 +47,10 @@ The loop matters more than the diagram.
 
 It starts whenever confidence becomes more expensive than drafting.
 
+That is the signal that the work needs more than another generated output.
+
+It needs a clearer path around what already exists.
+
 ## Start from what is observable
 
 Do not begin only from what people remember.
@@ -64,7 +70,16 @@ Begin with what is actually present:
 
 That first move changes the role of AI.
 
-Instead of asking it to produce more immediately, ask it to help inspect what already exists.
+Instead of asking it to produce more immediately, ask it to help inspect what
+already exists.
+
+That inspection can include a source inventory, a short authority map, a list of
+contradictions, and a `do not change yet` boundary.
+
+The point is not to slow everything down.
+
+The point is to avoid accepting a confident answer before the repository reality
+has been seen.
 
 ## Make the hidden work visible
 
@@ -80,9 +95,12 @@ Those gaps are not personal failure.
 
 They are delivery-risk signals.
 
+They tell the team where understanding is not yet attached to the work.
+
 ## Keep understanding in the work
 
-Understanding fades when people leave, deadlines compress, docs grow stale, and AI-generated volume rises.
+Understanding fades when people leave, deadlines compress, docs grow stale, and
+AI-generated volume rises.
 
 So repeatable knowledge needs somewhere to live:
 
@@ -96,6 +114,12 @@ So repeatable knowledge needs somewhere to live:
 This does not replace human judgment.
 
 It stops forcing every person to carry the same hidden context alone.
+
+AI can help here, too, but the role should stay bounded.
+
+Let the agent draft what it inspected, inferred, and could not verify.
+
+Then let the human correct that trace and own the decision.
 
 ## Where this is visible here
 
@@ -121,20 +145,42 @@ There are also checks that keep important boundaries visible.
   </p>
 </ReadingFrame>
 
+## Where the fuller signal goes
+
+The fuller signal carries the complete loop and source grounding. It shows how
+the path connects to integration practice, source-of-truth surfaces, review
+trace, and AI-assisted repository inspection.
+
+This orientation entry does not add new factual claims beyond that public
+grounding.
+
+It keeps the claim simple:
+
+naming the lag is not enough.
+
+The structural work is to keep understanding attached to delivery while the work
+is still moving.
+
+That is also why this work uses registers. Everyday begins close to recognizable
+pressure. Orientation names the structure. Practitioner keeps the fuller trace
+available for inspection.
+
 ## What comes next
 
-If the work needs a ready way to try the practice, go to
-[Sensible Defaults](/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load/).
-
-This path eventually leads to forensic onboarding:
-
-> understand what is present before trying to change it.
-
-But before that, the series names one pressure already happening in everyday AI-assisted work:
-
+> This signal gives a path through integration lag.
+>
+> The next signal names one pressure already happening in everyday AI-assisted
+> work:
+>
 > AI helps, but I still have to check everything.
+>
+> That pressure is [The Verification Tax](/en-us/signals/operational/work-delivery/the-verification-tax/).
 
-That pressure is [The Verification Tax](/en-us/signals/operational/work-delivery/the-verification-tax/).
+<AnchorMap
+  anchors={waysIntoThisSignal.slice(0, 4)}
+  title="Ways into this signal"
+  intro="If one part of the path is already visible in your work, start there."
+/>
 
 {/*
 Copyright © 2026 Mikey Sebastian Drozd.
