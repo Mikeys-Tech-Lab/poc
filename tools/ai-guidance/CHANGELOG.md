@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.8](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.6.7...ai-guidance-v0.6.8) (2026-06-11)
+
+
+### Miscellaneous
+
+* **deps:** update test tooling non-major ([#245](https://github.com/Mikeys-Tech-Lab/poc/issues/245)) ([23c7f81](https://github.com/Mikeys-Tech-Lab/poc/commit/23c7f81eaaa6e594036c038b1c68595c25a2feda))
+
 ## [0.6.7](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.6.6...ai-guidance-v0.6.7) (2026-06-11)
 
 
