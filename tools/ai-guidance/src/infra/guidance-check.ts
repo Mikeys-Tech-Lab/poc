@@ -89,11 +89,26 @@ const main = async () => {
     ),
   );
 
+  const evolutionRecordPaths = [...repoFiles].filter(
+    (filePath) =>
+      filePath.startsWith('docs/guidance/evolution-records/') && filePath.endsWith('.md'),
+  );
+
+  const evolutionRecords = Object.fromEntries(
+    await Promise.all(
+      evolutionRecordPaths.map(async (filePath) => [
+        filePath,
+        await readFile(resolve(REPO_ROOT, filePath), 'utf-8'),
+      ]),
+    ),
+  );
+
   const input: GuidanceCheckInput = {
     files,
     repoFiles,
     repoDirectories,
     changedFiles: await loadChangedFiles(process.argv.slice(2)),
+    evolutionRecords,
   };
 
   const result = runGuidanceDriftGuard(input);
