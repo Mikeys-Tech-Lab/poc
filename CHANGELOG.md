@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.17.4...PoC-v1.18.0) (2026-06-11)
+
+
+### Features
+
+* **ai:** make trace climb propagation runtime-cost aware ([#250](https://github.com/Mikeys-Tech-Lab/poc/issues/250)) ([28380b9](https://github.com/Mikeys-Tech-Lab/poc/commit/28380b94074911035a64e3b7214c9398339c6e5b))
+
 ## [1.17.4](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.17.3...PoC-v1.17.4) (2026-06-11)
 
 
