@@ -6,7 +6,7 @@
 **Scope:** workspace
 **Origin trace:** A close-phase reflection after the runtime-propagation work and the `Trace, Reflect and Evolve` rename opened into a coherence audit of the workspace's continuity, runtime, and legacy surfaces. The audit asked whether the workspace was still internally consistent. It found inventory drift across several hand-maintained guidance surfaces.
 **Activation trace:** Run as a full trace, reflection, and evolution flow. No mandate lens was loaded.
-**Runtime propagation:** enforced — the guidance drift guard now reconciles the skill, rule, and continuity inventories against filesystem reality in CI (presence-only). Prevent-at-source pointers and generated-artifact elimination are the committed-next propagation in a follow-up PR. See `docs/guidance/trace-reflect-and-evolve.md` for the ladder.
+**Runtime propagation:** enforced — the guidance drift guard now reconciles the skill, rule, and continuity inventories against filesystem reality in CI (presence-only). Prevent-at-source pointers and generated-artifact elimination landed in PR #257. See `docs/guidance/trace-reflect-and-evolve.md` for the ladder.
 **Related PR:** https://github.com/Mikeys-Tech-Lab/poc/pull/255
 
 ## Why this record exists
@@ -82,10 +82,9 @@ The classification is deliberately bounded into three modes:
 - Prevent-at-source tells a future agent how not to create the drift during the
   task. Those pointers (broadening the `ai-guidance.md` "How to extend" note to
   all skills and rules, and a rename or inventory heuristic in the
-  `github-automation` Close phase) are the committed-next propagation in the
-  follow-up PR.
+  `github-automation` Close phase) landed in PR #257.
 - Eliminate removes surfaces that should not be maintained at all. The generated
-  `docs/ai/` reports are addressed in the same follow-up PR.
+  `docs/ai/` reports were removed and gitignored in PR #257.
 
 Smallest reusable rule carried to the runtime surfaces: when the same fact lives
 in more than one hand-maintained place, single-source it, generate it, or add a
