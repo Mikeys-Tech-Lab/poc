@@ -32,7 +32,7 @@ const axePages = [
 test.describe('accessibility (axe)', () => {
   for (const { url, register, label } of axePages) {
     test(`no critical a11y violations: ${label}`, async ({ page }) => {
-      const target = register === 'orientation' ? `${url}?register=orientation` : url;
+      const target = `${url}?register=${register}`;
       await page.goto(target);
       await page.waitForLoadState('domcontentloaded');
 

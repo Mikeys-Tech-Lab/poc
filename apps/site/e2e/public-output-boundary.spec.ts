@@ -3,7 +3,7 @@ import { extname } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { expect, test } from '@playwright/test';
 import { directSourceEntries } from '../src/content/sources/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.sources';
-import { ESSAY_HREF } from '../src/lib/structural/essay-route';
+import { buildEssayHref } from '../src/lib/structural/essay-route';
 
 const distRoot = new URL('dist/', `${pathToFileURL(process.cwd()).href}/`);
 interface LeakPattern {
@@ -126,7 +126,9 @@ const toDistRelativePath = (file: URL) =>
 
 test.describe('public output boundary', () => {
   test('article source markers render declared reader-facing labels', async ({ page }) => {
-    await page.goto(ESSAY_HREF);
+    // Source markers live in the canonical practitioner essay; the route now
+    // defaults to everyday, so request practitioner explicitly.
+    await page.goto(buildEssayHref('practitioner', { explicit: true }));
 
     for (const [index, source] of directSourceEntries.entries()) {
       await expect(page.getByRole('link', { name: `Open source: ${source.title}` })).toHaveText(

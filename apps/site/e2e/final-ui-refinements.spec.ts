@@ -97,7 +97,7 @@ test.describe('final ui refinements', () => {
       const page = await context.newPage();
 
       try {
-        await page.goto(infoPath);
+        await page.goto(`${infoPath}?register=practitioner`);
         await page.waitForLoadState('domcontentloaded');
 
         await expect(page.locator('.license-notice .provenance')).toContainText(

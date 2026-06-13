@@ -51,8 +51,8 @@ describe('route map', () => {
   it('declares register availability for every route', () => {
     for (const entry of ROUTE_MAP) {
       expect(entry).not.toHaveProperty('hasRegisterPair');
-      expect(entry.registerAvailability.defaultRegister).toBe('practitioner');
       if (threeRegisterRouteIds.includes(entry.id as (typeof threeRegisterRouteIds)[number])) {
+        expect(entry.registerAvailability.defaultRegister).toBe('everyday');
         expect(entry.registerAvailability.available).toEqual([
           'everyday',
           'orientation',
@@ -62,6 +62,7 @@ describe('route map', () => {
         continue;
       }
 
+      expect(entry.registerAvailability.defaultRegister).toBe('orientation');
       expect(entry.registerAvailability.available).toEqual(['practitioner', 'orientation']);
       expect(entry.registerAvailability.absent).toEqual({
         everyday: 'Everyday is not available for this page yet.',
@@ -71,14 +72,14 @@ describe('route map', () => {
 
   it('resolves register availability by route id', () => {
     expect(getRegisterAvailabilityForRouteId('about-what-this-is')).toMatchObject({
-      defaultRegister: 'practitioner',
+      defaultRegister: 'everyday',
       available: ['everyday', 'orientation', 'practitioner'],
     });
   });
 
   it('resolves register availability by localized path', () => {
     expect(getRegisterAvailabilityForPath('/en-us/about/what-this-is/')).toMatchObject({
-      defaultRegister: 'practitioner',
+      defaultRegister: 'everyday',
       available: ['everyday', 'orientation', 'practitioner'],
       absent: {},
     });
@@ -86,7 +87,7 @@ describe('route map', () => {
 
   it('enables all three registers for the node inspection about page', () => {
     expect(getRegisterAvailabilityForPath('/en-us/about/how-to-inspect-this-node/')).toEqual({
-      defaultRegister: 'practitioner',
+      defaultRegister: 'everyday',
       available: ['everyday', 'orientation', 'practitioner'],
       absent: {},
     });
@@ -94,7 +95,7 @@ describe('route map', () => {
 
   it('enables all three registers for the structural overview', () => {
     expect(getRegisterAvailabilityForPath('/en-us/signals/structural/')).toEqual({
-      defaultRegister: 'practitioner',
+      defaultRegister: 'everyday',
       available: ['everyday', 'orientation', 'practitioner'],
       absent: {},
     });
@@ -106,7 +107,7 @@ describe('route map', () => {
         '/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier/',
       ),
     ).toEqual({
-      defaultRegister: 'practitioner',
+      defaultRegister: 'everyday',
       available: ['everyday', 'orientation', 'practitioner'],
       absent: {},
     });

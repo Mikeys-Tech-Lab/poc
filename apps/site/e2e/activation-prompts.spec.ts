@@ -6,12 +6,12 @@ const activationPages = [
 ] as const;
 
 const architectureVariants = [
-  '/en-us/about/architecture/',
+  '/en-us/about/architecture/?register=practitioner',
   '/en-us/about/architecture/?register=orientation',
 ] as const;
 
 const pageVariants = activationPages.flatMap((url) => [
-  { label: 'practitioner', url },
+  { label: 'practitioner', url: `${url}?register=practitioner` },
   { label: 'orientation', url: `${url}?register=orientation` },
 ]);
 

@@ -131,7 +131,11 @@ const registerAvailability = getRegisterAvailabilityForPath(Astro.url?.pathname 
 			delete document.documentElement.dataset.registerFallbackReason;
 			delete document.documentElement.dataset.registerFallbackMessage;
 		}
-		if (resolution.requested && typeof localStorage !== 'undefined') {
+		// Persist the resolved register on every load so a silent per-page default
+		// becomes sticky: the gentlest register a reader lands on carries across
+		// navigation, and a page without it shows the fallback notice instead of
+		// switching silently. See ADR 0010.
+		if (typeof localStorage !== 'undefined') {
 			localStorage.setItem('poc-register', getPreferredRegister(resolution));
 		}
 		if (urlRegister || isEverydayOrientationFallback(resolution)) {
