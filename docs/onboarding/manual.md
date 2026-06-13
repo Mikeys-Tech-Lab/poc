@@ -39,7 +39,7 @@ If you are new to this repo and reading without AI assistance, this is the recom
 
 5. **[Contributing](contributing.md)** — GitHub Flow, Conventional Commits, feature lifecycle with a reflect-before-PR step, and the dependency update queue model. PRs are reasoning traces, not just changelogs.
 
-6. **[Trace, Reflect and Evolve](trace-reflect-and-evolve.md)** — how non-trivial work becomes durable learning, when to preserve an `Evolution Record`, and when a short skip trace is enough.
+6. **[Trace, Reflect and Evolve](trace-reflect-and-evolve.md)** — how non-trivial work becomes durable learning, when to preserve an `Evolution Record`, when a short skip trace is enough, and how each lesson's runtime propagation is classified so it changes future reasoning.
 
 7. **[Infrastructure and environments](infrastructure.md)** — three deployment environments with layered protection. This page is intentionally high-level. The deep docs are in `docs/infra/`.
 

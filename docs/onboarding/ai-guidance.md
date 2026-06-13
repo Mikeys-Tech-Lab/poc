@@ -112,9 +112,11 @@ These files contain minimal content. They tell the agent to read `AGENTS.md` for
 
 ## How to extend
 
-To add a new rule: create a `.mdc` file in `.cursor/rules/`. Declare it as an adaptation of `AGENTS.md`. Set the appropriate scope (always-apply or file-scoped).
+To add a new rule: create a `.mdc` file in `.cursor/rules/`. Declare it as an adaptation of `AGENTS.md`. Set the appropriate scope (always-apply or file-scoped). Add it to the **Current rules** table above in the same PR — the guidance drift guard fails CI if a rule is missing from its enumeration.
 
-To add a new skill: create a directory in `.cursor/skills/` with a `SKILL.md` file. Follow the structure of existing skills (frontmatter with name and description, "When to use" section, capability alignment checks).
+To add a new skill: create a directory in `.cursor/skills/` with a `SKILL.md` file. Follow the structure of existing skills (frontmatter with name and description, "When to use" section, capability alignment checks). Add it to the **Current skills** table above in the same PR — the guard enforces this presence too.
+
+Adding a `continuity/*.md` doc works the same way: list it in the `continuity/README.md` "What belongs here" section, or the guard fails. Removing any of these means removing the matching enumeration entry. This is presence-only reconciliation — see the [inventory reconciliation record](../guidance/evolution-records/2026-06-13-guidance-inventory-reconciliation-guard.md).
 
 If the new skill changes repo-entry contracts such as onboarding, Evolution Arc, or Trace, Reflect and Evolve, update the mapped docs and guidance surfaces in the same PR so the deterministic guard still reflects reality.
 
