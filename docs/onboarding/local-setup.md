@@ -26,7 +26,7 @@ Other commands:
 | `pnpm run build` | Production build of the docs site |
 | `pnpm run preview` | Preview the production build locally |
 | `pnpm license:check` | Verify tracked markdown-like source files expose the repo's license split explicitly |
-| `pnpm test` | Run tooling tests (Vitest) |
+| `pnpm test` | Run unit and content-guardrail tests across packages (Vitest) |
 | `pnpm run test:coverage` | Run tests with coverage |
 | `pnpm screendump` | Build the site, export desktop/tablet/mobile screenshots for both atmospheric themes, and create a versioned zip in `.dist/` |
 

@@ -69,6 +69,7 @@ Audit the branch for issues the work introduced or exposed:
 - **Dead code**: search for unused exports, unreferenced files, or orphaned config.
 - **Broken or missing links**: check all content pages for unlinked repo references, wrong URLs, or stale paths.
 - **Skill and doc drift**: does the work introduce patterns, conventions, or constraints not yet documented in skills, rules, or `AGENTS.md`?
+- **Cross-surface rename**: if the work renamed an identifier that spans surfaces (a skill or rule name, a command, a path), change every surface in the same PR. The guard's pinned snippets and `TARGET_FILES` move in lockstep, do a full token sweep, and update current-state pointers even inside dated records while leaving their historical narrative intact. Worked example: `docs/guidance/evolution-records/2026-06-11-rename-trace-climb-to-trace-reflect-and-evolve.md`.
 - **Trace, Reflect and Evolve**: classify the work as `required`, `recommended`, or `skip allowed`. If `required` or chosen, write or update an `Evolution Record` in `docs/guidance/evolution-records/`, preserve substantive origin handovers and material activation steps, and end with a propagation decision.
 - **ADR needed?** Does this work involve a structural decision that meets the ADR criteria (`docs/decisions/README.md`)? If yes, write or update an ADR in the same PR.
 - **Path verification**: verify all doc surface paths referenced in the PR description or plan are still valid. Do not reference files that have moved or do not exist.
@@ -189,13 +190,12 @@ Deployments are triggered by `release: types: [published]`, not `push: branches:
 
 ### Semver guidance
 
-Follow semver:
+Follow semver per package. The three packages version independently and sit at
+different maturity levels, so do not assume a single workspace-wide version state.
 
-- **Patch** (`0.1.0` → `0.1.1`): bug fixes, minor content corrections, dependency updates
-- **Minor** (`0.1.0` → `0.2.0`): new features, significant content additions, theme changes
-- **Major** (`0.x.y` → `1.0.0`): reserved for first stable release or breaking changes
-
-The workspace is pre-1.0. Minor bumps are cheap.
+- **Patch** (`x.y.z` → `x.y.(z+1)`): bug fixes, minor content corrections, dependency updates
+- **Minor** (`x.y.z` → `x.(y+1).0`): new features, significant content additions, theme changes
+- **Major** (`x.y.z` → `(x+1).0.0`): breaking changes. For a package still in `0.x`, the first stable release is also a major bump to `1.0.0`.
 
 ## Conventional Commits
 

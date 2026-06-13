@@ -34,7 +34,7 @@ flowchart TD
   Agents -->|"thin pointer"| Copilot[.github/copilot-instructions.md]
 
   Agents -->|"capability checks"| Tooling[tools/ai-guidance/]
-  Tooling -->|"auditable reports"| DocsAI[docs/ai/]
+  Tooling -->|"local reports (gitignored)"| DocsAI[docs/ai/]
   Tooling -->|"informs"| CursorSkills
   Tooling -->|"guidance drift validator"| Onboarding
   Tooling -->|"guidance drift validator"| EvolutionArcGuide
@@ -136,7 +136,7 @@ flowchart TD
 | `docs/guidance/evolution-records/` | Durable learning artifacts produced by Trace, Reflect and Evolve | Exists |
 | `docs/architecture/` | Architecture docs + this canonical diagram | Exists |
 | `docs/decisions/` | Architecture Decision Records (ADRs) — structural rationale with trace | Exists |
-| `docs/ai/` | Capability alignment reports (generated) | Exists |
+| `docs/ai/` | Capability alignment reports, generated locally and gitignored. Only `docs/ai/README.md` is committed | Exists |
 | `tools/ai-guidance/` | pnpm + TS + Vitest tooling for capability checks, deterministic guidance drift validation, and license surface validation | Exists |
 | `apps/site/` | Astro Starlight frontend | Exists |
 | `apps/site/src/content/docs/` | Practitioner site content collection | Exists |

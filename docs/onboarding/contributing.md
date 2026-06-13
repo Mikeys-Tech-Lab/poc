@@ -52,7 +52,7 @@ The Close phase matters. Before creating a PR:
 - Check that docs, skills, and rules are updated if the work introduced new patterns
 - Verify naming conventions and file organization are consistent
 - Run `Trace, Reflect and Evolve` for non-trivial work and classify the branch as `required`, `recommended`, or `skip allowed`
-- If `Trace, Reflect and Evolve` is required or chosen, write or update an `Evolution Record` in `docs/guidance/evolution-records/` and carry the bounded learning trace into the PR
+- If `Trace, Reflect and Evolve` is required or chosen, write or update an `Evolution Record` in `docs/guidance/evolution-records/`, declare its runtime propagation (archive-only, on-demand, canon, or enforced), and carry the bounded learning trace into the PR
 
 The `github-automation` skill (`.cursor/skills/github-automation/SKILL.md`) has the detailed lifecycle.
 

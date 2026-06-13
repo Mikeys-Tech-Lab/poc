@@ -63,6 +63,9 @@ pnpm cursor:check      # Check Cursor capability signals
 pnpm capability:check  # Aggregate capability checks
 ```
 
+`cursor:check` and `capability:check` write reports to `docs/ai/`. Those outputs
+are generated locally and gitignored — never commit them. See `docs/ai/README.md`.
+
 ---
 © 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).  
 Source: https://github.com/Mikeys-Tech-Lab/poc/blob/main/.cursor/skills/node-tooling/SKILL.md

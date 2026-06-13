@@ -51,6 +51,19 @@ Typical `skip allowed` cases:
 - direct updates to canon, skills, docs, PR template, or tests
 - an ADR handoff when the lesson is really a structural decision
 
+## Runtime propagation
+
+A captured lesson only matters if it changes future reasoning. Each record names
+where the lesson lives, choosing the cheapest effective layer:
+
+- `archive-only` — preserve the trace, no runtime change warranted
+- `on-demand` — a skill or doc a future task loads when relevant
+- `canon` — always-on guidance such as `AGENTS.md` or an always-apply rule
+- `enforced` — a deterministic check that fails CI on regression
+
+Each surface carries the one-line rule and a pointer to the record, not the whole
+incident. Authoritative flow: `docs/guidance/trace-reflect-and-evolve.md`.
+
 ## What it does not do
 
 - it does not preserve raw chat logs as canon

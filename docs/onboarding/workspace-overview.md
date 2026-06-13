@@ -4,7 +4,7 @@ What lives where, and how the pieces relate.
 
 ## Monorepo structure
 
-This is a pnpm workspace with two packages and a shared root:
+This is a pnpm workspace with two packages (`apps/site` and `tools/ai-guidance`) and a versioned root (`PoC`):
 
 ```
 poc/
@@ -24,7 +24,7 @@ poc/
 │   ├── guidance/              # Principles, workflow conventions, and durable learning records
 │   ├── practices/             # Derived explainers and bridge docs
 │   ├── infra/                 # Environment runbooks and protection layers
-│   └── ai/                    # Generated capability reports
+│   └── ai/                    # Generated capability reports (local, gitignored)
 ├── .cursor/
 │   ├── rules/                 # Always-apply and file-scoped rules
 │   └── skills/                # Per-task agent skills, including onboarding, Evolution Arc, Trace, Reflect and Evolve, and on-demand lens loading
@@ -46,7 +46,7 @@ poc/
 - **`apps/site/`** is the Astro Starlight frontend. Its content evolves independently from seeds.
 - **`docs/practices/`** is descriptive and derived. It can bridge into a lens package, but it is not the runtime source of truth for that lens.
 - **Default workspace bootstrap** is repo-native: `AGENTS.md`, `seeds/`, and `continuity/` ground fresh development chats before any on-demand lens is loaded.
-- **`tools/ai-guidance/`** produces capability reports written to `docs/ai/`.
+- **`tools/ai-guidance/`** produces capability reports written to `docs/ai/`, generated locally and gitignored (not committed).
 - **`docs/`** is for repo-level documentation. It is not site content. `docs/onboarding/` holds repo-native entry paths such as `onboard me`, `Evolution Arc`, and `Trace, Reflect and Evolve`, while `docs/guidance/evolution-arc.md` curates the history trace and `docs/guidance/trace-reflect-and-evolve.md` defines the durable learning flow.
 - **`.local/config.md`** holds gitignored operator-specific local values. Template: `.local.example.md`. Populated local config is not a normal agent input.
 - **`renovate.json`** drives routine dependency updates across the workspace. `.github/dependabot.yml` is narrowed to security-only behavior.
