@@ -7,7 +7,7 @@
 **Origin trace:** A close-phase reflection after the runtime-propagation work and the `Trace, Reflect and Evolve` rename opened into a coherence audit of the workspace's continuity, runtime, and legacy surfaces. The audit asked whether the workspace was still internally consistent. It found inventory drift across several hand-maintained guidance surfaces.
 **Activation trace:** Run as a full trace, reflection, and evolution flow. No mandate lens was loaded.
 **Runtime propagation:** enforced — the guidance drift guard now reconciles the skill, rule, and continuity inventories against filesystem reality in CI (presence-only). Prevent-at-source pointers and generated-artifact elimination are the committed-next propagation in a follow-up PR. See `docs/guidance/trace-reflect-and-evolve.md` for the ladder.
-**Related PR:** pending
+**Related PR:** https://github.com/Mikeys-Tech-Lab/poc/pull/255
 
 ## Why this record exists
 
