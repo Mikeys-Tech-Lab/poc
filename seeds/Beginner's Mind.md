@@ -132,12 +132,12 @@ It does not replace verification.
 
 Current seed set:
 
-- [A Living Practice of Clarity](./A Living Practice of Clarity.md)
-- [Practice Foundations](./Practice Foundations.md)
-- [Beginner’s Mind](./Beginner's Mind.md)
-- [A Bridge Between Conflicting Nodes](./A Bridge Between Conflicting Nodes.md)
-- [Voice of Guidance](./Voice of Guidance.md)
-- [Translation and Register Guidance](./Translation and Register Guidance.md)
+- [A Living Practice of Clarity](./A%20Living%20Practice%20of%20Clarity.md)
+- [Practice Foundations](./Practice%20Foundations.md)
+- [Beginner’s Mind](./Beginner's%20Mind.md)
+- [A Bridge Between Conflicting Nodes](./A%20Bridge%20Between%20Conflicting%20Nodes.md)
+- [Voice of Guidance](./Voice%20of%20Guidance.md)
+- [Translation and Register Guidance](./Translation%20and%20Register%20Guidance.md)
 
 The same texts are fully readable on the public site. The public site is the primary reading surface, and the repository remains the deeper inspectable source of authorship, history, and licensing.
 
