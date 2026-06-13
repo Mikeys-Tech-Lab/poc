@@ -427,10 +427,10 @@ Onboarding pages summarize and link. Deep docs hold authoritative procedures. If
 This workspace uses a two-layer guard for `onboard me`, `Evolution Arc`, and
 `Trace, Reflect and Evolve`:
 
-- A **blocking deterministic validator** checks path integrity, topic index consistency, explicit mapping contracts, and referenced guidance surfaces.
+- A **blocking deterministic validator** checks path integrity, topic index consistency, explicit mapping contracts, referenced guidance surfaces, and inventory reconciliation: every `.cursor/skills/*`, `.cursor/rules/*.mdc`, and non-audit `continuity/*.md` must appear in its enumeration — the skill and rule tables in `docs/onboarding/ai-guidance.md`, and the `continuity/README.md` "What belongs here" list.
 - A **non-blocking advisory review** uses an AI reasoning layer over inspectable repo traces to surface broader drift, missing reflection, or missing guidance evolution.
 
-The blocking layer must stay explicit and checkable. It must not fail on interpretation, tone, or inferred intent.
+The blocking layer must stay explicit and checkable. It must not fail on interpretation, tone, or inferred intent. Inventory reconciliation is presence-only and CI-only: it reconciles explicit enumerations against filesystem reality and does not judge prose completeness, diagram quality, or whether a surface is well-explained. The guard checks stable string presence, not table structure, so it must not be over-tightened into a structured inventory parser. `docs/architecture/workspace.md` is deliberately left out of this gate, because it declares itself descriptive and not a compliance artifact.
 
 The advisory layer must stay advisory. It is a visibility mechanism, not a scoring or compliance system.
 

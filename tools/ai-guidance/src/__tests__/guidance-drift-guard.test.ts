@@ -106,7 +106,7 @@ describe('runGuidanceDriftGuard', () => {
     'docs/onboarding/manual.md':
       'Say "onboard me", "Evolution Arc", or "Trace, Reflect and Evolve".',
     'docs/onboarding/ai-guidance.md':
-      'Use `onboard me`, `evolution-arc`, and `trace-reflect-and-evolve`.',
+      'Use `onboard me`, `evolution-arc`, and `trace-reflect-and-evolve`. Skills: `onboarding`, `github-automation`.',
     'docs/onboarding/contributing.md': 'Run Trace, Reflect and Evolve. Include Learning trace.',
     'docs/onboarding/evolution-arc.md': 'Choose register. Read `docs/guidance/evolution-arc.md`.',
     'docs/onboarding/trace-reflect-and-evolve.md':
@@ -307,6 +307,113 @@ describe('runGuidanceDriftGuard', () => {
         'docs/guidance/evolution-records/README.md': 'No field here.',
         'docs/guidance/evolution-records/template.md': 'No field here either.',
       },
+      changedFiles: [],
+    });
+
+    expect(result.failures).toEqual([]);
+  });
+
+  it('passes when skills, rules, and continuity docs are all enumerated', () => {
+    const files = buildCompleteContractFiles();
+    files['docs/onboarding/ai-guidance.md'] += ' Rules: `engineering.mdc`. Skills: `node-tooling`.';
+    files['continuity/README.md'] =
+      'What belongs here: `vision-anchor.md`. Audits via the `*.audit.md` pattern.';
+    const repoFiles = buildRepoFiles(files);
+    repoFiles.add('.cursor/rules/engineering.mdc');
+    repoFiles.add('.cursor/skills/node-tooling/SKILL.md');
+    repoFiles.add('continuity/vision-anchor.md');
+    repoFiles.add('continuity/system-orientation.audit.md');
+    repoFiles.add('continuity/README.md');
+
+    const result = runGuidanceDriftGuard({
+      files,
+      repoFiles,
+      repoDirectories,
+      evolutionRecords: {},
+      changedFiles: [],
+    });
+
+    expect(result.failures).toEqual([]);
+  });
+
+  it('fails when a skill is missing from the AI guidance inventory', () => {
+    const files = buildCompleteContractFiles();
+    const repoFiles = buildRepoFiles(files);
+    repoFiles.add('.cursor/skills/conversational-voice/SKILL.md');
+
+    const result = runGuidanceDriftGuard({
+      files,
+      repoFiles,
+      repoDirectories,
+      evolutionRecords: {},
+      changedFiles: [],
+    });
+
+    expect(result.failures).toEqual([
+      {
+        scope: 'docs/onboarding/ai-guidance.md',
+        message: 'Skill "conversational-voice" is not listed in docs/onboarding/ai-guidance.md.',
+      },
+    ]);
+  });
+
+  it('fails when a rule is missing from the AI guidance inventory', () => {
+    const files = buildCompleteContractFiles();
+    const repoFiles = buildRepoFiles(files);
+    repoFiles.add('.cursor/rules/engineering.mdc');
+
+    const result = runGuidanceDriftGuard({
+      files,
+      repoFiles,
+      repoDirectories,
+      evolutionRecords: {},
+      changedFiles: [],
+    });
+
+    expect(result.failures).toEqual([
+      {
+        scope: 'docs/onboarding/ai-guidance.md',
+        message: 'Rule "engineering.mdc" is not listed in docs/onboarding/ai-guidance.md.',
+      },
+    ]);
+  });
+
+  it('fails when a continuity doc is missing from the continuity inventory', () => {
+    const files = buildCompleteContractFiles();
+    files['continuity/README.md'] = 'What belongs here: `vision-anchor.md`.';
+    const repoFiles = buildRepoFiles(files);
+    repoFiles.add('continuity/guidance-architecture.md');
+    repoFiles.add('continuity/README.md');
+
+    const result = runGuidanceDriftGuard({
+      files,
+      repoFiles,
+      repoDirectories,
+      evolutionRecords: {},
+      changedFiles: [],
+    });
+
+    expect(result.failures).toEqual([
+      {
+        scope: 'continuity/README.md',
+        message: 'Continuity doc "guidance-architecture.md" is not listed in continuity/README.md.',
+      },
+    ]);
+  });
+
+  it('exempts audit files and the README from the continuity inventory check', () => {
+    const files = buildCompleteContractFiles();
+    files['continuity/README.md'] =
+      'What belongs here: only the `*.audit.md` pattern, no individual entries.';
+    const repoFiles = buildRepoFiles(files);
+    repoFiles.add('continuity/system-orientation.audit.md');
+    repoFiles.add('continuity/README.md');
+
+    const result = runGuidanceDriftGuard({
+      files,
+      repoFiles,
+      repoDirectories,
+      evolutionRecords: {},
       changedFiles: [],
     });
 

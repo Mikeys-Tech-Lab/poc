@@ -26,6 +26,7 @@ const TARGET_FILES = [
   'docs/guidance/trace-reflect-and-evolve.md',
   'docs/guidance/evolution-records/README.md',
   'docs/architecture/workspace.md',
+  'continuity/README.md',
   'apps/site/src/lib/activation-prompts.ts',
   'apps/site/src/content/docs/en-us/core-system/mandate-lenses/index.mdx',
   'apps/site/src/content/docs/en-us/core-system/mandate-lenses/sensible-defaults-a-lens-you-can-load.mdx',
