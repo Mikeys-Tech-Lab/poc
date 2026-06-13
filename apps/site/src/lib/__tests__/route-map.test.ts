@@ -19,7 +19,9 @@ const threeRegisterRouteIds = [
   'about-the-author',
   'signal-structural',
   'signal-ai-is-not-magic-it-is-a-cognitive-amplifier',
+  'signal-work-delivery',
   'signal-integration-lag',
+  'signal-we-started-shipping-faster-understanding-less',
   'signal-a-path-through-integration-lag',
   'signal-the-verification-tax',
 ] as const;

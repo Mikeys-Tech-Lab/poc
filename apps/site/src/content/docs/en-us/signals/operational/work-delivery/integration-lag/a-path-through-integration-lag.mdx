@@ -7,23 +7,23 @@ series_part: 2
 series_label: "Part 2"
 ---
 
-import RegisterContent from '../../../../../../components/RegisterContent.astro';
-import ShareButton from '../../../../../../components/ShareButton.astro';
-import AnchorMap from '../../../../../../components/AnchorMap.astro';
-import ReadingFrame from '../../../../../../components/ReadingFrame.astro';
-import SourceHook from '../../../../../../components/SourceHook.astro';
-import SourceLedger from '../../../../../../components/SourceLedger.astro';
+import RegisterContent from '../../../../../../../components/RegisterContent.astro';
+import ShareButton from '../../../../../../../components/ShareButton.astro';
+import AnchorMap from '../../../../../../../components/AnchorMap.astro';
+import ReadingFrame from '../../../../../../../components/ReadingFrame.astro';
+import SourceHook from '../../../../../../../components/SourceHook.astro';
+import SourceLedger from '../../../../../../../components/SourceLedger.astro';
 import { waysIntoThisSignal } from './a-path-through-integration-lag.ways';
-import { directSourceEntries } from '../../../../../sources/en-us/signals/operational/work-delivery/a-path-through-integration-lag.sources';
+import { directSourceEntries } from '../../../../../../sources/en-us/signals/operational/work-delivery/integration-lag/a-path-through-integration-lag.sources';
 
 <RegisterContent registers={{
-  everyday: 'everyday/en-us/signals/operational/work-delivery/a-path-through-integration-lag',
-  orientation: 'orientation/en-us/signals/operational/work-delivery/a-path-through-integration-lag'
+  everyday: 'everyday/en-us/signals/operational/work-delivery/integration-lag/a-path-through-integration-lag',
+  orientation: 'orientation/en-us/signals/operational/work-delivery/integration-lag/a-path-through-integration-lag'
 }}>
 
 <ShareButton />
 
-Start with [Integration Lag](/en-us/signals/operational/work-delivery/integration-lag/):
+Start with [Integration Lag](/en-us/signals/operational/work-delivery/integration-lag/we-started-shipping-faster-understanding-less/):
 
 > output can move faster than shared understanding.
 
@@ -510,7 +510,7 @@ That is where the next signal begins.
 >
 > That labour is the verification tax.
 >
-> [The Verification Tax: AI Helps, But We Still Check Everything](/en-us/signals/operational/work-delivery/the-verification-tax/)
+> [The Verification Tax: AI Helps, But We Still Check Everything](/en-us/signals/operational/work-delivery/integration-lag/the-verification-tax/)
 
 <SourceLedger sources={directSourceEntries} />
 

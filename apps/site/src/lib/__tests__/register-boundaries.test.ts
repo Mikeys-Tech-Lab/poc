@@ -72,9 +72,9 @@ const cases = [
   {
     name: 'Integration Lag keeps the output-understanding gap visible in both registers',
     practitionerPath:
-      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag.mdx',
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/we-started-shipping-faster-understanding-less.mdx',
     orientationPath:
-      'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/integration-lag.mdx',
+      'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/integration-lag/we-started-shipping-faster-understanding-less.mdx',
     practitionerSnippets: [
       'This is what we call **integration lag**.',
       'Integration lag is the delay between producing change and integrating that change into shared understanding',
@@ -94,9 +94,9 @@ const cases = [
   {
     name: 'A Path Through Integration Lag keeps the path and non-framework boundary visible in both registers',
     practitionerPath:
-      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/a-path-through-integration-lag.mdx',
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/a-path-through-integration-lag.mdx',
     orientationPath:
-      'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/a-path-through-integration-lag.mdx',
+      'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/integration-lag/a-path-through-integration-lag.mdx',
     practitionerSnippets: [
       'The next question is:',
       'Not as a framework rollout.',
@@ -119,9 +119,9 @@ const cases = [
   {
     name: 'The Verification Tax keeps evidence-grounded confidence visible in both registers',
     practitionerPath:
-      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/the-verification-tax.mdx',
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/the-verification-tax.mdx',
     orientationPath:
-      'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/the-verification-tax.mdx',
+      'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/integration-lag/the-verification-tax.mdx',
     practitionerSnippets: [
       'The verification tax is the extra checking, correcting, re-reading, debugging,',
       'confidence should not come from belief.',
@@ -136,6 +136,40 @@ const cases = [
       'If the agent has access to the relevant source surfaces',
       'The human still owns the decision.',
       '<AnchorMap',
+    ],
+  },
+  {
+    name: 'Work & Delivery overview keeps the category claim aligned across registers',
+    practitionerPath:
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/index.mdx',
+    orientationPath:
+      'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/index.mdx',
+    practitionerSnippets: [
+      'Work and delivery signals name the pressure',
+      '### What belongs here',
+      'Open the Integration Lag series',
+    ],
+    orientationSnippets: [
+      'Work and delivery signals look at what happens',
+      '### What belongs here',
+      'Open the Integration Lag series',
+    ],
+  },
+  {
+    name: 'Integration Lag series overview keeps the series framing aligned across registers',
+    practitionerPath:
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/index.mdx',
+    orientationPath:
+      'apps/site/src/content/register/orientation/en-us/signals/operational/work-delivery/integration-lag/index.mdx',
+    practitionerSnippets: [
+      'Integration Lag is a series about one delivery condition',
+      '### What the series covers',
+      'We Started Shipping Faster. We Also Started Understanding Less.',
+    ],
+    orientationSnippets: [
+      'Integration Lag is a short series about one situation',
+      '### What the series covers',
+      'We Started Shipping Faster. We Also Started Understanding Less.',
     ],
   },
 ] as const;
@@ -169,5 +203,21 @@ describe('register boundary guardrails', () => {
     expect(
       read('apps/site/src/content/register/everyday/en-us/signals/structural/index.mdx'),
     ).toContain('The first signal in this cluster is ready:');
+  });
+
+  it('keeps the new operational overviews present in all three registers', () => {
+    expect(
+      read('apps/site/src/content/docs/en-us/signals/operational/work-delivery/index.mdx'),
+    ).toContain('### Integration Lag');
+    expect(
+      read(
+        'apps/site/src/content/register/everyday/en-us/signals/operational/work-delivery/index.mdx',
+      ),
+    ).toContain('### Integration Lag');
+    expect(
+      read(
+        'apps/site/src/content/register/everyday/en-us/signals/operational/work-delivery/integration-lag/index.mdx',
+      ),
+    ).toContain('### What the series covers');
   });
 });

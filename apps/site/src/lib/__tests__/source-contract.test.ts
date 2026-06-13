@@ -4,15 +4,15 @@ import { describe, expect, it } from 'vitest';
 import {
   directSourceEntries as pathDirectSourceEntries,
   furtherReadingEntries as pathFurtherReadingEntries,
-} from '../../content/sources/en-us/signals/operational/work-delivery/a-path-through-integration-lag.sources';
-import {
-  directSourceEntries as integrationLagDirectSourceEntries,
-  furtherReadingEntries as integrationLagFurtherReadingEntries,
-} from '../../content/sources/en-us/signals/operational/work-delivery/integration-lag.sources';
+} from '../../content/sources/en-us/signals/operational/work-delivery/integration-lag/a-path-through-integration-lag.sources';
 import {
   directSourceEntries as verificationTaxDirectSourceEntries,
   furtherReadingEntries as verificationTaxFurtherReadingEntries,
-} from '../../content/sources/en-us/signals/operational/work-delivery/the-verification-tax.sources';
+} from '../../content/sources/en-us/signals/operational/work-delivery/integration-lag/the-verification-tax.sources';
+import {
+  directSourceEntries as integrationLagDirectSourceEntries,
+  furtherReadingEntries as integrationLagFurtherReadingEntries,
+} from '../../content/sources/en-us/signals/operational/work-delivery/integration-lag/we-started-shipping-faster-understanding-less.sources';
 import {
   directSourceEntries as aiDirectSourceEntries,
   furtherReadingEntries as aiFurtherReadingEntries,
@@ -53,21 +53,21 @@ const sourcePageCases: readonly SourcePageCase[] = [
   {
     name: 'Integration Lag',
     practitionerPath:
-      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag.mdx',
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/we-started-shipping-faster-understanding-less.mdx',
     directSourceEntries: integrationLagDirectSourceEntries,
     furtherReadingEntries: integrationLagFurtherReadingEntries,
   },
   {
     name: 'A Path Through Integration Lag',
     practitionerPath:
-      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/a-path-through-integration-lag.mdx',
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/a-path-through-integration-lag.mdx',
     directSourceEntries: pathDirectSourceEntries,
     furtherReadingEntries: pathFurtherReadingEntries,
   },
   {
     name: 'The Verification Tax',
     practitionerPath:
-      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/the-verification-tax.mdx',
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/the-verification-tax.mdx',
     directSourceEntries: verificationTaxDirectSourceEntries,
     furtherReadingEntries: verificationTaxFurtherReadingEntries,
   },
@@ -85,25 +85,25 @@ const practitionerWaysCases: readonly PractitionerWaysCase[] = [
   {
     name: 'Integration Lag',
     practitionerPath:
-      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag.mdx',
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/we-started-shipping-faster-understanding-less.mdx',
     waysSidecarPath:
-      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag.ways.ts',
-    waysImport: './integration-lag.ways',
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/we-started-shipping-faster-understanding-less.ways.ts',
+    waysImport: './we-started-shipping-faster-understanding-less.ways',
   },
   {
     name: 'A Path Through Integration Lag',
     practitionerPath:
-      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/a-path-through-integration-lag.mdx',
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/a-path-through-integration-lag.mdx',
     waysSidecarPath:
-      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/a-path-through-integration-lag.ways.ts',
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/a-path-through-integration-lag.ways.ts',
     waysImport: './a-path-through-integration-lag.ways',
   },
   {
     name: 'The Verification Tax',
     practitionerPath:
-      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/the-verification-tax.mdx',
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/the-verification-tax.mdx',
     waysSidecarPath:
-      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/the-verification-tax.ways.ts',
+      'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/the-verification-tax.ways.ts',
     waysImport: './the-verification-tax.ways',
   },
 ] as const;

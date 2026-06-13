@@ -5,13 +5,9 @@ register: orientation
 ---
 
 import ShareButton from '../../../../../../components/ShareButton.astro';
-import AnchorMap from '../../../../../../components/AnchorMap.astro';
 import {
   buildEssayHref,
 } from '../../../../../../lib/structural/essay-route';
-import {
-  essayAnchors,
-} from '../../../../../docs/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.ways';
 
 <ShareButton />
 
@@ -49,19 +45,6 @@ The first structural signal cluster begins with:
 
 It argues that AI works as a cognitive amplifier, then asks who controls that
 amplification and what record is left for people affected by it.
-
-That signal opens the cluster. Later signals can deepen it without
-overloading the first signal: labor and time, extraction and memory,
-infrastructure cost, safety and trace, public services, regulation, and the
-reasoning layer as public infrastructure.
-
-The sequence should stay grounded in public practice, trace, and revision.
-
-<AnchorMap
-  anchors={essayAnchors}
-  title="Ways into the first signal"
-  intro="Choose the part of the AI debate that already feels close, then follow that doorway in."
-/>
 
 {/*
 Copyright © 2026 Mikey Sebastian Drozd.
