@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.19.0...PoC-v1.19.1) (2026-06-13)
+
+
+### Bug Fixes
+
+* **ai:** finish coherence remediation (de-rot, prevent, eliminate) ([#257](https://github.com/Mikeys-Tech-Lab/poc/issues/257)) ([d656bd7](https://github.com/Mikeys-Tech-Lab/poc/commit/d656bd7099b51df1d4d9f413c00ee6a3fc179fb8))
+
 ## [1.19.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.18.1...PoC-v1.19.0) (2026-06-13)
 
 
