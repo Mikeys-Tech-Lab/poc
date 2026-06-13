@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.18.1...PoC-v1.19.0) (2026-06-13)
+
+
+### Features
+
+* **tooling:** enforce guidance inventory reconciliation ([#255](https://github.com/Mikeys-Tech-Lab/poc/issues/255)) ([2c6a84b](https://github.com/Mikeys-Tech-Lab/poc/commit/2c6a84bedd02ebcee1504560299e0d172b1b1420))
+
 ## [1.18.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.18.0...PoC-v1.18.1) (2026-06-11)
 
 

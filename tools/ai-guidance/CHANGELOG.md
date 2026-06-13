@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.7.1...ai-guidance-v0.8.0) (2026-06-13)
+
+
+### Features
+
+* **tooling:** enforce guidance inventory reconciliation ([#255](https://github.com/Mikeys-Tech-Lab/poc/issues/255)) ([2c6a84b](https://github.com/Mikeys-Tech-Lab/poc/commit/2c6a84bedd02ebcee1504560299e0d172b1b1420))
+
 ## [0.7.1](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.7.0...ai-guidance-v0.7.1) (2026-06-11)
 
 
