@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.6.1...site-v2.7.0) (2026-06-13)
+
+
+### Features
+
+* **astro:** make the gentlest available register the sticky default ([#275](https://github.com/Mikeys-Tech-Lab/poc/issues/275)) ([ca443cb](https://github.com/Mikeys-Tech-Lab/poc/commit/ca443cb12585a45a3371429cf89af9f7ff17e0a3))
+
 ## [2.6.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.6.0...site-v2.6.1) (2026-06-13)
 
 
