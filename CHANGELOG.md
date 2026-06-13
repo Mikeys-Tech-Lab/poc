@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.5](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.19.4...PoC-v1.19.5) (2026-06-13)
+
+
+### Miscellaneous
+
+* **deps:** update node.js to &gt;=24.16.0 ([#262](https://github.com/Mikeys-Tech-Lab/poc/issues/262)) ([a737949](https://github.com/Mikeys-Tech-Lab/poc/commit/a73794964ce0cfa90d3938b195ddaf7ec724f4f2))
+
 ## [1.19.4](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.19.3...PoC-v1.19.4) (2026-06-13)
 
 
