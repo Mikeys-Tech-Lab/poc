@@ -25,6 +25,10 @@ pnpm-debug.log*
 # Coverage
 coverage/
 
+# Generated capability reports (local only). See docs/ai/README.md
+docs/ai/*.md
+!docs/ai/README.md
+
 # OS generated files (keep this minimal; grow iteratively as needed)
 
 ## macOS
