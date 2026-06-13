@@ -256,15 +256,17 @@ Known registers are:
 
 Current content availability is smaller than the known registry:
 
-- `practitioner` is the default and comes from the Starlight `docs` collection.
+- `practitioner` is the canonical substrate: the Starlight `docs` collection and the no-JS / pre-paint baseline. It is not the default reading register.
 - `orientation` is the broadly active non-practitioner register content tree.
 - `everyday` is route-scoped and available only on routes that provide real everyday content and route metadata.
+
+The default reading register is the gentlest one each page can render: `everyday` where it exists, otherwise `orientation`. `practitioner` stays the substrate and the explicit deep-reading choice. See ADR 0010.
 
 ### How it works
 
 1. **Build time**: `RegisterContent.astro` renders available variants into the HTML, wrapped in `[data-register-content="<register>"]` containers.
 2. **Route metadata**: `route-map.js` declares available registers, unavailable registers, and the default register for each route.
-3. **Before paint**: ThemeProvider's inline script reads `?register=` or `localStorage`, resolves it against route availability, and sets `data-register` plus fallback metadata on `<html>`.
+3. **Before paint**: ThemeProvider's inline script reads `?register=` or `localStorage`, resolves it against route availability, sets `data-register` plus fallback metadata on `<html>`, and persists the resolved register back to `localStorage` so the gentlest default a reader lands on stays sticky across navigation (ADR 0010).
 4. **CSS**: Global styles hide inactive variants based on `data-register`.
 5. **Title control**: `SiteTitle.astro` imports from `register.ts` and `toc.ts`. Tapping the title register indicator opens a small panel below the header. Selecting a register calls `setRegister()`, which updates state and dispatches `poc:register-change` on `window`.
 6. **ToC sync**: `RegisterContent.astro` schedules an initial ToC rebuild after the active register is set. The `poc:register-change` event triggers later UI updates and ToC rebuilds.
@@ -300,6 +302,13 @@ In fallback or notice resolvers, absence of input and invalid input are differen
 states. A fresh visitor with no `?register=` param and no stored preference must
 resolve to the silent default. Reserve a visible notice for an actually provided
 value that does not match an available option.
+
+The resolver itself does not change with stickiness. The pre-paint script
+persists the resolved register on every load (ADR 0010), so "no stored
+preference" describes only a reader's first load. After it, the persisted
+register is a real stored value, and a page that cannot render it shows the
+`unavailable` fallback. That is the intended sticky behavior, not the `unknown`
+defect this guardrail protects against.
 
 When the same resolution logic is duplicated between the inline bootstrap and a
 shared module, the parity test must exercise the same input matrix through both,

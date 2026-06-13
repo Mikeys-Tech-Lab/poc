@@ -29,8 +29,10 @@ import {
 export const LOCALE_PREFIX = '/en-us';
 export const WRITING_SECTION_DECISION = 'removed';
 
+// Pages with real everyday content default to the gentlest register. Pages
+// without everyday fall back to orientation via DEFAULT_REGISTER_AVAILABILITY.
 const THREE_REGISTER_AVAILABILITY = Object.freeze({
-  defaultRegister: 'practitioner',
+  defaultRegister: 'everyday',
   available: Object.freeze(['everyday', 'orientation', 'practitioner']),
   absent: Object.freeze({}),
 });

@@ -19,7 +19,7 @@ const EVERYDAY_FALLBACK_MESSAGE =
   'Everyday is not available for this page yet. Showing Orientation instead.';
 
 const ORIENTATION_FALLBACK_AVAILABILITY = {
-  defaultRegister: 'practitioner',
+  defaultRegister: 'orientation',
   available: ['orientation', 'practitioner'],
   absent: {
     everyday: EVERYDAY_BASE_MESSAGE,
@@ -27,7 +27,7 @@ const ORIENTATION_FALLBACK_AVAILABILITY = {
 } as const;
 
 const ALL_REGISTER_AVAILABILITY = {
-  defaultRegister: 'practitioner',
+  defaultRegister: 'everyday',
   available: ['everyday', 'orientation', 'practitioner'],
   absent: {},
 } as const;
@@ -114,7 +114,7 @@ describe('parseRegister', () => {
 describe('getRegisterAvailability', () => {
   it('uses the default availability when route metadata is absent', () => {
     expect(getRegisterAvailability()).toEqual({
-      defaultRegister: 'practitioner',
+      defaultRegister: 'orientation',
       available: ['practitioner', 'orientation'],
       absent: {
         everyday: EVERYDAY_BASE_MESSAGE,
@@ -187,7 +187,7 @@ describe('resolveRegister', () => {
   it('falls back visibly for an actually requested unknown register', () => {
     const result = resolveRegister('unknown');
 
-    expect(result.register).toBe('practitioner');
+    expect(result.register).toBe('orientation');
     expect(result.requested).toBeNull();
     expect(result.reason).toBe('unknown');
     expect(result.fallbackReason).toBe('unknown');
@@ -197,8 +197,8 @@ describe('resolveRegister', () => {
     const result = resolveRegister(null);
 
     expect(result).toMatchObject({
-      register: 'practitioner',
-      resolved: 'practitioner',
+      register: 'orientation',
+      resolved: 'orientation',
       requested: null,
       reason: null,
       fallbackReason: null,
@@ -236,8 +236,8 @@ describe('getRegister', () => {
     expect(getRegister()).toBe('orientation');
   });
 
-  it('defaults to practitioner when attribute is absent', () => {
-    expect(getRegister()).toBe('practitioner');
+  it('defaults to the gentlest available register when attribute is absent', () => {
+    expect(getRegister()).toBe('orientation');
   });
 });
 
@@ -247,8 +247,8 @@ describe('loadRegister', () => {
     expect(loadRegister()).toBe('orientation');
   });
 
-  it('defaults to practitioner when localStorage is empty', () => {
-    expect(loadRegister()).toBe('practitioner');
+  it('defaults to the gentlest available register when localStorage is empty', () => {
+    expect(loadRegister()).toBe('orientation');
   });
 
   it('resolves stored everyday to orientation when that is the route fallback', () => {
@@ -290,14 +290,16 @@ describe('setRegister', () => {
     window.removeEventListener('poc:register-change', handler);
   });
 
-  it('adds ?register=orientation to URL for orientation', () => {
+  it('adds ?register=orientation to URL on a page where orientation is not the default', () => {
+    setAvailabilityOnDocument(ALL_REGISTER_AVAILABILITY);
     setRegister('orientation');
     expect(window.location.search).toContain('register=orientation');
   });
 
-  it('removes register param from URL for practitioner', () => {
-    setRegister('orientation');
+  it('removes the register param when selecting the page default register', () => {
+    setAvailabilityOnDocument(ALL_REGISTER_AVAILABILITY);
     setRegister('practitioner');
+    setRegister('everyday');
     expect(window.location.search).not.toContain('register');
   });
 

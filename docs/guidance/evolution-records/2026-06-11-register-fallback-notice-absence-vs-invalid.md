@@ -143,6 +143,18 @@ with no register preference now resolves to the silent default; only an actually
 provided invalid register warns. Regression tests pin both paths. A broader
 bootstrap-vs-module parity test is deferred as a named guardrail improvement.
 
+## Later refinement (2026-06-13)
+
+ADR 0010 made the gentlest per-page register the default and made the pre-paint
+script persist the resolved register on every load, so a reader's entry register
+is sticky. This does not reverse the lesson above. The resolver still treats
+absence of input as the silent default, and a genuinely first-time visitor's
+first load still resolves silently. What changed is that only the first load has
+no stored preference. After it, the resolved register is persisted, so a later
+page that cannot render it shows the visible "everyday is not available"
+fallback — the `unavailable` path, not the `unknown` path this record fixed. See
+[`0010-default-reading-register-gentlest-available`](../../decisions/0010-default-reading-register-gentlest-available.md).
+
 <!--
 Copyright © 2026 Mikey Sebastian Drozd.
 Licensed under CC BY 4.0. Repository code and tooling: MIT.

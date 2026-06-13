@@ -14,8 +14,13 @@ export const EVERYDAY_UNAVAILABLE_MESSAGE = 'Everyday is not available for this 
 export const EVERYDAY_TO_ORIENTATION_FALLBACK_MESSAGE =
   'Everyday is not available for this page yet. Showing Orientation instead.';
 
+// `DEFAULT_REGISTER` (practitioner) is the no-JS / pre-paint substrate and the
+// ultimate parse fallback. The page-level default is the gentlest register a
+// page can actually render: everyday where it exists, otherwise orientation.
+// These two values intentionally differ. Do not collapse `defaultRegister` back
+// to `DEFAULT_REGISTER`.
 export const DEFAULT_REGISTER_AVAILABILITY = Object.freeze({
-  defaultRegister: DEFAULT_REGISTER,
+  defaultRegister: 'orientation',
   available: Object.freeze(['practitioner', 'orientation']),
   absent: Object.freeze({
     everyday: EVERYDAY_UNAVAILABLE_MESSAGE,

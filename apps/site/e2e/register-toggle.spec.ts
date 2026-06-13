@@ -11,7 +11,7 @@ const chooseRegister = async (page: import('@playwright/test').Page, register: s
 
 test.describe('register title control', () => {
   test('choosing a register switches register content', async ({ page }) => {
-    await page.goto('/en-us/about/what-this-is/');
+    await page.goto('/en-us/about/what-this-is/?register=practitioner');
 
     const practitionerContent = page.locator('[data-register-content="practitioner"]');
     const orientationContent = page.locator('[data-register-content="orientation"]');
@@ -35,7 +35,7 @@ test.describe('register title control', () => {
   test('selecting the default register removes register param', async ({ page }) => {
     await page.goto('/en-us/about/what-this-is/');
     await chooseRegister(page, 'orientation');
-    await chooseRegister(page, 'practitioner');
+    await chooseRegister(page, 'everyday');
 
     expect(page.url()).not.toContain('register=');
   });
@@ -52,7 +52,8 @@ test.describe('register title control', () => {
 
     await expect(page.locator('[data-register-content="everyday"]')).toBeVisible();
     await expect(page.locator('[data-register-content="practitioner"]')).not.toBeVisible();
-    expect(page.url()).toContain('register=everyday');
+    // everyday is the default on this route, so the redundant param is cleared.
+    expect(page.url()).not.toContain('register=');
   });
 
   test('unavailable everyday requests render orientation and preserve the request', async ({
@@ -70,6 +71,23 @@ test.describe('register title control', () => {
     expect(page.url()).toContain('register=everyday');
   });
 
+  test('a default-everyday register carries to a page without everyday and shows the fallback', async ({
+    page,
+  }) => {
+    await page.goto('/en-us/signals/structural/');
+    await expect(page.locator('[data-register-content="everyday"]')).toBeVisible();
+
+    await page.goto('/en-us/licenses/cc-by-4-0/');
+
+    await expect(page.locator('[data-register-content="orientation"]')).toBeVisible();
+    await expect(page.locator('[data-register-content="practitioner"]')).not.toBeVisible();
+    expect(page.url()).toContain('register=everyday');
+    await openRegisterPanel(page);
+    await expect(page.locator('[data-register-fallback]')).toHaveText(
+      'Everyday is not available for this page yet. Showing Orientation instead.',
+    );
+  });
+
   test('everyday is visible as unavailable in the title panel', async ({ page }) => {
     await page.goto('/en-us/licenses/cc-by-4-0/');
     await openRegisterPanel(page);
@@ -82,7 +100,7 @@ test.describe('register title control', () => {
   });
 
   test('everyday is selectable on structural routes', async ({ page }) => {
-    await page.goto('/en-us/signals/structural/');
+    await page.goto('/en-us/signals/structural/?register=practitioner');
     await openRegisterPanel(page);
 
     const everyday = page.locator('poc-register-title-control input[value="everyday"]');
@@ -92,7 +110,8 @@ test.describe('register title control', () => {
 
     await expect(page.locator('[data-register-content="everyday"]')).toBeVisible();
     await expect(page.locator('.label-everyday')).toBeVisible();
-    expect(page.url()).toContain('register=everyday');
+    // everyday is the default on this route, so selecting it clears the param.
+    expect(page.url()).not.toContain('register=');
   });
 
   test('title tap opens a pulsing panel that closes after selection', async ({ page }) => {
@@ -126,7 +145,7 @@ test.describe('register title control', () => {
     page,
   }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await page.goto('/en-us/about/what-this-is/');
+    await page.goto('/en-us/about/what-this-is/?register=practitioner');
 
     await page
       .locator('starlight-toc nav a')

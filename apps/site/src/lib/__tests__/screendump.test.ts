@@ -21,12 +21,20 @@ describe('screendump helpers', () => {
     );
   });
 
-  it('builds orientation urls with the register query param', () => {
-    expect(buildPageUrl('http://127.0.0.1:4321/en-us/', '', 'practitioner')).toBe(
+  it('omits the register param for the page default and adds it otherwise', () => {
+    // Home defaults to everyday, so everyday omits the param and others add it.
+    expect(buildPageUrl('http://127.0.0.1:4321/en-us/', '', 'everyday')).toBe(
       'http://127.0.0.1:4321/en-us/',
     );
+    expect(buildPageUrl('http://127.0.0.1:4321/en-us/', '', 'practitioner')).toBe(
+      'http://127.0.0.1:4321/en-us/?register=practitioner',
+    );
+    // The license page defaults to orientation, so orientation omits the param.
     expect(buildPageUrl('http://127.0.0.1:4321/en-us/', 'licenses/cc-by-4-0', 'orientation')).toBe(
-      'http://127.0.0.1:4321/en-us/licenses/cc-by-4-0?register=orientation',
+      'http://127.0.0.1:4321/en-us/licenses/cc-by-4-0',
+    );
+    expect(buildPageUrl('http://127.0.0.1:4321/en-us/', 'licenses/cc-by-4-0', 'practitioner')).toBe(
+      'http://127.0.0.1:4321/en-us/licenses/cc-by-4-0?register=practitioner',
     );
   });
 
@@ -48,14 +56,14 @@ describe('screendump helpers', () => {
       register: 'everyday',
       theme: { name: 'dark-atmo', storageValue: 'dark' },
       fileName: 'home__everyday__dark-atmo.png',
-      url: 'http://127.0.0.1:4321/en-us/?register=everyday',
+      url: 'http://127.0.0.1:4321/en-us/',
     });
   });
 
   it('can include unavailable registers when explicitly requested', () => {
     const plan = createScreendumpPlan({
       baseUrl: 'http://127.0.0.1:4321/en-us/',
-      paths: ['about/what-this-is'],
+      paths: ['licenses/cc-by-4-0'],
       registers: ['everyday'],
       themes: [THEMES[0]],
       viewports: VIEWPORTS,
@@ -63,7 +71,7 @@ describe('screendump helpers', () => {
 
     expect(plan[0]).toMatchObject({
       register: 'everyday',
-      url: 'http://127.0.0.1:4321/en-us/about/what-this-is?register=everyday',
+      url: 'http://127.0.0.1:4321/en-us/licenses/cc-by-4-0?register=everyday',
     });
   });
 
