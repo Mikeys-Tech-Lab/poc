@@ -256,16 +256,30 @@ export default defineConfig({
                   collapsed: false,
                   items: [
                     {
+                      label: 'Overview',
+                      slug: 'signals/operational/work-delivery',
+                    },
+                    {
                       label: 'Integration Lag',
-                      slug: 'signals/operational/work-delivery/integration-lag',
-                    },
-                    {
-                      label: 'A Path Through Integration Lag',
-                      slug: 'signals/operational/work-delivery/a-path-through-integration-lag',
-                    },
-                    {
-                      label: 'The Verification Tax',
-                      slug: 'signals/operational/work-delivery/the-verification-tax',
+                      collapsed: false,
+                      items: [
+                        {
+                          label: 'Overview',
+                          slug: 'signals/operational/work-delivery/integration-lag',
+                        },
+                        {
+                          label: 'We Started Shipping Faster. We Also Started Understanding Less.',
+                          slug: 'signals/operational/work-delivery/integration-lag/we-started-shipping-faster-understanding-less',
+                        },
+                        {
+                          label: 'A Path Through Integration Lag',
+                          slug: 'signals/operational/work-delivery/integration-lag/a-path-through-integration-lag',
+                        },
+                        {
+                          label: 'The Verification Tax',
+                          slug: 'signals/operational/work-delivery/integration-lag/the-verification-tax',
+                        },
+                      ],
                     },
                   ],
                 },

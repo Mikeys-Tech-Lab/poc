@@ -5,13 +5,9 @@ register: everyday
 ---
 
 import ShareButton from '../../../../../../components/ShareButton.astro';
-import AnchorMap from '../../../../../../components/AnchorMap.astro';
 import {
   buildEssayHref,
 } from '../../../../../../lib/structural/essay-route';
-import {
-  essayAnchors,
-} from '../../../../../docs/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.ways';
 
 <ShareButton />
 
@@ -56,16 +52,6 @@ The first signal in this cluster is ready:
 It starts with a direct question: what kinds of writing, sorting, explaining,
 comparing, recommending, and deciding is AI amplifying, who gets to decide, and
 who has to live with the consequences?
-
-Later pieces can stay with the questions this one opens: who gets the time back,
-whose work and memory were used, where the machine touches the ground, who can
-challenge a system, and what public trace remains.
-
-<AnchorMap
-  anchors={essayAnchors}
-  title="Ways into the first signal"
-  intro="Begin from the part that already feels close, then follow the structure from there."
-/>
 
 {/*
 Copyright © 2026 Mikey Sebastian Drozd.
