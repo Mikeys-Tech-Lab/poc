@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.7.0...site-v2.7.1) (2026-06-13)
+
+
+### Miscellaneous
+
+* **deps:** update runtime npm non-major to ^0.35.1 ([#264](https://github.com/Mikeys-Tech-Lab/poc/issues/264)) ([5c48300](https://github.com/Mikeys-Tech-Lab/poc/commit/5c483003cea9d5a92763a9952ccee239ac78436b))
+
 ## [2.7.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.6.1...site-v2.7.0) (2026-06-13)
 
 
