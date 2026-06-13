@@ -76,7 +76,7 @@ Default workspace bootstrap is repo-native and always-on:
 Mandate lens seeders such as `mandateLenses/SensibleDefaults/context-seeder.md`
 are on-demand overlays, not universal bootstrap.
 
-For repo-native AI-assisted work, the repo currently exposes three conversational commands:
+For repo-native AI-assisted work, the repo exposes these repo-native conversational commands:
 
 - `onboard me` for setup, structure, and contribution guidance
 - `Evolution Arc` for the repo's history and reasoning trace

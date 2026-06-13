@@ -4,7 +4,7 @@ What lives where, and how the pieces relate.
 
 ## Monorepo structure
 
-This is a pnpm workspace with two packages and a shared root:
+This is a pnpm workspace with two packages (`apps/site` and `tools/ai-guidance`) and a versioned root (`PoC`):
 
 ```
 poc/

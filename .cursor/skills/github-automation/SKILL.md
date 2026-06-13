@@ -189,13 +189,12 @@ Deployments are triggered by `release: types: [published]`, not `push: branches:
 
 ### Semver guidance
 
-Follow semver:
+Follow semver per package. The three packages version independently and sit at
+different maturity levels, so do not assume a single workspace-wide version state.
 
-- **Patch** (`0.1.0` → `0.1.1`): bug fixes, minor content corrections, dependency updates
-- **Minor** (`0.1.0` → `0.2.0`): new features, significant content additions, theme changes
-- **Major** (`0.x.y` → `1.0.0`): reserved for first stable release or breaking changes
-
-The workspace is pre-1.0. Minor bumps are cheap.
+- **Patch** (`x.y.z` → `x.y.(z+1)`): bug fixes, minor content corrections, dependency updates
+- **Minor** (`x.y.z` → `x.(y+1).0`): new features, significant content additions, theme changes
+- **Major** (`x.y.z` → `(x+1).0.0`): breaking changes. For a package still in `0.x`, the first stable release is also a major bump to `1.0.0`.
 
 ## Conventional Commits
 

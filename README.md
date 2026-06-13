@@ -69,8 +69,9 @@ commands:
 - **`Evolution Arc`** for repo history and reasoning trace
 - **`Trace, Reflect and Evolve`** for turning non-trivial work into durable learning and
   PR-visible learning trace
-- **`Sensible Defaults`** when you explicitly want the first mandate lens loaded
-  for delivery-reality analysis
+
+Beyond repo entry, **`Sensible Defaults`** loads the first mandate lens for
+delivery-reality analysis. It is an on-demand overlay, not a repo-entry path.
 
 If you prefer the manual path, read the [onboarding guide](docs/onboarding/manual.md), the [onboarding topic index](docs/onboarding/README.md), [Evolution Arc](docs/onboarding/evolution-arc.md), and [Trace, Reflect and Evolve](docs/onboarding/trace-reflect-and-evolve.md).
 
@@ -81,7 +82,7 @@ pnpm install
 pnpm run local        # docs site at http://localhost:4321
 pnpm run build        # production build
 pnpm license:check    # verify markdown-like source files expose the repo license split
-pnpm test             # tooling tests
+pnpm test             # unit + content-guardrail tests (all packages)
 pnpm screendump       # export desktop/tablet/mobile snapshots for both atmospheric themes + zip
 ```
 
