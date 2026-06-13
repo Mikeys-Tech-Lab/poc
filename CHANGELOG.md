@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.4](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.19.3...PoC-v1.19.4) (2026-06-13)
+
+
+### Bug Fixes
+
+* **seedpack:** percent-encode spaces in intra-seed relative links ([#267](https://github.com/Mikeys-Tech-Lab/poc/issues/267)) ([82e84b2](https://github.com/Mikeys-Tech-Lab/poc/commit/82e84b23ce9b5bbb50772e74d449d8cb478903bd))
+
 ## [1.19.3](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.19.2...PoC-v1.19.3) (2026-06-13)
 
 
