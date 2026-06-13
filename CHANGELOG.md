@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.6](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.19.5...PoC-v1.19.6) (2026-06-13)
+
+
+### Miscellaneous
+
+* **deps:** update dev tooling non-major to v2.5.0 ([#261](https://github.com/Mikeys-Tech-Lab/poc/issues/261)) ([22f4e63](https://github.com/Mikeys-Tech-Lab/poc/commit/22f4e63e3b891b6bcf4ed96e7c7b6dc71e9eb008))
+
 ## [1.19.5](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.19.4...PoC-v1.19.5) (2026-06-13)
 
 
