@@ -1,7 +1,7 @@
 {
   "name": "site",
   "type": "module",
-  "version": "2.5.2",
+  "version": "2.5.4",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -15,16 +15,16 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@astrojs/starlight": "^0.39.3",
+    "@astrojs/starlight": "^0.40.0",
     "@catppuccin/starlight": "^2.0.1",
-    "astro": "^6.4.4",
+    "astro": "^6.4.5",
     "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.9",
     "@axe-core/playwright": "4.11.3",
     "@playwright/test": "1.60.0",
-    "happy-dom": "20.10.2",
+    "happy-dom": "20.10.3",
     "playwright": "1.60.0",
     "rehype-mermaid": "3.0.0",
     "vitest": "4.1.8"

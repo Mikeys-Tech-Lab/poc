@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.19.5](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.19.4...PoC-v1.19.5) (2026-06-13)
+
+
+### Miscellaneous
+
+* **deps:** update node.js to &gt;=24.16.0 ([#262](https://github.com/Mikeys-Tech-Lab/poc/issues/262)) ([a737949](https://github.com/Mikeys-Tech-Lab/poc/commit/a73794964ce0cfa90d3938b195ddaf7ec724f4f2))
+
+## [1.19.4](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.19.3...PoC-v1.19.4) (2026-06-13)
+
+
+### Bug Fixes
+
+* **seedpack:** percent-encode spaces in intra-seed relative links ([#267](https://github.com/Mikeys-Tech-Lab/poc/issues/267)) ([82e84b2](https://github.com/Mikeys-Tech-Lab/poc/commit/82e84b23ce9b5bbb50772e74d449d8cb478903bd))
+
+## [1.19.3](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.19.2...PoC-v1.19.3) (2026-06-13)
+
+
+### Miscellaneous
+
+* **deps:** update astro ecosystem non-major ([#260](https://github.com/Mikeys-Tech-Lab/poc/issues/260)) ([ed29f9f](https://github.com/Mikeys-Tech-Lab/poc/commit/ed29f9f4687fb2fe4200952a7105ec377787635d))
+
+## [1.19.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.19.1...PoC-v1.19.2) (2026-06-13)
+
+
+### Miscellaneous
+
+* **deps:** update test tooling non-major to v20.10.3 ([#259](https://github.com/Mikeys-Tech-Lab/poc/issues/259)) ([24ac747](https://github.com/Mikeys-Tech-Lab/poc/commit/24ac747a5dd124a75284e6527e455d42bf462816))
+
 ## [1.19.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.19.0...PoC-v1.19.1) (2026-06-13)
 
 

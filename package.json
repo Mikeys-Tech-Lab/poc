@@ -1,10 +1,10 @@
 {
   "name": "@poc/workspace",
-  "version": "1.19.1",
+  "version": "1.19.5",
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=24.15.0"
+    "node": ">=24.16.0"
   },
   "packageManager": "pnpm@11.1.2",
   "scripts": {

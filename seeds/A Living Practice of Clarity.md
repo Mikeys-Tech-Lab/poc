@@ -207,12 +207,12 @@ This shape is not a mandatory template, checklist, or compliance form. If it is 
 
 This practice is held by a small set of seeds:
 
-- [A Living Practice of Clarity](./A Living Practice of Clarity.md)
-- [Practice Foundations](./Practice Foundations.md)
-- [Beginner’s Mind](./Beginner's Mind.md)
-- [A Bridge Between Conflicting Nodes](./A Bridge Between Conflicting Nodes.md)
-- [Voice of Guidance](./Voice of Guidance.md)
-- [Translation and Register Guidance](./Translation and Register Guidance.md)
+- [A Living Practice of Clarity](./A%20Living%20Practice%20of%20Clarity.md)
+- [Practice Foundations](./Practice%20Foundations.md)
+- [Beginner’s Mind](./Beginner's%20Mind.md)
+- [A Bridge Between Conflicting Nodes](./A%20Bridge%20Between%20Conflicting%20Nodes.md)
+- [Voice of Guidance](./Voice%20of%20Guidance.md)
+- [Translation and Register Guidance](./Translation%20and%20Register%20Guidance.md)
 
 These seeds define the discipline and act as source context that can be read, referenced, and loaded into AI systems.
 Nodes and lenses apply it in specific contexts.
