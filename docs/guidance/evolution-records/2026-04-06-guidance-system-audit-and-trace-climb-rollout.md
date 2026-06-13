@@ -8,7 +8,7 @@
 **Activation trace:** `/sensible-defaults` was used during the spike because the
 workspace change needed delivery-reality framing and explicit missing-domain
 inspection
-**Runtime propagation:** canon — AGENTS.md and the trace-climb skill carry the durable-learning flow. No new propagation in this backfill.
+**Runtime propagation:** canon — AGENTS.md and the `trace-reflect-and-evolve` skill carry the durable-learning flow (rolled out here as `Trace Climb`, since renamed). No new propagation in this backfill.
 **Related PR:** pending
 
 ## Why this record exists
