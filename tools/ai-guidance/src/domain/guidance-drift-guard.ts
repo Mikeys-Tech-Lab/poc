@@ -64,6 +64,12 @@ const EVOLUTION_RECORDS_EXCLUDED = new Set([
 ]);
 const RUNTIME_PROPAGATION_FIELD = 'Runtime propagation';
 
+const SKILL_INVENTORY_PATTERN = /^\.cursor\/skills\/([^/]+)\/SKILL\.md$/;
+const RULE_INVENTORY_PATTERN = /^\.cursor\/rules\/([^/]+\.mdc)$/;
+const CONTINUITY_INVENTORY_PATTERN = /^continuity\/([^/]+\.md)$/;
+const AI_GUIDANCE_INVENTORY_PATH = 'docs/onboarding/ai-guidance.md';
+const CONTINUITY_INVENTORY_PATH = 'continuity/README.md';
+
 const CONTRACT_MAPPINGS: readonly MappingContract[] = [
   {
     name: 'sensible-defaults-activation',
@@ -575,6 +581,83 @@ const validateEvolutionRecords = (
   return failures;
 };
 
+interface InventoryContract {
+  readonly label: string;
+  readonly inventoryPath: string;
+  readonly entries: readonly string[];
+}
+
+const collectInventoryEntries = (
+  repoFiles: ReadonlySet<string>,
+  pattern: RegExp,
+): readonly string[] => {
+  const entries = new Set<string>();
+  for (const filePath of repoFiles) {
+    const name = pattern.exec(filePath)?.[1];
+    if (name) entries.add(name);
+  }
+  return [...entries].sort();
+};
+
+const validateInventoryContract = (
+  contract: InventoryContract,
+  files: Readonly<Record<string, string>>,
+): readonly GuidanceFailure[] => {
+  if (contract.entries.length === 0) return [];
+
+  const content = files[contract.inventoryPath];
+  if (content === undefined) {
+    return [
+      {
+        scope: contract.inventoryPath,
+        message: `Inventory surface "${contract.inventoryPath}" is missing from validator input.`,
+      },
+    ];
+  }
+
+  const failures: GuidanceFailure[] = [];
+  for (const entry of contract.entries) {
+    if (!content.includes(entry)) {
+      failures.push({
+        scope: contract.inventoryPath,
+        message: `${contract.label} "${entry}" is not listed in ${contract.inventoryPath}.`,
+      });
+    }
+  }
+  return failures;
+};
+
+const validateInventories = (
+  repoFiles: ReadonlySet<string>,
+  files: Readonly<Record<string, string>>,
+): readonly GuidanceFailure[] => {
+  // `*.audit.md` files are covered by a documented pattern in the continuity
+  // README, not enumerated individually; the README itself is not an entry.
+  const continuityEntries = collectInventoryEntries(repoFiles, CONTINUITY_INVENTORY_PATTERN).filter(
+    (name) => name !== 'README.md' && !name.endsWith('.audit.md'),
+  );
+
+  const contracts: readonly InventoryContract[] = [
+    {
+      label: 'Skill',
+      inventoryPath: AI_GUIDANCE_INVENTORY_PATH,
+      entries: collectInventoryEntries(repoFiles, SKILL_INVENTORY_PATTERN),
+    },
+    {
+      label: 'Rule',
+      inventoryPath: AI_GUIDANCE_INVENTORY_PATH,
+      entries: collectInventoryEntries(repoFiles, RULE_INVENTORY_PATTERN),
+    },
+    {
+      label: 'Continuity doc',
+      inventoryPath: CONTINUITY_INVENTORY_PATH,
+      entries: continuityEntries,
+    },
+  ];
+
+  return contracts.flatMap((contract) => validateInventoryContract(contract, files));
+};
+
 export const runGuidanceDriftGuard = (input: GuidanceCheckInput): GuidanceCheckResult => {
   const failures: GuidanceFailure[] = [];
   const onboardingIndex = input.files[ONBOARDING_INDEX_PATH];
@@ -597,6 +680,7 @@ export const runGuidanceDriftGuard = (input: GuidanceCheckInput): GuidanceCheckR
   }
 
   failures.push(...validateEvolutionRecords(input.evolutionRecords));
+  failures.push(...validateInventories(input.repoFiles, input.files));
 
   const activatedMappings = CONTRACT_MAPPINGS.filter((mapping) =>
     triggeredByChange(input.changedFiles, mapping.triggers),
