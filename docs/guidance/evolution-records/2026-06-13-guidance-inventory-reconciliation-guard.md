@@ -70,6 +70,12 @@ inventories from filesystem reality and fails in CI when an entry is missing
 from its enumeration. The check is presence-only and never judges prose,
 diagrams, or completeness.
 
+The guard checks stable string presence, not table structure: a name that
+appears anywhere in the inventory file counts as present. That can theoretically
+false-pass if a name shows up in unrelated prose, and the trade is accepted
+deliberately to keep the check boring and stable rather than a brittle parser.
+The guard should not be over-tightened into a structured inventory parser.
+
 The classification is deliberately bounded into three modes:
 
 - Enforce catches drift after it happens. That is this PR's guard.
