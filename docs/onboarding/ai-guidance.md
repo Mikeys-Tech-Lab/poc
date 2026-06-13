@@ -48,7 +48,7 @@ Cursor uses two mechanisms:
 
 The repo also keeps the guidance layer from drifting silently:
 
-- a **blocking deterministic validator** in `tools/ai-guidance/` checks repo-entry contracts such as onboarding, Evolution Arc, and Trace, Reflect and Evolve using explicit mappings
+- a **blocking deterministic validator** in `tools/ai-guidance/` checks repo-entry contracts such as onboarding, Evolution Arc, and Trace, Reflect and Evolve using explicit mappings, and reconciles the rule and skill inventories below (and the `continuity/README.md` list) against the filesystem so a new `.cursor/rules/*.mdc`, `.cursor/skills/*`, or `continuity/*.md` cannot drift out of its enumeration unnoticed
 - a **blocking license surface check** in `tools/ai-guidance/` verifies that tracked markdown-like source files expose the repo's license split explicitly
 - a **non-blocking advisory review** in GitHub Actions uses an AI reasoning layer over inspectable repo traces to surface broader drift
 
@@ -62,6 +62,7 @@ Current rules:
 | `sensible-defaults.mdc` | Sensible Defaults lens reference for direct lens-package work |
 | `security-awareness.mdc` | Secret handling, public repo hygiene (always apply) |
 | `poc-writing-md.mdc` | Markdown writing conventions |
+| `engineering.mdc` | Universal engineering principles, clean code and architecture (file-scoped to code) |
 | `poc-tooling-ts.mdc` | TypeScript + pnpm tooling |
 | `astro-starlight.mdc` | Astro + Starlight development |
 | `visual-design.mdc` | Visual design |
@@ -88,8 +89,10 @@ Current skills:
 | `onboarding` | Newcomer onboarding and repo orientation |
 | `evolution-arc` | Guided repo history, reasoning trace, and workspace evolution |
 | `trace-reflect-and-evolve` | Post-task reflection, durable learning capture, and propagation decisions for non-trivial work |
+| `conversational-voice` | Operator chat tone (internal; not for authored content, docs, or public copy) |
 | `sensible-defaults` | On-demand delivery realism lens loading for explicit Sensible Defaults work |
 | `astro-starlight` | Docs site development |
+| `public-content-intake` | Promoting drafted or handoff content into the public site |
 | `node-tooling` | Scripts, tests, TypeScript tooling |
 | `git-commit` | Before every commit |
 | `github-automation` | Feature lifecycle and PRs |

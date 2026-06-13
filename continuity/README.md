@@ -43,6 +43,8 @@ Use these stages consistently:
 - `canonical-readability-requirement.md` - runtime access invariant for
   canonical artifacts
 - `vision-anchor.md` - the long-arc orientation anchor
+- `guidance-architecture.md` - the layered continuity view of the guidance
+  system stack
 - `*.audit.md` files that directly support continuity documents and need to
   stay attached to them during rollout
 - later, durable continuity evidence if some audit artifacts become stable
