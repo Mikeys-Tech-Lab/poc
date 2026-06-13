@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.20.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.19.6...PoC-v1.20.0) (2026-06-13)
+
+
+### Features
+
+* **docs:** restructure work-delivery signals with overview pages ([#271](https://github.com/Mikeys-Tech-Lab/poc/issues/271)) ([14a97bc](https://github.com/Mikeys-Tech-Lab/poc/commit/14a97bc5a02befaf3c614b7a9368ef278df1d0dc))
+
 ## [1.19.6](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.19.5...PoC-v1.19.6) (2026-06-13)
 
 

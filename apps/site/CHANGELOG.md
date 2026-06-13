@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.5.4...site-v2.6.0) (2026-06-13)
+
+
+### Features
+
+* **docs:** restructure work-delivery signals with overview pages ([#271](https://github.com/Mikeys-Tech-Lab/poc/issues/271)) ([14a97bc](https://github.com/Mikeys-Tech-Lab/poc/commit/14a97bc5a02befaf3c614b7a9368ef278df1d0dc))
+
 ## [2.5.4](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.5.3...site-v2.5.4) (2026-06-13)
 
 
