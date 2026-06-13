@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.20.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.20.0...PoC-v1.20.1) (2026-06-13)
+
+
+### Miscellaneous
+
+* **deps:** update astro ecosystem non-major to ^6.4.6 ([#273](https://github.com/Mikeys-Tech-Lab/poc/issues/273)) ([7a69bc5](https://github.com/Mikeys-Tech-Lab/poc/commit/7a69bc58a9da1e6d921d9dec18aeb220931d1143))
+
 ## [1.20.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.19.6...PoC-v1.20.0) (2026-06-13)
 
 
