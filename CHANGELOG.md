@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.21.1...PoC-v1.21.2) (2026-06-20)
+
+
+### Miscellaneous
+
+* **deps:** update pnpm to v11.7.0 ([#263](https://github.com/Mikeys-Tech-Lab/poc/issues/263)) ([0aad4d3](https://github.com/Mikeys-Tech-Lab/poc/commit/0aad4d39f5618e8b88efc33f7bbc74d8ccbc4c0f))
+
 ## [1.21.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.21.0...PoC-v1.21.1) (2026-06-13)
 
 
