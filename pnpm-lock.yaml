@@ -24,7 +24,7 @@ importers:
         specifier: ^6.4.6
         version: 6.4.6(@types/node@25.9.2)(rollup@4.61.1)(tsx@4.22.4)(yaml@2.9.0)
       sharp:
-        specifier: ^0.35.0
+        specifier: ^0.35.1
         version: 0.35.1
     devDependencies:
       '@astrojs/check':
