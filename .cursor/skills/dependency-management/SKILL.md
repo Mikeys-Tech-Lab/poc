@@ -135,6 +135,16 @@ After upgrading, always run tests and build before committing.
 - Renovate is not the routine security bottleneck. Security work skips normal queue expectations and is handled first
 - If a security alert requires immediate action, don't wait for the weekly cycle — upgrade manually
 
+### Transitive security overrides
+
+When a transitive dependency carries a vulnerability and its direct parents cap it below the fixed version, use a pnpm override in `pnpm-workspace.yaml` (`overrides:`) to force the patched version. Verify the build and tests pass under the override before relying on it, because forcing a transitive bump can break a parent that expected the older API.
+
+Current overrides:
+
+| Package | Pinned to | Reason | Remove when |
+|---|---|---|---|
+| `esbuild` | `0.28.1` | GHSA-g7r4-m6w7-qqqr (dev-server file read). `astro` and `vite` cap esbuild below `0.28.1`. | `astro`/`vite` widen their esbuild range to include the fix, then `pnpm update` resolves it natively. |
+
 ### CI security scanning
 
 Four repo security scanning workflows run on pushes to `main` and on PRs:
