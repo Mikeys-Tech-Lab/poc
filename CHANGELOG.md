@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.5](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.21.4...PoC-v1.21.5) (2026-06-30)
+
+
+### Bug Fixes
+
+* **deps:** remediate advisories, batch renovate updates, harden ci ([#283](https://github.com/Mikeys-Tech-Lab/poc/issues/283)) ([b6225ff](https://github.com/Mikeys-Tech-Lab/poc/commit/b6225ffc8ec232562fae4aaead620bc37a27f12e))
+
 ## [1.21.4](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.21.3...PoC-v1.21.4) (2026-06-23)
 
 
