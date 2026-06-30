@@ -26,7 +26,7 @@ jobs:
 
     steps:
       - name: Run Nuclei scan
-        uses: projectdiscovery/nuclei-action@v3
+        uses: projectdiscovery/nuclei-action@cc153d0541e1adf8a42bbe31c0a4fb2376147538 # v3.1.1
         with:
           args: >-
             -u ${{ vars.DEVELOPMENT_SITE_URL }}
@@ -46,7 +46,7 @@ jobs:
 
     steps:
       - name: Run Nuclei scan
-        uses: projectdiscovery/nuclei-action@v3
+        uses: projectdiscovery/nuclei-action@cc153d0541e1adf8a42bbe31c0a4fb2376147538 # v3.1.1
         with:
           args: >-
             -u ${{ vars.PREVIEW_SITE_URL }}
@@ -66,7 +66,7 @@ jobs:
 
     steps:
       - name: Run Nuclei scan
-        uses: projectdiscovery/nuclei-action@v3
+        uses: projectdiscovery/nuclei-action@cc153d0541e1adf8a42bbe31c0a4fb2376147538 # v3.1.1
         with:
           args: >-
             -u ${{ vars.PUBLIC_SITE_URL }}
@@ -82,7 +82,7 @@ jobs:
 
     steps:
       - name: Run Nuclei scan
-        uses: projectdiscovery/nuclei-action@v3
+        uses: projectdiscovery/nuclei-action@cc153d0541e1adf8a42bbe31c0a4fb2376147538 # v3.1.1
         with:
           args: >-
             -u ${{ inputs.target_url }}
