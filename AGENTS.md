@@ -221,12 +221,12 @@ This is a public repository. Everything committed is world-readable. Agents must
 
 - Routine dependency and GitHub Actions version updates are managed by Renovate (`renovate.json`).
 - Dependabot remains enabled for GitHub-native alerting and security-only update surfaces.
-- GitHub Actions are currently referenced by version tags in workflow files. Renovate tracks them as part of the routine update queue.
+- GitHub Actions are pinned to full-length commit SHAs in workflow files, with a `# vX` comment for readability. Renovate keeps the digests current via the `helpers:pinGitHubActionDigests` part of `config:best-practices`.
 - No third-party deployment actions. Direct `ssh`/`rsync` reduces supply chain surface.
 - CI security scanning runs on every PR and push to `main`: gitleaks (secret detection), Shai-Hulud (npm supply chain), CodeQL (static analysis), OSSF Scorecard (supply chain posture).
 - gitleaks uses the MIT-licensed CLI directly to avoid commercial licensing constraints. The version is pinned in the workflow.
 - Dependabot alerts and security updates remain enabled.
-- When the project matures, pinning to commit SHAs is the next step.
+- Workflows follow least privilege: the top-level `GITHUB_TOKEN` permission is read-only, and write scopes are granted per-job only where needed.
 
 ### CI security scanning
 

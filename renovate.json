@@ -15,10 +15,13 @@
   "prConcurrentLimit": 5,
   "branchConcurrentLimit": 5,
   "labels": ["dependencies"],
+  "minimumReleaseAge": "3 days",
+  "internalChecksFilter": "strict",
   "vulnerabilityAlerts": {
     "labels": ["dependencies", "security"],
     "automerge": true,
     "automergeType": "pr",
+    "minimumReleaseAge": null,
     "vulnerabilityFixStrategy": "lowest"
   },
   "major": {
@@ -51,54 +54,12 @@
       "automerge": false
     },
     {
-      "description": "Automerge Astro ecosystem non-major updates after CI.",
+      "description": "Batch all npm minor and patch updates into one PR, automerge after CI.",
       "matchManagers": ["npm"],
-      "matchPackageNames": ["astro", "@astrojs/**", "@catppuccin/**"],
       "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "astro ecosystem non-major",
+      "groupName": "npm non-major",
       "automerge": true,
       "automergeType": "pr"
-    },
-    {
-      "description": "Automerge test tooling non-major updates after CI.",
-      "matchManagers": ["npm"],
-      "matchPackageNames": [
-        "vitest",
-        "@vitest/**",
-        "happy-dom",
-        "@playwright/test",
-        "@axe-core/playwright"
-      ],
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "test tooling non-major",
-      "automerge": true,
-      "automergeType": "pr"
-    },
-    {
-      "description": "Automerge remaining dev tooling non-major updates after CI.",
-      "matchManagers": ["npm"],
-      "matchDepTypes": ["devDependencies"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "dev tooling non-major",
-      "automerge": true,
-      "automergeType": "pr",
-      "matchPackageNames": [
-        "!vitest",
-        "!@vitest/**",
-        "!happy-dom",
-        "!@playwright/test",
-        "!@axe-core/playwright"
-      ]
-    },
-    {
-      "description": "Automerge remaining runtime npm non-major updates after CI.",
-      "matchManagers": ["npm"],
-      "matchDepTypes": ["dependencies"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "runtime npm non-major",
-      "automerge": true,
-      "automergeType": "pr",
-      "matchPackageNames": ["!astro", "!@astrojs/**", "!@catppuccin/**"]
     }
   ]
 }

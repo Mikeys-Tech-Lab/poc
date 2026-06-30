@@ -36,20 +36,21 @@ The Renovate config lives at `renovate.json`.
 
 - Checks on a weekly cadence to keep routine merges batched
 - Uses `config:best-practices` as the base preset
-- Groups non-major updates by package family and ecosystem
+- Batches all npm minor and patch updates into a single non-major group
+- Keeps GitHub Actions non-majors in their own group
 - Auto-merges bounded non-major updates after CI passes
 - Holds majors behind Dependency Dashboard approval
+- Applies a 3-day `minimumReleaseAge` cooldown before automerge, with `internalChecksFilter: strict`, as a supply-chain guard
 - Keeps concurrent routine PR volume capped
 - Uses semantic commit messages so Release Please can trace dependency work cleanly
 
 ### Current grouping posture
 
-- Astro ecosystem non-majors are grouped together
-- Test tooling non-majors are grouped together
-- Remaining dev tooling non-majors are grouped together
-- Remaining runtime npm non-majors are grouped together
-- GitHub Actions non-majors are grouped together
+- All npm non-majors (minor and patch) batch into one `npm non-major` group
+- GitHub Actions non-majors are grouped together, separate from npm
 - Lock file maintenance runs as its own low-risk stream
+- Major updates are never grouped into routine flow; they stay dashboard-gated
+- Security fixes are exempt from the release-age cooldown so remediation stays immediate
 
 ### Major updates
 
@@ -133,6 +134,16 @@ After upgrading, always run tests and build before committing.
 - Dependabot security updates remain enabled as the GitHub-native security surface
 - Renovate is not the routine security bottleneck. Security work skips normal queue expectations and is handled first
 - If a security alert requires immediate action, don't wait for the weekly cycle — upgrade manually
+
+### Transitive security overrides
+
+When a transitive dependency carries a vulnerability and its direct parents cap it below the fixed version, use a pnpm override in `pnpm-workspace.yaml` (`overrides:`) to force the patched version. Verify the build and tests pass under the override before relying on it, because forcing a transitive bump can break a parent that expected the older API.
+
+Current overrides:
+
+| Package | Pinned to | Reason | Remove when |
+|---|---|---|---|
+| `esbuild` | `0.28.1` | GHSA-g7r4-m6w7-qqqr (dev-server file read). `astro` and `vite` cap esbuild below `0.28.1`. | `astro`/`vite` widen their esbuild range to include the fix, then `pnpm update` resolves it natively. |
 
 ### CI security scanning
 

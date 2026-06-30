@@ -92,6 +92,7 @@ Links to seeds, PRs, related ADRs, or external sources. Not a duplication of PR 
 | [0008](0008-public-reading-register-substrate.md) | Public reading register substrate | Accepted | 2026-05-05 |
 | [0009](0009-structural-essays-and-route-scoped-everyday-activation.md) | Structural signals and route-scoped everyday activation | Accepted | 2026-05-09 |
 | [0010](0010-default-reading-register-gentlest-available.md) | Default reading register is the gentlest available | Accepted | 2026-06-13 |
+| [0011](0011-renovate-batched-nonmajor-and-release-age-cooldown.md) | Renovate batched non-major updates and release-age cooldown | Accepted | 2026-06-30 |
 
 ---
 © 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).

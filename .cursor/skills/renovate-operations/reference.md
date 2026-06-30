@@ -7,8 +7,9 @@ This file holds repo-local reference material for the `renovate-operations` skil
 - Base preset: `config:best-practices`
 - Queue aid: `:dependencyDashboard`
 - Commit style: semantic commits with `chore(deps)`
-- Routine posture: grouped non-major updates auto-merge after required checks pass
-- Security posture: Renovate consumes GitHub vulnerability alerts and auto-merges passing fix PRs using the lowest fixed version
+- Routine posture: all npm minor and patch updates batch into one `npm non-major` group; GitHub Actions non-majors stay in their own group; both auto-merge after required checks pass
+- Cooldown posture: repo-wide `minimumReleaseAge` of 3 days with `internalChecksFilter: strict` so automerge waits the cooldown out
+- Security posture: Renovate consumes GitHub vulnerability alerts and auto-merges passing fix PRs using the lowest fixed version; vulnerability PRs are exempt from the cooldown (`minimumReleaseAge: null`)
 - Major posture: dashboard approval required before PR creation or merge
 - Manual exception path: failing checks, config migrations, or upgrades that require code changes
 
@@ -35,6 +36,7 @@ Before editing `renovate.json`, re-check:
 
 - `docs/decisions/0004-renovate-primary-dependency-engine.md`
 - `docs/decisions/0005-renovate-automerge-posture.md`
+- `docs/decisions/0011-renovate-batched-nonmajor-and-release-age-cooldown.md`
 
 ---
 © 2026 Mikey Sebastian Drozd. Licensed under [CC BY 4.0](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE-CC-BY-4.0). Repository code and tooling: [MIT](https://github.com/Mikeys-Tech-Lab/poc/blob/main/LICENSE).

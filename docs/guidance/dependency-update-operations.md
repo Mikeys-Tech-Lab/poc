@@ -38,14 +38,16 @@ This repo needed a model where:
 - Renovate reads GitHub vulnerability alerts and raises fix PRs immediately.
 - Vulnerability PRs are auto-merge eligible after required checks pass.
 - Vulnerability fixes use the lowest fixed version by default to keep remediation deltas small.
+- Vulnerability PRs are exempt from the routine release-age cooldown (`minimumReleaseAge: null`), so security remediation stays immediate.
 - If a security PR fails checks or needs code changes, it becomes a manual exception rather than the default path.
 - Dependabot remains the GitHub-native alerting surface. Its repo config is narrowed to security-only behavior.
 
 ### Non-major routine updates
 
-- Renovate groups non-major updates by package family and ecosystem.
+- All npm minor and patch updates batch into a single `npm non-major` group.
+- GitHub Actions non-major updates stay in their own group, separate from the npm batch.
 - Non-major updates are auto-merged after CI passes.
-- npm updates inherit a minimum release age from Renovate best practices.
+- A repo-wide `minimumReleaseAge` cooldown holds new releases for 3 days before they can auto-merge, with `internalChecksFilter: strict` so automerge waits the cooldown out. This is a supply-chain guard against same-day yanked or compromised releases.
 - The concurrent queue is capped so routine flow cannot sprawl indefinitely.
 
 ### Major updates
