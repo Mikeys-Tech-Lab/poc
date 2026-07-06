@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.6](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.21.5...PoC-v1.21.6) (2026-07-06)
+
+
+### Bug Fixes
+
+* **astro:** update substack url to practiceofclarity publication ([#285](https://github.com/Mikeys-Tech-Lab/poc/issues/285)) ([fadf2b2](https://github.com/Mikeys-Tech-Lab/poc/commit/fadf2b216b1ffe55838ff6121b9f45c4ddbdf5f4))
+
 ## [1.21.5](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.21.4...PoC-v1.21.5) (2026-06-30)
 
 
