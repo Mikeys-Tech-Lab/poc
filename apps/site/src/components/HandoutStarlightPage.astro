@@ -1,0 +1,23 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import type { StarlightPageProps } from '@astrojs/starlight/props';
+
+interface Props {
+  frontmatter: StarlightPageProps['frontmatter'];
+  sidebar: NonNullable<StarlightPageProps['sidebar']>;
+  // Headings from `render(entry)`. Without these, the "On this page" ToC only
+  // shows the page title and misses the in-content section headings.
+  headings?: StarlightPageProps['headings'];
+}
+
+const { frontmatter, sidebar, headings = [] } = Astro.props as Props;
+---
+
+<StarlightPage
+  frontmatter={frontmatter}
+  sidebar={sidebar}
+  headings={headings}
+  hasSidebar={true}
+>
+  <slot />
+</StarlightPage>

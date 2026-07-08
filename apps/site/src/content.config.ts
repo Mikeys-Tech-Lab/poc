@@ -20,4 +20,14 @@ export const collections = {
       register: z.enum(['everyday', 'orientation']).optional(),
     }),
   }),
+  handouts: defineCollection({
+    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/handouts' }),
+    schema: z.object({
+      title: z.string(),
+      description: z.string(),
+      seriesId: z.enum(['thinkfirst']),
+      order: z.number().default(0),
+      pagefind: z.literal(false).default(false),
+    }),
+  }),
 };

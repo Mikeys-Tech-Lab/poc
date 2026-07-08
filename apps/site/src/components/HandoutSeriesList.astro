@@ -1,0 +1,16 @@
+---
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { getHandoutHref, getThinkfirstHandouts } from '../lib/handouts';
+
+const handouts = await getThinkfirstHandouts();
+---
+
+<CardGrid>
+  {handouts.map((entry) => (
+    <LinkCard
+      title={entry.data.title}
+      description={entry.data.description}
+      href={getHandoutHref(entry)}
+    />
+  ))}
+</CardGrid>

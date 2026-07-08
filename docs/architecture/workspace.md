@@ -62,6 +62,8 @@ flowchart TD
   AstroSite[apps/site/] -->|"practitioner content"| SiteDocs["apps/site/src/content/docs/"]
   AstroSite -->|"active orientation register content"| SiteRegisterOrientation["apps/site/src/content/register/orientation/"]
   AstroSite -->|"route-scoped everyday register content"| SiteRegisterEveryday["apps/site/src/content/register/everyday/"]
+  AstroSite -->|"brown-bag handout series (direct-link)"| SiteHandouts["apps/site/src/content/handouts/"]
+  AstroSite -->|"shared companion routes"| SiteSharedPages["apps/site/src/pages/en-us/shared/"]
   AstroSite -->|"locale-scoped structural signal support data"| SiteStructuralEssayData["apps/site/src/content/structural/"]
   AstroSite -->|"structural signal route mechanics"| SiteStructuralEssayLib["apps/site/src/lib/structural/"]
 
@@ -142,6 +144,8 @@ flowchart TD
 | `apps/site/src/content/docs/` | Practitioner site content collection | Exists |
 | `apps/site/src/content/register/orientation/` | Active orientation register content collection | Exists |
 | `apps/site/src/content/register/everyday/` | Route-scoped everyday register content collection. Only routes that declare everyday availability expose it. | Exists |
+| `apps/site/src/content/handouts/` | Brown-bag companion handout content grouped by series (for example `thinkfirst/`). Rendered through custom locale-nested `/<locale>/shared/<series>/` routes, not the main Starlight sidebar. | Exists |
+| `apps/site/src/pages/en-us/shared/` | Custom Astro routes for direct-link shared companion surfaces, locale-nested so future languages add their own tree. v1 ships ThinkFirst at `/en-us/shared/thinkfirst/`, with `/thinkfirst` and `/shared/thinkfirst` as shortlink redirects. The whole `/shared/` package is practitioner-only. | Exists |
 | `apps/site/src/content/structural/` | Locale-scoped shared structural signal support data, such as source ledgers, further reading, and anchor maps reused across registers and overview surfaces | Exists |
 | `apps/site/src/lib/structural/` | Structural signal route mechanics and other non-prose helpers kept separate from public support data | Exists |
 | `docs/infra/` | Infrastructure runbooks (Infomaniak setup, GitHub App setup, protection layers, authenticated origin pulls) and maintenance assets | Exists |

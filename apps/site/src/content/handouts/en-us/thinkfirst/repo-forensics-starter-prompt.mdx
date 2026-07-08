@@ -1,0 +1,119 @@
+---
+title: Repo Forensics Starter Prompt
+description: Inspect current repo reality before implementation. A ThinkFirst handout with quick and full copy-paste prompts for justified delivery confidence.
+seriesId: thinkfirst
+order: 1
+pagefind: false
+---
+
+import HandoutPrompts from '../../../../components/HandoutPrompts.astro';
+import { handoutPrompts } from './repo-forensics-starter-prompt.prompts';
+
+Use this when an AI agent is likely to jump straight into implementation.
+
+The goal is not to generate code immediately. The goal is to make current repo reality inspectable before changing anything.
+
+This is not prompt engineering for generation. This is repo forensics for justified delivery confidence.
+
+## Model and tool fit
+
+Use a model or agent setup that can actually inspect the relevant context.
+
+The quick version can work with most capable coding assistants when you provide the relevant files, diffs, logs, or test output.
+
+The full repo-forensics prompt needs more than autocomplete or a lightweight chat model. Use it with a reasoning-capable coding model or agent that can read the relevant repository surfaces, keep enough context in view, and cite what it inspected.
+
+Long context helps, but it is not enough by itself. The model still needs current repo evidence.
+
+### Rule of thumb
+
+| Task type | Model / tool fit |
+| :--- | :--- |
+| Small local task | Quick prompt with a capable coding assistant and pasted context |
+| Existing-code change | Reasoning-capable coding model with file access |
+| Risky, unclear, or cross-surface work | Long-context, reasoning-capable model or repo-aware agent |
+| Architecture, business-rule, or workflow contradiction | Strongest available reasoning model plus explicit human review |
+| Autocomplete, lightweight, or low-context model | Do not use for full repo forensics |
+
+If the tool cannot inspect files directly, paste the smallest relevant context first.
+
+If the model cannot keep the needed context in view, reduce the task scope or use a stronger model.
+
+Do not treat model confidence as evidence.
+
+## Quick version
+
+Use this for small daily tasks when you want the agent to slow down before coding.
+
+<HandoutPrompts prompts={handoutPrompts} id="quick" />
+
+## When to use the full version
+
+Use the full prompt when:
+
+- the task touches existing code
+- docs, tests, config, or behaviour may disagree
+- the agent sounds confident but has not inspected evidence
+- the change could create review cost, rework, or delivery risk
+- you want a smaller, safer next step before implementation
+- there may be hidden uncertainty, stale documentation, unclear ownership, or product or business assumptions involved
+
+## Core posture
+
+Model knowledge is not delivery truth.
+
+For delivery, truth lives in current repo reality:
+
+- code
+- tests
+- docs
+- configuration
+- workflows
+- recent history
+- architecture decisions
+- product or business assumptions
+- runtime behaviour, logs, errors, or traces if available
+- what the team can verify
+
+Start with the 2 to 3 surfaces most relevant to the task. Do not inspect the whole repository by default.
+
+## Full copy-paste prompt
+
+Use this deeper version for risky, unclear, review-heavy, or contradictory work.
+
+<HandoutPrompts prompts={handoutPrompts} id="full" />
+
+## Usage note
+
+Use the quick version when the work is small and you mainly need to prevent the agent from jumping straight into code.
+
+Use the full version when the work is risky, unclear, review-heavy, architecture-sensitive, or likely to touch contradictory repo reality.
+
+The practice is not to slow delivery down for its own sake. The practice is to reduce hidden review cost by making delivery risk visible before the diff grows.
+
+## Optional repo integration
+
+For teams using repo-local agent guidance, this posture can be referenced from:
+
+- `AGENTS.md`
+- repo onboarding docs
+- team AI usage guidance
+- pull request review guidance
+- local setup or workflow docs
+
+Do not force the full prompt into every interaction.
+
+Use the quick version as the default posture. Use the full version when the work is risky, unclear, review-heavy, architecture-sensitive, or likely to touch contradictory repo reality.
+
+## Core reminder
+
+Model knowledge is not delivery truth. Current repo reality is.
+
+Inspect first. Separate evidence from inference. Mark uncertainty. Then generate smaller.
+
+The goal is not more AI output. The goal is justified delivery confidence.
+
+{/*
+Copyright © 2026 Mikey Sebastian Drozd.
+Licensed under CC BY 4.0. Repository code and tooling: MIT.
+*/}

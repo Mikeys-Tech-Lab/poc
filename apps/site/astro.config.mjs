@@ -9,6 +9,8 @@ export default defineConfig({
   site: process.env.SITE_URL || 'https://practiceofclarity.eu',
   redirects: {
     '/': '/en-us/',
+    '/thinkfirst': '/en-us/shared/thinkfirst/',
+    '/shared/thinkfirst': '/en-us/shared/thinkfirst/',
     ...buildRouteRedirects(),
   },
   devToolbar: {

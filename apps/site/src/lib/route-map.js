@@ -8,6 +8,7 @@
 import {
   DEFAULT_REGISTER_AVAILABILITY,
   normalizeRegisterAvailability,
+  PRACTITIONER_ONLY_AVAILABILITY,
 } from './register-registry.js';
 
 /**
@@ -386,8 +387,20 @@ export const getRegisterAvailabilityForRouteId = (id) => {
   return entry?.registerAvailability ?? DEFAULT_REGISTER_AVAILABILITY;
 };
 
+// The `/shared/` surface hosts companion resources that live outside the
+// register-translated content tree. The whole package is practitioner-only.
+const SHARED_SURFACE_SEGMENT = 'shared';
+const SHARED_REGISTER_AVAILABILITY = normalizeRegisterAvailability(PRACTITIONER_ONLY_AVAILABILITY);
+
+const isSharedSurfacePath = (normalizedPath) =>
+  normalizedPath === SHARED_SURFACE_SEGMENT ||
+  normalizedPath.startsWith(`${SHARED_SURFACE_SEGMENT}/`);
+
 export const getRegisterAvailabilityForPath = (path) => {
   const normalizedPath = normalizeLocalizedPath(path);
+  if (isSharedSurfacePath(normalizedPath)) {
+    return SHARED_REGISTER_AVAILABILITY;
+  }
   const entry = ROUTE_MAP.find((route) => getActivePath(route) === normalizedPath);
   return entry?.registerAvailability ?? DEFAULT_REGISTER_AVAILABILITY;
 };
