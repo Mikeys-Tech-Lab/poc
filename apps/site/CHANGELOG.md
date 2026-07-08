@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.8.0...site-v2.8.1) (2026-07-08)
+
+
+### Miscellaneous
+
+* **deps:** update dependency astro to v7 ([#292](https://github.com/Mikeys-Tech-Lab/poc/issues/292)) ([5ecb1e6](https://github.com/Mikeys-Tech-Lab/poc/commit/5ecb1e630f417bf490b391a978204c3269872b7b))
+
 ## [2.8.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.7.2...site-v2.8.0) (2026-07-08)
 
 
