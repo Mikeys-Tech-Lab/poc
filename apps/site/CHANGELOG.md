@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.7.2...site-v2.8.0) (2026-07-08)
+
+
+### Features
+
+* **astro:** add ThinkFirst handout surface at /en-us/shared/thinkfirst ([#287](https://github.com/Mikeys-Tech-Lab/poc/issues/287)) ([ea93a88](https://github.com/Mikeys-Tech-Lab/poc/commit/ea93a8843d81a998426ad8bc14cfeabb28cd83a0))
+
 ## [2.7.2](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.7.1...site-v2.7.2) (2026-07-06)
 
 

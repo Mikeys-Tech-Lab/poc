@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.21.6...PoC-v1.22.0) (2026-07-08)
+
+
+### Features
+
+* **astro:** add ThinkFirst handout surface at /en-us/shared/thinkfirst ([#287](https://github.com/Mikeys-Tech-Lab/poc/issues/287)) ([ea93a88](https://github.com/Mikeys-Tech-Lab/poc/commit/ea93a8843d81a998426ad8bc14cfeabb28cd83a0))
+
 ## [1.21.6](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.21.5...PoC-v1.21.6) (2026-07-06)
 
 
