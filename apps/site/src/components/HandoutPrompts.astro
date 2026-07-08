@@ -1,0 +1,72 @@
+---
+import CopyPromptCard from './CopyPromptCard.astro';
+import type { HandoutPrompt } from '../lib/handout-prompts';
+
+interface Props {
+  prompts: readonly HandoutPrompt[];
+  id?: string;
+}
+
+const { prompts, id } = Astro.props as Props;
+
+const visiblePrompts = id ? prompts.filter((prompt) => prompt.id === id) : prompts;
+---
+
+<poc-copy-prompts>
+  {visiblePrompts.map((prompt) => (
+    <CopyPromptCard
+      title={prompt.title}
+      body={prompt.body}
+      copyButtonLabel={prompt.copyButtonLabel}
+      copyTargetId={`handout-prompt-${prompt.id}`}
+    />
+  ))}
+</poc-copy-prompts>
+
+<script>
+  class PocCopyPrompts extends HTMLElement {
+    connectedCallback() {
+      if (this.dataset.bound === 'true') return;
+      this.dataset.bound = 'true';
+
+      this.querySelectorAll<HTMLButtonElement>('[data-copy-target]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          const target = button.dataset.copyTarget;
+          if (!target) return;
+
+          const source = this.querySelector<HTMLElement>(`[data-copy-source="${target}"]`);
+          const value = source?.textContent?.replace(/\s+$/, '');
+          if (!value) return;
+
+          try {
+            await navigator.clipboard.writeText(value);
+            const defaultLabel = button.querySelector<HTMLElement>('[data-copy-default]');
+            const successLabel = button.querySelector<HTMLElement>('[data-copy-success]');
+            if (!(defaultLabel && successLabel)) return;
+
+            defaultLabel.hidden = true;
+            successLabel.hidden = false;
+
+            window.setTimeout(() => {
+              defaultLabel.hidden = false;
+              successLabel.hidden = true;
+            }, 1800);
+          } catch {
+            // Clipboard API unavailable.
+          }
+        });
+      });
+    }
+  }
+
+  if (!customElements.get('poc-copy-prompts')) {
+    customElements.define('poc-copy-prompts', PocCopyPrompts);
+  }
+</script>
+
+<style>
+  poc-copy-prompts {
+    display: block;
+    min-width: 0;
+  }
+</style>

@@ -27,6 +27,7 @@ Before relying on any Astro or Starlight feature:
 - Register content: `apps/site/src/content/register/<register>/<locale>/...` (`orientation` is broadly active; `everyday` is route-scoped and only exposed where real content exists)
 - Assets (images, fonts): `apps/site/src/assets/`
 - Shared modules: `apps/site/src/lib/`
+- Brown-bag handouts (direct-link companion series): `apps/site/src/content/handouts/<locale>/<series>/` rendered via locale-nested `apps/site/src/pages/<locale>/shared/<series>/` routes and shortlinks in `astro.config.mjs` (for example `/thinkfirst` and `/shared/thinkfirst` → `/en-us/shared/thinkfirst/`). Pages must be locale-nested because the site is locale-prefixed: Astro i18n 404s un-prefixed paths and Starlight's sidebar config prepends the active locale to non-absolute `link` entries (so sidebar links stay locale-relative, canonical/card hrefs are fully qualified). The whole `/shared/` package is practitioner-only (`PRACTITIONER_ONLY_AVAILABILITY` via `getRegisterAvailabilityForPath`), not part of the main sidebar until promoted. A future `/shared/` hub index is deferred.
 - Seeds (`seeds/`) are development-only sources. They are not the site content tree.
 - The site may reference seeds but must not import them as pages.
 
@@ -78,10 +79,11 @@ Locale and register are independent axes in the practice model, but the current 
 
 ### Content collections
 
-Two content collections are defined in `content.config.ts`:
+Three content collections are defined in `content.config.ts`:
 
 - `docs`: Starlight's native collection. Uses `docsLoader()` and `docsSchema()`.
 - `register`: Custom collection for non-practitioner register content. Uses Astro's `glob` loader for `**/*.mdx` files in `src/content/register/`.
+- `handouts`: Brown-bag companion handout content under `src/content/handouts/<locale>/<series>/` (locale-nested to match the routes). Rendered through custom locale-nested `src/pages/<locale>/shared/<series>/` routes with `StarlightPage`, not the main sidebar. Prompt bodies may live in explicit `*.prompts.ts` sidecars registered in `src/lib/handout-prompts.ts`.
 
 The current site uses a single prefixed locale key, `en-us`. Content lives in symmetric `en-us` directories under `docs/` and active non-practitioner register trees. There is no `root` locale; Astro's `redirects` config handles `/` → `/en-us/` (301 in dev server, meta-refresh HTML in static build). Do not assume additional locales are present unless you verify them in the current tree and config.
 

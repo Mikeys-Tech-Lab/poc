@@ -1,0 +1,26 @@
+---
+import { render } from 'astro:content';
+import HandoutStarlightPage from '../../../../components/HandoutStarlightPage.astro';
+import { buildThinkfirstSidebar, getThinkfirstLanding } from '../../../../lib/handouts';
+
+const landing = await getThinkfirstLanding();
+
+if (!landing) {
+  return new Response(null, { status: 404, statusText: 'Not Found' });
+}
+
+const { Content, headings } = await render(landing);
+const sidebar = await buildThinkfirstSidebar();
+---
+
+<HandoutStarlightPage
+  frontmatter={{
+    title: landing.data.title,
+    description: landing.data.description,
+    pagefind: false,
+  }}
+  sidebar={sidebar}
+  headings={headings}
+>
+  <Content />
+</HandoutStarlightPage>

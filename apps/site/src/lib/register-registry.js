@@ -27,6 +27,18 @@ export const DEFAULT_REGISTER_AVAILABILITY = Object.freeze({
   }),
 });
 
+// Shared companion resources (e.g. handouts) are practitioner-only artifacts.
+// The gentler registers are intentionally absent, so the selector shows them as
+// unavailable rather than translating agent-facing prompts into softer prose.
+export const PRACTITIONER_ONLY_AVAILABILITY = Object.freeze({
+  defaultRegister: 'practitioner',
+  available: Object.freeze(['practitioner']),
+  absent: Object.freeze({
+    everyday: 'Everyday is not available for shared companion resources.',
+    orientation: 'Orientation is not available for shared companion resources.',
+  }),
+});
+
 export const isReadingRegister = (value) =>
   typeof value === 'string' && READING_REGISTERS.includes(value);
 
