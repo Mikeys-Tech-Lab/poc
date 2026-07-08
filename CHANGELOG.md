@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.22.1...PoC-v1.22.2) (2026-07-08)
+
+
+### Miscellaneous
+
+* **deps:** update dependency astro to v7 ([#292](https://github.com/Mikeys-Tech-Lab/poc/issues/292)) ([5ecb1e6](https://github.com/Mikeys-Tech-Lab/poc/commit/5ecb1e630f417bf490b391a978204c3269872b7b))
+
 ## [1.22.1](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.22.0...PoC-v1.22.1) (2026-07-08)
 
 
