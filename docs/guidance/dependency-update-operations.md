@@ -56,6 +56,14 @@ This repo needed a model where:
 - Renovate holds them behind Dependency Dashboard approval.
 - They are reviewed on purpose, not mixed into routine dependency flow.
 
+### Held dependencies
+
+Some majors stay blocked in `renovate.json` until upstream tooling catches up, even if Renovate would otherwise queue them after dashboard approval.
+
+- `typescript`: held below `7` while `@astrojs/check` peers only `^5 || ^6`. A TypeScript 7 upgrade currently crashes `astro check` in `@astrojs/language-server` before diagnostics run. Remove the `allowedVersions` rule once `@astrojs/check` publishes TypeScript 7 support.
+
+Closing a Renovate PR without merging also adds a bot-side ignore entry, but that state is not inspectable in the repo. Explicit hold rules document the constraint and survive outside one closed PR.
+
 ## Repo contract
 
 The repo-level config for this model lives in:

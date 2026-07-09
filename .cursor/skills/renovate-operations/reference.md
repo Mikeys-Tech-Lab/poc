@@ -12,6 +12,7 @@ This file holds repo-local reference material for the `renovate-operations` skil
 - Security posture: Renovate consumes GitHub vulnerability alerts and auto-merges passing fix PRs using the lowest fixed version; vulnerability PRs are exempt from the cooldown (`minimumReleaseAge: null`)
 - Major posture: dashboard approval required before PR creation or merge
 - Manual exception path: failing checks, config migrations, or upgrades that require code changes
+- Held dependencies: `typescript` capped below `7` until `@astrojs/check` supports TypeScript 7
 
 ## Live-doc contract
 
