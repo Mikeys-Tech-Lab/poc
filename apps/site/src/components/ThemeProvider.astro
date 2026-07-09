@@ -182,11 +182,15 @@ const registerAvailability = getRegisterAvailabilityForPath(Astro.url?.pathname 
 		d.a11yShowRegisterFallbackNotices = a11y.showRegisterFallbackNotices ? 'true' : 'false';
 
 		document.addEventListener('DOMContentLoaded', () => {
-			document.querySelectorAll('.expressive-code > figure > pre').forEach((element) => {
-				if (element instanceof HTMLElement && !element.hasAttribute('tabindex')) {
-					element.tabIndex = 0;
-				}
-			});
+			document
+				.querySelectorAll(
+					'.expressive-code > figure > pre, .sl-markdown-content pre, .starlight-aside pre',
+				)
+				.forEach((element) => {
+					if (element instanceof HTMLElement && !element.hasAttribute('tabindex')) {
+						element.tabIndex = 0;
+					}
+				});
 		});
 
 		return {
