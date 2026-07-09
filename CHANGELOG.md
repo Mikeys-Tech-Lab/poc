@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.7](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.22.6...PoC-v1.22.7) (2026-07-09)
+
+
+### Miscellaneous
+
+* **tooling:** hold TypeScript 7 until @astrojs/check supports it ([#302](https://github.com/Mikeys-Tech-Lab/poc/issues/302)) ([012ba3b](https://github.com/Mikeys-Tech-Lab/poc/commit/012ba3b796e0327033130e8543241073b214309d))
+
 ## [1.22.6](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.22.5...PoC-v1.22.6) (2026-07-09)
 
 
