@@ -60,6 +60,11 @@
       "groupName": "npm non-major",
       "automerge": true,
       "automergeType": "pr"
+    },
+    {
+      "description": "Hold TypeScript 7 until @astrojs/check supports it. astro check uses @astrojs/language-server, which currently peers typescript ^5 || ^6 only. Remove this rule once @astrojs/check adds TS 7 support.",
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<7"
     }
   ]
 }
