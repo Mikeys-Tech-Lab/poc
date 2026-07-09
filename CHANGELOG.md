@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.6](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.22.5...PoC-v1.22.6) (2026-07-09)
+
+
+### Miscellaneous
+
+* **deps:** update npm non-major ([#299](https://github.com/Mikeys-Tech-Lab/poc/issues/299)) ([92526a7](https://github.com/Mikeys-Tech-Lab/poc/commit/92526a714d8b2af3ffea302acd872d89f7abd1ee))
+
 ## [1.22.5](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.22.4...PoC-v1.22.5) (2026-07-09)
 
 
