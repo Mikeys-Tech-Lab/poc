@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.4](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.22.3...PoC-v1.22.4) (2026-07-09)
+
+
+### Miscellaneous
+
+* **deps:** update actions/checkout action to v7 ([#291](https://github.com/Mikeys-Tech-Lab/poc/issues/291)) ([5eadae4](https://github.com/Mikeys-Tech-Lab/poc/commit/5eadae49872b56d70f6e9aea445fe9cca6119fb0))
+
 ## [1.22.3](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.22.2...PoC-v1.22.3) (2026-07-08)
 
 
