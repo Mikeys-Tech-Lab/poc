@@ -111,10 +111,16 @@ html {
 }
 
 /* Code blocks — scroll within container, no page-level overflow (WCAG 1.4.10) */
-.sl-markdown-content pre,
-.starlight-aside pre {
+.sl-markdown-content pre {
   overflow-x: auto;
   max-width: 100%;
+}
+
+/* Aside templates — wrap long lines instead of trapping keyboard focus in a scroll region */
+.starlight-aside pre {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 /* Reading flow helpers — restrained landmarks for long-form prose */
