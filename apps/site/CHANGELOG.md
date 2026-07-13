@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.8.3...site-v2.9.0) (2026-07-13)
+
+
+### Features
+
+* **astro:** add Bluesky social link to header ([#306](https://github.com/Mikeys-Tech-Lab/poc/issues/306)) ([308d6c8](https://github.com/Mikeys-Tech-Lab/poc/commit/308d6c860f5e9bd7f82e4fa218ff6751b5544adf))
+
 ## [2.8.3](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.8.2...site-v2.8.3) (2026-07-09)
 
 
