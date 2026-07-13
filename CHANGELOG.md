@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.23.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.22.8...PoC-v1.23.0) (2026-07-13)
+
+
+### Features
+
+* **astro:** add Bluesky social link to header ([#306](https://github.com/Mikeys-Tech-Lab/poc/issues/306)) ([308d6c8](https://github.com/Mikeys-Tech-Lab/poc/commit/308d6c860f5e9bd7f82e4fa218ff6751b5544adf))
+
 ## [1.22.8](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.22.7...PoC-v1.22.8) (2026-07-13)
 
 
