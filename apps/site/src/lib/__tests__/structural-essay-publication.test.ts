@@ -26,7 +26,14 @@ const relatedPublicRepoDocPaths = [
   'docs/guidance/evolution-records/2026-05-09-structural-essay-publication-boundary-and-module-ownership.md',
 ] as const;
 
-const allowedFrontmatterKeys = new Set(['title', 'description', 'register']);
+const allowedFrontmatterKeys = new Set([
+  'title',
+  'description',
+  'register',
+  'socialImage',
+  'socialImageAlt',
+  'structuredDataType',
+]);
 const metadataKey = (...parts: string[]) => parts.join('_');
 const forbiddenDraftMetadataKeys = [
   'article_type',

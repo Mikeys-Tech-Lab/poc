@@ -58,6 +58,7 @@ export default defineConfig({
       },
       defaultLocale: 'en-us',
       disable404Route: true,
+      routeMiddleware: ['./src/starlightRouteData.ts'],
       head: [
         {
           tag: 'link',

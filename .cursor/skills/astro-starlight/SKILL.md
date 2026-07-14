@@ -25,7 +25,8 @@ Before relying on any Astro or Starlight feature:
 
 - Practitioner register (canonical): `apps/site/src/content/docs/` (Starlight-native; `en-us` is the only active locale in the current repo)
 - Register content: `apps/site/src/content/register/<register>/<locale>/...` (`orientation` is broadly active; `everyday` is route-scoped and only exposed where real content exists)
-- Assets (images, fonts): `apps/site/src/assets/`
+- Astro-processed content and UI assets: `apps/site/src/assets/`
+- Stable social crawler assets: `apps/site/public/social/`
 - Shared modules: `apps/site/src/lib/`
 - Brown-bag handouts (direct-link companion series): `apps/site/src/content/handouts/<locale>/<series>/` rendered via locale-nested `apps/site/src/pages/<locale>/shared/<series>/` routes and shortlinks in `astro.config.mjs` (for example `/thinkfirst` and `/shared/thinkfirst` → `/en-us/shared/thinkfirst/`). Pages must be locale-nested because the site is locale-prefixed: Astro i18n 404s un-prefixed paths and Starlight's sidebar config prepends the active locale to non-absolute `link` entries (so sidebar links stay locale-relative, canonical/card hrefs are fully qualified). The whole `/shared/` package is practitioner-only (`PRACTITIONER_ONLY_AVAILABILITY` via `getRegisterAvailabilityForPath`), not part of the main sidebar until promoted. A future `/shared/` hub index is deferred.
 - Seeds (`seeds/`) are development-only sources. They are not the site content tree.
@@ -208,10 +209,47 @@ Reusable logic lives in `src/lib/` as pure TypeScript modules. Components import
 | `register-registry.js` | Shared server/client | Reading-register registry and availability helpers. Plain JS so Astro config can import route metadata. |
 | `register.ts` | Client (`<script>`) | Register state: read, write, localStorage, URL param sync, fallback metadata, event dispatch. |
 | `toc.ts` | Client (`<script>`) | Rebuild Starlight ToC for the active register's visible headings. |
+| `seo.ts` | Server (route middleware) | Build social preview tags and schema.org JSON-LD from validated page metadata. |
 
 **Server vs. client**: `locale.ts` and `i18n.ts` run at build time in Astro frontmatter. `register.ts` and `toc.ts` run in the browser via Vite-processed `<script>` tags.
 
 **Adding a locale**: update `locale.ts` (prefix map), `i18n.ts` (label maps), and `astro.config.mjs` (locales object). For register content, add a new locale folder under each active register in `src/content/register/`.
+
+## Social / SEO previews
+
+Starlight emits the text OG/Twitter tags (title, description, canonical,
+`og:url`, `og:type`, `twitter:card`) and an auto-generated sitemap when `site`
+is set. It does not emit image tags. `src/lib/seo.ts` builds the missing image
+tags and `src/starlightRouteData.ts` (a Starlight `routeMiddleware`) pushes them
+into the head, reading image dimensions via `sharp` at build time. Signal pages
+without an article image use `/social/signals/default.png`. These are the
+standard OG/Twitter tags, so any platform (LinkedIn, X, Slack, Facebook,
+WhatsApp, Mastodon, ...) can render the card.
+
+**Add a preview image to a page**:
+
+1. Put the image in `public/social/` mirroring the route category, e.g.
+   `public/social/signals/structural/<slug>.png` (kebab-case, 1200x630).
+2. Add `socialImage: /social/<category>/<slug>.png` to the page frontmatter
+   and add a meaning-based `socialImageAlt`. Both fields are optional, but must
+   be declared together.
+
+The description used everywhere is the page's own `description`. A declared
+image must exist and expose dimensions or the build fails. If page `head:`
+frontmatter declares `og:image` or `twitter:image`, the middleware treats that
+as a complete manual override and does not add a second image metadata group.
+
+Signal pages declare `structuredDataType: Article` or `CollectionPage`. The
+middleware emits one schema.org graph containing the page type, `WebPage`,
+`ImageObject`, `BreadcrumbList`, and the Practice of Clarity `Organization`.
+
+New public frontmatter keys (like `socialImage`) must be added to
+`allowedFrontmatterKeys` in `src/lib/__tests__/structural-essay-publication.test.ts`.
+
+**Validation**: run `pnpm --filter site check`, build, and the social metadata
+E2E spec. The representative article test protects its exact canonical URL,
+copy, image path, alt, and 1200x630 dimensions. Full card rendering needs a
+public URL (deploy or a tunnel), since crawlers cannot reach localhost.
 
 ## Component overrides
 
