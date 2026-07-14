@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.24.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.23.0...PoC-v1.24.0) (2026-07-14)
+
+
+### Features
+
+* **astro:** add social previews for signal pages ([#308](https://github.com/Mikeys-Tech-Lab/poc/issues/308)) ([f4f19de](https://github.com/Mikeys-Tech-Lab/poc/commit/f4f19de45195a82b95f3436f1a352d88990a14b8))
+
 ## [1.23.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.22.8...PoC-v1.23.0) (2026-07-13)
 
 
