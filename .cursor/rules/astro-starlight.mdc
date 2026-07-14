@@ -20,7 +20,8 @@ Do not assume features from newer or older versions.
 
 - Site content lives in `apps/site/src/content/docs/`.
 - Non-practitioner register content lives in `apps/site/src/content/register/<register>/<locale>/`. `orientation` is broadly active. `everyday` is route-scoped and only exposed where real content and route metadata exist.
-- Assets live in `apps/site/src/assets/`.
+- Content and UI assets processed by Astro live in `apps/site/src/assets/`.
+- Stable crawler assets live in `apps/site/public/social/`.
 - `seeds/` is development-only and must not be imported as site content.
 - The site may reference seeds but does not treat them as canonical pages.
 
@@ -39,7 +40,11 @@ its evolution.
 
 ## Image and asset paths
 
-- In content frontmatter (`.md`/`.mdx`): use **relative paths** from the content file (e.g., `../../assets/hero.png`).
+- For Astro-processed content images in frontmatter, use **relative paths** from
+  the content file (e.g., `../../assets/hero.png`).
+- For social preview metadata, use a root-relative path under `/social/`.
+  These files live in `public/social/` because crawlers need stable, unhashed
+  public URLs.
 - In `.astro` components: standard import aliases may work.
 - Never use `~/assets/` or other aliases in frontmatter YAML. They do not resolve in content collections.
 
