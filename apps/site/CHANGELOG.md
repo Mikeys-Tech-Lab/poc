@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.11.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.10.0...site-v2.11.0) (2026-07-14)
+
+
+### Features
+
+* **astro:** add Instagram social link to header ([#310](https://github.com/Mikeys-Tech-Lab/poc/issues/310)) ([eb5d2d5](https://github.com/Mikeys-Tech-Lab/poc/commit/eb5d2d527588ac5c78c27c8a74293ccb76d8b1c2))
+
 ## [2.10.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.9.0...site-v2.10.0) (2026-07-14)
 
 
