@@ -81,6 +81,19 @@ const shouldRenderSearch =
 			border-inline-end: 1px solid var(--sl-color-gray-5);
 		}
 
+		/*
+		 * Tablet band: the full right-group (social icons + theme + a11y) does not
+		 * fit alongside the title and search between the md breakpoint and ~56rem,
+		 * which pushes the accessibility control off-screen. Tighten the gaps in
+		 * that band only, so desktop keeps its calmer spacing.
+		 */
+		@media (min-width: 50rem) and (max-width: 56rem) {
+			.right-group,
+			.social-icons {
+				gap: 0.5rem;
+			}
+		}
+
 		@media (min-width: 50rem) {
 			:global(:root[data-has-sidebar]) {
 				--__sidebar-pad: calc(2 * var(--sl-nav-pad-x));
