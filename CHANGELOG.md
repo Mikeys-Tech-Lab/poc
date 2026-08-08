@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.9](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.25.8...PoC-v1.25.9) (2026-08-08)
+
+
+### Miscellaneous
+
+* **deps:** update dependency tsx to v4.23.8 ([#329](https://github.com/Mikeys-Tech-Lab/poc/issues/329)) ([b5d0b57](https://github.com/Mikeys-Tech-Lab/poc/commit/b5d0b5791792b269304e44aebbdb7de3fa9f44e0))
+
 ## [1.25.8](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.25.7...PoC-v1.25.8) (2026-08-08)
 
 
