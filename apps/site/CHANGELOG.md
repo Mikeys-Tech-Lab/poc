@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.11.2](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.11.1...site-v2.11.2) (2026-08-08)
+
+
+### Miscellaneous
+
+* **deps:** update dependency @astrojs/starlight to ^0.41.7 ([#322](https://github.com/Mikeys-Tech-Lab/poc/issues/322)) ([3743cd4](https://github.com/Mikeys-Tech-Lab/poc/commit/3743cd4d1d17f74f511d87dd9521a4f2bb74f732))
+
 ## [2.11.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.11.0...site-v2.11.1) (2026-08-08)
 
 
