@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Scan for compromised packages
-        uses: gensecaihq/Shai-Hulud-2.0-Detector@85d0ad15eed5c2274e5606949735b59751a0bc61 # v2
+        uses: gensecaihq/Shai-Hulud-2.0-Detector@2755f94762bf5012bc7be82c93e172eabbcd0802 # v2
         with:
           fail-on-critical: true
           fail-on-high: true
