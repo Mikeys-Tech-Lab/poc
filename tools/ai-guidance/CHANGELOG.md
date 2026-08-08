@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.3](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.8.2...ai-guidance-v0.8.3) (2026-08-08)
+
+
+### Miscellaneous
+
+* **deps:** update dependency tsx to v4.23.8 ([#329](https://github.com/Mikeys-Tech-Lab/poc/issues/329)) ([b5d0b57](https://github.com/Mikeys-Tech-Lab/poc/commit/b5d0b5791792b269304e44aebbdb7de3fa9f44e0))
+
 ## [0.8.2](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.8.1...ai-guidance-v0.8.2) (2026-08-08)
 
 
