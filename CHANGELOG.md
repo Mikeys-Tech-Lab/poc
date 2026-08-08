@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.8](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.25.7...PoC-v1.25.8) (2026-08-08)
+
+
+### Miscellaneous
+
+* **deps:** update actions/setup-node action to v7 ([#323](https://github.com/Mikeys-Tech-Lab/poc/issues/323)) ([9528916](https://github.com/Mikeys-Tech-Lab/poc/commit/9528916d4827609e3b36d6b53eb186c6a2199760))
+
 ## [1.25.7](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.25.6...PoC-v1.25.7) (2026-08-08)
 
 
