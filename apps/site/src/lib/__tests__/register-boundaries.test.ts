@@ -175,23 +175,21 @@ const cases = [
 ] as const;
 
 describe('register boundary guardrails', () => {
-  it.each(cases)('$name', ({
-    practitionerPath,
-    orientationPath,
-    practitionerSnippets,
-    orientationSnippets,
-  }) => {
-    const practitioner = read(practitionerPath);
-    const orientation = read(orientationPath);
+  it.each(cases)(
+    '$name',
+    ({ practitionerPath, orientationPath, practitionerSnippets, orientationSnippets }) => {
+      const practitioner = read(practitionerPath);
+      const orientation = read(orientationPath);
 
-    for (const snippet of practitionerSnippets) {
-      expect(practitioner).toContain(snippet);
-    }
+      for (const snippet of practitionerSnippets) {
+        expect(practitioner).toContain(snippet);
+      }
 
-    for (const snippet of orientationSnippets) {
-      expect(orientation).toContain(snippet);
-    }
-  });
+      for (const snippet of orientationSnippets) {
+        expect(orientation).toContain(snippet);
+      }
+    },
+  );
 
   it('Structural keeps the AI and cognitive amplification entry visible in all three registers', () => {
     expect(read('apps/site/src/content/docs/en-us/signals/structural/index.mdx')).toContain(
