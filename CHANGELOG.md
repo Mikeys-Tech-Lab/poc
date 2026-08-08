@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.5](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.25.4...PoC-v1.25.5) (2026-08-08)
+
+
+### Miscellaneous
+
+* **deps:** update gensecaihq/shai-hulud-2.0-detector digest to 2755f94 ([#321](https://github.com/Mikeys-Tech-Lab/poc/issues/321)) ([712d7ed](https://github.com/Mikeys-Tech-Lab/poc/commit/712d7edd2784a94105f30772ac50066aae730687))
+
 ## [1.25.4](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.25.3...PoC-v1.25.4) (2026-08-08)
 
 
