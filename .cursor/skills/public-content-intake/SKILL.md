@@ -22,8 +22,9 @@ that boundary.
 5. Verify route/register availability in `apps/site/src/lib/route-map.js`.
 6. Keep practitioner, orientation, and everyday roles distinct.
 7. Keep repeated practitioner entry maps in colocated `*.ways.ts` sidecars.
-8. For source-heavy practitioner pages, use `SourceHook` and `SourceLedger`.
-9. Keep orientation and everyday pages lightweight unless a claim needs a source.
+8. Direct sourced claims in any register use `SourceHook` and `SourceLedger`.
+9. Keep orientation and everyday pages lightweight by reducing claims, not
+   citation integrity.
 10. Add restrained glossary links for first meaningful uses of recurring
     practice terms when they reduce conceptual load.
 11. Keep dated survey, report, legal, and field-signal claims scoped to their
@@ -48,7 +49,11 @@ Watch for keys such as:
 
 ## Source Boundary
 
-Source-heavy practitioner pages use inline source hooks and one ledger.
+Each sourced register owns its first-citation order. When sourced register
+surfaces coexist in one rendered document, pass the same register scope to
+their hooks and ledger. See
+`docs/guidance/content-register-source-workflow.md` and
+`docs/guidance/evolution-records/2026-08-09-register-source-contracts-are-per-render-surface.md`.
 
 Source data belongs in locale-owned, page-scoped modules:
 
@@ -59,11 +64,8 @@ apps/site/src/content/sources/<locale>/<content-path>/<page>.sources.ts
 Do not create a central source registry. Do not use English source modules as
 silent fallback for future locales.
 
-Declare `directSourceEntries` in first-citation order. The footnote number is
-the source's array position, so a declaration order that does not match the
-reading order makes footnotes jump in the text. When adding an inline source
-hook, insert its entry at the matching position, not at the end. This breaks
-most easily when sources are migrated out of a Markdown table.
+Declare each register's direct source array in first-citation order. Register
+variants may select and order entries from the shared catalogue independently.
 
 Any practitioner page that renders "Ways into this signal" should keep that
 page-owned editorial map in a colocated `*.ways.ts` sidecar next to the

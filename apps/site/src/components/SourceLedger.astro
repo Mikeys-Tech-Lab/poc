@@ -7,23 +7,26 @@ import type {
 interface Props {
   sources: readonly DirectSourceEntry[];
   furtherReading?: readonly FurtherReadingEntry[];
+  scope?: string;
 }
 
-const { sources, furtherReading = [] } = Astro.props as Props;
+const { sources, furtherReading = [], scope } = Astro.props as Props;
+const scopedId = (prefix: string, sourceId?: string) =>
+  [prefix, scope, sourceId].filter(Boolean).join('-');
 ---
 
-<section class="poc-sources" aria-labelledby="sources">
-  <h2 id="sources">Sources</h2>
+<section class="poc-sources" aria-labelledby={scopedId('sources')}>
+  <h2 id={scopedId('sources')}>Sources</h2>
   <p class="poc-sources-intro">
     These entries show what each linked source hook supports and where its limits are.
   </p>
   <div class="poc-source-list">
     {sources.map((source, index) => (
-      <article class="poc-source-card" id={`source-${source.id}`}>
+      <article class="poc-source-card" id={scopedId('source', source.id)}>
         <h3>
           <a
             class="poc-source-card__title-link"
-            href={`#ref-${source.id}`}
+            href={`#${scopedId('ref', source.id)}`}
             aria-label={`Jump back to reference ${index + 1} in the text`}
           >
             {`${index + 1}. ${source.title}`}
@@ -67,14 +70,17 @@ const { sources, furtherReading = [] } = Astro.props as Props;
     ))}
   </div>
   {furtherReading.length > 0 && (
-    <section class="poc-further-reading" aria-labelledby="further-reading">
-      <h2 id="further-reading">Further reading</h2>
+    <section class="poc-further-reading" aria-labelledby={scopedId('further-reading')}>
+      <h2 id={scopedId('further-reading')}>Further reading</h2>
       <p class="poc-sources-intro">
         Deeper context that shaped the frame, without treating each entry as a direct factual anchor.
       </p>
       <div class="poc-source-list">
         {furtherReading.map((entry, index) => (
-          <article class="poc-source-card poc-source-card-secondary" id={`further-reading-${entry.id}`}>
+          <article
+            class="poc-source-card poc-source-card-secondary"
+            id={scopedId('further-reading', entry.id)}
+          >
             <h3>
               <span class="poc-source-card__title-group">{`${index + 1}. ${entry.title}`}</span>
             </h3>

@@ -5,12 +5,14 @@ interface Props {
   readonly sourceId: string;
   readonly sources?: readonly DirectSourceEntry[];
   readonly label?: string;
+  readonly scope?: string;
 }
 
-const { sourceId, sources = [], label } = Astro.props as Props;
+const { sourceId, sources = [], label, scope } = Astro.props as Props;
 const sourceIndex = sources.findIndex((entry) => entry.id === sourceId);
 const source = sourceIndex >= 0 ? sources[sourceIndex] : undefined;
-const href = `#source-${sourceId}`;
+const scopedSourceId = scope ? `${scope}-${sourceId}` : sourceId;
+const href = `#source-${scopedSourceId}`;
 const accessibleLabel = source ? `Open source: ${source.title}` : 'Open source details';
 const number = sourceIndex >= 0 ? sourceIndex + 1 : undefined;
 const sourceTitle = source?.title;
@@ -24,7 +26,7 @@ const renderedLabel =
       : (sourceLabel ?? sourceTitle ?? 'Source'));
 ---
 
-<sup class="poc-source-reference" id={`ref-${sourceId}`}><a class="poc-source-reference__link" href={href} aria-label={accessibleLabel}><slot>{renderedLabel}</slot></a></sup>
+<sup class="poc-source-reference" id={`ref-${scopedSourceId}`}><a class="poc-source-reference__link" href={href} aria-label={accessibleLabel}><slot>{renderedLabel}</slot></a></sup>
 
 <style>
   .poc-source-reference {

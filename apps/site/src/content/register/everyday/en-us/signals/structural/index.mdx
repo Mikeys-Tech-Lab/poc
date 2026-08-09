@@ -8,6 +8,9 @@ import ShareButton from '../../../../../../components/ShareButton.astro';
 import {
   buildEssayHref,
 } from '../../../../../../lib/structural/essay-route';
+import {
+  buildEssayHref as buildTimeBackHref,
+} from '../../../../../../lib/structural/who-gets-the-time-back-route';
 
 <ShareButton />
 
@@ -52,6 +55,12 @@ The first signal in this cluster is ready:
 It starts with a direct question: what kinds of writing, sorting, explaining,
 comparing, recommending, and deciding is AI amplifying, who gets to decide, and
 who has to live with the consequences?
+
+The second signal is ready:
+<a href={buildTimeBackHref('everyday')}>Who Gets the Time Back?</a>
+
+It starts from a familiar pressure: AI can make some work faster, but that does
+not tell us who receives the saved time as rest, care, learning, or pay.
 
 {/*
 Copyright © 2026 Mikey Sebastian Drozd.

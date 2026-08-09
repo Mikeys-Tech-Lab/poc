@@ -5,6 +5,9 @@ register: orientation
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import HomeFeaturedCard from '../../../../components/HomeFeaturedCard.astro';
+import {
+  buildEssayHref as buildTimeBackHref,
+} from '../../../../lib/structural/who-gets-the-time-back-route';
 
 <div class="home-card-grid">
   <CardGrid>
@@ -15,6 +18,11 @@ import HomeFeaturedCard from '../../../../components/HomeFeaturedCard.astro';
       Start with the structural frame: AI is not magic or a monster by itself. It amplifies patterns, decisions, and power that already exist.
 
       [Read the signal](/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier/)
+    </Card>
+    <Card title="Who Gets the Time Back?" icon="open-book">
+      Follow productivity gains into ownership, management, law, and bargaining to see how institutions decide who receives relief.
+
+      <a href={buildTimeBackHref('orientation')}>Read Who Gets the Time Back?</a>
     </Card>
     <Card title="Integration Lag" icon="open-book">
       Name the working version of that pressure: AI-assisted work can move faster than people can inspect, review, and integrate it.

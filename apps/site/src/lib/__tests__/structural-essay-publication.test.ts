@@ -20,6 +20,9 @@ const firstEssayContentPaths = [
   'apps/site/src/content/docs/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.mdx',
   'apps/site/src/content/register/orientation/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.mdx',
   'apps/site/src/content/register/everyday/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.mdx',
+  'apps/site/src/content/docs/en-us/signals/structural/who-gets-the-time-back.mdx',
+  'apps/site/src/content/register/orientation/en-us/signals/structural/who-gets-the-time-back.mdx',
+  'apps/site/src/content/register/everyday/en-us/signals/structural/who-gets-the-time-back.mdx',
 ] as const;
 const relatedPublicRepoDocPaths = [
   'docs/architecture/workspace.md',
@@ -286,7 +289,6 @@ describe('first structural essay publication contract', () => {
     const anchorMap = read('apps/site/src/components/AnchorMap.astro');
 
     expect(sourceHook).not.toContain('ai-is-not-magic-it-is-a-cognitive-amplifier.data');
-    expect(sourceHook).toContain('const { sourceId, sources = [], label }');
 
     for (const label of [
       'Sources',

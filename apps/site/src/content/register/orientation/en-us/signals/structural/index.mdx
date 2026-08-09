@@ -8,6 +8,9 @@ import ShareButton from '../../../../../../components/ShareButton.astro';
 import {
   buildEssayHref,
 } from '../../../../../../lib/structural/essay-route';
+import {
+  buildEssayHref as buildTimeBackHref,
+} from '../../../../../../lib/structural/who-gets-the-time-back-route';
 
 <ShareButton />
 
@@ -45,6 +48,13 @@ The first structural signal cluster begins with:
 
 It argues that AI works as a cognitive amplifier, then asks who controls that
 amplification and what record is left for people affected by it.
+
+The second signal in the cluster is:
+<a href={buildTimeBackHref('orientation')}>Who Gets the Time Back?</a>
+
+It follows the productivity claim into ownership, management, law, and
+bargaining, asking who receives relief when amplification increases output
+capacity.
 
 {/*
 Copyright © 2026 Mikey Sebastian Drozd.

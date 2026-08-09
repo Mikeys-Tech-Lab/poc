@@ -17,6 +17,12 @@ import {
   directSourceEntries as aiDirectSourceEntries,
   furtherReadingEntries as aiFurtherReadingEntries,
 } from '../../content/sources/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.sources';
+import {
+  directSourceEntries as timeBackDirectSourceEntries,
+  everydaySourceEntries as timeBackEverydaySourceEntries,
+  furtherReadingEntries as timeBackFurtherReadingEntries,
+  orientationSourceEntries as timeBackOrientationSourceEntries,
+} from '../../content/sources/en-us/signals/structural/who-gets-the-time-back.sources';
 import type { DirectSourceEntry, FurtherReadingEntry } from '../../content/sources/types';
 
 const repoRoot = new URL('../../../../../', import.meta.url);
@@ -30,9 +36,11 @@ const privateDraftFrontmatterKeys = [
 
 interface SourcePageCase {
   readonly name: string;
-  readonly practitionerPath: string;
+  readonly contentPath: string;
   readonly directSourceEntries: readonly DirectSourceEntry[];
   readonly furtherReadingEntries: readonly FurtherReadingEntry[];
+  readonly rejectRawSourceLinks?: boolean;
+  readonly sourceScope?: string;
 }
 
 interface PractitionerWaysCase {
@@ -45,28 +53,53 @@ interface PractitionerWaysCase {
 const sourcePageCases: readonly SourcePageCase[] = [
   {
     name: 'AI Is Not Magic',
-    practitionerPath:
+    contentPath:
       'apps/site/src/content/docs/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.mdx',
     directSourceEntries: aiDirectSourceEntries,
     furtherReadingEntries: aiFurtherReadingEntries,
   },
   {
+    name: 'Who Gets the Time Back practitioner',
+    contentPath: 'apps/site/src/content/docs/en-us/signals/structural/who-gets-the-time-back.mdx',
+    directSourceEntries: timeBackDirectSourceEntries,
+    furtherReadingEntries: timeBackFurtherReadingEntries,
+    rejectRawSourceLinks: true,
+  },
+  {
+    name: 'Who Gets the Time Back orientation',
+    contentPath:
+      'apps/site/src/content/register/orientation/en-us/signals/structural/who-gets-the-time-back.mdx',
+    directSourceEntries: timeBackOrientationSourceEntries,
+    furtherReadingEntries: [],
+    rejectRawSourceLinks: true,
+    sourceScope: 'orientation',
+  },
+  {
+    name: 'Who Gets the Time Back everyday',
+    contentPath:
+      'apps/site/src/content/register/everyday/en-us/signals/structural/who-gets-the-time-back.mdx',
+    directSourceEntries: timeBackEverydaySourceEntries,
+    furtherReadingEntries: [],
+    rejectRawSourceLinks: true,
+    sourceScope: 'everyday',
+  },
+  {
     name: 'Integration Lag',
-    practitionerPath:
+    contentPath:
       'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/we-started-shipping-faster-understanding-less.mdx',
     directSourceEntries: integrationLagDirectSourceEntries,
     furtherReadingEntries: integrationLagFurtherReadingEntries,
   },
   {
     name: 'A Path Through Integration Lag',
-    practitionerPath:
+    contentPath:
       'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/a-path-through-integration-lag.mdx',
     directSourceEntries: pathDirectSourceEntries,
     furtherReadingEntries: pathFurtherReadingEntries,
   },
   {
     name: 'The Verification Tax',
-    practitionerPath:
+    contentPath:
       'apps/site/src/content/docs/en-us/signals/operational/work-delivery/integration-lag/the-verification-tax.mdx',
     directSourceEntries: verificationTaxDirectSourceEntries,
     furtherReadingEntries: verificationTaxFurtherReadingEntries,
@@ -81,6 +114,14 @@ const practitionerWaysCases: readonly PractitionerWaysCase[] = [
     waysSidecarPath:
       'apps/site/src/content/docs/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier.ways.ts',
     waysImport: './ai-is-not-magic-it-is-a-cognitive-amplifier.ways',
+  },
+  {
+    name: 'Who Gets the Time Back',
+    practitionerPath:
+      'apps/site/src/content/docs/en-us/signals/structural/who-gets-the-time-back.mdx',
+    waysSidecarPath:
+      'apps/site/src/content/docs/en-us/signals/structural/who-gets-the-time-back.ways.ts',
+    waysImport: './who-gets-the-time-back.ways',
   },
   {
     name: 'Integration Lag',
@@ -182,8 +223,8 @@ describe('public source contracts', () => {
 
   it.each(sourcePageCases)(
     '$name declares every inline SourceHook source id',
-    ({ directSourceEntries, practitionerPath, name }) => {
-      const content = read(practitionerPath);
+    ({ directSourceEntries, contentPath, name, rejectRawSourceLinks, sourceScope }) => {
+      const content = read(contentPath);
       const usedIds = [...content.matchAll(/sourceId="([^"]+)"/g)].map((match) => match[1]);
       const declaredIds = new Set(ids(directSourceEntries));
 
@@ -198,13 +239,29 @@ describe('public source contracts', () => {
           true,
         );
       }
+
+      if (rejectRawSourceLinks) {
+        expect(content, `${name} should use SourceHook instead of raw source links`).not.toMatch(
+          /^\[[^\]]+\]\(https:\/\/[^)]+\)$/gm,
+        );
+      }
+
+      if (sourceScope) {
+        const scopedHooks = content.match(
+          new RegExp(`<SourceHook[^>]*scope="${sourceScope}"[^>]*/>`, 'g'),
+        );
+        expect(scopedHooks, `${name} should scope every source hook`).toHaveLength(usedIds.length);
+        expect(content, `${name} should scope its source ledger`).toMatch(
+          new RegExp(`<SourceLedger[^>]*scope="${sourceScope}"[^>]*/>`),
+        );
+      }
     },
   );
 
   it.each(sourcePageCases)(
     '$name numbers footnotes in reading order',
-    ({ directSourceEntries, practitionerPath, name }) => {
-      const content = read(practitionerPath);
+    ({ directSourceEntries, contentPath, name }) => {
+      const content = read(contentPath);
       const seen = new Set<string>();
       const firstCitationOrder: string[] = [];
       for (const match of content.matchAll(/sourceId="([^"]+)"/g)) {
@@ -221,6 +278,41 @@ describe('public source contracts', () => {
       ).toEqual(ids(directSourceEntries));
     },
   );
+
+  it('keeps Signal 2 register source targets unique and reciprocal', () => {
+    const sourceSurfaces = [
+      { scope: undefined, sources: timeBackDirectSourceEntries },
+      { scope: 'orientation', sources: timeBackOrientationSourceEntries },
+      { scope: 'everyday', sources: timeBackEverydaySourceEntries },
+    ] as const;
+    const referencePairs = sourceSurfaces.flatMap(({ scope, sources }) =>
+      ids(sources).map((sourceId) => {
+        const scopedSourceId = scope ? `${scope}-${sourceId}` : sourceId;
+        return {
+          citationId: `ref-${scopedSourceId}`,
+          ledgerId: `source-${scopedSourceId}`,
+        };
+      }),
+    );
+    const sourceHook = read('apps/site/src/components/SourceHook.astro');
+    const sourceLedger = read('apps/site/src/components/SourceLedger.astro');
+
+    expectUnique(
+      referencePairs.map(({ citationId }) => citationId),
+      'Signal 2 citation ids across registers',
+    );
+    expectUnique(
+      referencePairs.map(({ ledgerId }) => ledgerId),
+      'Signal 2 ledger ids across registers',
+    );
+    expect(sourceHook).toContain(
+      `const scopedSourceId = scope ? \`\${scope}-\${sourceId}\` : sourceId;`,
+    );
+    expect(sourceHook).toContain(`const href = \`#source-\${scopedSourceId}\`;`);
+    expect(sourceHook).toContain(`id={\`ref-\${scopedSourceId}\`}`);
+    expect(sourceLedger).toContain("id={scopedId('source', source.id)}");
+    expect(sourceLedger).toContain(`href={\`#\${scopedId('ref', source.id)}\`}`);
+  });
 
   it('keeps private drafting metadata out of public content frontmatter', () => {
     const contentFiles = collectFiles(new URL('apps/site/src/content/', repoRoot), ['.mdx', '.md']);
