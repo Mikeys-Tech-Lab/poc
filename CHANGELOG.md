@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.0](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.25.11...PoC-v1.26.0) (2026-08-09)
+
+
+### Features
+
+* **content:** publish who gets the time back ([#335](https://github.com/Mikeys-Tech-Lab/poc/issues/335)) ([92f9720](https://github.com/Mikeys-Tech-Lab/poc/commit/92f97201308d87b92df57ae017f3da5b4b7d2387))
+
 ## [1.25.11](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.25.10...PoC-v1.25.11) (2026-08-09)
 
 

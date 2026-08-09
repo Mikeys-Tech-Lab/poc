@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.11.3...site-v2.12.0) (2026-08-09)
+
+
+### Features
+
+* **content:** publish who gets the time back ([#335](https://github.com/Mikeys-Tech-Lab/poc/issues/335)) ([92f9720](https://github.com/Mikeys-Tech-Lab/poc/commit/92f97201308d87b92df57ae017f3da5b4b7d2387))
+
 ## [2.11.3](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.11.2...site-v2.11.3) (2026-08-09)
 
 
