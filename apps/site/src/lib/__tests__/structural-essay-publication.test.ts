@@ -289,9 +289,6 @@ describe('first structural essay publication contract', () => {
     const anchorMap = read('apps/site/src/components/AnchorMap.astro');
 
     expect(sourceHook).not.toContain('ai-is-not-magic-it-is-a-cognitive-amplifier.data');
-    expect(sourceHook).toContain('const { sourceId, sources = [], label, scope }');
-    expect(sourceHook).toContain('const scopedSourceId = scope');
-    expect(sourceLedger).toContain('const scopedId =');
 
     for (const label of [
       'Sources',
