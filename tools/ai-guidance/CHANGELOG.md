@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.4](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.8.3...ai-guidance-v0.8.4) (2026-08-09)
+
+
+### Miscellaneous
+
+* **deps:** update npm non-major ([#333](https://github.com/Mikeys-Tech-Lab/poc/issues/333)) ([d1480db](https://github.com/Mikeys-Tech-Lab/poc/commit/d1480dbe449e04417330a26a08831d32f63639cb))
+
 ## [0.8.3](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.8.2...ai-guidance-v0.8.3) (2026-08-08)
 
 
