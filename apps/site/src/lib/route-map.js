@@ -258,6 +258,16 @@ export const ROUTE_MAP = Object.freeze(
       status: 'verified',
     },
     {
+      id: 'signal-who-gets-the-time-back',
+      oldPath: null,
+      newPath: 'signals/structural/who-gets-the-time-back',
+      type: 'signal',
+      section: 'signals-structural',
+      registerAvailability: THREE_REGISTER_AVAILABILITY,
+      redirect: false,
+      status: 'verified',
+    },
+    {
       id: 'signal-work-delivery',
       oldPath: null,
       newPath: 'signals/operational/work-delivery',

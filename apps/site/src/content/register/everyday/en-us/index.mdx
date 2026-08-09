@@ -5,6 +5,9 @@ register: everyday
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import HomeFeaturedCard from '../../../../components/HomeFeaturedCard.astro';
+import {
+  buildEssayHref as buildTimeBackHref,
+} from '../../../../lib/structural/who-gets-the-time-back-route';
 
 <div class="home-card-grid">
   <CardGrid>
@@ -15,6 +18,11 @@ import HomeFeaturedCard from '../../../../components/HomeFeaturedCard.astro';
       Start with the AI pressure many people already feel: the tool can help, but it is not magic and it does not decide where responsibility belongs.
 
       [Read the signal](/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier/)
+    </Card>
+    <Card title="Who Gets the Time Back?" icon="open-book">
+      AI can make some work faster. Ask whether the saved time becomes relief, care, and learning, or simply higher targets.
+
+      <a href={buildTimeBackHref('everyday')}>Read Who Gets the Time Back?</a>
     </Card>
     <Card title="Integration Lag" icon="open-book">
       Name the gap that appears when AI-assisted work moves faster than people can inspect and understand it together.

@@ -19,6 +19,7 @@ const threeRegisterRouteIds = [
   'about-the-author',
   'signal-structural',
   'signal-ai-is-not-magic-it-is-a-cognitive-amplifier',
+  'signal-who-gets-the-time-back',
   'signal-work-delivery',
   'signal-integration-lag',
   'signal-we-started-shipping-faster-understanding-less',
@@ -106,6 +107,16 @@ describe('route map', () => {
       getRegisterAvailabilityForPath(
         '/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier/',
       ),
+    ).toEqual({
+      defaultRegister: 'everyday',
+      available: ['everyday', 'orientation', 'practitioner'],
+      absent: {},
+    });
+  });
+
+  it('enables all three registers for the second structural signal', () => {
+    expect(
+      getRegisterAvailabilityForPath('/en-us/signals/structural/who-gets-the-time-back/'),
     ).toEqual({
       defaultRegister: 'everyday',
       available: ['everyday', 'orientation', 'practitioner'],

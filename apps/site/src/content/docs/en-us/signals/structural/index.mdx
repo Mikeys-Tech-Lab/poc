@@ -10,6 +10,9 @@ import ShareButton from '../../../../../components/ShareButton.astro';
 import {
   ESSAY_HREF,
 } from '../../../../../lib/structural/essay-route';
+import {
+  ESSAY_HREF as TIME_BACK_HREF,
+} from '../../../../../lib/structural/who-gets-the-time-back-route';
 
 <RegisterContent registers={{
   everyday: 'everyday/en-us/signals/structural',
@@ -59,6 +62,12 @@ The first structural signal cluster begins with:
 
 It argues that AI works as a cognitive amplifier: scaling reasoning-like output
 inside institutions already shaped by power.
+
+The second signal in the cluster is:
+<a href={TIME_BACK_HREF}>Who Gets the Time Back?</a>
+
+It asks what happens to time saved by AI productivity gains, who receives that
+time as relief, and who absorbs it as pressure, profit, surveillance, or control.
 
 </RegisterContent>
 

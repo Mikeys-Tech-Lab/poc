@@ -246,6 +246,10 @@ export default defineConfig({
                       label: 'AI Is Not Magic. It Is a Cognitive Amplifier.',
                       slug: 'signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier',
                     },
+                    {
+                      label: 'Who Gets the Time Back?',
+                      slug: 'signals/structural/who-gets-the-time-back',
+                    },
                   ],
                 },
               ],

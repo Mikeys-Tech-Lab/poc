@@ -20,8 +20,8 @@ hero:
     file: ../../../assets/hero.png
     alt: Silhouettes of people connected by lines in a network pattern.
   actions:
-    - text: AI Is Not Magic. It Is a Cognitive Amplifier.
-      link: /en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier/
+    - text: Explore structural signals
+      link: /en-us/signals/structural/
       icon: right-arrow
 prev: false
 next: false
@@ -31,6 +31,9 @@ register: practitioner
 import { Card, CardGrid } from '@astrojs/starlight/components';
 import HomeFeaturedCard from '../../../components/HomeFeaturedCard.astro';
 import RegisterContent from '../../../components/RegisterContent.astro';
+import {
+  buildEssayHref as buildTimeBackHref,
+} from '../../../lib/structural/who-gets-the-time-back-route';
 
 <RegisterContent registers={{
   everyday: 'everyday/en-us',
@@ -45,6 +48,11 @@ import RegisterContent from '../../../components/RegisterContent.astro';
         Begin with the core frame: AI is not magic or a monster by itself. It amplifies patterns, decisions, and power that already exist.
 
         [Read the signal](/en-us/signals/structural/ai-is-not-magic-it-is-a-cognitive-amplifier/)
+      </Card>
+      <Card title="Who Gets the Time Back?" icon="open-book">
+        Trace how AI productivity gains move through evidence, working-time politics, algorithmic management, labor power, and distribution.
+
+        <a href={buildTimeBackHref('practitioner')}>Read Who Gets the Time Back?</a>
       </Card>
       <Card title="Integration Lag" icon="open-book">
         Name the working version of that pressure: AI-assisted work can move faster than people can inspect, review, and integrate it.

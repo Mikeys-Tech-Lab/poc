@@ -203,6 +203,46 @@ describe('register boundary guardrails', () => {
     ).toContain('The first signal in this cluster is ready:');
   });
 
+  it('Structural keeps Who Gets the Time Back visible in all three registers', () => {
+    expect(read('apps/site/src/content/docs/en-us/signals/structural/index.mdx')).toContain(
+      'Who Gets the Time Back?',
+    );
+    expect(
+      read('apps/site/src/content/register/orientation/en-us/signals/structural/index.mdx'),
+    ).toContain('Who Gets the Time Back?');
+    expect(
+      read('apps/site/src/content/register/everyday/en-us/signals/structural/index.mdx'),
+    ).toContain('Who Gets the Time Back?');
+  });
+
+  it('home keeps both structural signals visible in every register', () => {
+    const landingCases = [
+      {
+        path: 'apps/site/src/content/docs/en-us/index.mdx',
+        registerLink: "buildTimeBackHref('practitioner')",
+      },
+      {
+        path: 'apps/site/src/content/register/orientation/en-us/index.mdx',
+        registerLink: "buildTimeBackHref('orientation')",
+      },
+      {
+        path: 'apps/site/src/content/register/everyday/en-us/index.mdx',
+        registerLink: "buildTimeBackHref('everyday')",
+      },
+    ] as const;
+
+    for (const { path, registerLink } of landingCases) {
+      const landing = read(path);
+      expect(landing).toContain('<Card title="AI Is Not Magic"');
+      expect(landing).toContain('<Card title="Who Gets the Time Back?"');
+      expect(landing).toContain(registerLink);
+    }
+
+    const practitionerLanding = read('apps/site/src/content/docs/en-us/index.mdx');
+    expect(practitionerLanding).toContain('text: Explore structural signals');
+    expect(practitionerLanding).toContain('link: /en-us/signals/structural/');
+  });
+
   it('keeps the new operational overviews present in all three registers', () => {
     expect(
       read('apps/site/src/content/docs/en-us/signals/operational/work-delivery/index.mdx'),
