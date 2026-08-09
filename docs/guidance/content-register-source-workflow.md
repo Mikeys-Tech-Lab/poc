@@ -63,8 +63,12 @@ trace, seeds, and mandate lenses.
 
 ## Source Shape
 
-Source-heavy practitioner pages use inline `SourceHook` references and one
-`SourceLedger`, not raw Markdown source tables.
+Any register that retains direct sourced factual claims uses inline
+`SourceHook` references and one `SourceLedger`. Lighter registers reduce claim
+density, not citation integrity. Register variants may share a locale-owned,
+page-scoped source catalogue, but each register owns its citation order. When
+multiple sourced register surfaces coexist in one rendered document, their
+hooks and ledgers use the same register scope so IDs and links do not collide.
 
 Source data lives in locale-owned, page-scoped modules:
 
@@ -88,15 +92,12 @@ surface, not permanent background truth.
 Source IDs are unique within a page module. Do not create a central source
 registry unless a real retrieval or publishing need appears.
 
-Declare direct source entries in the order they are first cited in the page.
-The footnote number a reader sees is the source's position in the
-`directSourceEntries` array, and the ledger numbers the same way. If the array
-order does not match the citation order, footnotes read out of sequence in the
-text. This is easy to break during migration, when sources are lifted from a
-Markdown table that carried a different order. When you add a new inline
-`SourceHook`, place its entry at the matching position in the array, not at the
-end. Further reading entries are numbered independently and are not cited
-inline, so they follow their own intended order.
+Declare each register's direct source array in the order sources are first
+cited on that page. The footnote number a reader sees is the source's position
+in the array passed to its hooks and ledger. If the array order does not match
+the citation order, footnotes read out of sequence in the text. Further reading
+entries are numbered independently and are not cited inline, so they follow
+their own intended order.
 
 ## Contract Surfaces
 
