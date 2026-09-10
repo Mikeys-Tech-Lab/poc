@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.3](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.26.2...PoC-v1.26.3) (2026-09-10)
+
+
+### Miscellaneous
+
+* **deps:** update dependency sharp to v0.35.4 [security] ([#342](https://github.com/Mikeys-Tech-Lab/poc/issues/342)) ([9a20423](https://github.com/Mikeys-Tech-Lab/poc/commit/9a204232b76251ff78b45fd43c5734fa42dfaaee))
+
 ## [1.26.2](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.26.1...PoC-v1.26.2) (2026-09-10)
 
 
