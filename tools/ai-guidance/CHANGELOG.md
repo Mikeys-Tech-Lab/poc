@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.6](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.8.5...ai-guidance-v0.8.6) (2026-09-10)
+
+
+### Miscellaneous
+
+* **deps:** update dependency vitest to v4.1.11 [security] ([#341](https://github.com/Mikeys-Tech-Lab/poc/issues/341)) ([fbd086e](https://github.com/Mikeys-Tech-Lab/poc/commit/fbd086e5c535640496d1938970b160108af828d6))
+
 ## [0.8.5](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.8.4...ai-guidance-v0.8.5) (2026-08-10)
 
 

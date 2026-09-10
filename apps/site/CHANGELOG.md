@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.12.0...site-v2.12.1) (2026-09-10)
+
+
+### Miscellaneous
+
+* **deps:** update dependency vitest to v4.1.11 [security] ([#341](https://github.com/Mikeys-Tech-Lab/poc/issues/341)) ([fbd086e](https://github.com/Mikeys-Tech-Lab/poc/commit/fbd086e5c535640496d1938970b160108af828d6))
+
 ## [2.12.0](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.11.3...site-v2.12.0) (2026-08-09)
 
 
