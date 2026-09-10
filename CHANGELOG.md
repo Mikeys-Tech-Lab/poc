@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.4](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.26.3...PoC-v1.26.4) (2026-09-10)
+
+
+### Miscellaneous
+
+* **deps:** update dependency vitest to v4.1.11 [security] ([#341](https://github.com/Mikeys-Tech-Lab/poc/issues/341)) ([fbd086e](https://github.com/Mikeys-Tech-Lab/poc/commit/fbd086e5c535640496d1938970b160108af828d6))
+
 ## [1.26.3](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.26.2...PoC-v1.26.3) (2026-09-10)
 
 
