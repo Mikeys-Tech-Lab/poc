@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.5](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.26.4...PoC-v1.26.5) (2026-09-22)
+
+
+### Miscellaneous
+
+* **deps:** update github actions non-major ([#345](https://github.com/Mikeys-Tech-Lab/poc/issues/345)) ([23ff47d](https://github.com/Mikeys-Tech-Lab/poc/commit/23ff47d0943849bebbb238c6356f2dda8a4b5019))
+
 ## [1.26.4](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.26.3...PoC-v1.26.4) (2026-09-10)
 
 
