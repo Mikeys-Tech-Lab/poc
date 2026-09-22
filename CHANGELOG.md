@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.6](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.26.5...PoC-v1.26.6) (2026-09-22)
+
+
+### Miscellaneous
+
+* **deps:** lock file maintenance ([#349](https://github.com/Mikeys-Tech-Lab/poc/issues/349)) ([0824b1f](https://github.com/Mikeys-Tech-Lab/poc/commit/0824b1fd0a89c9178670b9e8d93e11bfe4c93932))
+
 ## [1.26.5](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.26.4...PoC-v1.26.5) (2026-09-22)
 
 
