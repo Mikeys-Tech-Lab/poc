@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.2](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.12.1...site-v2.12.2) (2026-09-24)
+
+
+### Miscellaneous
+
+* **deps:** update vitest monorepo to v5 ([#348](https://github.com/Mikeys-Tech-Lab/poc/issues/348)) ([82f6452](https://github.com/Mikeys-Tech-Lab/poc/commit/82f6452e689c3d46ae8f9e83ba6cfa30a046d84f))
+
 ## [2.12.1](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.12.0...site-v2.12.1) (2026-09-10)
 
 

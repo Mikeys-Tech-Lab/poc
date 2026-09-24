@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.7](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.8.6...ai-guidance-v0.8.7) (2026-09-24)
+
+
+### Miscellaneous
+
+* **deps:** update vitest monorepo to v5 ([#348](https://github.com/Mikeys-Tech-Lab/poc/issues/348)) ([82f6452](https://github.com/Mikeys-Tech-Lab/poc/commit/82f6452e689c3d46ae8f9e83ba6cfa30a046d84f))
+
 ## [0.8.6](https://github.com/Mikeys-Tech-Lab/poc/compare/ai-guidance-v0.8.5...ai-guidance-v0.8.6) (2026-09-10)
 
 
