@@ -13,9 +13,9 @@
     "coverage": "vitest run --coverage"
   },
   "devDependencies": {
-    "@vitest/coverage-v8": "4.1.10",
+    "@vitest/coverage-v8": "5.0.1",
     "tsx": "4.23.10",
     "typescript": "6.0.3",
-    "vitest": "4.1.11"
+    "vitest": "5.0.1"
   }
 }
