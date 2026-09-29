@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.8](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.26.7...PoC-v1.26.8) (2026-09-29)
+
+
+### Miscellaneous
+
+* **deps:** update github/codeql-action digest to 2892aa5 ([#353](https://github.com/Mikeys-Tech-Lab/poc/issues/353)) ([9eb9181](https://github.com/Mikeys-Tech-Lab/poc/commit/9eb9181f43220cc153c2898d35d32419f3f8581d))
+
 ## [1.26.7](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.26.6...PoC-v1.26.7) (2026-09-24)
 
 
