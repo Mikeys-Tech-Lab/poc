@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.3](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.12.2...site-v2.12.3) (2026-09-29)
+
+
+### Miscellaneous
+
+* **deps:** update npm non-major ([#346](https://github.com/Mikeys-Tech-Lab/poc/issues/346)) ([0461eff](https://github.com/Mikeys-Tech-Lab/poc/commit/0461eff16f7679971d022a028c6cbbd2ff5bd8ae))
+
 ## [2.12.2](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.12.1...site-v2.12.2) (2026-09-24)
 
 
