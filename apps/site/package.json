@@ -15,19 +15,19 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^7.3.1",
-    "@astrojs/starlight": "^0.42.4",
+    "@astrojs/markdown-remark": "^7.3.3",
+    "@astrojs/starlight": "^0.42.6",
     "@catppuccin/starlight": "^2.1.0",
-    "astro": "^7.3.5",
-    "sharp": "^0.35.4"
+    "astro": "^7.4.0",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
-    "@axe-core/playwright": "4.13.0",
-    "@playwright/test": "1.63.0",
-    "happy-dom": "20.14.5",
-    "playwright": "1.63.0",
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/test": "1.64.1",
+    "happy-dom": "20.14.6",
+    "playwright": "1.64.1",
     "rehype-mermaid": "3.0.0",
-    "vitest": "5.0.2"
+    "vitest": "5.0.5"
   }
 }
