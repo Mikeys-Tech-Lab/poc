@@ -1,6 +1,6 @@
 ---
 name: dependency-management
-description: Guides dependency version management, Dependabot configuration, and upgrade workflows. Use when adding, updating, or auditing dependencies in the workspace.
+description: Guides dependency version management, Renovate and Dependabot PR review, failing grouped PR triage, framework compatibility checks, and upgrade workflows. Use when adding, updating, or auditing dependencies, or when a dependency PR fails or needs a merge decision.
 ---
 
 # Dependency Management
@@ -11,6 +11,8 @@ description: Guides dependency version management, Dependabot configuration, and
 - Configuring or modifying Renovate or Dependabot
 - Reviewing Dependabot PRs
 - Reviewing Renovate PRs
+- Diagnosing a failing grouped Renovate PR
+- Checking whether a framework update is compatible
 - Auditing dependencies for security or currency
 - Troubleshooting dependency resolution or lockfile issues
 
@@ -79,6 +81,27 @@ It is now security-only:
 4. If the update is non-major and CI is green, the repo policy may auto-merge it
 5. If the PR reveals a behavioral break, disable or narrow the matching rule rather than silently tolerating queue drift
 
+### Failing grouped PRs
+
+The `npm non-major` group bundles many packages. One failing update blocks all of them, so find the culprit before judging the group.
+
+1. Read the failing CI step, not only the check name. Note which steps passed. A green install, build, type check, and unit run already answers most framework compatibility questions.
+2. Map the failure to one package. Find which versions moved for the packages near the failure (`gh pr diff <n> | grep -E '^[+-].*<package>@'`) and read their release notes.
+3. Reproduce on a branch from `main` by bumping only the suspected package. If the failure reproduces, the culprit is confirmed.
+4. Fix on that branch, including the bump, so CI checks the fix against the new version. Merge it, then let Renovate rebase the group PR. The group drops the package that is now current.
+5. Do not push fixes to the Renovate branch. Renovate stops managing a branch once someone else commits to it.
+
+Watch for verdict-changing updates. Test and lint tools (axe, Playwright, Biome, Vitest) can fail CI with no change to site code, because the new version checks more. Example: axe-core 4.14.0 enabled `label-content-name-mismatch` by default, which failed four axe scans and held back an unrelated Astro patch. Treat new findings as real until checked. Scope any exception to the specific element and document why, rather than disabling the rule.
+
+### Framework compatibility
+
+Before calling a framework update compatible, check both evidence layers:
+
+1. **Peer ranges**: run `pnpm view <package>@<version> peerDependencies` for each plugin that depends on the framework. For this site that means `@astrojs/starlight`, `@catppuccin/starlight`, and `@astrojs/check`. The new framework version must sit inside every range.
+2. **CI steps**: install, build, `astro check`, and unit tests must pass on the PR. E2E failures need step 1 of the grouped-PR triage before they count against the framework.
+
+If a peer range excludes the new version, hold it in `renovate.json` with `allowedVersions` and a description naming the removal condition. The existing TypeScript `<7` hold is the pattern.
+
 ### Security PRs
 
 1. Review security PRs first
@@ -110,7 +133,7 @@ When adding a new dependency:
 
 ## Upgrading dependencies manually
 
-For immediate upgrades (not waiting for Dependabot):
+For immediate upgrades (not waiting for Renovate):
 
 ```bash
 # Check outdated packages across the workspace
@@ -141,9 +164,11 @@ When a transitive dependency carries a vulnerability and its direct parents cap 
 
 Current overrides:
 
-| Package | Pinned to | Reason | Remove when |
+| Package | Minimum safe version | Reason | Remove when |
 |---|---|---|---|
 | `esbuild` | `0.28.1` | GHSA-g7r4-m6w7-qqqr (dev-server file read). `astro` and `vite` cap esbuild below `0.28.1`. | `astro`/`vite` widen their esbuild range to include the fix, then `pnpm update` resolves it natively. |
+
+The current pinned value lives in `pnpm-workspace.yaml`. Renovate bumps override values like any other dependency, so this table records the floor and the reason, not the live pin.
 
 ### CI security scanning
 
@@ -176,10 +201,13 @@ For Renovate-specific config changes, live-doc grounding, config migration PRs, 
 ## Version policy
 
 - **Node.js**: track active LTS. Keep the repo’s minimum supported version in `package.json` `engines.node` and revisit periodically. Do not adopt current/development releases.
-- **pnpm**: track latest stable 11.x. Evaluate 12.x when it stabilizes.
-- **Astro/Starlight**: track latest stable 5.x. Evaluate Astro 6.x when it exits beta.
-- **Vitest**: track latest stable 4.x.
-- **TypeScript**: track latest stable 5.x. Evaluate 6.x when it exits beta.
+- **pnpm**: track latest stable 11.x. pnpm 12.x is under evaluation through its Renovate major PR. Update this line when it merges or is rejected.
+- **Astro**: track latest stable 7.x.
+- **Starlight**: track latest stable 0.x. Starlight is pre-1.0, so a minor bump can carry breaking changes. Read its release notes before merging a minor.
+- **Vitest**: track latest stable 5.x.
+- **TypeScript**: track latest stable 6.x. 7.x is held in `renovate.json` until `@astrojs/check` supports it.
+
+The installed versions live in each `package.json`. If this list names a major line that no longer matches them, the list is stale. Fix it in the same PR that moved the version.
 
 When a major version upgrade is available, create a dedicated branch and PR for it. Do not bundle major upgrades with other changes.
 
