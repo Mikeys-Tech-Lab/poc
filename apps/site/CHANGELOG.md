@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.4](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.12.3...site-v2.12.4) (2026-10-27)
+
+
+### Miscellaneous
+
+* **deps:** update dependency happy-dom to v21 [security] ([#363](https://github.com/Mikeys-Tech-Lab/poc/issues/363)) ([7ffb20e](https://github.com/Mikeys-Tech-Lab/poc/commit/7ffb20e7fa9e69c2d9a80c30d0b1a8a7daf7c787))
+
 ## [2.12.3](https://github.com/Mikeys-Tech-Lab/poc/compare/site-v2.12.2...site-v2.12.3) (2026-09-29)
 
 

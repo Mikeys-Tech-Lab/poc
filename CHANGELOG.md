@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.26.11](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.26.10...PoC-v1.26.11) (2026-10-27)
+
+
+### Miscellaneous
+
+* **deps:** update dependency happy-dom to v21 [security] ([#363](https://github.com/Mikeys-Tech-Lab/poc/issues/363)) ([7ffb20e](https://github.com/Mikeys-Tech-Lab/poc/commit/7ffb20e7fa9e69c2d9a80c30d0b1a8a7daf7c787))
+* **deps:** update github actions non-major ([#358](https://github.com/Mikeys-Tech-Lab/poc/issues/358)) ([848e9a2](https://github.com/Mikeys-Tech-Lab/poc/commit/848e9a217634c8ceefa64efc52ae4b5c4e283ed1))
+
 ## [1.26.10](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.26.9...PoC-v1.26.10) (2026-09-29)
 
 
