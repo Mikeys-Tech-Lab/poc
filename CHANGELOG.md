@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.26.13](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.26.12...PoC-v1.26.13) (2026-10-27)
+
+
+### Bug Fixes
+
+* **astro:** satisfy label-in-name for axe 4.14 and refresh dependency skill ([#366](https://github.com/Mikeys-Tech-Lab/poc/issues/366)) ([3bf9f24](https://github.com/Mikeys-Tech-Lab/poc/commit/3bf9f2487ab72463c5fc4b1096b4443c65b67776))
+
+
+### Miscellaneous
+
+* **deps:** update npm non-major ([#359](https://github.com/Mikeys-Tech-Lab/poc/issues/359)) ([f222e4a](https://github.com/Mikeys-Tech-Lab/poc/commit/f222e4a278cbb4aad4b9bab7482e4806fb84b49c))
+
 ## [1.26.12](https://github.com/Mikeys-Tech-Lab/poc/compare/PoC-v1.26.11...PoC-v1.26.12) (2026-10-27)
 
 
