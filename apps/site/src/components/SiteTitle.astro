@@ -19,7 +19,7 @@ const absentRegisters = availability.absent as Partial<Record<(typeof READING_RE
 	<button
 		type="button"
 		class="site-title sl-flex"
-		aria-label={`${siteTitle}. Open reading register selector.`}
+		aria-describedby="poc-register-title-hint"
 		aria-haspopup="dialog"
 		aria-expanded="false"
 		aria-controls="poc-register-title-panel"
@@ -73,6 +73,7 @@ const absentRegisters = availability.absent as Partial<Record<(typeof READING_RE
 			</span>
 		</span>
 	</button>
+	<span id="poc-register-title-hint" hidden>Open reading register selector.</span>
 
 	<div class="register-notice" data-register-notice hidden aria-live="polite">
 		<div class="register-notice-body">
