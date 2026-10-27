@@ -29,6 +29,27 @@ const axePages = [
   ),
 ];
 
+/**
+ * Node-scoped upstream baseline, keyed by axe rule ID. The rule stays enabled
+ * for every other element.
+ *   label-content-name-mismatch: Starlight's search button shows a "Ctrl K"
+ *     shortcut hint but is named "Search" by its aria-label. Upstream.
+ */
+const UPSTREAM_NODE_BASELINE: Record<string, string[]> = {
+  'label-content-name-mismatch': ['button[data-open-modal=""]'],
+};
+
+type Violation = Awaited<ReturnType<AxeBuilder['analyze']>>['violations'][number];
+
+function withoutUpstreamBaseline(violations: Violation[]): Violation[] {
+  return violations
+    .map((v) => ({
+      ...v,
+      nodes: v.nodes.filter((n) => !UPSTREAM_NODE_BASELINE[v.id]?.includes(n.target.join(' '))),
+    }))
+    .filter((v) => v.nodes.length > 0);
+}
+
 test.describe('accessibility (axe)', () => {
   for (const { url, register, label } of axePages) {
     test(`no critical a11y violations: ${label}`, async ({ page }) => {
@@ -49,7 +70,7 @@ test.describe('accessibility (axe)', () => {
         .disableRules(['target-size', 'link-in-text-block', 'color-contrast'])
         .analyze();
 
-      const serious = results.violations.filter(
+      const serious = withoutUpstreamBaseline(results.violations).filter(
         (v) => v.impact === 'critical' || v.impact === 'serious',
       );
       expect(
