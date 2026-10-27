@@ -96,7 +96,7 @@ Current skills:
 | `node-tooling` | Scripts, tests, TypeScript tooling |
 | `git-commit` | Before every commit |
 | `github-automation` | Feature lifecycle and PRs |
-| `dependency-management` | Adding or updating dependencies |
+| `dependency-management` | Adding or updating dependencies, triaging failing dependency PRs |
 | `renovate-operations` | Live-doc-grounded Renovate config, PR review, and config migration handling |
 | `screen-dump` | Exporting page/register screenshots and versioned snapshot bundles |
 | `infomaniak-deployment` | Deployment configuration and troubleshooting |
